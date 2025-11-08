@@ -12,9 +12,19 @@ This project is a multi-LLM trading simulation framework where five AI-powered t
 - E2E testing: Passed comprehensive UI/UX validation
 
 ## Recent Changes (November 8, 2025)
-**UI Reorganization - Premium Design:**
-- Tab 1 (Manual System): Reorganized in 3 clear steps with visual hierarchy, progress metrics, and status indicators
-- Tab 7 (Autonomous System): Two-column layout with control panel, global metrics, premium leaderboard with position badges
+**Navigation Reorganization - Improved Discoverability:**
+- Created new Tab 1 (Inicio): Landing page with two prominent cards explaining both modes
+  - Sistema Manual card: 6 features, ideal use cases, and navigation button
+  - Competencia Autónoma card: 6 features, ideal use cases, and navigation button
+  - Comparison section: Control, time dedication, and objectives
+- Moved Competencia Autónoma from Tab 7 to Tab 2 for better visibility
+- Reorganized manual system tabs (3-8) maintaining all functionality
+- Security fix: Removed hardcoded Alpha Vantage API key, added proper error handling
+- E2E tested: All 8 tabs verified and functional
+
+**Previous UI Reorganization - Premium Design:**
+- Tab 3 (Manual System): Reorganized in 3 clear steps with visual hierarchy, progress metrics, and status indicators
+- Tab 2 (Autonomous System): Two-column layout with control panel, global metrics, premium leaderboard with position badges
 - Visual improvements: Consistent dividers, containers, metrics with deltas, status indicators with emojis
 - Better UX: Clear separation between manual prediction system and autonomous competition mode
 
