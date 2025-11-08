@@ -1,5 +1,5 @@
 from typing import Dict, List, Optional
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 
 from opinion_trade_api import OpinionTradeAPI
@@ -8,6 +8,8 @@ from bankroll_manager import BankrollManager, BettingStrategy, assign_strategy_t
 from llm_clients import FirmOrchestrator
 from data_collectors import AlphaVantageCollector, YFinanceCollector, RedditSentimentCollector
 from prompt_system import create_trading_prompt, format_technical_report, format_fundamental_report, format_sentiment_report
+from database import TradingDatabase
+from learning_system import LearningSystem
 import os
 
 class AutonomousEngine:
@@ -16,14 +18,18 @@ class AutonomousEngine:
     y ejecuta apuestas automáticas para cada IA respetando límites de riesgo.
     """
     
-    def __init__(self, initial_bankroll_per_firm: float = 1000.0, simulation_mode: bool = True):
+    def __init__(self, database: TradingDatabase, initial_bankroll_per_firm: float = 1000.0, simulation_mode: bool = True):
         """
         Args:
+            database: Instancia de TradingDatabase para persistencia
             initial_bankroll_per_firm: Presupuesto inicial por cada IA
             simulation_mode: Si True, no ejecuta apuestas reales (solo tracking virtual)
         """
         self.simulation_mode = simulation_mode
         self.initial_bankroll = initial_bankroll_per_firm
+        
+        self.db = database
+        self.learning_system = LearningSystem(database)
         
         self.opinion_api = OpinionTradeAPI()
         self.orchestrator = FirmOrchestrator()
@@ -39,6 +45,7 @@ class AutonomousEngine:
         
         self.execution_log = []
         self.daily_analysis_count = 0
+        self.last_learning_analysis = None
     
     def _initialize_firms(self):
         """
@@ -101,8 +108,12 @@ class AutonomousEngine:
             results['total_bets_placed'] += firm_result.get('bets_placed', 0)
             results['total_bets_skipped'] += firm_result.get('bets_skipped', 0)
         
+        self.db.save_autonomous_cycle(results)
+        
         self.execution_log.append(results)
         self.daily_analysis_count += 1
+        
+        self._check_weekly_learning()
         
         return results
     
@@ -225,6 +236,26 @@ class AutonomousEngine:
             decision['bet_calculation'] = bet_calculation
             decision['risk_check'] = risk_check
             decision['reason'] = f"Approved: EV={expected_value:.2f}, Prob={probability:.2%}, Conf={confidence}%"
+            
+            bet_data = {
+                'firm_name': firm_name,
+                'event_id': event_id,
+                'event_description': event_description,
+                'category': category,
+                'bet_size': bet_size,
+                'probability': probability,
+                'confidence': confidence,
+                'expected_value': expected_value,
+                'risk_level': risk_manager.get_risk_level().value,
+                'adaptation_level': risk_manager.adaptation_level.value,
+                'betting_strategy': bankroll_manager.strategy.value,
+                'reasoning': decision.get('reason'),
+                'execution_timestamp': datetime.now().isoformat(),
+                'simulation_mode': 1 if self.simulation_mode else 0
+            }
+            
+            bet_id = self.db.save_autonomous_bet(bet_data)
+            decision['bet_id'] = bet_id
             
             if not self.simulation_mode:
                 execution_result = self._execute_bet(
@@ -399,3 +430,66 @@ class AutonomousEngine:
             entry['position'] = i + 1
         
         return leaderboard
+    
+    def _check_weekly_learning(self):
+        """
+        Verifica si es tiempo de ejecutar análisis semanal de aprendizaje.
+        """
+        if self.last_learning_analysis is None:
+            self.last_learning_analysis = datetime.now()
+            return
+        
+        days_since_last = (datetime.now() - self.last_learning_analysis).days
+        
+        if days_since_last >= 7:
+            self._run_weekly_learning_analysis()
+            self.last_learning_analysis = datetime.now()
+    
+    def _run_weekly_learning_analysis(self):
+        """
+        Ejecuta análisis de aprendizaje semanal para todas las IAs.
+        """
+        cross_insights = self.learning_system.generate_cross_learning_insights()
+        
+        for firm_name in self.orchestrator.get_all_firms().keys():
+            analysis = self.learning_system.analyze_weekly_performance(firm_name)
+            
+            if analysis.get('status') not in ['insufficient_data', 'no_recent_activity']:
+                recommendations = analysis.get('recommendations', [])
+                
+                pass
+    
+    def apply_risk_adaptation(self, firm_name: str, adaptation_level):
+        """
+        Aplica adaptación de riesgo y la persiste en la base de datos.
+        """
+        risk_manager = self.risk_managers[firm_name]
+        bankroll_manager = self.bankroll_managers[firm_name]
+        
+        total_loss_pct = (risk_manager.initial_bankroll - risk_manager.current_bankroll) / risk_manager.initial_bankroll
+        
+        learning_analysis = self.learning_system.analyze_weekly_performance(firm_name)
+        analysis_data = None
+        
+        if learning_analysis.get('status') not in ['insufficient_data', 'no_recent_activity']:
+            analysis_data = {
+                'successful_patterns': learning_analysis.get('category_performance', {})
+            }
+        
+        adaptation_details = risk_manager.apply_adaptation(adaptation_level, analysis_data)
+        
+        adaptation_db_data = {
+            'firm_name': firm_name,
+            'level': adaptation_level.value,
+            'description': adaptation_details.get('description'),
+            'previous_params': adaptation_details.get('previous_params'),
+            'new_params': adaptation_details.get('new_params'),
+            'changes': adaptation_details.get('changes'),
+            'bankroll_at_adaptation': risk_manager.current_bankroll,
+            'loss_percentage': total_loss_pct * 100,
+            'timestamp': adaptation_details.get('timestamp')
+        }
+        
+        self.db.save_strategy_adaptation(adaptation_db_data)
+        
+        return adaptation_details

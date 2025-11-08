@@ -763,6 +763,7 @@ with tab7:
     if 'autonomous_engine' not in st.session_state:
         from autonomous_engine import AutonomousEngine
         st.session_state.autonomous_engine = AutonomousEngine(
+            database=st.session_state.db,
             initial_bankroll_per_firm=1000.0,
             simulation_mode=True
         )
@@ -791,31 +792,7 @@ with tab7:
                 try:
                     result = engine.run_daily_cycle()
                     
-                    for firm_name, firm_result in result.get('firms_results', {}).items():
-                        if firm_result.get('bets_placed', 0) > 0:
-                            for decision in firm_result.get('decisions', []):
-                                if decision.get('action') == 'BET':
-                                    bet_data = {
-                                        'firm_name': firm_name,
-                                        'event_id': decision['event_id'],
-                                        'event_description': decision['event_description'],
-                                        'category': decision.get('category'),
-                                        'bet_size': decision['bet_size'],
-                                        'probability': decision['probability'],
-                                        'confidence': decision.get('confidence', 50),
-                                        'expected_value': decision.get('expected_value'),
-                                        'risk_level': decision.get('risk_check', {}).get('risk_level'),
-                                        'adaptation_level': engine.risk_managers[firm_name].adaptation_level.value,
-                                        'betting_strategy': engine.bankroll_managers[firm_name].strategy.value,
-                                        'reasoning': decision.get('reason'),
-                                        'execution_timestamp': datetime.now().isoformat(),
-                                        'simulation_mode': 1 if simulation_mode else 0
-                                    }
-                                    st.session_state.db.save_autonomous_bet(bet_data)
-                    
-                    st.session_state.db.save_autonomous_cycle(result)
-                    
-                    st.success(f"✅ Ciclo completado: {result.get('total_bets_placed')} apuestas colocadas")
+                    st.success(f"✅ Ciclo completado: {result.get('total_bets_placed')} apuestas colocadas, {result.get('total_bets_skipped')} omitidas")
                     st.rerun()
                 except Exception as e:
                     st.error(f"Error durante ejecución: {str(e)}")
