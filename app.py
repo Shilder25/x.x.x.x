@@ -169,21 +169,25 @@ with tab1:
                         prediction['event_description'] = event_description
                         prediction['prediction_date'] = datetime.now().strftime('%Y-%m-%d')
                         
-                        prediction_data = {
-                            'firm_name': firm_name,
-                            'event_description': event_description,
-                            'prediction_date': prediction.get('fecha_prediccion', datetime.now().strftime('%Y-%m-%d')),
-                            'probability': float(prediction.get('probabilidad_final_prediccion', 0.5)),
-                            'postura_riesgo': prediction.get('postura_riesgo', 'NEUTRAL'),
-                            'analisis_sintesis': prediction.get('analisis_sintesis', ''),
-                            'debate_bullish_bearish': prediction.get('debate_bullish_bearish', ''),
-                            'ajuste_riesgo_justificacion': prediction.get('ajuste_riesgo_justificacion', ''),
-                            'tokens_used': prediction.get('tokens_used', 0),
-                            'estimated_cost': prediction.get('estimated_cost', 0.0)
-                        }
-                        
-                        st.session_state.db.save_prediction(prediction_data)
-                        st.session_state.predictions[firm_name] = prediction
+                        try:
+                            prediction_data = {
+                                'firm_name': firm_name,
+                                'event_description': event_description,
+                                'prediction_date': prediction.get('fecha_prediccion', datetime.now().strftime('%Y-%m-%d')),
+                                'probability': float(prediction.get('probabilidad_final_prediccion', 0.5)),
+                                'postura_riesgo': prediction.get('postura_riesgo', 'NEUTRAL'),
+                                'analisis_sintesis': prediction.get('analisis_sintesis', ''),
+                                'debate_bullish_bearish': prediction.get('debate_bullish_bearish', ''),
+                                'ajuste_riesgo_justificacion': prediction.get('ajuste_riesgo_justificacion', ''),
+                                'tokens_used': prediction.get('tokens_used', 0),
+                                'estimated_cost': prediction.get('estimated_cost', 0.0)
+                            }
+                            
+                            st.session_state.db.save_prediction(prediction_data)
+                            st.session_state.predictions[firm_name] = prediction
+                        except Exception as db_error:
+                            st.warning(f"Error guardando predicción de {firm_name} en base de datos: {db_error}")
+                            st.session_state.predictions[firm_name] = prediction
                     else:
                         st.session_state.predictions[firm_name] = prediction
                 
