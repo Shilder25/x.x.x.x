@@ -52,13 +52,14 @@ if 'sentiment_data' not in st.session_state:
 st.title("📈 TradingAgents Framework")
 st.markdown("### Sistema de 5 Firmas Autónomas de Trading con LLMs")
 
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "🎯 Nueva Predicción",
     "🔍 Panel de Transparencia",
     "📊 Dashboard Comparativo",
     "🤖 Recomendaciones & Consenso",
     "📤 Enviar a Opinion.trade",
-    "📝 Registrar Resultados"
+    "📝 Registrar Resultados",
+    "🤖 Competencia Autónoma"
 ])
 
 with tab1:
@@ -754,6 +755,292 @@ with tab6:
                 st.metric("Precisión General", f"{accuracy:.1f}%")
     else:
         st.info("No hay predicciones registradas aún.")
+
+with tab7:
+    st.header("🤖 Competencia Autónoma de Trading")
+    st.markdown("### Sistema de Apuestas Autom con Adaptación Continua")
+    
+    if 'autonomous_engine' not in st.session_state:
+        from autonomous_engine import AutonomousEngine
+        st.session_state.autonomous_engine = AutonomousEngine(
+            initial_bankroll_per_firm=1000.0,
+            simulation_mode=True
+        )
+    
+    engine = st.session_state.autonomous_engine
+    
+    col1, col2, col3 = st.columns([2, 1, 1])
+    
+    with col1:
+        st.subheader("🎮 Panel de Control")
+        
+        mode_col1, mode_col2 = st.columns(2)
+        with mode_col1:
+            simulation_mode = st.toggle("Modo Simulación", value=engine.simulation_mode, key="sim_mode_toggle")
+            engine.simulation_mode = simulation_mode
+        
+        with mode_col2:
+            if simulation_mode:
+                st.info("🧪 Modo simulación activado - No se ejecutarán apuestas reales")
+            else:
+                st.warning("⚠️ Modo REAL activado - Las apuestas se ejecutarán en Opinion.trade")
+    
+    with col2:
+        if st.button("▶️ Ejecutar Ciclo Diario", use_container_width=True, type="primary"):
+            with st.spinner("Ejecutando ciclo de análisis y apuestas..."):
+                try:
+                    result = engine.run_daily_cycle()
+                    
+                    for firm_name, firm_result in result.get('firms_results', {}).items():
+                        if firm_result.get('bets_placed', 0) > 0:
+                            for decision in firm_result.get('decisions', []):
+                                if decision.get('action') == 'BET':
+                                    bet_data = {
+                                        'firm_name': firm_name,
+                                        'event_id': decision['event_id'],
+                                        'event_description': decision['event_description'],
+                                        'category': decision.get('category'),
+                                        'bet_size': decision['bet_size'],
+                                        'probability': decision['probability'],
+                                        'confidence': decision.get('confidence', 50),
+                                        'expected_value': decision.get('expected_value'),
+                                        'risk_level': decision.get('risk_check', {}).get('risk_level'),
+                                        'adaptation_level': engine.risk_managers[firm_name].adaptation_level.value,
+                                        'betting_strategy': engine.bankroll_managers[firm_name].strategy.value,
+                                        'reasoning': decision.get('reason'),
+                                        'execution_timestamp': datetime.now().isoformat(),
+                                        'simulation_mode': 1 if simulation_mode else 0
+                                    }
+                                    st.session_state.db.save_autonomous_bet(bet_data)
+                    
+                    st.session_state.db.save_autonomous_cycle(result)
+                    
+                    st.success(f"✅ Ciclo completado: {result.get('total_bets_placed')} apuestas colocadas")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Error durante ejecución: {str(e)}")
+    
+    with col3:
+        if st.button("📊 Actualizar Dashboard", use_container_width=True):
+            st.rerun()
+    
+    st.markdown("---")
+    
+    status = engine.get_competition_status()
+    
+    st.subheader("🏆 Tabla de Posiciones")
+    
+    leaderboard = status.get('leaderboard', [])
+    
+    if leaderboard:
+        leaderboard_data = []
+        for entry in leaderboard:
+            leaderboard_data.append({
+                'Posición': entry['position'],
+                'Firma': entry['firm_name'],
+                'Bankroll': f"${entry['current_bankroll']:.2f}",
+                'Ganancia': f"${entry['total_profit']:.2f}",
+                'Retorno %': f"{entry['return_pct']:.1f}%",
+                'Win Rate': f"{entry['win_rate']:.1f}%",
+                'Apuestas': entry['total_bets'],
+                'Nivel Riesgo': entry['risk_level']
+            })
+        
+        df_leaderboard = pd.DataFrame(leaderboard_data)
+        st.dataframe(df_leaderboard, use_container_width=True, hide_index=True)
+    
+    st.markdown("---")
+    
+    st.subheader("📈 Estado de las IAs")
+    
+    for firm_name, firm_status in status.get('firms', {}).items():
+        with st.expander(f"{firm_name} - Estado Detallado"):
+            col1, col2, col3, col4 = st.columns(4)
+            
+            risk_status = firm_status['risk']
+            bankroll_status = firm_status['bankroll']
+            
+            with col1:
+                risk_level = risk_status.get('risk_level', 'normal')
+                
+                if risk_level == 'normal':
+                    emoji = "🟢"
+                elif risk_level == 'caution':
+                    emoji = "🟡"
+                elif risk_level == 'alert':
+                    emoji = "🟠"
+                else:
+                    emoji = "🔴"
+                
+                st.metric("Nivel de Riesgo", f"{emoji} {risk_level.upper()}")
+            
+            with col2:
+                adaptation_level = risk_status.get('adaptation_level', 0)
+                st.metric("Nivel de Adaptación", f"Nivel {adaptation_level}")
+            
+            with col3:
+                bankroll = bankroll_status.get('current_bankroll', 0)
+                initial = bankroll_status.get('initial_bankroll', 1000)
+                delta = bankroll - initial
+                st.metric("Bankroll Actual", f"${bankroll:.2f}", f"{delta:+.2f}")
+            
+            with col4:
+                win_rate = bankroll_status.get('win_rate', 0)
+                st.metric("Win Rate", f"{win_rate:.1f}%")
+            
+            st.markdown("**Parámetros Actuales:**")
+            current_params = risk_status.get('current_limits', {})
+            param_col1, param_col2, param_col3 = st.columns(3)
+            
+            with param_col1:
+                st.write(f"• Max bet: {current_params.get('max_bet_size_pct', 0)*100:.1f}%")
+            with param_col2:
+                st.write(f"• Max concurrent: {current_params.get('max_concurrent_bets', 0)}")
+            with param_col3:
+                st.write(f"• Pérdidas consecutivas: {risk_status.get('consecutive_losses', 0)}")
+            
+            recent_adaptations = risk_status.get('recent_adaptations', [])
+            if recent_adaptations:
+                st.markdown("**Adaptaciones Recientes:**")
+                for adapt in recent_adaptations[:2]:
+                    st.info(f"🔄 {adapt.get('description', '')} - {adapt.get('timestamp', '')[:10]}")
+    
+    st.markdown("---")
+    
+    st.subheader("📜 Historial de Apuestas Autónomas")
+    
+    filter_firm = st.selectbox("Filtrar por Firma", ["Todas"] + list(status.get('firms', {}).keys()))
+    
+    if filter_firm == "Todas":
+        bets = st.session_state.db.get_autonomous_bets(limit=50)
+    else:
+        bets = st.session_state.db.get_autonomous_bets(firm_name=filter_firm, limit=50)
+    
+    if bets:
+        bets_data = []
+        for bet in bets:
+            result_emoji = "✅" if bet['actual_result'] == 1 else "❌" if bet['actual_result'] == 0 else "⏳"
+            
+            bets_data.append({
+                'Firma': bet['firm_name'],
+                'Evento': bet['event_description'][:60] + "...",
+                'Monto': f"${bet['bet_size']:.2f}",
+                'Prob': f"{bet['probability']:.1%}",
+                'Conf': f"{bet['confidence']}%",
+                'EV': f"{bet['expected_value']:.2f}" if bet['expected_value'] else "N/A",
+                'Resultado': result_emoji,
+                'P/L': f"${bet['profit_loss']:.2f}" if bet['profit_loss'] else "-",
+                'Fecha': bet['execution_timestamp'][:10]
+            })
+        
+        df_bets = pd.DataFrame(bets_data)
+        st.dataframe(df_bets, use_container_width=True, hide_index=True)
+    else:
+        st.info("No hay apuestas autónomas registradas aún.")
+    
+    st.markdown("---")
+    
+    st.subheader("🔄 Historial de Adaptaciones de Estrategia")
+    
+    adaptations = st.session_state.db.get_strategy_adaptations()
+    
+    if adaptations:
+        for adapt in adaptations[:10]:
+            with st.expander(f"{adapt['firm_name']} - Nivel {adapt['adaptation_level']} - {adapt['adaptation_timestamp'][:10]}"):
+                st.markdown(f"**Razón:** {adapt['trigger_reason']}")
+                st.markdown(f"**Bankroll en adaptación:** ${adapt.get('bankroll_at_adaptation', 0):.2f}")
+                st.markdown(f"**Pérdida acumulada:** {adapt.get('loss_percentage', 0):.1f}%")
+                
+                st.markdown("**Cambios Aplicados:**")
+                for change in adapt.get('changes_applied', []):
+                    st.write(f"• {change}")
+                
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.json(adapt.get('previous_params', {}))
+                    st.caption("Parámetros Anteriores")
+                with col2:
+                    st.json(adapt.get('new_params', {}))
+                    st.caption("Nuevos Parámetros")
+    else:
+        st.info("No hay adaptaciones de estrategia registradas aún.")
+    
+    st.markdown("---")
+    
+    st.subheader("📊 Gráficas de Performance")
+    
+    tab_chart1, tab_chart2, tab_chart3 = st.tabs(["Evolution Bankroll", "Win Rate", "Risk Levels"])
+    
+    with tab_chart1:
+        fig = go.Figure()
+        
+        for firm_name, firm_status in status.get('firms', {}).items():
+            bankroll_status = firm_status['bankroll']
+            fig.add_trace(go.Scatter(
+                x=[0, 1],
+                y=[bankroll_status['initial_bankroll'], bankroll_status['current_bankroll']],
+                mode='lines+markers',
+                name=firm_name,
+                line=dict(width=2)
+            ))
+        
+        fig.update_layout(
+            title="Evolución del Bankroll por Firma",
+            xaxis_title="Tiempo",
+            yaxis_title="Bankroll ($)",
+            hovermode='x unified',
+            height=400
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
+    
+    with tab_chart2:
+        win_rates_data = []
+        
+        for firm_name, firm_status in status.get('firms', {}).items():
+            bankroll_status = firm_status['bankroll']
+            win_rates_data.append({
+                'Firma': firm_name,
+                'Win Rate': bankroll_status.get('win_rate', 0)
+            })
+        
+        df_wr = pd.DataFrame(win_rates_data)
+        
+        fig = px.bar(df_wr, x='Firma', y='Win Rate', 
+                     title="Tasa de Éxito por Firma",
+                     color='Win Rate',
+                     color_continuous_scale='RdYlGn')
+        
+        st.plotly_chart(fig, use_container_width=True)
+    
+    with tab_chart3:
+        risk_data = []
+        
+        for firm_name, firm_status in status.get('firms', {}).items():
+            risk_status = firm_status['risk']
+            risk_level = risk_status.get('risk_level', 'normal')
+            
+            risk_score = {'normal': 1, 'caution': 2, 'alert': 3, 'critical': 4}.get(risk_level, 1)
+            
+            risk_data.append({
+                'Firma': firm_name,
+                'Nivel de Riesgo': risk_level.upper(),
+                'Score': risk_score
+            })
+        
+        df_risk = pd.DataFrame(risk_data)
+        
+        fig = px.bar(df_risk, x='Firma', y='Score', 
+                     title="Niveles de Riesgo Actuales",
+                     color='Nivel de Riesgo',
+                     color_discrete_map={
+                         'NORMAL': 'green',
+                         'CAUTION': 'yellow',
+                         'ALERT': 'orange',
+                         'CRITICAL': 'red'
+                     })
+        
+        st.plotly_chart(fig, use_container_width=True)
 
 st.sidebar.title("⚙️ Configuración")
 
