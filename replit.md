@@ -12,18 +12,26 @@ Preferred communication style: Simple, everyday language.
 
 ### Frontend Architecture
 - **Framework**: Streamlit-based web application with multi-tab interface
-- **State Management**: Session state pattern for maintaining database connections, orchestrator instances, and cached data (predictions, technical/fundamental/sentiment data)
-- **Layout**: Wide-layout configuration with four main tabs for different views (analysis, predictions, performance, portfolio management)
+- **State Management**: Session state pattern for maintaining database connections, orchestrator instances, RecommendationEngine, and cached data (predictions, technical/fundamental/sentiment data)
+- **Layout**: Wide-layout configuration with six main tabs:
+  1. Nueva Predicción: Generate predictions from all 5 firms
+  2. Panel de Transparencia: View detailed reasoning chains
+  3. Dashboard Comparativo: Compare firm performance (accuracy, Sharpe ratio, profit/loss)
+  4. Recomendaciones & Consenso: Recommendation engine, consensus predictions, pattern analysis, attribution reports
+  5. Enviar a Opinion.trade: Submit predictions via API
+  6. Registrar Resultados: Track actual outcomes and profit/loss
 - **Rationale**: Streamlit provides rapid prototyping with built-in state management, eliminating the need for separate frontend/backend architecture while supporting real-time data visualization
 
 ### Backend Architecture
 - **Pattern**: Modular service-oriented design with clear separation of concerns
 - **Core Components**:
-  - `TradingDatabase`: SQLite-based persistence layer for predictions, firm performance, and virtual portfolios
+  - `TradingDatabase`: SQLite-based persistence layer for predictions, firm performance, and virtual portfolios with automatic schema migration
   - `FirmOrchestrator`: Manages multiple LLM clients and coordinates prediction generation across all five firms
   - Individual firm clients (ChatGPTFirm, GeminiFirm, etc.): Encapsulate LLM-specific API interactions
   - Data collectors: Specialized classes for different data sources (technical, fundamental, sentiment)
   - Prompt system: Generates structured prompts that simulate multi-agent trading firm decision-making
+  - `RecommendationEngine`: Analyzes historical performance to recommend which firm's prediction to use
+  - `OpinionTradeAPI`: Handles automated submission of predictions to Opinion.trade platform
 - **Rationale**: Modular design allows independent evolution of each component and easy addition of new LLMs or data sources
 
 ### Prompt Engineering Strategy
@@ -40,6 +48,7 @@ Preferred communication style: Simple, everyday language.
   - `predictions`: Stores individual predictions with full reasoning chain and cost tracking
   - `firm_performance`: Aggregated metrics per firm (accuracy, Sharpe ratio, total profit/loss)
   - `virtual_portfolio`: Position tracking for simulated trading
+- **Schema Migration**: Automatic migration system (`_migrate_schema()`) detects legacy databases and adds new columns (e.g., sharpe_ratio) via ALTER TABLE to ensure backward compatibility
 - **Rationale**: SQLite eliminates deployment complexity (no separate DB server) while providing ACID compliance for financial tracking. Suitable for single-user simulation environments with moderate data volumes.
 
 ### LLM Integration Architecture
@@ -101,6 +110,40 @@ Preferred communication style: Simple, everyday language.
 ### Environment Variables Required
 - `AI_INTEGRATIONS_OPENAI_API_KEY`: Managed by Replit for OpenAI access
 - `AI_INTEGRATIONS_OPENAI_BASE_URL`: Managed by Replit for OpenAI routing
-- Alpha Vantage API key (referenced in `AlphaVantageCollector`)
-- Reddit API credentials for PRAW (client_id, client_secret, user_agent)
-- Additional API keys for Qwen, Deepseek, and Grok integrations
+- `ALPHA_VANTAGE_API_KEY`: For technical indicators and market data
+- `REDDIT_CLIENT_ID`, `REDDIT_CLIENT_SECRET`: For Reddit sentiment analysis
+- `OPINION_TRADE_API_KEY`: For automated prediction submission to Opinion.trade platform
+- `DEEPSEEK_API_KEY`, `QWEN_API_KEY`, `XAI_API_KEY`: For additional LLM providers
+
+## Recent Changes
+
+### November 8, 2025 - Advanced Analytics & Integration Features
+**Added Opinion.trade Integration (opinion_trade_api.py):**
+- Automated submission module for posting predictions to Opinion.trade platform
+- Retry logic with exponential backoff for API failures
+- Proper error handling and validation for prediction data
+- Integrated into Tab 5 UI with firm selection and manual submission controls
+
+**Implemented Recommendation Engine (recommendation_engine.py):**
+- Smart firm selection based on historical accuracy, Sharpe ratio, and total profit
+- Confidence scoring system with alternative recommendations
+- Weighted consensus predictions combining multiple firms
+- Pattern analysis correlating risk postures with success rates
+- Detailed attribution reporting showing which firms generated wins/losses
+
+**Added Sharpe Ratio Calculation:**
+- Risk-adjusted return metric for comparing firm performance
+- Automatic database migration for existing databases
+- Proper handling of zero-variance edge cases
+- Integrated into comparative dashboard and performance metrics
+
+**Expanded UI to 6 Tabs:**
+- Tab 4 (Recomendaciones & Consenso): Displays best firm recommendation, consensus prediction with visualization, reasoning pattern analysis by risk posture, and detailed attribution reports
+- Tab 5 (Enviar a Opinion.trade): Manual submission interface with firm selection, prediction review, and API integration
+- Tab 6 (Registrar Resultados): Result tracking interface for recording actual outcomes and calculating profit/loss
+
+**Database Enhancements:**
+- Automatic schema migration system (`_migrate_schema()`) for backward compatibility
+- Added `sharpe_ratio` column to `firm_performance` table
+- Enhanced error handling for schema changes
+- Migration runs automatically on database initialization
