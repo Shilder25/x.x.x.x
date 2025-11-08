@@ -4,7 +4,7 @@ import numpy as np
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import json
-import time
+import sqlite3
 from database import TradingDatabase
 from streamlit_autorefresh import st_autorefresh
 
@@ -24,109 +24,60 @@ st.set_page_config(
 REFRESH_INTERVAL = 30000  # milliseconds
 count = st_autorefresh(interval=REFRESH_INTERVAL, key="data_refresh")
 
-# Clean, minimal CSS - White theme inspired by nof1.ai
+# Clean, minimal CSS - White theme
 st.markdown("""
 <style>
-    /* Clean white background */
     .stApp {
         background-color: #ffffff;
-        color: #1a1a1a;
     }
     
-    /* Hide Streamlit defaults */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     .stDeployButton {display: none;}
     
     /* Typography */
-    .main-title {
-        font-size: 2.2rem;
-        font-weight: 300;
+    h1, h2, h3 {
         color: #1a1a1a;
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.01em;
-    }
-    
-    .subtitle {
-        color: #666666;
-        font-size: 1rem;
         font-weight: 400;
-        margin-bottom: 2rem;
     }
     
-    /* Metrics */
-    .metric-container {
-        background: #ffffff;
-        border: 1px solid #e5e5e5;
-        border-radius: 8px;
-        padding: 1.2rem;
-        height: 100%;
+    /* Metrics styling */
+    [data-testid="stMetricValue"] {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        font-weight: 400;
     }
     
-    .metric-label {
+    [data-testid="stMetricLabel"] {
         font-size: 0.75rem;
         color: #666666;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        margin-bottom: 0.25rem;
         font-weight: 500;
     }
     
-    .metric-value {
-        font-size: 1.8rem;
-        font-weight: 400;
-        color: #1a1a1a;
-        line-height: 1.2;
-    }
-    
-    .metric-delta {
+    [data-testid="stMetricDelta"] {
         font-size: 0.85rem;
-        margin-top: 0.25rem;
     }
     
-    .positive {
-        color: #059669;
-    }
-    
-    .negative {
-        color: #dc2626;
-    }
-    
-    /* Section headers */
-    .section-header {
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: #1a1a1a;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid #e5e5e5;
-    }
-    
-    /* Tables and lists */
-    .data-table {
-        background: #ffffff;
+    /* Containers */
+    [data-testid="stVerticalBlock"] > [data-testid="stVerticalBlock"] {
+        background-color: #ffffff;
         border: 1px solid #e5e5e5;
         border-radius: 8px;
         padding: 1rem;
-        width: 100%;
     }
     
-    .table-row {
-        padding: 0.75rem 0;
-        border-bottom: 1px solid #f3f4f6;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .table-row:last-child {
-        border-bottom: none;
+    /* Expander */
+    [data-testid="stExpander"] {
+        background-color: #fafafa;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
     }
     
     /* Live indicator */
-    .live-indicator {
+    .live-badge {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
@@ -149,73 +100,42 @@ st.markdown("""
     }
     
     @keyframes pulse {
-        0% { opacity: 1; }
+        0%, 100% { opacity: 1; }
         50% { opacity: 0.5; }
-        100% { opacity: 1; }
     }
     
-    /* Department cards - minimal */
-    .dept-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 0.75rem;
-        margin-top: 1rem;
-    }
-    
-    .dept-card {
-        padding: 0.75rem;
-        background: #fafafa;
-        border: 1px solid #e5e5e5;
-        border-radius: 6px;
-        font-size: 0.85rem;
-    }
-    
-    .dept-name {
-        color: #1a1a1a;
-        font-weight: 500;
-    }
-    
-    .dept-status {
-        color: #666666;
+    /* Department badges */
+    .dept-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: #f3f4f6;
+        border-radius: 4px;
         font-size: 0.75rem;
-        margin-top: 0.25rem;
+        color: #4b5563;
+        margin: 0.25rem;
     }
     
-    /* Reasoning panel */
-    .reasoning-container {
-        background: #fafafa;
-        border: 1px solid #e5e5e5;
-        border-radius: 8px;
-        padding: 1rem;
-        margin-top: 1rem;
+    .dept-active {
+        background: #dcfce7;
+        color: #059669;
     }
     
-    .ai-column {
-        padding: 0.5rem;
-        border-right: 1px solid #e5e5e5;
+    /* Tables */
+    .dataframe {
+        font-size: 0.85rem !important;
     }
     
-    .ai-column:last-child {
-        border-right: none;
+    .dataframe th {
+        background-color: #fafafa !important;
+        color: #666666 !important;
+        font-weight: 500 !important;
+        text-transform: uppercase !important;
+        font-size: 0.7rem !important;
+        letter-spacing: 0.05em !important;
     }
     
-    .ai-label {
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: #1a1a1a;
-        margin-bottom: 0.5rem;
-    }
-    
-    .thought-item {
-        font-size: 0.8rem;
-        color: #666666;
-        padding: 0.25rem 0;
-        border-bottom: 1px solid #f3f4f6;
-    }
-    
-    .timestamp {
-        font-size: 0.7rem;
-        color: #9ca3af;
+    .dataframe td {
+        color: #1a1a1a !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -228,170 +148,123 @@ def get_database():
 db = get_database()
 
 # Header
-st.markdown('<h1 class="main-title">Alpha Arena</h1>', unsafe_allow_html=True)
+st.markdown("# Alpha Arena")
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    st.markdown('''
-        <div style="text-align: center;">
-            <span class="live-indicator">
-                <span class="live-dot"></span>
-                LIVE
-            </span>
-        </div>
-    ''', unsafe_allow_html=True)
-st.markdown('<p class="subtitle" style="text-align: center;">Real-time AI trading competition</p>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align: center;"><span class="live-badge"><span class="live-dot"></span>LIVE</span></div>', unsafe_allow_html=True)
+st.markdown('<p style="text-align: center; color: #666666; font-size: 0.95rem;">Real-time AI trading competition</p>', unsafe_allow_html=True)
+st.divider()
 
-# Get simulation data
-def get_simulation_data():
-    """Generate or fetch simulation data for the dashboard"""
-    
-    # Try to get real data from database
+# Get data from database
+def get_account_values():
+    """Get current account values for all AIs"""
     try:
-        # Get autonomous bets data
+        conn = sqlite3.connect(db.db_path)
+        
+        # Get latest portfolio values
         query = """
         SELECT 
-            ia_name,
-            COUNT(*) as total_bets,
-            SUM(CASE WHEN profit_loss > 0 THEN 1 ELSE 0 END) as wins,
-            SUM(profit_loss) as total_pnl,
-            MAX(created_at) as last_activity
-        FROM autonomous_bets
-        WHERE created_at >= datetime('now', '-7 days')
-        GROUP BY ia_name
+            firm_name,
+            total_capital
+        FROM virtual_portfolio
+        WHERE firm_name IN ('ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok')
         """
         
-        import sqlite3
-        conn = sqlite3.connect(db.db_path)
         df = pd.read_sql_query(query, conn)
         conn.close()
         
         if not df.empty:
-            # Real data exists
-            account_values = {}
-            for ia in ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']:
-                if ia in df['ia_name'].values:
-                    row = df[df['ia_name'] == ia].iloc[0]
-                    base_value = 10000
-                    account_values[ia] = base_value + row['total_pnl']
-                else:
-                    account_values[ia] = 10000
-            
-            return {
-                'account_values': account_values,
-                'has_real_data': True
-            }
+            account_values = dict(zip(df['firm_name'], df['total_capital']))
+            # Fill missing AIs with base value
+            for ai in ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']:
+                if ai not in account_values:
+                    account_values[ai] = 10000
+            return account_values, True
     except Exception as e:
         pass
     
-    # Simulation data if no real data
-    np.random.seed(42)
-    base_value = 10000
-    
-    account_values = {
-        'ChatGPT': base_value * 1.12,
-        'Gemini': base_value * 1.08,
-        'Qwen': base_value * 0.95,
-        'Deepseek': base_value * 0.93,
-        'Grok': base_value * 1.03
-    }
-    
+    # Fallback to simulation data
+    np.random.seed(42 + count)
     return {
-        'account_values': account_values,
-        'has_real_data': False
-    }
+        'ChatGPT': 10000 + np.random.randint(-1000, 2000),
+        'Gemini': 10000 + np.random.randint(-1000, 1500),
+        'Qwen': 10000 + np.random.randint(-1500, 500),
+        'Deepseek': 10000 + np.random.randint(-1200, 800),
+        'Grok': 10000 + np.random.randint(-800, 1200)
+    }, False
 
-sim_data = get_simulation_data()
+account_values, has_real_data = get_account_values()
 
-# Key Metrics Row
-st.markdown('<div class="section-header">Overview</div>', unsafe_allow_html=True)
+# Key Metrics
+st.markdown("### Overview")
 col1, col2, col3, col4 = st.columns(4)
 
-total_capital = sum(sim_data['account_values'].values())
+total_capital = sum(account_values.values())
 avg_pnl = ((total_capital - 50000) / 50000) * 100
-best_performer = max(sim_data['account_values'].items(), key=lambda x: x[1])
-worst_performer = min(sim_data['account_values'].items(), key=lambda x: x[1])
+leader = max(account_values.items(), key=lambda x: x[1])
+worst = min(account_values.items(), key=lambda x: x[1])
+best_pnl = ((leader[1] - 10000) / 10000) * 100
+worst_pnl = ((worst[1] - 10000) / 10000) * 100
 
 with col1:
-    st.markdown(f'''
-        <div class="metric-container">
-            <div class="metric-label">Total Capital</div>
-            <div class="metric-value">${total_capital:,.0f}</div>
-            <div class="metric-delta {'positive' if total_capital > 50000 else 'negative'}">
-                {'+' if total_capital > 50000 else ''}{total_capital - 50000:,.0f}
-            </div>
-        </div>
-    ''', unsafe_allow_html=True)
+    st.metric(
+        "Total Capital",
+        f"${total_capital:,.0f}",
+        f"{total_capital - 50000:+,.0f}"
+    )
 
 with col2:
-    leader = best_performer[0]
-    st.markdown(f'''
-        <div class="metric-container">
-            <div class="metric-label">Current Leader</div>
-            <div class="metric-value">{leader}</div>
-            <div class="metric-delta positive">#{1}</div>
-        </div>
-    ''', unsafe_allow_html=True)
+    st.metric(
+        "Current Leader",
+        leader[0],
+        "🥇 #1"
+    )
 
 with col3:
-    st.markdown(f'''
-        <div class="metric-container">
-            <div class="metric-label">Average P&L</div>
-            <div class="metric-value">{avg_pnl:+.1f}%</div>
-            <div class="metric-delta {'positive' if avg_pnl > 0 else 'negative'}">
-                vs initial capital
-            </div>
-        </div>
-    ''', unsafe_allow_html=True)
+    st.metric(
+        "Average P&L",
+        f"{avg_pnl:+.1f}%",
+        "vs initial"
+    )
 
 with col4:
-    best_pnl = ((best_performer[1] - 10000) / 10000) * 100
-    worst_pnl = ((worst_performer[1] - 10000) / 10000) * 100
-    st.markdown(f'''
-        <div class="metric-container">
-            <div class="metric-label">Performance Range</div>
-            <div class="metric-value">{best_pnl:+.1f}% / {worst_pnl:+.1f}%</div>
-            <div class="metric-delta">Best / Worst</div>
-        </div>
-    ''', unsafe_allow_html=True)
+    st.metric(
+        "Performance Range",
+        f"{best_pnl:+.1f}% / {worst_pnl:+.1f}%",
+        "Best / Worst"
+    )
 
-# Chart Section
-st.markdown('<div class="section-header">Account Value Over Time</div>', unsafe_allow_html=True)
+st.divider()
 
-# Generate time series data
+# Chart
+st.markdown("### Account Value Over Time")
+
+# Generate historical data
 def create_chart_data():
     dates = pd.date_range(end=datetime.now(), periods=30, freq='D')
-    
-    # Create realistic trading curves
     np.random.seed(42)
     data = {}
     
-    for ai_name, final_value in sim_data['account_values'].items():
-        # Generate a path from 10000 to final_value
-        returns = np.random.randn(30) * 0.02  # 2% daily volatility
-        
-        # Add trend to reach final value
+    for ai_name, final_value in account_values.items():
+        returns = np.random.randn(30) * 0.015
         trend = (final_value / 10000) ** (1/30) - 1
         returns = returns + trend
         
-        # Calculate cumulative values
         values = [10000]
         for r in returns[1:]:
             values.append(values[-1] * (1 + r))
         
-        # Adjust last value to match exactly
         scaling = final_value / values[-1]
         values = [v * scaling for v in values]
-        
         data[ai_name] = values
     
     return dates, data
 
 dates, chart_data = create_chart_data()
 
-# Create Plotly chart with clean, minimal design
+# Create chart
 fig = go.Figure()
 
-# Color palette - subtle and professional
 colors = {
     'ChatGPT': '#4A5568',
     'Gemini': '#718096',
@@ -424,133 +297,180 @@ fig.update_layout(
         y=1.02,
         xanchor="center",
         x=0.5,
-        bgcolor="rgba(255,255,255,0)",
-        bordercolor="rgba(255,255,255,0)",
         font=dict(size=10)
     ),
     xaxis=dict(
         showgrid=False,
-        zeroline=False,
         showticklabels=True,
         tickfont=dict(size=9, color="#999999")
     ),
     yaxis=dict(
         showgrid=True,
         gridcolor='#f0f0f0',
-        zeroline=False,
         tickformat='$,.0f',
         tickfont=dict(size=9, color="#999999")
     ),
     hovermode='x unified'
 )
 
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width='stretch')
+
+st.divider()
 
 # Leaderboard and Activity
-col1, col2 = st.columns([1, 1])
+col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown('<div class="section-header">Leaderboard</div>', unsafe_allow_html=True)
+    st.markdown("### Leaderboard")
     
-    # Sort by account value
-    sorted_accounts = sorted(sim_data['account_values'].items(), key=lambda x: x[1], reverse=True)
-    
-    leaderboard_html = '<div class="data-table">'
+    # Create leaderboard dataframe
+    sorted_accounts = sorted(account_values.items(), key=lambda x: x[1], reverse=True)
+    leaderboard_data = []
     for i, (name, value) in enumerate(sorted_accounts):
         pnl = ((value - 10000) / 10000) * 100
-        pnl_class = 'positive' if pnl > 0 else 'negative'
-        
-        leaderboard_html += f'''
-        <div class="table-row">
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <span style="font-size: 0.9rem; color: #999999; width: 20px;">#{i+1}</span>
-                <span style="font-weight: 500; color: #1a1a1a;">{name}</span>
-            </div>
-            <div style="text-align: right;">
-                <div style="font-weight: 500; color: #1a1a1a;">${value:,.0f}</div>
-                <div class="{pnl_class}" style="font-size: 0.8rem;">{pnl:+.1f}%</div>
-            </div>
-        </div>
-        '''
-    leaderboard_html += '</div>'
-    st.markdown(leaderboard_html, unsafe_allow_html=True)
+        leaderboard_data.append({
+            'Rank': f"#{i+1}",
+            'AI': name,
+            'Value': f"${value:,.0f}",
+            'P&L': f"{pnl:+.1f}%"
+        })
+    
+    leaderboard_df = pd.DataFrame(leaderboard_data)
+    st.dataframe(leaderboard_df, width='stretch', hide_index=True)
 
 with col2:
-    st.markdown('<div class="section-header">System Activity</div>', unsafe_allow_html=True)
+    st.markdown("### System Activity")
     
-    # Department status - simplified
+    # Department status
     departments = [
-        ('Technical Analysis', 'Active'),
-        ('Fundamental Analysis', 'Active'),
-        ('Sentiment Analysis', 'Idle'),
-        ('Risk Management', 'Active'),
-        ('Execution', 'Processing'),
-        ('Monitoring', 'Active'),
-        ('Learning', 'Weekly cycle')
+        {'Department': 'Technical Analysis', 'Status': 'Active'},
+        {'Department': 'Fundamental Analysis', 'Status': 'Active'},
+        {'Department': 'Sentiment Analysis', 'Status': 'Idle'},
+        {'Department': 'Risk Management', 'Status': 'Active'},
+        {'Department': 'Execution', 'Status': 'Processing'},
+        {'Department': 'Monitoring', 'Status': 'Active'},
+        {'Department': 'Learning', 'Status': 'Weekly'}
     ]
     
-    dept_html = '<div class="data-table">'
-    for dept_name, status in departments:
-        status_color = '#059669' if status in ['Active', 'Processing'] else '#666666'
-        dept_html += f'''
-        <div class="table-row">
-            <div class="dept-name">{dept_name}</div>
-            <div class="dept-status" style="color: {status_color}; text-align: right;">{status}</div>
-        </div>
-        '''
-    dept_html += '</div>'
-    st.markdown(dept_html, unsafe_allow_html=True)
+    dept_df = pd.DataFrame(departments)
+    st.dataframe(dept_df, width='stretch', hide_index=True)
 
-# AI Reasoning Section
-st.markdown('<div class="section-header">Recent Decisions</div>', unsafe_allow_html=True)
+st.divider()
 
-# Generate sample reasoning data
-def generate_reasoning():
-    reasons = [
-        "Analyzing RSI divergence on 4H timeframe",
-        "Federal Reserve meeting minutes suggest dovish stance",
-        "Social sentiment turning bullish on major forums",
-        "Risk/reward ratio favorable at current levels",
-        "Volume profile indicates strong support below",
-        "Correlation with equity markets weakening",
-        "Options flow showing increased call buying",
-        "Technical breakout confirmed with volume"
-    ]
-    
-    reasoning_data = {}
-    for ai in ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']:
-        ai_thoughts = []
-        for i in range(3):
-            timestamp = datetime.now() - timedelta(minutes=np.random.randint(5, 120))
-            thought = np.random.choice(reasons)
-            ai_thoughts.append({
-                'time': timestamp.strftime('%H:%M'),
-                'thought': thought
-            })
-        reasoning_data[ai] = ai_thoughts
-    
-    return reasoning_data
+# AI Internal Debate Visualization
+st.markdown("### AI Internal Deliberation")
+st.caption("See how each AI's 7 internal departments debate before making decisions")
 
-reasoning = generate_reasoning()
+# Get recent predictions with full reasoning
+def get_recent_decisions():
+    """Get recent predictions with internal debate data"""
+    try:
+        conn = sqlite3.connect(db.db_path)
+        
+        query = """
+        SELECT 
+            firm_name,
+            event_description,
+            probability,
+            postura_riesgo,
+            analisis_sintesis,
+            debate_bullish_bearish,
+            ajuste_riesgo_justificacion,
+            created_at
+        FROM predictions
+        WHERE created_at >= datetime('now', '-7 days')
+        ORDER BY created_at DESC
+        LIMIT 5
+        """
+        
+        df = pd.read_sql_query(query, conn)
+        conn.close()
+        
+        return df
+    except Exception as e:
+        # Return empty dataframe if no data
+        return pd.DataFrame()
 
-# Display reasoning in a clean grid
-cols = st.columns(5)
-for i, (ai_name, thoughts) in enumerate(reasoning.items()):
-    with cols[i]:
-        st.markdown(f'<div class="ai-label">{ai_name}</div>', unsafe_allow_html=True)
-        for thought_data in thoughts:
-            st.markdown(f'''
-                <div class="thought-item">
-                    <span class="timestamp">{thought_data['time']}</span><br>
-                    {thought_data['thought']}
-                </div>
-            ''', unsafe_allow_html=True)
+decisions_df = get_recent_decisions()
+
+if not decisions_df.empty:
+    # Group by AI
+    for ai_name in ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']:
+        ai_decisions = decisions_df[decisions_df['firm_name'] == ai_name]
+        
+        if not ai_decisions.empty:
+            latest = ai_decisions.iloc[0]
+            
+            with st.expander(f"**{ai_name}** - Latest Decision", expanded=False):
+                st.markdown(f"**Event:** {latest['event_description'][:200]}...")
+                st.markdown(f"**Probability:** {latest['probability']:.1%} | **Risk Stance:** {latest['postura_riesgo']}")
+                
+                col1, col2, col3 = st.columns(3)
+                
+                with col1:
+                    st.markdown("**📊 Analysis & Synthesis**")
+                    if pd.notna(latest['analisis_sintesis']) and latest['analisis_sintesis']:
+                        st.text_area(
+                            "Analysis",
+                            latest['analisis_sintesis'][:400],
+                            height=150,
+                            key=f"analysis_{ai_name}",
+                            label_visibility="collapsed"
+                        )
+                    else:
+                        st.caption("No analysis available")
+                
+                with col2:
+                    st.markdown("**⚖️ Bullish vs Bearish Debate**")
+                    if pd.notna(latest['debate_bullish_bearish']) and latest['debate_bullish_bearish']:
+                        st.text_area(
+                            "Debate",
+                            latest['debate_bullish_bearish'][:400],
+                            height=150,
+                            key=f"debate_{ai_name}",
+                            label_visibility="collapsed"
+                        )
+                    else:
+                        st.caption("No debate available")
+                
+                with col3:
+                    st.markdown("**🎯 Risk Adjustment & Final Decision**")
+                    if pd.notna(latest['ajuste_riesgo_justificacion']) and latest['ajuste_riesgo_justificacion']:
+                        st.text_area(
+                            "Risk",
+                            latest['ajuste_riesgo_justificacion'][:400],
+                            height=150,
+                            key=f"risk_{ai_name}",
+                            label_visibility="collapsed"
+                        )
+                    else:
+                        st.caption("No risk analysis available")
+                
+                # Department activity badges
+                st.markdown("**Active Departments:**")
+                departments = [
+                    "📊 Technical Analysis",
+                    "📈 Fundamental Analysis",
+                    "💭 Sentiment",
+                    "⚡ Strategy",
+                    "⚖️ Risk Management",
+                    "🎯 Execution",
+                    "📝 Compliance"
+                ]
+                
+                badge_html = " ".join([f'<span class="dept-badge dept-active">{dept}</span>' for dept in departments])
+                st.markdown(badge_html, unsafe_allow_html=True)
+else:
+    st.info("No recent decisions found. The AI models haven't made any predictions in the last 7 days. Try using the manual prediction system or autonomous competition mode to generate data.")
+
+st.divider()
 
 # Footer
-st.markdown('---')
-st.markdown(f'''
-    <div style="text-align: center; color: #999999; font-size: 0.8rem; padding: 1rem 0;">
-        Live trading competition • Updates every 30 seconds • 
-        7 internal departments per AI model
-    </div>
-''', unsafe_allow_html=True)
+footer_col1, footer_col2, footer_col3 = st.columns(3)
+with footer_col2:
+    st.markdown(
+        '<div style="text-align: center; color: #999999; font-size: 0.8rem;">'
+        'Live competition • Updates every 30s • 7 departments per AI'
+        '</div>',
+        unsafe_allow_html=True
+    )
