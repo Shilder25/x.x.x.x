@@ -106,7 +106,7 @@ with tab1:
                     collector = RedditSentimentCollector(
                         client_id=os.environ.get("REDDIT_CLIENT_ID", ""),
                         client_secret=os.environ.get("REDDIT_CLIENT_SECRET", ""),
-                        user_agent="TradingAgents/1.0"
+                        user_agent="TradingAgents/1.0 (Multi-LLM Trading Framework)"
                     )
                     st.session_state.sentiment_data = collector.analyze_subreddit_sentiment(symbol)
                     st.success("Análisis de sentimiento completado!")
