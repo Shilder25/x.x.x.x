@@ -57,6 +57,59 @@ class TradingDatabase:
         )
         ''')
         
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS autonomous_bets (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            firm_name TEXT NOT NULL,
+            event_id TEXT NOT NULL,
+            event_description TEXT NOT NULL,
+            category TEXT,
+            bet_size REAL NOT NULL,
+            probability REAL NOT NULL,
+            confidence INTEGER NOT NULL,
+            expected_value REAL,
+            risk_level TEXT,
+            adaptation_level INTEGER,
+            betting_strategy TEXT,
+            reasoning TEXT,
+            actual_result INTEGER,
+            profit_loss REAL,
+            execution_timestamp TEXT NOT NULL,
+            resolution_timestamp TEXT,
+            simulation_mode INTEGER DEFAULT 1,
+            created_at TEXT NOT NULL
+        )
+        ''')
+        
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS autonomous_cycles (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            cycle_timestamp TEXT NOT NULL,
+            total_events_analyzed INTEGER DEFAULT 0,
+            total_bets_placed INTEGER DEFAULT 0,
+            total_bets_skipped INTEGER DEFAULT 0,
+            simulation_mode INTEGER DEFAULT 1,
+            execution_summary TEXT,
+            created_at TEXT NOT NULL
+        )
+        ''')
+        
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS strategy_adaptations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            firm_name TEXT NOT NULL,
+            adaptation_level INTEGER NOT NULL,
+            trigger_reason TEXT,
+            previous_params TEXT,
+            new_params TEXT,
+            changes_applied TEXT,
+            bankroll_at_adaptation REAL,
+            loss_percentage REAL,
+            adaptation_timestamp TEXT NOT NULL,
+            created_at TEXT NOT NULL
+        )
+        ''')
+        
         self._migrate_schema(cursor)
         
         conn.commit()
@@ -301,3 +354,279 @@ class TradingDatabase:
             })
         
         return predictions
+    
+    def save_autonomous_bet(self, bet_data: Dict) -> int:
+        """
+        Guarda una apuesta autónoma en la base de datos.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        INSERT INTO autonomous_bets (
+            firm_name, event_id, event_description, category, bet_size,
+            probability, confidence, expected_value, risk_level, adaptation_level,
+            betting_strategy, reasoning, execution_timestamp, simulation_mode, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            bet_data['firm_name'],
+            bet_data['event_id'],
+            bet_data['event_description'],
+            bet_data.get('category'),
+            bet_data['bet_size'],
+            bet_data['probability'],
+            bet_data['confidence'],
+            bet_data.get('expected_value'),
+            bet_data.get('risk_level'),
+            bet_data.get('adaptation_level'),
+            bet_data.get('betting_strategy'),
+            bet_data.get('reasoning'),
+            bet_data['execution_timestamp'],
+            bet_data.get('simulation_mode', 1),
+            datetime.now().isoformat()
+        ))
+        
+        bet_id = cursor.lastrowid
+        conn.commit()
+        conn.close()
+        
+        return bet_id
+    
+    def update_autonomous_bet_result(self, bet_id: int, actual_result: int, profit_loss: float):
+        """
+        Actualiza el resultado de una apuesta autónoma.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        UPDATE autonomous_bets
+        SET actual_result = ?, profit_loss = ?, resolution_timestamp = ?
+        WHERE id = ?
+        ''', (actual_result, profit_loss, datetime.now().isoformat(), bet_id))
+        
+        conn.commit()
+        conn.close()
+    
+    def save_autonomous_cycle(self, cycle_data: Dict) -> int:
+        """
+        Guarda un ciclo de ejecución autónoma.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        INSERT INTO autonomous_cycles (
+            cycle_timestamp, total_events_analyzed, total_bets_placed,
+            total_bets_skipped, simulation_mode, execution_summary, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            cycle_data['timestamp'],
+            cycle_data.get('total_events_analyzed', 0),
+            cycle_data.get('total_bets_placed', 0),
+            cycle_data.get('total_bets_skipped', 0),
+            cycle_data.get('simulation_mode', 1),
+            json.dumps(cycle_data),
+            datetime.now().isoformat()
+        ))
+        
+        cycle_id = cursor.lastrowid
+        conn.commit()
+        conn.close()
+        
+        return cycle_id
+    
+    def save_strategy_adaptation(self, adaptation_data: Dict) -> int:
+        """
+        Guarda una adaptación de estrategia.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        INSERT INTO strategy_adaptations (
+            firm_name, adaptation_level, trigger_reason, previous_params,
+            new_params, changes_applied, bankroll_at_adaptation, loss_percentage,
+            adaptation_timestamp, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            adaptation_data['firm_name'],
+            adaptation_data['level'],
+            adaptation_data.get('description'),
+            json.dumps(adaptation_data.get('previous_params', {})),
+            json.dumps(adaptation_data.get('new_params', {})),
+            json.dumps(adaptation_data.get('changes', [])),
+            adaptation_data.get('bankroll_at_adaptation'),
+            adaptation_data.get('loss_percentage'),
+            adaptation_data['timestamp'],
+            datetime.now().isoformat()
+        ))
+        
+        adaptation_id = cursor.lastrowid
+        conn.commit()
+        conn.close()
+        
+        return adaptation_id
+    
+    def get_autonomous_bets(self, firm_name: Optional[str] = None, limit: int = 50) -> List[Dict]:
+        """
+        Obtiene apuestas autónomas registradas.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        if firm_name:
+            cursor.execute('''
+            SELECT * FROM autonomous_bets
+            WHERE firm_name = ?
+            ORDER BY created_at DESC
+            LIMIT ?
+            ''', (firm_name, limit))
+        else:
+            cursor.execute('''
+            SELECT * FROM autonomous_bets
+            ORDER BY created_at DESC
+            LIMIT ?
+            ''', (limit,))
+        
+        rows = cursor.fetchall()
+        conn.close()
+        
+        bets = []
+        for row in rows:
+            bets.append({
+                'id': row[0],
+                'firm_name': row[1],
+                'event_id': row[2],
+                'event_description': row[3],
+                'category': row[4],
+                'bet_size': row[5],
+                'probability': row[6],
+                'confidence': row[7],
+                'expected_value': row[8],
+                'risk_level': row[9],
+                'adaptation_level': row[10],
+                'betting_strategy': row[11],
+                'reasoning': row[12],
+                'actual_result': row[13],
+                'profit_loss': row[14],
+                'execution_timestamp': row[15],
+                'resolution_timestamp': row[16],
+                'simulation_mode': row[17],
+                'created_at': row[18]
+            })
+        
+        return bets
+    
+    def get_strategy_adaptations(self, firm_name: Optional[str] = None) -> List[Dict]:
+        """
+        Obtiene historial de adaptaciones de estrategia.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        if firm_name:
+            cursor.execute('''
+            SELECT * FROM strategy_adaptations
+            WHERE firm_name = ?
+            ORDER BY adaptation_timestamp DESC
+            ''', (firm_name,))
+        else:
+            cursor.execute('''
+            SELECT * FROM strategy_adaptations
+            ORDER BY adaptation_timestamp DESC
+            ''')
+        
+        rows = cursor.fetchall()
+        conn.close()
+        
+        adaptations = []
+        for row in rows:
+            adaptations.append({
+                'id': row[0],
+                'firm_name': row[1],
+                'adaptation_level': row[2],
+                'trigger_reason': row[3],
+                'previous_params': json.loads(row[4]) if row[4] else {},
+                'new_params': json.loads(row[5]) if row[5] else {},
+                'changes_applied': json.loads(row[6]) if row[6] else [],
+                'bankroll_at_adaptation': row[7],
+                'loss_percentage': row[8],
+                'adaptation_timestamp': row[9],
+                'created_at': row[10]
+            })
+        
+        return adaptations
+    
+    def get_autonomous_statistics(self, firm_name: str) -> Dict:
+        """
+        Obtiene estadísticas del modo autónomo para una IA.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        SELECT 
+            COUNT(*) as total_bets,
+            SUM(CASE WHEN actual_result = 1 THEN 1 ELSE 0 END) as wins,
+            SUM(CASE WHEN actual_result = 0 THEN 1 ELSE 0 END) as losses,
+            SUM(COALESCE(profit_loss, 0)) as total_profit,
+            AVG(bet_size) as avg_bet_size,
+            AVG(probability) as avg_probability,
+            AVG(confidence) as avg_confidence
+        FROM autonomous_bets
+        WHERE firm_name = ?
+        ''', (firm_name,))
+        
+        row = cursor.fetchone()
+        conn.close()
+        
+        if row:
+            total_bets = row[0] or 0
+            wins = row[1] or 0
+            win_rate = (wins / total_bets * 100) if total_bets > 0 else 0
+            
+            return {
+                'firm_name': firm_name,
+                'total_autonomous_bets': total_bets,
+                'wins': wins,
+                'losses': row[2] or 0,
+                'win_rate': round(win_rate, 2),
+                'total_profit': row[3] or 0,
+                'avg_bet_size': row[4] or 0,
+                'avg_probability': row[5] or 0,
+                'avg_confidence': row[6] or 0
+            }
+        
+        return {}
+    
+    def get_recent_cycles(self, limit: int = 10) -> List[Dict]:
+        """
+        Obtiene los ciclos de ejecución autónoma más recientes.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        SELECT * FROM autonomous_cycles
+        ORDER BY created_at DESC
+        LIMIT ?
+        ''', (limit,))
+        
+        rows = cursor.fetchall()
+        conn.close()
+        
+        cycles = []
+        for row in rows:
+            cycles.append({
+                'id': row[0],
+                'cycle_timestamp': row[1],
+                'total_events_analyzed': row[2],
+                'total_bets_placed': row[3],
+                'total_bets_skipped': row[4],
+                'simulation_mode': row[5],
+                'execution_summary': json.loads(row[6]) if row[6] else {},
+                'created_at': row[7]
+            })
+        
+        return cycles
