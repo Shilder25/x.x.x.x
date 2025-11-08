@@ -97,8 +97,8 @@ with tab1:
             if reddit_configured:
                 with st.spinner("Analizando sentimiento en Reddit..."):
                     collector = RedditSentimentCollector(
-                        client_id=os.environ.get("REDDIT_CLIENT_ID"),
-                        client_secret=os.environ.get("REDDIT_CLIENT_SECRET"),
+                        client_id=os.environ.get("REDDIT_CLIENT_ID", ""),
+                        client_secret=os.environ.get("REDDIT_CLIENT_SECRET", ""),
                         user_agent="TradingAgents/1.0"
                     )
                     st.session_state.sentiment_data = collector.analyze_subreddit_sentiment(symbol)
