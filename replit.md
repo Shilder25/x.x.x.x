@@ -12,18 +12,22 @@ This project is a multi-LLM trading simulation framework where five AI-powered t
 - E2E testing: Passed comprehensive UI/UX validation
 
 ## Recent Changes (November 8, 2025)
-**Public Dashboard - Real-time Competition Display:**
-- Created public-facing dashboard (public_dashboard.py) inspired by nof1.ai design
-  - Dark theme with gradient styling and glass-morphism effects
-  - Hero section with live competition indicator
+**Public Dashboard - Complete Redesign (White Minimalist Theme):**
+- Created public-facing dashboard (public_dashboard.py) with nof1.ai-inspired minimalist aesthetic
+  - Clean white background throughout (no dark themes)
+  - Native Streamlit components (st.metric, st.dataframe, st.expander) instead of raw HTML
   - 4 key metrics: Total Capital, Current Leader, Average P&L, Best/Worst Performance
-  - Interactive Plotly chart showing all 5 AI account values over time
-  - Department activity visualization displaying 7 internal AI departments (emoji + full names)
-  - Live leaderboard with position medals (🥇🥈🥉) and performance metrics
-  - AI reasoning panel showing live thoughts from all 5 models in parallel columns
+  - Interactive Plotly chart showing all 5 AI account values over time (white theme)
+  - Leaderboard table with ranking (#1, #2, etc.) - minimalist typography
+  - System Activity table showing 7 internal departments with status
+  - **AI Internal Deliberation section**: Shows how each AI's 7 departments debate before making decisions
+    - Pulls real data from predictions table (analisis_sintesis, debate_bullish_bearish, ajuste_riesgo_justificacion)
+    - Expandable sections for each AI showing their complete decision-making process
+    - Three-stage visualization: Analysis & Synthesis, Bullish vs Bearish Debate, Risk Adjustment
+    - Department activity badges showing all 7 active departments
   - Auto-refresh every 30 seconds using streamlit-autorefresh
   - Runs on port 5000 as standalone dashboard
-  - E2E tested: All visual elements and functionality verified
+  - E2E tested: All components render correctly, white theme verified
 
 **Navigation Reorganization - Improved Discoverability:**
 - Created new Tab 1 (Inicio): Landing page with two prominent cards explaining both modes
