@@ -147,3 +147,9 @@ Preferred communication style: Simple, everyday language.
 - Added `sharpe_ratio` column to `firm_performance` table
 - Enhanced error handling for schema changes
 - Migration runs automatically on database initialization
+
+**Reddit API Configuration Fix:**
+- Updated `user_agent` from placeholder to valid format: `"TradingAgents/1.0 (Multi-LLM Trading Framework)"`
+- Added comprehensive setup instructions in `.env.example` for obtaining Reddit API credentials
+- Verified REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET are properly configured
+- Reddit sentiment analysis now fully operational with proper API compliance
