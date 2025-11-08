@@ -268,11 +268,12 @@ metrics_col1, metrics_col2, metrics_col3, metrics_col4, metrics_col5 = st.column
 # Get competition data
 firms_data = []
 for firm in ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']:
-    portfolio = st.session_state.db.get_firm_portfolio(firm)
-    if portfolio:
-        current_value = portfolio.get('current_value', 10000)
-        initial = portfolio.get('initial_capital', 10000)
-        pnl = ((current_value - initial) / initial * 100) if initial > 0 else 0
+    performance = st.session_state.db.get_firm_performance(firm)
+    if performance and performance.get('total_predictions', 0) > 0:
+        total_profit = performance.get('total_profit', 0)
+        initial = 10000
+        current_value = initial + total_profit
+        pnl = (total_profit / initial * 100) if initial > 0 else 0
         firms_data.append({
             'name': firm,
             'value': current_value,
@@ -282,8 +283,8 @@ for firm in ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']:
     else:
         firms_data.append({
             'name': firm,
-            'value': 10000 + np.random.normal(0, 500),
-            'pnl': np.random.normal(0, 5),
+            'value': 10000 + float(np.random.normal(0, 500)),
+            'pnl': float(np.random.normal(0, 5)),
             'initial': 10000
         })
 
@@ -360,12 +361,12 @@ with main_col1:
     
     for firm in firms_data:
         # Generate realistic trading curve
-        values = [10000]
+        values = [10000.0]
         for i in range(1, 100):
             change = np.random.normal(0, 100) * (1 + i * 0.01)
             if firm['name'] == firms_data[0]['name']:  # Leader gets better performance
                 change += 20
-            values.append(max(0, values[-1] + change))
+            values.append(max(0.0, values[-1] + change))
         
         # Adjust final value to match current
         scale = firm['value'] / values[-1] if values[-1] > 0 else 1
@@ -412,7 +413,7 @@ with main_col1:
         )
     )
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
     
     # Department Activity Section
     st.markdown("### 🏢 AI Internal Departments Activity")
@@ -435,14 +436,16 @@ with main_col1:
             if is_active:
                 st.markdown(f"""
                     <div class="department-box active">
-                        {dept.split()[0]}<br>
+                        <div style="font-size: 1.2rem; margin-bottom: 0.25rem;">{dept.split()[0]}</div>
+                        <div style="font-size: 0.7rem;">{' '.join(dept.split()[1:])}</div>
                         <small style="color: #10b981;">●</small>
                     </div>
                 """, unsafe_allow_html=True)
             else:
                 st.markdown(f"""
                     <div class="department-box">
-                        {dept.split()[0]}<br>
+                        <div style="font-size: 1.2rem; margin-bottom: 0.25rem;">{dept.split()[0]}</div>
+                        <div style="font-size: 0.7rem;">{' '.join(dept.split()[1:])}</div>
                         <small style="color: #666;">○</small>
                     </div>
                 """, unsafe_allow_html=True)
@@ -487,7 +490,7 @@ st.markdown("---")
 # AI Thinking Panel
 st.markdown("### 🧠 Live AI Reasoning")
 
-thinking_cols = st.columns(3)
+thinking_cols = st.columns(5)
 
 # Sample thoughts for each AI
 ai_thoughts = {
@@ -505,10 +508,20 @@ ai_thoughts = {
         "Pattern recognition: Ascending triangle forming",
         "Fibonacci retracement at 0.618 level",
         "Initiating 2x leveraged long on SOL"
+    ],
+    'Deepseek': [
+        "Deep learning model predicting 78% bullish probability",
+        "Historical pattern match: 2021 Q4 consolidation phase",
+        "Sentiment analysis: Weighted score +0.65"
+    ],
+    'Grok': [
+        "Identifying arbitrage opportunity across exchanges",
+        "Network analysis: Whale activity increasing 23%",
+        "Real-time risk assessment: Medium volatility expected"
     ]
 }
 
-for col, (ai_name, thoughts) in zip(thinking_cols[:3], list(ai_thoughts.items())):
+for col, (ai_name, thoughts) in zip(thinking_cols, list(ai_thoughts.items())):
     with col:
         st.markdown(f"#### {ai_name}")
         for thought in thoughts:
