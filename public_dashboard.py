@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import json
 import time
 from database import TradingDatabase
+from streamlit_autorefresh import st_autorefresh
 
 st.set_page_config(
     page_title="TradingAgents Arena - Live AI Competition",
@@ -18,6 +19,10 @@ st.set_page_config(
         'About': None
     }
 )
+
+# Auto-refresh every 30 seconds
+REFRESH_INTERVAL = 30000  # milliseconds
+count = st_autorefresh(interval=REFRESH_INTERVAL, key="data_refresh")
 
 # Custom CSS for dark theme and modern design
 st.markdown("""
@@ -533,20 +538,11 @@ for col, (ai_name, thoughts) in zip(thinking_cols, list(ai_thoughts.items())):
                 </div>
             """, unsafe_allow_html=True)
 
-# Auto-refresh
-st.markdown("""
-    <script>
-        setTimeout(function() {
-            window.location.reload();
-        }, 30000);
-    </script>
-""", unsafe_allow_html=True)
-
 # Footer
 st.markdown("---")
 st.markdown("""
     <div style="text-align: center; color: #666; padding: 2rem 0;">
-        <p>Real-time AI trading competition • Updated every 3 minutes</p>
+        <p>🔴 Live AI trading competition • Auto-refreshes every 30 seconds</p>
         <p style="font-size: 0.9rem;">Each AI autonomously analyzes markets and executes trades using 7 internal departments</p>
     </div>
 """, unsafe_allow_html=True)

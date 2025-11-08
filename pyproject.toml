@@ -15,6 +15,7 @@ dependencies = [
     "requests>=2.32.5",
     "sift-stack-py>=0.9.1",
     "streamlit>=1.51.0",
+    "streamlit-autorefresh>=1.0.1",
     "tenacity>=9.1.2",
     "yfinance>=0.2.66",
 ]
