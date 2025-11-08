@@ -8,8 +8,15 @@ This project is a multi-LLM trading simulation framework where five AI-powered t
 - Complete autonomous trading system implemented and tested
 - Database integration: All bets, cycles, and adaptations are persisted
 - Learning system: Weekly analysis and continuous improvement active
-- UI verified: All 7 tabs operational, autonomous dashboard functional
+- UI reorganized with premium design: Clear separation between manual and autonomous systems
 - E2E testing: Passed comprehensive UI/UX validation
+
+## Recent Changes (November 8, 2025)
+**UI Reorganization - Premium Design:**
+- Tab 1 (Manual System): Reorganized in 3 clear steps with visual hierarchy, progress metrics, and status indicators
+- Tab 7 (Autonomous System): Two-column layout with control panel, global metrics, premium leaderboard with position badges
+- Visual improvements: Consistent dividers, containers, metrics with deltas, status indicators with emojis
+- Better UX: Clear separation between manual prediction system and autonomous competition mode
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
