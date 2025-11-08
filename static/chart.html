@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradingAgents Competition Chart</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #0a0a0a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #fff;
+        }
+        
+        #chart-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .chart-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .line {
+            fill: none;
+            stroke-width: 2.5px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        .line:hover {
+            stroke-width: 4px;
+            opacity: 1;
+        }
+        
+        .dot {
+            fill: #fff;
+            stroke-width: 2px;
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .dot.active {
+            opacity: 1;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.95);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            font-size: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        
+        .tooltip.show {
+            opacity: 1;
+        }
+        
+        .tooltip-header {
+            font-weight: 600;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .tooltip-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            gap: 20px;
+        }
+        
+        .tooltip-firm {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tooltip-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .tooltip-value {
+            font-weight: 500;
+        }
+        
+        .tooltip-pnl {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .positive { color: #10b981; }
+        .negative { color: #ef4444; }
+        
+        .axis text {
+            fill: #666;
+            font-size: 12px;
+        }
+        
+        .axis line,
+        .axis path {
+            stroke: #333;
+        }
+        
+        .grid line {
+            stroke: #222;
+            stroke-dasharray: 2,2;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .legend-item:hover {
+            background: rgba(255,255,255,0.06);
+        }
+        
+        .legend-item.inactive {
+            opacity: 0.3;
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .legend-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .baseline {
+            stroke: #666;
+            stroke-width: 1px;
+            stroke-dasharray: 5,5;
+            opacity: 0.5;
+        }
+        
+        .baseline-text {
+            fill: #666;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .focus-line {
+            stroke: #666;
+            stroke-width: 1px;
+            stroke-dasharray: 3,3;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div id="chart-container">
+        <h2 class="chart-title">📊 Account Value Competition</h2>
+        <div id="chart"></div>
+        <div class="legend" id="legend"></div>
+    </div>
+    <div class="tooltip"></div>
+    
+    <script>
+        // Configuration
+        const margin = {top: 20, right: 80, bottom: 50, left: 80};
+        const width = 1160 - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
+        const initialCapital = 10000;
+        
+        // AI Models with colors
+        const models = [
+            {name: 'ChatGPT', color: '#74aa9c'},
+            {name: 'Gemini', color: '#5e9ce0'},
+            {name: 'Qwen', color: '#8b5cf6'},
+            {name: 'Deepseek', color: '#06b6d4'},
+            {name: 'Grok', color: '#f97316'}
+        ];
+        
+        // Generate sample data
+        function generateData() {
+            const now = new Date();
+            const dataPoints = 100;
+            const interval = 3 * 60 * 1000; // 3 minutes in milliseconds
+            
+            const data = models.map((model, modelIndex) => {
+                const points = [];
+                let value = initialCapital;
+                
+                for (let i = 0; i < dataPoints; i++) {
+                    const timestamp = new Date(now.getTime() - (dataPoints - i - 1) * interval);
+                    
+                    // Simulate different performance patterns
+                    let change = (Math.random() - 0.48) * 150;
+                    
+                    // Leader gets better performance
+                    if (modelIndex === 0) change += 10;
+                    // Loser gets worse performance
+                    if (modelIndex === 4) change -= 5;
+                    
+                    value = Math.max(1000, value + change);
+                    
+                    points.push({
+                        timestamp: timestamp,
+                        value: value,
+                        pnl: ((value - initialCapital) / initialCapital * 100)
+                    });
+                }
+                
+                return {
+                    name: model.name,
+                    color: model.color,
+                    values: points,
+                    visible: true
+                };
+            });
+            
+            return data;
+        }
+        
+        let data = generateData();
+        
+        // Create SVG
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom);
+        
+        const g = svg.append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+        
+        // Scales
+        const xScale = d3.scaleTime()
+            .range([0, width]);
+        
+        const yScale = d3.scaleLinear()
+            .range([height, 0]);
+        
+        // Line generator
+        const line = d3.line()
+            .x(d => xScale(d.timestamp))
+            .y(d => yScale(d.value))
+            .curve(d3.curveMonotoneX);
+        
+        // Grid
+        const xGrid = g.append("g")
+            .attr("class", "grid")
+            .attr("transform", `translate(0,${height})`);
+        
+        const yGrid = g.append("g")
+            .attr("class", "grid");
+        
+        // Axes
+        const xAxis = g.append("g")
+            .attr("class", "axis x-axis")
+            .attr("transform", `translate(0,${height})`);
+        
+        const yAxis = g.append("g")
+            .attr("class", "axis y-axis");
+        
+        // Baseline (initial capital)
+        const baseline = g.append("line")
+            .attr("class", "baseline");
+        
+        const baselineText = g.append("text")
+            .attr("class", "baseline-text")
+            .attr("text-anchor", "start")
+            .text("Initial: $10,000");
+        
+        // Focus elements for interaction
+        const focus = g.append("g")
+            .style("display", "none");
+        
+        const focusLine = focus.append("line")
+            .attr("class", "focus-line")
+            .attr("y1", 0)
+            .attr("y2", height);
+        
+        // Tooltip
+        const tooltip = d3.select(".tooltip");
+        
+        // Update function
+        function updateChart() {
+            // Filter visible data
+            const visibleData = data.filter(d => d.visible);
+            
+            // Update scales
+            const allTimestamps = visibleData.flatMap(d => d.values.map(v => v.timestamp));
+            const allValues = visibleData.flatMap(d => d.values.map(v => v.value));
+            
+            xScale.domain(d3.extent(allTimestamps));
+            yScale.domain([
+                Math.min(d3.min(allValues) * 0.98, initialCapital * 0.95),
+                Math.max(d3.max(allValues) * 1.02, initialCapital * 1.05)
+            ]);
+            
+            // Update axes
+            xAxis.transition().duration(750)
+                .call(d3.axisBottom(xScale).ticks(8).tickFormat(d3.timeFormat("%H:%M")));
+            
+            yAxis.transition().duration(750)
+                .call(d3.axisLeft(yScale).ticks(8).tickFormat(d => `$${(d/1000).toFixed(1)}k`));
+            
+            // Update grids
+            xGrid.transition().duration(750)
+                .call(d3.axisBottom(xScale).ticks(8).tickSize(-height).tickFormat(""));
+            
+            yGrid.transition().duration(750)
+                .call(d3.axisLeft(yScale).ticks(8).tickSize(-width).tickFormat(""));
+            
+            // Update baseline
+            baseline
+                .transition().duration(750)
+                .attr("x1", 0)
+                .attr("x2", width)
+                .attr("y1", yScale(initialCapital))
+                .attr("y2", yScale(initialCapital));
+            
+            baselineText
+                .transition().duration(750)
+                .attr("x", 5)
+                .attr("y", yScale(initialCapital) - 5);
+            
+            // Bind data to lines
+            const lines = g.selectAll(".line")
+                .data(visibleData, d => d.name);
+            
+            // Enter
+            lines.enter()
+                .append("path")
+                .attr("class", "line")
+                .attr("stroke", d => d.color)
+                .attr("d", d => line(d.values))
+                .style("opacity", 0)
+                .transition().duration(750)
+                .style("opacity", 0.8);
+            
+            // Update
+            lines.transition().duration(750)
+                .attr("d", d => line(d.values))
+                .style("opacity", 0.8);
+            
+            // Exit
+            lines.exit()
+                .transition().duration(750)
+                .style("opacity", 0)
+                .remove();
+        }
+        
+        // Legend
+        const legend = d3.select("#legend");
+        
+        models.forEach(model => {
+            const item = legend.append("div")
+                .attr("class", "legend-item")
+                .on("click", function() {
+                    const dataItem = data.find(d => d.name === model.name);
+                    dataItem.visible = !dataItem.visible;
+                    
+                    d3.select(this)
+                        .classed("inactive", !dataItem.visible);
+                    
+                    updateChart();
+                });
+            
+            item.append("div")
+                .attr("class", "legend-dot")
+                .style("background", model.color);
+            
+            item.append("div")
+                .attr("class", "legend-text")
+                .text(model.name);
+        });
+        
+        // Mouse interaction overlay
+        const overlay = g.append("rect")
+            .attr("width", width)
+            .attr("height", height)
+            .style("fill", "none")
+            .style("pointer-events", "all")
+            .on("mouseover", () => focus.style("display", null))
+            .on("mouseout", () => {
+                focus.style("display", "none");
+                tooltip.classed("show", false);
+                
+                // Hide all dots
+                g.selectAll(".dot").classed("active", false);
+            })
+            .on("mousemove", mousemove);
+        
+        // Bisector for finding data points
+        const bisect = d3.bisector(d => d.timestamp).left;
+        
+        function mousemove(event) {
+            const visibleData = data.filter(d => d.visible);
+            const [mouseX] = d3.pointer(event);
+            const timestamp = xScale.invert(mouseX);
+            
+            // Update focus line
+            focusLine.attr("transform", `translate(${mouseX},0)`);
+            
+            // Find closest data points for each model
+            const tooltipData = visibleData.map(model => {
+                const i = bisect(model.values, timestamp, 1);
+                const d0 = model.values[i - 1];
+                const d1 = model.values[i] || d0;
+                const d = timestamp - d0.timestamp > d1.timestamp - timestamp ? d1 : d0;
+                
+                return {
+                    name: model.name,
+                    color: model.color,
+                    value: d.value,
+                    pnl: d.pnl,
+                    timestamp: d.timestamp
+                };
+            });
+            
+            // Sort by value descending
+            tooltipData.sort((a, b) => b.value - a.value);
+            
+            // Update tooltip
+            let html = `<div class="tooltip-header">${tooltipData[0].timestamp.toLocaleTimeString()}</div>`;
+            
+            tooltipData.forEach(item => {
+                const pnlClass = item.pnl >= 0 ? 'positive' : 'negative';
+                const pnlSign = item.pnl >= 0 ? '+' : '';
+                
+                html += `
+                    <div class="tooltip-item">
+                        <div class="tooltip-firm">
+                            <div class="tooltip-dot" style="background: ${item.color}"></div>
+                            <span>${item.name}</span>
+                        </div>
+                        <div>
+                            <span class="tooltip-value">$${item.value.toFixed(0)}</span>
+                            <span class="tooltip-pnl ${pnlClass}">${pnlSign}${item.pnl.toFixed(1)}%</span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            tooltip.html(html);
+            
+            // Position tooltip
+            const tooltipNode = tooltip.node();
+            const tooltipWidth = tooltipNode.offsetWidth;
+            const tooltipHeight = tooltipNode.offsetHeight;
+            
+            let left = event.pageX + 15;
+            let top = event.pageY - tooltipHeight / 2;
+            
+            // Keep tooltip on screen
+            if (left + tooltipWidth > window.innerWidth - 20) {
+                left = event.pageX - tooltipWidth - 15;
+            }
+            
+            tooltip
+                .style("left", left + "px")
+                .style("top", top + "px")
+                .classed("show", true);
+        }
+        
+        // Initial render
+        updateChart();
+        
+        // Simulate real-time updates
+        setInterval(() => {
+            // Add new data points
+            data.forEach(model => {
+                const lastPoint = model.values[model.values.length - 1];
+                const newTimestamp = new Date(lastPoint.timestamp.getTime() + 3 * 60 * 1000);
+                
+                let change = (Math.random() - 0.48) * 150;
+                if (model.name === 'ChatGPT') change += 10;
+                if (model.name === 'Grok') change -= 5;
+                
+                const newValue = Math.max(1000, lastPoint.value + change);
+                
+                model.values.push({
+                    timestamp: newTimestamp,
+                    value: newValue,
+                    pnl: ((newValue - initialCapital) / initialCapital * 100)
+                });
+                
+                // Keep only last 100 points
+                if (model.values.length > 100) {
+                    model.values.shift();
+                }
+            });
+            
+            updateChart();
+        }, 5000); // Update every 5 seconds
+    </script>
+</body>
+</html>
