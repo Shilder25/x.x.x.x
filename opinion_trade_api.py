@@ -188,3 +188,182 @@ class OpinionTradeAPI:
                 'success': False,
                 'error': str(e)
             }
+    
+    def get_available_events(self, limit: int = 50, category: Optional[str] = None) -> Dict:
+        """
+        Fetch list of available events from Opinion.trade for autonomous betting.
+        
+        Args:
+            limit: Maximum number of events to retrieve (default 50)
+            category: Optional category filter (e.g., 'crypto', 'sports', 'politics')
+        
+        Returns:
+            Dictionary with success status and list of events
+        """
+        if not self.api_key:
+            return {
+                'success': False,
+                'error': 'Opinion.trade API key not configured'
+            }
+        
+        endpoint = f"{self.base_url}/events"
+        
+        headers = {
+            'Authorization': f'Bearer {self.api_key}',
+            'Content-Type': 'application/json'
+        }
+        
+        params = {
+            'limit': limit,
+            'status': 'active'
+        }
+        
+        if category:
+            params['category'] = category
+        
+        try:
+            response = requests.get(endpoint, headers=headers, params=params, timeout=30)
+            
+            if response.status_code == 200:
+                data = response.json()
+                events = data.get('events', [])
+                
+                return {
+                    'success': True,
+                    'count': len(events),
+                    'events': events,
+                    'message': f'Retrieved {len(events)} available events'
+                }
+            elif response.status_code == 401:
+                return {
+                    'success': False,
+                    'error': 'Authentication failed',
+                    'message': 'Invalid API key'
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'HTTP {response.status_code}',
+                    'message': response.text
+                }
+        
+        except requests.exceptions.Timeout:
+            return {
+                'success': False,
+                'error': 'Request timeout',
+                'message': 'API request timed out after 30 seconds'
+            }
+        except requests.exceptions.ConnectionError:
+            return {
+                'success': False,
+                'error': 'Connection error',
+                'message': 'Could not connect to Opinion.trade API'
+            }
+        except Exception as e:
+            return {
+                'success': False,
+                'error': 'Unexpected error',
+                'message': str(e)
+            }
+    
+    def get_account_balance(self) -> Dict:
+        """
+        Get current account balance and available funds for betting.
+        
+        Returns:
+            Dictionary with balance information
+        """
+        if not self.api_key:
+            return {
+                'success': False,
+                'error': 'Opinion.trade API key not configured'
+            }
+        
+        endpoint = f"{self.base_url}/account/balance"
+        
+        headers = {
+            'Authorization': f'Bearer {self.api_key}',
+            'Content-Type': 'application/json'
+        }
+        
+        try:
+            response = requests.get(endpoint, headers=headers, timeout=30)
+            
+            if response.status_code == 200:
+                data = response.json()
+                return {
+                    'success': True,
+                    'total_balance': data.get('total_balance', 0),
+                    'available_balance': data.get('available_balance', 0),
+                    'locked_balance': data.get('locked_balance', 0),
+                    'currency': data.get('currency', 'USD'),
+                    'data': data
+                }
+            elif response.status_code == 401:
+                return {
+                    'success': False,
+                    'error': 'Authentication failed',
+                    'message': 'Invalid API key'
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'HTTP {response.status_code}',
+                    'message': response.text
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': str(e)
+            }
+    
+    def get_active_positions(self) -> Dict:
+        """
+        Get all active betting positions.
+        
+        Returns:
+            Dictionary with list of active positions
+        """
+        if not self.api_key:
+            return {
+                'success': False,
+                'error': 'Opinion.trade API key not configured'
+            }
+        
+        endpoint = f"{self.base_url}/positions"
+        
+        headers = {
+            'Authorization': f'Bearer {self.api_key}',
+            'Content-Type': 'application/json'
+        }
+        
+        params = {
+            'status': 'active'
+        }
+        
+        try:
+            response = requests.get(endpoint, headers=headers, params=params, timeout=30)
+            
+            if response.status_code == 200:
+                data = response.json()
+                positions = data.get('positions', [])
+                
+                return {
+                    'success': True,
+                    'count': len(positions),
+                    'positions': positions,
+                    'total_exposure': sum(p.get('amount', 0) for p in positions)
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'HTTP {response.status_code}',
+                    'message': response.text
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': str(e)
+            }
