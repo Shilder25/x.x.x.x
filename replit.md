@@ -12,6 +12,19 @@ This project is a multi-LLM trading simulation framework where five AI-powered t
 - E2E testing: Passed comprehensive UI/UX validation
 
 ## Recent Changes (November 8, 2025)
+**Public Dashboard - Real-time Competition Display:**
+- Created public-facing dashboard (public_dashboard.py) inspired by nof1.ai design
+  - Dark theme with gradient styling and glass-morphism effects
+  - Hero section with live competition indicator
+  - 4 key metrics: Total Capital, Current Leader, Average P&L, Best/Worst Performance
+  - Interactive Plotly chart showing all 5 AI account values over time
+  - Department activity visualization displaying 7 internal AI departments (emoji + full names)
+  - Live leaderboard with position medals (🥇🥈🥉) and performance metrics
+  - AI reasoning panel showing live thoughts from all 5 models in parallel columns
+  - Auto-refresh every 30 seconds using streamlit-autorefresh
+  - Runs on port 5000 as standalone dashboard
+  - E2E tested: All visual elements and functionality verified
+
 **Navigation Reorganization - Improved Discoverability:**
 - Created new Tab 1 (Inicio): Landing page with two prominent cards explaining both modes
   - Sistema Manual card: 6 features, ideal use cases, and navigation button
@@ -78,6 +91,7 @@ Plotly is used for interactive charts within Streamlit, including time series, p
 
 ### Python Libraries
 - `streamlit`
+- `streamlit-autorefresh`
 - `pandas`
 - `plotly`
 - `yfinance`
