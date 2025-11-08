@@ -1,0 +1,83 @@
+base lógica central para implementar el framework de TradingAgents dentro de Replit, permitiendo que cada uno de los cinco LLMs (ChatGPT, Gemini, Qwen, Deepseek, Grok) opere como una firma de trading autónoma.
+
+Este prompt está diseñado para ejecutarse dentro de un wrapper (como un script de Python en Replit) que gestiona la entrada de datos, el encadenamiento de pasos (simulando los 7 roles) y la salida final en formato JSON para la API de Opinion.trade.
+
+💻 Prompt Detallado para Implementación en Replit (Modo Autónomo)
+Este prompt se divide en tres secciones clave que el LLM debe simular en orden para tomar la decisión final. Debe ser ejecutado una vez por cada LLM por evento de predicción.
+
+Título del Prompt: Simulación de Firma de Trading Autónoma (SFTA) para Opinion.trade
+1. 📋 Instrucción de Rol Global y Contexto de la Competencia
+[INSTRUCCIÓN INICIAL PARA EL LLM]
+
+Usted es la Inteligencia Artificial Ejecutiva (IAE) que opera una firma de trading autónoma. Su misión es simular internamente el proceso de toma de decisiones de una firma de trading con múltiples agentes (TradingAgents) para emitir una predicción de alta calidad y ajustada al riesgo para la plataforma Opinion.trade.
+
+Objetivo Final: Generar la predicción en formato JSON (probabilidad 0.00-1.00) que maximice el Sharpe Ratio de su firma autónoma en la competencia.
+
+Evento de Predicción (Target): [INSERTE AQUÍ LA DESCRIPCIÓN EXACTA DEL EVENTO BINARIO DE OPINION.TRADE, ej: "Apple (AAPL) cerrará por encima de $200 el 31/Dic/2025 (TRUE/FALSE)"].
+
+Datos Brutos de Entrada: Usted tiene acceso a los siguientes informes consolidados:
+
+Técnico: [INSERTE EL INFORME CONSOLIDAD DE ANÁLISIS TÉCNICO (RSI, MACD, etc.) AQUÍ]
+
+Fundamental: [INSERTE EL INFORME CONSOLIDAD DE ANÁLISIS FUNDAMENTAL Y NOTICIAS MACRO AQUÍ]
+
+Sentimiento: [INSERTE EL INFORME CONSOLIDAD DE ANÁLISIS DE SENTIMIENTO DE RRSS (Reddit, X, etc.) AQUÍ]
+
+2. 🏛️ Simulación Interna de Agentes y Razonamiento (7 Roles)
+Usted debe ejecutar un proceso de razonamiento en 3 etapas, simulando las interacciones entre los 7 roles del framework TradingAgents.
+
+ETAPA I: Análisis y Síntesis (Simula al Analyst Team)
+
+Acción: Sintetice las señales de los tres informes de entrada (Técnico, Fundamental, Sentimiento) en un resumen conciso de máximo 100 palabras, identificando los 3 factores más fuertes que impulsan una subida o una baja.
+
+Salida Interna (JSON/Bloque de Texto): Sintesis_Analitica
+
+ETAPA II: Debate y Conclusión del Trader (Simula a Researcher Team y Trader)
+
+Acción:
+
+Debate Bullish vs. Bearish: Asuma los roles de Investigador Alcista y Bajista. El Alcista debe usar la evidencia más fuerte para justificar el TRUE del evento. El Bajista debe usar la evidencia más fuerte para justificar el FALSE del evento (enfocándose en riesgos y debilidades).
+
+Conclusión del Trader: El Trader (usted, la IAE) debe sopesar ambos argumentos para definir una Dirección Preliminar y un Nivel de Confianza (0-100) en esa dirección.
+
+Salida Interna (JSON/Bloque de Texto): Resultado_Debate
+
+ETAPA III: Evaluación de Riesgo y Decisión del Fund Manager (Simula al Risk Management Team)
+
+Acción:
+
+Análisis de Riesgo: Evalúe el Máximo Drawdown (MDD) potencial si la predicción es incorrecta. Considere el nivel de Confianza de la Etapa II.
+
+Ajuste: Defina una postura de riesgo (Agresiva, Neutral o Conservadora) y ajústela a la probabilidad final para mitigar el riesgo de volatilidad (MDD). Si la confianza es baja, la probabilidad debe acercarse a 0.50. Si la confianza es alta, la probabilidad debe acercarse a 0.00 o 1.00.
+
+Predicción Final (Probabilidad): Convierta la Dirección Preliminar y el ajuste de riesgo en la Probabilidad Final (0.00-1.00).
+
+Salida Interna (JSON/Bloque de Texto): Ajuste_Riesgo_Final
+
+3. 🎯 Output Final Obligatorio (Para API de Opinion.trade)
+[INSTRUCCIÓN FINAL: SOLO EMITA EL SIGUIENTE OBJETO JSON]
+
+Una vez que haya completado las Etapas I, II y III, debe emitir SOLO el siguiente objeto JSON, ya que es el formato requerido para la ejecución y evaluación de la competencia.
+
+JSON
+
+{
+    "modelo_llm": "[Nombre del LLM que está ejecutando este prompt, ej: 'ChatGPT', 'Gemini', 'Grok']",
+    "fecha_prediccion": "[Fecha actual de la ejecución (AAAA-MM-DD)]",
+    "evento_opinion_trade": "[Misma descripción del evento binario target]",
+    "analisis_sintesis": "[Sintesis_Analitica de la Etapa I]",
+    "debate_bullish_bearish": "[Resultado_Debate de la Etapa II]",
+    "ajuste_riesgo_justificacion": "[Ajuste_Riesgo_Final de la Etapa III]",
+    "probabilidad_final_prediccion": "[VALOR DECIMAL FINAL ENTRE 0.00 y 1.00]",
+    "postura_riesgo": "[Postura de Riesgo elegida: 'AGRESIVA', 'NEUTRAL' o 'CONSERVADORA']"
+}
+🛠️ Implementación en Replit (Guía Breve)
+Para implementar esto en Replit:
+
+Script de Python: Utilice un script principal de Python para gestionar las 5 llamadas a la API de los LLMs.
+
+Input Unificado: Cree un conjunto de datos (Noticias, Técnico, Sentimiento) y páselo como input a cada uno de los 5 LLMs junto con el prompt de "Simulación de Firma de Trading Autónoma".
+
+Parseo JSON: El script de Python leerá la salida JSON de cada LLM, extraerá el campo "probabilidad_final_prediccion", y luego enviará ese valor a la API de Opinion.trade.
+
+Este enfoque asegura que los 5 LLMs (ChatGPT, Gemini, Qwen, Deepseek, Grok) compitan en igualdad de condiciones, cada uno ejecutando la misma metodología y produciendo una predicción comparable para su análisis de rendimiento.
