@@ -57,8 +57,23 @@ class TradingDatabase:
         )
         ''')
         
+        self._migrate_schema(cursor)
+        
         conn.commit()
         conn.close()
+    
+    def _migrate_schema(self, cursor):
+        """
+        Perform automatic schema migrations for existing databases.
+        """
+        cursor.execute("PRAGMA table_info(firm_performance)")
+        columns = [row[1] for row in cursor.fetchall()]
+        
+        if 'sharpe_ratio' not in columns:
+            cursor.execute('''
+            ALTER TABLE firm_performance ADD COLUMN sharpe_ratio REAL DEFAULT 0.0
+            ''')
+            print("Database migrated: Added sharpe_ratio column to firm_performance table")
     
     def initialize_firm_portfolio(self, firm_name: str, initial_balance: float = 10000.0):
         conn = sqlite3.connect(self.db_path)
@@ -156,6 +171,8 @@ class TradingDatabase:
         total_preds, correct_preds, total_profit, total_tokens, total_cost = cursor.fetchone()
         accuracy = (correct_preds / total_preds * 100) if total_preds > 0 else 0
         
+        sharpe_ratio = self._calculate_sharpe_ratio(firm_name, cursor)
+        
         cursor.execute('''
         UPDATE firm_performance
         SET total_predictions = ?,
@@ -164,13 +181,43 @@ class TradingDatabase:
             total_tokens = ?,
             total_cost = ?,
             accuracy = ?,
+            sharpe_ratio = ?,
             updated_at = ?
         WHERE firm_name = ?
         ''', (total_preds, correct_preds or 0, total_profit or 0, total_tokens or 0, 
-              total_cost or 0, accuracy, datetime.now().isoformat(), firm_name))
+              total_cost or 0, accuracy, sharpe_ratio, datetime.now().isoformat(), firm_name))
         
         conn.commit()
         conn.close()
+    
+    def _calculate_sharpe_ratio(self, firm_name: str, cursor) -> float:
+        """
+        Calculate Sharpe Ratio: (Average Return - Risk-Free Rate) / Standard Deviation of Returns
+        Risk-free rate assumed to be 0 for simplicity
+        """
+        cursor.execute('''
+        SELECT profit_loss
+        FROM predictions
+        WHERE firm_name = ? AND actual_result IS NOT NULL AND profit_loss IS NOT NULL
+        ORDER BY created_at
+        ''', (firm_name,))
+        
+        returns = [row[0] for row in cursor.fetchall()]
+        
+        if len(returns) < 2:
+            return 0.0
+        
+        import numpy as np
+        
+        mean_return = np.mean(returns)
+        std_return = np.std(returns, ddof=1)
+        
+        if std_return == 0:
+            return 0.0
+        
+        sharpe_ratio = mean_return / std_return
+        
+        return float(sharpe_ratio)
     
     def get_firm_performance(self, firm_name: str) -> Optional[Dict]:
         conn = sqlite3.connect(self.db_path)
