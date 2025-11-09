@@ -153,6 +153,19 @@ class TradingDatabase:
             cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN volatility_score REAL')
             cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN volatility_analysis TEXT')
             print("Database migrated: Added 5-area analysis columns to autonomous_bets table")
+        
+        cursor.execute("PRAGMA table_info(virtual_portfolio)")
+        portfolio_columns = [row[1] for row in cursor.fetchall()]
+        
+        if 'current_tier' not in portfolio_columns:
+            cursor.execute('ALTER TABLE virtual_portfolio ADD COLUMN current_tier TEXT DEFAULT "conservative"')
+            cursor.execute('ALTER TABLE virtual_portfolio ADD COLUMN previous_tier TEXT')
+            cursor.execute('ALTER TABLE virtual_portfolio ADD COLUMN cooldown_end TEXT')
+            cursor.execute('ALTER TABLE virtual_portfolio ADD COLUMN daily_loss_today REAL DEFAULT 0.0')
+            cursor.execute('ALTER TABLE virtual_portfolio ADD COLUMN last_reset_date TEXT')
+            cursor.execute('ALTER TABLE virtual_portfolio ADD COLUMN total_bets INTEGER DEFAULT 0')
+            cursor.execute('ALTER TABLE virtual_portfolio ADD COLUMN winning_bets INTEGER DEFAULT 0')
+            print("Database migrated: Added risk tier tracking columns to virtual_portfolio table")
     
     def initialize_firm_portfolio(self, firm_name: str, initial_balance: float = 10000.0):
         conn = sqlite3.connect(self.db_path)
@@ -772,3 +785,113 @@ class TradingDatabase:
             })
         
         return positions
+    
+    def update_tier_state(self, firm_name: str, current_tier: str, previous_tier: Optional[str] = None, cooldown_end: Optional[str] = None):
+        """
+        Actualiza el estado del tier de riesgo de una AI.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        UPDATE virtual_portfolio
+        SET current_tier = ?, previous_tier = ?, cooldown_end = ?
+        WHERE firm_name = ?
+        ''', (current_tier, previous_tier, cooldown_end, firm_name))
+        
+        conn.commit()
+        conn.close()
+    
+    def reset_daily_loss(self, firm_name: Optional[str] = None):
+        """
+        Resetea el contador de pérdidas diarias. Si no se especifica firm_name, resetea todas.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        today = datetime.now().date().isoformat()
+        
+        if firm_name:
+            cursor.execute('''
+            UPDATE virtual_portfolio
+            SET daily_loss_today = 0.0, last_reset_date = ?
+            WHERE firm_name = ?
+            ''', (today, firm_name))
+        else:
+            cursor.execute('''
+            UPDATE virtual_portfolio
+            SET daily_loss_today = 0.0, last_reset_date = ?
+            ''', (today,))
+        
+        conn.commit()
+        conn.close()
+    
+    def record_daily_loss(self, firm_name: str, loss_amount: float):
+        """
+        Registra una pérdida en el contador diario.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        UPDATE virtual_portfolio
+        SET daily_loss_today = daily_loss_today + ?
+        WHERE firm_name = ?
+        ''', (loss_amount, firm_name))
+        
+        conn.commit()
+        conn.close()
+    
+    def get_portfolio_with_tier_info(self, firm_name: str) -> Optional[Dict]:
+        """
+        Obtiene información del portfolio incluyendo tier state.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        SELECT * FROM virtual_portfolio
+        WHERE firm_name = ?
+        ''', (firm_name,))
+        
+        row = cursor.fetchone()
+        conn.close()
+        
+        if row:
+            return {
+                'firm_name': row[1],
+                'initial_balance': row[2],
+                'current_balance': row[3],
+                'total_returns': row[4],
+                'current_tier': row[6] if len(row) > 6 else 'conservative',
+                'previous_tier': row[7] if len(row) > 7 else None,
+                'cooldown_end': row[8] if len(row) > 8 else None,
+                'daily_loss_today': row[9] if len(row) > 9 else 0.0,
+                'last_reset_date': row[10] if len(row) > 10 else None,
+                'total_bets': row[11] if len(row) > 11 else 0,
+                'winning_bets': row[12] if len(row) > 12 else 0
+            }
+        return None
+    
+    def update_portfolio_bet_stats(self, firm_name: str, won: bool):
+        """
+        Actualiza estadísticas de apuestas en el portfolio.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        if won:
+            cursor.execute('''
+            UPDATE virtual_portfolio
+            SET total_bets = total_bets + 1, winning_bets = winning_bets + 1
+            WHERE firm_name = ?
+            ''', (firm_name,))
+        else:
+            cursor.execute('''
+            UPDATE virtual_portfolio
+            SET total_bets = total_bets + 1
+            WHERE firm_name = ?
+            ''', (firm_name,))
+        
+        conn.commit()
+        conn.close()
