@@ -592,7 +592,7 @@ with header_col2:
     """, unsafe_allow_html=True)
     
     nav_cols = st.columns(4)
-    nav_items = ['LIVE', 'LEADERBOARD', 'BLOG', 'MODELS']
+    nav_items = ['LIVE', 'LEADERBOARD', 'POSITIONS', 'MODELS']
     
     for idx, (col, item) in enumerate(zip(nav_cols, nav_items)):
         with col:
@@ -839,32 +839,145 @@ elif st.session_state.current_view == 'LEADERBOARD':
         </div>
         """, unsafe_allow_html=True)
 
-elif st.session_state.current_view == 'BLOG':
-    st.markdown('<div class="chart-title">ALPHA ARENA INSIGHTS</div>', unsafe_allow_html=True)
-    st.markdown('<div style="margin-bottom: 2rem; font-size: 0.875rem; color: var(--text-secondary);">Analysis, strategies, and market insights from the competition</div>', unsafe_allow_html=True)
+elif st.session_state.current_view == 'POSITIONS':
+    st.markdown('<div class="chart-title">ACTIVE PREDICTIONS</div>', unsafe_allow_html=True)
+    st.markdown('<div style="margin-bottom: 2rem; font-size: 0.875rem; color: var(--text-secondary);">Real-time tracking of all AI predictions and their outcomes</div>', unsafe_allow_html=True)
     
-    st.markdown("""
-    <div class="premium-card" style="padding: 2rem;">
-        <div style="font-size: 2rem; font-weight: 700; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; margin-bottom: 1rem;">Coming Soon</div>
-        <div style="font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
-            Stay tuned for in-depth analysis, prediction strategies, and exclusive insights from the AI prediction competition.
+    # Get all autonomous bets from database
+    all_bets = db.get_autonomous_bets(firm_name=None, limit=100)
+    
+    if not all_bets:
+        st.markdown("""
+        <div class="premium-card" style="padding: 2rem; text-align: center;">
+            <div style="font-size: 1.5rem; font-weight: 600; color: var(--text-tertiary); margin-bottom: 1rem;">No active predictions yet</div>
+            <div style="font-size: 1rem; color: var(--text-secondary);">AIs will start making predictions once the autonomous system is activated</div>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-            <div style="padding: 1rem; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px;">
-                <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif;">STRATEGIES</div>
-                <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">Deep dives into AI prediction strategies and decision-making processes</div>
-            </div>
-            <div style="padding: 1rem; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px;">
-                <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif;">ANALYSIS</div>
-                <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">Weekly performance breakdowns and comparative analysis</div>
-            </div>
-            <div style="padding: 1rem; background: rgba(79, 209, 197, 0.1); border: 1px solid rgba(79, 209, 197, 0.2); border-radius: 12px;">
-                <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif;">INSIGHTS</div>
-                <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">Market predictions and behind-the-scenes insights</div>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
+    else:
+        # Separate active and resolved bets, sort by execution timestamp (newest first)
+        active_bets = sorted(
+            [bet for bet in all_bets if bet.get('actual_result') is None],
+            key=lambda x: x.get('execution_timestamp', ''),
+            reverse=True
+        )
+        resolved_bets = sorted(
+            [bet for bet in all_bets if bet.get('actual_result') is not None],
+            key=lambda x: x.get('resolution_timestamp', '') or x.get('execution_timestamp', ''),
+            reverse=True
+        )
+        
+        # Stats summary
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Total Bets", len(all_bets))
+        with col2:
+            st.metric("Active", len(active_bets))
+        with col3:
+            st.metric("Resolved", len(resolved_bets))
+        with col4:
+            total_locked = sum(bet.get('bet_size', 0) for bet in active_bets)
+            st.metric("Capital Locked", f"${total_locked:,.0f}")
+        
+        st.markdown('<div style="margin: 1.5rem 0; height: 1px; background: rgba(255, 255, 255, 0.05);"></div>', unsafe_allow_html=True)
+        
+        # Tabs for active vs resolved
+        tab1, tab2 = st.tabs(["🟢 ACTIVE", "✅ RESOLVED"])
+        
+        with tab1:
+            if not active_bets:
+                st.info("No active predictions at the moment")
+            else:
+                for bet in active_bets[:20]:  # Show latest 20
+                    firm_name = bet.get('firm_name', 'Unknown')
+                    color = AI_COLORS.get(firm_name, '#666666')
+                    category = bet.get('category', 'general')
+                    bet_size = bet.get('bet_size', 0)
+                    probability = bet.get('probability', 0.5)
+                    confidence = bet.get('confidence', 50)
+                    event_desc = bet.get('event_description', '')[:100] + '...' if len(bet.get('event_description', '')) > 100 else bet.get('event_description', '')
+                    timestamp = bet.get('execution_timestamp', '')
+                    
+                    st.markdown(f"""
+                    <div class="premium-card" style="margin-bottom: 1rem; padding: 1.25rem; border-left: 3px solid {color};">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: {color}; box-shadow: 0 0 12px {color};"></div>
+                                <span style="font-weight: 600; font-size: 1rem; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif;">{firm_name}</span>
+                                <span style="padding: 0.25rem 0.5rem; background: rgba(79, 209, 197, 0.15); border: 1px solid rgba(79, 209, 197, 0.3); border-radius: 4px; font-size: 0.65rem; font-weight: 600; color: var(--accent-cyan); text-transform: uppercase;">{category}</span>
+                            </div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); font-family: 'IBM Plex Mono', monospace;">{timestamp[:16] if timestamp else 'N/A'}</div>
+                        </div>
+                        <div style="margin-bottom: 0.75rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">{event_desc}</div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                            <div>
+                                <div style="font-size: 0.65rem; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 0.25rem;">BET SIZE</div>
+                                <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary); font-family: 'IBM Plex Mono', monospace;">${bet_size:,.2f}</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.65rem; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 0.25rem;">PROBABILITY</div>
+                                <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary); font-family: 'IBM Plex Mono', monospace;">{probability:.1%}</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.65rem; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 0.25rem;">CONFIDENCE</div>
+                                <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary); font-family: 'IBM Plex Mono', monospace;">{confidence}%</div>
+                            </div>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+        
+        with tab2:
+            if not resolved_bets:
+                st.info("No resolved predictions yet")
+            else:
+                for bet in resolved_bets[:20]:  # Show latest 20
+                    firm_name = bet.get('firm_name', 'Unknown')
+                    color = AI_COLORS.get(firm_name, '#666666')
+                    category = bet.get('category', 'general')
+                    bet_size = bet.get('bet_size', 0)
+                    probability = bet.get('probability', 0.5)
+                    profit_loss = bet.get('profit_loss', 0)
+                    actual_result = bet.get('actual_result', 0)
+                    event_desc = bet.get('event_description', '')[:100] + '...' if len(bet.get('event_description', '')) > 100 else bet.get('event_description', '')
+                    timestamp = bet.get('execution_timestamp', '')
+                    resolution_time = bet.get('resolution_timestamp', '')
+                    
+                    won = actual_result == 1
+                    pnl_color = '#4FD1C5' if profit_loss > 0 else '#F2555A'
+                    status_text = "WON" if won else "LOST"
+                    status_color = '#4FD1C5' if won else '#F2555A'
+                    
+                    st.markdown(f"""
+                    <div class="premium-card" style="margin-bottom: 1rem; padding: 1.25rem; border-left: 3px solid {color};">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: {color}; box-shadow: 0 0 12px {color};"></div>
+                                <span style="font-weight: 600; font-size: 1rem; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif;">{firm_name}</span>
+                                <span style="padding: 0.25rem 0.5rem; background: rgba(79, 209, 197, 0.15); border: 1px solid rgba(79, 209, 197, 0.3); border-radius: 4px; font-size: 0.65rem; font-weight: 600; color: var(--accent-cyan); text-transform: uppercase;">{category}</span>
+                                <span style="padding: 0.25rem 0.5rem; background: rgba{tuple(list(int(status_color.lstrip('#')[i:i+2], 16) for i in (0, 2, 4)) + [0.15])}; border: 1px solid {status_color}; border-radius: 4px; font-size: 0.65rem; font-weight: 600; color: {status_color};">{status_text}</span>
+                            </div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); font-family: 'IBM Plex Mono', monospace;">{timestamp[:16] if timestamp else 'N/A'}</div>
+                        </div>
+                        <div style="margin-bottom: 0.75rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">{event_desc}</div>
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                            <div>
+                                <div style="font-size: 0.65rem; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 0.25rem;">BET SIZE</div>
+                                <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary); font-family: 'IBM Plex Mono', monospace;">${bet_size:,.2f}</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.65rem; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 0.25rem;">PROBABILITY</div>
+                                <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary); font-family: 'IBM Plex Mono', monospace;">{probability:.1%}</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.65rem; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 0.25rem;">P&L</div>
+                                <div style="font-size: 1rem; font-weight: 700; color: {pnl_color}; font-family: 'IBM Plex Mono', monospace;">${profit_loss:,.2f}</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.65rem; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 0.25rem;">RESOLVED</div>
+                                <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); font-family: 'IBM Plex Mono', monospace;">{resolution_time[:16] if resolution_time else 'N/A'}</div>
+                            </div>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
 
 elif st.session_state.current_view == 'MODELS':
     st.markdown('<div class="chart-title">AI PREDICTION MODELS</div>', unsafe_allow_html=True)
