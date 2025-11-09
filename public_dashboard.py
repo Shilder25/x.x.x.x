@@ -441,57 +441,111 @@ AI_COLORS = {
     'Grok': '#00BCD4'          # Cyan
 }
 
-# Get AI data - SIEMPRE 5 AIs con datos persistentes
+# Get AI data - REAL DATA from database
 def get_ai_historical_data():
-    """Get historical data for all 5 AIs - uses simulation for now"""
-    # Return cached data if available
-    if st.session_state.historical_data is not None:
+    """Get historical data for all 5 AIs from real database"""
+    # Check if we should refresh data (every 30 seconds with auto-refresh)
+    now = datetime.now()
+    should_refresh = (
+        st.session_state.historical_data is None or
+        (now - st.session_state.last_db_check).total_seconds() > 30
+    )
+    
+    if not should_refresh:
         return st.session_state.historical_data
     
-    # Generate consistent simulation for all AIs
+    # Load real data from database for all AIs
     data = {}
     for ai_name in AI_COLORS.keys():
-        data[ai_name] = generate_ai_simulation(ai_name)
+        data[ai_name] = get_ai_real_data(ai_name)
     
     # Store in session state (persists across auto-refreshes)
     st.session_state.historical_data = data
     st.session_state.historical_data_initialized = True
-    st.session_state.last_db_check = datetime.now()
+    st.session_state.last_db_check = now
     
     return data
 
-def generate_ai_simulation(ai_name):
-    """Generate consistent simulation for an AI"""
-    # Use fixed seed based on AI name only for consistency
-    np.random.seed(hash(ai_name) % 10000)
-    
+def get_ai_real_data(ai_name):
+    """Get real historical data for an AI from database"""
+    initial_bankroll = 10000.0
     days = 30
     dates = pd.date_range(end=datetime.now(), periods=days, freq='D')
-    initial = 10000
     
-    # Different performance profiles per AI
-    profiles = {
-        'ChatGPT': {'trend': 0.015, 'volatility': 0.02},
-        'Deepseek': {'trend': 0.01, 'volatility': 0.025},
-        'Gemini': {'trend': 0.005, 'volatility': 0.018},
-        'Qwen': {'trend': -0.008, 'volatility': 0.022},
-        'Grok': {'trend': 0.003, 'volatility': 0.02}
-    }
-    
-    profile = profiles.get(ai_name, {'trend': 0, 'volatility': 0.02})
-    
-    values = [initial]
-    for i in range(1, days):
-        change = np.random.normal(profile['trend'], profile['volatility'])
-        new_value = values[-1] * (1 + change)
-        values.append(new_value)
-    
-    return {
-        'dates': dates,
-        'values': values,
-        'current': values[-1],
-        'pnl_pct': ((values[-1] - initial) / initial) * 100
-    }
+    try:
+        # Get all bets for this AI
+        bets = db.get_autonomous_bets(firm_name=ai_name, limit=1000)
+        
+        if not bets:
+            # No bets yet, return initial bankroll
+            return {
+                'dates': dates,
+                'values': [initial_bankroll] * days,
+                'current': initial_bankroll,
+                'pnl_pct': 0.0,
+                'total_bets': 0,
+                'total_pnl': 0.0
+            }
+        
+        # Calculate account value over time
+        values = []
+        current_value = initial_bankroll
+        
+        # Convert bets to DataFrame for easier processing
+        bets_df = pd.DataFrame(bets)
+        bets_df['execution_timestamp'] = pd.to_datetime(bets_df['execution_timestamp'])
+        bets_df = bets_df.sort_values('execution_timestamp')
+        
+        for date in dates:
+            # Get bets up to this date
+            bets_until_date = bets_df[bets_df['execution_timestamp'] <= date]
+            
+            if len(bets_until_date) == 0:
+                values.append(initial_bankroll)
+            else:
+                # Separate resolved vs active bets
+                resolved_bets = bets_until_date[bets_until_date['actual_result'].notna()]
+                active_bets = bets_until_date[bets_until_date['actual_result'].isna()]
+                
+                # For resolved bets: contribution = profit_loss - bet_size
+                # (profit_loss includes stake return, so subtract bet to get net gain/loss)
+                # Win: profit_loss=$180, bet=$100 → contribution=+$80
+                # Loss: profit_loss=$0, bet=$100 → contribution=-$100
+                resolved_contribution = (
+                    resolved_bets['profit_loss'].fillna(0) - resolved_bets['bet_size']
+                ).sum()
+                
+                # For active bets: lock the bet_size
+                active_locked = active_bets['bet_size'].sum()
+                
+                # Account value = initial + net gains from resolved - active locked funds
+                account_value = initial_bankroll + resolved_contribution - active_locked
+                values.append(max(0, account_value))  # Can't go below 0
+        
+        current = values[-1]
+        total_pnl = current - initial_bankroll
+        pnl_pct = (total_pnl / initial_bankroll) * 100
+        
+        return {
+            'dates': dates,
+            'values': values,
+            'current': current,
+            'pnl_pct': pnl_pct,
+            'total_bets': len(bets),
+            'total_pnl': total_pnl
+        }
+        
+    except Exception as e:
+        # Fallback to initial bankroll if there's an error
+        print(f"Error loading data for {ai_name}: {e}")
+        return {
+            'dates': dates,
+            'values': [initial_bankroll] * days,
+            'current': initial_bankroll,
+            'pnl_pct': 0.0,
+            'total_bets': 0,
+            'total_pnl': 0.0
+        }
 
 # Get data
 historical_data = get_ai_historical_data()
