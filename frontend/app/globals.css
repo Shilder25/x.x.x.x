@@ -128,7 +128,7 @@ body {
 /* Layout Grid */
 .live-layout {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 3fr 1fr;
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
