@@ -78,7 +78,9 @@ def show_login():
 # Main routing logic
 if st.session_state.view_mode == 'public':
     # Public dashboard - no authentication required
-    import public_dashboard
+    # Execute public_dashboard.py code
+    with open('public_dashboard.py', 'r') as f:
+        exec(f.read())
     
 elif st.session_state.view_mode == 'admin':
     if not st.session_state.authenticated:
@@ -100,5 +102,6 @@ elif st.session_state.view_mode == 'admin':
                 st.session_state.view_mode = 'public'
                 st.rerun()
         
-        # Load admin interface
-        import app_admin
+        # Load admin interface - execute app_admin.py code
+        with open('app_admin.py', 'r') as f:
+            exec(f.read())

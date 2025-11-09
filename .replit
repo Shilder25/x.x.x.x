@@ -21,19 +21,19 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "public_dashboard"
+args = "app"
 
 [[workflows.workflow]]
-name = "public_dashboard"
+name = "app"
 author = "agent"
-
-[workflows.workflow.metadata]
-outputType = "webview"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "streamlit run public_dashboard.py --server.port 5000"
+args = "streamlit run app.py --server.port 5000"
 waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
 
 [[ports]]
 localPort = 5000
@@ -42,6 +42,10 @@ externalPort = 80
 [[ports]]
 localPort = 33417
 externalPort = 4200
+
+[[ports]]
+localPort = 36127
+externalPort = 3003
 
 [[ports]]
 localPort = 36877
