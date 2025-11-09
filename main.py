@@ -23,9 +23,6 @@ def signal_handler(sig, frame):
             proc.kill()
     sys.exit(0)
 
-signal.signal(signal.SIGINT, signal_handler)
-signal.signal(signal.SIGTERM, signal_handler)
-
 def is_production():
     """Check if running in production (Replit deployment)"""
     return os.getenv('REPL_DEPLOYMENT') == '1' or os.getenv('REPLIT_DEPLOYMENT') == '1'
@@ -72,6 +69,10 @@ def setup_frontend():
         print("  ✓ Running in development mode (skip build)")
 
 def main():
+    # Set up signal handlers (must be in main thread)
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
+    
     mode = "PRODUCTION" if is_production() else "DEVELOPMENT"
     print("=" * 60)
     print(f"TradingAgents Full Stack Application - {mode} MODE")
