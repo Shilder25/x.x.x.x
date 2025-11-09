@@ -324,7 +324,7 @@ if 'sentiment_data' not in st.session_state:
     st.session_state.sentiment_data = None
 
 # Premium Header
-st.markdown('<div class="admin-header">⚡ TRADINGAGENTS</div>', unsafe_allow_html=True)
+st.markdown('<div class="admin-header">TRADINGAGENTS</div>', unsafe_allow_html=True)
 st.markdown('<div class="admin-subtitle">Multi-LLM Prediction Market Framework</div>', unsafe_allow_html=True)
 
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
