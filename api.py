@@ -237,8 +237,9 @@ def get_competition_status():
         cursor.execute("SELECT COUNT(*) FROM autonomous_bets")
         total_bets = cursor.fetchone()[0]
         
-        cursor.execute("SELECT MAX(timestamp) FROM autonomous_bets")
-        last_bet = cursor.fetchone()[0]
+        cursor.execute("SELECT MAX(execution_timestamp) FROM autonomous_bets")
+        last_bet_row = cursor.fetchone()
+        last_bet = last_bet_row[0] if last_bet_row and last_bet_row[0] else None
         conn.close()
         
         return jsonify({

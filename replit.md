@@ -9,18 +9,31 @@ Preferred communication style: Simple, everyday language.
 ## System Architecture
 
 ### Frontend Architecture
-The application uses Streamlit for a single-page interface with a wide layout, managing database connections and cached data via session state. It features a unified minimalist design inspired by Nof1.ai.
+The application uses **React/Next.js** (TypeScript + Tailwind CSS) for a professional single-page interface that exactly replicates the **Alpha Arena (Nof1.ai) design aesthetic**.
 
-**Design System:**
-- **White Minimalist Theme**: Clean white background (#FFFFFF) with professional typography
-  - Typography: Inter (body text), Space Grotesk (headings), IBM Plex Mono (numbers)
-  - Navigation: Minimalist pills with subtle borders, black active state
-  - Cards: Light gray backgrounds (#FAFAFA) with clean borders (#E5E7EB)
-  - Charts: White backgrounds with clean grid lines
-  - No admin controls on page - system controlled via Replit environment variables
+**Design System - Alpha Arena BLACK BORDERS:**
+- **Defining Characteristic**: BLACK BORDERS (2px solid #000) around ALL major components
+  - Typography: Inter (body text, headings), monospace (numbers)
+  - Market header with crypto prices and percentage changes
+  - Navigation: Horizontal tabs (LIVE | LEADERBOARD | BLOG | MODELS) with separators
+  - Layout: 75/25 split on LIVE page (chart left, info panels right)
+  - Table borders: Black borders on all cells in leaderboard
+  - Chart: Vibrant color-coded lines (Purple/Blue/Orange/Black/Cyan)
+- **Port Configuration**: Next.js runs on port 5000 (webview)
+- **System Control**: No admin controls on page - controlled via SYSTEM_ENABLED in Replit Secrets
 
 ### Backend Architecture
-The backend employs a modular, service-oriented design with key components such as:
+**Two-Layer Architecture:**
+1. **Flask REST API** (port 8000): Exposes 8 endpoints for frontend data consumption
+   - `/api/market-header` - Real-time crypto prices
+   - `/api/live-metrics` - Current AI performance metrics
+   - `/api/live-chart-history` - Historical account values
+   - `/api/leaderboard` - Full ranking table
+   - `/api/blog` - Information content
+   - `/api/models/<firm>` - Individual AI details
+   - `/api/competition-status` - System status
+
+2. **Python Backend Services**: Modular design with key components:
 - **`TradingDatabase`**: SQLite-based persistence layer for predictions, firm performance, and virtual portfolios with automatic schema migration.
 - **`FirmOrchestrator`**: Manages LLM clients and prediction generation.
 - **Data Collectors**: Specialized classes for technical, fundamental, and sentiment data.
@@ -42,7 +55,8 @@ A multi-source strategy utilizes `AlphaVantageCollector` for technical indicator
 An embedded SQLite database stores `predictions`, `firm_performance`, `virtual_portfolio`, `autonomous_bets`, `autonomous_cycles`, and `strategy_adaptations`.
 
 ### Visualization Layer
-Plotly is used for interactive charts within Streamlit, providing time series, performance dashboards, and portfolio visualizations with a dark theme.
+**Frontend**: Recharts (React) for interactive charts with white backgrounds and clean styling
+**Legacy**: Plotly support maintained in Python backend for potential future use
 
 ## External Dependencies
 
@@ -60,18 +74,20 @@ Plotly is used for interactive charts within Streamlit, providing time series, p
 ### Social Media Data
 - Reddit API (PRAW)
 
-### Python Libraries
-- `streamlit`
-- `streamlit-autorefresh`
-- `pandas`
-- `plotly`
-- `yfinance`
-- `praw`
-- `nltk`
-- `tenacity`
-- `sqlite3`
-- `openai`
-- `google-genai`
+### Python Libraries (Backend)
+- `flask`, `flask-cors` - REST API server
+- `pandas`, `plotly`, `yfinance` - Data processing & financial data
+- `praw`, `nltk` - Social sentiment analysis
+- `tenacity` - Retry logic
+- `sqlite3` - Database
+- `openai`, `google-genai` - LLM integrations
+
+### JavaScript Libraries (Frontend)
+- `next` (15.5.6) - React framework
+- `react` (19.0.0), `react-dom` - UI library
+- `recharts` - Chart visualization
+- `tailwindcss` - CSS framework
+- `typescript` - Type safety
 
 ### Environment Variables Required
 - `AI_INTEGRATIONS_OPENAI_API_KEY`
@@ -87,64 +103,23 @@ Plotly is used for interactive charts within Streamlit, providing time series, p
 
 ## Recent Changes (November 9, 2025)
 
-**Alpha Arena Compact Design - Professional Redesign (Latest):**
-- **Complete Visual Overhaul**: Redesigned to match Alpha Arena reference aesthetic
-- **Compact Design System**:
-  - CSS Variables: --aa-border (1px solid #E1E4EA), --aa-radius (10px), spacing tokens (0.75/1.0/1.5rem)
-  - Well-defined borders throughout (1px solid, visible and professional)
-  - Compact typography: Headings 1.125-1.75rem, Body 0.875rem, Numbers 0.9375-1.375rem monospace
-  - Reduced padding/margins: Cards 1rem padding, 0.75rem margins
-  - Container: max-width 1440px, padding 1.5rem 2.5rem
-- **Horizontal Compact Navigation**:
-  - Single-line layout with separators: LIVE | LEADERBOARD | MODELS | BLOG
-  - Active state with black background, inactive transparent
-  - Min-width 100px buttons, padding 0.5rem 1.25rem
-- **2-Column LIVE Layout**:
-  - 7/3 split: Chart container (left 70%) + Rankings panel (right 30%)
-  - Chart in bordered container with defined edges
-  - Compact ranking capsules with clean styling
-- **Consistent Borders**:
-  - All cards, metrics, tabs, expanders use --aa-border variable
-  - Chart container has visible border for clean integration
-  - Well-defined edges throughout all sections
-- **Optimized Spacing**:
-  - Global container: 1.5rem vertical, 2.5rem horizontal
-  - Cards: 1rem padding, 0.75rem bottom margin
-  - Sections: 1.5rem spacing between major elements
-  - No excessive whitespace, everything compact and professional
-- **System Control**: Environment variable SYSTEM_ENABLED (true/false) in Replit Secrets
-- **Testing**: Playwright verified navigation, borders, typography, spacing, and 2-column layout
-
-**Admin Panel Redesign - Premium Dark Aesthetic (Previous):**
-- **Complete Visual Overhaul**: Redesigned admin panel to match Alpha Arena premium dark aesthetic
-- **Binance Gold Accent System**: 
-  - Primary accent: #F0B90B (Binance gold) with glow effects
-  - Supporting colors: Teal (#0EA5E9), Slate (#334155)
-  - Status colors: Green (#22C55E), Yellow (#F59E0B), Orange (#F97316), Red (#EF4444)
-- **Emoji-Free Minimalist Design**:
-  - Removed ALL emojis from entire admin interface
-  - Clean tab names: "Home", "Autonomous Competition", "New Prediction", etc.
-  - Simple section headers without visual clutter
-  - Status indicators use text (WON/LOST/PENDING) instead of checkmarks/emojis
-  - Position numbers (#1, #2, #3) instead of medal emojis
-- **Premium CSS System**:
-  - Gold gradient header: "TRADINGAGENTS"
-  - Custom button styling with gold gradients and hover glow
-  - Premium cards with gold top borders and glassmorphism
-  - Dark metrics with gold values
-  - Custom tabs with gold active state
-- **Chart Theming**:
-  - All charts use plotly_dark template
-  - Dark transparent backgrounds matching overall theme
-  - Gold title colors
-  - Custom color scales with gold highlights
-- **Typography Consistency**:
-  - Space Grotesk for headings (400-700)
-  - Manrope for body text (400-700)
-  - IBM Plex Mono for numbers (400-600)
-- **Complete Implementation**:
-  - 8 tabs fully redesigned with consistent styling
-  - Home tab features premium cards with gold accents
-  - Autonomous Competition tab with clean status boxes
-  - All forms, inputs, and interactive elements themed
-  - Sidebar admin controls with glassmorphism
+**MAJOR MIGRATION: Streamlit → React/Next.js (Latest):**
+- **Reason**: Streamlit could not render custom CSS properly - HTML was showing as text instead of rendering the Alpha Arena design
+- **Solution**: Complete migration to React/Next.js with full CSS control
+- **Architecture Change**:
+  - Separated concerns: Flask REST API backend (port 8000) + Next.js frontend (port 5000)
+  - All Python backend logic maintained (autonomous_engine, database, LLM integrations)
+  - New frontend with exact Alpha Arena design replication
+- **Design Implementation**:
+  - **BLACK BORDERS (2px solid #000)** on ALL components - the defining visual characteristic
+  - Market header with real-time crypto prices (BTC, ETH, SOL, BNB, DOGE, XRP)
+  - Horizontal navigation: LIVE | LEADERBOARD | BLOG | MODELS
+  - 75/25 layout on LIVE: Performance chart (left) + Info panels (right)
+  - Leaderboard table with black borders on all cells
+  - Vibrant color-coded AI lines: Purple (Gemini), Blue (ChatGPT), Orange (Qwen), Black (Deepseek), Cyan (Grok)
+- **Technical Details**:
+  - Created api.py with 8 REST endpoints
+  - Fixed all database schema mismatches (execution_timestamp, bet_size, actual_result, current_balance, etc.)
+  - Added error handling for API responses in frontend
+  - Two workflows: api (Flask on 8000), frontend (Next.js on 5000)
+- **Result**: Professional Alpha Arena design with well-defined black borders throughout
