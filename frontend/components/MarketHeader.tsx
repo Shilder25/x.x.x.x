@@ -21,22 +21,20 @@ export default function MarketHeader({ data }: MarketHeaderProps) {
 
   return (
     <div className="market-header">
-      <div className="alpha-container">
-        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-          {orderedData.map((item) => (
-            <div key={item.symbol} className="market-ticker">
-              <span className="market-ticker-symbol">
-                {getSymbolIcon(item.symbol)} {item.symbol}
-              </span>
-              <span className="market-ticker-price">
-                ${item.price.toLocaleString()}
-              </span>
-              <span className={`market-ticker-change ${item.change >= 0 ? 'positive' : 'negative'}`}>
-                {item.change >= 0 ? '+' : ''}{item.change.toFixed(2)}%
-              </span>
-            </div>
-          ))}
-        </div>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', maxWidth: '1440px', margin: '0 auto' }}>
+        {orderedData.map((item) => (
+          <div key={item.symbol} className="market-ticker">
+            <span className="market-ticker-symbol">
+              {getSymbolIcon(item.symbol)} {item.symbol}
+            </span>
+            <span className="market-ticker-price">
+              ${item.price.toLocaleString()}
+            </span>
+            <span className={`market-ticker-change ${item.change >= 0 ? 'positive' : 'negative'}`}>
+              {item.change >= 0 ? '+' : ''}{item.change.toFixed(2)}%
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );

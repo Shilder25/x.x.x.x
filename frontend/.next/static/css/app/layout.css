@@ -575,17 +575,18 @@ body {
 .market-header {
   border-bottom: var(--border-black);
   background: var(--bg-white);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
 }
 
 .market-ticker {
   display: inline-flex;
   align-items: center;
   border: var(--border-black);
-  padding: 0.4rem 0.75rem;
+  padding: 0.35rem 0.65rem;
   background: var(--bg-white);
-  margin-right: 0.75rem;
-  font-size: 0.875rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.8125rem;
 }
 
 .market-ticker-symbol {
@@ -661,7 +662,7 @@ body {
   border: var(--border-black);
   background: var(--bg-white);
   padding: 1rem;
-  min-height: 500px;
+  min-height: 650px;
 }
 
 .chart-header {
