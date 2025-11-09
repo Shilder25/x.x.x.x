@@ -157,16 +157,37 @@ with tab2:
         with st.container():
             st.markdown("### 🎮 Control Panel")
             
+            # System ON/OFF toggle
+            if 'system_enabled' not in st.session_state:
+                st.session_state.system_enabled = False
+            
+            system_enabled = st.toggle(
+                "⚡ System Status",
+                value=st.session_state.system_enabled,
+                key="system_enabled_toggle",
+                help="Enable/disable the autonomous prediction system to control API usage"
+            )
+            st.session_state.system_enabled = system_enabled
+            
+            if system_enabled:
+                st.success("🟢 **SYSTEM ACTIVE** - AIs can place predictions")
+            else:
+                st.warning("🔴 **SYSTEM DISABLED** - No API calls will be made")
+            
+            st.divider()
+            
+            # Simulation mode toggle (only if system is enabled)
             simulation_mode = st.toggle(
                 "🧪 Simulation Mode",
                 value=engine.simulation_mode,
                 key="sim_mode_toggle",
-                help="In simulation mode, real bets are not executed"
+                help="In simulation mode, real bets are not executed",
+                disabled=not system_enabled
             )
             engine.simulation_mode = simulation_mode
             
             if simulation_mode:
-                st.success("✓ Simulation mode active - Safe environment")
+                st.info("✓ Simulation mode active - Safe environment")
             else:
                 st.error("⚠️ LIVE MODE - Bets will affect your account")
             
@@ -175,7 +196,7 @@ with tab2:
             col_btn1, col_btn2 = st.columns(2)
             
             with col_btn1:
-                if st.button("▶️ Run Cycle", use_container_width=True, type="primary"):
+                if st.button("▶️ Run Cycle", use_container_width=True, type="primary", disabled=not system_enabled):
                     with st.spinner("Analyzing events and executing bets..."):
                         try:
                             result = engine.run_daily_cycle()
