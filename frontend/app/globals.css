@@ -45,14 +45,14 @@ body {
 .alpha-container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 /* Market Header */
 .market-header {
   border-bottom: var(--border-black);
   background: var(--bg-white);
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
 }
 
 .market-ticker {
@@ -93,7 +93,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0;
-  margin: 1.5rem 0;
+  margin: 0;
 }
 
 .nav-tab {
@@ -129,15 +129,15 @@ body {
 .live-layout {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: 0;
 }
 
 /* Chart Panel */
 .chart-panel {
   border: var(--border-black);
   background: var(--bg-white);
-  padding: 1.5rem;
+  padding: 1rem;
   min-height: 500px;
 }
 
@@ -145,7 +145,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .chart-title {
@@ -157,7 +157,7 @@ body {
 
 .chart-controls {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .time-selector {
@@ -188,7 +188,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 }
 
 .legend-badge {
@@ -227,13 +227,13 @@ body {
 .info-panel {
   border: var(--border-black);
   background: var(--bg-white);
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
 .info-panel-title {
   font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 0.875rem;
+  margin-bottom: 0.75rem;
   letter-spacing: -0.01em;
 }
 

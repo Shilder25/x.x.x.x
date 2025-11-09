@@ -113,14 +113,6 @@ export default function Home() {
 
       {/* Main Container */}
       <div className="alpha-container">
-        {/* Title */}
-        <div style={{ textAlign: 'center', padding: '2rem 0 1rem' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.25rem' }}>
-            Alpha Arena
-          </h1>
-          <p style={{ color: '#6B7280', fontSize: '0.875rem' }}>by Nof1</p>
-        </div>
-
         {/* Navigation */}
         <NavigationTabs 
           activeSection={activeSection} 
