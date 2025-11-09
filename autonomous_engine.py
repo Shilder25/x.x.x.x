@@ -25,7 +25,9 @@ class AutonomousEngine:
             initial_bankroll_per_firm: Presupuesto inicial por cada IA
             simulation_mode: Si True, no ejecuta apuestas reales (solo tracking virtual)
         """
-        self.simulation_mode = simulation_mode
+        system_enabled = os.environ.get('SYSTEM_ENABLED', 'false').lower() == 'true'
+        self.simulation_mode = simulation_mode if system_enabled else True
+        self.system_enabled = system_enabled
         self.initial_bankroll = initial_bankroll_per_firm
         
         self.db = database
@@ -75,9 +77,17 @@ class AutonomousEngine:
         4. Ejecutar apuestas respetando límites de riesgo
         5. Registrar todo en base de datos
         
+        Note: System can be disabled via SYSTEM_ENABLED=false in Replit Secrets
+        
         Returns:
             Resumen de la ejecución diaria
         """
+        if not self.system_enabled:
+            return {
+                'status': 'disabled',
+                'message': 'System disabled via SYSTEM_ENABLED environment variable',
+                'timestamp': datetime.now().isoformat()
+            }
         cycle_start = datetime.now()
         
         results = {
