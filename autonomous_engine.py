@@ -68,11 +68,12 @@ class AutonomousEngine:
     
     def run_daily_cycle(self) -> Dict:
         """
-        Ejecuta el ciclo diario completo:
-        1. Obtener eventos disponibles de Opinion.trade
-        2. Para cada IA, analizar eventos y decidir apuestas
-        3. Ejecutar apuestas respetando límites de riesgo
-        4. Registrar todo en base de datos
+        Ejecuta el ciclo diario completo con análisis multi-categoría:
+        1. Obtener eventos disponibles de Opinion.trade por categorías
+        2. Para cada IA, analizar eventos en TODAS las categorías disponibles
+        3. Decidir la mejor oportunidad entre todas las categorías
+        4. Ejecutar apuestas respetando límites de riesgo
+        5. Registrar todo en base de datos
         
         Returns:
             Resumen de la ejecución diaria
@@ -85,25 +86,23 @@ class AutonomousEngine:
             'firms_results': {},
             'total_bets_placed': 0,
             'total_bets_skipped': 0,
+            'categories_analyzed': [],
             'errors': []
         }
         
-        events_response = self.opinion_api.get_available_events(limit=50)
+        # Obtener eventos agrupados por categoría
+        events_by_category = self._fetch_events_by_category()
         
-        if not events_response.get('success'):
-            results['errors'].append(f"Failed to fetch events: {events_response.get('error')}")
+        if not events_by_category:
+            results['errors'].append("No events available in any category")
             return results
         
-        available_events = events_response.get('events', [])
+        results['categories_analyzed'] = list(events_by_category.keys())
+        results['total_events_analyzed'] = sum(len(events) for events in events_by_category.values())
         
-        if not available_events:
-            results['errors'].append("No events available")
-            return results
-        
-        results['total_events_analyzed'] = len(available_events)
-        
+        # Cada IA analiza eventos en TODAS las categorías antes de decidir
         for firm_name in self.orchestrator.get_all_firms().keys():
-            firm_result = self._process_firm_cycle(firm_name, available_events)
+            firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
             results['firms_results'][firm_name] = firm_result
             results['total_bets_placed'] += firm_result.get('bets_placed', 0)
             results['total_bets_skipped'] += firm_result.get('bets_skipped', 0)
@@ -117,9 +116,143 @@ class AutonomousEngine:
         
         return results
     
+    def _fetch_events_by_category(self) -> Dict[str, List[Dict]]:
+        """
+        Obtiene eventos disponibles organizados por categoría.
+        
+        Returns:
+            Dict con categorías como keys y listas de eventos como values
+        """
+        events_by_category = {}
+        
+        # Primero obtener todos los eventos para ver qué categorías hay
+        all_events_response = self.opinion_api.get_available_events(limit=100)
+        
+        if not all_events_response.get('success'):
+            return events_by_category
+        
+        all_events = all_events_response.get('events', [])
+        
+        # Agrupar por categoría
+        for event in all_events:
+            category = event.get('category', 'general')
+            if category not in events_by_category:
+                events_by_category[category] = []
+            events_by_category[category].append(event)
+        
+        return events_by_category
+    
+    def _process_firm_multi_category_cycle(self, firm_name: str, events_by_category: Dict[str, List[Dict]]) -> Dict:
+        """
+        Procesa el ciclo completo para una IA con análisis multi-categoría.
+        
+        La IA analiza eventos en TODAS las categorías disponibles PRIMERO,
+        luego ejecuta solo las mejores oportunidades globales.
+        """
+        risk_manager = self.risk_managers[firm_name]
+        bankroll_manager = self.bankroll_managers[firm_name]
+        
+        firm_result = {
+            'firm_name': firm_name,
+            'events_analyzed': 0,
+            'bets_placed': 0,
+            'bets_skipped': 0,
+            'total_bet_amount': 0,
+            'risk_level': risk_manager.get_risk_level().value,
+            'adaptation_level': risk_manager.adaptation_level.value,
+            'category_analysis': {},
+            'decisions': []
+        }
+        
+        risk_status = risk_manager.get_status_report()
+        if risk_status.get('in_cooldown'):
+            firm_result['skipped_reason'] = f"In cooldown until {risk_status.get('cooldown_until')}"
+            return firm_result
+        
+        active_positions_response = self.opinion_api.get_active_positions()
+        active_positions = active_positions_response.get('positions', []) if active_positions_response.get('success') else []
+        
+        # Fase 1: EVALUAR (sin ejecutar) oportunidades en cada categoría
+        all_opportunities = []
+        
+        for category, events in events_by_category.items():
+            category_result = {
+                'category': category,
+                'events_analyzed': 0,
+                'opportunities_found': 0,
+                'best_opportunity': None,
+                'avg_expected_value': 0
+            }
+            
+            category_opportunities = []
+            
+            # Evaluar top 3 eventos de cada categoría (sin ejecutar)
+            for event in events[:3]:
+                evaluation = self._evaluate_event_opportunity(
+                    firm_name=firm_name,
+                    event=event,
+                    risk_manager=risk_manager,
+                    bankroll_manager=bankroll_manager,
+                    active_positions=active_positions
+                )
+                
+                firm_result['events_analyzed'] += 1
+                category_result['events_analyzed'] += 1
+                
+                if evaluation.get('is_opportunity'):
+                    category_opportunities.append(evaluation)
+                    all_opportunities.append(evaluation)
+                    category_result['opportunities_found'] += 1
+                else:
+                    firm_result['bets_skipped'] += 1
+            
+            # Registrar mejor oportunidad de esta categoría
+            if category_opportunities:
+                best_in_category = max(category_opportunities, key=lambda x: x.get('expected_value', 0))
+                category_result['best_opportunity'] = {
+                    'event_id': best_in_category.get('event_id'),
+                    'expected_value': best_in_category.get('expected_value'),
+                    'probability': best_in_category.get('probability')
+                }
+                category_result['avg_expected_value'] = sum(o.get('expected_value', 0) for o in category_opportunities) / len(category_opportunities)
+            
+            firm_result['category_analysis'][category] = category_result
+        
+        # Fase 2: Ejecutar solo las MEJORES oportunidades globales
+        if all_opportunities:
+            # Ordenar todas las oportunidades por expected value
+            all_opportunities.sort(key=lambda x: x.get('expected_value', 0), reverse=True)
+            
+            # Ejecutar solo hasta alcanzar el límite de apuestas concurrentes
+            max_bets = min(risk_manager.max_concurrent_bets, len(all_opportunities))
+            
+            for i, opportunity in enumerate(all_opportunities):
+                if i < max_bets:
+                    # Ejecutar esta oportunidad
+                    executed_decision = self._execute_opportunity(
+                        firm_name=firm_name,
+                        opportunity=opportunity,
+                        risk_manager=risk_manager,
+                        bankroll_manager=bankroll_manager
+                    )
+                    firm_result['decisions'].append(executed_decision)
+                    
+                    # Solo incrementar si la ejecución fue exitosa
+                    if executed_decision.get('action') == 'BET':
+                        firm_result['bets_placed'] += 1
+                        firm_result['total_bet_amount'] += executed_decision.get('bet_size', 0)
+                    else:
+                        firm_result['bets_skipped'] += 1
+                else:
+                    # Oportunidad no seleccionada para ejecución
+                    firm_result['bets_skipped'] += 1
+        
+        return firm_result
+    
     def _process_firm_cycle(self, firm_name: str, events: List[Dict]) -> Dict:
         """
-        Procesa el ciclo completo para una IA específica.
+        Procesa el ciclo completo para una IA específica (método legacy).
+        Mantenido para compatibilidad.
         """
         risk_manager = self.risk_managers[firm_name]
         bankroll_manager = self.bankroll_managers[firm_name]
@@ -166,12 +299,205 @@ class AutonomousEngine:
         
         return firm_result
     
+    def _evaluate_event_opportunity(self, firm_name: str, event: Dict,
+                                    risk_manager: RiskManager, 
+                                    bankroll_manager: BankrollManager,
+                                    active_positions: List[Dict]) -> Dict:
+        """
+        Evalúa un evento SIN EJECUTAR la apuesta.
+        Solo determina si es una buena oportunidad y calcula métricas.
+        
+        Returns:
+            Dict con is_opportunity, expected_value, bet_size, etc.
+        """
+        event_id = event.get('id', 'unknown')
+        event_description = event.get('description', event.get('title', 'Unknown event'))
+        category = event.get('category', 'general')
+        
+        evaluation = {
+            'event': event,
+            'event_id': event_id,
+            'event_description': event_description,
+            'category': category,
+            'timestamp': datetime.now().isoformat(),
+            'is_opportunity': False,
+            'reason': '',
+            'bet_size': 0,
+            'probability': 0,
+            'confidence': 0,
+            'expected_value': 0
+        }
+        
+        symbol = self._extract_symbol_from_event(event)
+        
+        try:
+            prediction = self._get_firm_prediction(firm_name, event_description, symbol or '')
+            
+            if 'error' in prediction:
+                evaluation['reason'] = f"Prediction error: {prediction.get('error')}"
+                return evaluation
+            
+            probability = prediction.get('probabilidad_final_prediccion', 0.5)
+            confidence = prediction.get('nivel_confianza', 50)
+            
+            expected_value = self._calculate_expected_value(probability)
+            
+            evaluation['probability'] = probability
+            evaluation['confidence'] = confidence
+            evaluation['expected_value'] = expected_value
+            evaluation['prediction'] = prediction
+            
+            should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, expected_value)
+            
+            if not should_bet:
+                evaluation['reason'] = bet_reason
+                return evaluation
+            
+            bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, expected_value)
+            
+            if bet_calculation.get('bet_size', 0) == 0:
+                evaluation['reason'] = bet_calculation.get('reason', 'Bet size calculation returned 0')
+                return evaluation
+            
+            bet_size = bet_calculation['bet_size']
+            
+            risk_check = risk_manager.can_place_bet(
+                bet_amount=bet_size,
+                category=category,
+                current_positions=active_positions
+            )
+            
+            if not risk_check.get('allowed'):
+                evaluation['reason'] = risk_check.get('reason', 'Risk check failed')
+                evaluation['risk_check'] = risk_check
+                return evaluation
+            
+            evaluation['is_opportunity'] = True
+            evaluation['bet_size'] = bet_size
+            evaluation['bet_calculation'] = bet_calculation
+            evaluation['risk_check'] = risk_check
+            evaluation['reason'] = f"Approved: EV={expected_value:.2f}, Prob={probability:.2%}, Conf={confidence}%"
+            
+        except Exception as e:
+            evaluation['reason'] = f"Exception during evaluation: {str(e)}"
+            evaluation['error'] = str(e)
+        
+        return evaluation
+    
+    def _execute_opportunity(self, firm_name: str, opportunity: Dict,
+                            risk_manager: RiskManager,
+                            bankroll_manager: BankrollManager) -> Dict:
+        """
+        Ejecuta una oportunidad previamente evaluada.
+        RE-VALIDA tanto risk check como bankroll constraints con estado fresco.
+        Guarda en DB y envía a Opinion.trade si no es simulación.
+        Actualiza estado de managers después de ejecutar.
+        """
+        event_id = opportunity.get('event_id', '')
+        event_description = opportunity.get('event_description', '')
+        category = opportunity.get('category', 'general')
+        probability = opportunity.get('probability', 0.5)
+        confidence = opportunity.get('confidence', 50)
+        expected_value = opportunity.get('expected_value', 0.0)
+        prediction = opportunity.get('prediction', {})
+        
+        decision = {
+            'event_id': event_id,
+            'event_description': event_description,
+            'category': category,
+            'timestamp': datetime.now().isoformat(),
+            'action': 'BET',
+            'probability': probability,
+            'confidence': confidence,
+            'expected_value': expected_value,
+            'reason': opportunity.get('reason', '')
+        }
+        
+        # RE-VALIDAR bankroll constraints con estado ACTUAL (puede haber cambiado)
+        should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, expected_value)
+        
+        if not should_bet:
+            decision['action'] = 'SKIP'
+            decision['reason'] = f"Bankroll check failed at execution: {bet_reason}"
+            decision['bankroll_check_failed'] = True
+            return decision
+        
+        # RE-CALCULAR bet size con bankroll ACTUAL (reducido por apuestas anteriores)
+        bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, expected_value)
+        
+        if bet_calculation.get('bet_size', 0) == 0:
+            decision['action'] = 'SKIP'
+            decision['reason'] = f"Bet size recalculation returned 0: {bet_calculation.get('reason', 'Unknown')}"
+            decision['bet_size_recalc_failed'] = True
+            return decision
+        
+        # Usar el bet_size RE-CALCULADO (puede ser menor que el original)
+        bet_size = bet_calculation['bet_size']
+        decision['bet_size'] = bet_size
+        decision['bet_calculation'] = bet_calculation
+        
+        # RE-VALIDAR risk check con posiciones activas FRESCAS
+        active_positions_response = self.opinion_api.get_active_positions()
+        active_positions = active_positions_response.get('positions', []) if active_positions_response.get('success') else []
+        
+        risk_check = risk_manager.can_place_bet(
+            bet_amount=bet_size,
+            category=category,
+            current_positions=active_positions
+        )
+        
+        if not risk_check.get('allowed'):
+            decision['action'] = 'SKIP'
+            decision['reason'] = f"Risk check failed at execution: {risk_check.get('reason', 'Unknown')}"
+            decision['risk_check_failed'] = True
+            return decision
+        
+        # ACTUALIZAR bankroll ANTES de persistir/ejecutar
+        # Esto garantiza que siguientes oportunidades vean el bankroll reducido
+        bankroll_manager.record_bet(bet_size, probability, event_id, event_description)
+        
+        bet_data = {
+            'firm_name': firm_name,
+            'event_id': event_id,
+            'event_description': event_description,
+            'category': category,
+            'bet_size': bet_size,
+            'probability': probability,
+            'confidence': confidence,
+            'expected_value': expected_value,
+            'risk_level': risk_manager.get_risk_level().value,
+            'adaptation_level': risk_manager.adaptation_level.value,
+            'betting_strategy': bankroll_manager.strategy.value,
+            'reasoning': decision.get('reason'),
+            'execution_timestamp': datetime.now().isoformat(),
+            'simulation_mode': 1 if self.simulation_mode else 0
+        }
+        
+        bet_id = self.db.save_autonomous_bet(bet_data)
+        decision['bet_id'] = bet_id
+        
+        if not self.simulation_mode:
+            execution_result = self._execute_bet(
+                firm_name=firm_name,
+                event_id=event_id,
+                event_description=event_description,
+                bet_size=bet_size,
+                probability=probability,
+                prediction=prediction
+            )
+            decision['execution'] = execution_result
+        else:
+            decision['execution'] = {'status': 'simulated', 'message': 'Simulation mode active'}
+        
+        return decision
+    
     def _analyze_event_for_firm(self, firm_name: str, event: Dict,
                                 risk_manager: RiskManager, 
                                 bankroll_manager: BankrollManager,
                                 active_positions: List[Dict]) -> Dict:
         """
-        Analiza un evento específico y decide si apostar.
+        Analiza un evento específico y decide si apostar (método legacy con ejecución inmediata).
+        Usado por el flujo single-category antiguo.
         """
         event_id = event.get('id', 'unknown')
         event_description = event.get('description', event.get('title', 'Unknown event'))
@@ -191,7 +517,7 @@ class AutonomousEngine:
         symbol = self._extract_symbol_from_event(event)
         
         try:
-            prediction = self._get_firm_prediction(firm_name, event_description, symbol)
+            prediction = self._get_firm_prediction(firm_name, event_description, symbol or '')
             
             if 'error' in prediction:
                 decision['reason'] = f"Prediction error: {prediction.get('error')}"

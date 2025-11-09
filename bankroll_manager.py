@@ -237,7 +237,8 @@ class BankrollManager:
     def record_bet(self, bet_size: float, probability: float, event_id: str, 
                    event_description: str) -> Dict:
         """
-        Registra una nueva apuesta antes de ejecutarla.
+        Registra una nueva apuesta y REDUCE el bankroll inmediatamente.
+        El bankroll se ajustará cuando se registre el resultado (ganancia o pérdida).
         """
         if bet_size > self.current_bankroll:
             return {
@@ -257,6 +258,9 @@ class BankrollManager:
             'profit_loss': None
         }
         
+        # REDUCIR bankroll inmediatamente al colocar la apuesta
+        self.current_bankroll -= bet_size
+        
         self.bet_history.append(bet_record)
         self.last_bet_size = bet_size
         self.total_bets += 1
@@ -264,12 +268,16 @@ class BankrollManager:
         return {
             'success': True,
             'bet_id': bet_record['bet_id'],
-            'bet_record': bet_record
+            'bet_record': bet_record,
+            'new_bankroll': self.current_bankroll
         }
     
     def record_result(self, bet_id: str, won: bool, profit_loss: float) -> Dict:
         """
         Registra el resultado de una apuesta y actualiza el bankroll.
+        Nota: profit_loss debe incluir la devolución de la apuesta original + ganancia/pérdida.
+        Por ejemplo: Si aposté $100 y gané $180 total, profit_loss = +$180
+        Si aposté $100 y perdí, profit_loss = $0 (ya se dedujo en record_bet)
         """
         bet = next((b for b in self.bet_history if b.get('bet_id') == bet_id), None)
         
@@ -282,8 +290,14 @@ class BankrollManager:
         bet['result'] = won
         bet['profit_loss'] = profit_loss
         
+        # Agregar el retorno de la apuesta (bet_size ya fue deducido en record_bet)
+        # profit_loss incluye tanto la devolución de la apuesta como la ganancia neta
         self.current_bankroll += profit_loss
-        self.total_profit += profit_loss
+        
+        # Para total_profit, calcular la ganancia neta (excluyendo la devolución)
+        bet_size = bet.get('bet_size', 0)
+        net_profit = profit_loss - bet_size if won else -bet_size
+        self.total_profit += net_profit
         
         if won:
             self.winning_bets += 1
