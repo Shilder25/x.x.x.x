@@ -704,7 +704,7 @@ if st.session_state.current_view == 'LIVE':
                                 <div class="ai-color-dot" style="background: {color};"></div>
                                 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--text-primary);">{ai_name}</span>
                             </div>
-                            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--text-tertiary);">AI Trading Agent</div>
+                            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--text-tertiary);">AI Prediction Agent</div>
                         </div>
                     </div>
                 </div>
@@ -733,7 +733,7 @@ if st.session_state.current_view == 'LIVE':
             </div>
             <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(79, 209, 197, 0.1); border: 1px solid rgba(79, 209, 197, 0.2); border-radius: 8px;">
                 <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-cyan); font-family: 'Space Grotesk', sans-serif;">MARKET</div>
-                <div style="font-size: 0.875rem; color: var(--text-primary); margin-top: 0.25rem;">Crypto Perpetuals • Hyperliquid</div>
+                <div style="font-size: 0.875rem; color: var(--text-primary); margin-top: 0.25rem;">Prediction Markets • Opinion.trade on BNB</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -768,7 +768,7 @@ elif st.session_state.current_view == 'LEADERBOARD':
                     <div style="width: 20px; height: 20px; border-radius: 50%; background: {color}; box-shadow: 0 0 16px {color}; flex-shrink: 0;"></div>
                     <div>
                         <div style="font-size: 1.5rem; font-weight: 600; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; margin-bottom: 0.25rem;">{ai_name}</div>
-                        <div style="font-size: 0.75rem; color: var(--text-tertiary); font-family: 'Manrope', sans-serif;">AI Trading Agent • 30-day competition</div>
+                        <div style="font-size: 0.75rem; color: var(--text-tertiary); font-family: 'Manrope', sans-serif;">AI Prediction Agent • 30-day competition</div>
                     </div>
                 </div>
                 <div style="display: flex; gap: 3rem; align-items: center;">
@@ -793,12 +793,12 @@ elif st.session_state.current_view == 'BLOG':
     <div class="premium-card" style="padding: 2rem;">
         <div style="font-size: 2rem; font-weight: 700; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; margin-bottom: 1rem;">Coming Soon</div>
         <div style="font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
-            Stay tuned for in-depth analysis, trading strategies, and exclusive insights from the AI trading competition.
+            Stay tuned for in-depth analysis, prediction strategies, and exclusive insights from the AI prediction competition.
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
             <div style="padding: 1rem; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px;">
                 <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif;">STRATEGIES</div>
-                <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">Deep dives into AI trading strategies and decision-making processes</div>
+                <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">Deep dives into AI prediction strategies and decision-making processes</div>
             </div>
             <div style="padding: 1rem; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px;">
                 <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif;">ANALYSIS</div>
@@ -813,7 +813,7 @@ elif st.session_state.current_view == 'BLOG':
     """, unsafe_allow_html=True)
 
 elif st.session_state.current_view == 'MODELS':
-    st.markdown('<div class="chart-title">AI TRADING MODELS</div>', unsafe_allow_html=True)
+    st.markdown('<div class="chart-title">AI PREDICTION MODELS</div>', unsafe_allow_html=True)
     st.markdown('<div style="margin-bottom: 2rem; font-size: 0.875rem; color: var(--text-secondary);">Detailed performance analysis for each competing model</div>', unsafe_allow_html=True)
     
     for ai_name, color in AI_COLORS.items():
@@ -829,7 +829,7 @@ elif st.session_state.current_view == 'MODELS':
                 <div style="width: 24px; height: 24px; border-radius: 50%; background: {color}; box-shadow: 0 0 20px {color};"></div>
                 <div>
                     <div style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif;">{ai_name}</div>
-                    <div style="font-size: 0.875rem; color: var(--text-secondary);">AI Trading Agent • Real-time competition</div>
+                    <div style="font-size: 0.875rem; color: var(--text-secondary);">AI Prediction Agent • Real-time competition</div>
                 </div>
             </div>
             """, unsafe_allow_html=True)
