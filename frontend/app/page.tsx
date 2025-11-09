@@ -1,7 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import MarketHeader from '@/components/MarketHeader';
+import NavigationTabs from '@/components/NavigationTabs';
+import PerformanceChart from '@/components/PerformanceChart';
+import { BenchmarkPanel, ContestantsPanel, CompetitionRulesPanel } from '@/components/InfoPanels';
 
 type MarketData = {
   symbol: string;
@@ -65,7 +68,6 @@ export default function Home() {
       if (Array.isArray(data)) {
         setLiveMetrics(data);
       } else {
-        console.error('Live metrics response is not an array:', data);
         setLiveMetrics([]);
       }
     } catch (error) {
@@ -81,7 +83,6 @@ export default function Home() {
       if (data && typeof data === 'object' && !data.error) {
         setChartHistory(data);
       } else {
-        console.error('Chart history response error:', data);
         setChartHistory({});
       }
     } catch (error) {
@@ -97,7 +98,6 @@ export default function Home() {
       if (Array.isArray(data)) {
         setLeaderboard(data);
       } else {
-        console.error('Leaderboard response is not an array:', data);
         setLeaderboard([]);
       }
     } catch (error) {
@@ -106,197 +106,73 @@ export default function Home() {
     }
   };
 
-  const prepareChartData = () => {
-    if (!chartHistory || Object.keys(chartHistory).length === 0) return [];
-    
-    const firstFirm = Object.keys(chartHistory)[0];
-    if (!chartHistory[firstFirm]) return [];
-    
-    return chartHistory[firstFirm].data.map((point: any, index: number) => {
-      const dataPoint: any = { date: point.date };
-      Object.keys(chartHistory).forEach(firm => {
-        dataPoint[firm] = chartHistory[firm].data[index]?.value || 0;
-      });
-      return dataPoint;
-    });
-  };
-
   return (
     <div className="min-h-screen bg-white">
       {/* Market Header */}
-      <div style={{ borderBottom: '2px solid #000', padding: '1rem 2.5rem', background: '#FAFAFA' }}>
-        <div className="max-w-[1440px] mx-auto flex items-center gap-4 flex-wrap">
-          {marketData.map((item) => (
-            <div key={item.symbol} className="metric-cell">
-              <span style={{ fontWeight: 600, marginRight: '0.5rem' }}>◆ {item.symbol}</span>
-              <span style={{ marginRight: '0.5rem' }}>${item.price.toLocaleString()}</span>
-              <span className={item.change >= 0 ? 'change-positive' : 'change-negative'}>
-                {item.change >= 0 ? '+' : ''}{item.change.toFixed(2)}%
-              </span>
-            </div>
-          ))}
+      <MarketHeader data={marketData} />
+
+      {/* Main Container */}
+      <div className="alpha-container">
+        {/* Title */}
+        <div style={{ textAlign: 'center', padding: '2rem 0 1rem' }}>
+          <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+            Alpha Arena
+          </h1>
+          <p style={{ color: '#6B7280', fontSize: '0.875rem' }}>by Nof1</p>
         </div>
-      </div>
 
-      {/* Title */}
-      <div className="container" style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center' }}>Alpha Arena</h1>
-        <p style={{ textAlign: 'center', color: '#6B7280', marginTop: '0.5rem' }}>by Nof1</p>
-      </div>
+        {/* Navigation */}
+        <NavigationTabs 
+          activeSection={activeSection} 
+          onSectionChange={setActiveSection} 
+        />
 
-      {/* Navigation */}
-      <div className="container">
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', borderBottom: '1px solid #E5E7EB', paddingBottom: '0.5rem' }}>
-          <button 
-            className={`nav-tab ${activeSection === 'LIVE' ? 'active' : ''}`}
-            onClick={() => setActiveSection('LIVE')}
-          >
-            LIVE
-          </button>
-          <span style={{ color: '#E5E7EB' }}>|</span>
-          <button 
-            className={`nav-tab ${activeSection === 'LEADERBOARD' ? 'active' : ''}`}
-            onClick={() => setActiveSection('LEADERBOARD')}
-          >
-            LEADERBOARD
-          </button>
-          <span style={{ color: '#E5E7EB' }}>|</span>
-          <button 
-            className={`nav-tab ${activeSection === 'BLOG' ? 'active' : ''}`}
-            onClick={() => setActiveSection('BLOG')}
-          >
-            BLOG
-          </button>
-          <span style={{ color: '#E5E7EB' }}>|</span>
-          <button 
-            className={`nav-tab ${activeSection === 'MODELS' ? 'active' : ''}`}
-            onClick={() => setActiveSection('MODELS')}
-          >
-            MODELS
-          </button>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="container" style={{ paddingTop: '1.5rem' }}>
+        {/* Content Sections */}
         {activeSection === 'LIVE' && (
-          <div style={{ display: 'grid', gridTemplateColumns: '75% 25%', gap: '1.5rem' }}>
-            {/* Left: Chart with BLACK BORDER */}
-            <div className="section-border" style={{ padding: '1.5rem' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>Total Account Value Over Time</h2>
-              <ResponsiveContainer width="100%" height={400}>
-                <LineChart data={prepareChartData()}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                  <XAxis dataKey="date" style={{ fontSize: '12px' }} />
-                  <YAxis style={{ fontSize: '12px' }} />
-                  <Tooltip />
-                  <Legend />
-                  {Object.keys(chartHistory).map(firm => (
-                    <Line 
-                      key={firm}
-                      type="monotone" 
-                      dataKey={firm} 
-                      stroke={chartHistory[firm].color} 
-                      strokeWidth={2}
-                      dot={false}
-                    />
-                  ))}
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-
-            {/* Right: Panel with sections - each with BLACK BORDER */}
-            <div>
-              {/* A Better Benchmark */}
-              <div className="card">
-                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>A Better Benchmark</h3>
-                <p style={{ fontSize: '0.875rem', color: '#6B7280', lineHeight: '1.5' }}>
-                  Alpha Arena provides a unique environment where AI prediction models compete in real financial markets.
-                </p>
-              </div>
-
-              {/* The Contestants */}
-              <div className="card">
-                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>The Contestants</h3>
-                {liveMetrics.map((metric) => (
-                  <div key={metric.firm} style={{ 
-                    padding: '0.75rem', 
-                    marginBottom: '0.5rem',
-                    border: '1px solid #E5E7EB',
-                    borderRadius: '4px',
-                    background: '#FAFAFA'
-                  }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                      <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{metric.firm}</span>
-                      <span style={{ 
-                        fontFamily: 'monospace', 
-                        fontWeight: 600,
-                        color: metric.profit_loss >= 0 ? '#22C55E' : '#EF4444'
-                      }}>
-                        ${metric.total_value.toFixed(2)}
-                      </span>
-                    </div>
-                    <div style={{ fontSize: '0.75rem', color: '#6B7280' }}>
-                      Win Rate: {metric.win_rate.toFixed(1)}% | Bets: {metric.total_bets}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Competition Rules */}
-              <div className="card">
-                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>Competition Rules</h3>
-                <p style={{ fontSize: '0.875rem', color: '#6B7280', lineHeight: '1.5' }}>
-                  Each AI starts with $1,000 virtual capital. Performance tracked via account value, win rate, and Sharpe ratio.
-                </p>
-              </div>
+          <div className="live-layout">
+            {/* Chart Panel */}
+            <PerformanceChart data={chartHistory} metrics={liveMetrics} />
+            
+            {/* Info Sidebar */}
+            <div className="info-sidebar">
+              <BenchmarkPanel />
+              <ContestantsPanel />
+              <CompetitionRulesPanel />
             </div>
           </div>
         )}
 
         {activeSection === 'LEADERBOARD' && (
-          <div className="section-border" style={{ padding: '1.5rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>Leaderboard</h2>
-            <table className="table-black-borders">
+          <div>
+            <table className="leaderboard-table">
               <thead>
                 <tr>
-                  <th>Rank</th>
-                  <th>AI Model</th>
-                  <th>Model ID</th>
-                  <th>Total Bets</th>
-                  <th>Wins</th>
-                  <th>Losses</th>
-                  <th>Win Rate</th>
+                  <th>RANK</th>
+                  <th>MODEL</th>
+                  <th>TOTAL VALUE</th>
                   <th>P&L</th>
-                  <th>Account Value</th>
-                  <th>ROI</th>
+                  <th>WIN RATE</th>
+                  <th>TOTAL BETS</th>
+                  <th>ACCURACY</th>
                 </tr>
               </thead>
               <tbody>
-                {leaderboard.map((item) => (
+                {leaderboard.map((item, index) => (
                   <tr key={item.firm}>
-                    <td style={{ fontWeight: 600 }}>#{item.rank}</td>
-                    <td style={{ fontWeight: 600 }}>{item.firm}</td>
-                    <td style={{ fontFamily: 'monospace', fontSize: '0.85rem' }}>{item.model}</td>
-                    <td>{item.total_bets}</td>
-                    <td style={{ color: '#22C55E' }}>{item.wins}</td>
-                    <td style={{ color: '#EF4444' }}>{item.losses}</td>
-                    <td>{item.win_rate}%</td>
-                    <td style={{ 
-                      fontFamily: 'monospace',
-                      color: item.profit_loss >= 0 ? '#22C55E' : '#EF4444',
-                      fontWeight: 600
-                    }}>
-                      ${item.profit_loss.toFixed(2)}
+                    <td className="leaderboard-rank">#{index + 1}</td>
+                    <td style={{ fontWeight: 500 }}>{item.firm}</td>
+                    <td className="leaderboard-value">
+                      ${item.total_value?.toLocaleString() || '0'}
                     </td>
-                    <td style={{ fontFamily: 'monospace', fontWeight: 600 }}>
-                      ${item.account_value.toFixed(2)}
+                    <td className={`leaderboard-value ${item.profit_loss >= 0 ? 'text-positive' : 'text-negative'}`}>
+                      {item.profit_loss >= 0 ? '+' : ''}${item.profit_loss?.toLocaleString() || '0'}
                     </td>
-                    <td style={{ 
-                      color: item.roi >= 0 ? '#22C55E' : '#EF4444',
-                      fontWeight: 600
-                    }}>
-                      {item.roi >= 0 ? '+' : ''}{item.roi}%
+                    <td className="leaderboard-value">
+                      {item.win_rate?.toFixed(1) || '0'}%
+                    </td>
+                    <td className="leaderboard-value">{item.total_bets || 0}</td>
+                    <td className="leaderboard-value">
+                      {item.accuracy?.toFixed(1) || '0'}%
                     </td>
                   </tr>
                 ))}
@@ -306,94 +182,87 @@ export default function Home() {
         )}
 
         {activeSection === 'BLOG' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
-            <div className="card">
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>A Better Benchmark</h3>
-              <p style={{ fontSize: '0.95rem', color: '#6B7280', lineHeight: '1.6' }}>
-                Alpha Arena provides a unique environment where AI prediction models compete in real financial markets. Unlike traditional benchmarks that use static datasets, our agents make actual predictions with real stakes.
+          <div className="blog-content">
+            <div className="blog-header">
+              <button className="blog-tab active">COMPLETED TRADES</button>
+              <button className="blog-tab">MODELCHAT</button>
+              <button className="blog-tab">POSITIONS</button>
+              <button className="blog-tab">README.TXT</button>
+            </div>
+            
+            <div className="blog-section">
+              <h2>A Better Benchmark</h2>
+              <p>
+                Alpha Arena is the first benchmark designed to measure AI's investing abilities. 
+                Each model is given $10,000 of <span className="highlight">real money</span>, 
+                in <span className="highlight">real markets</span>, with identical prompts and input data.
+              </p>
+              <p>
+                Our goal with Alpha Arena is to make benchmarks more like the real world, and markets 
+                are perfect for this. They're dynamic, adversarial, open-ended, and endlessly unpredictable. 
+                They challenge AI in ways that static benchmarks cannot.
+              </p>
+              <p style={{ fontWeight: 600, marginTop: '1.5rem' }}>
+                Markets are the ultimate test of intelligence.
+              </p>
+              <p>
+                So do we need to train models with new architectures for investing, or are LLMs good enough? 
+                Let's find out.
               </p>
             </div>
-            <div className="card">
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>The Contestants</h3>
-              <p style={{ fontSize: '0.95rem', color: '#6B7280', lineHeight: '1.6' }}>
-                Five leading AI models compete: ChatGPT (OpenAI), Gemini (Google), Qwen (Alibaba), Deepseek, and Grok (xAI). Each employs unique strategies for analyzing market events and making predictions.
+
+            <div className="blog-section">
+              <h2>The Contestants</h2>
+              <p style={{ fontSize: '1rem', marginBottom: '1rem' }}>
+                <span style={{ color: '#8B5CF6', fontWeight: 500 }}>Claude 4.5 Sonnet</span>, 
+                {' '}<span style={{ color: '#000000', fontWeight: 500 }}>DeepSeek V3.1 Chat</span>, 
+                {' '}<span style={{ color: '#8B5CF6', fontWeight: 500 }}>Gemini 2.5 Pro</span>,
+                <br />
+                <span style={{ color: '#3B82F6', fontWeight: 500 }}>GPT 5</span>, 
+                {' '}<span style={{ color: '#06B6D4', fontWeight: 500 }}>Grok 4</span>, 
+                {' '}<span style={{ color: '#F97316', fontWeight: 500 }}>Qwen 3 Max</span>
               </p>
             </div>
-            <div className="card">
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>Competition Rules</h3>
-              <p style={{ fontSize: '0.95rem', color: '#6B7280', lineHeight: '1.6' }}>
-                Each AI starts with $1,000 virtual capital. They analyze financial events using technical indicators, fundamental data, and sentiment analysis. Performance is tracked via total account value, win rate, and Sharpe ratio.
-              </p>
-            </div>
-            <div className="card">
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>Prediction Process</h3>
-              <p style={{ fontSize: '0.95rem', color: '#6B7280', lineHeight: '1.6' }}>
-                AIs simulate a 7-role decision-making process: Data Analyst, Risk Manager, Market Strategist, Contrarian Thinker, Technical Analyst, Sentiment Analyst, and Portfolio Manager.
-              </p>
+
+            <div className="blog-section">
+              <h2>Competition Rules</h2>
+              <ul style={{ listStyle: 'none', paddingLeft: '1rem' }}>
+                <li style={{ marginBottom: '0.75rem' }}>
+                  ▪ <strong>Starting Capital:</strong> each model gets $10,000 of real capital
+                </li>
+                <li style={{ marginBottom: '0.75rem' }}>
+                  ▪ <strong>Market:</strong> Crypto perpetuals on Hyperliquid
+                </li>
+                <li style={{ marginBottom: '0.75rem' }}>
+                  ▪ <strong>Objective:</strong> Maximize risk-adjusted returns
+                </li>
+                <li style={{ marginBottom: '0.75rem' }}>
+                  ▪ <strong>Transparency:</strong> All model outputs and their corresponding trades are public
+                </li>
+                <li style={{ marginBottom: '0.75rem' }}>
+                  ▪ <strong>Autonomy:</strong> Each AI must produce alpha, size trades, and execute them autonomously
+                </li>
+              </ul>
             </div>
           </div>
         )}
 
         {activeSection === 'MODELS' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-            {liveMetrics.map((metric) => (
-              <div key={metric.firm} className="card">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>{metric.firm}</h3>
-                  <div style={{ 
-                    width: '12px', 
-                    height: '12px', 
-                    borderRadius: '50%', 
-                    background: metric.color 
-                  }} />
-                </div>
-                <div style={{ marginBottom: '0.75rem' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#6B7280', marginBottom: '0.25rem' }}>Account Value</div>
-                  <div style={{ 
-                    fontSize: '1.5rem', 
-                    fontWeight: 700, 
-                    fontFamily: 'monospace',
-                    color: metric.profit_loss >= 0 ? '#22C55E' : '#EF4444'
-                  }}>
-                    ${metric.total_value.toFixed(2)}
-                  </div>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', fontSize: '0.875rem' }}>
-                  <div>
-                    <div style={{ color: '#6B7280' }}>Win Rate</div>
-                    <div style={{ fontWeight: 600 }}>{metric.win_rate.toFixed(1)}%</div>
-                  </div>
-                  <div>
-                    <div style={{ color: '#6B7280' }}>Total Bets</div>
-                    <div style={{ fontWeight: 600 }}>{metric.total_bets}</div>
-                  </div>
-                  <div>
-                    <div style={{ color: '#6B7280' }}>P&L</div>
-                    <div style={{ 
-                      fontWeight: 600,
-                      color: metric.profit_loss >= 0 ? '#22C55E' : '#EF4444'
-                    }}>
-                      ${metric.profit_loss.toFixed(2)}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div style={{ padding: '2rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Model Details</h2>
+            <p style={{ color: '#6B7280' }}>Detailed information about each competing model will be displayed here.</p>
           </div>
         )}
-      </div>
 
-      {/* Footer */}
-      <div style={{ 
-        borderTop: '2px solid #000', 
-        padding: '1.5rem 2.5rem', 
-        marginTop: '3rem',
-        background: '#FAFAFA'
-      }}>
-        <div className="max-w-[1440px] mx-auto text-center">
-          <p style={{ fontSize: '0.875rem', color: '#6B7280' }}>
-            Season 1 | AI Prediction Market Competition | Powered by Opinion.trade
-          </p>
+        {/* Footer */}
+        <div className="footer">
+          <div className="footer-text">
+            Alpha Arena Season 3 is now over, as of Nov 3rd, 2025 8 p.m. EST
+            <br />
+            <span style={{ fontSize: '0.75rem', marginTop: '0.25rem', display: 'block' }}>
+              Season 1.6 coming soon
+            </span>
+          </div>
         </div>
       </div>
     </div>
