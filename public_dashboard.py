@@ -229,7 +229,9 @@ st.markdown("""
     /* Performance Capsule */
     .performance-capsule {
         background: var(--bg-card);
-        border: 1px solid var(--glass-border);
+        border-top: 1px solid var(--glass-border);
+        border-right: 1px solid var(--glass-border);
+        border-bottom: 1px solid var(--glass-border);
         border-radius: var(--radius-md);
         padding: var(--space-md);
         margin-bottom: var(--space-md);
@@ -507,18 +509,16 @@ def get_ai_real_data(ai_name):
                 resolved_bets = bets_until_date[bets_until_date['actual_result'].notna()]
                 active_bets = bets_until_date[bets_until_date['actual_result'].isna()]
                 
-                # For resolved bets: contribution = profit_loss - bet_size
-                # (profit_loss includes stake return, so subtract bet to get net gain/loss)
-                # Win: profit_loss=$180, bet=$100 → contribution=+$80
-                # Loss: profit_loss=$0, bet=$100 → contribution=-$100
-                resolved_contribution = (
-                    resolved_bets['profit_loss'].fillna(0) - resolved_bets['bet_size']
-                ).sum()
+                # For resolved bets: profit_loss is ALREADY the net bankroll delta
+                # (includes full stake loss for losses, net profit for wins)
+                # Win: profit_loss = +$80 (net gain)
+                # Loss: profit_loss = -$100 (full stake loss)
+                resolved_contribution = resolved_bets['profit_loss'].fillna(0).sum()
                 
                 # For active bets: lock the bet_size
                 active_locked = active_bets['bet_size'].sum()
                 
-                # Account value = initial + net gains from resolved - active locked funds
+                # Account value = initial + net P&L from resolved - active locked funds
                 account_value = initial_bankroll + resolved_contribution - active_locked
                 values.append(max(0, account_value))  # Can't go below 0
         
@@ -749,7 +749,7 @@ if st.session_state.current_view == 'LIVE':
             pnl_color = '#4FD1C5' if pnl >= 0 else '#F2555A'
             
             st.markdown(f"""
-            <div class="performance-capsule" style="border-left: 3px solid {color};">
+            <div class="performance-capsule" style="box-shadow: inset 3px 0 0 {color}, 0 4px 16px rgba(0, 0, 0, 0.2) !important;">
                 <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
                     <div style="display: flex; align-items: center; gap: 0.75rem;">
                         <div style="font-size: 1.5rem; font-weight: 700; color: var(--text-tertiary); font-family: 'Space Grotesk', sans-serif;">#{idx+1}</div>
