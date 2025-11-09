@@ -834,7 +834,7 @@ with tab3:
                     with st.spinner("Collecting..."):
                         alpha_vantage_key = os.environ.get("ALPHA_VANTAGE_API_KEY")
                         if not alpha_vantage_key:
-                            st.error("⚠️ Alpha Vantage API Key not configured. Please configure it in secrets.")
+                            st.error("Alpha Vantage API Key not configured. Please configure it in secrets.")
                         else:
                             collector = AlphaVantageCollector(alpha_vantage_key)
                             st.session_state.technical_data = collector.get_technical_indicators(symbol)
@@ -883,42 +883,42 @@ with tab3:
         st.divider()
         
         with st.container():
-            st.markdown("### 📋 Collected Data Reports")
+            st.markdown("## Collected Data Reports")
             
             col1, col2, col3 = st.columns(3)
             
             with col1:
                 if st.session_state.technical_data:
-                    with st.expander("📊 View Technical Report", expanded=False):
+                    with st.expander("View Technical Report", expanded=False):
                         technical_report = format_technical_report(st.session_state.technical_data)
                         st.text(technical_report)
             
             with col2:
                 if st.session_state.fundamental_data:
-                    with st.expander("📈 View Fundamental Report", expanded=False):
+                    with st.expander("View Fundamental Report", expanded=False):
                         fundamental_report = format_fundamental_report(st.session_state.fundamental_data)
                         st.text(fundamental_report)
             
             with col3:
                 if st.session_state.sentiment_data:
-                    with st.expander("💬 View Sentiment Report", expanded=False):
+                    with st.expander("View Sentiment Report", expanded=False):
                         sentiment_report = format_sentiment_report(st.session_state.sentiment_data)
                         st.text(sentiment_report)
     
     st.divider()
     
     with st.container():
-        st.markdown("### 🚀 Step 3: Run Complete Analysis")
+        st.markdown("## Step 3: Run Complete Analysis")
         st.caption("All 5 firms will analyze the event with the collected data")
         
         col1, col2, col3 = st.columns([1, 2, 1])
         
         with col2:
-            if st.button("🚀 Run Analysis with All 5 Firms", type="primary", use_container_width=True):
+            if st.button("Run Analysis with All 5 Firms", type="primary", use_container_width=True):
                 if not event_description:
-                    st.error("⚠️ Please enter the event description")
+                    st.error("Please enter the event description")
                 elif not (st.session_state.technical_data or st.session_state.fundamental_data or st.session_state.sentiment_data):
-                    st.error("⚠️ Collect at least one type of data before continuing")
+                    st.error("Collect at least one type of data before continuing")
                 else:
                     technical_report = format_technical_report(st.session_state.technical_data) if st.session_state.technical_data else "Not available"
                     fundamental_report = format_fundamental_report(st.session_state.fundamental_data) if st.session_state.fundamental_data else "Not available"
@@ -932,7 +932,7 @@ with tab3:
                     status_text = st.empty()
                     
                     for i, (firm_name, firm) in enumerate(firms.items()):
-                        status_text.text(f"🔄 Running analysis with {firm_name}...")
+                        status_text.text(f"Running analysis with {firm_name}...")
                         
                         prompt = create_trading_prompt(
                             event_description=event_description,
@@ -982,17 +982,17 @@ with tab3:
                     
                     status_text.empty()
                     progress_bar.empty()
-                    st.success("✅ Analysis completed! Review the results in the following tabs")
+                    st.success("Analysis completed! Review the results in the following tabs")
                     st.balloons()
 
 with tab4:
-    st.header("🔍 Transparency Panel - Reasoning from Each AI")
+    st.header("Transparency Panel - Reasoning from Each AI")
     
     if not st.session_state.predictions:
         st.info("First run the analysis in the 'New Prediction' tab to see each firm's reasoning.")
     else:
         for firm_name, prediction in st.session_state.predictions.items():
-            with st.expander(f"🏢 {firm_name}", expanded=False):
+            with st.expander(f"{firm_name}", expanded=False):
                 if 'error' in prediction:
                     st.error(f"Error: {prediction['error']}")
                     if 'note' in prediction:
@@ -1009,13 +1009,13 @@ with tab4:
                     
                     st.markdown("---")
                     
-                    st.markdown("### 📊 STAGE I: Analytical Synthesis")
+                    st.markdown("## STAGE I: Analytical Synthesis")
                     st.info(prediction.get('analisis_sintesis', 'Not available'))
                     
-                    st.markdown("### 💭 STAGE II: Bullish vs Bearish Debate")
+                    st.markdown("## STAGE II: Bullish vs Bearish Debate")
                     st.warning(prediction.get('debate_bullish_bearish', 'Not available'))
                     
-                    st.markdown("### ⚖️ STAGE III: Risk Adjustment and Final Decision")
+                    st.markdown("## STAGE III: Risk Adjustment and Final Decision")
                     st.success(prediction.get('ajuste_riesgo_justificacion', 'Not available'))
                     
                     st.markdown("---")
@@ -1027,10 +1027,10 @@ with tab4:
                         st.metric("Estimated Cost", f"${prediction.get('estimated_cost', 0):.4f}")
 
 with tab5:
-    st.header("📊 Comparative Firm Dashboard")
+    st.header("Comparative Firm Dashboard")
     
     if st.session_state.predictions:
-        st.subheader("🎯 Current Predictions")
+        st.subheader("Current Predictions")
         
         predictions_df = []
         for firm_name, pred in st.session_state.predictions.items():
@@ -1088,7 +1088,7 @@ with tab5:
             st.dataframe(df, use_container_width=True)
     
     st.markdown("---")
-    st.subheader("🏆 Historical Firm Performance")
+    st.subheader("Historical Firm Performance")
     
     performances = st.session_state.db.get_all_firm_performances()
     
@@ -1123,12 +1123,12 @@ with tab5:
         st.info("No historical data yet. Predictions will be saved automatically.")
 
 with tab6:
-    st.header("🤖 Recommendations & Prediction Consensus")
+    st.header("Recommendations & Prediction Consensus")
     
     if not st.session_state.predictions:
         st.info("First run the analysis to get recommendations.")
     else:
-        st.subheader("🎯 Firm Recommendation Based on Historical Data")
+        st.subheader("Firm Recommendation Based on Historical Data")
         
         recommendation = st.session_state.recommender.get_best_firm_recommendation()
         
@@ -1149,7 +1149,7 @@ with tab6:
         
         st.markdown("---")
         
-        st.subheader("🤝 Weighted Consensus Prediction")
+        st.subheader("Weighted Consensus Prediction")
         
         consensus = st.session_state.recommender.calculate_consensus_prediction(st.session_state.predictions)
         
@@ -1171,15 +1171,15 @@ with tab6:
             
             st.markdown("**Interpretation:**")
             if consensus['confidence'] > 70:
-                st.success("✅ High level of agreement among firms. Reliable consensus prediction.")
+                st.success("High level of agreement among firms. Reliable consensus prediction.")
             elif consensus['confidence'] > 40:
-                st.warning("⚠️ Moderate level of agreement. Some divergence among firms.")
+                st.warning("Moderate level of agreement. Some divergence among firms.")
             else:
-                st.error("❌ Low level of agreement. Firms have very different opinions.")
+                st.error("Low level of agreement. Firms have very different opinions.")
             
             st.markdown("---")
             
-            st.subheader("📊 Consensus Visualization")
+            st.subheader("Consensus Visualization")
             
             if consensus['individual_probabilities']:
                 firms = list(consensus['individual_probabilities'].keys())
@@ -1216,7 +1216,7 @@ with tab6:
         
         st.markdown("---")
         
-        st.subheader("📈 Reasoning Pattern Analysis")
+        st.subheader("Reasoning Pattern Analysis")
         
         pattern_analysis = st.session_state.recommender.analyze_reasoning_patterns()
         
@@ -1250,7 +1250,7 @@ with tab6:
         
         st.markdown("---")
         
-        st.subheader("🏆 Detailed Attribution Report")
+        st.subheader("Detailed Attribution Report")
         
         attribution = st.session_state.recommender.get_firm_attribution_report()
         
@@ -1295,7 +1295,7 @@ with tab6:
             st.info("No attribution data available. Record results to view this report.")
 
 with tab7:
-    st.header("📤 Submit Prediction to Opinion.trade")
+    st.header("Submit Prediction to Opinion.trade")
     
     if not st.session_state.predictions:
         st.info("First run the analysis in the 'New Prediction' tab to submit predictions.")
@@ -1303,7 +1303,7 @@ with tab7:
         valid_predictions = {k: v for k, v in st.session_state.predictions.items() if 'error' not in v}
         
         if valid_predictions:
-            st.subheader("📊 Select Which Prediction to Submit")
+            st.subheader("Select Which Prediction to Submit")
             
             selected_firm = st.selectbox(
                 "Firm",
@@ -1330,14 +1330,14 @@ with tab7:
                 
                 st.markdown("---")
                 
-                with st.expander("📝 View complete reasoning", expanded=False):
+                with st.expander("View complete reasoning", expanded=False):
                     st.markdown("**Analytical Synthesis:**")
                     st.info(prediction.get('analisis_sintesis', 'Not available'))
                     st.markdown("**Debate Conclusion:**")
                     st.warning(prediction.get('debate_bullish_bearish', 'Not available')[:300] + "...")
                 
                 st.markdown("---")
-                st.subheader("🎯 Submission Configuration")
+                st.subheader("Submission Configuration")
                 
                 col1, col2 = st.columns(2)
                 
@@ -1360,7 +1360,7 @@ with tab7:
                 
                 st.markdown("---")
                 
-                if st.button("🚀 Submit Prediction to Opinion.trade", type="primary", use_container_width=True):
+                if st.button("Submit Prediction to Opinion.trade", type="primary", use_container_width=True):
                     if not event_id:
                         st.error("Please enter the event ID")
                     else:
@@ -1379,7 +1379,7 @@ with tab7:
                             result = api.submit_prediction(submission_data)
                             
                             if result.get('success'):
-                                st.success(f"✅ Prediction submitted successfully!")
+                                st.success(f"Prediction submitted successfully!")
                                 st.info(f"**Prediction ID:** {result.get('prediction_id', 'N/A')}")
                                 st.balloons()
                                 
@@ -1391,12 +1391,12 @@ with tab7:
                                 3. Enter the actual result (TRUE/FALSE) to update the firm's metrics
                                 """)
                             else:
-                                st.error(f"❌ Error submitting prediction: {result.get('message', 'Unknown error')}")
+                                st.error(f"Error submitting prediction: {result.get('message', 'Unknown error')}")
                                 st.warning(f"Details: {result.get('error', '')}")
                 
                 st.markdown("---")
                 
-                with st.expander("💾 Download JSON (optional)", expanded=False):
+                with st.expander("Download JSON (optional)", expanded=False):
                     export_data = {
                         "firma_generadora": selected_firm,
                         "fecha_prediccion": prediction.get('fecha_prediccion', datetime.now().strftime('%Y-%m-%d')),
@@ -1414,7 +1414,7 @@ with tab7:
                     json_str = json.dumps(export_data, indent=2, ensure_ascii=False)
                     
                     st.download_button(
-                        label="💾 Download JSON",
+                        label="Download JSON",
                         data=json_str,
                         file_name=f"prediction_{selected_firm}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
                         mime="application/json"
@@ -1423,7 +1423,7 @@ with tab7:
             st.warning("No valid predictions to submit. All firms reported errors.")
 
 with tab8:
-    st.header("📝 Record Prediction Results")
+    st.header("Record Prediction Results")
     
     st.markdown("""
     Use this interface to record the actual results of submitted predictions.
@@ -1437,12 +1437,12 @@ with tab8:
     unresolved_predictions = [p for p in recent_predictions if p['actual_result'] is None]
     
     if not unresolved_predictions:
-        st.info("✅ No pending predictions to resolve. All recent predictions already have recorded results.")
+        st.info("No pending predictions to resolve. All recent predictions already have recorded results.")
     else:
-        st.subheader(f"📋 Pending Predictions ({len(unresolved_predictions)})")
+        st.subheader(f"Pending Predictions ({len(unresolved_predictions)})")
         
         for pred in unresolved_predictions:
-            with st.expander(f"🏢 {pred['firm_name']} - {pred['event_description'][:60]}...", expanded=False):
+            with st.expander(f"{pred['firm_name']} - {pred['event_description'][:60]}...", expanded=False):
                 col1, col2, col3 = st.columns(3)
                 
                 with col1:
@@ -1481,17 +1481,17 @@ with tab8:
                 
                 with col3:
                     if actual_result is not None:
-                        if st.button("💾 Save Result", key=f"save_{pred['id']}", type="primary"):
+                        if st.button("Save Result", key=f"save_{pred['id']}", type="primary"):
                             st.session_state.db.update_prediction_result(
                                 pred['id'],
                                 actual_result,
                                 profit_loss
                             )
-                            st.success("✅ Result saved successfully!")
+                            st.success("Result saved successfully!")
                             st.rerun()
     
     st.markdown("---")
-    st.subheader("📊 Complete Prediction History")
+    st.subheader("Complete Prediction History")
     
     all_predictions = st.session_state.db.get_recent_predictions(limit=100)
     
@@ -1504,8 +1504,8 @@ with tab8:
         
         df['correcto'] = df.apply(
             lambda row: 'N/A' if row['actual_result'] is None else 
-            ('✅' if (row['probability'] >= 0.5 and row['actual_result'] == 1) or 
-                    (row['probability'] < 0.5 and row['actual_result'] == 0) else '❌'),
+            ('Yes' if (row['probability'] >= 0.5 and row['actual_result'] == 1) or 
+                    (row['probability'] < 0.5 and row['actual_result'] == 0) else 'No'),
             axis=1
         )
         
@@ -1527,22 +1527,22 @@ with tab8:
                 total_pl = resolved['profit_loss'].sum()
                 st.metric("Total P/L", f"${total_pl:,.2f}")
             with col3:
-                accuracy = (resolved['correcto'] == '✅').sum() / len(resolved) * 100
+                accuracy = (resolved['correcto'] == 'Yes').sum() / len(resolved) * 100
                 st.metric("Overall Accuracy", f"{accuracy:.1f}%")
     else:
         st.info("No predictions recorded yet.")
 
-st.sidebar.title("⚙️ Configuration")
+st.sidebar.title("Configuration")
 
-with st.sidebar.expander("🔑 Configured API Keys"):
-    st.write("✅ Alpha Vantage:", "Configured" if os.environ.get("ALPHA_VANTAGE_API_KEY") else "❌ Not configured")
-    st.write("✅ OpenAI (AI Int.):", "Configured" if os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY") else "❌ Not configured")
-    st.write("✅ Gemini (AI Int.):", "Configured" if os.environ.get("AI_INTEGRATIONS_GEMINI_API_KEY") else "❌ Not configured")
-    st.write("✅ Qwen:", "Configured" if os.environ.get("QWEN_API_KEY") else "⚠️ Optional")
-    st.write("✅ Deepseek:", "Configured" if os.environ.get("DEEPSEEK_API_KEY") else "⚠️ Optional")
-    st.write("✅ Grok (xAI):", "Configured" if os.environ.get("XAI_API_KEY") else "⚠️ Optional")
-    st.write("✅ Reddit:", "Configured" if (os.environ.get("REDDIT_CLIENT_ID") and os.environ.get("REDDIT_CLIENT_SECRET")) else "⚠️ Optional")
-    st.write("✅ Opinion.trade:", "Configured" if os.environ.get("OPINION_TRADE_API_KEY") else "⚠️ Pending")
+with st.sidebar.expander("Configured API Keys"):
+    st.write("Alpha Vantage:", "Configured" if os.environ.get("ALPHA_VANTAGE_API_KEY") else "Not configured")
+    st.write("OpenAI (AI Int.):", "Configured" if os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY") else "Not configured")
+    st.write("Gemini (AI Int.):", "Configured" if os.environ.get("AI_INTEGRATIONS_GEMINI_API_KEY") else "Not configured")
+    st.write("Qwen:", "Configured" if os.environ.get("QWEN_API_KEY") else "Optional")
+    st.write("Deepseek:", "Configured" if os.environ.get("DEEPSEEK_API_KEY") else "Optional")
+    st.write("Grok (xAI):", "Configured" if os.environ.get("XAI_API_KEY") else "Optional")
+    st.write("Reddit:", "Configured" if (os.environ.get("REDDIT_CLIENT_ID") and os.environ.get("REDDIT_CLIENT_SECRET")) else "Optional")
+    st.write("Opinion.trade:", "Configured" if os.environ.get("OPINION_TRADE_API_KEY") else "Pending")
 
 st.sidebar.markdown("---")
 st.sidebar.info("""
