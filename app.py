@@ -388,10 +388,16 @@ def get_historical_data():
     """Get 30-day historical performance for each AI."""
     historical_data = {}
     
+    # Get all firm performances
+    all_firms = db.get_all_firm_performances()
+    firm_data = {f['firm_name']: f for f in all_firms}
+    
     for ai_name in AI_COLORS.keys():
         # Get current portfolio value
-        portfolio = db.get_virtual_portfolio(ai_name)
-        current_value = portfolio.get('account_value', 10000.0)
+        current_value = 10000.0
+        if ai_name in firm_data:
+            cb = firm_data[ai_name].get('current_balance', 10000.0)
+            current_value = float(cb) if cb else 10000.0
         
         # Generate 30-day historical data (simulate for now)
         dates = [(datetime.now() - timedelta(days=i)).strftime('%Y-%m-%d') for i in range(30, -1, -1)]

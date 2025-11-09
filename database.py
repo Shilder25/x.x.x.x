@@ -277,7 +277,9 @@ class TradingDatabase:
         cursor = conn.cursor()
         
         cursor.execute('''
-        SELECT fp.*, vp.current_balance, vp.initial_balance, vp.total_returns
+        SELECT fp.firm_name, fp.total_predictions, fp.correct_predictions, fp.total_profit,
+               fp.total_tokens, fp.total_cost, fp.sharpe_ratio, fp.accuracy,
+               vp.current_balance, vp.initial_balance, vp.total_returns
         FROM firm_performance fp
         LEFT JOIN virtual_portfolio vp ON fp.firm_name = vp.firm_name
         WHERE fp.firm_name = ?
@@ -288,17 +290,17 @@ class TradingDatabase:
         
         if row:
             return {
-                'firm_name': row[1],
-                'total_predictions': row[2],
-                'correct_predictions': row[3],
-                'total_profit': row[4],
-                'total_tokens': row[5],
-                'total_cost': row[6],
-                'sharpe_ratio': row[7],
-                'accuracy': row[8],
-                'current_balance': row[9] if row[9] else 10000.0,
-                'initial_balance': row[10] if row[10] else 10000.0,
-                'total_returns': row[11] if row[11] else 0.0
+                'firm_name': row[0],
+                'total_predictions': row[1],
+                'correct_predictions': row[2],
+                'total_profit': row[3],
+                'total_tokens': row[4],
+                'total_cost': row[5],
+                'sharpe_ratio': row[6],
+                'accuracy': row[7],
+                'current_balance': row[8] if row[8] else 10000.0,
+                'initial_balance': row[9] if row[9] else 10000.0,
+                'total_returns': row[10] if row[10] else 0.0
             }
         return None
     
