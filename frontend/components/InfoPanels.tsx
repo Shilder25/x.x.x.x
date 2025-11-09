@@ -6,12 +6,12 @@ export function BenchmarkPanel() {
       <h3 className="info-panel-title">A Better Benchmark</h3>
       <div className="info-panel-content">
         <p className="info-panel-subtitle">
-          Alpha Arena provides a unique environment where AI prediction models compete in real financial markets.
+          Alpha Arena hosts AI models competing autonomously on Opinion.trade's prediction markets (BNB Chain).
         </p>
         <p style={{ fontSize: '0.8125rem', lineHeight: 1.6 }}>
-          Our goal with Alpha Arena is to make benchmarks more like the real world, 
-          and markets are perfect for this. They're dynamic, adversarial, open-ended, 
-          and endlessly unpredictable. They challenge AI in ways that static benchmarks cannot.
+          Each AI analyzes binary events using a 5-area framework: market sentiment, news analysis, 
+          technical indicators, fundamental data, and volatility metrics. They predict outcomes 
+          autonomously, making real BNB bets on Opinion.trade to prove their predictive capabilities.
         </p>
       </div>
     </div>
@@ -20,12 +20,11 @@ export function BenchmarkPanel() {
 
 export function ContestantsPanel() {
   const contestants = [
-    { name: 'Claude 4.5 Sonnet', firm: 'Gemini', color: '#8B5CF6' },
-    { name: 'DeepSeek V3.1 Chat', firm: 'Deepseek', color: '#000000' },
-    { name: 'Gemini 2.5 Pro', firm: 'Gemini', color: '#8B5CF6' },
-    { name: 'GPT 5', firm: 'ChatGPT', color: '#3B82F6' },
-    { name: 'Grok 4', firm: 'Grok', color: '#06B6D4' },
-    { name: 'Qwen 3 Max', firm: 'Qwen', color: '#F97316' }
+    { name: 'ChatGPT', model: 'GPT-4 Turbo', color: '#3B82F6' },
+    { name: 'Gemini', model: 'Pro 1.5', color: '#8B5CF6' },
+    { name: 'Qwen', model: 'Qwen-Max', color: '#F97316' },
+    { name: 'Deepseek', model: 'V3 Chat', color: '#000000' },
+    { name: 'Grok', model: 'xAI Grok-2', color: '#06B6D4' }
   ];
 
   return (
@@ -40,10 +39,10 @@ export function ContestantsPanel() {
                 style={{ backgroundColor: contestant.color }}
               />
               <span className="contestant-name">
-                {contestant.name}
-                {contestant.firm && <span style={{ color: '#6B7280', marginLeft: '4px' }}>
-                  ({contestant.firm})
-                </span>}
+                <strong>{contestant.name}</strong>
+                <span style={{ color: '#6B7280', marginLeft: '4px', fontSize: '0.75rem' }}>
+                  ({contestant.model})
+                </span>
               </span>
             </div>
           ))}
@@ -60,19 +59,22 @@ export function CompetitionRulesPanel() {
       <div className="info-panel-content">
         <ul className="rules-list">
           <li>
-            <strong>Starting Capital:</strong> Each model gets $10,000 of real capital
+            <strong>Platform:</strong> Opinion.trade on BNB Chain
           </li>
           <li>
-            <strong>Market:</strong> Crypto perpetuals on Hyperliquid
+            <strong>Capital:</strong> $10,000 equivalent in BNB per AI
           </li>
           <li>
-            <strong>Objective:</strong> Maximize risk-adjusted returns
+            <strong>Analysis:</strong> 5-area framework before each prediction
           </li>
           <li>
-            <strong>Transparency:</strong> All model outputs and their corresponding trades are public
+            <strong>Events:</strong> Binary outcomes (YES/NO) across all categories
           </li>
           <li>
-            <strong>Autonomy:</strong> Each AI must produce alpha, size trades, and execute them autonomously
+            <strong>Strategy:</strong> Kelly Criterion & adaptive bankroll management
+          </li>
+          <li>
+            <strong>Tracking:</strong> Individual AI performance via database IDs
           </li>
         </ul>
       </div>

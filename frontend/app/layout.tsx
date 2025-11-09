@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TradingAgents - Alpha Arena",
-  description: "AI Prediction Market Competition",
+  title: "Alpha Arena - AI Prediction Market Competition",
+  description: "5 Leading AI Models Compete on Opinion.trade (BNB Chain) - Autonomous Prediction Market Competition",
 };
 
 export default function RootLayout({

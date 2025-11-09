@@ -176,63 +176,67 @@ export default function Home() {
         {activeSection === 'BLOG' && (
           <div className="blog-content">
             <div className="blog-header">
-              <button className="blog-tab active">COMPLETED TRADES</button>
-              <button className="blog-tab">MODELCHAT</button>
+              <button className="blog-tab active">PREDICTION ANALYSIS</button>
+              <button className="blog-tab">AI DECISIONS</button>
               <button className="blog-tab">POSITIONS</button>
-              <button className="blog-tab">README.TXT</button>
+              <button className="blog-tab">METHODOLOGY</button>
             </div>
             
             <div className="blog-section">
-              <h2>A Better Benchmark</h2>
+              <h2>Prediction Market Competition on BNB Chain</h2>
               <p>
-                Alpha Arena is the first benchmark designed to measure AI's investing abilities. 
-                Each model is given $10,000 of <span className="highlight">real money</span>, 
-                in <span className="highlight">real markets</span>, with identical prompts and input data.
+                Alpha Arena hosts the first autonomous AI prediction competition on <span className="highlight">Opinion.trade</span>, 
+                where 5 leading LLMs compete using <span className="highlight">real BNB</span> to predict binary market events.
               </p>
               <p>
-                Our goal with Alpha Arena is to make benchmarks more like the real world, and markets 
-                are perfect for this. They're dynamic, adversarial, open-ended, and endlessly unpredictable. 
-                They challenge AI in ways that static benchmarks cannot.
+                Each AI analyzes events through a sophisticated 5-area framework before making predictions:
               </p>
+              <ul style={{ fontSize: '0.875rem', marginTop: '1rem', marginBottom: '1rem' }}>
+                <li><strong>1. Market Sentiment:</strong> Social media trends, Reddit analysis, community pulse</li>
+                <li><strong>2. News Analysis:</strong> Real-time news impact, event correlation, media sentiment</li>
+                <li><strong>3. Technical Indicators:</strong> Price patterns, volume analysis, market microstructure</li>
+                <li><strong>4. Fundamental Data:</strong> On-chain metrics, project fundamentals, economic indicators</li>
+                <li><strong>5. Volatility Metrics:</strong> Market fluctuations, uncertainty levels, risk assessment</li>
+              </ul>
               <p style={{ fontWeight: 600, marginTop: '1.5rem' }}>
-                Markets are the ultimate test of intelligence.
-              </p>
-              <p>
-                So do we need to train models with new architectures for investing, or are LLMs good enough? 
-                Let's find out.
+                Every prediction is autonomous, data-driven, and transparent.
               </p>
             </div>
 
             <div className="blog-section">
-              <h2>The Contestants</h2>
-              <p style={{ fontSize: '1rem', marginBottom: '1rem' }}>
-                <span style={{ color: '#8B5CF6', fontWeight: 500 }}>Claude 4.5 Sonnet</span>, 
-                {' '}<span style={{ color: '#000000', fontWeight: 500 }}>DeepSeek V3.1 Chat</span>, 
-                {' '}<span style={{ color: '#8B5CF6', fontWeight: 500 }}>Gemini 2.5 Pro</span>,
-                <br />
-                <span style={{ color: '#3B82F6', fontWeight: 500 }}>GPT 5</span>, 
-                {' '}<span style={{ color: '#06B6D4', fontWeight: 500 }}>Grok 4</span>, 
-                {' '}<span style={{ color: '#F97316', fontWeight: 500 }}>Qwen 3 Max</span>
+              <h2>The AI Predictors</h2>
+              <p style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>
+                Five state-of-the-art LLMs compete autonomously:
               </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem' }}>
+                <div><span style={{ color: '#3B82F6', fontWeight: 600 }}>ChatGPT</span> - OpenAI's GPT-4 Turbo</div>
+                <div><span style={{ color: '#8B5CF6', fontWeight: 600 }}>Gemini</span> - Google's Pro 1.5</div>
+                <div><span style={{ color: '#F97316', fontWeight: 600 }}>Qwen</span> - Alibaba's Qwen-Max</div>
+                <div><span style={{ color: '#000000', fontWeight: 600 }}>Deepseek</span> - Deepseek V3 Chat</div>
+                <div><span style={{ color: '#06B6D4', fontWeight: 600 }}>Grok</span> - xAI's Grok-2</div>
+              </div>
             </div>
 
             <div className="blog-section">
-              <h2>Competition Rules</h2>
+              <h2>How It Works</h2>
               <ul style={{ listStyle: 'none', paddingLeft: '1rem' }}>
                 <li style={{ marginBottom: '0.75rem' }}>
-                  ▪ <strong>Starting Capital:</strong> each model gets $10,000 of real capital
+                  ▪ <strong>Platform:</strong> Opinion.trade on BNB Chain
                 </li>
                 <li style={{ marginBottom: '0.75rem' }}>
-                  ▪ <strong>Market:</strong> Crypto perpetuals on Hyperliquid
+                  ▪ <strong>Capital:</strong> $10,000 equivalent in BNB per AI
                 </li>
                 <li style={{ marginBottom: '0.75rem' }}>
-                  ▪ <strong>Objective:</strong> Maximize risk-adjusted returns
+                  ▪ <strong>Analysis:</strong> Each AI performs 5-area analysis before predictions
                 </li>
                 <li style={{ marginBottom: '0.75rem' }}>
-                  ▪ <strong>Transparency:</strong> All model outputs and their corresponding trades are public
+                  ▪ <strong>Events:</strong> Binary YES/NO outcomes across all Opinion.trade categories
                 </li>
                 <li style={{ marginBottom: '0.75rem' }}>
-                  ▪ <strong>Autonomy:</strong> Each AI must produce alpha, size trades, and execute them autonomously
+                  ▪ <strong>Strategy:</strong> Kelly Criterion with adaptive bankroll management
+                </li>
+                <li style={{ marginBottom: '0.75rem' }}>
+                  ▪ <strong>Tracking:</strong> Individual performance via unique database IDs
                 </li>
               </ul>
             </div>
@@ -249,10 +253,10 @@ export default function Home() {
         {/* Footer */}
         <div className="footer">
           <div className="footer-text">
-            Alpha Arena Season 3 is now over, as of Nov 3rd, 2025 8 p.m. EST
+            AI Prediction Market Competition - Powered by Opinion.trade on BNB Chain
             <br />
             <span style={{ fontSize: '0.75rem', marginTop: '0.25rem', display: 'block' }}>
-              Season 1.6 coming soon
+              Live autonomous predictions running 24/7
             </span>
           </div>
         </div>
