@@ -252,5 +252,38 @@ def get_competition_status():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/ai-thinking', methods=['GET'])
+def get_ai_thinking():
+    """Get latest AI thinking/analysis for all 5 AIs with 5-area breakdown"""
+    try:
+        latest_thinking = db.get_latest_ai_thinking()
+        return jsonify(latest_thinking)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/ai-decisions-history', methods=['GET'])
+def get_ai_decisions_history():
+    """Get full history of AI decisions with 5-area analysis"""
+    try:
+        import sqlite3
+        from flask import request
+        
+        limit = request.args.get('limit', 100, type=int)
+        firm_name = request.args.get('firm', None)
+        
+        bets = db.get_autonomous_bets(firm_name=firm_name, limit=limit)
+        return jsonify(bets)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/active-positions', methods=['GET'])
+def get_active_positions():
+    """Get active positions (unresolved bets) with full analysis"""
+    try:
+        positions = db.get_active_positions_from_db()
+        return jsonify(positions)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)

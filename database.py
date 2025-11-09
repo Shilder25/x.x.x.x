@@ -72,6 +72,16 @@ class TradingDatabase:
             adaptation_level INTEGER,
             betting_strategy TEXT,
             reasoning TEXT,
+            sentiment_score REAL,
+            sentiment_analysis TEXT,
+            news_score REAL,
+            news_analysis TEXT,
+            technical_score REAL,
+            technical_analysis TEXT,
+            fundamental_score REAL,
+            fundamental_analysis TEXT,
+            volatility_score REAL,
+            volatility_analysis TEXT,
             actual_result INTEGER,
             profit_loss REAL,
             execution_timestamp TEXT NOT NULL,
@@ -127,6 +137,22 @@ class TradingDatabase:
             ALTER TABLE firm_performance ADD COLUMN sharpe_ratio REAL DEFAULT 0.0
             ''')
             print("Database migrated: Added sharpe_ratio column to firm_performance table")
+        
+        cursor.execute("PRAGMA table_info(autonomous_bets)")
+        bet_columns = [row[1] for row in cursor.fetchall()]
+        
+        if 'sentiment_score' not in bet_columns:
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN sentiment_score REAL')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN sentiment_analysis TEXT')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN news_score REAL')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN news_analysis TEXT')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN technical_score REAL')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN technical_analysis TEXT')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN fundamental_score REAL')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN fundamental_analysis TEXT')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN volatility_score REAL')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN volatility_analysis TEXT')
+            print("Database migrated: Added 5-area analysis columns to autonomous_bets table")
     
     def initialize_firm_portfolio(self, firm_name: str, initial_balance: float = 10000.0):
         conn = sqlite3.connect(self.db_path)
@@ -359,7 +385,7 @@ class TradingDatabase:
     
     def save_autonomous_bet(self, bet_data: Dict) -> int:
         """
-        Guarda una apuesta autónoma en la base de datos.
+        Guarda una apuesta autónoma en la base de datos con análisis de 5 áreas.
         """
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
@@ -368,8 +394,14 @@ class TradingDatabase:
         INSERT INTO autonomous_bets (
             firm_name, event_id, event_description, category, bet_size,
             probability, confidence, expected_value, risk_level, adaptation_level,
-            betting_strategy, reasoning, execution_timestamp, simulation_mode, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            betting_strategy, reasoning,
+            sentiment_score, sentiment_analysis,
+            news_score, news_analysis,
+            technical_score, technical_analysis,
+            fundamental_score, fundamental_analysis,
+            volatility_score, volatility_analysis,
+            execution_timestamp, simulation_mode, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
             bet_data['firm_name'],
             bet_data['event_id'],
@@ -383,6 +415,16 @@ class TradingDatabase:
             bet_data.get('adaptation_level'),
             bet_data.get('betting_strategy'),
             bet_data.get('reasoning'),
+            bet_data.get('sentiment_score'),
+            bet_data.get('sentiment_analysis'),
+            bet_data.get('news_score'),
+            bet_data.get('news_analysis'),
+            bet_data.get('technical_score'),
+            bet_data.get('technical_analysis'),
+            bet_data.get('fundamental_score'),
+            bet_data.get('fundamental_analysis'),
+            bet_data.get('volatility_score'),
+            bet_data.get('volatility_analysis'),
             bet_data['execution_timestamp'],
             bet_data.get('simulation_mode', 1),
             datetime.now().isoformat()
@@ -472,7 +514,7 @@ class TradingDatabase:
     
     def get_autonomous_bets(self, firm_name: Optional[str] = None, limit: int = 50) -> List[Dict]:
         """
-        Obtiene apuestas autónomas registradas.
+        Obtiene apuestas autónomas registradas con análisis de 5 áreas.
         """
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
@@ -510,12 +552,22 @@ class TradingDatabase:
                 'adaptation_level': row[10],
                 'betting_strategy': row[11],
                 'reasoning': row[12],
-                'actual_result': row[13],
-                'profit_loss': row[14],
-                'execution_timestamp': row[15],
-                'resolution_timestamp': row[16],
-                'simulation_mode': row[17],
-                'created_at': row[18]
+                'sentiment_score': row[13],
+                'sentiment_analysis': row[14],
+                'news_score': row[15],
+                'news_analysis': row[16],
+                'technical_score': row[17],
+                'technical_analysis': row[18],
+                'fundamental_score': row[19],
+                'fundamental_analysis': row[20],
+                'volatility_score': row[21],
+                'volatility_analysis': row[22],
+                'actual_result': row[23],
+                'profit_loss': row[24],
+                'execution_timestamp': row[25],
+                'resolution_timestamp': row[26],
+                'simulation_mode': row[27],
+                'created_at': row[28]
             })
         
         return bets
@@ -632,3 +684,91 @@ class TradingDatabase:
             })
         
         return cycles
+    
+    def get_latest_ai_thinking(self) -> List[Dict]:
+        """
+        Obtiene el análisis más reciente de cada IA con desglose de las 5 áreas.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        firms = ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']
+        latest_thinking = []
+        
+        for firm in firms:
+            cursor.execute('''
+            SELECT * FROM autonomous_bets
+            WHERE firm_name = ?
+            ORDER BY created_at DESC
+            LIMIT 1
+            ''', (firm,))
+            
+            row = cursor.fetchone()
+            if row:
+                latest_thinking.append({
+                    'firm_name': row[1],
+                    'event_description': row[3],
+                    'category': row[4],
+                    'probability': row[6],
+                    'confidence': row[7],
+                    'sentiment_score': row[13],
+                    'sentiment_analysis': row[14],
+                    'news_score': row[15],
+                    'news_analysis': row[16],
+                    'technical_score': row[17],
+                    'technical_analysis': row[18],
+                    'fundamental_score': row[19],
+                    'fundamental_analysis': row[20],
+                    'volatility_score': row[21],
+                    'volatility_analysis': row[22],
+                    'execution_timestamp': row[25]
+                })
+        
+        conn.close()
+        return latest_thinking
+    
+    def get_active_positions_from_db(self) -> List[Dict]:
+        """
+        Obtiene posiciones activas (bets sin resolver) con análisis completo.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        SELECT * FROM autonomous_bets
+        WHERE actual_result IS NULL
+        ORDER BY created_at DESC
+        LIMIT 50
+        ''')
+        
+        rows = cursor.fetchall()
+        conn.close()
+        
+        positions = []
+        for row in rows:
+            positions.append({
+                'id': row[0],
+                'firm_name': row[1],
+                'event_id': row[2],
+                'event_description': row[3],
+                'category': row[4],
+                'bet_size': row[5],
+                'probability': row[6],
+                'confidence': row[7],
+                'expected_value': row[8],
+                'risk_level': row[9],
+                'reasoning': row[12],
+                'sentiment_score': row[13],
+                'sentiment_analysis': row[14],
+                'news_score': row[15],
+                'news_analysis': row[16],
+                'technical_score': row[17],
+                'technical_analysis': row[18],
+                'fundamental_score': row[19],
+                'fundamental_analysis': row[20],
+                'volatility_score': row[21],
+                'volatility_analysis': row[22],
+                'execution_timestamp': row[25]
+            })
+        
+        return positions
