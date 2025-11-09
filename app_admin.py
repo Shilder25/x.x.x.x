@@ -50,22 +50,22 @@ if 'sentiment_data' not in st.session_state:
     st.session_state.sentiment_data = None
 
 st.title("📈 TradingAgents Framework")
-st.markdown("### Sistema de 5 Firmas Autónomas de Trading con LLMs")
+st.markdown("### System of 5 Autonomous Trading AI Firms with LLMs")
 
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
-    "🏠 Inicio",
-    "🤖 Competencia Autónoma",
-    "🎯 Nueva Predicción",
-    "🔍 Panel de Transparencia",
-    "📊 Dashboard Comparativo",
-    "💡 Recomendaciones & Consenso",
-    "📤 Enviar a Opinion.trade",
-    "📝 Registrar Resultados"
+    "🏠 Home",
+    "🤖 Autonomous Competition",
+    "🎯 New Prediction",
+    "🔍 Transparency Panel",
+    "📊 Comparative Dashboard",
+    "💡 Recommendations & Consensus",
+    "📤 Submit to Opinion.trade",
+    "📝 Record Results"
 ])
 
 with tab1:
-    st.markdown("# 🏠 Bienvenido a TradingAgents")
-    st.markdown("### Elige cómo quieres usar el sistema")
+    st.markdown("# 🏠 Welcome to TradingAgents")
+    st.markdown("### Choose how you want to use the system")
     
     st.divider()
     
@@ -73,70 +73,70 @@ with tab1:
     
     with col1:
         with st.container():
-            st.markdown("## 🎯 Sistema Manual")
-            st.markdown("##### Para analistas que quieren control total")
+            st.markdown("## 🎯 Manual System")
+            st.markdown("##### For analysts who want full control")
             
             st.markdown("")
-            st.markdown("**📋 Características:**")
-            st.markdown("• Genera predicciones con las 5 IAs")
-            st.markdown("• Analiza datos técnicos, fundamentales y sentimiento")
-            st.markdown("• Visualiza el razonamiento completo de cada firma")
-            st.markdown("• Compara performance y consenso")
-            st.markdown("• Elige qué predicción enviar a Opinion.trade")
-            st.markdown("• Registra resultados manualmente")
+            st.markdown("**📋 Features:**")
+            st.markdown("• Generate predictions with all 5 AIs")
+            st.markdown("• Analyze technical, fundamental, and sentiment data")
+            st.markdown("• Visualize complete reasoning from each firm")
+            st.markdown("• Compare performance and consensus")
+            st.markdown("• Choose which prediction to submit to Opinion.trade")
+            st.markdown("• Record results manually")
             
             st.markdown("")
-            st.info("💡 **Ideal para:** Análisis detallado, aprendizaje, y decisiones personalizadas")
+            st.info("💡 **Ideal for:** Detailed analysis, learning, and personalized decisions")
             
             st.markdown("")
-            if st.button("🚀 Ir al Sistema Manual", use_container_width=True, type="primary", key="goto_manual"):
-                st.info("👉 Ve a la pestaña **'🎯 Nueva Predicción'** para comenzar")
+            if st.button("🚀 Go to Manual System", use_container_width=True, type="primary", key="goto_manual"):
+                st.info("👉 Go to the **'🎯 New Prediction'** tab to begin")
     
     with col2:
         with st.container():
-            st.markdown("## 🤖 Competencia Autónoma")
-            st.markdown("##### Para observadores que quieren ver IAs competir")
+            st.markdown("## 🤖 Autonomous Competition")
+            st.markdown("##### For observers who want to see AIs compete")
             
             st.markdown("")
-            st.markdown("**🏆 Características:**")
-            st.markdown("• 5 IAs compitiendo en tiempo real")
-            st.markdown("• Cada IA analiza eventos automáticamente")
-            st.markdown("• Diferentes estrategias de bankroll")
-            st.markdown("• Sistema de adaptación continua (nunca se detiene)")
-            st.markdown("• Aprendizaje semanal basado en performance")
-            st.markdown("• Leaderboard y métricas en vivo")
+            st.markdown("**🏆 Features:**")
+            st.markdown("• 5 AIs competing in real-time")
+            st.markdown("• Each AI analyzes events automatically")
+            st.markdown("• Different bankroll strategies")
+            st.markdown("• Continuous adaptation system (never stops)")
+            st.markdown("• Weekly learning based on performance")
+            st.markdown("• Leaderboard and live metrics")
             
             st.markdown("")
-            st.success("✨ **Ideal para:** Observar estrategias, competencia, y evolución autónoma")
+            st.success("✨ **Ideal for:** Observing strategies, competition, and autonomous evolution")
             
             st.markdown("")
-            if st.button("🏁 Ver Competencia Autónoma", use_container_width=True, type="primary", key="goto_auto"):
-                st.info("👉 Ve a la pestaña **'🤖 Competencia Autónoma'** para comenzar")
+            if st.button("🏁 View Autonomous Competition", use_container_width=True, type="primary", key="goto_auto"):
+                st.info("👉 Go to the **'🤖 Autonomous Competition'** tab to begin")
     
     st.divider()
     
-    st.markdown("### ℹ️ ¿Cuál elegir?")
+    st.markdown("### ℹ️ Which one to choose?")
     
     comparison_col1, comparison_col2, comparison_col3 = st.columns(3)
     
     with comparison_col1:
         st.markdown("**Control**")
-        st.markdown("• Manual: ✅ Control total")
-        st.markdown("• Autónomo: 👀 Solo observas")
+        st.markdown("• Manual: ✅ Full control")
+        st.markdown("• Autonomous: 👀 Just observe")
     
     with comparison_col2:
-        st.markdown("**Tiempo de Dedicación**")
-        st.markdown("• Manual: ⏰ Requiere intervención")
-        st.markdown("• Autónomo: ⚡ Totalmente automático")
+        st.markdown("**Time Commitment**")
+        st.markdown("• Manual: ⏰ Requires intervention")
+        st.markdown("• Autonomous: ⚡ Fully automatic")
     
     with comparison_col3:
-        st.markdown("**Objetivo**")
-        st.markdown("• Manual: 🎯 Predicciones precisas")
-        st.markdown("• Autónomo: 📊 Investigación y competencia")
+        st.markdown("**Objective**")
+        st.markdown("• Manual: 🎯 Precise predictions")
+        st.markdown("• Autonomous: 📊 Research and competition")
 
 with tab2:
-    st.markdown("## 🤖 Competencia Autónoma de Trading")
-    st.markdown("##### Sistema de apuestas automáticas con adaptación continua y aprendizaje semanal")
+    st.markdown("## 🤖 Autonomous Trading Competition")
+    st.markdown("##### Automated betting system with continuous adaptation and weekly learning")
     
     if 'autonomous_engine' not in st.session_state:
         from autonomous_engine import AutonomousEngine
@@ -155,43 +155,43 @@ with tab2:
     
     with left_col:
         with st.container():
-            st.markdown("### 🎮 Panel de Control")
+            st.markdown("### 🎮 Control Panel")
             
             simulation_mode = st.toggle(
-                "🧪 Modo Simulación",
+                "🧪 Simulation Mode",
                 value=engine.simulation_mode,
                 key="sim_mode_toggle",
-                help="En modo simulación no se ejecutan apuestas reales"
+                help="In simulation mode, real bets are not executed"
             )
             engine.simulation_mode = simulation_mode
             
             if simulation_mode:
-                st.success("✓ Modo simulación activo - Entorno seguro")
+                st.success("✓ Simulation mode active - Safe environment")
             else:
-                st.error("⚠️ MODO REAL - Las apuestas afectarán tu cuenta")
+                st.error("⚠️ LIVE MODE - Bets will affect your account")
             
             st.markdown("")
             
             col_btn1, col_btn2 = st.columns(2)
             
             with col_btn1:
-                if st.button("▶️ Ejecutar Ciclo", use_container_width=True, type="primary"):
-                    with st.spinner("Analizando eventos y ejecutando apuestas..."):
+                if st.button("▶️ Run Cycle", use_container_width=True, type="primary"):
+                    with st.spinner("Analyzing events and executing bets..."):
                         try:
                             result = engine.run_daily_cycle()
-                            st.success(f"✅ {result.get('total_bets_placed')} apuestas colocadas")
+                            st.success(f"✅ {result.get('total_bets_placed')} bets placed")
                             st.rerun()
                         except Exception as e:
                             st.error(f"Error: {str(e)}")
             
             with col_btn2:
-                if st.button("🔄 Actualizar", use_container_width=True):
+                if st.button("🔄 Refresh", use_container_width=True):
                     st.rerun()
         
         st.markdown("")
         
         with st.container():
-            st.markdown("### 📊 Resumen Global")
+            st.markdown("### 📊 Global Summary")
             
             total_bankroll = sum([
                 firm_status['bankroll'].get('current_bankroll', 0)
@@ -210,14 +210,14 @@ with tab2:
             
             with metric_col1:
                 st.metric(
-                    "Capital Total",
+                    "Total Capital",
                     f"${total_bankroll:.2f}",
                     delta=f"${total_profit:+.2f}"
                 )
             
             with metric_col2:
                 st.metric(
-                    "Retorno Global",
+                    "Global Return",
                     f"{total_return:+.1f}%",
                     delta=f"${total_profit:+.2f}"
                 )
@@ -232,14 +232,14 @@ with tab2:
             metric_col3, metric_col4 = st.columns(2)
             
             with metric_col3:
-                st.metric("Total Apuestas", total_bets_placed)
+                st.metric("Total Bets", total_bets_placed)
             
             with metric_col4:
-                st.metric("Win Rate Global", f"{global_win_rate:.1f}%")
+                st.metric("Global Win Rate", f"{global_win_rate:.1f}%")
     
     with right_col:
         with st.container():
-            st.markdown("### 🏆 Leaderboard de IAs")
+            st.markdown("### 🏆 AI Leaderboard")
             
             leaderboard = status.get('leaderboard', [])
             
@@ -270,12 +270,12 @@ with tab2:
                         if i < len(leaderboard) - 1:
                             st.markdown("")
             else:
-                st.info("Ejecuta un ciclo para ver el leaderboard")
+                st.info("Run a cycle to view the leaderboard")
     
     st.divider()
     
     with st.container():
-        st.markdown("### 📈 Estado Detallado de las IAs")
+        st.markdown("### 📈 Detailed AI Status")
         
         for firm_name, firm_status in status.get('firms', {}).items():
             with st.expander(f"🏢 {firm_name}", expanded=False):
@@ -287,11 +287,11 @@ with tab2:
                 with col1:
                     risk_level = risk_status.get('risk_level', 'normal')
                     risk_emoji = {"normal": "🟢", "caution": "🟡", "alert": "🟠", "critical": "🔴"}.get(risk_level, "⚪")
-                    st.metric("Estado", f"{risk_emoji} {risk_level.upper()}")
+                    st.metric("Status", f"{risk_emoji} {risk_level.upper()}")
                 
                 with col2:
                     adaptation_level = risk_status.get('adaptation_level', 0)
-                    st.metric("Adaptación", f"Nivel {adaptation_level}")
+                    st.metric("Adaptation", f"Level {adaptation_level}")
                 
                 with col3:
                     bankroll = bankroll_status.get('current_bankroll', 0)
@@ -303,7 +303,7 @@ with tab2:
                     win_rate = bankroll_status.get('win_rate', 0)
                     st.metric("Win Rate", f"{win_rate:.1f}%")
                 
-                st.markdown("**Parámetros de Riesgo:**")
+                st.markdown("**Risk Parameters:**")
                 current_params = risk_status.get('current_limits', {})
                 
                 p1, p2, p3 = st.columns(3)
@@ -312,16 +312,16 @@ with tab2:
                 with p2:
                     st.caption(f"Max Concurrent: {current_params.get('max_concurrent_bets', 0)}")
                 with p3:
-                    st.caption(f"Pérdidas consecutivas: {risk_status.get('consecutive_losses', 0)}")
+                    st.caption(f"Consecutive losses: {risk_status.get('consecutive_losses', 0)}")
     
     st.divider()
     
     with st.container():
-        st.markdown("### 📜 Historial de Apuestas")
+        st.markdown("### 📜 Bet History")
     
-        filter_firm = st.selectbox("Filtrar por Firma", ["Todas"] + list(status.get('firms', {}).keys()))
+        filter_firm = st.selectbox("Filter by Firm", ["All"] + list(status.get('firms', {}).keys()))
         
-        if filter_firm == "Todas":
+        if filter_firm == "All":
             bets = st.session_state.db.get_autonomous_bets(limit=50)
         else:
             bets = st.session_state.db.get_autonomous_bets(firm_name=filter_firm, limit=50)
@@ -332,55 +332,55 @@ with tab2:
                 result_emoji = "✅" if bet['actual_result'] == 1 else "❌" if bet['actual_result'] == 0 else "⏳"
                 
                 bets_data.append({
-                    'Firma': bet['firm_name'],
-                    'Evento': bet['event_description'][:50] + "..." if len(bet['event_description']) > 50 else bet['event_description'],
-                    'Monto': f"${bet['bet_size']:.2f}",
+                    'Firm': bet['firm_name'],
+                    'Event': bet['event_description'][:50] + "..." if len(bet['event_description']) > 50 else bet['event_description'],
+                    'Amount': f"${bet['bet_size']:.2f}",
                     'Prob': f"{bet['probability']:.0%}",
                     'EV': f"{bet['expected_value']:.2f}" if bet['expected_value'] else "N/A",
-                    'Estado': result_emoji,
+                    'Status': result_emoji,
                     'P/L': f"${bet['profit_loss']:.2f}" if bet['profit_loss'] else "-",
-                    'Fecha': bet['execution_timestamp'][:10]
+                    'Date': bet['execution_timestamp'][:10]
                 })
             
             df_bets = pd.DataFrame(bets_data)
             st.dataframe(df_bets, use_container_width=True, hide_index=True, height=300)
         else:
-            st.info("No hay apuestas registradas. Ejecuta un ciclo para comenzar.")
+            st.info("No bets recorded. Run a cycle to begin.")
     
     st.divider()
     
     with st.container():
-        st.markdown("### 🔄 Adaptaciones de Estrategia")
+        st.markdown("### 🔄 Strategy Adaptations")
         
         adaptations = st.session_state.db.get_strategy_adaptations()
         
         if adaptations:
             for adapt in adaptations[:5]:
-                with st.expander(f"🔧 {adapt['firm_name']} - Nivel {adapt['adaptation_level']} ({adapt['adaptation_timestamp'][:10]})", expanded=False):
+                with st.expander(f"🔧 {adapt['firm_name']} - Level {adapt['adaptation_level']} ({adapt['adaptation_timestamp'][:10]})", expanded=False):
                     col1, col2, col3 = st.columns(3)
                     
                     with col1:
                         st.metric("Bankroll", f"${adapt.get('bankroll_at_adaptation', 0):.2f}")
                     with col2:
-                        st.metric("Pérdida", f"{adapt.get('loss_percentage', 0):.1f}%")
+                        st.metric("Loss", f"{adapt.get('loss_percentage', 0):.1f}%")
                     with col3:
-                        st.metric("Nivel", adapt['adaptation_level'])
+                        st.metric("Level", adapt['adaptation_level'])
                     
-                    st.markdown(f"**Razón:** {adapt['trigger_reason']}")
+                    st.markdown(f"**Reason:** {adapt['trigger_reason']}")
                     
                     if adapt.get('changes_applied'):
-                        st.markdown("**Cambios:**")
+                        st.markdown("**Changes:**")
                         for change in adapt.get('changes_applied', []):
                             st.caption(f"• {change}")
         else:
-            st.info("No hay adaptaciones registradas aún.")
+            st.info("No adaptations recorded yet.")
     
     st.divider()
     
     with st.container():
-        st.markdown("### 📊 Gráficas de Performance")
+        st.markdown("### 📊 Performance Charts")
         
-        tab_chart1, tab_chart2, tab_chart3 = st.tabs(["💰 Bankroll", "🎯 Win Rate", "⚠️ Riesgo"])
+        tab_chart1, tab_chart2, tab_chart3 = st.tabs(["💰 Bankroll", "🎯 Win Rate", "⚠️ Risk"])
         
         with tab_chart1:
             fig = go.Figure()
@@ -397,8 +397,8 @@ with tab2:
                 ))
             
             fig.update_layout(
-                title="Evolución del Bankroll",
-                xaxis_title="Tiempo",
+                title="Bankroll Evolution",
+                xaxis_title="Time",
                 yaxis_title="Bankroll ($)",
                 hovermode='x unified',
                 height=350,
@@ -413,14 +413,14 @@ with tab2:
             for firm_name, firm_status in status.get('firms', {}).items():
                 bankroll_status = firm_status['bankroll']
                 win_rates_data.append({
-                    'Firma': firm_name,
+                    'Firm': firm_name,
                     'Win Rate': bankroll_status.get('win_rate', 0)
                 })
             
             df_wr = pd.DataFrame(win_rates_data)
             
-            fig = px.bar(df_wr, x='Firma', y='Win Rate', 
-                         title="Tasa de Éxito",
+            fig = px.bar(df_wr, x='Firm', y='Win Rate', 
+                         title="Success Rate",
                          color='Win Rate',
                          color_continuous_scale='RdYlGn',
                          height=350)
@@ -437,16 +437,16 @@ with tab2:
                 risk_score = {'normal': 1, 'caution': 2, 'alert': 3, 'critical': 4}.get(risk_level, 1)
                 
                 risk_data.append({
-                    'Firma': firm_name,
-                    'Nivel': risk_level.upper(),
+                    'Firm': firm_name,
+                    'Level': risk_level.upper(),
                     'Score': risk_score
                 })
             
             df_risk = pd.DataFrame(risk_data)
             
-            fig = px.bar(df_risk, x='Firma', y='Score', 
-                         title="Niveles de Riesgo",
-                         color='Nivel',
+            fig = px.bar(df_risk, x='Firm', y='Score', 
+                         title="Risk Levels",
+                         color='Level',
                          height=350,
                          color_discrete_map={
                          'NORMAL': 'green',
@@ -458,28 +458,28 @@ with tab2:
         st.plotly_chart(fig, use_container_width=True)
 
 with tab3:
-    st.markdown("## 🎯 Sistema Manual de Predicciones")
-    st.markdown("##### Genera predicciones utilizando las 5 firmas de análisis con LLM")
+    st.markdown("## 🎯 Manual Prediction System")
+    st.markdown("##### Generate predictions using the 5 LLM analysis firms")
     
     st.divider()
     
     with st.container():
-        st.markdown("### 📝 Paso 1: Configuración del Evento")
+        st.markdown("### 📝 Step 1: Event Configuration")
         col1, col2 = st.columns([3, 1])
         
         with col1:
             event_description = st.text_area(
-                "Descripción del Evento de Predicción",
-                placeholder="Ej: Apple (AAPL) cerrará por encima de $200 el 31/Dic/2025 (TRUE/FALSE)",
+                "Prediction Event Description",
+                placeholder="Ex: Apple (AAPL) will close above $200 on Dec 31, 2025 (TRUE/FALSE)",
                 height=100,
-                help="Describe claramente el evento que quieres predecir"
+                help="Clearly describe the event you want to predict"
             )
         
         with col2:
             symbol = st.text_input(
-                "Símbolo",
+                "Symbol",
                 value="AAPL",
-                help="Ticker del activo a analizar"
+                help="Asset ticker to analyze"
             )
             
             data_collected = sum([
@@ -487,29 +487,29 @@ with tab3:
                 bool(st.session_state.fundamental_data),
                 bool(st.session_state.sentiment_data)
             ])
-            st.metric("Datos Recopilados", f"{data_collected}/3")
+            st.metric("Data Collected", f"{data_collected}/3")
     
     st.divider()
     
     with st.container():
-        st.markdown("### 📊 Paso 2: Recopilación de Datos de Mercado")
+        st.markdown("### 📊 Step 2: Market Data Collection")
         
         col1, col2, col3 = st.columns(3)
         
         with col1:
             with st.container():
-                st.markdown("#### 🔧 Datos Técnicos")
-                st.caption("Indicadores y análisis técnico")
+                st.markdown("#### 🔧 Technical Data")
+                st.caption("Indicators and technical analysis")
                 if st.session_state.technical_data:
-                    st.success("✓ Datos cargados")
+                    st.success("✓ Data loaded")
                 else:
-                    st.info("Pendiente")
+                    st.info("Pending")
                 
-                if st.button("Obtener Técnicos", use_container_width=True, type="secondary"):
-                    with st.spinner("Recopilando..."):
+                if st.button("Get Technical Data", use_container_width=True, type="secondary"):
+                    with st.spinner("Collecting..."):
                         alpha_vantage_key = os.environ.get("ALPHA_VANTAGE_API_KEY")
                         if not alpha_vantage_key:
-                            st.error("⚠️ API Key de Alpha Vantage no configurada. Por favor, configúrala en los secretos.")
+                            st.error("⚠️ Alpha Vantage API Key not configured. Please configure it in secrets.")
                         else:
                             collector = AlphaVantageCollector(alpha_vantage_key)
                             st.session_state.technical_data = collector.get_technical_indicators(symbol)
@@ -517,35 +517,35 @@ with tab3:
         
         with col2:
             with st.container():
-                st.markdown("#### 📈 Datos Fundamentales")
-                st.caption("Financieros y valuación")
+                st.markdown("#### 📈 Fundamental Data")
+                st.caption("Financials and valuation")
                 if st.session_state.fundamental_data:
-                    st.success("✓ Datos cargados")
+                    st.success("✓ Data loaded")
                 else:
-                    st.info("Pendiente")
+                    st.info("Pending")
                 
-                if st.button("Obtener Fundamentales", use_container_width=True, type="secondary"):
-                    with st.spinner("Recopilando..."):
+                if st.button("Get Fundamental Data", use_container_width=True, type="secondary"):
+                    with st.spinner("Collecting..."):
                         collector = YFinanceCollector()
                         st.session_state.fundamental_data = collector.get_fundamental_data(symbol)
                         st.rerun()
         
         with col3:
             with st.container():
-                st.markdown("#### 💬 Sentimiento Social")
-                st.caption("Análisis de Reddit")
+                st.markdown("#### 💬 Social Sentiment")
+                st.caption("Reddit analysis")
                 reddit_configured = os.environ.get("REDDIT_CLIENT_ID") and os.environ.get("REDDIT_CLIENT_SECRET")
                 
                 if st.session_state.sentiment_data:
-                    st.success("✓ Datos cargados")
+                    st.success("✓ Data loaded")
                 elif not reddit_configured:
-                    st.warning("API no configurada")
+                    st.warning("API not configured")
                 else:
-                    st.info("Pendiente")
+                    st.info("Pending")
                 
-                if st.button("Obtener Sentimiento", use_container_width=True, type="secondary", disabled=not reddit_configured):
+                if st.button("Get Sentiment Data", use_container_width=True, type="secondary", disabled=not reddit_configured):
                     if reddit_configured:
-                        with st.spinner("Analizando..."):
+                        with st.spinner("Analyzing..."):
                             collector = RedditSentimentCollector(
                                 client_id=os.environ.get("REDDIT_CLIENT_ID", ""),
                                 client_secret=os.environ.get("REDDIT_CLIENT_SECRET", ""),
@@ -558,46 +558,46 @@ with tab3:
         st.divider()
         
         with st.container():
-            st.markdown("### 📋 Informes de Datos Recopilados")
+            st.markdown("### 📋 Collected Data Reports")
             
             col1, col2, col3 = st.columns(3)
             
             with col1:
                 if st.session_state.technical_data:
-                    with st.expander("📊 Ver Informe Técnico", expanded=False):
+                    with st.expander("📊 View Technical Report", expanded=False):
                         technical_report = format_technical_report(st.session_state.technical_data)
                         st.text(technical_report)
             
             with col2:
                 if st.session_state.fundamental_data:
-                    with st.expander("📈 Ver Informe Fundamental", expanded=False):
+                    with st.expander("📈 View Fundamental Report", expanded=False):
                         fundamental_report = format_fundamental_report(st.session_state.fundamental_data)
                         st.text(fundamental_report)
             
             with col3:
                 if st.session_state.sentiment_data:
-                    with st.expander("💬 Ver Informe de Sentimiento", expanded=False):
+                    with st.expander("💬 View Sentiment Report", expanded=False):
                         sentiment_report = format_sentiment_report(st.session_state.sentiment_data)
                         st.text(sentiment_report)
     
     st.divider()
     
     with st.container():
-        st.markdown("### 🚀 Paso 3: Ejecutar Análisis Completo")
-        st.caption("Las 5 firmas analizarán el evento con los datos recopilados")
+        st.markdown("### 🚀 Step 3: Run Complete Analysis")
+        st.caption("All 5 firms will analyze the event with the collected data")
         
         col1, col2, col3 = st.columns([1, 2, 1])
         
         with col2:
-            if st.button("🚀 Ejecutar Análisis de las 5 Firmas", type="primary", use_container_width=True):
+            if st.button("🚀 Run Analysis with All 5 Firms", type="primary", use_container_width=True):
                 if not event_description:
-                    st.error("⚠️ Por favor ingrese la descripción del evento")
+                    st.error("⚠️ Please enter the event description")
                 elif not (st.session_state.technical_data or st.session_state.fundamental_data or st.session_state.sentiment_data):
-                    st.error("⚠️ Recopile al menos un tipo de datos antes de continuar")
+                    st.error("⚠️ Collect at least one type of data before continuing")
                 else:
-                    technical_report = format_technical_report(st.session_state.technical_data) if st.session_state.technical_data else "No disponible"
-                    fundamental_report = format_fundamental_report(st.session_state.fundamental_data) if st.session_state.fundamental_data else "No disponible"
-                    sentiment_report = format_sentiment_report(st.session_state.sentiment_data) if st.session_state.sentiment_data else "No disponible"
+                    technical_report = format_technical_report(st.session_state.technical_data) if st.session_state.technical_data else "Not available"
+                    fundamental_report = format_fundamental_report(st.session_state.fundamental_data) if st.session_state.fundamental_data else "Not available"
+                    sentiment_report = format_sentiment_report(st.session_state.sentiment_data) if st.session_state.sentiment_data else "Not available"
                     
                     firms = st.session_state.orchestrator.get_all_firms()
                     
@@ -607,7 +607,7 @@ with tab3:
                     status_text = st.empty()
                     
                     for i, (firm_name, firm) in enumerate(firms.items()):
-                        status_text.text(f"🔄 Ejecutando análisis con {firm_name}...")
+                        status_text.text(f"🔄 Running analysis with {firm_name}...")
                         
                         prompt = create_trading_prompt(
                             event_description=event_description,
@@ -642,7 +642,7 @@ with tab3:
                                     st.session_state.db.save_prediction(prediction_data)
                                     st.session_state.predictions[firm_name] = prediction
                                 except Exception as db_error:
-                                    st.warning(f"Error guardando predicción de {firm_name}: {db_error}")
+                                    st.warning(f"Error saving prediction from {firm_name}: {db_error}")
                                     st.session_state.predictions[firm_name] = prediction
                             else:
                                 st.session_state.predictions[firm_name] = prediction
@@ -657,14 +657,14 @@ with tab3:
                     
                     status_text.empty()
                     progress_bar.empty()
-                    st.success("✅ ¡Análisis completado! Revisa los resultados en las siguientes pestañas")
+                    st.success("✅ Analysis completed! Review the results in the following tabs")
                     st.balloons()
 
 with tab4:
-    st.header("🔍 Panel de Transparencia - Razonamiento de cada IA")
+    st.header("🔍 Transparency Panel - Reasoning from Each AI")
     
     if not st.session_state.predictions:
-        st.info("Ejecute primero el análisis en la pestaña 'Nueva Predicción' para ver el razonamiento de cada firma.")
+        st.info("First run the analysis in the 'New Prediction' tab to see each firm's reasoning.")
     else:
         for firm_name, prediction in st.session_state.predictions.items():
             with st.expander(f"🏢 {firm_name}", expanded=False):
@@ -676,48 +676,48 @@ with tab4:
                     col1, col2, col3 = st.columns(3)
                     
                     with col1:
-                        st.metric("Probabilidad Final", f"{prediction.get('probabilidad_final_prediccion', 0):.2%}")
+                        st.metric("Final Probability", f"{prediction.get('probabilidad_final_prediccion', 0):.2%}")
                     with col2:
-                        st.metric("Postura de Riesgo", prediction.get('postura_riesgo', 'N/A'))
+                        st.metric("Risk Posture", prediction.get('postura_riesgo', 'N/A'))
                     with col3:
-                        st.metric("Nivel de Confianza", f"{prediction.get('nivel_confianza', 0)}/100")
+                        st.metric("Confidence Level", f"{prediction.get('nivel_confianza', 0)}/100")
                     
                     st.markdown("---")
                     
-                    st.markdown("### 📊 ETAPA I: Síntesis Analítica")
-                    st.info(prediction.get('analisis_sintesis', 'No disponible'))
+                    st.markdown("### 📊 STAGE I: Analytical Synthesis")
+                    st.info(prediction.get('analisis_sintesis', 'Not available'))
                     
-                    st.markdown("### 💭 ETAPA II: Debate Bullish vs Bearish")
-                    st.warning(prediction.get('debate_bullish_bearish', 'No disponible'))
+                    st.markdown("### 💭 STAGE II: Bullish vs Bearish Debate")
+                    st.warning(prediction.get('debate_bullish_bearish', 'Not available'))
                     
-                    st.markdown("### ⚖️ ETAPA III: Ajuste de Riesgo y Decisión Final")
-                    st.success(prediction.get('ajuste_riesgo_justificacion', 'No disponible'))
+                    st.markdown("### ⚖️ STAGE III: Risk Adjustment and Final Decision")
+                    st.success(prediction.get('ajuste_riesgo_justificacion', 'Not available'))
                     
                     st.markdown("---")
                     
                     col1, col2 = st.columns(2)
                     with col1:
-                        st.metric("Tokens Usados", f"{prediction.get('tokens_used', 0):,}")
+                        st.metric("Tokens Used", f"{prediction.get('tokens_used', 0):,}")
                     with col2:
-                        st.metric("Costo Estimado", f"${prediction.get('estimated_cost', 0):.4f}")
+                        st.metric("Estimated Cost", f"${prediction.get('estimated_cost', 0):.4f}")
 
 with tab5:
-    st.header("📊 Dashboard Comparativo de Firmas")
+    st.header("📊 Comparative Firm Dashboard")
     
     if st.session_state.predictions:
-        st.subheader("🎯 Predicciones Actuales")
+        st.subheader("🎯 Current Predictions")
         
         predictions_df = []
         for firm_name, pred in st.session_state.predictions.items():
             if 'error' not in pred:
                 predictions_df.append({
-                    'Firma': firm_name,
-                    'Probabilidad': pred.get('probabilidad_final_prediccion', 0),
-                    'Postura': pred.get('postura_riesgo', 'N/A'),
-                    'Confianza': pred.get('nivel_confianza', 0),
-                    'Dirección': pred.get('direccion_preliminar', 'N/A'),
+                    'Firm': firm_name,
+                    'Probability': pred.get('probabilidad_final_prediccion', 0),
+                    'Posture': pred.get('postura_riesgo', 'N/A'),
+                    'Confidence': pred.get('nivel_confianza', 0),
+                    'Direction': pred.get('direccion_preliminar', 'N/A'),
                     'Tokens': pred.get('tokens_used', 0),
-                    'Costo': pred.get('estimated_cost', 0)
+                    'Cost': pred.get('estimated_cost', 0)
                 })
         
         if predictions_df:
@@ -725,11 +725,11 @@ with tab5:
             
             fig = px.bar(
                 df,
-                x='Firma',
-                y='Probabilidad',
-                color='Postura',
-                title='Probabilidades de Predicción por Firma',
-                labels={'Probabilidad': 'Probabilidad (0-1)'},
+                x='Firm',
+                y='Probability',
+                color='Posture',
+                title='Prediction Probabilities by Firm',
+                labels={'Probability': 'Probability (0-1)'},
                 color_discrete_map={
                     'AGRESIVA': '#ff4b4b',
                     'NEUTRAL': '#ffa500',
@@ -744,26 +744,26 @@ with tab5:
             with col1:
                 fig2 = px.pie(
                     df,
-                    values='Confianza',
-                    names='Firma',
-                    title='Distribución de Niveles de Confianza'
+                    values='Confidence',
+                    names='Firm',
+                    title='Confidence Level Distribution'
                 )
                 st.plotly_chart(fig2, use_container_width=True)
             
             with col2:
                 fig3 = px.bar(
                     df,
-                    x='Firma',
-                    y='Costo',
-                    title='Costo Estimado por Firma (USD)',
-                    labels={'Costo': 'Costo (USD)'}
+                    x='Firm',
+                    y='Cost',
+                    title='Estimated Cost per Firm (USD)',
+                    labels={'Cost': 'Cost (USD)'}
                 )
                 st.plotly_chart(fig3, use_container_width=True)
             
             st.dataframe(df, use_container_width=True)
     
     st.markdown("---")
-    st.subheader("🏆 Rendimiento Histórico de las Firmas")
+    st.subheader("🏆 Historical Firm Performance")
     
     performances = st.session_state.db.get_all_firm_performances()
     
@@ -773,15 +773,15 @@ with tab5:
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.metric("Total de Predicciones", sum(p['total_predictions'] for p in performances))
+            st.metric("Total Predictions", sum(p['total_predictions'] for p in performances))
         with col2:
             total_correct = sum(p['correct_predictions'] for p in performances)
             total_preds = sum(p['total_predictions'] for p in performances)
             overall_accuracy = (total_correct / total_preds * 100) if total_preds > 0 else 0
-            st.metric("Precisión General", f"{overall_accuracy:.1f}%")
+            st.metric("Overall Accuracy", f"{overall_accuracy:.1f}%")
         with col3:
             total_profit = sum(p['total_profit'] for p in performances)
-            st.metric("Ganancia Total Simulada", f"${total_profit:,.2f}")
+            st.metric("Total Simulated Profit", f"${total_profit:,.2f}")
         
         st.dataframe(perf_df, use_container_width=True)
         
@@ -790,41 +790,41 @@ with tab5:
                 perf_df,
                 x='firm_name',
                 y='accuracy',
-                title='Precisión Histórica por Firma (%)',
-                labels={'firm_name': 'Firma', 'accuracy': 'Precisión (%)'}
+                title='Historical Accuracy by Firm (%)',
+                labels={'firm_name': 'Firm', 'accuracy': 'Accuracy (%)'}
             )
             st.plotly_chart(fig4, use_container_width=True)
     else:
-        st.info("No hay datos históricos aún. Las predicciones se guardarán automáticamente.")
+        st.info("No historical data yet. Predictions will be saved automatically.")
 
 with tab6:
-    st.header("🤖 Recomendaciones & Consenso de Predicción")
+    st.header("🤖 Recommendations & Prediction Consensus")
     
     if not st.session_state.predictions:
-        st.info("Ejecute primero el análisis para obtener recomendaciones.")
+        st.info("First run the analysis to get recommendations.")
     else:
-        st.subheader("🎯 Recomendación de Firma Basada en Histórico")
+        st.subheader("🎯 Firm Recommendation Based on Historical Data")
         
         recommendation = st.session_state.recommender.get_best_firm_recommendation()
         
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.metric("Firma Recomendada", recommendation['recommended_firm'])
+            st.metric("Recommended Firm", recommendation['recommended_firm'])
         with col2:
-            st.metric("Confianza", recommendation['confidence'])
+            st.metric("Confidence", recommendation['confidence'])
         with col3:
             if 'accuracy' in recommendation:
-                st.metric("Precisión Histórica", f"{recommendation['accuracy']:.1f}%")
+                st.metric("Historical Accuracy", f"{recommendation['accuracy']:.1f}%")
         
-        st.info(f"**Razón:** {recommendation['reason']}")
+        st.info(f"**Reason:** {recommendation['reason']}")
         
         if recommendation.get('alternatives'):
-            st.markdown(f"**Alternativas:** {', '.join(recommendation['alternatives'])}")
+            st.markdown(f"**Alternatives:** {', '.join(recommendation['alternatives'])}")
         
         st.markdown("---")
         
-        st.subheader("🤝 Predicción por Consenso Ponderado")
+        st.subheader("🤝 Weighted Consensus Prediction")
         
         consensus = st.session_state.recommender.calculate_consensus_prediction(st.session_state.predictions)
         
@@ -832,29 +832,29 @@ with tab6:
             col1, col2 = st.columns(2)
             
             with col1:
-                st.metric("Probabilidad de Consenso", f"{consensus['consensus_probability']:.2%}")
-                st.metric("Nivel de Acuerdo", f"{consensus['confidence']:.1f}%")
+                st.metric("Consensus Probability", f"{consensus['consensus_probability']:.2%}")
+                st.metric("Agreement Level", f"{consensus['confidence']:.1f}%")
             
             with col2:
-                st.markdown("**Firmas Participantes:**")
+                st.markdown("**Participating Firms:**")
                 for firm in consensus['participating_firms']:
                     weight = consensus['weights'].get(firm, 0)
                     prob = consensus['individual_probabilities'].get(firm, 0)
-                    st.write(f"- {firm}: {prob:.2%} (peso: {weight:.2%})")
+                    st.write(f"- {firm}: {prob:.2%} (weight: {weight:.2%})")
             
             st.markdown("---")
             
-            st.markdown("**Interpretación:**")
+            st.markdown("**Interpretation:**")
             if consensus['confidence'] > 70:
-                st.success("✅ Alto nivel de acuerdo entre las firmas. Predicción consensuada confiable.")
+                st.success("✅ High level of agreement among firms. Reliable consensus prediction.")
             elif consensus['confidence'] > 40:
-                st.warning("⚠️ Nivel moderado de acuerdo. Hay cierta divergencia entre las firmas.")
+                st.warning("⚠️ Moderate level of agreement. Some divergence among firms.")
             else:
-                st.error("❌ Bajo nivel de acuerdo. Las firmas tienen opiniones muy diferentes.")
+                st.error("❌ Low level of agreement. Firms have very different opinions.")
             
             st.markdown("---")
             
-            st.subheader("📊 Visualización de Consenso")
+            st.subheader("📊 Consensus Visualization")
             
             if consensus['individual_probabilities']:
                 firms = list(consensus['individual_probabilities'].keys())
@@ -866,37 +866,37 @@ with tab6:
                 fig.add_trace(go.Bar(
                     x=firms,
                     y=probs,
-                    name='Probabilidad Individual',
+                    name='Individual Probability',
                     marker_color='lightblue'
                 ))
                 
                 fig.add_trace(go.Scatter(
                     x=firms,
                     y=[consensus['consensus_probability']] * len(firms),
-                    name='Consenso Ponderado',
+                    name='Weighted Consensus',
                     mode='lines+markers',
                     line=dict(color='red', width=2, dash='dash')
                 ))
                 
                 fig.update_layout(
-                    title='Probabilidades Individuales vs. Consenso',
-                    yaxis_title='Probabilidad',
+                    title='Individual Probabilities vs. Consensus',
+                    yaxis_title='Probability',
                     yaxis_range=[0, 1],
                     showlegend=True
                 )
                 
                 st.plotly_chart(fig, use_container_width=True)
         else:
-            st.warning("No hay predicciones válidas para calcular consenso.")
+            st.warning("No valid predictions to calculate consensus.")
         
         st.markdown("---")
         
-        st.subheader("📈 Análisis de Patrones de Razonamiento")
+        st.subheader("📈 Reasoning Pattern Analysis")
         
         pattern_analysis = st.session_state.recommender.analyze_reasoning_patterns()
         
         if pattern_analysis['total_analyzed'] > 0:
-            st.write(f"**Total Analizado:** {pattern_analysis['total_analyzed']} predicciones resueltas")
+            st.write(f"**Total Analyzed:** {pattern_analysis['total_analyzed']} resolved predictions")
             
             if pattern_analysis['patterns']:
                 patterns_df = pd.DataFrame(pattern_analysis['patterns'])
@@ -906,11 +906,11 @@ with tab6:
                     x='pattern_value',
                     y='accuracy',
                     color='total_profit',
-                    title='Precisión por Postura de Riesgo',
+                    title='Accuracy by Risk Posture',
                     labels={
-                        'pattern_value': 'Postura de Riesgo',
-                        'accuracy': 'Precisión (%)',
-                        'total_profit': 'Ganancia Total'
+                        'pattern_value': 'Risk Posture',
+                        'accuracy': 'Accuracy (%)',
+                        'total_profit': 'Total Profit'
                     },
                     color_continuous_scale='RdYlGn'
                 )
@@ -919,13 +919,13 @@ with tab6:
                 st.dataframe(patterns_df[['pattern_value', 'occurrences', 'accuracy', 'total_profit', 'avg_profit']], 
                             use_container_width=True)
             else:
-                st.info("No hay patrones detectados aún.")
+                st.info("No patterns detected yet.")
         else:
-            st.info("No hay predicciones resueltas para analizar patrones.")
+            st.info("No resolved predictions to analyze patterns.")
         
         st.markdown("---")
         
-        st.subheader("🏆 Reporte de Atribución Detallado")
+        st.subheader("🏆 Detailed Attribution Report")
         
         attribution = st.session_state.recommender.get_firm_attribution_report()
         
@@ -936,18 +936,18 @@ with tab6:
             
             with col1:
                 wins = len(attr_df[attr_df['correct'] == True])
-                st.metric("Victorias", wins)
+                st.metric("Wins", wins)
             with col2:
                 losses = len(attr_df[attr_df['correct'] == False])
-                st.metric("Derrotas", losses)
+                st.metric("Losses", losses)
             with col3:
                 total_profit = attr_df['profit_loss'].sum()
-                st.metric("P/L Total", f"${total_profit:,.2f}")
+                st.metric("Total P/L", f"${total_profit:,.2f}")
             with col4:
                 best_firm = attr_df.groupby('firm_name')['profit_loss'].sum().idxmax()
-                st.metric("Mejor Firma", best_firm)
+                st.metric("Best Firm", best_firm)
             
-            st.markdown("**Detalle por Firma:**")
+            st.markdown("**Detail by Firm:**")
             
             firm_summary = attr_df.groupby('firm_name').agg({
                 'correct': lambda x: (x == True).sum(),
@@ -955,35 +955,35 @@ with tab6:
                 'profit_loss': 'sum'
             }).reset_index()
             
-            firm_summary.columns = ['Firma', 'Victorias', 'Total', 'Ganancia']
-            firm_summary['Precisión (%)'] = (firm_summary['Victorias'] / firm_summary['Total'] * 100).round(1)
+            firm_summary.columns = ['Firm', 'Wins', 'Total', 'Profit']
+            firm_summary['Accuracy (%)'] = (firm_summary['Wins'] / firm_summary['Total'] * 100).round(1)
             
             st.dataframe(firm_summary, use_container_width=True)
             
-            with st.expander("Ver todas las atribuciones", expanded=False):
+            with st.expander("View all attributions", expanded=False):
                 display_attr = attr_df[['firm_name', 'event_description', 'predicted_probability', 
                                         'actual_result', 'correct', 'profit_loss', 'impact']]
-                display_attr.columns = ['Firma', 'Evento', 'Prob. Predicha', 'Resultado', 
-                                       'Correcto', 'P/L', 'Impacto']
+                display_attr.columns = ['Firm', 'Event', 'Predicted Prob.', 'Result', 
+                                       'Correct', 'P/L', 'Impact']
                 st.dataframe(display_attr, use_container_width=True, height=400)
         else:
-            st.info("No hay datos de atribución disponibles. Registre resultados para ver este reporte.")
+            st.info("No attribution data available. Record results to view this report.")
 
 with tab7:
-    st.header("📤 Enviar Predicción a Opinion.trade")
+    st.header("📤 Submit Prediction to Opinion.trade")
     
     if not st.session_state.predictions:
-        st.info("Ejecute primero el análisis en la pestaña 'Nueva Predicción' para poder enviar predicciones.")
+        st.info("First run the analysis in the 'New Prediction' tab to submit predictions.")
     else:
         valid_predictions = {k: v for k, v in st.session_state.predictions.items() if 'error' not in v}
         
         if valid_predictions:
-            st.subheader("📊 Seleccione qué predicción enviar")
+            st.subheader("📊 Select Which Prediction to Submit")
             
             selected_firm = st.selectbox(
-                "Firma",
+                "Firm",
                 options=list(valid_predictions.keys()),
-                help="Seleccione la firma cuya predicción desea enviar a Opinion.trade",
+                help="Select the firm whose prediction you want to submit to Opinion.trade",
                 key="submit_firm_selector"
             )
             
@@ -993,53 +993,53 @@ with tab7:
                 col1, col2, col3 = st.columns(3)
                 
                 with col1:
-                    st.metric("Probabilidad", f"{prediction.get('probabilidad_final_prediccion', 0):.2%}")
+                    st.metric("Probability", f"{prediction.get('probabilidad_final_prediccion', 0):.2%}")
                 with col2:
-                    st.metric("Postura de Riesgo", prediction.get('postura_riesgo', 'N/A'))
+                    st.metric("Risk Posture", prediction.get('postura_riesgo', 'N/A'))
                 with col3:
                     perf = st.session_state.db.get_firm_performance(selected_firm)
                     if perf and perf['total_predictions'] > 0:
-                        st.metric("Precisión Histórica", f"{perf['accuracy']:.1f}%")
+                        st.metric("Historical Accuracy", f"{perf['accuracy']:.1f}%")
                     else:
-                        st.metric("Precisión Histórica", "Sin historial")
+                        st.metric("Historical Accuracy", "No history")
                 
                 st.markdown("---")
                 
-                with st.expander("📝 Ver razonamiento completo", expanded=False):
-                    st.markdown("**Síntesis Analítica:**")
-                    st.info(prediction.get('analisis_sintesis', 'No disponible'))
-                    st.markdown("**Conclusión del Debate:**")
-                    st.warning(prediction.get('debate_bullish_bearish', 'No disponible')[:300] + "...")
+                with st.expander("📝 View complete reasoning", expanded=False):
+                    st.markdown("**Analytical Synthesis:**")
+                    st.info(prediction.get('analisis_sintesis', 'Not available'))
+                    st.markdown("**Debate Conclusion:**")
+                    st.warning(prediction.get('debate_bullish_bearish', 'Not available')[:300] + "...")
                 
                 st.markdown("---")
-                st.subheader("🎯 Configuración del Envío")
+                st.subheader("🎯 Submission Configuration")
                 
                 col1, col2 = st.columns(2)
                 
                 with col1:
                     event_id = st.text_input(
-                        "ID del Evento en Opinion.trade",
+                        "Event ID on Opinion.trade",
                         placeholder="event_123abc",
-                        help="Ingrese el ID del evento en Opinion.trade"
+                        help="Enter the event ID on Opinion.trade"
                     )
                 
                 with col2:
                     bet_amount = st.number_input(
-                        "Cantidad a Apostar (USD)",
+                        "Bet Amount (USD)",
                         min_value=1.0,
                         max_value=1000.0,
                         value=10.0,
                         step=1.0,
-                        help="Monto a apostar en esta predicción"
+                        help="Amount to bet on this prediction"
                     )
                 
                 st.markdown("---")
                 
-                if st.button("🚀 Enviar Predicción a Opinion.trade", type="primary", use_container_width=True):
+                if st.button("🚀 Submit Prediction to Opinion.trade", type="primary", use_container_width=True):
                     if not event_id:
-                        st.error("Por favor ingrese el ID del evento")
+                        st.error("Please enter the event ID")
                     else:
-                        with st.spinner("Enviando predicción a Opinion.trade..."):
+                        with st.spinner("Submitting prediction to Opinion.trade..."):
                             api = OpinionTradeAPI()
                             
                             submission_data = {
@@ -1054,24 +1054,24 @@ with tab7:
                             result = api.submit_prediction(submission_data)
                             
                             if result.get('success'):
-                                st.success(f"✅ Predicción enviada exitosamente!")
-                                st.info(f"**ID de Predicción:** {result.get('prediction_id', 'N/A')}")
+                                st.success(f"✅ Prediction submitted successfully!")
+                                st.info(f"**Prediction ID:** {result.get('prediction_id', 'N/A')}")
                                 st.balloons()
                                 
                                 st.markdown("---")
                                 st.info("""
-                                **Próximos pasos:**
-                                1. Anote el ID de predicción mostrado arriba
-                                2. Una vez que el evento se resuelva, vaya a la pestaña "Registrar Resultados"
-                                3. Ingrese el resultado real (TRUE/FALSE) para actualizar las métricas de la firma
+                                **Next steps:**
+                                1. Note the prediction ID shown above
+                                2. Once the event resolves, go to the "Record Results" tab
+                                3. Enter the actual result (TRUE/FALSE) to update the firm's metrics
                                 """)
                             else:
-                                st.error(f"❌ Error al enviar predicción: {result.get('message', 'Error desconocido')}")
-                                st.warning(f"Detalles: {result.get('error', '')}")
+                                st.error(f"❌ Error submitting prediction: {result.get('message', 'Unknown error')}")
+                                st.warning(f"Details: {result.get('error', '')}")
                 
                 st.markdown("---")
                 
-                with st.expander("💾 Descargar JSON (opcional)", expanded=False):
+                with st.expander("💾 Download JSON (optional)", expanded=False):
                     export_data = {
                         "firma_generadora": selected_firm,
                         "fecha_prediccion": prediction.get('fecha_prediccion', datetime.now().strftime('%Y-%m-%d')),
@@ -1089,20 +1089,20 @@ with tab7:
                     json_str = json.dumps(export_data, indent=2, ensure_ascii=False)
                     
                     st.download_button(
-                        label="💾 Descargar JSON",
+                        label="💾 Download JSON",
                         data=json_str,
                         file_name=f"prediction_{selected_firm}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
                         mime="application/json"
                     )
         else:
-            st.warning("No hay predicciones válidas para enviar. Todas las firmas reportaron errores.")
+            st.warning("No valid predictions to submit. All firms reported errors.")
 
 with tab8:
-    st.header("📝 Registrar Resultados de Predicciones")
+    st.header("📝 Record Prediction Results")
     
     st.markdown("""
-    Use esta interfaz para registrar los resultados reales de las predicciones enviadas.
-    Esto actualiza las métricas de rendimiento de cada firma.
+    Use this interface to record the actual results of submitted predictions.
+    This updates the performance metrics of each firm.
     """)
     
     st.markdown("---")
@@ -1112,22 +1112,22 @@ with tab8:
     unresolved_predictions = [p for p in recent_predictions if p['actual_result'] is None]
     
     if not unresolved_predictions:
-        st.info("✅ No hay predicciones pendientes de resolución. Todas las predicciones recientes ya tienen resultados registrados.")
+        st.info("✅ No pending predictions to resolve. All recent predictions already have recorded results.")
     else:
-        st.subheader(f"📋 Predicciones Pendientes ({len(unresolved_predictions)})")
+        st.subheader(f"📋 Pending Predictions ({len(unresolved_predictions)})")
         
         for pred in unresolved_predictions:
             with st.expander(f"🏢 {pred['firm_name']} - {pred['event_description'][:60]}...", expanded=False):
                 col1, col2, col3 = st.columns(3)
                 
                 with col1:
-                    st.metric("Probabilidad Predicha", f"{pred['probability']:.2%}")
+                    st.metric("Predicted Probability", f"{pred['probability']:.2%}")
                 with col2:
-                    st.metric("Fecha", pred['prediction_date'])
+                    st.metric("Date", pred['prediction_date'])
                 with col3:
                     st.metric("ID", f"#{pred['id']}")
                 
-                st.markdown("**Evento:**")
+                st.markdown("**Event:**")
                 st.write(pred['event_description'])
                 
                 st.markdown("---")
@@ -1138,35 +1138,35 @@ with tab8:
                 
                 with col1:
                     actual_result = st.radio(
-                        "¿Cuál fue el resultado real?",
+                        "What was the actual result?",
                         options=[None, 1, 0],
-                        format_func=lambda x: "Seleccionar..." if x is None else "TRUE (Evento ocurrió)" if x == 1 else "FALSE (Evento no ocurrió)",
+                        format_func=lambda x: "Select..." if x is None else "TRUE (Event occurred)" if x == 1 else "FALSE (Event did not occur)",
                         key=f"result_{pred['id']}"
                     )
                 
                 with col2:
                     if actual_result is not None:
                         profit_loss = st.number_input(
-                            "Ganancia/Pérdida (USD)",
+                            "Profit/Loss (USD)",
                             value=0.0,
                             step=0.01,
                             key=f"pl_{pred['id']}",
-                            help="Ingrese la ganancia (positivo) o pérdida (negativo) en USD"
+                            help="Enter profit (positive) or loss (negative) in USD"
                         )
                 
                 with col3:
                     if actual_result is not None:
-                        if st.button("💾 Guardar Resultado", key=f"save_{pred['id']}", type="primary"):
+                        if st.button("💾 Save Result", key=f"save_{pred['id']}", type="primary"):
                             st.session_state.db.update_prediction_result(
                                 pred['id'],
                                 actual_result,
                                 profit_loss
                             )
-                            st.success("✅ Resultado guardado exitosamente!")
+                            st.success("✅ Result saved successfully!")
                             st.rerun()
     
     st.markdown("---")
-    st.subheader("📊 Historial Completo de Predicciones")
+    st.subheader("📊 Complete Prediction History")
     
     all_predictions = st.session_state.db.get_recent_predictions(limit=100)
     
@@ -1174,7 +1174,7 @@ with tab8:
         df = pd.DataFrame(all_predictions)
         
         df['resultado'] = df['actual_result'].apply(
-            lambda x: 'Pendiente' if x is None else ('TRUE' if x == 1 else 'FALSE')
+            lambda x: 'Pending' if x is None else ('TRUE' if x == 1 else 'FALSE')
         )
         
         df['correcto'] = df.apply(
@@ -1187,8 +1187,8 @@ with tab8:
         display_df = df[['id', 'firm_name', 'event_description', 'probability', 
                          'prediction_date', 'resultado', 'profit_loss', 'correcto']]
         
-        display_df.columns = ['ID', 'Firma', 'Evento', 'Probabilidad', 'Fecha', 
-                              'Resultado Real', 'P/L (USD)', 'Correcto']
+        display_df.columns = ['ID', 'Firm', 'Event', 'Probability', 'Date', 
+                              'Actual Result', 'P/L (USD)', 'Correct']
         
         st.dataframe(display_df, use_container_width=True, height=400)
         
@@ -1197,33 +1197,33 @@ with tab8:
         resolved = df[df['actual_result'].notna()]
         if len(resolved) > 0:
             with col1:
-                st.metric("Predicciones Resueltas", len(resolved))
+                st.metric("Resolved Predictions", len(resolved))
             with col2:
                 total_pl = resolved['profit_loss'].sum()
-                st.metric("P/L Total", f"${total_pl:,.2f}")
+                st.metric("Total P/L", f"${total_pl:,.2f}")
             with col3:
                 accuracy = (resolved['correcto'] == '✅').sum() / len(resolved) * 100
-                st.metric("Precisión General", f"{accuracy:.1f}%")
+                st.metric("Overall Accuracy", f"{accuracy:.1f}%")
     else:
-        st.info("No hay predicciones registradas aún.")
+        st.info("No predictions recorded yet.")
 
-st.sidebar.title("⚙️ Configuración")
+st.sidebar.title("⚙️ Configuration")
 
-with st.sidebar.expander("🔑 API Keys Configuradas"):
-    st.write("✅ Alpha Vantage:", "Configurada" if os.environ.get("ALPHA_VANTAGE_API_KEY") else "❌ No configurada")
-    st.write("✅ OpenAI (AI Int.):", "Configurada" if os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY") else "❌ No configurada")
-    st.write("✅ Gemini (AI Int.):", "Configurada" if os.environ.get("AI_INTEGRATIONS_GEMINI_API_KEY") else "❌ No configurada")
-    st.write("✅ Qwen:", "Configurada" if os.environ.get("QWEN_API_KEY") else "⚠️ Opcional")
-    st.write("✅ Deepseek:", "Configurada" if os.environ.get("DEEPSEEK_API_KEY") else "⚠️ Opcional")
-    st.write("✅ Grok (xAI):", "Configurada" if os.environ.get("XAI_API_KEY") else "⚠️ Opcional")
-    st.write("✅ Reddit:", "Configurada" if (os.environ.get("REDDIT_CLIENT_ID") and os.environ.get("REDDIT_CLIENT_SECRET")) else "⚠️ Opcional")
-    st.write("✅ Opinion.trade:", "Configurada" if os.environ.get("OPINION_TRADE_API_KEY") else "⚠️ Pendiente")
+with st.sidebar.expander("🔑 Configured API Keys"):
+    st.write("✅ Alpha Vantage:", "Configured" if os.environ.get("ALPHA_VANTAGE_API_KEY") else "❌ Not configured")
+    st.write("✅ OpenAI (AI Int.):", "Configured" if os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY") else "❌ Not configured")
+    st.write("✅ Gemini (AI Int.):", "Configured" if os.environ.get("AI_INTEGRATIONS_GEMINI_API_KEY") else "❌ Not configured")
+    st.write("✅ Qwen:", "Configured" if os.environ.get("QWEN_API_KEY") else "⚠️ Optional")
+    st.write("✅ Deepseek:", "Configured" if os.environ.get("DEEPSEEK_API_KEY") else "⚠️ Optional")
+    st.write("✅ Grok (xAI):", "Configured" if os.environ.get("XAI_API_KEY") else "⚠️ Optional")
+    st.write("✅ Reddit:", "Configured" if (os.environ.get("REDDIT_CLIENT_ID") and os.environ.get("REDDIT_CLIENT_SECRET")) else "⚠️ Optional")
+    st.write("✅ Opinion.trade:", "Configured" if os.environ.get("OPINION_TRADE_API_KEY") else "⚠️ Pending")
 
 st.sidebar.markdown("---")
 st.sidebar.info("""
 **TradingAgents Framework v1.0**
 
-Sistema autónomo de predicciones de mercado con 5 firmas de LLMs compitiendo.
+Autonomous market prediction system with 5 competing LLM firms.
 
-Cada firma simula 7 roles internos para generar predicciones optimizadas.
+Each firm simulates 7 internal roles to generate optimized predictions.
 """)
