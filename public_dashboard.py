@@ -51,6 +51,39 @@ st.markdown("""
     header {visibility: hidden;}
     .stDeployButton {display: none;}
     
+    /* Fix Streamlit metric colors for white background - CRITICAL for visibility */
+    .stMetric label, .stMetric-label {
+        color: #101114 !important;
+        font-weight: 600 !important;
+    }
+    .stMetric .metric-value, [data-testid="stMetricValue"], .stMetric-value {
+        color: #101114 !important;
+        font-weight: 700 !important;
+    }
+    .stMetric .metric-delta, [data-testid="stMetricDelta"], .stMetric-delta {
+        color: #4B4F58 !important;
+    }
+    
+    /* Ensure all text elements have proper contrast */
+    p, span, div {
+        color: #101114;
+    }
+    
+    /* Leaderboard card styling */
+    .leaderboard-card {
+        background: #F7F8FA;
+        border: 1px solid #E7E9ED;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        transition: all 0.2s ease;
+    }
+    
+    .leaderboard-card:hover {
+        border-color: #D1D5DB;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    
     /* Header profesional - optimizado para Replit */
     .header-container {
         display: flex;
@@ -519,17 +552,30 @@ elif st.session_state.current_view == 'LEADERBOARD':
         color = AI_COLORS[ai_name]
         pnl = data['pnl_pct']
         pnl_sign = '+' if pnl >= 0 else ''
+        pnl_color = '#059669' if pnl >= 0 else '#DC2626'
         
-        col1, col2, col3, col4 = st.columns([1, 3, 2, 2])
-        with col1:
-            st.markdown(f'<div style="font-size: 2rem; font-weight: 700; color: #111;">#{idx+1}</div>', unsafe_allow_html=True)
-        with col2:
-            st.markdown(f'<div style="display: flex; align-items: center; gap: 0.5rem;"><div style="width: 16px; height: 16px; border-radius: 50%; background: {color};"></div><span style="font-size: 1.25rem; font-weight: 600;">{ai_name}</span></div>', unsafe_allow_html=True)
-        with col3:
-            st.metric("Account Value", f"${data['current']:,.0f}")
-        with col4:
-            st.metric("P&L", f"{pnl_sign}{pnl:.1f}%")
-        st.divider()
+        # Usar card con fondo sutil para visibilidad
+        st.markdown(f"""
+        <div class="leaderboard-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 1rem; flex: 1;">
+                    <div style="font-size: 2rem; font-weight: 700; color: #101114; min-width: 3rem;">#{idx+1}</div>
+                    <div style="width: 16px; height: 16px; border-radius: 50%; background: {color}; flex-shrink: 0;"></div>
+                    <div style="font-size: 1.25rem; font-weight: 600; color: #101114;">{ai_name}</div>
+                </div>
+                <div style="display: flex; gap: 2rem; align-items: center;">
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75rem; font-weight: 600; color: #61646B; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Account Value</div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #101114; font-family: 'JetBrains Mono', monospace;">${data['current']:,.0f}</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75rem; font-weight: 600; color: #61646B; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">P&L</div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: {pnl_color}; font-family: 'JetBrains Mono', monospace;">{pnl_sign}{pnl:.1f}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
 elif st.session_state.current_view == 'BLOG':
     st.markdown('<div class="chart-title">ALPHA ARENA BLOG</div>', unsafe_allow_html=True)

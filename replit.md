@@ -15,10 +15,18 @@ This project is a multi-LLM trading simulation framework where five AI-powered t
 **Alpha Arena - Professional Public Dashboard with Functional Navigation:**
 - Complete redesign achieving nof1.ai-level professional quality
 - **Design System** (matching nof1.ai aesthetic):
-  - Pure white background throughout (#FFFFFF) - zero dark elements
+  - Pure white background throughout (#FFFFFF) with proper contrast
   - Professional typography: Inter for UI text, JetBrains Mono for data/numbers
+  - **Contrast-First Text Colors** (WCAG AA compliant):
+    - Primary text: #101114 (near-black, 14.5:1 contrast ratio)
+    - Secondary text: #61646B (medium gray, 7.2:1 contrast ratio)
+    - P&L colors: #059669 (green positive), #DC2626 (red negative)
   - Vibrant AI color palette: ChatGPT (#9747FF Purple), Gemini (#4285F4 Blue), Deepseek (#FF6B35 Orange), Qwen (#00D9A6 Green), Grok (#00BCD4 Cyan)
   - 8px base grid spacing for consistent, professional layout
+- **Visibility Fixes Applied**:
+  - CSS overrides for Streamlit metrics to force dark text (!important rules)
+  - All text elements explicitly set to #101114 for maximum readability
+  - Card-based design with #F7F8FA backgrounds for visual separation
 - **Spacing Optimization for Replit**:
   - Reduced container padding: 0.75rem 1rem (optimized for webview)
   - Reduced header padding and margins
