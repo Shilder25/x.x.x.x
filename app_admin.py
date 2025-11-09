@@ -20,6 +20,284 @@ from recommendation_engine import RecommendationEngine
 
 # Note: st.set_page_config is handled in app.py main entry point
 
+# Premium Dark Design System with Binance Gold
+st.markdown("""
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+    
+    /* CSS Variables - Design Tokens */
+    :root {
+        /* Backgrounds */
+        --bg-hero: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+        --bg-surface: #0F172A;
+        --bg-card: rgba(30, 41, 59, 0.4);
+        --bg-card-hover: rgba(30, 41, 59, 0.6);
+        
+        /* Binance Gold Accent System */
+        --gold-primary: #F0B90B;
+        --gold-glow: rgba(240, 185, 11, 0.3);
+        --gold-hover: #FCD535;
+        
+        /* Supporting Colors (max 2-3 total) */
+        --accent-teal: #0EA5E9;
+        --accent-slate: #334155;
+        
+        /* Glass Effects */
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --glass-gold-border: rgba(240, 185, 11, 0.2);
+        
+        /* Text Hierarchy */
+        --text-primary: #F8FAFC;
+        --text-secondary: #94A3B8;
+        --text-tertiary: #64748B;
+        
+        /* Spacing */
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+        
+        /* Border Radius */
+        --radius-sm: 6px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+    }
+    
+    /* Dark Theme Base */
+    .stApp {
+        background: var(--bg-hero);
+        font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: var(--text-primary);
+    }
+    
+    .main .block-container {
+        padding: var(--space-md) var(--space-lg);
+        max-width: 100%;
+    }
+    
+    /* Hide Streamlit Elements */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    .stDeployButton {display: none;}
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Space Grotesk', sans-serif !important;
+        color: var(--text-primary) !important;
+        font-weight: 700 !important;
+    }
+    
+    h1 { font-size: 2.5rem !important; letter-spacing: -0.02em; }
+    h2 { font-size: 2rem !important; letter-spacing: -0.02em; }
+    h3 { font-size: 1.5rem !important; }
+    
+    p, span, div, label {
+        color: var(--text-primary) !important;
+    }
+    
+    /* Premium Header */
+    .admin-header {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-hover) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.02em;
+        text-shadow: 0 0 30px var(--gold-glow);
+        margin-bottom: 0.5rem;
+    }
+    
+    .admin-subtitle {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+        margin-bottom: 2rem;
+    }
+    
+    /* Premium Tabs Styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background: transparent;
+        border-bottom: 1px solid var(--glass-border);
+        padding-bottom: 0;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        height: 50px;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px 12px 0 0;
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0 1.5rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+    
+    .stTabs [data-baseweb="tab"]:hover {
+        background: var(--bg-card-hover);
+        color: var(--gold-primary);
+        border-color: var(--glass-gold-border);
+    }
+    
+    .stTabs [data-baseweb="tab"][aria-selected="true"] {
+        background: var(--bg-card);
+        border: 1px solid var(--gold-primary);
+        color: var(--gold-primary);
+        box-shadow: 0 0 20px var(--gold-glow);
+    }
+    
+    /* Premium Cards */
+    .premium-card {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        border-top: 2px solid var(--gold-primary);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .premium-card:hover {
+        background: var(--bg-card-hover);
+        border-top-color: var(--gold-hover);
+        box-shadow: 0 8px 30px var(--gold-glow), 0 4px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+    }
+    
+    /* Buttons - Gold Primary */
+    .stButton > button[kind="primary"] {
+        background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-hover) 100%);
+        border: none;
+        color: #000000;
+        font-weight: 700;
+        font-family: 'Space Grotesk', sans-serif;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-md);
+        box-shadow: 0 4px 15px var(--gold-glow);
+        transition: all 0.3s ease;
+    }
+    
+    .stButton > button[kind="primary"]:hover {
+        background: var(--gold-hover);
+        box-shadow: 0 6px 25px var(--gold-glow);
+        transform: translateY(-2px);
+    }
+    
+    .stButton > button[kind="secondary"] {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-gold-border);
+        color: var(--gold-primary);
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+    }
+    
+    .stButton > button[kind="secondary"]:hover {
+        background: var(--bg-card);
+        border-color: var(--gold-primary);
+        box-shadow: 0 0 15px var(--gold-glow);
+    }
+    
+    /* Metrics - Dark Theme */
+    .stMetric {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+    }
+    
+    .stMetric label {
+        color: var(--text-secondary) !important;
+        font-weight: 600 !important;
+        font-size: 0.75rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    .stMetric [data-testid="stMetricValue"] {
+        color: var(--gold-primary) !important;
+        font-weight: 700 !important;
+        font-size: 1.75rem !important;
+        font-family: 'IBM Plex Mono', monospace !important;
+    }
+    
+    /* Dividers - Subtle */
+    hr {
+        border-color: var(--glass-border) !important;
+        margin: 2rem 0;
+    }
+    
+    /* Info/Success/Warning Boxes - Minimal */
+    .stAlert {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        border-left: 3px solid var(--gold-primary);
+        border-radius: var(--radius-md);
+        color: var(--text-primary);
+    }
+    
+    /* Expanders - Dark */
+    .streamlit-expanderHeader {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        color: var(--text-primary) !important;
+        font-weight: 600;
+    }
+    
+    .streamlit-expanderHeader:hover {
+        background: var(--bg-card-hover);
+        border-color: var(--glass-gold-border);
+    }
+    
+    /* Dataframes - Dark */
+    .stDataFrame {
+        background: var(--bg-surface);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-md);
+    }
+    
+    /* Text Inputs - Dark */
+    .stTextInput > div > div > input, 
+    .stTextArea > div > div > textarea {
+        background: var(--bg-surface);
+        border: 1px solid var(--glass-border);
+        color: var(--text-primary);
+        border-radius: var(--radius-md);
+    }
+    
+    .stTextInput > div > div > input:focus,
+    .stTextArea > div > div > textarea:focus {
+        border-color: var(--gold-primary);
+        box-shadow: 0 0 10px var(--gold-glow);
+    }
+    
+    /* Selectbox - Dark */
+    .stSelectbox > div > div {
+        background: var(--bg-surface);
+        border: 1px solid var(--glass-border);
+        color: var(--text-primary);
+    }
+    
+    /* Toggle - Gold Active State */
+    .stCheckbox > label {
+        color: var(--text-primary) !important;
+    }
+    
+    /* Remove emoji clutter, keep minimal */
+    .minimal-icon {
+        color: var(--gold-primary);
+        font-size: 1.2rem;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 if 'db' not in st.session_state:
     st.session_state.db = TradingDatabase()
     
@@ -45,94 +323,103 @@ if 'fundamental_data' not in st.session_state:
 if 'sentiment_data' not in st.session_state:
     st.session_state.sentiment_data = None
 
-st.title("📈 TradingAgents Framework")
-st.markdown("### System of 5 Autonomous Trading AI Firms with LLMs")
+# Premium Header
+st.markdown('<div class="admin-header">⚡ TRADINGAGENTS</div>', unsafe_allow_html=True)
+st.markdown('<div class="admin-subtitle">Multi-LLM Prediction Market Framework</div>', unsafe_allow_html=True)
 
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
-    "🏠 Home",
-    "🤖 Autonomous Competition",
-    "🎯 New Prediction",
-    "🔍 Transparency Panel",
-    "📊 Comparative Dashboard",
-    "💡 Recommendations & Consensus",
-    "📤 Submit to Opinion.trade",
-    "📝 Record Results"
+    "Home",
+    "Autonomous Competition",
+    "New Prediction",
+    "Transparency Panel",
+    "Comparative Dashboard",
+    "Recommendations",
+    "Submit",
+    "Results"
 ])
 
 with tab1:
-    st.markdown("# 🏠 Welcome to TradingAgents")
-    st.markdown("### Choose how you want to use the system")
+    st.markdown("## System Modes")
+    st.markdown("Choose how you want to use the framework")
     
-    st.divider()
+    st.markdown("")
     
     col1, col2 = st.columns(2, gap="large")
     
     with col1:
-        with st.container():
-            st.markdown("## 🎯 Manual System")
-            st.markdown("##### For analysts who want full control")
+        st.markdown("""
+        <div class="premium-card">
+            <h3 style="color: #F0B90B; margin-bottom: 0.5rem;">Manual System</h3>
+            <p style="color: #94A3B8; margin-bottom: 1.5rem; font-size: 0.9rem;">For analysts who want full control</p>
             
-            st.markdown("")
-            st.markdown("**📋 Features:**")
-            st.markdown("• Generate predictions with all 5 AIs")
-            st.markdown("• Analyze technical, fundamental, and sentiment data")
-            st.markdown("• Visualize complete reasoning from each firm")
-            st.markdown("• Compare performance and consensus")
-            st.markdown("• Choose which prediction to submit to Opinion.trade")
-            st.markdown("• Record results manually")
+            <div style="margin-bottom: 1.5rem;">
+                <p style="font-weight: 600; margin-bottom: 0.75rem; font-size: 0.875rem;">FEATURES</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ Generate predictions with all 5 AIs</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ Analyze technical, fundamental, sentiment data</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ Visualize complete reasoning</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ Compare performance and consensus</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ Submit to Opinion.trade</p>
+            </div>
             
-            st.markdown("")
-            st.info("💡 **Ideal for:** Detailed analysis, learning, and personalized decisions")
-            
-            st.markdown("")
-            if st.button("🚀 Go to Manual System", use_container_width=True, type="primary", key="goto_manual"):
-                st.info("👉 Go to the **'🎯 New Prediction'** tab to begin")
+            <div style="padding: 1rem; background: rgba(240, 185, 11, 0.1); border-left: 2px solid #F0B90B; border-radius: 6px; margin-bottom: 1.5rem;">
+                <p style="margin: 0; font-size: 0.85rem; color: #F0B90B;">Ideal for detailed analysis and personalized decisions</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("")
+        if st.button("Access Manual System", use_container_width=True, type="primary", key="goto_manual"):
+            st.info("Navigate to the 'New Prediction' tab")
     
     with col2:
-        with st.container():
-            st.markdown("## 🤖 Autonomous Competition")
-            st.markdown("##### For observers who want to see AIs compete")
+        st.markdown("""
+        <div class="premium-card">
+            <h3 style="color: #F0B90B; margin-bottom: 0.5rem;">Autonomous Competition</h3>
+            <p style="color: #94A3B8; margin-bottom: 1.5rem; font-size: 0.9rem;">For observers who want to see AIs compete</p>
             
-            st.markdown("")
-            st.markdown("**🏆 Features:**")
-            st.markdown("• 5 AIs competing in real-time")
-            st.markdown("• Each AI analyzes events automatically")
-            st.markdown("• Different bankroll strategies")
-            st.markdown("• Continuous adaptation system (never stops)")
-            st.markdown("• Weekly learning based on performance")
-            st.markdown("• Leaderboard and live metrics")
+            <div style="margin-bottom: 1.5rem;">
+                <p style="font-weight: 600; margin-bottom: 0.75rem; font-size: 0.875rem;">FEATURES</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ 5 AIs competing in real-time</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ Each AI analyzes events automatically</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ Different bankroll strategies</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ Continuous adaptation system</p>
+                <p style="margin: 0.5rem 0; font-size: 0.85rem;">→ Weekly learning and leaderboard</p>
+            </div>
             
-            st.markdown("")
-            st.success("✨ **Ideal for:** Observing strategies, competition, and autonomous evolution")
-            
-            st.markdown("")
-            if st.button("🏁 View Autonomous Competition", use_container_width=True, type="primary", key="goto_auto"):
-                st.info("👉 Go to the **'🤖 Autonomous Competition'** tab to begin")
+            <div style="padding: 1rem; background: rgba(240, 185, 11, 0.1); border-left: 2px solid #F0B90B; border-radius: 6px; margin-bottom: 1.5rem;">
+                <p style="margin: 0; font-size: 0.85rem; color: #F0B90B;">Ideal for observing strategies and autonomous evolution</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("")
+        if st.button("Access Competition", use_container_width=True, type="primary", key="goto_auto"):
+            st.info("Navigate to the 'Autonomous Competition' tab")
     
     st.divider()
     
-    st.markdown("### ℹ️ Which one to choose?")
+    st.markdown("### Comparison")
     
     comparison_col1, comparison_col2, comparison_col3 = st.columns(3)
     
     with comparison_col1:
-        st.markdown("**Control**")
-        st.markdown("• Manual: ✅ Full control")
-        st.markdown("• Autonomous: 👀 Just observe")
+        st.markdown("**Control Level**")
+        st.markdown("Manual: Full control")
+        st.markdown("Autonomous: Observe only")
     
     with comparison_col2:
-        st.markdown("**Time Commitment**")
-        st.markdown("• Manual: ⏰ Requires intervention")
-        st.markdown("• Autonomous: ⚡ Fully automatic")
+        st.markdown("**Time Required**")
+        st.markdown("Manual: Active participation")
+        st.markdown("Autonomous: Fully automatic")
     
     with comparison_col3:
-        st.markdown("**Objective**")
-        st.markdown("• Manual: 🎯 Precise predictions")
-        st.markdown("• Autonomous: 📊 Research and competition")
+        st.markdown("**Primary Goal**")
+        st.markdown("Manual: Precise predictions")
+        st.markdown("Autonomous: Research & competition")
 
 with tab2:
-    st.markdown("## 🤖 Autonomous Trading Competition")
-    st.markdown("##### Automated betting system with continuous adaptation and weekly learning")
+    st.markdown("## Autonomous Competition")
+    st.markdown("Automated betting system with continuous adaptation and weekly learning")
     
     if 'autonomous_engine' not in st.session_state:
         from autonomous_engine import AutonomousEngine
@@ -151,14 +438,14 @@ with tab2:
     
     with left_col:
         with st.container():
-            st.markdown("### 🎮 Control Panel")
+            st.markdown("### Control Panel")
             
             # System ON/OFF toggle
             if 'system_enabled' not in st.session_state:
                 st.session_state.system_enabled = False
             
             system_enabled = st.toggle(
-                "⚡ System Status",
+                "System Status",
                 value=st.session_state.system_enabled,
                 key="system_enabled_toggle",
                 help="Enable/disable the autonomous prediction system to control API usage"
@@ -166,15 +453,15 @@ with tab2:
             st.session_state.system_enabled = system_enabled
             
             if system_enabled:
-                st.success("🟢 **SYSTEM ACTIVE** - AIs can place predictions")
+                st.markdown('<div style="padding: 0.75rem; background: rgba(34, 197, 94, 0.1); border-left: 3px solid #22C55E; border-radius: 6px; margin: 1rem 0;"><p style="margin: 0; color: #22C55E; font-weight: 600;">SYSTEM ACTIVE</p><p style="margin: 0; font-size: 0.85rem; color: #94A3B8;">AIs can place predictions</p></div>', unsafe_allow_html=True)
             else:
-                st.warning("🔴 **SYSTEM DISABLED** - No API calls will be made")
+                st.markdown('<div style="padding: 0.75rem; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #EF4444; border-radius: 6px; margin: 1rem 0;"><p style="margin: 0; color: #EF4444; font-weight: 600;">SYSTEM DISABLED</p><p style="margin: 0; font-size: 0.85rem; color: #94A3B8;">No API calls will be made</p></div>', unsafe_allow_html=True)
             
             st.divider()
             
             # Simulation mode toggle (only if system is enabled)
             simulation_mode = st.toggle(
-                "🧪 Simulation Mode",
+                "Simulation Mode",
                 value=engine.simulation_mode,
                 key="sim_mode_toggle",
                 help="In simulation mode, real bets are not executed",
@@ -183,32 +470,32 @@ with tab2:
             engine.simulation_mode = simulation_mode
             
             if simulation_mode:
-                st.info("✓ Simulation mode active - Safe environment")
+                st.markdown('<div style="padding: 0.75rem; background: rgba(14, 165, 233, 0.1); border-left: 3px solid #0EA5E9; border-radius: 6px; margin: 1rem 0;"><p style="margin: 0; color: #0EA5E9; font-weight: 600;">SIMULATION MODE</p><p style="margin: 0; font-size: 0.85rem; color: #94A3B8;">Safe testing environment</p></div>', unsafe_allow_html=True)
             else:
-                st.error("⚠️ LIVE MODE - Bets will affect your account")
+                st.markdown('<div style="padding: 0.75rem; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #EF4444; border-radius: 6px; margin: 1rem 0;"><p style="margin: 0; color: #EF4444; font-weight: 600;">LIVE MODE</p><p style="margin: 0; font-size: 0.85rem; color: #94A3B8;">Real bets will be executed</p></div>', unsafe_allow_html=True)
             
             st.markdown("")
             
             col_btn1, col_btn2 = st.columns(2)
             
             with col_btn1:
-                if st.button("▶️ Run Cycle", use_container_width=True, type="primary", disabled=not system_enabled):
+                if st.button("Run Cycle", use_container_width=True, type="primary", disabled=not system_enabled):
                     with st.spinner("Analyzing events and executing bets..."):
                         try:
                             result = engine.run_daily_cycle()
-                            st.success(f"✅ {result.get('total_bets_placed')} bets placed")
+                            st.success(f"{result.get('total_bets_placed')} bets placed successfully")
                             st.rerun()
                         except Exception as e:
                             st.error(f"Error: {str(e)}")
             
             with col_btn2:
-                if st.button("🔄 Refresh", use_container_width=True):
+                if st.button("Refresh", use_container_width=True):
                     st.rerun()
         
         st.markdown("")
         
         with st.container():
-            st.markdown("### 📊 Global Summary")
+            st.markdown("### Global Summary")
             
             total_bankroll = sum([
                 firm_status['bankroll'].get('current_bankroll', 0)
@@ -256,24 +543,25 @@ with tab2:
     
     with right_col:
         with st.container():
-            st.markdown("### 🏆 AI Leaderboard")
+            st.markdown("### AI Leaderboard")
             
             leaderboard = status.get('leaderboard', [])
             
             if leaderboard:
                 for i, entry in enumerate(leaderboard[:5]):
-                    position_emoji = {1: "🥇", 2: "🥈", 3: "🥉"}.get(entry['position'], f"#{entry['position']}")
+                    position_display = {1: "#1", 2: "#2", 3: "#3"}.get(entry['position'], f"#{entry['position']}")
                     
                     with st.container():
                         col_pos, col_firm, col_metrics = st.columns([0.5, 1.5, 2])
                         
                         with col_pos:
-                            st.markdown(f"## {position_emoji}")
+                            st.markdown(f'<div style="font-size: 1.5rem; font-weight: 700; color: #F0B90B;">{position_display}</div>', unsafe_allow_html=True)
                         
                         with col_firm:
                             st.markdown(f"**{entry['firm_name']}**")
-                            risk_emoji = {"normal": "🟢", "caution": "🟡", "alert": "🟠", "critical": "🔴"}.get(entry['risk_level'], "⚪")
-                            st.caption(f"{risk_emoji} {entry['risk_level'].upper()}")
+                            risk_colors = {"normal": "#22C55E", "caution": "#F59E0B", "alert": "#F97316", "critical": "#EF4444"}
+                            risk_color = risk_colors.get(entry['risk_level'], "#64748B")
+                            st.markdown(f'<p style="color: {risk_color}; font-size: 0.75rem; margin: 0;">{entry["risk_level"].upper()}</p>', unsafe_allow_html=True)
                         
                         with col_metrics:
                             m1, m2, m3 = st.columns(3)
@@ -292,10 +580,10 @@ with tab2:
     st.divider()
     
     with st.container():
-        st.markdown("### 📈 Detailed AI Status")
+        st.markdown("### Detailed AI Status")
         
         for firm_name, firm_status in status.get('firms', {}).items():
-            with st.expander(f"🏢 {firm_name}", expanded=False):
+            with st.expander(f"{firm_name}", expanded=False):
                 risk_status = firm_status['risk']
                 bankroll_status = firm_status['bankroll']
                 
@@ -303,8 +591,7 @@ with tab2:
                 
                 with col1:
                     risk_level = risk_status.get('risk_level', 'normal')
-                    risk_emoji = {"normal": "🟢", "caution": "🟡", "alert": "🟠", "critical": "🔴"}.get(risk_level, "⚪")
-                    st.metric("Status", f"{risk_emoji} {risk_level.upper()}")
+                    st.metric("Status", risk_level.upper())
                 
                 with col2:
                     adaptation_level = risk_status.get('adaptation_level', 0)
@@ -334,7 +621,7 @@ with tab2:
     st.divider()
     
     with st.container():
-        st.markdown("### 📜 Bet History")
+        st.markdown("### Bet History")
     
         filter_firm = st.selectbox("Filter by Firm", ["All"] + list(status.get('firms', {}).keys()))
         
@@ -346,7 +633,7 @@ with tab2:
         if bets:
             bets_data = []
             for bet in bets:
-                result_emoji = "✅" if bet['actual_result'] == 1 else "❌" if bet['actual_result'] == 0 else "⏳"
+                result_status = "WON" if bet['actual_result'] == 1 else "LOST" if bet['actual_result'] == 0 else "PENDING"
                 
                 bets_data.append({
                     'Firm': bet['firm_name'],
@@ -354,7 +641,7 @@ with tab2:
                     'Amount': f"${bet['bet_size']:.2f}",
                     'Prob': f"{bet['probability']:.0%}",
                     'EV': f"{bet['expected_value']:.2f}" if bet['expected_value'] else "N/A",
-                    'Status': result_emoji,
+                    'Status': result_status,
                     'P/L': f"${bet['profit_loss']:.2f}" if bet['profit_loss'] else "-",
                     'Date': bet['execution_timestamp'][:10]
                 })
@@ -367,13 +654,13 @@ with tab2:
     st.divider()
     
     with st.container():
-        st.markdown("### 🔄 Strategy Adaptations")
+        st.markdown("### Strategy Adaptations")
         
         adaptations = st.session_state.db.get_strategy_adaptations()
         
         if adaptations:
             for adapt in adaptations[:5]:
-                with st.expander(f"🔧 {adapt['firm_name']} - Level {adapt['adaptation_level']} ({adapt['adaptation_timestamp'][:10]})", expanded=False):
+                with st.expander(f"{adapt['firm_name']} - Level {adapt['adaptation_level']} ({adapt['adaptation_timestamp'][:10]})", expanded=False):
                     col1, col2, col3 = st.columns(3)
                     
                     with col1:
@@ -395,9 +682,9 @@ with tab2:
     st.divider()
     
     with st.container():
-        st.markdown("### 📊 Performance Charts")
+        st.markdown("### Performance Charts")
         
-        tab_chart1, tab_chart2, tab_chart3 = st.tabs(["💰 Bankroll", "🎯 Win Rate", "⚠️ Risk"])
+        tab_chart1, tab_chart2, tab_chart3 = st.tabs(["Bankroll", "Win Rate", "Risk"])
         
         with tab_chart1:
             fig = go.Figure()
@@ -419,7 +706,12 @@ with tab2:
                 yaxis_title="Bankroll ($)",
                 hovermode='x unified',
                 height=350,
-                showlegend=True
+                showlegend=True,
+                template="plotly_dark",
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(15,23,42,0.6)',
+                font=dict(color='#F8FAFC', family='Manrope'),
+                title_font=dict(color='#F0B90B', size=18)
             )
             
             st.plotly_chart(fig, use_container_width=True)
@@ -439,8 +731,16 @@ with tab2:
             fig = px.bar(df_wr, x='Firm', y='Win Rate', 
                          title="Success Rate",
                          color='Win Rate',
-                         color_continuous_scale='RdYlGn',
+                         color_continuous_scale=[[0, '#EF4444'], [0.5, '#F0B90B'], [1, '#22C55E']],
                          height=350)
+            
+            fig.update_layout(
+                template="plotly_dark",
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(15,23,42,0.6)',
+                font=dict(color='#F8FAFC', family='Manrope'),
+                title_font=dict(color='#F0B90B', size=18)
+            )
             
             st.plotly_chart(fig, use_container_width=True)
         
@@ -466,22 +766,30 @@ with tab2:
                          color='Level',
                          height=350,
                          color_discrete_map={
-                         'NORMAL': 'green',
-                         'CAUTION': 'yellow',
-                         'ALERT': 'orange',
-                         'CRITICAL': 'red'
+                         'NORMAL': '#22C55E',
+                         'CAUTION': '#F59E0B',
+                         'ALERT': '#F97316',
+                         'CRITICAL': '#EF4444'
                      })
+            
+            fig.update_layout(
+                template="plotly_dark",
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(15,23,42,0.6)',
+                font=dict(color='#F8FAFC', family='Manrope'),
+                title_font=dict(color='#F0B90B', size=18)
+            )
         
         st.plotly_chart(fig, use_container_width=True)
 
 with tab3:
-    st.markdown("## 🎯 Manual Prediction System")
-    st.markdown("##### Generate predictions using the 5 LLM analysis firms")
+    st.markdown("## Manual Prediction System")
+    st.markdown("Generate predictions using the 5 LLM analysis firms")
     
     st.divider()
     
     with st.container():
-        st.markdown("### 📝 Step 1: Event Configuration")
+        st.markdown("### Step 1: Event Configuration")
         col1, col2 = st.columns([3, 1])
         
         with col1:
@@ -509,13 +817,13 @@ with tab3:
     st.divider()
     
     with st.container():
-        st.markdown("### 📊 Step 2: Market Data Collection")
+        st.markdown("### Step 2: Market Data Collection")
         
         col1, col2, col3 = st.columns(3)
         
         with col1:
             with st.container():
-                st.markdown("#### 🔧 Technical Data")
+                st.markdown("#### Technical Data")
                 st.caption("Indicators and technical analysis")
                 if st.session_state.technical_data:
                     st.success("✓ Data loaded")
@@ -534,7 +842,7 @@ with tab3:
         
         with col2:
             with st.container():
-                st.markdown("#### 📈 Fundamental Data")
+                st.markdown("#### Fundamental Data")
                 st.caption("Financials and valuation")
                 if st.session_state.fundamental_data:
                     st.success("✓ Data loaded")
@@ -549,7 +857,7 @@ with tab3:
         
         with col3:
             with st.container():
-                st.markdown("#### 💬 Social Sentiment")
+                st.markdown("#### Social Sentiment")
                 st.caption("Reddit analysis")
                 reddit_configured = os.environ.get("REDDIT_CLIENT_ID") and os.environ.get("REDDIT_CLIENT_SECRET")
                 
