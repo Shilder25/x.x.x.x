@@ -18,11 +18,7 @@ from prompt_system import (
 from opinion_trade_api import OpinionTradeAPI
 from recommendation_engine import RecommendationEngine
 
-st.set_page_config(
-    page_title="TradingAgents Framework",
-    page_icon="📈",
-    layout="wide"
-)
+# Note: st.set_page_config is handled in app.py main entry point
 
 if 'db' not in st.session_state:
     st.session_state.db = TradingDatabase()

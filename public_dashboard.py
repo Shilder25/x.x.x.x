@@ -7,15 +7,7 @@ import sqlite3
 from database import TradingDatabase
 from streamlit_autorefresh import st_autorefresh
 
-# Page config
-st.set_page_config(
-    page_title="Alpha Arena - Prediction Intelligence",
-    page_icon="◐",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
-
-# Auto-refresh cada 30 segundos
+# Auto-refresh every 30 seconds
 count = st_autorefresh(interval=30000, key="alpha_refresh")
 
 # Initialize session state for persistent data
@@ -1054,3 +1046,10 @@ elif st.session_state.current_view == 'MODELS':
                 font=dict(color='#94A3B8')
             )
             st.plotly_chart(mini_fig, width='stretch')
+
+# Admin access button in sidebar (discrete)
+with st.sidebar:
+    st.markdown("---")
+    if st.button("🔐 Admin", use_container_width=True, key="admin_access_btn"):
+        st.session_state.view_mode = 'admin'
+        st.rerun()
