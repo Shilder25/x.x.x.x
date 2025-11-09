@@ -12,35 +12,48 @@ This project is a multi-LLM trading simulation framework where five AI-powered t
 - E2E testing: All features validated with playwright
 
 ## Recent Changes (November 9, 2025)
-**Alpha Arena - Professional Public Dashboard (Final Implementation):**
+**Alpha Arena - Professional Public Dashboard with Functional Navigation:**
 - Complete redesign achieving nof1.ai-level professional quality
 - **Design System** (matching nof1.ai aesthetic):
   - Pure white background throughout (#FFFFFF) - zero dark elements
   - Professional typography: Inter for UI text, JetBrains Mono for data/numbers
   - Vibrant AI color palette: ChatGPT (#9747FF Purple), Gemini (#4285F4 Blue), Deepseek (#FF6B35 Orange), Qwen (#00D9A6 Green), Grok (#00BCD4 Cyan)
   - 8px base grid spacing for consistent, professional layout
-- **Layout** (TradingView-inspired):
+- **Spacing Optimization for Replit**:
+  - Reduced container padding: 0.75rem 1rem (optimized for webview)
+  - Reduced header padding and margins
+  - Reduced chart height: 450px (from 500px)
+  - Reduced info panel padding: 1rem
+  - Medium gap between columns for better space utilization
+- **Functional Navigation System**:
+  - 4 clickeable navigation buttons: LIVE, LEADERBOARD, BLOG, MODELS
+  - Active button highlighted with primary style
+  - Session state for navigation persistence
+  - Each view loads different content
+- **LIVE View** (default):
   - 70% large central chart (left) | 30% info panel (right)
-  - Single-screen design - everything fits in 100vh without scrolling
-  - Clean header with "◐ Alpha Arena" logo and navigation
-- **Professional Trading Chart**:
-  - Plotly interactive multi-line visualization (NOT generic metrics)
-  - 5 color-coded AI lines showing 30-day account value trends
-  - Horizontal line at $10,000 starting capital baseline
+  - Plotly interactive multi-line visualization with 5 color-coded AI lines
+  - 30-day account value trends with $10,000 starting capital baseline
   - Interactive tooltips, zoom, pan controls
-  - White theme with black text for perfect contrast
-- **Info Panel Features**:
-  - "A Better Benchmark" philosophy section
-  - Leaderboard with colored badges and rankings
-  - Current account values + P&L percentages per AI
-  - Competition rules explanation
+  - Info panel: "A Better Benchmark", "The Contestants" leaderboard, "Competition Rules"
+- **LEADERBOARD View**:
+  - Full-width AI performance rankings
+  - Each AI: ranking number, colored dot, name, account value, P&L percentage
+  - Sorted by current account value
+- **BLOG View**:
+  - "Coming Soon" placeholder
+  - List of upcoming blog topics
+- **MODELS View**:
+  - 5 expandable sections (one per AI)
+  - Each section shows: account value, P&L, model info
+  - Mini 30-day performance chart per AI with area fill
 - **Data Persistence**:
-  - Uses session_state for stability across auto-refreshes
+  - Uses session_state for stability across auto-refreshes and navigation
   - Data cached to prevent jumping/flickering
   - Consistent simulation with fixed seed for reproducibility
   - Auto-refresh every 30 seconds without visual disruption
-- **E2E Tested**: All visual elements, colors, layout, data persistence verified
-- **Production Ready**: Runs on port 5000, professional quality matching human-designed dashboards
+- **E2E Tested**: All views, navigation, spacing, colors, data persistence verified
+- **Production Ready**: Runs on port 5000, optimized for Replit webview
 
 **Navigation Reorganization - Improved Discoverability:**
 - Created new Tab 1 (Inicio): Landing page with two prominent cards explaining both modes
