@@ -12,49 +12,60 @@ This project is a multi-LLM trading simulation framework where five AI-powered t
 - E2E testing: All features validated with playwright
 
 ## Recent Changes (November 9, 2025)
-**Alpha Arena - Professional Public Dashboard with Functional Navigation:**
-- Complete redesign achieving nof1.ai-level professional quality
-- **Design System** (matching nof1.ai aesthetic):
-  - Pure white background throughout (#FFFFFF) with proper contrast
-  - Professional typography: Inter for UI text, JetBrains Mono for data/numbers
-  - **Contrast-First Text Colors** (WCAG AA compliant):
-    - Primary text: #101114 (near-black, 14.5:1 contrast ratio)
-    - Secondary text: #61646B (medium gray, 7.2:1 contrast ratio)
-    - P&L colors: #059669 (green positive), #DC2626 (red negative)
-  - Vibrant AI color palette: ChatGPT (#9747FF Purple), Gemini (#4285F4 Blue), Deepseek (#FF6B35 Orange), Qwen (#00D9A6 Green), Grok (#00BCD4 Cyan)
-  - 8px base grid spacing for consistent, professional layout
-- **Visibility Fixes Applied**:
-  - CSS overrides for Streamlit metrics to force dark text (!important rules)
-  - All text elements explicitly set to #101114 for maximum readability
-  - Card-based design with #F7F8FA backgrounds for visual separation
-- **Spacing Optimization for Replit**:
-  - Reduced container padding: 0.75rem 1rem (optimized for webview)
-  - Reduced header padding and margins
-  - Reduced chart height: 450px (from 500px)
-  - Reduced info panel padding: 1rem
-  - Medium gap between columns for better space utilization
+**Alpha Arena 2.0 - Premium Dark Redesign:**
+- Complete visual transformation to premium dark theme with professional, human-crafted aesthetic
+- **Design System Overhaul**:
+  - Dark gradient background: `linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%)`
+  - Premium typography stack: Space Grotesk (headings, 400-700), Manrope (body, 400-700), IBM Plex Mono (numbers, 400-600)
+  - Comprehensive CSS variable system for colors, spacing, typography scales, shadows
+  - **Dark Theme Color Palette**:
+    - Text Primary: #F8FAFC (high contrast on dark)
+    - Text Secondary: #94A3B8
+    - Text Tertiary: #64748B
+    - Accent Purple: #8B5CF6
+    - Accent Cyan: #4FD1C5
+    - Accent Blue: #38BDF8
+    - Accent Red: #F2555A
+  - Vibrant AI colors: ChatGPT (#8B5CF6 Purple), Gemini (#38BDF8 Blue), Deepseek (#FB923C Orange), Qwen (#4FD1C5 Cyan), Grok (#38BDF8 Blue)
+- **Glassmorphism & Visual Effects**:
+  - Navigation pills: `backdrop-filter: blur(10px)` with semi-transparent backgrounds
+  - Premium cards: rgba backgrounds with border highlights
+  - Hover effects: translateY, scale transforms with smooth transitions
+  - Glow effects: colored box-shadows on active elements and charts
+  - Animated pulsing indicator for "LIVE" status
+- **Header Redesign**:
+  - New logo: "◐ ALPHA ARENA" in Space Grotesk with purple text-shadow glow
+  - 4 navigation pills with active state showing purple-to-blue gradient
+  - Glassmorphism effect on all navigation elements
 - **Functional Navigation System**:
   - 4 clickeable navigation buttons: LIVE, LEADERBOARD, BLOG, MODELS
   - Active button highlighted with primary style
   - Session state for navigation persistence
   - Each view loads different content
 - **LIVE View** (default):
-  - 70% large central chart (left) | 30% info panel (right)
-  - Plotly interactive multi-line visualization with 5 color-coded AI lines
+  - 60% large central chart (left) | 40% performance capsules (right)
+  - Plotly interactive chart with dark theme, thicker lines (3.5px), subtle area fills
+  - Chart wrapped in premium glassmorphism card with depth shadows
   - 30-day account value trends with $10,000 starting capital baseline
   - Interactive tooltips, zoom, pan controls
-  - Info panel: "A Better Benchmark", "The Contestants" leaderboard, "Competition Rules"
+  - Performance capsules: Stacked cards with colored left borders, ranking badges, 2-column metrics
 - **LEADERBOARD View**:
-  - Full-width AI performance rankings
-  - Each AI: ranking number, colored dot, name, account value, P&L percentage
+  - Premium ranking cards with glassmorphism effect
+  - Large ranking numbers (2.5rem) with "RANK" labels
+  - Colored dots with glow effects (box-shadow)
+  - Hover effects: translateY, scale transforms, radial gradient overlay
+  - P&L colors: Cyan (#4FD1C5) for positive, Red (#F2555A) for negative
   - Sorted by current account value
 - **BLOG View**:
-  - "Coming Soon" placeholder
-  - List of upcoming blog topics
+  - "Coming Soon" premium card
+  - 3 colored info boxes: STRATEGIES (purple), ANALYSIS (blue), INSIGHTS (cyan)
+  - Grid layout with responsive columns
 - **MODELS View**:
   - 5 expandable sections (one per AI)
-  - Each section shows: account value, P&L, model info
-  - Mini 30-day performance chart per AI with area fill
+  - Premium headers with glowing colored dots
+  - 2-column layout: Performance metrics | Model info cards
+  - Mini 30-day charts with dark theme, area fills, transparent backgrounds
+  - Each chart: Dark gridlines, IBM Plex Mono for axis labels
 - **Data Persistence**:
   - Uses session_state for stability across auto-refreshes and navigation
   - Data cached to prevent jumping/flickering
