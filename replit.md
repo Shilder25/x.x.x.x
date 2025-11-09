@@ -122,4 +122,11 @@ An embedded SQLite database stores `predictions`, `firm_performance`, `virtual_p
   - Fixed all database schema mismatches (execution_timestamp, bet_size, actual_result, current_balance, etc.)
   - Added error handling for API responses in frontend
   - Two workflows: api (Flask on 8000), frontend (Next.js on 5000)
+- **Deployment Configuration**:
+  - Created `app.py` as entry point for Replit deployment (calls main.py)
+  - Created `main.py` launcher that coordinates Flask + Next.js services
+  - Detects production mode and builds Next.js automatically
+  - Renamed old Streamlit files to prevent conflicts (app_old_streamlit.py, static_old_streamlit/)
+  - User must update deployment run command from "streamlit run app.py" to "python app.py"
+  - See COMO_PUBLICAR.md for detailed deployment instructions
 - **Result**: Professional Alpha Arena design with well-defined black borders throughout
