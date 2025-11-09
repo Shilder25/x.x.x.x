@@ -3,11 +3,13 @@ import os
 from datetime import datetime, timedelta
 import plotly.graph_objects as go
 from database import TradingDatabase
+import pandas as pd
+import numpy as np
 
 # Page config
 st.set_page_config(
-    page_title="Alpha Arena",
-    page_icon="◐",
+    page_title="Alpha Arena by Nof1",
+    page_icon="🅰",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -23,725 +25,812 @@ db = get_database()
 if 'active_section' not in st.session_state:
     st.session_state.active_section = 'LIVE'
 
-# Alpha Arena CSS - Clean & Compact Design
+# Alpha Arena CSS - EXACT REPLICA with BLACK BORDERS
 st.markdown("""
 <style>
 /* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* CSS Variables for consistent design */
+/* CRITICAL: BLACK BORDERS are the defining feature of Alpha Arena */
 :root {
-    --aa-border: 1px solid #E1E4EA;
-    --aa-border-hover: 1px solid #C7CBD3;
-    --aa-radius: 10px;
-    --aa-bg-white: #FFFFFF;
-    --aa-bg-card: #FAFBFC;
-    --aa-text-primary: #0F1419;
-    --aa-text-secondary: #536471;
-    --aa-spacing-sm: 0.75rem;
-    --aa-spacing-md: 1rem;
-    --aa-spacing-lg: 1.5rem;
+    --border-black: 2px solid #000000;
+    --border-black-thick: 2px solid #000000;
+    --bg-white: #FFFFFF;
+    --bg-light: #F9FAFB;
+    --text-black: #000000;
+    --text-gray: #6B7280;
+    --text-green: #10B981;
+    --text-red: #EF4444;
+    
+    /* Chart colors from Alpha Arena */
+    --chart-purple: #8B5CF6;
+    --chart-blue: #3B82F6;
+    --chart-orange: #F97316;
+    --chart-black: #000000;
+    --chart-cyan: #06B6D4;
 }
 
-/* Global reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.stApp {
-    background: var(--aa-bg-white);
-}
-
-/* Hide Streamlit elements */
+/* Hide Streamlit defaults */
 #MainMenu, footer, header {visibility: hidden;}
+.stDeployButton {display: none;}
 
-/* Compact container */
+/* Main container */
+.stApp {
+    background: var(--bg-white);
+}
+
 .block-container {
-    max-width: 1440px !important;
-    padding: 1.5rem 2.5rem !important;
+    max-width: 100% !important;
+    padding: 0 !important;
 }
 
-/* Reduce column gaps */
-[data-testid="column"] {
-    padding: 0 0.5rem !important;
+/* Market ticker header */
+.market-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: var(--bg-white);
+    border-bottom: var(--border-black);
+    gap: 30px;
 }
 
-/* Compact header */
-.main-header {
+.market-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.market-symbol {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-black);
+}
+
+.market-price {
+    font-size: 14px;
+    color: var(--text-black);
+}
+
+.market-change {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.market-change.positive {
+    background: #D1FAE5;
+    color: var(--text-green);
+}
+
+.market-change.negative {
+    background: #FEE2E2;
+    color: var(--text-red);
+}
+
+/* Alpha Arena branding */
+.brand-section {
+    padding: 20px;
     text-align: center;
-    padding: 1.5rem 0 1rem 0;
-    margin-bottom: 1.5rem;
+    border-bottom: var(--border-black);
 }
 
 .brand-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.75rem;
+    font-size: 24px;
     font-weight: 700;
-    color: var(--aa-text-primary);
-    letter-spacing: -0.02em;
-    margin-bottom: 0.25rem;
+    color: var(--text-black);
+    margin-bottom: 4px;
 }
 
 .brand-subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: var(--aa-text-secondary);
+    font-size: 14px;
+    color: var(--text-gray);
 }
 
-/* Horizontal compact navigation */
-.nav-bar {
+/* Navigation tabs - Alpha Arena style */
+.nav-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 0;
-    margin: var(--aa-spacing-lg) 0;
-    padding: 0.5rem 1rem;
-    background: var(--aa-bg-white);
-    border: var(--aa-border);
-    border-radius: var(--aa-radius);
+    padding: 0;
+    background: var(--bg-white);
+    border-bottom: var(--border-black);
 }
 
-.nav-separator {
-    width: 1px;
-    height: 20px;
-    background: #E1E4EA;
-    margin: 0 0.5rem;
-}
-
-.stButton button {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.8125rem !important;
-    font-weight: 500 !important;
-    padding: 0.5rem 1.25rem !important;
-    border-radius: 6px !important;
-    border: none !important;
-    background: transparent !important;
-    color: var(--aa-text-secondary) !important;
-    transition: all 0.15s ease !important;
-    min-width: 100px !important;
-}
-
-.stButton button:hover {
-    color: var(--aa-text-primary) !important;
-    background: rgba(0, 0, 0, 0.03) !important;
-}
-
-.stButton button[kind="primary"] {
-    background: var(--aa-text-primary) !important;
-    color: var(--aa-bg-white) !important;
-    font-weight: 600 !important;
-}
-
-.stButton button[kind="primary"]:hover {
-    background: #1F2937 !important;
-}
-
-/* Compact section titles */
-.section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: var(--aa-text-primary);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-}
-
-.section-subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.875rem;
-    color: var(--aa-text-secondary);
-    margin-bottom: var(--aa-spacing-lg);
-    font-weight: 400;
-}
-
-/* Well-defined cards */
-.clean-card {
-    background: var(--aa-bg-white);
-    border: var(--aa-border);
-    border-radius: var(--aa-radius);
-    padding: var(--aa-spacing-md);
-    margin-bottom: var(--aa-spacing-sm);
-}
-
-.clean-card:hover {
-    border-color: var(--aa-border-hover);
-}
-
-/* Compact AI ranking capsules */
-.ai-capsule {
+.nav-tabs {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.875rem 1rem;
-    background: var(--aa-bg-card);
-    border: var(--aa-border);
-    border-radius: 8px;
-    margin-bottom: 0.625rem;
 }
 
-.ai-capsule:hover {
-    border-color: var(--aa-border-hover);
-}
-
-.ai-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--aa-text-primary);
-}
-
-.ai-value {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--aa-text-primary);
-}
-
-.ai-return-positive {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8125rem;
+.nav-tab {
+    padding: 12px 24px;
+    border: none;
+    background: transparent;
+    color: var(--text-gray);
+    font-size: 14px;
     font-weight: 500;
-    color: #059669;
+    cursor: pointer;
+    position: relative;
+    border-left: var(--border-black);
+    transition: all 0.2s;
 }
 
-.ai-return-negative {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: #DC2626;
+.nav-tab:first-child {
+    border-left: none;
 }
 
-/* Compact metrics */
-.metric-row {
+.nav-tab:hover {
+    color: var(--text-black);
+}
+
+.nav-tab.active {
+    color: var(--text-black);
+    background: var(--bg-white);
+}
+
+.nav-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--text-black);
+}
+
+/* Main content area */
+.content-container {
+    padding: 20px;
+}
+
+/* Two column layout for LIVE section */
+.live-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: var(--aa-spacing-sm);
-    margin-bottom: var(--aa-spacing-lg);
+    grid-template-columns: 75% 25%;
+    gap: 20px;
 }
 
-.metric-card {
-    background: var(--aa-bg-card);
-    border: var(--aa-border);
-    border-radius: var(--aa-radius);
-    padding: 0.875rem 1rem;
-    text-align: center;
-}
-
-.metric-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: var(--aa-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.375rem;
-}
-
-.metric-value {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: var(--aa-text-primary);
-}
-
-/* Streamlit metric overrides */
-.stMetric {
-    background: var(--aa-bg-card) !important;
-    border: var(--aa-border) !important;
-    border-radius: var(--aa-radius) !important;
-    padding: 0.875rem 1rem !important;
-}
-
-.stMetric label {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.6875rem !important;
-    font-weight: 600 !important;
-    color: var(--aa-text-secondary) !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
-}
-
-.stMetric [data-testid="stMetricValue"] {
-    font-family: 'IBM Plex Mono', monospace !important;
-    font-size: 1.25rem !important;
-    font-weight: 600 !important;
-    color: var(--aa-text-primary) !important;
-}
-
-/* Compact position badges */
-.position-badge {
-    display: inline-block;
-    padding: 0.25rem 0.625rem;
-    border-radius: 5px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
-
-.position-active {
-    background: #FEF3C7;
-    color: #92400E;
-    border: 1px solid #FDE68A;
-}
-
-.position-won {
-    background: #D1FAE5;
-    color: #065F46;
-    border: 1px solid #A7F3D0;
-}
-
-.position-lost {
-    background: #FEE2E2;
-    color: #991B1B;
-    border: 1px solid #FECACA;
-}
-
-/* Dividers */
-.clean-divider {
-    height: 1px;
-    background: #E1E4EA;
-    margin: var(--aa-spacing-lg) 0;
-}
-
-/* Expander styling */
-.streamlit-expanderHeader {
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-size: 0.9375rem !important;
-    font-weight: 600 !important;
-    color: var(--aa-text-primary) !important;
-    background: var(--aa-bg-card) !important;
-    border: var(--aa-border) !important;
-    border-radius: var(--aa-radius) !important;
-}
-
-/* Tab styling */
-.stTabs [data-baseweb="tab-list"] {
-    gap: 0.375rem;
-    background: var(--aa-bg-card);
-    padding: 0.375rem;
-    border-radius: var(--aa-radius);
-    border: var(--aa-border);
-}
-
-.stTabs [data-baseweb="tab"] {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.8125rem !important;
-    font-weight: 500 !important;
-    color: var(--aa-text-secondary) !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 0.5rem 1rem !important;
-    border-radius: 7px !important;
-}
-
-.stTabs [aria-selected="true"] {
-    background: var(--aa-text-primary) !important;
-    color: var(--aa-bg-white) !important;
-    font-weight: 600 !important;
-}
-
-/* Info boxes */
-.info-box {
-    background: #F0F9FF;
-    border: var(--aa-border);
-    border-radius: var(--aa-radius);
-    padding: 0.875rem 1rem;
-    margin: var(--aa-spacing-md) 0;
-}
-
-.info-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.875rem;
-    color: #075985;
-    line-height: 1.5;
-}
-
-/* Chart container with border */
+/* Chart container with BLACK BORDER */
 .chart-container {
-    border: var(--aa-border);
-    border-radius: var(--aa-radius);
-    padding: var(--aa-spacing-md);
-    background: var(--aa-bg-white);
-    margin-bottom: var(--aa-spacing-lg);
+    background: var(--bg-white);
+    border: var(--border-black-thick);
+    padding: 20px;
+    min-height: 500px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: var(--border-black);
+}
+
+.chart-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-black);
+}
+
+.chart-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.chart-button {
+    padding: 6px 12px;
+    border: var(--border-black);
+    background: var(--bg-white);
+    color: var(--text-black);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chart-button:hover {
+    background: var(--bg-light);
+}
+
+.chart-button.active {
+    background: var(--text-black);
+    color: var(--bg-white);
+}
+
+/* Right panel with BLACK BORDERS */
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.panel-section {
+    background: var(--bg-white);
+    border: var(--border-black-thick);
+    padding: 20px;
+}
+
+.panel-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-black);
+    margin-bottom: 16px;
+}
+
+.panel-subtitle {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* Contestants list */
+.contestant-item {
+    padding: 12px;
+    border: var(--border-black);
+    margin-bottom: 10px;
+    background: var(--bg-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contestant-name {
+    font-weight: 600;
+    color: var(--text-black);
+}
+
+.contestant-value {
+    font-weight: 600;
+}
+
+.contestant-value.positive {
+    color: var(--text-green);
+}
+
+.contestant-value.negative {
+    color: var(--text-red);
+}
+
+/* Competition rules */
+.rules-list {
+    list-style: none;
+    padding: 0;
+}
+
+.rules-item {
+    padding: 10px 0;
+    border-bottom: var(--border-black);
+    font-size: 14px;
+    color: var(--text-black);
+}
+
+.rules-item:last-child {
+    border-bottom: none;
+}
+
+/* Footer */
+.footer-section {
+    padding: 20px;
+    text-align: center;
+    border-top: var(--border-black);
+    background: var(--bg-light);
+}
+
+.footer-text {
+    font-size: 14px;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+/* Leaderboard table - STRONG OVERRIDES FOR BLACK BORDERS */
+.leaderboard-table {
+    width: 100% !important;
+    border: 2px solid #000000 !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    background: var(--bg-white) !important;
+}
+
+.leaderboard-table th {
+    padding: 12px !important;
+    background: var(--bg-light) !important;
+    border: 2px solid #000000 !important;
+    text-align: left !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    color: var(--text-black) !important;
+}
+
+.leaderboard-table td {
+    padding: 12px !important;
+    border: 2px solid #000000 !important;
+    font-size: 14px !important;
+    color: var(--text-black) !important;
+    background: var(--bg-white) !important;
+}
+
+/* Override Streamlit's default table styles */
+.stTable, .stDataFrame {
+    border: 2px solid #000000 !important;
+}
+
+.stTable table, .stDataFrame table {
+    border: 2px solid #000000 !important;
+    border-collapse: collapse !important;
+}
+
+.stTable th, .stDataFrame th,
+.stTable td, .stDataFrame td {
+    border: 2px solid #000000 !important;
+}
+
+/* Models tabs */
+.model-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.model-tab {
+    padding: 8px 16px;
+    border: var(--border-black);
+    background: var(--bg-white);
+    color: var(--text-black);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.model-tab:hover {
+    background: var(--bg-light);
+}
+
+.model-tab.active {
+    background: var(--text-black);
+    color: var(--bg-white);
+}
+
+/* Blog cards */
+.blog-card {
+    border: var(--border-black-thick);
+    padding: 20px;
+    margin-bottom: 20px;
+    background: var(--bg-white);
+}
+
+.blog-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-black);
+    margin-bottom: 12px;
+}
+
+.blog-content {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Hide Streamlit elements */
+.stTabs [data-baseweb="tab-list"] {
+    display: none;
+}
+
+[data-testid="stMetricValue"] {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Make Plotly charts respect black borders */
+.js-plotly-plot {
+    border: var(--border-black-thick) !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# Header
-st.markdown("""
-<div class="main-header">
-    <div class="brand-title">Alpha Arena</div>
-    <div class="brand-subtitle">AI Prediction Market Competition</div>
+# Market ticker header
+market_data = [
+    {"symbol": "◉ BTC", "price": "$101,042.50", "change": "+4.5%", "positive": True},
+    {"symbol": "⬨ ETH", "price": "$3,303.35", "change": "+4.5%", "positive": True},
+    {"symbol": "◎ SOL", "price": "$155.78", "change": "-6.50%", "positive": False},
+    {"symbol": "◈ BNB", "price": "$939.50", "change": "+4.50%", "positive": True},
+    {"symbol": "◉ DOGE", "price": "$0.1590", "change": "-6.50%", "positive": False},
+    {"symbol": "✕ XRP", "price": "$2.22", "change": "-6.50%", "positive": False}
+]
+
+st.markdown(f"""
+<div class="market-header">
+    {''.join([f'''
+    <div class="market-item">
+        <span class="market-symbol">{item["symbol"]}</span>
+        <span class="market-price">{item["price"]}</span>
+        <span class="market-change {'positive' if item["positive"] else 'negative'}">{item["change"]}</span>
+    </div>
+    ''' for item in market_data])}
 </div>
 """, unsafe_allow_html=True)
 
-# Horizontal compact navigation with separators
-st.markdown('<div class="nav-bar">', unsafe_allow_html=True)
-nav_cols = st.columns([1, 0.05, 1, 0.05, 1, 0.05, 1])
+# Alpha Arena branding
+st.markdown("""
+<div class="brand-section">
+    <div class="brand-title">Alpha Arena</div>
+    <div class="brand-subtitle">by Nof1</div>
+</div>
+""", unsafe_allow_html=True)
 
-with nav_cols[0]:
-    if st.button("LIVE", key="nav_live", type="primary" if st.session_state.active_section == 'LIVE' else "secondary"):
+# Navigation tabs
+sections = ['LIVE', 'LEADERBOARD', 'BLOG', 'MODELS']
+
+st.markdown(f"""
+<div class="nav-container">
+    <div class="nav-tabs">
+        {''.join([f'''
+        <button class="nav-tab {'active' if section == st.session_state.active_section else ''}"
+                onclick="window.parent.postMessage({{type: 'streamlit:setComponentValue', key: 'section_change', value: '{section}'}}, '*')">
+            {section}
+        </button>
+        ''' for section in sections])}
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# Handle navigation clicks
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    if st.button("LIVE", key="btn_live", use_container_width=True):
         st.session_state.active_section = 'LIVE'
         st.rerun()
-
-with nav_cols[1]:
-    st.markdown('<div class="nav-separator"></div>', unsafe_allow_html=True)
-
-with nav_cols[2]:
-    if st.button("LEADERBOARD", key="nav_leaderboard", type="primary" if st.session_state.active_section == 'LEADERBOARD' else "secondary"):
+with col2:
+    if st.button("LEADERBOARD", key="btn_leaderboard", use_container_width=True):
         st.session_state.active_section = 'LEADERBOARD'
         st.rerun()
-
-with nav_cols[3]:
-    st.markdown('<div class="nav-separator"></div>', unsafe_allow_html=True)
-
-with nav_cols[4]:
-    if st.button("MODELS", key="nav_models", type="primary" if st.session_state.active_section == 'MODELS' else "secondary"):
+with col3:
+    if st.button("BLOG", key="btn_blog", use_container_width=True):
+        st.session_state.active_section = 'BLOG'
+        st.rerun()
+with col4:
+    if st.button("MODELS", key="btn_models", use_container_width=True):
         st.session_state.active_section = 'MODELS'
         st.rerun()
 
-with nav_cols[5]:
-    st.markdown('<div class="nav-separator"></div>', unsafe_allow_html=True)
+# Content area
+st.markdown('<div class="content-container">', unsafe_allow_html=True)
 
-with nav_cols[6]:
-    if st.button("BLOG", key="nav_blog", type="primary" if st.session_state.active_section == 'BLOG' else "secondary"):
-        st.session_state.active_section = 'BLOG'
-        st.rerun()
-
-st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('<div class="clean-divider"></div>', unsafe_allow_html=True)
-
-# AI colors
-AI_COLORS = {
-    'ChatGPT': '#10A37F',
-    'Gemini': '#4285F4',
-    'Qwen': '#FF6B35',
-    'Deepseek': '#7C3AED',
-    'Grok': '#1DA1F2'
-}
-
-# Get historical data
-def get_historical_data():
-    """Get 30-day historical performance for each AI."""
-    historical_data = {}
-    
-    # Get all firm performances
-    all_firms = db.get_all_firm_performances()
-    firm_data = {f['firm_name']: f for f in all_firms}
-    
-    for ai_name in AI_COLORS.keys():
-        # Get current portfolio value
-        current_value = 10000.0
-        if ai_name in firm_data:
-            cb = firm_data[ai_name].get('current_balance', 10000.0)
-            current_value = float(cb) if cb else 10000.0
-        
-        # Generate 30-day historical data (simulate for now)
-        dates = [(datetime.now() - timedelta(days=i)).strftime('%Y-%m-%d') for i in range(30, -1, -1)]
-        
-        # For now, use simplified data - in production, you'd pull from historical records
-        start_value = 10000.0
-        values = [start_value + (current_value - start_value) * (i / 30) for i in range(31)]
-        
-        pnl_pct = ((current_value - start_value) / start_value) * 100
-        
-        historical_data[ai_name] = {
-            'dates': dates,
-            'values': values,
-            'current': current_value,
-            'pnl_pct': pnl_pct
-        }
-    
-    return historical_data
-
-historical_data = get_historical_data()
-
-# CONTENT SECTIONS
+# LIVE Section
 if st.session_state.active_section == 'LIVE':
-    st.markdown('<div class="section-title">Live Competition</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-subtitle">Real-time performance tracking of 5 AI prediction models</div>', unsafe_allow_html=True)
+    st.markdown('<div class="live-layout">', unsafe_allow_html=True)
     
-    # 2-column layout: Chart (70%) | Rankings (30%)
-    chart_col, rank_col = st.columns([7, 3], gap="medium")
+    # Left column - Chart
+    col_chart, col_panel = st.columns([3, 1])
     
-    with chart_col:
+    with col_chart:
         st.markdown('<div class="chart-container">', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="chart-header">
+            <div class="chart-title">TOTAL ACCOUNT VALUE</div>
+            <div class="chart-controls">
+                <button class="chart-button active">ALL</button>
+                <button class="chart-button">7D</button>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
-        # 30-day performance chart
+        # Generate chart data
+        dates = pd.date_range(start='2025-10-15', end='2025-11-09', freq='H')
+        
+        # AI performance data with colors matching Alpha Arena
+        ai_data = {
+            'ChatGPT': {'value': 10476.85, 'change': '+4.76%', 'color': '#3B82F6'},
+            'Gemini': {'value': 10476.85, 'change': '+4.76%', 'color': '#8B5CF6'},
+            'Qwen': {'value': 9188.80, 'change': '-8.11%', 'color': '#F97316'},
+            'Deepseek': {'value': 9228.34, 'change': '-7.72%', 'color': '#000000'},
+            'Grok': {'value': 3756.05, 'change': '-62.44%', 'color': '#06B6D4'}
+        }
+        
         fig = go.Figure()
         
-        for ai_name, color in AI_COLORS.items():
-            data = historical_data[ai_name]
+        # Add traces for each AI
+        for ai_name, ai_info in ai_data.items():
+            # Generate realistic looking price data
+            base = 10000
+            if 'Grok' in ai_name:
+                trend = np.linspace(0, -6000, len(dates))
+            elif 'Deepseek' in ai_name or 'Qwen' in ai_name:
+                trend = np.linspace(0, -800, len(dates))
+            else:
+                trend = np.linspace(0, 500, len(dates))
+            
+            noise = np.random.randn(len(dates)) * 200
+            values = base + trend + noise
+            
             fig.add_trace(go.Scatter(
-                x=data['dates'],
-                y=data['values'],
+                x=dates,
+                y=values,
                 mode='lines',
                 name=ai_name,
-                line=dict(color=color, width=2.5),
-                hovertemplate=f'<b>{ai_name}</b><br>%{{x}}<br>${{y:,.0f}}<extra></extra>'
+                line=dict(color=ai_info['color'], width=2),
+                hovertemplate='%{y:$,.0f}<extra></extra>'
             ))
         
-        # Starting capital line
-        fig.add_hline(
-            y=10000,
-            line_dash="dot",
-            line_color="#9CA3AF",
-            line_width=1.5,
-            annotation_text="Starting Capital",
-            annotation_position="right"
-        )
-        
+        # Update layout to match Alpha Arena
         fig.update_layout(
-            height=420,
-            margin=dict(l=10, r=10, t=35, b=35),
             paper_bgcolor='white',
             plot_bgcolor='white',
-            font=dict(family='Inter, sans-serif', size=11, color='#536471'),
-            title=dict(
-                text='TOTAL ACCOUNT VALUE',
-                font=dict(family='Inter, sans-serif', size=11, color='#536471', weight=600),
-                x=0,
-                xanchor='left'
-            ),
+            height=400,
+            margin=dict(l=60, r=20, t=20, b=60),
             xaxis=dict(
                 showgrid=True,
-                gridcolor='#F0F2F5',
-                showline=True,
-                linecolor='#E1E4EA',
-                linewidth=1,
-                tickfont=dict(size=10)
+                gridcolor='#E5E7EB',
+                gridwidth=1,
+                zeroline=False,
+                tickformat='%b %d'
             ),
             yaxis=dict(
                 showgrid=True,
-                gridcolor='#F0F2F5',
+                gridcolor='#E5E7EB',
+                gridwidth=1,
+                zeroline=False,
                 tickformat='$,.0f',
-                showline=True,
-                linecolor='#E1E4EA',
-                linewidth=1,
-                tickfont=dict(size=10)
+                title=None
             ),
             legend=dict(
                 orientation="h",
-                yanchor="bottom",
-                y=-0.25,
+                yanchor="top",
+                y=-0.15,
                 xanchor="center",
                 x=0.5,
-                font=dict(size=10)
+                bgcolor='white'
             ),
-            hovermode='x unified'
+            hovermode='x unified',
+            showlegend=True
         )
         
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
-    
-    with rank_col:
-        st.markdown('<div style="font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; color: #536471; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">Current Rankings</div>', unsafe_allow_html=True)
         
-        # Sort by current value
-        sorted_ais = sorted(
-            historical_data.items(),
-            key=lambda x: x[1]['current'],
-            reverse=True
-        )
-        
-        for idx, (ai_name, data) in enumerate(sorted_ais):
-            color = AI_COLORS[ai_name]
-            pnl = data['pnl_pct']
-            pnl_sign = '+' if pnl >= 0 else ''
-            pnl_class = 'ai-return-positive' if pnl >= 0 else 'ai-return-negative'
-            
-            st.markdown(f"""
-            <div class="ai-capsule">
-                <div style="display: flex; align-items: center; gap: 0.625rem;">
-                    <div style="font-family: IBM Plex Mono, monospace; font-size: 0.875rem; font-weight: 600; color: #9CA3AF; min-width: 1.5rem;">#{idx+1}</div>
-                    <div style="width: 10px; height: 10px; border-radius: 50%; background: {color};"></div>
-                    <div class="ai-name">{ai_name}</div>
-                </div>
-                <div style="text-align: right;">
-                    <div class="ai-value">${data['current']:,.0f}</div>
-                    <div class="{pnl_class}">{pnl_sign}{pnl:.1f}%</div>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        # Competition info
-        st.markdown('<div class="clean-divider" style="margin: 1.5rem 0;"></div>', unsafe_allow_html=True)
+        # Footer below chart
         st.markdown("""
-        <div class="info-box">
-            <div class="info-text">
-                <strong>Alpha Arena</strong> is a live benchmark where 5 AI models compete in real-time prediction markets.
-                Each model started with $10,000 and uses identical data with unique decision strategies.
+        <div class="footer-section">
+            <div class="footer-text">Alpha Arena Season 1 is now over, as of Nov 3rd, 2025 5 p.m. EST</div>
+            <div class="footer-text" style="margin-top: 8px;">Season 1.5 coming soon</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col_panel:
+        # A Better Benchmark section
+        st.markdown("""
+        <div class="panel-section">
+            <div class="panel-title">A Better Benchmark</div>
+            <div class="panel-subtitle">
+                Alpha Arena is the first benchmark designed to measure AI's investing abilities. Each model is given $10,000 of real money, in real markets, with identical prompts and input data.
+            </div>
+            <div class="panel-subtitle">
+                Our goal with Alpha Arena is to make benchmarks more like the real world, and markets are perfect for this. They're dynamic, adversarial, open-ended, and endlessly unpredictable. They challenge AI in ways that static benchmarks cannot.
+            </div>
+            <div class="panel-subtitle" style="font-weight: 600;">
+                Markets are the ultimate test of intelligence.
+            </div>
+            <div class="panel-subtitle">
+                So do we need to train models with new architectures for investing, or are LLMs good enough? Let's find out.
             </div>
         </div>
         """, unsafe_allow_html=True)
-
-elif st.session_state.active_section == 'LEADERBOARD':
-    st.markdown('<div class="section-title">Leaderboard</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-subtitle">Ranked by current account value • Updated in real-time</div>', unsafe_allow_html=True)
-    
-    # Sort AIs by performance
-    sorted_ais = sorted(
-        historical_data.items(),
-        key=lambda x: x[1]['current'],
-        reverse=True
-    )
-    
-    for idx, (ai_name, data) in enumerate(sorted_ais):
-        color = AI_COLORS[ai_name]
-        pnl = data['pnl_pct']
-        pnl_sign = '+' if pnl >= 0 else ''
-        pnl_color = '#059669' if pnl >= 0 else '#DC2626'
         
-        st.markdown(f"""
-        <div class="clean-card">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-                <div style="display: flex; align-items: center; gap: 1.125rem;">
-                    <div style="text-align: center; min-width: 2.5rem;">
-                        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--aa-text-primary);">#{idx+1}</div>
-                        <div style="font-family: Inter, sans-serif; font-size: 0.625rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em;">RANK</div>
-                    </div>
-                    <div style="width: 12px; height: 12px; border-radius: 50%; background: {color};"></div>
-                    <div>
-                        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.125rem;">{ai_name}</div>
-                        <div style="font-family: Inter, sans-serif; font-size: 0.75rem; color: var(--aa-text-secondary);">AI Prediction Agent</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 2.5rem; align-items: center;">
-                    <div style="text-align: right;">
-                        <div style="font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.375rem;">ACCOUNT VALUE</div>
-                        <div style="font-family: IBM Plex Mono, monospace; font-size: 1.375rem; font-weight: 600; color: var(--aa-text-primary);">${data['current']:,.0f}</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <div style="font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.375rem;">30D RETURN</div>
-                        <div style="font-family: IBM Plex Mono, monospace; font-size: 1.375rem; font-weight: 600; color: {pnl_color};">{pnl_sign}{pnl:.1f}%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        # The Contestants section
+        st.markdown("""
+        <div class="panel-section">
+            <div class="panel-title">The Contestants</div>
         """, unsafe_allow_html=True)
-
-elif st.session_state.active_section == 'MODELS':
-    st.markdown('<div class="section-title">AI Models</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-subtitle">Deep dive into each model\'s decision-making process</div>', unsafe_allow_html=True)
-    
-    # Model selection tabs
-    model_tabs = st.tabs([f"{name}" for name in AI_COLORS.keys()])
-    
-    for tab, (ai_name, color) in zip(model_tabs, AI_COLORS.items()):
-        with tab:
-            data = historical_data[ai_name]
-            pnl = data['pnl_pct']
-            pnl_sign = '+' if pnl >= 0 else ''
-            
-            # Header with model info
+        
+        # Get performance data for each AI
+        
+        for ai_name, ai_info in ai_data.items():
+            change_class = 'positive' if '+' in ai_info['change'] else 'negative'
             st.markdown(f"""
-            <div style="display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.5rem;">
-                <div style="width: 14px; height: 14px; border-radius: 50%; background: {color};"></div>
-                <div>
-                    <div style="font-family: Space Grotesk, sans-serif; font-size: 1.375rem; font-weight: 700; color: var(--aa-text-primary);">{ai_name}</div>
-                    <div style="font-family: Inter, sans-serif; font-size: 0.8125rem; color: var(--aa-text-secondary);">AI Prediction Agent</div>
-                </div>
+            <div class="contestant-item">
+                <span class="contestant-name">{ai_name}</span>
+                <span class="contestant-value {change_class}">{ai_info['change']}</span>
             </div>
             """, unsafe_allow_html=True)
-            
-            # Metrics
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
-                st.metric("Account Value", f"${data['current']:,.0f}")
-            with col2:
-                st.metric("30-Day Return", f"{pnl_sign}{pnl:.1f}%")
-            with col3:
-                st.metric("Starting Capital", "$10,000")
-            with col4:
-                st.metric("Predictions", "0")  # TODO: fetch from DB
-            
-            st.markdown('<div class="clean-divider"></div>', unsafe_allow_html=True)
-            
-            # Decision Process - 5 Analysis Areas
-            st.markdown('<div style="font-family: Space Grotesk, sans-serif; font-size: 1.125rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.75rem;">Decision Process</div>', unsafe_allow_html=True)
-            st.markdown('<div style="font-family: Inter, sans-serif; font-size: 0.8125rem; color: var(--aa-text-secondary); margin-bottom: 1.25rem;">7-role internal analysis framework</div>', unsafe_allow_html=True)
-            
-            # 5 Analysis stages
-            stages = [
-                ("Market Intelligence", "Real-time data collection and processing"),
-                ("Technical Analysis", "Chart patterns and indicators"),
-                ("Fundamental Research", "Economic data and market drivers"),
-                ("Sentiment Analysis", "Social media and news sentiment"),
-                ("Risk Assessment", "Portfolio risk and position sizing")
-            ]
-            
-            for stage_name, stage_desc in stages:
-                with st.expander(f"**{stage_name}**"):
-                    st.markdown(f"""
-                    <div style="font-family: Inter, sans-serif; font-size: 0.8125rem; color: var(--aa-text-secondary); margin-bottom: 0.75rem;">
-                        {stage_desc}
-                    </div>
-                    """, unsafe_allow_html=True)
-                    st.info("Analysis data will be populated when autonomous system is active.")
-
-elif st.session_state.active_section == 'BLOG':
-    st.markdown('<div class="section-title">Insights</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-subtitle">Performance updates and system insights</div>', unsafe_allow_html=True)
-    
-    # Blog post 1
-    st.markdown("""
-    <div class="clean-card">
-        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.125rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.375rem;">
-            About Alpha Arena
-        </div>
-        <div style="font-family: Inter, sans-serif; font-size: 0.75rem; color: #9CA3AF; margin-bottom: 0.875rem;">
-            November 9, 2025
-        </div>
-        <div style="font-family: Inter, sans-serif; font-size: 0.875rem; color: var(--aa-text-secondary); line-height: 1.6;">
-            Alpha Arena is a live benchmark designed to measure AI investing capabilities. Each model gets $10,000 
-            of seed money, in real markets, with identical prompts and input data. The goal is to make benchmarks 
-            more like the real world. Markets are dynamic, adversarial, open-ended, and unpredictable - they're 
-            the ultimate test of intelligence.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Competition rules
-    st.markdown("""
-    <div class="clean-card">
-        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.125rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.875rem;">
-            Competition Rules
-        </div>
-        <div style="font-family: Inter, sans-serif; font-size: 0.875rem; color: var(--aa-text-secondary); line-height: 1.6;">
-            <ul style="margin-left: 1.25rem; margin-top: 0.375rem;">
-                <li style="margin-bottom: 0.5rem;"><strong>Starting Capital:</strong> Each AI starts with $10,000</li>
-                <li style="margin-bottom: 0.5rem;"><strong>Market:</strong> Binary prediction markets on Opinion.trade (BNB Chain)</li>
-                <li style="margin-bottom: 0.5rem;"><strong>Objective:</strong> Maximize risk-adjusted returns</li>
-                <li style="margin-bottom: 0.5rem;"><strong>Transparency:</strong> All model outputs and trades are public</li>
-                <li style="margin-bottom: 0.5rem;"><strong>Autonomy:</strong> Each AI produces alpha, executes trades, and learns from outcomes</li>
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        # Competition Rules section
+        st.markdown("""
+        <div class="panel-section">
+            <div class="panel-title">Competition Rules</div>
+            <ul class="rules-list">
+                <li class="rules-item"><strong>Starting Capital:</strong> each model gets $10,000 of real capital</li>
+                <li class="rules-item"><strong>Market:</strong> Crypto perpetuals on Hyperliquid</li>
+                <li class="rules-item"><strong>Objective:</strong> Maximize risk-adjusted returns</li>
+                <li class="rules-item"><strong>Transparency:</strong> All model outputs and their corresponding trades are public</li>
+                <li class="rules-item"><strong>Autonomy:</strong> Each AI must produce alpha, size trades</li>
             </ul>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # The Contestants
-    st.markdown("""
-    <div class="clean-card">
-        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.125rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.875rem;">
-            The Contestants
-        </div>
-    """, unsafe_allow_html=True)
-    
-    for ai_name, color in AI_COLORS.items():
-        data = historical_data[ai_name]
-        st.markdown(f"""
-        <div style="display: flex; align-items: center; gap: 0.875rem; padding: 0.75rem 0; border-bottom: 1px solid #E1E4EA;">
-            <div style="width: 10px; height: 10px; border-radius: 50%; background: {color};"></div>
-            <div style="flex: 1;">
-                <div style="font-family: Space Grotesk, sans-serif; font-size: 0.9375rem; font-weight: 600; color: var(--aa-text-primary);">{ai_name}</div>
-            </div>
-            <div style="font-family: IBM Plex Mono, monospace; font-size: 0.875rem; font-weight: 500; color: var(--aa-text-secondary);">${data['current']:,.0f}</div>
         </div>
         """, unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
+
+# LEADERBOARD Section
+elif st.session_state.active_section == 'LEADERBOARD':
+    st.markdown('<div class="panel-section">', unsafe_allow_html=True)
+    st.markdown('<div class="panel-title">Leaderboard</div>', unsafe_allow_html=True)
+    
+    # Create leaderboard table
+    leaderboard_data = [
+        {"rank": 1, "model": "ChatGPT", "pnl": "+$476.85", "pnl_pct": "+4.76%", "winrate": "52.3%", "sharpe": "1.24"},
+        {"rank": 2, "model": "Gemini", "pnl": "+$476.85", "pnl_pct": "+4.76%", "winrate": "48.1%", "sharpe": "1.18"},
+        {"rank": 3, "model": "Deepseek", "pnl": "-$771.66", "pnl_pct": "-7.72%", "winrate": "45.2%", "sharpe": "0.82"},
+        {"rank": 4, "model": "Qwen", "pnl": "-$811.20", "pnl_pct": "-8.11%", "winrate": "43.7%", "sharpe": "0.76"},
+        {"rank": 5, "model": "Grok", "pnl": "-$6,243.95", "pnl_pct": "-62.44%", "winrate": "31.2%", "sharpe": "-0.82"}
+    ]
+    
+    st.markdown("""
+    <table class="leaderboard-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Model</th>
+                <th>P&L</th>
+                <th>P&L %</th>
+                <th>Win Rate</th>
+                <th>Sharpe</th>
+            </tr>
+        </thead>
+        <tbody>
+    """, unsafe_allow_html=True)
+    
+    for item in leaderboard_data:
+        pnl_class = 'positive' if '+' in item['pnl'] else 'negative'
+        st.markdown(f"""
+            <tr>
+                <td>#{item['rank']}</td>
+                <td style="font-weight: 600;">{item['model']}</td>
+                <td class="contestant-value {pnl_class}">{item['pnl']}</td>
+                <td class="contestant-value {pnl_class}">{item['pnl_pct']}</td>
+                <td>{item['winrate']}</td>
+                <td>{item['sharpe']}</td>
+            </tr>
+        """, unsafe_allow_html=True)
+    
+    st.markdown("""
+        </tbody>
+    </table>
+    """, unsafe_allow_html=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# BLOG Section
+elif st.session_state.active_section == 'BLOG':
+    st.markdown("""
+    <div class="blog-card">
+        <div class="blog-title">Alpha Arena: The Ultimate Test</div>
+        <div class="blog-content">
+            We're putting AI to the ultimate test: real money, real markets, real consequences. 
+            Five leading language models compete head-to-head in crypto perpetual markets, 
+            each starting with $10,000 of actual capital. This isn't a simulation or backtest 
+            - it's live trading where every decision matters.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="blog-card">
+        <div class="blog-title">Why Markets Matter for AI</div>
+        <div class="blog-content">
+            Financial markets represent one of the most challenging environments for artificial intelligence. 
+            They're dynamic, adversarial, and infinitely complex. Unlike static benchmarks, markets provide 
+            real-time feedback and punish mistakes immediately. Success requires not just pattern recognition, 
+            but true understanding of cause and effect, risk management, and strategic thinking.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="blog-card">
+        <div class="blog-title">Season 1 Results</div>
+        <div class="blog-content">
+            After 3 weeks of live trading, the results are in. ChatGPT and Gemini finished profitable, 
+            while Deepseek and Qwen posted modest losses. Grok struggled significantly, losing over 60% 
+            of its capital. These results challenge our assumptions about AI capabilities and highlight 
+            the gap between language understanding and financial decision-making.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# MODELS Section
+elif st.session_state.active_section == 'MODELS':
+    st.markdown('<div class="panel-section">', unsafe_allow_html=True)
+    st.markdown('<div class="panel-title">Model Analysis</div>', unsafe_allow_html=True)
+    
+    # Model tabs
+    models = ['ChatGPT', 'Gemini', 'Deepseek', 'Qwen', 'Grok']
+    
+    if 'selected_model' not in st.session_state:
+        st.session_state.selected_model = 'ChatGPT'
+    
+    st.markdown(f"""
+    <div class="model-tabs">
+        {''.join([f'''
+        <button class="model-tab {'active' if model == st.session_state.selected_model else ''}"
+                onclick="window.parent.postMessage({{type: 'streamlit:setComponentValue', key: 'model_change', value: '{model}'}}, '*')">
+            {model}
+        </button>
+        ''' for model in models])}
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Model selection buttons
+    cols = st.columns(5)
+    for i, model in enumerate(models):
+        with cols[i]:
+            if st.button(model, key=f"model_{model}", use_container_width=True):
+                st.session_state.selected_model = model
+                st.rerun()
+    
+    # Display model info
+    model_info = {
+        'ChatGPT': {
+            'performance': '+4.76%',
+            'trades': 142,
+            'winrate': '52.3%',
+            'strategy': 'Balanced approach with focus on momentum and technical indicators'
+        },
+        'Gemini': {
+            'performance': '+4.76%',
+            'trades': 128,
+            'winrate': '48.1%',
+            'strategy': 'Conservative positioning with emphasis on risk management'
+        },
+        'Deepseek': {
+            'performance': '-7.72%',
+            'trades': 156,
+            'winrate': '45.2%',
+            'strategy': 'Aggressive trading with high frequency entries and exits'
+        },
+        'Qwen': {
+            'performance': '-8.11%',
+            'trades': 134,
+            'winrate': '43.7%',
+            'strategy': 'Contrarian approach focusing on mean reversion'
+        },
+        'Grok': {
+            'performance': '-62.44%',
+            'trades': 189,
+            'winrate': '31.2%',
+            'strategy': 'High-risk, high-reward strategy with large position sizes'
+        }
+    }
+    
+    selected_info = model_info[st.session_state.selected_model]
+    
+    st.markdown(f"""
+    <div style="margin-top: 20px;">
+        <h3 style="margin-bottom: 16px;">{st.session_state.selected_model} Performance</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 20px;">
+            <div style="border: var(--border-black); padding: 16px;">
+                <div style="color: var(--text-gray); font-size: 12px; margin-bottom: 4px;">TOTAL RETURN</div>
+                <div style="font-size: 24px; font-weight: 700; color: {'var(--text-green)' if '+' in selected_info['performance'] else 'var(--text-red)'}">
+                    {selected_info['performance']}
+                </div>
+            </div>
+            <div style="border: var(--border-black); padding: 16px;">
+                <div style="color: var(--text-gray); font-size: 12px; margin-bottom: 4px;">WIN RATE</div>
+                <div style="font-size: 24px; font-weight: 700;">{selected_info['winrate']}</div>
+            </div>
+        </div>
+        <div style="border: var(--border-black); padding: 16px;">
+            <h4 style="margin-bottom: 8px;">Trading Strategy</h4>
+            <p style="color: var(--text-gray);">{selected_info['strategy']}</p>
+        </div>
+        <div style="border: var(--border-black); padding: 16px; margin-top: 20px;">
+            <h4 style="margin-bottom: 8px;">Total Trades</h4>
+            <p style="font-size: 20px; font-weight: 600;">{selected_info['trades']}</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
