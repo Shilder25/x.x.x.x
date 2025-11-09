@@ -1,11 +1,11 @@
 # TradingAgents Framework
 
 ## Overview
-This project is a multi-LLM trading simulation framework where five AI-powered trading firms (ChatGPT, Gemini, Qwen, Deepseek, Grok) compete autonomously. Each firm analyzes financial market events using technical indicators, fundamental data, and sentiment analysis to generate probabilistic predictions for binary trading outcomes. The system tracks performance metrics (accuracy, Sharpe ratio, profit/loss), maintains virtual portfolios, and includes a sophisticated prompt system simulating a 7-role internal decision-making process within each LLM. The framework also features an autonomous trading mode where IAs continuously adapt their strategies based on performance, aiming for continuous improvement rather than termination upon losses.
+This project is a multi-LLM prediction market framework where five AI prediction agents (ChatGPT, Gemini, Qwen, Deepseek, Grok) compete autonomously on Opinion.trade (BNB Chain). Each agent analyzes financial market events using technical indicators, fundamental data, and sentiment analysis to generate probabilistic predictions for binary outcomes. The system tracks performance metrics (accuracy, Sharpe ratio, profit/loss), maintains virtual portfolios, and includes a sophisticated prompt system simulating a 7-role internal decision-making process within each LLM. The framework also features an autonomous prediction mode where AIs continuously adapt their strategies based on performance, aiming for continuous improvement rather than termination upon losses.
 
 ## Current Status
 **System Status:** ✅ Fully Functional (Last Verified: November 9, 2025)
-- Complete autonomous trading system implemented and tested
+- Complete autonomous prediction system implemented and tested
 - Database integration: All bets, cycles, and adaptations are persisted
 - Learning system: Weekly analysis and continuous improvement active
 - **Alpha Arena Public Dashboard**: Professional nof1.ai-quality design fully implemented and tested
@@ -96,7 +96,7 @@ Preferred communication style: Simple, everyday language.
 ## System Architecture
 
 ### Frontend Architecture
-The application uses Streamlit for a multi-tab web interface, configured with a wide layout. It uses session state for managing database connections, orchestrators, and cached data. There are seven main tabs: 'Nueva Predicción' (Generate predictions), 'Panel de Transparencia' (Detailed reasoning), 'Dashboard Comparativo' (Compare firm performance), 'Recomendaciones & Consenso' (Recommendation engine), 'Enviar a Opinion.trade' (Submit predictions), 'Registrar Resultados' (Track outcomes), and 'Competencia Autónoma' (Autonomous trading competition dashboard).
+The application uses Streamlit for a multi-tab web interface, configured with a wide layout. It uses session state for managing database connections, orchestrators, and cached data. There are seven main tabs: 'Nueva Predicción' (Generate predictions), 'Panel de Transparencia' (Detailed reasoning), 'Dashboard Comparativo' (Compare agent performance), 'Recomendaciones & Consenso' (Recommendation engine), 'Enviar a Opinion.trade' (Submit predictions), 'Registrar Resultados' (Track outcomes), and 'Competencia Autónoma' (Autonomous prediction competition dashboard).
 
 ### Backend Architecture
 The backend employs a modular, service-oriented design. Key components include:
@@ -104,10 +104,10 @@ The backend employs a modular, service-oriented design. Key components include:
 - **`FirmOrchestrator`**: Manages LLM clients and prediction generation across firms.
 - **Individual Firm Clients**: Encapsulate LLM-specific API interactions.
 - **Data Collectors**: Specialized classes for technical, fundamental, and sentiment data.
-- **Prompt System**: Generates structured prompts simulating a 7-role trading firm decision-making process across three stages: Analysis & Synthesis, Bullish/Bearish Debate, and Risk Evaluation & Final Decision.
+- **Prompt System**: Generates structured prompts simulating a 7-role prediction agent decision-making process across three stages: Analysis & Synthesis, Bullish/Bearish Debate, and Risk Evaluation & Final Decision.
 - **`RecommendationEngine`**: Analyzes historical performance for prediction recommendations.
 - **`OpinionTradeAPI`**: Handles automated prediction submission.
-- **`Autonomous Engine`**: Orchestrates daily trading cycles for all IAs, including event analysis, risk-aware betting, and simulation/real mode toggling.
+- **`Autonomous Engine`**: Orchestrates daily prediction cycles for all IAs, including event analysis, risk-aware betting, and simulation/real mode toggling.
 - **`Risk Management System`**: A multi-level adaptive system that never stops, but adapts strategies based on profit/loss thresholds (-0% to -9% normal, -10% to -19% tactical adjustment, -20% to -29% strategy change, -30%+ reinvention, +50% positive adaptation). It includes safety features like daily loss limits and category exposure limits.
 - **`Bankroll Management`**: Assigns different betting strategies to each IA (Kelly Criterion, Modified Martingale, Fixed Fractional, Proportional, Anti-Martingale) to foster competitive diversity.
 - **`Learning System`**: Provides continuous improvement through weekly performance analysis, including pattern recognition, category performance tracking, confidence calibration, and EV accuracy assessment, generating actionable recommendations.
