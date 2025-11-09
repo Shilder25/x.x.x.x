@@ -23,240 +23,261 @@ db = get_database()
 if 'active_section' not in st.session_state:
     st.session_state.active_section = 'LIVE'
 
-# Nof1-inspired white minimalist CSS
+# Alpha Arena CSS - Clean & Compact Design
 st.markdown("""
 <style>
-/* Import beautiful fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-/* Global resets and base styles */
+/* CSS Variables for consistent design */
+:root {
+    --aa-border: 1px solid #E1E4EA;
+    --aa-border-hover: 1px solid #C7CBD3;
+    --aa-radius: 10px;
+    --aa-bg-white: #FFFFFF;
+    --aa-bg-card: #FAFBFC;
+    --aa-text-primary: #0F1419;
+    --aa-text-secondary: #536471;
+    --aa-spacing-sm: 0.75rem;
+    --aa-spacing-md: 1rem;
+    --aa-spacing-lg: 1.5rem;
+}
+
+/* Global reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Clean white background */
 .stApp {
-    background: #FFFFFF;
+    background: var(--aa-bg-white);
 }
 
-/* Hide Streamlit branding */
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
+/* Hide Streamlit elements */
+#MainMenu, footer, header {visibility: hidden;}
 
-/* Custom container for max-width centered layout */
+/* Compact container */
 .block-container {
-    max-width: 1400px !important;
-    padding: 2rem 3rem !important;
+    max-width: 1440px !important;
+    padding: 1.5rem 2.5rem !important;
 }
 
-/* Beautiful header */
+/* Reduce column gaps */
+[data-testid="column"] {
+    padding: 0 0.5rem !important;
+}
+
+/* Compact header */
 .main-header {
     text-align: center;
-    padding: 3rem 0 2rem 0;
-    margin-bottom: 2rem;
+    padding: 1.5rem 0 1rem 0;
+    margin-bottom: 1.5rem;
 }
 
 .brand-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    color: #0A0A0A;
+    color: var(--aa-text-primary);
     letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .brand-subtitle {
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 400;
-    color: #666666;
-    letter-spacing: 0.02em;
+    color: var(--aa-text-secondary);
 }
 
-/* Navigation pills - Nof1 style */
-.nav-container {
+/* Horizontal compact navigation */
+.nav-bar {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
-    margin: 2rem 0 3rem 0;
-    padding: 0.5rem;
-    background: #F8F9FA;
-    border-radius: 12px;
-    border: 1px solid #E5E7EB;
+    align-items: center;
+    gap: 0;
+    margin: var(--aa-spacing-lg) 0;
+    padding: 0.5rem 1rem;
+    background: var(--aa-bg-white);
+    border: var(--aa-border);
+    border-radius: var(--aa-radius);
+}
+
+.nav-separator {
+    width: 1px;
+    height: 20px;
+    background: #E1E4EA;
+    margin: 0 0.5rem;
 }
 
 .stButton button {
     font-family: 'Inter', sans-serif !important;
-    font-size: 0.875rem !important;
+    font-size: 0.8125rem !important;
     font-weight: 500 !important;
-    padding: 0.65rem 1.5rem !important;
-    border-radius: 8px !important;
+    padding: 0.5rem 1.25rem !important;
+    border-radius: 6px !important;
     border: none !important;
     background: transparent !important;
-    color: #666666 !important;
-    transition: all 0.2s ease !important;
+    color: var(--aa-text-secondary) !important;
+    transition: all 0.15s ease !important;
+    min-width: 100px !important;
 }
 
 .stButton button:hover {
-    background: rgba(0, 0, 0, 0.04) !important;
-    color: #0A0A0A !important;
+    color: var(--aa-text-primary) !important;
+    background: rgba(0, 0, 0, 0.03) !important;
 }
 
 .stButton button[kind="primary"] {
-    background: #0A0A0A !important;
-    color: #FFFFFF !important;
+    background: var(--aa-text-primary) !important;
+    color: var(--aa-bg-white) !important;
+    font-weight: 600 !important;
 }
 
 .stButton button[kind="primary"]:hover {
-    background: #1A1A1A !important;
+    background: #1F2937 !important;
 }
 
-/* Clean section titles */
+/* Compact section titles */
 .section-title {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.75rem;
     font-weight: 600;
-    color: #0A0A0A;
+    color: var(--aa-text-primary);
     margin-bottom: 0.5rem;
     letter-spacing: -0.01em;
 }
 
 .section-subtitle {
     font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    color: #666666;
-    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--aa-text-secondary);
+    margin-bottom: var(--aa-spacing-lg);
     font-weight: 400;
 }
 
-/* Minimalist cards */
+/* Well-defined cards */
 .clean-card {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    transition: all 0.2s ease;
+    background: var(--aa-bg-white);
+    border: var(--aa-border);
+    border-radius: var(--aa-radius);
+    padding: var(--aa-spacing-md);
+    margin-bottom: var(--aa-spacing-sm);
 }
 
 .clean-card:hover {
-    border-color: #D1D5DB;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: var(--aa-border-hover);
 }
 
-/* AI ranking capsules */
+/* Compact AI ranking capsules */
 .ai-capsule {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 1.5rem;
-    background: #FAFAFA;
-    border: 1px solid #E5E7EB;
-    border-radius: 10px;
-    margin-bottom: 0.75rem;
-    transition: all 0.2s ease;
+    padding: 0.875rem 1rem;
+    background: var(--aa-bg-card);
+    border: var(--aa-border);
+    border-radius: 8px;
+    margin-bottom: 0.625rem;
 }
 
 .ai-capsule:hover {
-    background: #F5F5F5;
-    border-color: #D1D5DB;
+    border-color: var(--aa-border-hover);
 }
 
 .ai-name {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.1rem;
+    font-size: 0.9375rem;
     font-weight: 600;
-    color: #0A0A0A;
+    color: var(--aa-text-primary);
 }
 
 .ai-value {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.1rem;
+    font-size: 0.9375rem;
     font-weight: 600;
-    color: #0A0A0A;
+    color: var(--aa-text-primary);
 }
 
 .ai-return-positive {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.9rem;
+    font-size: 0.8125rem;
     font-weight: 500;
     color: #059669;
 }
 
 .ai-return-negative {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.9rem;
+    font-size: 0.8125rem;
     font-weight: 500;
     color: #DC2626;
 }
 
-/* Metrics */
+/* Compact metrics */
 .metric-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--aa-spacing-sm);
+    margin-bottom: var(--aa-spacing-lg);
 }
 
 .metric-card {
-    background: #FAFAFA;
-    border: 1px solid #E5E7EB;
-    border-radius: 10px;
-    padding: 1.25rem;
+    background: var(--aa-bg-card);
+    border: var(--aa-border);
+    border-radius: var(--aa-radius);
+    padding: 0.875rem 1rem;
     text-align: center;
 }
 
 .metric-label {
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
-    color: #666666;
+    color: var(--aa-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.375rem;
 }
 
 .metric-value {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.75rem;
+    font-size: 1.375rem;
     font-weight: 600;
-    color: #0A0A0A;
+    color: var(--aa-text-primary);
 }
 
 /* Streamlit metric overrides */
 .stMetric {
-    background: #FAFAFA !important;
-    border: 1px solid #E5E7EB !important;
-    border-radius: 10px !important;
-    padding: 1rem !important;
+    background: var(--aa-bg-card) !important;
+    border: var(--aa-border) !important;
+    border-radius: var(--aa-radius) !important;
+    padding: 0.875rem 1rem !important;
 }
 
 .stMetric label {
     font-family: 'Inter', sans-serif !important;
-    font-size: 0.75rem !important;
+    font-size: 0.6875rem !important;
     font-weight: 600 !important;
-    color: #666666 !important;
+    color: var(--aa-text-secondary) !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
 }
 
 .stMetric [data-testid="stMetricValue"] {
     font-family: 'IBM Plex Mono', monospace !important;
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
     font-weight: 600 !important;
-    color: #0A0A0A !important;
+    color: var(--aa-text-primary) !important;
 }
 
-/* Position badges */
+/* Compact position badges */
 .position-badge {
     display: inline-block;
-    padding: 0.35rem 0.75rem;
-    border-radius: 6px;
+    padding: 0.25rem 0.625rem;
+    border-radius: 5px;
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -283,60 +304,70 @@ header {visibility: hidden;}
 /* Dividers */
 .clean-divider {
     height: 1px;
-    background: #E5E7EB;
-    margin: 2rem 0;
+    background: #E1E4EA;
+    margin: var(--aa-spacing-lg) 0;
 }
 
 /* Expander styling */
 .streamlit-expanderHeader {
     font-family: 'Space Grotesk', sans-serif !important;
-    font-size: 1rem !important;
+    font-size: 0.9375rem !important;
     font-weight: 600 !important;
-    color: #0A0A0A !important;
-    background: #FAFAFA !important;
-    border: 1px solid #E5E7EB !important;
-    border-radius: 8px !important;
+    color: var(--aa-text-primary) !important;
+    background: var(--aa-bg-card) !important;
+    border: var(--aa-border) !important;
+    border-radius: var(--aa-radius) !important;
 }
 
 /* Tab styling */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 0.5rem;
-    background: #F8F9FA;
-    padding: 0.5rem;
-    border-radius: 10px;
-    border: 1px solid #E5E7EB;
+    gap: 0.375rem;
+    background: var(--aa-bg-card);
+    padding: 0.375rem;
+    border-radius: var(--aa-radius);
+    border: var(--aa-border);
 }
 
 .stTabs [data-baseweb="tab"] {
     font-family: 'Inter', sans-serif !important;
-    font-size: 0.875rem !important;
+    font-size: 0.8125rem !important;
     font-weight: 500 !important;
-    color: #666666 !important;
+    color: var(--aa-text-secondary) !important;
     background: transparent !important;
     border: none !important;
-    padding: 0.65rem 1.25rem !important;
-    border-radius: 8px !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 7px !important;
 }
 
 .stTabs [aria-selected="true"] {
-    background: #0A0A0A !important;
-    color: #FFFFFF !important;
+    background: var(--aa-text-primary) !important;
+    color: var(--aa-bg-white) !important;
+    font-weight: 600 !important;
 }
 
 /* Info boxes */
 .info-box {
     background: #F0F9FF;
-    border: 1px solid #BAE6FD;
-    border-radius: 10px;
-    padding: 1rem 1.25rem;
-    margin: 1rem 0;
+    border: var(--aa-border);
+    border-radius: var(--aa-radius);
+    padding: 0.875rem 1rem;
+    margin: var(--aa-spacing-md) 0;
 }
 
 .info-text {
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     color: #075985;
-    line-height: 1.6;
+    line-height: 1.5;
+}
+
+/* Chart container with border */
+.chart-container {
+    border: var(--aa-border);
+    border-radius: var(--aa-radius);
+    padding: var(--aa-spacing-md);
+    background: var(--aa-bg-white);
+    margin-bottom: var(--aa-spacing-lg);
 }
 </style>
 """, unsafe_allow_html=True)
@@ -349,29 +380,40 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Navigation
-nav_col1, nav_col2, nav_col3, nav_col4 = st.columns([1, 1, 1, 1])
+# Horizontal compact navigation with separators
+st.markdown('<div class="nav-bar">', unsafe_allow_html=True)
+nav_cols = st.columns([1, 0.05, 1, 0.05, 1, 0.05, 1])
 
-with nav_col1:
-    if st.button("LIVE", key="nav_live", use_container_width=True, type="primary" if st.session_state.active_section == 'LIVE' else "secondary"):
+with nav_cols[0]:
+    if st.button("LIVE", key="nav_live", type="primary" if st.session_state.active_section == 'LIVE' else "secondary"):
         st.session_state.active_section = 'LIVE'
         st.rerun()
 
-with nav_col2:
-    if st.button("LEADERBOARD", key="nav_leaderboard", use_container_width=True, type="primary" if st.session_state.active_section == 'LEADERBOARD' else "secondary"):
+with nav_cols[1]:
+    st.markdown('<div class="nav-separator"></div>', unsafe_allow_html=True)
+
+with nav_cols[2]:
+    if st.button("LEADERBOARD", key="nav_leaderboard", type="primary" if st.session_state.active_section == 'LEADERBOARD' else "secondary"):
         st.session_state.active_section = 'LEADERBOARD'
         st.rerun()
 
-with nav_col3:
-    if st.button("MODELS", key="nav_models", use_container_width=True, type="primary" if st.session_state.active_section == 'MODELS' else "secondary"):
+with nav_cols[3]:
+    st.markdown('<div class="nav-separator"></div>', unsafe_allow_html=True)
+
+with nav_cols[4]:
+    if st.button("MODELS", key="nav_models", type="primary" if st.session_state.active_section == 'MODELS' else "secondary"):
         st.session_state.active_section = 'MODELS'
         st.rerun()
 
-with nav_col4:
-    if st.button("BLOG", key="nav_blog", use_container_width=True, type="primary" if st.session_state.active_section == 'BLOG' else "secondary"):
+with nav_cols[5]:
+    st.markdown('<div class="nav-separator"></div>', unsafe_allow_html=True)
+
+with nav_cols[6]:
+    if st.button("BLOG", key="nav_blog", type="primary" if st.session_state.active_section == 'BLOG' else "secondary"):
         st.session_state.active_section = 'BLOG'
         st.rerun()
 
+st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('<div class="clean-divider"></div>', unsafe_allow_html=True)
 
 # AI colors
@@ -424,10 +466,12 @@ if st.session_state.active_section == 'LIVE':
     st.markdown('<div class="section-title">Live Competition</div>', unsafe_allow_html=True)
     st.markdown('<div class="section-subtitle">Real-time performance tracking of 5 AI prediction models</div>', unsafe_allow_html=True)
     
-    # Chart + Rankings side by side
-    chart_col, rank_col = st.columns([6, 4], gap="large")
+    # 2-column layout: Chart (70%) | Rankings (30%)
+    chart_col, rank_col = st.columns([7, 3], gap="medium")
     
     with chart_col:
+        st.markdown('<div class="chart-container">', unsafe_allow_html=True)
+        
         # 30-day performance chart
         fig = go.Figure()
         
@@ -453,46 +497,50 @@ if st.session_state.active_section == 'LIVE':
         )
         
         fig.update_layout(
-            height=450,
-            margin=dict(l=20, r=20, t=40, b=40),
+            height=420,
+            margin=dict(l=10, r=10, t=35, b=35),
             paper_bgcolor='white',
             plot_bgcolor='white',
-            font=dict(family='Inter, sans-serif', size=12, color='#666666'),
+            font=dict(family='Inter, sans-serif', size=11, color='#536471'),
             title=dict(
-                text='30-Day Portfolio Performance',
-                font=dict(family='Space Grotesk, sans-serif', size=16, color='#0A0A0A', weight=600),
-                x=0
+                text='TOTAL ACCOUNT VALUE',
+                font=dict(family='Inter, sans-serif', size=11, color='#536471', weight=600),
+                x=0,
+                xanchor='left'
             ),
             xaxis=dict(
                 showgrid=True,
-                gridcolor='#F3F4F6',
+                gridcolor='#F0F2F5',
                 showline=True,
-                linecolor='#E5E7EB',
-                linewidth=1
+                linecolor='#E1E4EA',
+                linewidth=1,
+                tickfont=dict(size=10)
             ),
             yaxis=dict(
                 showgrid=True,
-                gridcolor='#F3F4F6',
+                gridcolor='#F0F2F5',
                 tickformat='$,.0f',
                 showline=True,
-                linecolor='#E5E7EB',
-                linewidth=1
+                linecolor='#E1E4EA',
+                linewidth=1,
+                tickfont=dict(size=10)
             ),
             legend=dict(
                 orientation="h",
                 yanchor="bottom",
-                y=-0.3,
+                y=-0.25,
                 xanchor="center",
                 x=0.5,
-                font=dict(size=11)
+                font=dict(size=10)
             ),
             hovermode='x unified'
         )
         
         st.plotly_chart(fig, use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
     
     with rank_col:
-        st.markdown('<div style="font-family: Space Grotesk, sans-serif; font-size: 1.1rem; font-weight: 600; color: #0A0A0A; margin-bottom: 1rem;">Current Rankings</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; color: #536471; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">Current Rankings</div>', unsafe_allow_html=True)
         
         # Sort by current value
         sorted_ais = sorted(
@@ -509,9 +557,9 @@ if st.session_state.active_section == 'LIVE':
             
             st.markdown(f"""
             <div class="ai-capsule">
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="font-family: IBM Plex Mono, monospace; font-size: 1.25rem; font-weight: 600; color: #9CA3AF; min-width: 2rem;">#{idx+1}</div>
-                    <div style="width: 12px; height: 12px; border-radius: 50%; background: {color};"></div>
+                <div style="display: flex; align-items: center; gap: 0.625rem;">
+                    <div style="font-family: IBM Plex Mono, monospace; font-size: 0.875rem; font-weight: 600; color: #9CA3AF; min-width: 1.5rem;">#{idx+1}</div>
+                    <div style="width: 10px; height: 10px; border-radius: 50%; background: {color};"></div>
                     <div class="ai-name">{ai_name}</div>
                 </div>
                 <div style="text-align: right;">
@@ -552,25 +600,25 @@ elif st.session_state.active_section == 'LEADERBOARD':
         st.markdown(f"""
         <div class="clean-card">
             <div style="display: flex; align-items: center; justify-content: space-between;">
-                <div style="display: flex; align-items: center; gap: 1.5rem;">
-                    <div style="text-align: center; min-width: 3rem;">
-                        <div style="font-family: Space Grotesk, sans-serif; font-size: 2rem; font-weight: 700; color: #0A0A0A;">#{idx+1}</div>
-                        <div style="font-family: Inter, sans-serif; font-size: 0.65rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em;">RANK</div>
+                <div style="display: flex; align-items: center; gap: 1.125rem;">
+                    <div style="text-align: center; min-width: 2.5rem;">
+                        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--aa-text-primary);">#{idx+1}</div>
+                        <div style="font-family: Inter, sans-serif; font-size: 0.625rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em;">RANK</div>
                     </div>
-                    <div style="width: 16px; height: 16px; border-radius: 50%; background: {color};"></div>
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: {color};"></div>
                     <div>
-                        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.5rem; font-weight: 600; color: #0A0A0A; margin-bottom: 0.25rem;">{ai_name}</div>
-                        <div style="font-family: Inter, sans-serif; font-size: 0.8rem; color: #666666;">AI Prediction Agent</div>
+                        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.125rem;">{ai_name}</div>
+                        <div style="font-family: Inter, sans-serif; font-size: 0.75rem; color: var(--aa-text-secondary);">AI Prediction Agent</div>
                     </div>
                 </div>
-                <div style="display: flex; gap: 3rem; align-items: center;">
+                <div style="display: flex; gap: 2.5rem; align-items: center;">
                     <div style="text-align: right;">
-                        <div style="font-family: Inter, sans-serif; font-size: 0.7rem; font-weight: 600; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">ACCOUNT VALUE</div>
-                        <div style="font-family: IBM Plex Mono, monospace; font-size: 1.75rem; font-weight: 600; color: #0A0A0A;">${data['current']:,.0f}</div>
+                        <div style="font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.375rem;">ACCOUNT VALUE</div>
+                        <div style="font-family: IBM Plex Mono, monospace; font-size: 1.375rem; font-weight: 600; color: var(--aa-text-primary);">${data['current']:,.0f}</div>
                     </div>
                     <div style="text-align: right;">
-                        <div style="font-family: Inter, sans-serif; font-size: 0.7rem; font-weight: 600; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">30D RETURN</div>
-                        <div style="font-family: IBM Plex Mono, monospace; font-size: 1.75rem; font-weight: 600; color: {pnl_color};">{pnl_sign}{pnl:.1f}%</div>
+                        <div style="font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.375rem;">30D RETURN</div>
+                        <div style="font-family: IBM Plex Mono, monospace; font-size: 1.375rem; font-weight: 600; color: {pnl_color};">{pnl_sign}{pnl:.1f}%</div>
                     </div>
                 </div>
             </div>
@@ -592,11 +640,11 @@ elif st.session_state.active_section == 'MODELS':
             
             # Header with model info
             st.markdown(f"""
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
-                <div style="width: 20px; height: 20px; border-radius: 50%; background: {color};"></div>
+            <div style="display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.5rem;">
+                <div style="width: 14px; height: 14px; border-radius: 50%; background: {color};"></div>
                 <div>
-                    <div style="font-family: Space Grotesk, sans-serif; font-size: 1.75rem; font-weight: 700; color: #0A0A0A;">{ai_name}</div>
-                    <div style="font-family: Inter, sans-serif; font-size: 0.95rem; color: #666666;">AI Prediction Agent</div>
+                    <div style="font-family: Space Grotesk, sans-serif; font-size: 1.375rem; font-weight: 700; color: var(--aa-text-primary);">{ai_name}</div>
+                    <div style="font-family: Inter, sans-serif; font-size: 0.8125rem; color: var(--aa-text-secondary);">AI Prediction Agent</div>
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -615,8 +663,8 @@ elif st.session_state.active_section == 'MODELS':
             st.markdown('<div class="clean-divider"></div>', unsafe_allow_html=True)
             
             # Decision Process - 5 Analysis Areas
-            st.markdown('<div style="font-family: Space Grotesk, sans-serif; font-size: 1.3rem; font-weight: 600; color: #0A0A0A; margin-bottom: 1rem;">Decision Process</div>', unsafe_allow_html=True)
-            st.markdown('<div style="font-family: Inter, sans-serif; font-size: 0.9rem; color: #666666; margin-bottom: 1.5rem;">7-role internal analysis framework</div>', unsafe_allow_html=True)
+            st.markdown('<div style="font-family: Space Grotesk, sans-serif; font-size: 1.125rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.75rem;">Decision Process</div>', unsafe_allow_html=True)
+            st.markdown('<div style="font-family: Inter, sans-serif; font-size: 0.8125rem; color: var(--aa-text-secondary); margin-bottom: 1.25rem;">7-role internal analysis framework</div>', unsafe_allow_html=True)
             
             # 5 Analysis stages
             stages = [
@@ -630,7 +678,7 @@ elif st.session_state.active_section == 'MODELS':
             for stage_name, stage_desc in stages:
                 with st.expander(f"**{stage_name}**"):
                     st.markdown(f"""
-                    <div style="font-family: Inter, sans-serif; font-size: 0.9rem; color: #666666; margin-bottom: 1rem;">
+                    <div style="font-family: Inter, sans-serif; font-size: 0.8125rem; color: var(--aa-text-secondary); margin-bottom: 0.75rem;">
                         {stage_desc}
                     </div>
                     """, unsafe_allow_html=True)
@@ -643,13 +691,13 @@ elif st.session_state.active_section == 'BLOG':
     # Blog post 1
     st.markdown("""
     <div class="clean-card">
-        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.3rem; font-weight: 600; color: #0A0A0A; margin-bottom: 0.5rem;">
+        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.125rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.375rem;">
             About Alpha Arena
         </div>
-        <div style="font-family: Inter, sans-serif; font-size: 0.85rem; color: #9CA3AF; margin-bottom: 1rem;">
+        <div style="font-family: Inter, sans-serif; font-size: 0.75rem; color: #9CA3AF; margin-bottom: 0.875rem;">
             November 9, 2025
         </div>
-        <div style="font-family: Inter, sans-serif; font-size: 0.95rem; color: #666666; line-height: 1.7;">
+        <div style="font-family: Inter, sans-serif; font-size: 0.875rem; color: var(--aa-text-secondary); line-height: 1.6;">
             Alpha Arena is a live benchmark designed to measure AI investing capabilities. Each model gets $10,000 
             of seed money, in real markets, with identical prompts and input data. The goal is to make benchmarks 
             more like the real world. Markets are dynamic, adversarial, open-ended, and unpredictable - they're 
@@ -661,16 +709,16 @@ elif st.session_state.active_section == 'BLOG':
     # Competition rules
     st.markdown("""
     <div class="clean-card">
-        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.3rem; font-weight: 600; color: #0A0A0A; margin-bottom: 1rem;">
+        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.125rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.875rem;">
             Competition Rules
         </div>
-        <div style="font-family: Inter, sans-serif; font-size: 0.95rem; color: #666666; line-height: 1.7;">
-            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                <li style="margin-bottom: 0.75rem;"><strong>Starting Capital:</strong> Each AI starts with $10,000</li>
-                <li style="margin-bottom: 0.75rem;"><strong>Market:</strong> Binary prediction markets on Opinion.trade (BNB Chain)</li>
-                <li style="margin-bottom: 0.75rem;"><strong>Objective:</strong> Maximize risk-adjusted returns</li>
-                <li style="margin-bottom: 0.75rem;"><strong>Transparency:</strong> All model outputs and trades are public</li>
-                <li style="margin-bottom: 0.75rem;"><strong>Autonomy:</strong> Each AI produces alpha, executes trades, and learns from outcomes</li>
+        <div style="font-family: Inter, sans-serif; font-size: 0.875rem; color: var(--aa-text-secondary); line-height: 1.6;">
+            <ul style="margin-left: 1.25rem; margin-top: 0.375rem;">
+                <li style="margin-bottom: 0.5rem;"><strong>Starting Capital:</strong> Each AI starts with $10,000</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Market:</strong> Binary prediction markets on Opinion.trade (BNB Chain)</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Objective:</strong> Maximize risk-adjusted returns</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Transparency:</strong> All model outputs and trades are public</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Autonomy:</strong> Each AI produces alpha, executes trades, and learns from outcomes</li>
             </ul>
         </div>
     </div>
@@ -679,7 +727,7 @@ elif st.session_state.active_section == 'BLOG':
     # The Contestants
     st.markdown("""
     <div class="clean-card">
-        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.3rem; font-weight: 600; color: #0A0A0A; margin-bottom: 1rem;">
+        <div style="font-family: Space Grotesk, sans-serif; font-size: 1.125rem; font-weight: 600; color: var(--aa-text-primary); margin-bottom: 0.875rem;">
             The Contestants
         </div>
     """, unsafe_allow_html=True)
@@ -687,12 +735,12 @@ elif st.session_state.active_section == 'BLOG':
     for ai_name, color in AI_COLORS.items():
         data = historical_data[ai_name]
         st.markdown(f"""
-        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #F3F4F6;">
-            <div style="width: 14px; height: 14px; border-radius: 50%; background: {color};"></div>
+        <div style="display: flex; align-items: center; gap: 0.875rem; padding: 0.75rem 0; border-bottom: 1px solid #E1E4EA;">
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: {color};"></div>
             <div style="flex: 1;">
-                <div style="font-family: Space Grotesk, sans-serif; font-size: 1.05rem; font-weight: 600; color: #0A0A0A;">{ai_name}</div>
+                <div style="font-family: Space Grotesk, sans-serif; font-size: 0.9375rem; font-weight: 600; color: var(--aa-text-primary);">{ai_name}</div>
             </div>
-            <div style="font-family: IBM Plex Mono, monospace; font-size: 0.95rem; font-weight: 500; color: #666666;">${data['current']:,.0f}</div>
+            <div style="font-family: IBM Plex Mono, monospace; font-size: 0.875rem; font-weight: 500; color: var(--aa-text-secondary);">${data['current']:,.0f}</div>
         </div>
         """, unsafe_allow_html=True)
     
