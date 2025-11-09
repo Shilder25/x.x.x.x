@@ -12,6 +12,35 @@ This project is a multi-LLM prediction market framework where five AI prediction
 - E2E testing: All features validated with playwright
 
 ## Recent Changes (November 9, 2025)
+
+**Multi-Category Analysis & Real Wallet Integration - Production Ready:**
+- **Multi-Category Event Analysis**: Modified `autonomous_engine.py` to fetch events from all Opinion.trade categories (crypto, tech, markets, sports, politics, world, science, other) and analyze opportunities across categories rather than single category
+- **All 5 LLM Clients Activated**: Integrated ChatGPT (OpenAI), Gemini (Google), Deepseek, Qwen, and Grok (XAI) with real API credentials, production-ready with error handling
+- **Shared Wallet with Individual Tracking**: All AIs share a single wallet but are tracked individually via `metadata.firm_name` field in Opinion.trade bets; database schema includes firm_name column in `autonomous_bets` table
+- **End-to-End Autonomous Cycles**: Implemented `run_daily_cycle()` that fetches real events from Opinion.trade API, generates predictions using real LLMs, and submits bets to Opinion.trade
+- **Alpha Arena Dashboard - Real Data Integration**:
+  - Replaced all simulated data with real database queries to `db.get_autonomous_bets()`
+  - **CRITICAL BUG FIX**: Corrected account value calculation from `initial + sum(profit_loss - bet_size) - sum(active)` to `initial + sum(profit_loss) - sum(active)`, eliminating double-subtraction that was showing losses as -2× stake
+  - Proper formula: `account_value = initial_bankroll + sum(profit_loss for resolved) - sum(bet_size for active)`
+  - Account values now accurately reflect BankrollManager state
+- **POSITIONS View**: Replaced BLOG placeholder with bet tracking panel
+  - Shows 4 summary metrics: Total Bets, Active, Resolved, Capital Locked
+  - Two tabs: 🟢 ACTIVE and ✅ RESOLVED
+  - ACTIVE: displays pending bets with AI name, category, bet size, probability, confidence
+  - RESOLVED: displays completed bets with P&L, status (WON/LOST), resolution timestamp
+  - Limited to 20 most recent per tab, sorted by execution timestamp descending
+  - Empty state handling for no data scenarios
+- **Automated Reconciliation System**:
+  - Implemented `reconcile_bets()` in `autonomous_engine.py` that runs at end of each daily cycle
+  - Fetches resolved events from Opinion.trade API
+  - Updates database using `db.update_autonomous_bet_result()`
+  - Syncs BankrollManager using `bankroll.record_result()`
+  - Comprehensive error handling and logging for API failures
+  - Returns reconciliation statistics (resolved_count, won, lost, total_pnl)
+- **CSS Styling Fix**: Changed performance capsule borders from `border-left` to `box-shadow: inset 3px 0 0 {color}` for more reliable colored accent rendering in Streamlit
+- **Navigation Update**: 4 views now are LIVE, LEADERBOARD, POSITIONS (replaces BLOG), MODELS
+- **E2E Testing**: Full playwright test suite passed, validating all 4 dashboard views, navigation, data persistence, and correct account value calculations
+
 **Alpha Arena 2.0 - Premium Dark Redesign:**
 - Complete visual transformation to premium dark theme with professional, human-crafted aesthetic
 - **Design System Overhaul**:
