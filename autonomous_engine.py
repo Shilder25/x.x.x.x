@@ -114,6 +114,10 @@ class AutonomousEngine:
         
         self._check_weekly_learning()
         
+        # Reconciliar apuestas activas que ya fueron resueltas
+        reconciliation_stats = self.reconcile_bets()
+        results['reconciliation'] = reconciliation_stats
+        
         return results
     
     def _fetch_events_by_category(self) -> Dict[str, List[Dict]]:
@@ -784,6 +788,112 @@ class AutonomousEngine:
                 recommendations = analysis.get('recommendations', [])
                 
                 pass
+    
+    def reconcile_bets(self) -> Dict:
+        """
+        Sistema de reconciliación que consulta Opinion.trade para actualizar
+        resultados de apuestas activas que ya fueron resueltas.
+        
+        Returns:
+            Dictionary con estadísticas de reconciliación
+        """
+        stats = {
+            'total_active': 0,
+            'checked': 0,
+            'resolved': 0,
+            'updated': 0,
+            'errors': 0,
+            'by_firm': {}
+        }
+        
+        # Obtener todas las apuestas activas (sin resultado)
+        all_active_bets = self.db.get_autonomous_bets(firm_name=None, limit=1000)
+        active_bets = [bet for bet in all_active_bets if bet.get('actual_result') is None]
+        
+        stats['total_active'] = len(active_bets)
+        
+        for bet in active_bets:
+            firm_name = bet.get('firm_name')
+            bet_id = bet.get('id')
+            opinion_trade_id = bet.get('opinion_trade_id')
+            bet_size = bet.get('bet_size', 0)
+            
+            if firm_name not in stats['by_firm']:
+                stats['by_firm'][firm_name] = {
+                    'checked': 0,
+                    'resolved': 0,
+                    'errors': 0
+                }
+            
+            # Si no hay opinion_trade_id (modo simulación), skip
+            if not opinion_trade_id:
+                continue
+            
+            stats['checked'] += 1
+            stats['by_firm'][firm_name]['checked'] += 1
+            
+            # Consultar Opinion.trade para ver si fue resuelta
+            try:
+                result = self.opinion_api.get_prediction_result(opinion_trade_id)
+                
+                if not result.get('success'):
+                    # Log cuando Opinion.trade devuelve error
+                    self.execution_log.append({
+                        'timestamp': datetime.now().isoformat(),
+                        'action': 'reconciliation_api_error',
+                        'firm_name': firm_name,
+                        'bet_id': bet_id,
+                        'error': result.get('error', 'Unknown API error'),
+                        'message': result.get('message', '')
+                    })
+                    continue
+                
+                if result.get('resolved'):
+                    # La apuesta fue resuelta
+                    outcome = result.get('outcome')  # 1 (ganó) o 0 (perdió)
+                    profit_loss = result.get('profit_loss', 0)
+                    
+                    # Actualizar en la base de datos
+                    self.db.update_autonomous_bet_result(
+                        bet_id=bet_id,
+                        actual_result=outcome,
+                        profit_loss=profit_loss
+                    )
+                    
+                    # Actualizar bankroll manager
+                    if firm_name in self.bankroll_managers:
+                        bankroll_manager = self.bankroll_managers[firm_name]
+                        bankroll_manager.record_result(
+                            bet_id=bet_id,
+                            won=(outcome == 1),
+                            profit_loss=profit_loss
+                        )
+                    
+                    stats['resolved'] += 1
+                    stats['updated'] += 1
+                    stats['by_firm'][firm_name]['resolved'] += 1
+                    
+                    self.execution_log.append({
+                        'timestamp': datetime.now().isoformat(),
+                        'action': 'reconciliation',
+                        'firm_name': firm_name,
+                        'bet_id': bet_id,
+                        'outcome': 'won' if outcome == 1 else 'lost',
+                        'profit_loss': profit_loss
+                    })
+                    
+            except Exception as e:
+                stats['errors'] += 1
+                stats['by_firm'][firm_name]['errors'] += 1
+                self.execution_log.append({
+                    'timestamp': datetime.now().isoformat(),
+                    'action': 'reconciliation_error',
+                    'firm_name': firm_name,
+                    'bet_id': bet_id,
+                    'error': str(e)
+                })
+        
+        return stats
     
     def apply_risk_adaptation(self, firm_name: str, adaptation_level):
         """
