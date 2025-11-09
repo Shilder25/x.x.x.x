@@ -9,17 +9,15 @@ Preferred communication style: Simple, everyday language.
 ## System Architecture
 
 ### Frontend Architecture
-The application uses Streamlit for a multi-tab web interface with a wide layout, managing database connections and cached data via session state. It features a public Alpha Arena dashboard and a protected admin panel.
+The application uses Streamlit for a single-page interface with a wide layout, managing database connections and cached data via session state. It features a unified minimalist design inspired by Nof1.ai.
 
 **Design System:**
-- **Alpha Arena (Public Dashboard)**: Premium dark theme with purple/cyan gradients, glassmorphism effects, custom typography (Space Grotesk, Manrope, IBM Plex Mono)
-- **Admin Panel**: Unified premium dark theme matching Alpha Arena aesthetic with Binance Gold (#F0B90B) as primary accent
-  - Limited color palette: Gold (#F0B90B) + Teal (#0EA5E9) + Slate (#334155) + status colors
-  - Completely emoji-free minimalist design
-  - Premium cards with gold top borders and glassmorphism
-  - Custom button styling with gold gradients and hover effects
-  - Dark-themed charts with gold accents
-  - Clean typography hierarchy with Space Grotesk headings
+- **White Minimalist Theme**: Clean white background (#FFFFFF) with professional typography
+  - Typography: Inter (body text), Space Grotesk (headings), IBM Plex Mono (numbers)
+  - Navigation: Minimalist pills with subtle borders, black active state
+  - Cards: Light gray backgrounds (#FAFAFA) with clean borders (#E5E7EB)
+  - Charts: White backgrounds with clean grid lines
+  - No admin controls on page - system controlled via Replit environment variables
 
 ### Backend Architecture
 The backend employs a modular, service-oriented design with key components such as:
@@ -89,7 +87,31 @@ Plotly is used for interactive charts within Streamlit, providing time series, p
 
 ## Recent Changes (November 9, 2025)
 
-**Admin Panel Redesign - Premium Dark Aesthetic (Latest):**
+**Unified Single-Page Interface - Nof1.ai-Inspired Design (Latest):**
+- **Complete Architectural Redesign**: Eliminated dual-interface approach (admin panel + public view)
+- **White Minimalist Aesthetic**:
+  - Clean white background (#FFFFFF) with subtle gray accents
+  - Professional typography: Inter (body), Space Grotesk (headings), IBM Plex Mono (numbers)
+  - Minimalist navigation pills with clean borders
+  - No dark themes - pure white, accessible design
+- **Single-Page Navigation**:
+  - Session-state based content switching (no page reloads)
+  - Click-based navigation without scrolling
+  - 4 main sections: LIVE, LEADERBOARD, MODELS, BLOG
+  - Smooth transitions between sections
+- **Removed Admin Controls**:
+  - No on-page admin interface
+  - System control via Replit environment variable: SYSTEM_ENABLED
+  - Set SYSTEM_ENABLED=true in Replit Secrets to enable API calls
+  - Set SYSTEM_ENABLED=false to disable (prevents API spending)
+- **LIVE Section**: Performance chart + AI ranking cards
+- **LEADERBOARD Section**: Clean ranking cards by account value
+- **MODELS Section**: Tabbed interface showing 5 analysis areas (7-role decision process)
+- **BLOG Section**: Information about competition and contestants
+- **Database Fix**: Corrected get_firm_performance SQL query column mapping
+- **Deleted Files**: Removed public_dashboard.py and app_admin.py (consolidated into app.py)
+
+**Admin Panel Redesign - Premium Dark Aesthetic (Previous):**
 - **Complete Visual Overhaul**: Redesigned admin panel to match Alpha Arena premium dark aesthetic
 - **Binance Gold Accent System**: 
   - Primary accent: #F0B90B (Binance gold) with glow effects
