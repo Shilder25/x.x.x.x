@@ -10,6 +10,7 @@ dependencies = [
     "nltk>=3.9.2",
     "numpy>=2.3.4",
     "openai>=2.7.1",
+    "opinion-clob-sdk>=0.2.5",
     "pandas>=2.3.3",
     "plotly>=6.4.0",
     "praw>=7.8.1",
