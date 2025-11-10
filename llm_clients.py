@@ -19,6 +19,67 @@ def is_rate_limit_error(exception: BaseException) -> bool:
     )
 
 
+def validate_and_normalize_prediction(prediction: Dict, firm_name: str) -> Dict:
+    """
+    Valida y normaliza la predicción del LLM, aplicando defaults para campos faltantes.
+    
+    Args:
+        prediction: Dict con la respuesta JSON del LLM
+        firm_name: Nombre de la firma para logging
+    
+    Returns:
+        Dict con todos los campos requeridos (con defaults si faltan)
+    """
+    normalized = prediction.copy()
+    
+    required_fields = {
+        'probabilidad_final_prediccion': 0.5,
+        'postura_riesgo': 'NEUTRAL',
+        'nivel_confianza': 50,
+        'direccion_preliminar': 'NEUTRAL'
+    }
+    
+    for field, default in required_fields.items():
+        if field not in normalized or normalized[field] is None:
+            print(f"[{firm_name}] WARNING: Campo '{field}' faltante, usando default: {default}")
+            normalized[field] = default
+    
+    five_area_scores = {
+        'sentiment_score': (0, 5, 'No sentiment analysis provided'),
+        'news_score': (0, 5, 'No news analysis provided'),
+        'technical_score': (0, 5, 'No technical analysis provided'),
+        'fundamental_score': (0, 5, 'No fundamental analysis provided'),
+        'volatility_score': (0, 5, 'No volatility analysis provided')
+    }
+    
+    for score_field, (min_val, default_val, default_text) in five_area_scores.items():
+        analysis_field = score_field.replace('_score', '_analysis')
+        
+        if score_field not in normalized or normalized[score_field] is None:
+            print(f"[{firm_name}] WARNING: Campo '{score_field}' faltante, usando default: {default_val}")
+            normalized[score_field] = default_val
+        else:
+            score = normalized[score_field]
+            if not isinstance(score, (int, float)) or score < 0 or score > 10:
+                print(f"[{firm_name}] WARNING: '{score_field}' inválido ({score}), corrigiendo a {default_val}")
+                normalized[score_field] = default_val
+        
+        if analysis_field not in normalized or not normalized[analysis_field]:
+            normalized[analysis_field] = default_text
+    
+    prob = normalized.get('probabilidad_final_prediccion', 0.5)
+    if not isinstance(prob, (int, float)) or prob < 0.0 or prob > 1.0:
+        print(f"[{firm_name}] WARNING: probabilidad_final_prediccion inválida ({prob}), corrigiendo a 0.5")
+        normalized['probabilidad_final_prediccion'] = 0.5
+    
+    confidence = normalized.get('nivel_confianza', 50)
+    if not isinstance(confidence, (int, float)) or confidence < 0 or confidence > 100:
+        print(f"[{firm_name}] WARNING: nivel_confianza inválido ({confidence}), corrigiendo a 50")
+        normalized['nivel_confianza'] = 50
+    
+    return normalized
+
+
 class TradingFirm:
     def __init__(self, firm_name: str):
         self.firm_name = firm_name
@@ -70,6 +131,7 @@ class ChatGPTFirm(TradingFirm):
             self.estimated_cost += self._estimate_cost(tokens, 0.005, 0.015)
             
             prediction = json.loads(content)
+            prediction = validate_and_normalize_prediction(prediction, self.firm_name)
             prediction['tokens_used'] = tokens
             prediction['estimated_cost'] = self._estimate_cost(tokens, 0.005, 0.015)
             
@@ -117,6 +179,7 @@ class GeminiFirm(TradingFirm):
             self.estimated_cost += self._estimate_cost(tokens, 0.002, 0.006)
             
             prediction = json.loads(content)
+            prediction = validate_and_normalize_prediction(prediction, self.firm_name)
             prediction['tokens_used'] = tokens
             prediction['estimated_cost'] = self._estimate_cost(tokens, 0.002, 0.006)
             
@@ -161,6 +224,7 @@ class QwenFirm(TradingFirm):
             self.estimated_cost += self._estimate_cost(tokens, 0.003, 0.009)
             
             prediction = json.loads(content)
+            prediction = validate_and_normalize_prediction(prediction, self.firm_name)
             prediction['tokens_used'] = tokens
             prediction['estimated_cost'] = self._estimate_cost(tokens, 0.003, 0.009)
             
@@ -206,6 +270,7 @@ class DeepseekFirm(TradingFirm):
             self.estimated_cost += self._estimate_cost(tokens, 0.001, 0.002)
             
             prediction = json.loads(content)
+            prediction = validate_and_normalize_prediction(prediction, self.firm_name)
             prediction['tokens_used'] = tokens
             prediction['estimated_cost'] = self._estimate_cost(tokens, 0.001, 0.002)
             
@@ -252,6 +317,7 @@ class GrokFirm(TradingFirm):
             self.estimated_cost += self._estimate_cost(tokens, 0.002, 0.01)
             
             prediction = json.loads(content)
+            prediction = validate_and_normalize_prediction(prediction, self.firm_name)
             prediction['tokens_used'] = tokens
             prediction['estimated_cost'] = self._estimate_cost(tokens, 0.002, 0.01)
             

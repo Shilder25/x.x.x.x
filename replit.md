@@ -49,7 +49,14 @@ The application uses **React/Next.js** (TypeScript + Tailwind CSS) for a profess
 A multi-provider approach supports various LLM APIs (OpenAI, Google Gemini, Qwen, Deepseek, Grok) with built-in rate limiting and cost tracking.
 
 ### Data Collection Architecture
-A multi-source strategy utilizes `AlphaVantageCollector` for technical indicators, `YFinanceCollector` for fundamental data, and `RedditSentimentCollector` for social sentiment analysis.
+**5-Area Analysis Framework**: Each AI analyzes events through 5 mandatory data sources with transparent scoring (0-10 per area):
+- **`AlphaVantageCollector`**: Technical indicators (RSI, MACD, price quotes)
+- **`NewsCollector`**: Financial news + sentiment (Alpha Vantage NEWS_SENTIMENT API, Finnhub fallback)
+- **`VolatilityCollector`**: Historical volatility, ATR, price ranges (YFinance)
+- **`YFinanceCollector`**: Fundamental data (P/E, market cap, earnings growth) - *legacy support*
+- **`RedditSentimentCollector`**: Social media sentiment analysis (PRAW) - *legacy support*
+
+**API Call Optimization**: Shared caching layer reduces Alpha Vantage calls by ~80% when multiple AIs analyze the same symbol (5 firms × 2 calls → 2 calls total per symbol).
 
 ### Data Storage
 An embedded SQLite database stores `predictions`, `firm_performance`, `virtual_portfolio`, `autonomous_bets`, `autonomous_cycles`, and `strategy_adaptations`.
@@ -100,6 +107,37 @@ An embedded SQLite database stores `predictions`, `firm_performance`, `virtual_p
 - `QWEN_API_KEY`
 - `XAI_API_KEY`
 - `ADMIN_PASSWORD`
+
+## Recent Changes (November 10, 2025)
+
+**PHASE 1: 5-Area Analysis Framework Implementation:**
+- **Objective**: Enable transparent multi-source decision-making for each AI with mandatory scoring across 5 data domains
+- **New Components Created**:
+  - **`NewsCollector`** (data_collectors.py, ~190 lines): Alpha Vantage NEWS_SENTIMENT API + Finnhub fallback
+  - **`VolatilityCollector`** (data_collectors.py, ~150 lines): Historical volatility, ATR, price ranges via YFinance
+  - **`format_news_report()`** (prompt_system.py): Formats news analysis for LLM consumption
+  - **`format_volatility_report()`** (prompt_system.py): Formats volatility metrics for LLM consumption
+- **Prompt System Updates**:
+  - `create_trading_prompt()` now accepts 7 parameters (added news_report, volatility_report)
+  - JSON output schema expanded to include 5 scores (0-10) + 5 text analyses:
+    - sentiment_score + sentiment_analysis
+    - news_score + news_analysis
+    - technical_score + technical_analysis
+    - fundamental_score + fundamental_analysis
+    - volatility_score + volatility_analysis
+- **LLM Client Validation**:
+  - New `validate_and_normalize_prediction()` function ensures all 5 scores are present
+  - Applies neutral defaults (score=5) if LLM omits fields
+  - Validates ranges: scores 0-10, probability 0-1, confidence 0-100
+  - All 5 firms (ChatGPT, Gemini, Qwen, Deepseek, Grok) use validation
+- **Database Persistence**:
+  - `autonomous_bets` table extended with 10 new columns (5 scores + 5 analyses)
+  - Both execution paths (_execute_best_opportunity_for_firm, _analyze_event_for_firm) save all fields
+- **Performance Optimization**:
+  - Shared data cache (`_data_cache`) reduces Alpha Vantage API calls by ~80%
+  - 5 firms analyzing same symbol: 2 total calls instead of 10
+  - Cache persists for entire daily cycle, cleared between cycles
+- **Status**: Approved by architect (PASS) - ready for PHASE 2
 
 ## Recent Changes (November 9, 2025)
 

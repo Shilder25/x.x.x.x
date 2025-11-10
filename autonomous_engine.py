@@ -6,8 +6,8 @@ from opinion_trade_api import OpinionTradeAPI
 from risk_management import RiskManager, RiskLevel
 from bankroll_manager import BankrollManager, BettingStrategy, assign_strategy_to_firm
 from llm_clients import FirmOrchestrator
-from data_collectors import AlphaVantageCollector, YFinanceCollector, RedditSentimentCollector
-from prompt_system import create_trading_prompt, format_technical_report, format_fundamental_report, format_sentiment_report
+from data_collectors import AlphaVantageCollector, YFinanceCollector, RedditSentimentCollector, NewsCollector, VolatilityCollector
+from prompt_system import create_trading_prompt, format_technical_report, format_fundamental_report, format_sentiment_report, format_news_report, format_volatility_report
 from database import TradingDatabase
 from learning_system import LearningSystem
 import os
@@ -48,6 +48,8 @@ class AutonomousEngine:
         self.execution_log = []
         self.daily_analysis_count = 0
         self.last_learning_analysis = None
+        
+        self._data_cache = {}
     
     def _initialize_firms(self):
         """
@@ -89,6 +91,9 @@ class AutonomousEngine:
                 'timestamp': datetime.now().isoformat()
             }
         cycle_start = datetime.now()
+        
+        self._data_cache.clear()
+        print(f"[CACHE] Cleared data cache at start of cycle {cycle_start.isoformat()}")
         
         results = {
             'timestamp': cycle_start.isoformat(),
@@ -484,7 +489,17 @@ class AutonomousEngine:
             'betting_strategy': bankroll_manager.strategy.value,
             'reasoning': decision.get('reason'),
             'execution_timestamp': datetime.now().isoformat(),
-            'simulation_mode': 1 if self.simulation_mode else 0
+            'simulation_mode': 1 if self.simulation_mode else 0,
+            'sentiment_score': prediction.get('sentiment_score', 5),
+            'sentiment_analysis': prediction.get('sentiment_analysis', ''),
+            'news_score': prediction.get('news_score', 5),
+            'news_analysis': prediction.get('news_analysis', ''),
+            'technical_score': prediction.get('technical_score', 5),
+            'technical_analysis': prediction.get('technical_analysis', ''),
+            'fundamental_score': prediction.get('fundamental_score', 5),
+            'fundamental_analysis': prediction.get('fundamental_analysis', ''),
+            'volatility_score': prediction.get('volatility_score', 5),
+            'volatility_analysis': prediction.get('volatility_analysis', '')
         }
         
         bet_id = self.db.save_autonomous_bet(bet_data)
@@ -591,7 +606,17 @@ class AutonomousEngine:
                 'betting_strategy': bankroll_manager.strategy.value,
                 'reasoning': decision.get('reason'),
                 'execution_timestamp': datetime.now().isoformat(),
-                'simulation_mode': 1 if self.simulation_mode else 0
+                'simulation_mode': 1 if self.simulation_mode else 0,
+                'sentiment_score': prediction.get('sentiment_score', 5),
+                'sentiment_analysis': prediction.get('sentiment_analysis', ''),
+                'news_score': prediction.get('news_score', 5),
+                'news_analysis': prediction.get('news_analysis', ''),
+                'technical_score': prediction.get('technical_score', 5),
+                'technical_analysis': prediction.get('technical_analysis', ''),
+                'fundamental_score': prediction.get('fundamental_score', 5),
+                'fundamental_analysis': prediction.get('fundamental_analysis', ''),
+                'volatility_score': prediction.get('volatility_score', 5),
+                'volatility_analysis': prediction.get('volatility_analysis', '')
             }
             
             bet_id = self.db.save_autonomous_bet(bet_data)
@@ -620,20 +645,79 @@ class AutonomousEngine:
     
     def _get_firm_prediction(self, firm_name: str, event_description: str, symbol: str) -> Dict:
         """
-        Obtiene predicción de una IA para un evento específico.
+        Obtiene predicción de una IA para un evento específico, recolectando datos de 5 áreas.
+        Usa caché compartido para reducir llamadas a APIs externas cuando múltiples firmas analizan el mismo símbolo.
         """
         technical_report = "Not available"
         fundamental_report = "Not available"
         sentiment_report = "Not available"
+        news_report = "Not available"
+        volatility_report = "Not available"
         
         if symbol and self.alpha_vantage_key:
-            try:
-                collector = AlphaVantageCollector(self.alpha_vantage_key)
-                tech_data = collector.get_technical_indicators(symbol)
-                if 'error' not in tech_data:
+            cache_key_tech = f"tech_{symbol}"
+            cache_key_news = f"news_{symbol}"
+            cache_key_vol = f"vol_{symbol}"
+            
+            if cache_key_tech in self._data_cache:
+                tech_data = self._data_cache[cache_key_tech]
+                technical_report = format_technical_report(tech_data)
+                print(f"[CACHE HIT] Technical data for {symbol}")
+            else:
+                try:
+                    collector = AlphaVantageCollector(self.alpha_vantage_key)
+                    tech_data = collector.get_technical_indicators(symbol)
+                    if 'error' not in tech_data:
+                        self._data_cache[cache_key_tech] = tech_data
+                        print(f"[CACHE MISS] Fetched & cached technical data for {symbol}")
+                    else:
+                        print(f"[CACHE SKIP] Technical data error for {symbol}, not caching")
                     technical_report = format_technical_report(tech_data)
-            except:
-                pass
+                except Exception as e:
+                    print(f"[CACHE ERROR] Failed to fetch technical data for {symbol}: {e}")
+                    pass
+            
+            if cache_key_news in self._data_cache:
+                news_data = self._data_cache[cache_key_news]
+                news_report = format_news_report(news_data)
+                print(f"[CACHE HIT] News data for {symbol}")
+            else:
+                try:
+                    news_collector = NewsCollector(alpha_vantage_key=self.alpha_vantage_key)
+                    news_data = news_collector.get_news_analysis(symbol, event_description)
+                    if 'error' not in news_data:
+                        self._data_cache[cache_key_news] = news_data
+                        print(f"[CACHE MISS] Fetched & cached news data for {symbol}")
+                    else:
+                        print(f"[CACHE SKIP] News data error for {symbol}, not caching")
+                    news_report = format_news_report(news_data)
+                except Exception as e:
+                    print(f"[CACHE ERROR] Failed to fetch news data for {symbol}: {e}")
+                    pass
+            
+            if cache_key_vol in self._data_cache:
+                volatility_data = self._data_cache[cache_key_vol]
+                volatility_report = format_volatility_report(volatility_data)
+                print(f"[CACHE HIT] Volatility data for {symbol}")
+            else:
+                try:
+                    volatility_collector = VolatilityCollector()
+                    
+                    if symbol in ['BTC', 'ETH', 'SOL', 'BNB', 'DOGE', 'XRP']:
+                        crypto_symbol = f"{symbol}-USD"
+                    else:
+                        crypto_symbol = symbol
+                    
+                    volatility_data = volatility_collector.get_volatility_metrics(crypto_symbol)
+                    if 'error' not in volatility_data:
+                        self._data_cache[cache_key_vol] = volatility_data
+                        print(f"[CACHE MISS] Fetched & cached volatility data for {crypto_symbol}")
+                    else:
+                        print(f"[CACHE SKIP] Volatility data error for {crypto_symbol}, not caching")
+                    volatility_report = format_volatility_report(volatility_data)
+                except Exception as e:
+                    print(f"[CACHE ERROR] Failed to fetch volatility data for {symbol}: {e}")
+                    pass
         
         try:
             firm = self.orchestrator.get_all_firms()[firm_name]
@@ -643,6 +727,8 @@ class AutonomousEngine:
                 technical_report=technical_report,
                 fundamental_report=fundamental_report,
                 sentiment_report=sentiment_report,
+                news_report=news_report,
+                volatility_report=volatility_report,
                 firm_name=firm_name
             )
             
