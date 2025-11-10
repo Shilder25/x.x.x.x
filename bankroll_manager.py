@@ -272,6 +272,29 @@ class BankrollManager:
             'new_bankroll': self.current_bankroll
         }
     
+    def rollback_last_bet(self):
+        """
+        Revierte la última apuesta registrada (usado si persistence falla).
+        Restaura bankroll y elimina el último registro.
+        """
+        if not self.bet_history:
+            return
+        
+        last_bet = self.bet_history.pop()
+        bet_size = last_bet.get('bet_size', 0)
+        
+        # Restaurar bankroll
+        self.current_bankroll += bet_size
+        
+        # Revertir contador
+        self.total_bets -= 1
+        
+        # Restaurar last_bet_size al valor anterior (si hay historial previo)
+        if self.bet_history:
+            self.last_bet_size = self.bet_history[-1].get('bet_size', 0)
+        else:
+            self.last_bet_size = 0
+    
     def record_result(self, bet_id: str, won: bool, profit_loss: float) -> Dict:
         """
         Registra el resultado de una apuesta y actualiza el bankroll.

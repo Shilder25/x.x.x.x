@@ -133,10 +133,14 @@ class TierRiskGuard:
         
         return (True, None)
     
-    def update_tier_if_needed(self, firm_name: str) -> Optional[Dict]:
+    def update_tier_if_needed(self, firm_name: str, learning_insights: Optional[Dict] = None) -> Optional[Dict]:
         """
         Check if tier update is needed and apply if necessary.
         Returns adaptation details if tier changed, None otherwise.
+        
+        Args:
+            firm_name: Name of the AI firm
+            learning_insights: Optional learning insights to persist with adaptation
         """
         portfolio = self.db.get_portfolio_with_tier_info(firm_name)
         
@@ -201,6 +205,9 @@ class TierRiskGuard:
                     'loss_percentage': loss_percentage,
                     'timestamp': datetime.now().isoformat()
                 }
+                
+                if learning_insights:
+                    adaptation_data['learning_insights'] = learning_insights
                 
                 self.db.save_strategy_adaptation(adaptation_data)
                 

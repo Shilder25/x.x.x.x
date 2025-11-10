@@ -19,15 +19,16 @@ class AutonomousEngine:
     y ejecuta apuestas automáticas para cada IA respetando límites de riesgo.
     """
     
-    def __init__(self, database: TradingDatabase, initial_bankroll_per_firm: float = 1000.0, simulation_mode: bool = True):
+    def __init__(self, database: TradingDatabase, initial_bankroll_per_firm: float = 1000.0):
         """
         Args:
             database: Instancia de TradingDatabase para persistencia
             initial_bankroll_per_firm: Presupuesto inicial por cada IA
-            simulation_mode: Si True, no ejecuta apuestas reales (solo tracking virtual)
+        
+        Note: Sistema siempre opera en modo real (no simulation). 
+        Use BANKROLL_MODE env var para controlar cantidades (test=$10/AI, prod=$1000/AI).
         """
         system_enabled = os.environ.get('SYSTEM_ENABLED', 'false').lower() == 'true'
-        self.simulation_mode = simulation_mode if system_enabled else True
         self.system_enabled = system_enabled
         self.initial_bankroll = initial_bankroll_per_firm
         
@@ -93,7 +94,7 @@ class AutonomousEngine:
         
         results = {
             'timestamp': cycle_start.isoformat(),
-            'simulation_mode': self.simulation_mode,
+            'simulation_mode': 0,
             'firms_results': {},
             'total_bets_placed': 0,
             'total_bets_skipped': 0,
@@ -453,50 +454,64 @@ class AutonomousEngine:
             print(f"[RISK BLOCK] {firm_name} - {risk_reason}")
             return decision
         
-        # ACTUALIZAR bankroll ANTES de persistir/ejecutar
-        # Esto garantiza que siguientes oportunidades vean el bankroll reducido
-        bankroll_manager.record_bet(bet_size, probability, event_id, event_description)
+        # EJECUTAR PRIMERO - solo persistir si tiene éxito
+        # Esto evita inconsistencia de estado si la ejecución falla
+        execution_result = self._execute_bet(
+            firm_name=firm_name,
+            event_id=event_id,
+            event_description=event_description,
+            bet_size=bet_size,
+            probability=probability,
+            prediction=prediction
+        )
+        decision['execution'] = execution_result
         
-        bet_data = {
-            'firm_name': firm_name,
-            'event_id': event_id,
-            'event_description': event_description,
-            'category': category,
-            'bet_size': bet_size,
-            'probability': probability,
-            'confidence': confidence,
-            'expected_value': expected_value,
-            'betting_strategy': bankroll_manager.strategy.value,
-            'reasoning': decision.get('reason'),
-            'execution_timestamp': datetime.now().isoformat(),
-            'simulation_mode': 1 if self.simulation_mode else 0,
-            'sentiment_score': prediction.get('sentiment_score', 5),
-            'sentiment_analysis': prediction.get('sentiment_analysis', ''),
-            'news_score': prediction.get('news_score', 5),
-            'news_analysis': prediction.get('news_analysis', ''),
-            'technical_score': prediction.get('technical_score', 5),
-            'technical_analysis': prediction.get('technical_analysis', ''),
-            'fundamental_score': prediction.get('fundamental_score', 5),
-            'fundamental_analysis': prediction.get('fundamental_analysis', ''),
-            'volatility_score': prediction.get('volatility_score', 5),
-            'volatility_analysis': prediction.get('volatility_analysis', '')
-        }
+        # Si la ejecución falló, retornar sin persistir
+        if execution_result.get('status') != 'success':
+            decision['action'] = 'SKIP'
+            decision['reason'] = f"Execution failed: {execution_result.get('error', 'Unknown error')}"
+            print(f"[EXECUTION FAILED] {firm_name} - {decision['reason']}")
+            return decision
         
-        bet_id = self.db.save_autonomous_bet(bet_data)
-        decision['bet_id'] = bet_id
-        
-        if not self.simulation_mode:
-            execution_result = self._execute_bet(
-                firm_name=firm_name,
-                event_id=event_id,
-                event_description=event_description,
-                bet_size=bet_size,
-                probability=probability,
-                prediction=prediction
-            )
-            decision['execution'] = execution_result
-        else:
-            decision['execution'] = {'status': 'simulated', 'message': 'Simulation mode active'}
+        # Solo si la ejecución fue exitosa → persistir en bankroll y DB (con rollback si falla)
+        try:
+            bankroll_manager.record_bet(bet_size, probability, event_id, event_description)
+            
+            bet_data = {
+                'firm_name': firm_name,
+                'event_id': event_id,
+                'event_description': event_description,
+                'category': category,
+                'bet_size': bet_size,
+                'probability': probability,
+                'confidence': confidence,
+                'expected_value': expected_value,
+                'betting_strategy': bankroll_manager.strategy.value,
+                'reasoning': decision.get('reason'),
+                'execution_timestamp': datetime.now().isoformat(),
+                'simulation_mode': 0,
+                'sentiment_score': prediction.get('sentiment_score', 5),
+                'sentiment_analysis': prediction.get('sentiment_analysis', ''),
+                'news_score': prediction.get('news_score', 5),
+                'news_analysis': prediction.get('news_analysis', ''),
+                'technical_score': prediction.get('technical_score', 5),
+                'technical_analysis': prediction.get('technical_analysis', ''),
+                'fundamental_score': prediction.get('fundamental_score', 5),
+                'fundamental_analysis': prediction.get('fundamental_analysis', ''),
+                'volatility_score': prediction.get('volatility_score', 5),
+                'volatility_analysis': prediction.get('volatility_analysis', '')
+            }
+            
+            bet_id = self.db.save_autonomous_bet(bet_data)
+            decision['bet_id'] = bet_id
+            
+        except Exception as persist_error:
+            # ROLLBACK: Revertir bankroll mutation si persistence falla
+            bankroll_manager.rollback_last_bet()
+            print(f"[PERSISTENCE ERROR] {firm_name} - Bet executed but persistence failed, bankroll rolled back: {persist_error}")
+            decision['action'] = 'ERROR'
+            decision['reason'] = f"Persistence failed after successful execution (rolled back): {persist_error}"
+            decision['error'] = str(persist_error)
         
         return decision
     
@@ -565,53 +580,68 @@ class AutonomousEngine:
                 print(f"[RISK BLOCK] {firm_name} - {risk_reason}")
                 return decision
             
+            # EJECUTAR PRIMERO - solo persistir si tiene éxito
+            execution_result = self._execute_bet(
+                firm_name=firm_name,
+                event_id=event_id,
+                event_description=event_description,
+                bet_size=bet_size,
+                probability=probability,
+                prediction=prediction
+            )
+            decision['execution'] = execution_result
+            
+            # Si la ejecución falló, retornar sin persistir
+            if execution_result.get('status') != 'success':
+                decision['action'] = 'SKIP'
+                decision['reason'] = f"Execution failed: {execution_result.get('error', 'Unknown error')}"
+                print(f"[EXECUTION FAILED] {firm_name} - {decision['reason']}")
+                return decision
+            
+            # Solo si la ejecución fue exitosa → persistir (con rollback si falla)
             decision['action'] = 'BET'
             decision['bet_size'] = bet_size
             decision['bet_calculation'] = bet_calculation
             decision['reason'] = f"Approved: EV={expected_value:.2f}, Prob={probability:.2%}, Conf={confidence}%"
             
-            bet_data = {
-                'firm_name': firm_name,
-                'event_id': event_id,
-                'event_description': event_description,
-                'category': category,
-                'bet_size': bet_size,
-                'probability': probability,
-                'confidence': confidence,
-                'expected_value': expected_value,
-                'betting_strategy': bankroll_manager.strategy.value,
-                'reasoning': decision.get('reason'),
-                'execution_timestamp': datetime.now().isoformat(),
-                'simulation_mode': 1 if self.simulation_mode else 0,
-                'sentiment_score': prediction.get('sentiment_score', 5),
-                'sentiment_analysis': prediction.get('sentiment_analysis', ''),
-                'news_score': prediction.get('news_score', 5),
-                'news_analysis': prediction.get('news_analysis', ''),
-                'technical_score': prediction.get('technical_score', 5),
-                'technical_analysis': prediction.get('technical_analysis', ''),
-                'fundamental_score': prediction.get('fundamental_score', 5),
-                'fundamental_analysis': prediction.get('fundamental_analysis', ''),
-                'volatility_score': prediction.get('volatility_score', 5),
-                'volatility_analysis': prediction.get('volatility_analysis', '')
-            }
-            
-            bet_id = self.db.save_autonomous_bet(bet_data)
-            decision['bet_id'] = bet_id
-            
-            if not self.simulation_mode:
-                execution_result = self._execute_bet(
-                    firm_name=firm_name,
-                    event_id=event_id,
-                    event_description=event_description,
-                    bet_size=bet_size,
-                    probability=probability,
-                    prediction=prediction
-                )
-                decision['execution'] = execution_result
-            else:
-                decision['execution'] = {'status': 'simulated', 'message': 'Simulation mode active'}
-            
-            bankroll_manager.record_bet(bet_size, probability, event_id, event_description)
+            try:
+                bankroll_manager.record_bet(bet_size, probability, event_id, event_description)
+                
+                bet_data = {
+                    'firm_name': firm_name,
+                    'event_id': event_id,
+                    'event_description': event_description,
+                    'category': category,
+                    'bet_size': bet_size,
+                    'probability': probability,
+                    'confidence': confidence,
+                    'expected_value': expected_value,
+                    'betting_strategy': bankroll_manager.strategy.value,
+                    'reasoning': decision.get('reason'),
+                    'execution_timestamp': datetime.now().isoformat(),
+                    'simulation_mode': 0,
+                    'sentiment_score': prediction.get('sentiment_score', 5),
+                    'sentiment_analysis': prediction.get('sentiment_analysis', ''),
+                    'news_score': prediction.get('news_score', 5),
+                    'news_analysis': prediction.get('news_analysis', ''),
+                    'technical_score': prediction.get('technical_score', 5),
+                    'technical_analysis': prediction.get('technical_analysis', ''),
+                    'fundamental_score': prediction.get('fundamental_score', 5),
+                    'fundamental_analysis': prediction.get('fundamental_analysis', ''),
+                    'volatility_score': prediction.get('volatility_score', 5),
+                    'volatility_analysis': prediction.get('volatility_analysis', '')
+                }
+                
+                bet_id = self.db.save_autonomous_bet(bet_data)
+                decision['bet_id'] = bet_id
+                
+            except Exception as persist_error:
+                # ROLLBACK: Revertir bankroll mutation si persistence falla
+                bankroll_manager.rollback_last_bet()
+                print(f"[PERSISTENCE ERROR] {firm_name} - Bet executed but persistence failed, bankroll rolled back: {persist_error}")
+                decision['action'] = 'ERROR'
+                decision['reason'] = f"Persistence failed after successful execution (rolled back): {persist_error}"
+                decision['error'] = str(persist_error)
             
         except Exception as e:
             decision['reason'] = f"Exception during analysis: {str(e)}"
@@ -743,7 +773,8 @@ class AutonomousEngine:
     def _execute_bet(self, firm_name: str, event_id: str, event_description: str,
                     bet_size: float, probability: float, prediction: Dict) -> Dict:
         """
-        Ejecuta una apuesta real en Opinion.trade.
+        Ejecuta una apuesta real en Opinion.trade con manejo transaccional robusto.
+        Si falla la ejecución real, registra el error y retorna status de fallo.
         """
         prediction_data = {
             'event_id': event_id,
@@ -754,9 +785,29 @@ class AutonomousEngine:
             'risk_posture': prediction.get('postura_riesgo', 'NEUTRAL')
         }
         
-        result = self.opinion_api.submit_prediction(prediction_data)
+        try:
+            result = self.opinion_api.submit_prediction(prediction_data)
+            
+            if result.get('status') == 'success':
+                print(f"[BET EXECUTED] {firm_name} - ${bet_size:.2f} on {event_description[:50]}...")
+                return result
+            else:
+                error_msg = result.get('error', 'Unknown error from Opinion.trade')
+                print(f"[BET FAILED] {firm_name} - Opinion.trade error: {error_msg}")
+                return {
+                    'status': 'failed',
+                    'error': error_msg,
+                    'error_type': 'opinion_trade_rejection'
+                }
         
-        return result
+        except Exception as e:
+            error_msg = f"Exception during bet execution: {str(e)}"
+            print(f"[BET ERROR] {firm_name} - {error_msg}")
+            return {
+                'status': 'failed',
+                'error': error_msg,
+                'error_type': 'execution_exception'
+            }
     
     def get_competition_status(self) -> Dict:
         """
@@ -764,7 +815,7 @@ class AutonomousEngine:
         """
         status = {
             'timestamp': datetime.now().isoformat(),
-            'simulation_mode': self.simulation_mode,
+            'simulation_mode': 0,
             'daily_cycles_completed': self.daily_analysis_count,
             'firms': {}
         }
@@ -969,18 +1020,19 @@ class AutonomousEngine:
     def apply_risk_adaptation(self, firm_name: str, adaptation_level=None):
         """
         Aplica adaptación de riesgo delegando a TierRiskGuard.
-        TierRiskGuard ya persiste la adaptación internamente.
+        Enriquece con learning insights del LearningSystem.
         """
         learning_analysis = self.learning_system.analyze_weekly_performance(firm_name)
         
-        adaptation_details = self.risk_guard.update_tier_if_needed(firm_name)
+        learning_insights = None
+        if learning_analysis.get('status') not in ['insufficient_data', 'no_recent_activity']:
+            learning_insights = {
+                'successful_patterns': learning_analysis.get('category_performance', {})
+            }
+        
+        adaptation_details = self.risk_guard.update_tier_if_needed(firm_name, learning_insights)
         
         if adaptation_details:
-            if learning_analysis.get('status') not in ['insufficient_data', 'no_recent_activity']:
-                adaptation_details['learning_insights'] = {
-                    'successful_patterns': learning_analysis.get('category_performance', {})
-                }
-            
             print(f"[TIER CHANGE] {firm_name}: {adaptation_details.get('description')}")
         
         return adaptation_details
