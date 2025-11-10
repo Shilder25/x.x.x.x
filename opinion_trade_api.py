@@ -176,6 +176,18 @@ class OpinionTradeAPI:
             # Convert side string to OrderSide enum
             side = OrderSide.BUY if side_str == 'BUY' else OrderSide.SELL
             
+            # Convert USDT amount to base units (wei) - USDT on BNB Chain uses 18 decimals
+            # Example: 10 USDT → 10000000000000000000 wei
+            amount_in_wei = int(amount * 1e18)
+            
+            # Validate amount is reasonable (min 1 USDT, max based on available balance)
+            if amount < 1:
+                return {
+                    'success': False,
+                    'error': 'Invalid amount',
+                    'message': 'Minimum bet amount is 1 USDT'
+                }
+            
             # Enable trading if not already enabled (required before first order)
             try:
                 self.client.enable_trading()
@@ -190,7 +202,7 @@ class OpinionTradeAPI:
                 side=side,
                 orderType=LIMIT_ORDER,
                 price=price,
-                makerAmountInQuoteToken=int(amount)  # Amount in USDT
+                makerAmountInQuoteToken=amount_in_wei  # Amount in wei (base units)
             )
             
             # Place order
