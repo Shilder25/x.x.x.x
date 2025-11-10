@@ -3,7 +3,8 @@ from datetime import datetime, timedelta
 import json
 
 from opinion_trade_api import OpinionTradeAPI
-from risk_management import RiskManager, RiskLevel
+from tier_risk_guard import TierRiskGuard
+from risk_tiers import risk_config
 from bankroll_manager import BankrollManager, BettingStrategy, assign_strategy_to_firm
 from llm_clients import FirmOrchestrator
 from data_collectors import AlphaVantageCollector, YFinanceCollector, RedditSentimentCollector, NewsCollector, VolatilityCollector
@@ -40,7 +41,7 @@ class AutonomousEngine:
         self.reddit_client_id = os.environ.get("REDDIT_CLIENT_ID", "")
         self.reddit_client_secret = os.environ.get("REDDIT_CLIENT_SECRET", "")
         
-        self.risk_managers = {}
+        self.risk_guard = TierRiskGuard(database, risk_config)
         self.bankroll_managers = {}
         
         self._initialize_firms()
@@ -53,16 +54,11 @@ class AutonomousEngine:
     
     def _initialize_firms(self):
         """
-        Inicializa gestores de riesgo y bankroll para cada IA.
+        Inicializa gestores de bankroll para cada IA.
         """
         firms = self.orchestrator.get_all_firms()
         
         for firm_name in firms.keys():
-            self.risk_managers[firm_name] = RiskManager(
-                firm_name=firm_name,
-                initial_bankroll=self.initial_bankroll
-            )
-            
             strategy = assign_strategy_to_firm(firm_name)
             self.bankroll_managers[firm_name] = BankrollManager(
                 firm_name=firm_name,
@@ -168,7 +164,7 @@ class AutonomousEngine:
         La IA analiza eventos en TODAS las categorías disponibles PRIMERO,
         luego ejecuta solo las mejores oportunidades globales.
         """
-        risk_manager = self.risk_managers[firm_name]
+        tier_status = self.risk_guard.get_tier_status(firm_name)
         bankroll_manager = self.bankroll_managers[firm_name]
         
         firm_result = {
@@ -177,16 +173,11 @@ class AutonomousEngine:
             'bets_placed': 0,
             'bets_skipped': 0,
             'total_bet_amount': 0,
-            'risk_level': risk_manager.get_risk_level().value,
-            'adaptation_level': risk_manager.adaptation_level.value,
+            'risk_tier': tier_status.get('current_tier', 'conservative'),
+            'current_balance': tier_status.get('current_balance', 0),
             'category_analysis': {},
             'decisions': []
         }
-        
-        risk_status = risk_manager.get_status_report()
-        if risk_status.get('in_cooldown'):
-            firm_result['skipped_reason'] = f"In cooldown until {risk_status.get('cooldown_until')}"
-            return firm_result
         
         active_positions_response = self.opinion_api.get_active_positions()
         active_positions = active_positions_response.get('positions', []) if active_positions_response.get('success') else []
@@ -210,7 +201,6 @@ class AutonomousEngine:
                 evaluation = self._evaluate_event_opportunity(
                     firm_name=firm_name,
                     event=event,
-                    risk_manager=risk_manager,
                     bankroll_manager=bankroll_manager,
                     active_positions=active_positions
                 )
@@ -243,7 +233,8 @@ class AutonomousEngine:
             all_opportunities.sort(key=lambda x: x.get('expected_value', 0), reverse=True)
             
             # Ejecutar solo hasta alcanzar el límite de apuestas concurrentes
-            max_bets = min(risk_manager.max_concurrent_bets, len(all_opportunities))
+            tier_config = tier_status.get('tier_config', {})
+            max_bets = min(tier_config.get('max_concurrent_positions', 2), len(all_opportunities))
             
             for i, opportunity in enumerate(all_opportunities):
                 if i < max_bets:
@@ -251,7 +242,6 @@ class AutonomousEngine:
                     executed_decision = self._execute_opportunity(
                         firm_name=firm_name,
                         opportunity=opportunity,
-                        risk_manager=risk_manager,
                         bankroll_manager=bankroll_manager
                     )
                     firm_result['decisions'].append(executed_decision)
@@ -273,7 +263,7 @@ class AutonomousEngine:
         Procesa el ciclo completo para una IA específica (método legacy).
         Mantenido para compatibilidad.
         """
-        risk_manager = self.risk_managers[firm_name]
+        tier_status = self.risk_guard.get_tier_status(firm_name)
         bankroll_manager = self.bankroll_managers[firm_name]
         
         firm_result = {
@@ -282,15 +272,10 @@ class AutonomousEngine:
             'bets_placed': 0,
             'bets_skipped': 0,
             'total_bet_amount': 0,
-            'risk_level': risk_manager.get_risk_level().value,
-            'adaptation_level': risk_manager.adaptation_level.value,
+            'risk_tier': tier_status.get('current_tier', 'conservative'),
+            'current_balance': tier_status.get('current_balance', 0),
             'decisions': []
         }
-        
-        risk_status = risk_manager.get_status_report()
-        if risk_status.get('in_cooldown'):
-            firm_result['skipped_reason'] = f"In cooldown until {risk_status.get('cooldown_until')}"
-            return firm_result
         
         active_positions_response = self.opinion_api.get_active_positions()
         active_positions = active_positions_response.get('positions', []) if active_positions_response.get('success') else []
@@ -299,7 +284,6 @@ class AutonomousEngine:
             decision = self._analyze_event_for_firm(
                 firm_name=firm_name,
                 event=event,
-                risk_manager=risk_manager,
                 bankroll_manager=bankroll_manager,
                 active_positions=active_positions
             )
@@ -313,13 +297,13 @@ class AutonomousEngine:
             else:
                 firm_result['bets_skipped'] += 1
             
-            if firm_result['bets_placed'] >= risk_manager.max_concurrent_bets:
+            tier_config = tier_status.get('tier_config', {})
+            if firm_result['bets_placed'] >= tier_config.get('max_concurrent_positions', 2):
                 break
         
         return firm_result
     
     def _evaluate_event_opportunity(self, firm_name: str, event: Dict,
-                                    risk_manager: RiskManager, 
                                     bankroll_manager: BankrollManager,
                                     active_positions: List[Dict]) -> Dict:
         """
@@ -380,21 +364,20 @@ class AutonomousEngine:
             
             bet_size = bet_calculation['bet_size']
             
-            risk_check = risk_manager.can_place_bet(
+            allowed, risk_reason = self.risk_guard.can_place_bet(
+                firm_name=firm_name,
                 bet_amount=bet_size,
-                category=category,
-                current_positions=active_positions
+                active_positions=active_positions
             )
             
-            if not risk_check.get('allowed'):
-                evaluation['reason'] = risk_check.get('reason', 'Risk check failed')
-                evaluation['risk_check'] = risk_check
+            if not allowed:
+                evaluation['reason'] = risk_reason or 'Risk check failed'
+                print(f"[RISK BLOCK] {firm_name} - {risk_reason}")
                 return evaluation
             
             evaluation['is_opportunity'] = True
             evaluation['bet_size'] = bet_size
             evaluation['bet_calculation'] = bet_calculation
-            evaluation['risk_check'] = risk_check
             evaluation['reason'] = f"Approved: EV={expected_value:.2f}, Prob={probability:.2%}, Conf={confidence}%"
             
         except Exception as e:
@@ -404,7 +387,6 @@ class AutonomousEngine:
         return evaluation
     
     def _execute_opportunity(self, firm_name: str, opportunity: Dict,
-                            risk_manager: RiskManager,
                             bankroll_manager: BankrollManager) -> Dict:
         """
         Ejecuta una oportunidad previamente evaluada.
@@ -459,16 +441,16 @@ class AutonomousEngine:
         active_positions_response = self.opinion_api.get_active_positions()
         active_positions = active_positions_response.get('positions', []) if active_positions_response.get('success') else []
         
-        risk_check = risk_manager.can_place_bet(
+        allowed, risk_reason = self.risk_guard.can_place_bet(
+            firm_name=firm_name,
             bet_amount=bet_size,
-            category=category,
-            current_positions=active_positions
+            active_positions=active_positions
         )
         
-        if not risk_check.get('allowed'):
+        if not allowed:
             decision['action'] = 'SKIP'
-            decision['reason'] = f"Risk check failed at execution: {risk_check.get('reason', 'Unknown')}"
-            decision['risk_check_failed'] = True
+            decision['reason'] = f"Risk check failed at execution: {risk_reason}"
+            print(f"[RISK BLOCK] {firm_name} - {risk_reason}")
             return decision
         
         # ACTUALIZAR bankroll ANTES de persistir/ejecutar
@@ -484,8 +466,6 @@ class AutonomousEngine:
             'probability': probability,
             'confidence': confidence,
             'expected_value': expected_value,
-            'risk_level': risk_manager.get_risk_level().value,
-            'adaptation_level': risk_manager.adaptation_level.value,
             'betting_strategy': bankroll_manager.strategy.value,
             'reasoning': decision.get('reason'),
             'execution_timestamp': datetime.now().isoformat(),
@@ -521,7 +501,6 @@ class AutonomousEngine:
         return decision
     
     def _analyze_event_for_firm(self, firm_name: str, event: Dict,
-                                risk_manager: RiskManager, 
                                 bankroll_manager: BankrollManager,
                                 active_positions: List[Dict]) -> Dict:
         """
@@ -575,21 +554,20 @@ class AutonomousEngine:
             
             bet_size = bet_calculation['bet_size']
             
-            risk_check = risk_manager.can_place_bet(
+            allowed, risk_reason = self.risk_guard.can_place_bet(
+                firm_name=firm_name,
                 bet_amount=bet_size,
-                category=category,
-                current_positions=active_positions
+                active_positions=active_positions
             )
             
-            if not risk_check.get('allowed'):
-                decision['reason'] = risk_check.get('reason', 'Risk check failed')
-                decision['risk_check'] = risk_check
+            if not allowed:
+                decision['reason'] = risk_reason or 'Risk check failed'
+                print(f"[RISK BLOCK] {firm_name} - {risk_reason}")
                 return decision
             
             decision['action'] = 'BET'
             decision['bet_size'] = bet_size
             decision['bet_calculation'] = bet_calculation
-            decision['risk_check'] = risk_check
             decision['reason'] = f"Approved: EV={expected_value:.2f}, Prob={probability:.2%}, Conf={confidence}%"
             
             bet_data = {
@@ -601,8 +579,6 @@ class AutonomousEngine:
                 'probability': probability,
                 'confidence': confidence,
                 'expected_value': expected_value,
-                'risk_level': risk_manager.get_risk_level().value,
-                'adaptation_level': risk_manager.adaptation_level.value,
                 'betting_strategy': bankroll_manager.strategy.value,
                 'reasoning': decision.get('reason'),
                 'execution_timestamp': datetime.now().isoformat(),
@@ -794,13 +770,13 @@ class AutonomousEngine:
         }
         
         for firm_name in self.orchestrator.get_all_firms().keys():
-            risk_manager = self.risk_managers[firm_name]
+            tier_status = self.risk_guard.get_tier_status(firm_name)
             bankroll_manager = self.bankroll_managers[firm_name]
             
             firm_status = {
-                'risk': risk_manager.get_status_report(),
+                'tier': tier_status,
                 'bankroll': bankroll_manager.get_statistics(),
-                'ranking_score': self._calculate_ranking_score(bankroll_manager, risk_manager)
+                'ranking_score': self._calculate_ranking_score(bankroll_manager)
             }
             
             status['firms'][firm_name] = firm_status
@@ -809,8 +785,7 @@ class AutonomousEngine:
         
         return status
     
-    def _calculate_ranking_score(self, bankroll_manager: BankrollManager, 
-                                  risk_manager: RiskManager) -> float:
+    def _calculate_ranking_score(self, bankroll_manager: BankrollManager) -> float:
         """
         Calcula un score de ranking combinando ROI, Sharpe y win rate.
         """
@@ -834,8 +809,8 @@ class AutonomousEngine:
         leaderboard = []
         
         for firm_name in self.orchestrator.get_all_firms().keys():
+            tier_status = self.risk_guard.get_tier_status(firm_name)
             bankroll_manager = self.bankroll_managers[firm_name]
-            risk_manager = self.risk_managers[firm_name]
             
             stats = bankroll_manager.get_statistics()
             
@@ -846,8 +821,8 @@ class AutonomousEngine:
                 'return_pct': stats['total_return_pct'],
                 'win_rate': stats['win_rate'],
                 'total_bets': stats['total_bets'],
-                'risk_level': risk_manager.get_risk_level().value,
-                'ranking_score': self._calculate_ranking_score(bankroll_manager, risk_manager)
+                'risk_tier': tier_status.get('current_tier', 'conservative'),
+                'ranking_score': self._calculate_ranking_score(bankroll_manager)
             })
         
         leaderboard.sort(key=lambda x: x['ranking_score'], reverse=True)
@@ -991,37 +966,21 @@ class AutonomousEngine:
         
         return stats
     
-    def apply_risk_adaptation(self, firm_name: str, adaptation_level):
+    def apply_risk_adaptation(self, firm_name: str, adaptation_level=None):
         """
-        Aplica adaptación de riesgo y la persiste en la base de datos.
+        Aplica adaptación de riesgo delegando a TierRiskGuard.
+        TierRiskGuard ya persiste la adaptación internamente.
         """
-        risk_manager = self.risk_managers[firm_name]
-        bankroll_manager = self.bankroll_managers[firm_name]
-        
-        total_loss_pct = (risk_manager.initial_bankroll - risk_manager.current_bankroll) / risk_manager.initial_bankroll
-        
         learning_analysis = self.learning_system.analyze_weekly_performance(firm_name)
-        analysis_data = None
         
-        if learning_analysis.get('status') not in ['insufficient_data', 'no_recent_activity']:
-            analysis_data = {
-                'successful_patterns': learning_analysis.get('category_performance', {})
-            }
+        adaptation_details = self.risk_guard.update_tier_if_needed(firm_name)
         
-        adaptation_details = risk_manager.apply_adaptation(adaptation_level, analysis_data)
-        
-        adaptation_db_data = {
-            'firm_name': firm_name,
-            'level': adaptation_level.value,
-            'description': adaptation_details.get('description'),
-            'previous_params': adaptation_details.get('previous_params'),
-            'new_params': adaptation_details.get('new_params'),
-            'changes': adaptation_details.get('changes'),
-            'bankroll_at_adaptation': risk_manager.current_bankroll,
-            'loss_percentage': total_loss_pct * 100,
-            'timestamp': adaptation_details.get('timestamp')
-        }
-        
-        self.db.save_strategy_adaptation(adaptation_db_data)
+        if adaptation_details:
+            if learning_analysis.get('status') not in ['insufficient_data', 'no_recent_activity']:
+                adaptation_details['learning_insights'] = {
+                    'successful_patterns': learning_analysis.get('category_performance', {})
+                }
+            
+            print(f"[TIER CHANGE] {firm_name}: {adaptation_details.get('description')}")
         
         return adaptation_details
