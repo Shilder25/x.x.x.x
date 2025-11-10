@@ -110,7 +110,58 @@ An embedded SQLite database stores `predictions`, `firm_performance`, `virtual_p
 
 ## Recent Changes (November 10, 2025)
 
-**PHASE 1: 5-Area Analysis Framework Implementation:**
+**PHASE 3: BANKROLL_MODE & Risk Protection Systems (COMPLETED):**
+- **Objective**: Implement production-ready capital protection with dual-mode operation and strict daily limits for TEST mode ($50 real money)
+- **New Components Created**:
+  - **`daily_watchdog.py`** (~230 lines): Daily maintenance system for counter resets and system health checks
+  - **`reconciliation.py`** (~280 lines): Balance reconciliation engine (local DB vs Opinion.trade API)
+  - **`daily_bet_tracking` table**: Persistent global daily bet counter (database.py)
+- **BANKROLL_MODE Configuration** (autonomous_engine.py):
+  - **TEST mode**: $50 inicial, $5 daily limit (capital protection)
+  - **PRODUCTION mode**: $5000 inicial, sin límite diario
+  - Default: TEST (seguridad por defecto)
+  - Configured via Replit Secrets: `BANKROLL_MODE`
+- **Daily Limit Enforcement** (CRITICAL FIX):
+  - Global limit ($5 shared across all 5 firms, not per-firm)
+  - Persistent tracking via `daily_bet_tracking` table
+  - Verification BEFORE execution with known bet_size
+  - Blocks proposed bets if: `current_daily_total + proposed_bet_size > $5`
+  - Only persists to DB if execution successful
+  - Logs: `[DAILY LIMIT]` (blocked) and `[DAILY TRACKING]` (executed)
+- **Daily Watchdog System**:
+  - Resets TierRiskGuard daily counters
+  - Checks system health (balance, PnL, tier, win rate per firm)
+  - Generates daily summary logs to `logs/daily_watchdog_YYYYMMDD.log`
+  - Standalone execution: `python daily_watchdog.py`
+- **Reconciliation System**:
+  - Compares local balance (DB) vs real balance (Opinion.trade API)
+  - Detects discrepancies > $0.01 tolerance
+  - Critical threshold: > $5 or > 10% difference
+  - Generates detailed reports with recommendations
+  - Standalone execution: `python reconciliation.py`
+  - Reports saved to `logs/reconciliation_YYYYMMDD_HHMMSS.log`
+- **Status**: Approved by architect (PASS) - FASE 3 complete
+
+**PHASE 2: TierRiskGuard Integration & Error Handling (COMPLETED):**
+- **Objective**: Replace RiskManager with TierRiskGuard, fix learning_insights persistence, remove simulation_mode, implement transactional error handling
+- **TierRiskGuard Integration**:
+  - `update_tier_if_needed()` now accepts `learning_insights: Optional[Dict]` parameter
+  - `apply_risk_adaptation()` calculates insights and passes to tier update
+  - Single source of truth for persistence (no duplication)
+- **simulation_mode Removal**:
+  - Eliminated from `__init__()` constructor
+  - Removed all `if not self.simulation_mode:` blocks
+  - System ALWAYS operates in real mode
+  - Hardcoded `simulation_mode: 0` in DB writes for compatibility
+- **Transactional Error Handling**:
+  - Execute-first pattern: `_execute_bet()` → check status → persist only if successful
+  - `BankrollManager.rollback_last_bet()` restores: bankroll, bet_history, total_bets, last_bet_size
+  - Applied to both execution paths: `_execute_opportunity()` and `_analyze_event_for_firm()`
+  - Error handling: If persistence fails after successful execution, rollback bankroll mutation
+  - Edge case accepted: External bet succeeds but local tracking fails → logged for reconciliation (FASE 3.4)
+- **Status**: Approved by architect (PASS) - FASE 2 complete
+
+**PHASE 1: 5-Area Analysis Framework Implementation (COMPLETED):**
 - **Objective**: Enable transparent multi-source decision-making for each AI with mandatory scoring across 5 data domains
 - **New Components Created**:
   - **`NewsCollector`** (data_collectors.py, ~190 lines): Alpha Vantage NEWS_SENTIMENT API + Finnhub fallback

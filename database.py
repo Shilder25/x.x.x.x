@@ -120,6 +120,17 @@ class TradingDatabase:
         )
         ''')
         
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS daily_bet_tracking (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            tracking_date TEXT NOT NULL,
+            total_bet_amount REAL DEFAULT 0.0,
+            bet_count INTEGER DEFAULT 0,
+            last_updated TEXT NOT NULL,
+            UNIQUE(tracking_date)
+        )
+        ''')
+        
         self._migrate_schema(cursor)
         
         conn.commit()
@@ -895,3 +906,77 @@ class TradingDatabase:
         
         conn.commit()
         conn.close()
+    
+    def get_daily_bet_total(self, date: str = None) -> float:
+        """
+        Obtiene el total apostado hoy (o en fecha específica).
+        
+        Args:
+            date: Fecha en formato YYYY-MM-DD. Si None, usa fecha actual.
+            
+        Returns:
+            Total apostado en la fecha
+        """
+        if date is None:
+            date = datetime.now().strftime("%Y-%m-%d")
+        
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        SELECT total_bet_amount FROM daily_bet_tracking
+        WHERE tracking_date = ?
+        ''', (date,))
+        
+        row = cursor.fetchone()
+        conn.close()
+        
+        if row:
+            return row[0]
+        return 0.0
+    
+    def add_to_daily_bet_total(self, amount: float, date: str = None) -> float:
+        """
+        Agrega una cantidad al total diario de apuestas.
+        
+        Args:
+            amount: Cantidad a agregar
+            date: Fecha en formato YYYY-MM-DD. Si None, usa fecha actual.
+            
+        Returns:
+            Nuevo total diario
+        """
+        if date is None:
+            date = datetime.now().strftime("%Y-%m-%d")
+        
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        # Intentar actualizar registro existente
+        cursor.execute('''
+        UPDATE daily_bet_tracking
+        SET total_bet_amount = total_bet_amount + ?,
+            bet_count = bet_count + 1,
+            last_updated = ?
+        WHERE tracking_date = ?
+        ''', (amount, datetime.now().isoformat(), date))
+        
+        # Si no existe, insertar nuevo registro
+        if cursor.rowcount == 0:
+            cursor.execute('''
+            INSERT INTO daily_bet_tracking (tracking_date, total_bet_amount, bet_count, last_updated)
+            VALUES (?, ?, 1, ?)
+            ''', (date, amount, datetime.now().isoformat()))
+        
+        # Obtener nuevo total
+        cursor.execute('''
+        SELECT total_bet_amount FROM daily_bet_tracking
+        WHERE tracking_date = ?
+        ''', (date,))
+        
+        new_total = cursor.fetchone()[0]
+        
+        conn.commit()
+        conn.close()
+        
+        return new_total

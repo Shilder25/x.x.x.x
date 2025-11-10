@@ -23,14 +23,28 @@ class AutonomousEngine:
         """
         Args:
             database: Instancia de TradingDatabase para persistencia
-            initial_bankroll_per_firm: Presupuesto inicial por cada IA
+            initial_bankroll_per_firm: Presupuesto inicial por cada IA (ignorado si BANKROLL_MODE está configurado)
         
         Note: Sistema siempre opera en modo real (no simulation). 
-        Use BANKROLL_MODE env var para controlar cantidades (test=$10/AI, prod=$1000/AI).
+        BANKROLL_MODE env var controla cantidades:
+        - TEST: $50 inicial, máximo $5 por día (protección para pruebas)
+        - PRODUCTION: $5000 inicial, sin límite diario
         """
         system_enabled = os.environ.get('SYSTEM_ENABLED', 'false').lower() == 'true'
         self.system_enabled = system_enabled
-        self.initial_bankroll = initial_bankroll_per_firm
+        
+        # Configurar bankroll según BANKROLL_MODE
+        bankroll_mode = os.environ.get('BANKROLL_MODE', 'TEST').upper()
+        if bankroll_mode == 'PRODUCTION':
+            self.initial_bankroll = 5000.0
+            self.daily_bet_limit = None  # Sin límite
+            self.bankroll_mode = 'PRODUCTION'
+        else:  # TEST mode (default)
+            self.initial_bankroll = 50.0
+            self.daily_bet_limit = 5.0  # Máximo $5 por día
+            self.bankroll_mode = 'TEST'
+        
+        print(f"[BANKROLL MODE] {self.bankroll_mode} - Initial: ${self.initial_bankroll}, Daily limit: ${self.daily_bet_limit if self.daily_bet_limit else 'None'}")
         
         self.db = database
         self.learning_system = LearningSystem(database)
@@ -239,6 +253,17 @@ class AutonomousEngine:
             
             for i, opportunity in enumerate(all_opportunities):
                 if i < max_bets:
+                    # Verificar límite diario GLOBAL ANTES de ejecutar (solo en TEST mode)
+                    if self.daily_bet_limit is not None:
+                        current_daily_total = self.db.get_daily_bet_total()
+                        proposed_bet_size = opportunity.get('bet_size', 0)
+                        
+                        if current_daily_total + proposed_bet_size > self.daily_bet_limit:
+                            print(f"[DAILY LIMIT] {firm_name} - Proposed ${proposed_bet_size:.2f} would exceed daily limit "
+                                  f"(${current_daily_total:.2f} + ${proposed_bet_size:.2f} > ${self.daily_bet_limit})")
+                            firm_result['bets_skipped'] += 1
+                            continue
+                    
                     # Ejecutar esta oportunidad
                     executed_decision = self._execute_opportunity(
                         firm_name=firm_name,
@@ -250,7 +275,13 @@ class AutonomousEngine:
                     # Solo incrementar si la ejecución fue exitosa
                     if executed_decision.get('action') == 'BET':
                         firm_result['bets_placed'] += 1
-                        firm_result['total_bet_amount'] += executed_decision.get('bet_size', 0)
+                        bet_size = executed_decision.get('bet_size', 0)
+                        firm_result['total_bet_amount'] += bet_size
+                        
+                        # Registrar en tracking diario (solo en TEST mode)
+                        if self.daily_bet_limit is not None:
+                            new_daily_total = self.db.add_to_daily_bet_total(bet_size)
+                            print(f"[DAILY TRACKING] {firm_name} - Daily total: ${new_daily_total:.2f} / ${self.daily_bet_limit}")
                     else:
                         firm_result['bets_skipped'] += 1
                 else:
