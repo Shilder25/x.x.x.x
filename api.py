@@ -18,6 +18,36 @@ AI_FIRMS = {
     'Grok': {'model': 'grok-beta', 'color': '#06B6D4'}
 }
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Health check endpoint for Railway deployment monitoring"""
+    try:
+        env_status = {
+            'database': 'connected' if db else 'error',
+            'api_keys_configured': {
+                'openai': bool(os.getenv('AI_INTEGRATIONS_OPENAI_API_KEY')),
+                'deepseek': bool(os.getenv('DEEPSEEK_API_KEY')),
+                'qwen': bool(os.getenv('QWEN_API_KEY')),
+                'xai': bool(os.getenv('XAI_API_KEY')),
+                'opinion_trade': bool(os.getenv('OPINION_TRADE_API_KEY')),
+                'wallet': bool(os.getenv('OPINION_WALLET_PRIVATE_KEY'))
+            },
+            'bankroll_mode': os.getenv('BANKROLL_MODE', 'UNKNOWN'),
+            'system_enabled': os.getenv('SYSTEM_ENABLED', 'false')
+        }
+        
+        return jsonify({
+            'status': 'healthy',
+            'timestamp': datetime.now().isoformat(),
+            'environment': env_status
+        }), 200
+    except Exception as e:
+        return jsonify({
+            'status': 'unhealthy',
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500
+
 @app.route('/api/market-header', methods=['GET'])
 def get_market_header():
     """Get real-time crypto market data for header"""

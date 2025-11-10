@@ -6,6 +6,7 @@ import NavigationTabs from '@/components/NavigationTabs';
 import PerformanceChart from '@/components/PerformanceChart';
 import { BenchmarkPanel, ContestantsPanel, CompetitionRulesPanel } from '@/components/InfoPanels';
 import AIThinkingPanel from '@/components/AIThinkingPanel';
+import { getApiUrl } from '@/lib/config';
 
 type MarketData = {
   symbol: string;
@@ -61,7 +62,7 @@ export default function Home() {
 
   const fetchMarketData = async () => {
     try {
-      const response = await fetch('/api/market-header');
+      const response = await fetch(getApiUrl('/api/market-header'));
       const data = await response.json();
       setMarketData(data);
     } catch (error) {
@@ -71,7 +72,7 @@ export default function Home() {
 
   const fetchLiveMetrics = async () => {
     try {
-      const response = await fetch('/api/live-metrics');
+      const response = await fetch(getApiUrl('/api/live-metrics'));
       const data = await response.json();
       if (Array.isArray(data)) {
         setLiveMetrics(data);
@@ -86,7 +87,7 @@ export default function Home() {
 
   const fetchChartHistory = async () => {
     try {
-      const response = await fetch('/api/live-chart-history');
+      const response = await fetch(getApiUrl('/api/live-chart-history'));
       const data = await response.json();
       if (data && typeof data === 'object' && !data.error) {
         setChartHistory(data);
@@ -101,7 +102,7 @@ export default function Home() {
 
   const fetchLeaderboard = async () => {
     try {
-      const response = await fetch('/api/leaderboard');
+      const response = await fetch(getApiUrl('/api/leaderboard'));
       const data = await response.json();
       if (Array.isArray(data)) {
         setLeaderboard(data);
@@ -116,7 +117,7 @@ export default function Home() {
 
   const fetchAIDecisions = async () => {
     try {
-      const response = await fetch('/api/ai-decisions-history?limit=50');
+      const response = await fetch(getApiUrl('/api/ai-decisions-history?limit=50'));
       if (response.ok) {
         const data = await response.json();
         setAiDecisions(data);
@@ -128,7 +129,7 @@ export default function Home() {
 
   const fetchActivePositions = async () => {
     try {
-      const response = await fetch('/api/active-positions');
+      const response = await fetch(getApiUrl('/api/active-positions'));
       if (response.ok) {
         const data = await response.json();
         setActivePositions(data);

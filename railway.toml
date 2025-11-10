@@ -1,0 +1,33 @@
+# Railway.toml - Multi-service configuration for TradingAgents framework
+# This file configures both the Flask backend and Next.js frontend
+
+[build]
+builder = "NIXPACKS"
+
+# Backend API Service (Flask)
+[[services]]
+name = "api"
+buildCommand = "pip install --upgrade pip && pip install -e ."
+startCommand = "python api.py"
+port = 8000
+
+[services.healthcheck]
+path = "/health"
+timeout = 300
+interval = 30
+
+# Frontend Service (Next.js)
+[[services]]
+name = "frontend"
+buildCommand = "cd frontend && npm install && npm run build"
+startCommand = "cd frontend && npm run start"
+port = 5000
+
+[services.healthcheck]
+path = "/"
+timeout = 300
+interval = 30
+
+# Environment configuration
+# Note: Set these variables manually in Railway dashboard for each service
+# See RAILWAY_MIGRATION_GUIDE.md for complete list
