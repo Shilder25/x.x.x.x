@@ -223,7 +223,7 @@ class TradingDatabase:
             datetime.now().isoformat()
         ))
         
-        prediction_id = cursor.lastrowid
+        prediction_id = cursor.lastrowid if cursor.lastrowid is not None else 0
         conn.commit()
         conn.close()
         
@@ -907,7 +907,7 @@ class TradingDatabase:
         conn.commit()
         conn.close()
     
-    def get_daily_bet_total(self, date: str = None) -> float:
+    def get_daily_bet_total(self, date: Optional[str] = None) -> float:
         """
         Obtiene el total apostado hoy (o en fecha específica).
         
@@ -935,7 +935,7 @@ class TradingDatabase:
             return row[0]
         return 0.0
     
-    def add_to_daily_bet_total(self, amount: float, date: str = None) -> float:
+    def add_to_daily_bet_total(self, amount: float, date: Optional[str] = None) -> float:
         """
         Agrega una cantidad al total diario de apuestas.
         

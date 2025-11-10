@@ -54,13 +54,18 @@ def get_live_metrics():
         for firm_name in AI_FIRMS.keys():
             perf = db.get_firm_performance(firm_name)
             if perf:
+                current_balance = perf.get('current_balance')
+                total_profit = perf.get('total_profit')
+                accuracy = perf.get('accuracy')
+                total_predictions = perf.get('total_predictions')
+                
                 chart_data.append({
                     'firm': firm_name,
                     'color': AI_FIRMS[firm_name]['color'],
-                    'total_value': perf['current_balance'],
-                    'profit_loss': perf['total_profit'],
-                    'win_rate': perf['accuracy'] * 100,
-                    'total_bets': perf['total_predictions']
+                    'total_value': 10000.0 if current_balance is None else current_balance,
+                    'profit_loss': 0.0 if total_profit is None else total_profit,
+                    'win_rate': (0.0 if accuracy is None else accuracy) * 100,
+                    'total_bets': 0 if total_predictions is None else total_predictions
                 })
             else:
                 chart_data.append({
@@ -81,13 +86,26 @@ def get_live_chart_history():
     """Get historical account value data for chart"""
     try:
         import sqlite3
+        from datetime import datetime, timedelta
         
         history_data = {}
         
+        conn = sqlite3.connect('trading_agents.db')
+        cursor = conn.cursor()
+        
+        cursor.execute("SELECT MIN(date(execution_timestamp)) FROM autonomous_bets")
+        earliest_date_result = cursor.fetchone()[0]
+        
+        if earliest_date_result:
+            earliest_date = datetime.fromisoformat(earliest_date_result)
+            system_start_date = (earliest_date - timedelta(days=1)).date().isoformat()
+        else:
+            system_start_date = datetime.now().date().isoformat()
+        
+        all_dates = set()
+        firm_daily_data = {}
+        
         for firm_name in AI_FIRMS.keys():
-            conn = sqlite3.connect('trading_agents.db')
-            cursor = conn.cursor()
-            
             cursor.execute("""
                 SELECT date(execution_timestamp) as day, 
                        SUM(CASE WHEN actual_result=1 THEN bet_size * 0.95 ELSE -bet_size END) as daily_pl
@@ -98,16 +116,22 @@ def get_live_chart_history():
             """, (firm_name,))
             
             rows = cursor.fetchall()
-            conn.close()
+            firm_daily_data[firm_name] = {row[0]: row[1] for row in rows}
+            all_dates.update(firm_daily_data[firm_name].keys())
+        
+        conn.close()
+        
+        sorted_dates = sorted(list(all_dates))
+        
+        for firm_name in AI_FIRMS.keys():
+            cumulative_value = 10000.0
+            daily_values = [{'date': system_start_date, 'value': 10000.0}]
             
-            cumulative_value = 1000.0
-            daily_values = [{'date': 'Start', 'value': 1000.0}]
-            
-            for row in rows:
-                day, daily_pl = row
+            for date in sorted_dates:
+                daily_pl = firm_daily_data[firm_name].get(date, 0)
                 cumulative_value += daily_pl if daily_pl else 0
                 daily_values.append({
-                    'date': day,
+                    'date': date,
                     'value': round(cumulative_value, 2)
                 })
             
@@ -129,10 +153,22 @@ def get_leaderboard():
         for firm_name in AI_FIRMS.keys():
             perf = db.get_firm_performance(firm_name)
             if perf:
-                total_bets = perf['total_predictions']
-                wins = perf['correct_predictions']
+                total_bets = perf.get('total_predictions')
+                wins = perf.get('correct_predictions')
+                initial_balance = perf.get('initial_balance')
+                current_balance = perf.get('current_balance')
+                accuracy = perf.get('accuracy')
+                total_profit = perf.get('total_profit')
+                sharpe_ratio = perf.get('sharpe_ratio')
+                
+                total_bets = 0 if total_bets is None else total_bets
+                wins = 0 if wins is None else wins
                 losses = total_bets - wins
-                initial_balance = perf['initial_balance']
+                initial_balance = 10000.0 if initial_balance is None else initial_balance
+                current_balance = 10000.0 if current_balance is None else current_balance
+                accuracy = 0.0 if accuracy is None else accuracy
+                total_profit = 0.0 if total_profit is None else total_profit
+                sharpe_ratio = 0.0 if sharpe_ratio is None else sharpe_ratio
                 
                 leaderboard.append({
                     'rank': 0,
@@ -141,11 +177,11 @@ def get_leaderboard():
                     'total_bets': total_bets,
                     'wins': wins,
                     'losses': losses,
-                    'win_rate': round(perf['accuracy'] * 100, 1),
-                    'profit_loss': round(perf['total_profit'], 2),
-                    'account_value': round(perf['current_balance'], 2),
-                    'roi': round((perf['current_balance'] - initial_balance) / initial_balance * 100, 1),
-                    'sharpe_ratio': round(perf.get('sharpe_ratio', 0), 2),
+                    'win_rate': round(accuracy * 100, 1),
+                    'profit_loss': round(total_profit, 2),
+                    'account_value': round(current_balance, 2),
+                    'roi': round((current_balance - initial_balance) / initial_balance * 100, 1) if initial_balance > 0 else 0.0,
+                    'sharpe_ratio': round(sharpe_ratio, 2),
                     'strategy': 'Unknown'
                 })
         
@@ -171,7 +207,7 @@ def get_blog():
         },
         {
             'title': 'Competition Rules',
-            'content': 'Each AI starts with $1,000 virtual capital. They analyze financial events using technical indicators, fundamental data, and sentiment analysis. Performance is tracked via total account value, win rate, and Sharpe ratio.'
+            'content': 'Each AI starts with $10,000 virtual capital. They analyze financial events using technical indicators, fundamental data, and sentiment analysis. Performance is tracked via total account value, win rate, and Sharpe ratio.'
         },
         {
             'title': 'Prediction Process',
