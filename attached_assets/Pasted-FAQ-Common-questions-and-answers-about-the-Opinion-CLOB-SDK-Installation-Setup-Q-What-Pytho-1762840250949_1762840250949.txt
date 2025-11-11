@@ -1,0 +1,507 @@
+FAQ
+Common questions and answers about the Opinion CLOB SDK.
+
+Installation & Setup
+Q: What Python versions are supported?
+A: Python 3.8 and higher. The SDK is tested on Python 3.8 through 3.13.
+
+
+Copy
+python --version  # Must be 3.8+
+Q: How do I install the SDK?
+A: Use pip:
+
+
+Copy
+pip install opinion_clob_sdk
+See Installation Guide for details.
+
+Q: Where do I get API credentials?
+A: You need:
+
+API Key - Fill out this short application form 
+
+Private Key - From your EVM wallet (e.g., MetaMask)
+
+Multi-sig Address - Your wallet address (visible in "MyProfile")
+
+RPC URL - Get from Nodereal, Alchemy, drpc etc..
+
+Never share your private key or API key!
+
+Q: What's the difference between private_key and multi_sig_addr?
+A:
+
+private_key: The signer wallet that signs orders/transactions (hot wallet)
+
+multi_sig_addr: The assets wallet that holds funds/positions (can be cold wallet)
+
+They can be the same address, or different for security (hot wallet signs for cold wallet).
+
+Example:
+
+
+Copy
+client = Client(
+    private_key='0x...',      # Hot wallet private key (signs orders)
+    multi_sig_addr='0x...'    # Cold wallet address (holds assets)
+)
+Configuration
+Q: Which chain IDs are supported?
+A: Only BNB blockchain:
+
+BNB Mainnet: chain_id=56 (production)
+
+
+Copy
+# Mainnet
+client = Client(chain_id=56, ...)
+Q: How do I configure caching?
+A: Use these parameters when creating the Client:
+
+
+Copy
+client = Client(
+    # ... other params ...
+    market_cache_ttl=300,        # Cache markets for 5 minutes (default)
+    quote_tokens_cache_ttl=3600, # Cache tokens for 1 hour (default)
+    enable_trading_check_interval=3600  # Cache approval checks for 1 hour
+)
+Set to 0 to disable caching:
+
+
+Copy
+client = Client(
+    # ...
+    market_cache_ttl=0  # Always fetch fresh data
+)
+Trading
+Q: What's the difference between market and limit orders?
+A:
+
+Feature
+Market Order
+Limit Order
+Execution
+
+Immediate
+
+When price reached
+
+Price
+
+Best available
+
+Your specified price or better
+
+Guarantee
+
+Fills immediately*
+
+May not fill
+
+Price field
+
+Set to "0"
+
+Set to desired price (e.g., "0.55")
+
+* If sufficient liquidity exists
+
+Examples:
+
+
+Copy
+# Market order - executes now at best price
+market = PlaceOrderDataInput(
+    orderType=MARKET_ORDER,
+    price="0",
+    makerAmountInQuoteToken="100"
+)
+
+# Limit order - waits for price $0.55 or better
+limit = PlaceOrderDataInput(
+    orderType=LIMIT_ORDER,
+    price="0.55",
+    makerAmountInQuoteToken="100"
+)
+Q: Should I use makerAmountInQuoteToken or makerAmountInBaseToken?
+A: Depends on order side:
+
+For BUY orders:
+
+✅ Recommended: makerAmountInQuoteToken (specify how much USDT to spend)
+
+Alternative: makerAmountInBaseToken (specify how many tokens to buy)
+
+For SELL orders:
+
+✅ Recommended: makerAmountInBaseToken (specify how many tokens to sell)
+
+Alternative: makerAmountInQuoteToken (specify how much USDT to receive)
+
+Rules:
+
+❌ Cannot specify both
+
+❌ Market BUY cannot use makerAmountInBaseToken
+
+❌ Market SELL cannot use makerAmountInQuoteToken
+
+Q: Do I need to call enable_trading() before every order?
+A: No, only once! The SDK caches the result for enable_trading_check_interval seconds (default 1 hour).
+
+Option 1: Manual (recommended for multiple orders)
+
+
+Copy
+client.enable_trading()  # Call once
+
+# Place many orders without checking again
+client.place_order(order1)
+client.place_order(order2)
+client.place_order(order3)
+Option 2: Automatic (convenient for single orders)
+
+
+Copy
+# Automatically checks and enables if needed
+client.place_order(order, check_approval=True)
+Q: How do I cancel all my open orders?
+A: Use cancel_all_orders():
+
+
+Copy
+# Cancel all orders across all markets
+result = client.cancel_all_orders()
+print(f"Cancelled {result['cancelled_count']} orders")
+
+# Cancel only orders in a specific market
+result = client.cancel_all_orders(market_id=123)
+
+# Cancel only BUY orders in a market
+result = client.cancel_all_orders(market_id=123, side=OrderSide.BUY)
+Smart Contracts
+Q: What's the difference between split, merge, and redeem?
+A:
+
+Operation
+Purpose
+When to Use
+Gas Required
+split
+
+USDT → YES + NO tokens
+
+Before trading (create positions)
+
+✅ Yes
+
+merge
+
+YES + NO → USDT
+
+Exit position on unresolved market
+
+✅ Yes
+
+redeem
+
+Winning tokens → USDT
+
+Claim winnings after resolution
+
+✅ Yes
+
+Examples:
+
+
+Copy
+# 1. Split 10 USDT into 10 YES + 10 NO tokens
+client.split(market_id=123, amount=10_000000)  # 6 decimals for USDT
+
+# 2. Trade tokens (no gas, signed orders)
+client.place_order(...)  # Sell some YES tokens
+
+# 3a. Market still open: Merge remaining tokens back to USDT
+client.merge(market_id=123, amount=5_000000)  # Merge 5 YES + 5 NO → 5 USDT
+
+# 3b. Market resolved: Redeem winning tokens
+client.redeem(market_id=123)  # Convert winning tokens → USDT
+Q: Why do I need BNB if orders are gas-free?
+A: BNB is needed for blockchain operations:
+
+Gas-free (signed orders):
+
+✅ place_order() - No BNB needed
+
+✅ cancel_order() - No BNB needed
+
+✅ All GET methods - No BNB needed
+
+Requires BNB:
+
+⛽ enable_trading() - On-chain approval
+
+⛽ split() - On-chain transaction
+
+⛽ merge() - On-chain transaction
+
+⛽ redeem() - On-chain transaction
+
+How much BNB? Usually $0.005-0.05 per transaction on BNB Chain.
+
+Q: Can I split without calling enable_trading()?
+A: Yes, but it will fail without approval. Use check_approval=True:
+
+
+Copy
+# Option 1: Enable first (manual)
+client.enable_trading()
+client.split(market_id=123, amount=1000000, check_approval=False)
+
+# Option 2: Auto-enable (recommended)
+client.split(market_id=123, amount=1000000, check_approval=True)
+The same applies to merge() and redeem().
+
+Errors
+Q: What does InvalidParamError mean?
+A: Your method parameters are invalid. Common causes:
+
+
+Copy
+# ✗ Price = 0 for limit order
+order = PlaceOrderDataInput(orderType=LIMIT_ORDER, price="0", ...)
+# Error: Price must be positive for limit orders
+
+# ✗ Amount below minimum
+order = PlaceOrderDataInput(makerAmountInQuoteToken="0.5", ...)
+# Error: makerAmountInQuoteToken must be at least 1
+
+# ✗ Wrong amount field for market buy
+order = PlaceOrderDataInput(
+    side=OrderSide.BUY,
+    orderType=MARKET_ORDER,
+    makerAmountInBaseToken="100"  # Should use makerAmountInQuoteToken
+)
+# Error: makerAmountInBaseToken is not allowed for market buy
+
+# ✗ Page < 1
+markets = client.get_markets(page=0)
+# Error: page must be >= 1
+Q: What does OpenApiError mean?
+A: API communication or business logic error. Common causes:
+
+
+Copy
+# Chain ID mismatch
+# Your client is on chain 8453 but market is on chain 56
+client.place_order(order)  # Error: Cannot place order on different chain
+
+# Market not active
+client.split(market_id=999)  # Error: Cannot split on non-activated market
+
+# Quote token not found
+# Token not supported for your chain
+Check:
+
+response.errno != 0 → API returned error
+
+response.errmsg → Error message
+
+Chain ID matches between client and market
+
+Q: What does errno != 0 mean in responses?
+A: The API returned an error.
+
+Success:
+
+
+Copy
+response = client.get_markets()
+if response.errno == 0:
+    # Success! Access data
+    markets = response.result.list
+Error:
+
+
+Copy
+response = client.get_market(99999)  # Non-existent market
+if response.errno != 0:
+    # Error occurred
+    print(f"Error {response.errno}: {response.errmsg}")
+    # Example: "Error 404: Market not found"
+Always check errno before accessing result.
+
+Performance
+Q: Why are my API calls slow?
+A: Possible reasons:
+
+No caching - Enable caching for better performance:
+
+
+Copy
+client = Client(
+    market_cache_ttl=300,        # 5 minutes
+    quote_tokens_cache_ttl=3600  # 1 hour
+)
+Slow RPC - Use a faster provider:
+
+
+Copy
+# Slow: Public RPC
+rpc_url='https://some.slow.rpc.io'
+
+# Fast: Private RPC (Nodereal, dRPC)
+rpc_url='https://bsc.nodereal.io'
+Too many calls - Use batch operations:
+
+
+Copy
+# Slow: One at a time
+for order in orders:
+    client.place_order(order)
+
+# Fast: Batch
+client.place_orders_batch(orders)
+Q: How do I reduce API calls?
+A: Use caching and batch operations:
+
+Caching:
+
+
+Copy
+# Enable caching
+client = Client(market_cache_ttl=300, ...)
+
+# First call: Fetches from API
+market = client.get_market(123)
+
+# Second call within 5 minutes: Returns cached data
+market = client.get_market(123, use_cache=True)  # Fast!
+
+# Force fresh data
+market = client.get_market(123, use_cache=False)
+Batch operations:
+
+
+Copy
+# Place multiple orders
+results = client.place_orders_batch(orders)
+
+# Cancel multiple orders
+results = client.cancel_orders_batch(order_ids)
+Data & Precision
+Q: How do I convert USDT amount to wei?
+A: Use safe_amount_to_wei():
+
+
+Copy
+from opinion_clob_sdk.sdk import safe_amount_to_wei
+
+# USDT has 18 decimals
+amount_wei = safe_amount_to_wei(10.5, 18)
+print(amount_wei) # 105000000000000000000
+
+# Use in split
+client.split(market_id=123, amount=amount_wei)
+Common decimals:
+
+USDT: 18 decimals
+
+BNB: 18 decimals
+
+Outcome tokens: Same as quote token
+
+Q: How are prices formatted?
+A: Prices are strings with up to 2 decimal places:
+
+
+Copy
+# Valid prices
+"0.5"    # ✓ 50 cents
+"0.55"   # ✓ 55 cents
+"0.555"   # ✓ 55.5 cents 
+"1"      # ✓ $1.00
+"1.00"   # ✓ $1.00
+
+# Invalid
+"0.5555"  # ✗ Too many decimals
+0.5      # ✗ Must be string
+Q: What token amounts are in the API responses?
+A: Amounts are in wei units (smallest unit).
+
+Example:
+
+
+Copy
+balance = client.get_my_balances().result.list[0]
+print(balance.amount)  # e.g., "105000000000000000000" (not "10.5")
+
+# Convert to human-readable
+decimals = 18  # USDT decimals
+amount_usdt = int(balance.amount) / (10 ** decimals)
+print(f"{amount_usdt} USDT")  # "10.5 USDT"
+Troubleshooting
+Q: "ModuleNotFoundError: No module named 'opinion_clob_sdk'"
+A: SDK not installed. Install it:
+
+
+Copy
+pip install opinion_clob_sdk
+
+# Verify installation
+python -c "import opinion_clob_sdk; print(opinion_clob_sdk.__version__)"
+Q: "InvalidParamError: chain_id must be one of [56]"
+A: You're using an unsupported chain ID. Use BNB mainnet:
+
+
+Copy
+# ✓ BNB Chain Mainnet
+client = Client(chain_id=56, ...)
+
+# ✗ Unsupported
+client = Client(chain_id=1, ...)  # Ethereum mainnet not supported
+Q: "OpenApiError: Cannot place order on different chain"
+A: Your client and market are on different chains.
+
+Fix: Ensure client chain_id matches market chain_id:
+
+
+Copy
+# Check market's chain
+market = client.get_market(123).result.data
+print(f"Market chain: {market.chain_id}")
+
+# Ensure client matches
+client = Client(chain_id=int(market.chain_id), ...)
+Q: "BalanceNotEnough" error when calling split/merge
+A: Insufficient token balance.
+
+For split: Need enough USDT
+
+
+Copy
+# Check balance first
+balances = client.get_my_balances().result.list
+usdt_balance = next(b for b in balances if b.token.lower() == 'usdt')
+print(f"USDT balance: {usdt_balance.amount}")
+
+# Ensure you have enough
+amount_to_split = 10_000000  # 10 USDT
+if int(usdt_balance.amount) >= amount_to_split:
+    client.split(market_id=123, amount=amount_to_split)
+For merge: Need equal amounts of both outcome tokens
+
+Q: "InsufficientGasBalance" error
+A: Not enough BNB for gas fees.
+
+Fix: Add BNB to your signer wallet:
+
+
+Copy
+# Check which wallet needs BNB
+print(f"Signer address: {client.contract_caller.signer.address()}")
+
+# Send BNB to this address
+# Usually $1-5 worth is enough for many transactions

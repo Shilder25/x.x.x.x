@@ -1,0 +1,585 @@
+Troubleshooting
+Solutions to common issues when using the Opinion CLOB SDK.
+
+Installation Issues
+ImportError: No module named 'opinion_clob_sdk'
+Problem:
+
+
+Copy
+import opinion_clob_sdk
+# ModuleNotFoundError: No module named 'opinion_clob_sdk'
+Solutions:
+
+Install the SDK:
+
+
+Copy
+pip install opinion_clob_sdk
+Verify installation:
+
+
+Copy
+pip list | grep opinion
+python -c "import opinion_clob_sdk; print(opinion_clob_sdk.__version__)"
+Check Python environment:
+
+
+Copy
+which python  # Ensure correct Python interpreter
+which pip     # Ensure pip matches Python
+Use virtual environment:
+
+
+Copy
+python3 -m venv venv
+source venv/bin/activate
+pip install opinion_clob_sdk
+Dependency Conflicts
+Problem:
+
+
+Copy
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed.
+This behaviour is the source of the following dependency conflicts.
+Solutions:
+
+Create fresh virtual environment:
+
+
+Copy
+python3 -m venv fresh_env
+source fresh_env/bin/activate
+pip install opinion_clob_sdk
+Upgrade pip:
+
+
+Copy
+pip install --upgrade pip setuptools wheel
+Force reinstall:
+
+
+Copy
+pip install --force-reinstall opinion_clob_sdk
+Configuration Issues
+InvalidParamError: chain_id must be 56
+Problem:
+
+
+Copy
+client = Client(chain_id=1, ...)
+# InvalidParamError: chain_id must be 56
+Solution: Use BNB Chain Mainnet 56
+
+
+Copy
+# ✓ BNB CHain Mainnet
+client = Client(
+    chain_id=56,
+    rpc_url='___',
+    ...
+)
+Missing Environment Variables
+Problem:
+
+
+Copy
+apikey=os.getenv('API_KEY')
+# TypeError: Client.__init__() argument 'apikey' must be str, not None
+Solutions:
+
+Create .env file:
+
+
+Copy
+# .env
+API_KEY=your_api_key_here
+RPC_URL=___
+PRIVATE_KEY=0x...
+MULTI_SIG_ADDRESS=0x...
+Load environment variables:
+
+
+Copy
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load .env file
+
+# Verify loaded
+print(os.getenv('API_KEY'))  # Should not be None
+Provide defaults:
+
+
+Copy
+apikey = os.getenv('API_KEY')
+if not apikey:
+    raise ValueError("API_KEY environment variable not set")
+API Errors
+OpenApiError: errno != 0
+Problem:
+
+
+Copy
+response = client.get_market(99999)
+if response.errno != 0:
+    print(response.errmsg)  # "Market not found"
+Solutions:
+
+Always check errno:
+
+
+Copy
+response = client.get_market(market_id)
+
+if response.errno == 0:
+    # Success
+    market = response.result.data
+else:
+    # Handle error
+    print(f"Error {response.errno}: {response.errmsg}")
+Common errno codes:
+
+Code
+Meaning
+Solution
+0
+
+Success
+
+Proceed with result
+
+404
+
+Not found
+
+Check ID exists
+
+400
+
+Bad request
+
+Check parameters
+
+401
+
+Unauthorized
+
+Check API key
+
+500
+
+Server error
+
+Retry later or contact support
+
+Wrap in try-except:
+
+
+Copy
+try:
+    response = client.get_market(market_id)
+    if response.errno == 0:
+        market = response.result.data
+    else:
+        logging.error(f"API error: {response.errmsg}")
+except OpenApiError as e:
+    logging.error(f"API communication error: {e}")
+InvalidParamError: market_id is required
+Problem:
+
+
+Copy
+client.get_market(market_id=None)
+# InvalidParamError: market_id is required
+Solution: Always provide required parameters:
+
+
+Copy
+# ✗ Bad
+market = client.get_market(None)
+
+# ✓ Good
+market_id = 123
+if market_id:
+    market = client.get_market(market_id)
+Trading Errors
+InvalidParamError: Price must be positive for limit orders
+Problem:
+
+
+Copy
+order = PlaceOrderDataInput(
+    orderType=LIMIT_ORDER,
+    price="0",  # ✗ Invalid for limit orders
+    ...
+)
+Solution: Set valid price for limit orders:
+
+
+Copy
+# ✓ Limit order with price
+order = PlaceOrderDataInput(
+    orderType=LIMIT_ORDER,
+    price="0.55",  # Must be > 0
+    ...
+)
+
+# ✓ Market order with price = 0
+order = PlaceOrderDataInput(
+    orderType=MARKET_ORDER,
+    price="0",  # OK for market orders
+    ...
+)
+InvalidParamError: makerAmountInBaseToken is not allowed for market buy
+Problem:
+
+
+Copy
+order = PlaceOrderDataInput(
+    side=OrderSide.BUY,
+    orderType=MARKET_ORDER,
+    makerAmountInBaseToken="100"  # ✗ Not allowed
+)
+Solution: Use correct amount field:
+
+Market BUY:
+
+
+Copy
+# ✓ Use makerAmountInQuoteToken
+order = PlaceOrderDataInput(
+    side=OrderSide.BUY,
+    orderType=MARKET_ORDER,
+    price="0",
+    makerAmountInQuoteToken="100"  # ✓ Spend 100 USDT
+)
+Market SELL:
+
+
+Copy
+# ✓ Use makerAmountInBaseToken
+order = PlaceOrderDataInput(
+    side=OrderSide.SELL,
+    orderType=MARKET_ORDER,
+    price="0",
+    makerAmountInBaseToken="50"  # ✓ Sell 50 tokens
+)
+InvalidParamError: makerAmountInQuoteToken must be at least 1
+Problem:
+
+
+Copy
+order = PlaceOrderDataInput(
+    makerAmountInQuoteToken="0.5",  # ✗ Below minimum
+    ...
+)
+Solution: Use minimum amount of 1:
+
+
+Copy
+# ✓ Minimum amounts
+order = PlaceOrderDataInput(
+    makerAmountInQuoteToken="1",  # ✓ At least 1 USDT
+    # or
+    makerAmountInBaseToken="1",   # ✓ At least 1 token
+    ...
+)
+Blockchain Errors
+BalanceNotEnough
+Problem:
+
+
+Copy
+client.split(market_id=123, amount=100_000000)
+# BalanceNotEnough: Insufficient balance for operation
+Solutions:
+
+Check balance:
+
+
+Copy
+balances = client.get_my_balances().result.data
+usdt = next((b for b in balances if 'usdt' in b.token.lower()), None)
+
+if usdt:
+    balance_wei = int(usdt.amount)
+    balance_usdt = balance_wei / 1e6  # Convert from wei
+    print(f"USDT balance: ${balance_usdt}")
+
+    amount_to_split = 10 * 1e18  # 10 USDT
+    if balance_wei >= amount_to_split:
+        client.split(market_id=123, amount=int(amount_to_split))
+    else:
+        print("Insufficient balance")
+For merge - need both outcome tokens:
+
+
+Copy
+positions = client.get_my_positions().result.list
+yes_pos = next((p for p in positions if p.token_id == 'token_yes'), None)
+no_pos = next((p for p in positions if p.token_id == 'token_no'), None)
+
+if yes_pos and no_pos:
+    # Can only merge min of both
+    merge_amount = min(int(yes_pos.amount), int(no_pos.amount))
+    client.merge(market_id=123, amount=merge_amount)
+InsufficientGasBalance
+Problem:
+
+
+Copy
+client.enable_trading()
+# InsufficientGasBalance: Not enough ETH for gas fees
+Solution: Add ETH to signer wallet:
+
+
+Copy
+# 1. Check signer address
+signer_addr = client.contract_caller.signer.address()
+print(f"Signer address: {signer_addr}")
+
+# 2. Check ETH balance
+from web3 import Web3
+w3 = Web3(Web3.HTTPProvider(rpc_url))
+balance = w3.eth.get_balance(signer_addr)
+balance_eth = balance / 1e18
+
+print(f"BNB balance: {balance_bnb}")
+
+# 3. If balance low, send BNB to signer_addr
+# Usually $1-5 worth of BNB is enough for many transactions
+Problem:
+
+
+Copy
+web3.exceptions.ContractLogicError: execution reverted
+Common Causes:
+
+Insufficient approval:
+
+
+Copy
+# Solution: Enable trading
+client.enable_trading()
+# Then retry operation
+Insufficient balance: Check balance before operation (see BalanceNotEnough above)
+
+Gas price too low:
+
+
+Copy
+# Usually handled automatically
+# If issues persist, try increasing gas
+Contract state changed:
+
+
+Copy
+# Market may have resolved or status changed
+# Refresh market data
+market = client.get_market(market_id, use_cache=False)
+Performance Issues
+Too Many API Calls
+Problem: Hitting rate limits.
+
+Solutions:
+
+Use caching:
+
+
+Copy
+# Don't disable cache unless necessary
+client = Client(market_cache_ttl=300, ...)  # Enable caching
+Fetch once, use multiple times:
+
+
+Copy
+# ✗ Bad: Multiple calls for same data
+for i in range(10):
+    market = client.get_market(123)
+    process(market)
+
+# ✓ Good: Fetch once
+market = client.get_market(123)
+for i in range(10):
+    process(market)
+Paginate efficiently:
+
+
+Copy
+# Fetch all markets efficiently
+all_markets = []
+page = 1
+limit = 20  # Max allowed
+
+while True:
+    response = client.get_markets(page=page, limit=limit)
+    if response.errno != 0:
+        break
+
+    markets = response.result.list
+    all_markets.extend(markets)
+
+    if len(markets) < limit:  # Last page
+        break
+
+    page += 1
+Data Issues
+Precision Errors
+Problem:
+
+
+Copy
+amount = 10.5 * 1e18  # Float precision issues
+# 105000000000000000000.0 instead of exact 105000000000000000000
+Solution: Use safe_amount_to_wei():
+
+
+Copy
+from opinion_clob_sdk.sdk import safe_amount_to_wei
+
+# ✓ Exact conversion using Decimal
+amount_wei = safe_amount_to_wei(10.5, 18)  # Returns int: 105000000000000000000
+
+client.split(market_id=123, amount=amount_wei)
+Type Mismatch
+Problem:
+
+
+Copy
+order = PlaceOrderDataInput(
+    price=0.55,  # ✗ Float instead of string
+    ...
+)
+Solution: Use correct types:
+
+
+Copy
+# ✓ Correct types
+order = PlaceOrderDataInput(
+    marketId=123,              # int
+    tokenId="token_yes",       # str
+    side=OrderSide.BUY,        # int (enum)
+    orderType=LIMIT_ORDER,     # int
+    price="0.55",              # str ✓
+    makerAmountInQuoteToken="100"  # str
+)
+Authentication Issues
+401 Unauthorized
+Problem:
+
+
+Copy
+HTTPError: 401 Client Error: Unauthorized
+Solutions:
+
+Check API key:
+
+
+Copy
+import os
+apikey = os.getenv('API_KEY')
+print(f"API Key: {apikey[:10]}...")  # Print first 10 chars
+
+if not apikey or apikey == 'your_api_key_here':
+    print("Invalid API key")
+Verify key format:
+
+
+Copy
+# Should look like:
+# opn_prod_abc123xyz789 (production)
+# opn_dev_abc123xyz789 (development)
+Contact support: If key is correct but still failing, contact nik@opinionlabs.xyz
+
+Private Key Issues
+Problem:
+
+
+Copy
+ValueError: Private key must be exactly 32 bytes long
+Solutions:
+
+Check format:
+
+
+Copy
+# ✓ Valid formats
+private_key = "0x1234567890abcdef..."  # With 0x prefix (64 hex chars)
+private_key = "1234567890abcdef..."    # Without 0x prefix (64 hex chars)
+
+# ✗ Invalid
+private_key = "0x123"  # Too short
+private_key = 12345    # Not a string
+Verify length:
+
+
+Copy
+pk = os.getenv('PRIVATE_KEY')
+if pk.startswith('0x'):
+    pk = pk[2:]  # Remove 0x prefix
+
+if len(pk) != 64:
+    print(f"Invalid private key length: {len(pk)} (expected 64)")
+Debug Tips
+Enable Logging
+
+Copy
+import logging
+
+# Set to DEBUG for detailed logs
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+# Now all SDK operations will log details
+client = Client(...)
+Inspect Responses
+
+Copy
+import json
+
+response = client.get_market(123)
+
+# Pretty print response
+print(json.dumps(response.to_dict(), indent=2))
+Check SDK Version
+
+Copy
+import opinion_clob_sdk
+print(f"SDK Version: {opinion_clob_sdk.__version__}")
+
+# Check dependencies
+import web3
+import eth_account
+print(f"Web3 version: {web3.__version__}")
+print(f"eth_account version: {eth_account.__version__}")
+Verify Network Connection
+
+Copy
+# Test RPC connection
+from web3 import Web3
+
+w3 = Web3(Web3.HTTPProvider(rpc_url))
+print(f"Connected: {w3.is_connected()}")
+print(f"Chain ID: {w3.eth.chain_id}")
+print(f"Latest block: {w3.eth.block_number}")
+Getting Help
+If you're still experiencing issues:
+
+Check FAQ: Frequently Asked Questions
+
+Join Discord Dev Channel
+
+When reporting issues, include:
+
+SDK version
+
+Python version
+
+Full error traceback
+
+Minimal code to reproduce
+
+Expected vs actual behavior
