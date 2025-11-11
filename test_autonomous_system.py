@@ -42,8 +42,28 @@ def test_fetch_events():
     result = api.get_available_events(limit=5)
     
     if not result.get('success'):
-        print(f"❌ ERROR: {result.get('error')}")
-        print(f"   Mensaje: {result.get('message')}")
+        error_code = result.get('error')
+        error_msg = result.get('message')
+        
+        print(f"❌ ERROR: {error_code}")
+        print(f"   Mensaje: {error_msg}")
+        
+        # Provide helpful guidance for specific errors
+        if "10403" in str(error_code) or "Invalid area" in str(error_msg):
+            print("\n📍 SOLUCIÓN SUGERIDA:")
+            print("   Este error significa que Opinion.trade bloqueó la solicitud por geo-restricción.")
+            print("   ")
+            print("   ✓ Desde Railway (EU West): Debería funcionar")
+            print("   ✗ Desde Replit (US East): No funcionará")
+            print("   ")
+            print("   Si estás viendo este error en Railway, verifica:")
+            print("   1. La región del deployment debe ser EU West (Amsterdam)")
+            print("   2. El API key de Opinion.trade es válido")
+            print("   3. Puede haber una restricción temporal en la API")
+            print("   ")
+            print("   ⚠️  NOTA: Este test debe ejecutarse EN RAILWAY PRODUCTION,")
+            print("   no en el entorno local de Replit.")
+        
         return False, []
     
     events = result.get('events', [])

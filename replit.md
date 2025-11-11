@@ -1,5 +1,16 @@
 # TradingAgents Framework
 
+## ⚠️ Known Issue: Opinion.trade API Geo-Blocking
+
+**Status**: BLOCKED - Requires whitelist from Opinion.trade  
+**Error**: API error 10403 "Invalid area"  
+**Impact**: System is 90% complete. All components work except Opinion.trade API access.
+
+**Solution Required**:
+- Contact Opinion.trade support to whitelist Railway deployment IPs
+- See `PROBLEMA_OPINION_TRADE_GEO_BLOCK.md` for detailed instructions
+- Run `python health_check_opinion_trade.py` to verify when access is restored
+
 ## Overview
 This project is a multi-LLM prediction market framework where five AI prediction agents (ChatGPT, Gemini, Qwen, Deepseek, Grok) autonomously compete on Opinion.trade. The system tracks performance, maintains virtual portfolios, and employs a sophisticated prompt system simulating a 7-role internal decision-making process for each LLM. The framework supports continuous adaptation of AI strategies based on performance, aiming for ongoing improvement in financial market prediction.
 

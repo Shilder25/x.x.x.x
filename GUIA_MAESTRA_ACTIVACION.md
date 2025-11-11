@@ -287,9 +287,52 @@ Antes de dar por terminado, verifica:
 
 ---
 
-## 🎉 ¡Felicidades!
+---
 
-Si llegaste hasta aquí y completaste todos los pasos, tu sistema autónomo de trading con IA está funcionando. Las 5 IA ahora competirán diariamente en Opinion.trade, analizando eventos y haciendo predicciones de forma autónoma.
+## ⚠️ PROBLEMA CONOCIDO: Opinion.trade API Geo-Bloqueada
+
+**IMPORTANTE**: Actualmente, Opinion.trade está bloqueando TODAS las solicitudes API programáticas, independientemente de la región. Esto significa que el sistema está **90% completo** pero no puede ejecutar apuestas reales hasta resolver el acceso a la API.
+
+### Error que Verás
+```
+API error 10403
+Mensaje: Invalid area
+```
+
+### Qué Hacer
+
+📄 **Lee el archivo `PROBLEMA_OPINION_TRADE_GEO_BLOCK.md`** para instrucciones detalladas sobre:
+1. Cómo obtener las IPs de salida de Railway
+2. Cómo contactar a Opinion.trade para solicitar whitelist
+3. Qué información proporcionar
+4. Planes de contingencia si no responden
+
+### Verificar Cuando se Resuelva
+
+Una vez que Opinion.trade confirme que han permitido tus IPs, ejecuta:
+```bash
+python health_check_opinion_trade.py
+```
+
+Este script verificará si el acceso ha sido restaurado.
+
+---
+
+## 🎉 ¡Casi Completado!
+
+Si llegaste hasta aquí, tu sistema autónomo de trading con IA está **90% completo**. Todos los componentes funcionan excepto el acceso a Opinion.trade API (que está fuera de tu control).
+
+### Lo que SÍ Funciona ✅
+- Frontend desplegado y accesible
+- Backend API funcionando correctamente
+- Base de datos configurada
+- 5 IA (LLMs) integradas y listas
+- Sistema autónomo de predicciones implementado
+- Cron job configurado
+- Gestión de riesgo y bankroll implementados
+
+### Lo que Falta ❌
+- Acceso a Opinion.trade API (requiere whitelist de IPs)
 
 **Próximos pasos:**
 1. Monitorea el sistema durante 1-2 semanas

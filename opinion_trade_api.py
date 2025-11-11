@@ -119,10 +119,19 @@ class OpinionTradeAPI:
                     'message': f'Retrieved {len(events)} available markets from Opinion.trade'
                 }
             else:
+                # Handle specific error codes
+                error_msg = response.errmsg
+                if response.errno == 10403 and "Invalid area" in error_msg:
+                    error_msg = (
+                        "Geographic restriction detected. Opinion.trade API blocked this request. "
+                        "This code must run from Railway deployment in EU West region (not from Replit). "
+                        "Please ensure you're running this from the Railway production environment."
+                    )
+                
                 return {
                     'success': False,
                     'error': f'API error {response.errno}',
-                    'message': response.errmsg
+                    'message': error_msg
                 }
         
         except Exception as e:

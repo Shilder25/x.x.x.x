@@ -365,6 +365,10 @@ class TradingDatabase:
         
         return performances
     
+    def get_all_firm_performance(self) -> List[Dict]:
+        """Alias for backward compatibility"""
+        return self.get_all_firm_performances()
+    
     def get_recent_predictions(self, firm_name: Optional[str] = None, limit: int = 10) -> List[Dict]:
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
