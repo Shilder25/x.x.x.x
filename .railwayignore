@@ -1,0 +1,16 @@
+node_modules/
+.git/
+.replit
+replit.nix
+.cache/
+.upm/
+.pythonlibs/
+__pycache__/
+*.pyc
+.DS_Store
+venv/
+env/
+*.log
+tmp/
+temp/
+.env.local
