@@ -115,12 +115,35 @@ Cuando contactes a Opinion.trade, ten lista esta información:
 
 ---
 
+## 🧪 Pruebas Realizadas
+
+### Test de Configuraciones del SDK (Noviembre 2025)
+
+Probamos **3 configuraciones diferentes** del parámetro `multi_sig_addr` para determinar si el error 10403 era causado por configuración incorrecta:
+
+| Configuración | multi_sig_addr | Resultado |
+|---------------|----------------|-----------|
+| **A** | Vacío (`''`) | ❌ Error: SDK requiere dirección válida |
+| **B** | Login wallet: `0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675` | ❌ Error 10403 "Invalid area" |
+| **C** | Trading wallet: `0x15c1a1d8ed9838c92f420e45ac064710aebf9268` | ❌ Error 10403 "Invalid area" |
+
+**Script de prueba**: `test_sdk_configurations.py`
+
+**Conclusión**: Cambiar el `multi_sig_addr` **NO resuelve el error 10403**. El problema es puramente geo-bloqueo por parte de Opinion.trade, no una configuración incorrecta del SDK.
+
+---
+
 ## 🔧 Verificación de Acceso Restaurado
 
 Una vez que Opinion.trade confirme que han permitido tus IPs, ejecuta:
 
 ```bash
 # Desde Railway deployment (no desde Replit)
+python test_sdk_configurations.py
+```
+
+O alternativamente:
+```bash
 python test_autonomous_system.py
 ```
 

@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://keen-essence-production.up.railway.app';
 
 export function getApiUrl(endpoint: string): string {
   if (endpoint.startsWith('/')) {
