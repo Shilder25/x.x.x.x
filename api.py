@@ -351,5 +351,66 @@ def get_active_positions():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/run-daily-cycle', methods=['POST'])
+def run_daily_cycle():
+    """
+    Trigger the daily autonomous cycle manually (PROTECTED ENDPOINT).
+    
+    This endpoint allows external cron services (like cron-job.org) to trigger
+    the daily prediction cycle without needing a dedicated Railway cron service.
+    
+    Security: Requires X-Cron-Secret header matching CRON_SECRET environment variable.
+    Uses constant-time comparison to prevent timing attacks.
+    
+    Returns:
+        JSON with cycle execution results
+    """
+    from flask import request
+    import hmac
+    
+    # Verify authentication
+    expected_secret = os.getenv('CRON_SECRET')
+    if not expected_secret:
+        return jsonify({
+            'success': False,
+            'error': 'CRON_SECRET not configured on server',
+            'message': 'Endpoint not properly configured'
+        }), 500
+    
+    provided_secret = request.headers.get('X-Cron-Secret', '')
+    
+    # Use constant-time comparison to prevent timing attacks
+    if not provided_secret or not hmac.compare_digest(expected_secret, provided_secret):
+        print(f"[SECURITY] Unauthorized attempt to trigger daily cycle from {request.remote_addr}")
+        return jsonify({
+            'success': False,
+            'error': 'Unauthorized',
+            'message': 'Invalid or missing X-Cron-Secret header'
+        }), 401
+    
+    try:
+        print(f"\n[MANUAL TRIGGER] Daily cycle triggered via API endpoint at {datetime.now().isoformat()}")
+        
+        engine = AutonomousEngine(db)
+        results = engine.run_daily_cycle()
+        
+        return jsonify({
+            'success': True,
+            'message': 'Daily cycle completed successfully',
+            'results': results
+        }), 200
+        
+    except Exception as e:
+        import traceback
+        error_traceback = traceback.format_exc()
+        print(f"[ERROR] Daily cycle failed: {str(e)}")
+        print(error_traceback)
+        
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'message': 'Daily cycle failed'
+        }), 500
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)

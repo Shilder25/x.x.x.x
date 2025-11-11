@@ -39,6 +39,7 @@ AI_INTEGRATIONS_GEMINI_API_KEY
 AI_INTEGRATIONS_GEMINI_BASE_URL
 BANKROLL_MODE
 SYSTEM_ENABLED
+CRON_SECRET
 ```
 
 **Cómo hacerlo:**
@@ -48,15 +49,17 @@ SYSTEM_ENABLED
 4. En Railway: Click "New Variable", pega nombre y valor
 5. Repite para TODAS las variables de arriba
 
-**⚠️ IMPORTANTE - Estas dos variables las escribes TÚ (no están en Replit):**
+**⚠️ IMPORTANTE - Estas variables las escribes TÚ (no están en Replit):**
 
 ```
 BANKROLL_MODE = TEST
 SYSTEM_ENABLED = true
+CRON_SECRET = [Crea una contraseña segura aleatoria, ej: abc123xyz789]
 ```
 
 - **BANKROLL_MODE = TEST** → Modo seguro: $50 total, $5/día máximo
 - **SYSTEM_ENABLED = true** → Activa el sistema autónomo
+- **CRON_SECRET** → Contraseña de seguridad para proteger el endpoint de ejecución manual (crea una frase única y guárdala)
 
 ---
 
