@@ -48,6 +48,122 @@ def health_check():
             'timestamp': datetime.now().isoformat()
         }), 500
 
+@app.route('/test-opinion', methods=['GET'])
+def test_opinion_trade():
+    """
+    Test Opinion.trade API accessibility from current Railway deployment region.
+    This endpoint can be called after changing regions to verify geo-blocking status.
+    """
+    import time
+    from opinion_clob_sdk import Client, CHAIN_ID_BNB_MAINNET
+    from opinion_clob_sdk.model import TopicType, TopicStatusFilter
+    from eth_account import Account
+    
+    region = os.getenv('RAILWAY_REGION', 'Unknown')
+    
+    try:
+        api_key = os.getenv('OPINION_TRADE_API_KEY')
+        private_key = os.getenv('OPINION_WALLET_PRIVATE_KEY')
+        
+        if not api_key or not private_key:
+            return jsonify({
+                'success': False,
+                'region': region,
+                'error': 'Missing OPINION_TRADE_API_KEY or OPINION_WALLET_PRIVATE_KEY',
+                'timestamp': datetime.now().isoformat()
+            }), 500
+        
+        account = Account.from_key(private_key)
+        wallet_address = account.address
+        
+        start_time = time.time()
+        
+        client = Client(
+            host='https://proxy.opinion.trade:8443',
+            apikey=api_key,
+            chain_id=CHAIN_ID_BNB_MAINNET,
+            rpc_url='https://bsc-dataseed.binance.org/',
+            private_key=private_key,
+            multi_sig_addr=wallet_address,
+            conditional_tokens_addr='0xAD1a38cEc043e70E83a3eC30443dB285ED10D774',
+            multisend_addr='0x998739BFdAAdde7C933B942a68053933098f9EDa',
+        )
+        
+        init_time = time.time() - start_time
+        
+        test_start = time.time()
+        response = client.get_markets(
+            topic_type=TopicType.BINARY,
+            status=TopicStatusFilter.ACTIVATED,
+            page=1,
+            limit=5
+        )
+        api_time = time.time() - test_start
+        
+        if response.errno == 0:
+            markets = response.result.list
+            sample_markets = [
+                {
+                    'id': m.market_id,
+                    'title': m.market_title[:80]
+                } for m in markets[:3]
+            ]
+            
+            return jsonify({
+                'success': True,
+                'region': region,
+                'status': 'ACCESSIBLE',
+                'message': f'✅ Opinion.trade API is accessible from {region}',
+                'wallet': wallet_address,
+                'markets_retrieved': len(markets),
+                'sample_markets': sample_markets,
+                'performance': {
+                    'sdk_init_time': round(init_time, 3),
+                    'api_call_time': round(api_time, 3),
+                    'total_time': round(init_time + api_time, 3)
+                },
+                'timestamp': datetime.now().isoformat()
+            }), 200
+            
+        elif response.errno == 10403:
+            return jsonify({
+                'success': False,
+                'region': region,
+                'status': 'GEO_BLOCKED',
+                'message': f'❌ Region {region} is GEO-BLOCKED by Opinion.trade',
+                'error_code': 10403,
+                'error_message': response.errmsg,
+                'wallet': wallet_address,
+                'next_steps': [
+                    'Try deploying to a different region (US East, US West)',
+                    'Contact Opinion.trade support for allowed regions',
+                    'Provide API key for whitelisting'
+                ],
+                'timestamp': datetime.now().isoformat()
+            }), 403
+            
+        else:
+            return jsonify({
+                'success': False,
+                'region': region,
+                'status': 'API_ERROR',
+                'message': f'API returned error {response.errno}',
+                'error_code': response.errno,
+                'error_message': response.errmsg,
+                'wallet': wallet_address,
+                'timestamp': datetime.now().isoformat()
+            }), 500
+            
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'region': region,
+            'status': 'EXCEPTION',
+            'message': 'Exception occurred during test',
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500
+
 @app.route('/api/market-header', methods=['GET'])
 def get_market_header():
     """Get real-time crypto market data for header"""
