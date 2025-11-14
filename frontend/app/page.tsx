@@ -528,7 +528,13 @@ export default function Home() {
                 { name: 'Deepseek', model: 'deepseek-chat', strategy: 'Proportional', color: '#000000', description: 'Bet size proportional to combined probability and confidence scores' },
                 { name: 'Grok', model: 'grok-beta', strategy: 'Anti-Martingale', color: '#06B6D4', description: 'Increases bet size after wins to capitalize on winning streaks' }
               ].map((ai) => {
-                const aiMetrics = liveMetrics.find(m => m.firm === ai.name) || {};
+                const aiMetrics = liveMetrics.find(m => m.firm === ai.name) || {
+                  firm: ai.name,
+                  total_value: 0,
+                  profit_loss: 0,
+                  win_rate: 0,
+                  total_bets: 0
+                };
                 return (
                   <div key={ai.name} style={{ border: '2px solid #000', background: '#fff', padding: '1.5rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>

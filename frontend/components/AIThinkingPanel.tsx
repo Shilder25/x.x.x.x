@@ -18,6 +18,8 @@ interface AIAnalysis {
   fundamental_analysis: string | null;
   volatility_score: number | null;
   volatility_analysis: string | null;
+  probability_reasoning: string | null;
+  market_volume: number | null;
   execution_timestamp: string;
 }
 
