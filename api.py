@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, render_template_string
 from flask_cors import CORS
 from database import TradingDatabase
 from autonomous_engine import AutonomousEngine
@@ -526,6 +526,274 @@ def run_daily_cycle():
             'success': False,
             'error': str(e),
             'message': 'Daily cycle failed'
+        }), 500
+
+@app.route('/admin', methods=['GET'])
+def admin_page():
+    """Serve admin page for manual cycle triggering"""
+    html = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Admin - Trading Agents</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+            .container {
+                background: white;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                padding: 40px;
+                max-width: 500px;
+                width: 100%;
+            }
+            h1 {
+                color: #333;
+                margin-bottom: 10px;
+                font-size: 28px;
+            }
+            .subtitle {
+                color: #666;
+                margin-bottom: 30px;
+                font-size: 14px;
+            }
+            .form-group {
+                margin-bottom: 20px;
+            }
+            label {
+                display: block;
+                color: #555;
+                margin-bottom: 8px;
+                font-weight: 500;
+                font-size: 14px;
+            }
+            input[type="password"] {
+                width: 100%;
+                padding: 12px 15px;
+                border: 2px solid #e0e0e0;
+                border-radius: 10px;
+                font-size: 16px;
+                transition: border-color 0.3s;
+            }
+            input[type="password"]:focus {
+                outline: none;
+                border-color: #667eea;
+            }
+            button {
+                width: 100%;
+                padding: 14px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            button:hover:not(:disabled) {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            }
+            button:disabled {
+                background: #ccc;
+                cursor: not-allowed;
+            }
+            .status {
+                margin-top: 20px;
+                padding: 15px;
+                border-radius: 10px;
+                font-size: 14px;
+                display: none;
+            }
+            .status.success {
+                background: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+            .status.error {
+                background: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
+            .status.loading {
+                background: #d1ecf1;
+                color: #0c5460;
+                border: 1px solid #bee5eb;
+            }
+            .spinner {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                border: 2px solid rgba(0,0,0,0.1);
+                border-radius: 50%;
+                border-top-color: #0c5460;
+                animation: spin 1s linear infinite;
+                margin-right: 8px;
+            }
+            @keyframes spin {
+                to { transform: rotate(360deg); }
+            }
+            .results {
+                margin-top: 10px;
+                padding: 10px;
+                background: #f8f9fa;
+                border-radius: 5px;
+                font-family: monospace;
+                font-size: 12px;
+                max-height: 300px;
+                overflow-y: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🤖 Admin Panel</h1>
+            <p class="subtitle">Trigger AI prediction cycle manually</p>
+            
+            <form id="adminForm">
+                <div class="form-group">
+                    <label for="password">Admin Password</label>
+                    <input type="password" id="password" placeholder="Enter admin password" required>
+                </div>
+                
+                <button type="submit" id="submitBtn">
+                    Run Daily Cycle
+                </button>
+            </form>
+            
+            <div id="status" class="status"></div>
+        </div>
+
+        <script>
+            const form = document.getElementById('adminForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const statusDiv = document.getElementById('status');
+            const passwordInput = document.getElementById('password');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const password = passwordInput.value;
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Running...';
+                statusDiv.className = 'status loading';
+                statusDiv.style.display = 'block';
+                statusDiv.innerHTML = '<span class="spinner"></span>Executing daily cycle... This may take 2-3 minutes.';
+                
+                try {
+                    const response = await fetch('/admin/trigger-cycle', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ password })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok && data.success) {
+                        statusDiv.className = 'status success';
+                        let html = '✅ Daily cycle completed successfully!';
+                        
+                        if (data.results) {
+                            const r = data.results;
+                            html += '<div class="results">';
+                            html += `<div><strong>Status:</strong> ${r.status || 'completed'}</div>`;
+                            html += `<div><strong>Bets Placed:</strong> ${r.total_bets_placed || 0}</div>`;
+                            html += `<div><strong>Bets Skipped:</strong> ${r.total_bets_skipped || 0}</div>`;
+                            html += `<div><strong>Categories:</strong> ${(r.categories_analyzed || []).length}</div>`;
+                            
+                            if (r.firms_results) {
+                                html += '<div style="margin-top:10px"><strong>AI Results:</strong></div>';
+                                Object.entries(r.firms_results).forEach(([firm, result]) => {
+                                    html += `<div style="margin-left:10px">• ${firm}: ${result.bets_placed || 0} bets</div>`;
+                                });
+                            }
+                            html += '</div>';
+                        }
+                        
+                        statusDiv.innerHTML = html;
+                        passwordInput.value = '';
+                    } else {
+                        statusDiv.className = 'status error';
+                        statusDiv.innerHTML = '❌ ' + (data.error || data.message || 'Unknown error');
+                    }
+                } catch (error) {
+                    statusDiv.className = 'status error';
+                    statusDiv.innerHTML = '❌ Network error: ' + error.message;
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Run Daily Cycle';
+                }
+            });
+        </script>
+    </body>
+    </html>
+    """
+    return render_template_string(html)
+
+@app.route('/admin/trigger-cycle', methods=['POST'])
+def trigger_cycle():
+    """Admin endpoint to manually trigger daily cycle with password protection"""
+    import hmac
+    
+    try:
+        data = request.get_json()
+        provided_password = data.get('password', '')
+        
+        # Get admin password from environment
+        admin_password = os.getenv('ADMIN_PASSWORD')
+        if not admin_password:
+            return jsonify({
+                'success': False,
+                'error': 'Admin password not configured on server'
+            }), 500
+        
+        # Verify password using constant-time comparison
+        if not provided_password or not hmac.compare_digest(admin_password, provided_password):
+            print(f"[SECURITY] Failed admin login attempt from {request.remote_addr}")
+            return jsonify({
+                'success': False,
+                'error': 'Invalid password'
+            }), 401
+        
+        # Execute daily cycle
+        print(f"\n[ADMIN] Daily cycle manually triggered from {request.remote_addr} at {datetime.now().isoformat()}")
+        
+        engine = AutonomousEngine(db)
+        results = engine.run_daily_cycle()
+        
+        print(f"[ADMIN] Daily cycle completed successfully")
+        
+        return jsonify({
+            'success': True,
+            'message': 'Daily cycle completed successfully',
+            'results': results
+        }), 200
+        
+    except Exception as e:
+        import traceback
+        error_traceback = traceback.format_exc()
+        print(f"[ERROR] Admin-triggered cycle failed: {str(e)}")
+        print(error_traceback)
+        
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'message': 'Daily cycle execution failed'
         }), 500
 
 if __name__ == '__main__':
