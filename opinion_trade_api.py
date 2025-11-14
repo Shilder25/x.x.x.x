@@ -99,16 +99,16 @@ class OpinionTradeAPI:
                 events = []
                 for market in markets:
                     events.append({
-                        'event_id': str(market.marketId),
-                        'market_id': market.marketId,
-                        'title': market.marketTitle,
-                        'description': getattr(market, 'marketDescription', ''),
+                        'event_id': str(market.market_id),
+                        'market_id': market.market_id,
+                        'title': market.market_title,
+                        'description': getattr(market, 'market_description', ''),
                         'category': getattr(market, 'category', 'Unknown'),
-                        'condition_id': market.conditionId,
+                        'condition_id': market.condition_id,
                         'status': market.status,
-                        'quote_token': market.quoteToken,
-                        'chain_id': market.chainId,
-                        'topic_id': market.topicId,
+                        'quote_token': market.quote_token,
+                        'chain_id': market.chain_id,
+                        'topic_id': market.topic_id,
                         'options': getattr(market, 'options', [])
                     })
                 
