@@ -95,44 +95,43 @@ class OpinionTradeAPI:
             if response.errno == 0:
                 markets = response.result.list
                 
-                # DIAGNOSTIC: Log all available attributes on first market object
-                if len(markets) > 0:
-                    first_market = markets[0]
-                    print(f"\n{'='*80}")
-                    print(f"[DIAGNOSTIC] Inspecting SDK market object attributes:")
-                    print(f"{'='*80}")
-                    print(f"Type: {type(first_market)}")
-                    print(f"Dir: {dir(first_market)}")
-                    print(f"\nAll attributes and values:")
-                    for attr in dir(first_market):
-                        if not attr.startswith('_'):
-                            try:
-                                value = getattr(first_market, attr)
-                                print(f"  {attr}: {value} (type: {type(value).__name__})")
-                            except Exception as e:
-                                print(f"  {attr}: ERROR - {e}")
-                    print(f"{'='*80}\n")
-                
                 # Convert SDK market objects to our event format
                 events = []
                 for market in markets:
-                    # Use safe attribute access for now until we confirm available attributes
                     try:
+                        # Derive category from market title (simple keyword matching)
+                        title_lower = market.market_title.lower()
+                        if 'bitcoin' in title_lower or 'btc' in title_lower:
+                            category = 'Crypto'
+                        elif 'ethereum' in title_lower or 'eth' in title_lower:
+                            category = 'Crypto'
+                        elif 'stock' in title_lower or 'nasdaq' in title_lower or 's&p' in title_lower:
+                            category = 'Finance'
+                        elif 'election' in title_lower or 'vote' in title_lower or 'president' in title_lower:
+                            category = 'Politics'
+                        elif 'sports' in title_lower or 'nfl' in title_lower or 'nba' in title_lower:
+                            category = 'Sports'
+                        else:
+                            category = 'Other'
+                        
                         events.append({
-                            'event_id': str(getattr(market, 'market_id', getattr(market, 'id', 'unknown'))),
-                            'market_id': getattr(market, 'market_id', getattr(market, 'id', 'unknown')),
-                            'title': getattr(market, 'market_title', getattr(market, 'title', 'Unknown')),
-                            'description': getattr(market, 'market_description', getattr(market, 'description', '')),
-                            'category': getattr(market, 'category', 'Unknown'),
-                            'condition_id': getattr(market, 'condition_id', ''),
-                            'status': getattr(market, 'status', ''),
-                            'quote_token': getattr(market, 'quote_token', ''),
-                            'chain_id': getattr(market, 'chain_id', ''),
-                            'topic_id': getattr(market, 'topic_id', ''),
-                            'options': getattr(market, 'options', [])
+                            'event_id': str(market.market_id),
+                            'market_id': market.market_id,
+                            'title': market.market_title,
+                            'description': market.rules if hasattr(market, 'rules') and market.rules else market.market_title,
+                            'category': category,
+                            'condition_id': market.condition_id,
+                            'status': str(market.status),
+                            'quote_token': market.quote_token,
+                            'chain_id': market.chain_id,
+                            'yes_label': getattr(market, 'yes_label', 'YES'),
+                            'no_label': getattr(market, 'no_label', 'NO'),
+                            'volume': getattr(market, 'volume', '0'),
+                            'created_at': getattr(market, 'created_at', 0),
+                            'cutoff_at': getattr(market, 'cutoff_at', 0)
                         })
                     except Exception as e:
-                        print(f"[ERROR] Failed to convert market object: {e}")
+                        print(f"[ERROR] Failed to convert market {getattr(market, 'market_id', 'unknown')}: {e}")
                         continue
                 
                 print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets")
