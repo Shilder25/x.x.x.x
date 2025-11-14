@@ -95,22 +95,45 @@ class OpinionTradeAPI:
             if response.errno == 0:
                 markets = response.result.list
                 
+                # DIAGNOSTIC: Log all available attributes on first market object
+                if len(markets) > 0:
+                    first_market = markets[0]
+                    print(f"\n{'='*80}")
+                    print(f"[DIAGNOSTIC] Inspecting SDK market object attributes:")
+                    print(f"{'='*80}")
+                    print(f"Type: {type(first_market)}")
+                    print(f"Dir: {dir(first_market)}")
+                    print(f"\nAll attributes and values:")
+                    for attr in dir(first_market):
+                        if not attr.startswith('_'):
+                            try:
+                                value = getattr(first_market, attr)
+                                print(f"  {attr}: {value} (type: {type(value).__name__})")
+                            except Exception as e:
+                                print(f"  {attr}: ERROR - {e}")
+                    print(f"{'='*80}\n")
+                
                 # Convert SDK market objects to our event format
                 events = []
                 for market in markets:
-                    events.append({
-                        'event_id': str(market.market_id),
-                        'market_id': market.market_id,
-                        'title': market.market_title,
-                        'description': getattr(market, 'market_description', ''),
-                        'category': getattr(market, 'category', 'Unknown'),
-                        'condition_id': market.condition_id,
-                        'status': market.status,
-                        'quote_token': market.quote_token,
-                        'chain_id': market.chain_id,
-                        'topic_id': market.topic_id,
-                        'options': getattr(market, 'options', [])
-                    })
+                    # Use safe attribute access for now until we confirm available attributes
+                    try:
+                        events.append({
+                            'event_id': str(getattr(market, 'market_id', getattr(market, 'id', 'unknown'))),
+                            'market_id': getattr(market, 'market_id', getattr(market, 'id', 'unknown')),
+                            'title': getattr(market, 'market_title', getattr(market, 'title', 'Unknown')),
+                            'description': getattr(market, 'market_description', getattr(market, 'description', '')),
+                            'category': getattr(market, 'category', 'Unknown'),
+                            'condition_id': getattr(market, 'condition_id', ''),
+                            'status': getattr(market, 'status', ''),
+                            'quote_token': getattr(market, 'quote_token', ''),
+                            'chain_id': getattr(market, 'chain_id', ''),
+                            'topic_id': getattr(market, 'topic_id', ''),
+                            'options': getattr(market, 'options', [])
+                        })
+                    except Exception as e:
+                        print(f"[ERROR] Failed to convert market object: {e}")
+                        continue
                 
                 print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets")
                 return {
