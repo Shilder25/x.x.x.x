@@ -157,8 +157,9 @@ class AutonomousEngine:
         events_by_category = {}
         
         # Primero obtener todos los eventos para ver qué categorías hay
-        print("[DEBUG] Calling opinion_api.get_available_events(limit=100)...")
-        all_events_response = self.opinion_api.get_available_events(limit=100)
+        # Opinion.trade SDK limit: max 20 per request
+        print("[DEBUG] Calling opinion_api.get_available_events(limit=20)...")
+        all_events_response = self.opinion_api.get_available_events(limit=20)
         
         print(f"[DEBUG] Response success: {all_events_response.get('success')}")
         print(f"[DEBUG] Response: {all_events_response}")
