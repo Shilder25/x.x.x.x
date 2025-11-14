@@ -112,6 +112,7 @@ class OpinionTradeAPI:
                         'options': getattr(market, 'options', [])
                     })
                 
+                print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets")
                 return {
                     'success': True,
                     'count': len(events),

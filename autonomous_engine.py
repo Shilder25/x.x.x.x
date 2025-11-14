@@ -159,9 +159,12 @@ class AutonomousEngine:
         all_events_response = self.opinion_api.get_available_events(limit=20)
         
         if not all_events_response.get('success'):
+            error_msg = all_events_response.get('message', 'Unknown error')
+            print(f"[ERROR] Failed to fetch events from Opinion.trade: {error_msg}")
             return events_by_category
         
         all_events = all_events_response.get('events', [])
+        print(f"[INFO] Fetched {len(all_events)} events from Opinion.trade")
         
         # Agrupar por categoría
         for event in all_events:
@@ -170,6 +173,8 @@ class AutonomousEngine:
                 events_by_category[category] = []
             events_by_category[category].append(event)
         
+        categories_summary = {cat: len(events) for cat, events in events_by_category.items()}
+        print(f"[INFO] Events grouped into {len(events_by_category)} categories: {categories_summary}")
         return events_by_category
     
     def _process_firm_multi_category_cycle(self, firm_name: str, events_by_category: Dict[str, List[Dict]]) -> Dict:
@@ -179,6 +184,9 @@ class AutonomousEngine:
         La IA analiza eventos en TODAS las categorías disponibles PRIMERO,
         luego ejecuta solo las mejores oportunidades globales.
         """
+        print(f"\n[INFO] Processing cycle for {firm_name}")
+        print(f"[INFO] {firm_name} - Analyzing {len(events_by_category)} categories")
+        
         tier_status = self.risk_guard.get_tier_status(firm_name)
         bankroll_manager = self.bankroll_managers[firm_name]
         
@@ -244,12 +252,14 @@ class AutonomousEngine:
         
         # Fase 2: Ejecutar solo las MEJORES oportunidades globales
         if all_opportunities:
+            print(f"[INFO] {firm_name} - Found {len(all_opportunities)} total opportunities across all categories")
             # Ordenar todas las oportunidades por expected value
             all_opportunities.sort(key=lambda x: x.get('expected_value', 0), reverse=True)
             
             # Ejecutar solo hasta alcanzar el límite de apuestas concurrentes
             tier_config = tier_status.get('tier_config', {})
             max_bets = min(tier_config.get('max_concurrent_positions', 2), len(all_opportunities))
+            print(f"[INFO] {firm_name} - Will execute top {max_bets} opportunities (max_concurrent_positions: {tier_config.get('max_concurrent_positions', 2)})")
             
             for i, opportunity in enumerate(all_opportunities):
                 if i < max_bets:
@@ -273,6 +283,8 @@ class AutonomousEngine:
                     firm_result['decisions'].append(executed_decision)
                     
                     # Solo incrementar si la ejecución fue exitosa
+                    print(f"[INFO] {firm_name} - Executed bet {i+1}/{max_bets}")
+                    # Solo incrementar si la ejecución fue exitosa
                     if executed_decision.get('action') == 'BET':
                         firm_result['bets_placed'] += 1
                         bet_size = executed_decision.get('bet_size', 0)
@@ -287,7 +299,10 @@ class AutonomousEngine:
                 else:
                     # Oportunidad no seleccionada para ejecución
                     firm_result['bets_skipped'] += 1
+        else:
+            print(f"[INFO] {firm_name} - No opportunities found")
         
+        print(f"[INFO] {firm_name} - Cycle complete: {firm_result['bets_placed']} bets placed, {firm_result['bets_skipped']} skipped, {firm_result['events_analyzed']} events analyzed")
         return firm_result
     
     def _process_firm_cycle(self, firm_name: str, events: List[Dict]) -> Dict:
