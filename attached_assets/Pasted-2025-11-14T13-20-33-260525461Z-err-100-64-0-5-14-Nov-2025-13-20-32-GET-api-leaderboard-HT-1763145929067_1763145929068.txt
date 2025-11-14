@@ -1,0 +1,1001 @@
+2025-11-14T13:20:33.260525461Z [err]  100.64.0.5 - - [14/Nov/2025 13:20:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:20:33.260529794Z [err]  100.64.0.5 - - [14/Nov/2025 13:20:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:21:33.273636045Z [err]  100.64.0.5 - - [14/Nov/2025 13:21:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:21:33.273642022Z [err]  100.64.0.5 - - [14/Nov/2025 13:21:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:21:33.273647380Z [err]  100.64.0.5 - - [14/Nov/2025 13:21:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:21:33.273651519Z [err]  100.64.0.5 - - [14/Nov/2025 13:21:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:21:33.273656820Z [err]  100.64.0.5 - - [14/Nov/2025 13:21:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:21:33.273661015Z [err]  100.64.0.5 - - [14/Nov/2025 13:21:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:22:33.112726662Z [err]  100.64.0.5 - - [14/Nov/2025 13:22:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:22:33.112735763Z [err]  100.64.0.5 - - [14/Nov/2025 13:22:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:22:33.112744291Z [err]  100.64.0.5 - - [14/Nov/2025 13:22:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:22:33.112750972Z [err]  100.64.0.5 - - [14/Nov/2025 13:22:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:22:33.112757505Z [err]  100.64.0.5 - - [14/Nov/2025 13:22:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:22:33.112765145Z [err]  100.64.0.5 - - [14/Nov/2025 13:22:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:23:33.132357863Z [err]  100.64.0.5 - - [14/Nov/2025 13:23:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:23:33.132367453Z [err]  100.64.0.5 - - [14/Nov/2025 13:23:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:23:33.132372907Z [err]  100.64.0.5 - - [14/Nov/2025 13:23:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:23:33.132380583Z [err]  100.64.0.5 - - [14/Nov/2025 13:23:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:23:33.132394529Z [err]  100.64.0.5 - - [14/Nov/2025 13:23:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:23:33.132401188Z [err]  100.64.0.5 - - [14/Nov/2025 13:23:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:24:33.162404039Z [err]  100.64.0.5 - - [14/Nov/2025 13:24:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:24:33.162410706Z [err]  100.64.0.5 - - [14/Nov/2025 13:24:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:24:33.162424002Z [err]  100.64.0.5 - - [14/Nov/2025 13:24:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:24:33.162428290Z [err]  100.64.0.5 - - [14/Nov/2025 13:24:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:24:33.162432469Z [err]  100.64.0.5 - - [14/Nov/2025 13:24:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:24:33.162437416Z [err]  100.64.0.5 - - [14/Nov/2025 13:24:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:25:33.074558683Z [err]  100.64.0.5 - - [14/Nov/2025 13:25:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:25:33.074566854Z [err]  100.64.0.5 - - [14/Nov/2025 13:25:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:25:33.074572298Z [err]  100.64.0.5 - - [14/Nov/2025 13:25:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:25:33.074576905Z [err]  100.64.0.5 - - [14/Nov/2025 13:25:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:25:33.074581860Z [err]  100.64.0.5 - - [14/Nov/2025 13:25:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:25:33.074587241Z [err]  100.64.0.5 - - [14/Nov/2025 13:25:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:26:33.088532318Z [err]  100.64.0.5 - - [14/Nov/2025 13:26:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:26:33.088543640Z [err]  100.64.0.5 - - [14/Nov/2025 13:26:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:26:33.088551235Z [err]  100.64.0.5 - - [14/Nov/2025 13:26:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:26:33.088593079Z [err]  100.64.0.5 - - [14/Nov/2025 13:26:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:26:33.088599158Z [err]  100.64.0.5 - - [14/Nov/2025 13:26:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:26:33.088604279Z [err]  100.64.0.5 - - [14/Nov/2025 13:26:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:27:33.116123812Z [err]  100.64.0.5 - - [14/Nov/2025 13:27:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:27:33.116133814Z [err]  100.64.0.5 - - [14/Nov/2025 13:27:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:27:33.116139626Z [err]  100.64.0.5 - - [14/Nov/2025 13:27:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:27:33.116144392Z [err]  100.64.0.5 - - [14/Nov/2025 13:27:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:27:33.116149800Z [err]  100.64.0.5 - - [14/Nov/2025 13:27:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:27:33.116155153Z [err]  100.64.0.5 - - [14/Nov/2025 13:27:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:28:33.433825846Z [err]  100.64.0.5 - - [14/Nov/2025 13:28:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:28:33.433830729Z [err]  100.64.0.5 - - [14/Nov/2025 13:28:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:28:33.433839691Z [err]  100.64.0.5 - - [14/Nov/2025 13:28:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:28:33.433845157Z [err]  100.64.0.5 - - [14/Nov/2025 13:28:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:28:33.433850046Z [err]  100.64.0.5 - - [14/Nov/2025 13:28:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:28:33.433854694Z [err]  100.64.0.5 - - [14/Nov/2025 13:28:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:29:33.382122287Z [err]  100.64.0.5 - - [14/Nov/2025 13:29:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:29:33.382130563Z [err]  100.64.0.5 - - [14/Nov/2025 13:29:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:29:33.382136286Z [err]  100.64.0.5 - - [14/Nov/2025 13:29:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:29:33.382140602Z [err]  100.64.0.5 - - [14/Nov/2025 13:29:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:29:33.382144717Z [err]  100.64.0.5 - - [14/Nov/2025 13:29:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:29:33.382149172Z [err]  100.64.0.5 - - [14/Nov/2025 13:29:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:30:33.388550123Z [err]  100.64.0.5 - - [14/Nov/2025 13:30:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:30:33.388556220Z [err]  100.64.0.5 - - [14/Nov/2025 13:30:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:30:33.388560563Z [err]  100.64.0.5 - - [14/Nov/2025 13:30:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:30:33.388564575Z [err]  100.64.0.5 - - [14/Nov/2025 13:30:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:30:33.388568495Z [err]  100.64.0.5 - - [14/Nov/2025 13:30:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:30:33.388572415Z [err]  100.64.0.5 - - [14/Nov/2025 13:30:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:31:33.394348478Z [err]  100.64.0.5 - - [14/Nov/2025 13:31:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:31:33.394354188Z [err]  100.64.0.5 - - [14/Nov/2025 13:31:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:31:33.394358966Z [err]  100.64.0.5 - - [14/Nov/2025 13:31:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:31:33.394363147Z [err]  100.64.0.5 - - [14/Nov/2025 13:31:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:31:33.394366884Z [err]  100.64.0.5 - - [14/Nov/2025 13:31:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:31:33.394370710Z [err]  100.64.0.5 - - [14/Nov/2025 13:31:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:32:33.610363218Z [err]  100.64.0.5 - - [14/Nov/2025 13:32:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:32:33.610368868Z [err]  100.64.0.5 - - [14/Nov/2025 13:32:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:32:33.610373325Z [err]  100.64.0.5 - - [14/Nov/2025 13:32:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:32:33.610378178Z [err]  100.64.0.5 - - [14/Nov/2025 13:32:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:32:33.610383194Z [err]  100.64.0.5 - - [14/Nov/2025 13:32:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:32:33.610387828Z [err]  100.64.0.5 - - [14/Nov/2025 13:32:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:33:33.511684114Z [err]  100.64.0.5 - - [14/Nov/2025 13:33:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:33:33.511690245Z [err]  100.64.0.5 - - [14/Nov/2025 13:33:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:33:33.511694915Z [err]  100.64.0.5 - - [14/Nov/2025 13:33:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:33:33.511699256Z [err]  100.64.0.5 - - [14/Nov/2025 13:33:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:33:33.511704030Z [err]  100.64.0.5 - - [14/Nov/2025 13:33:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:33:33.511708034Z [err]  100.64.0.5 - - [14/Nov/2025 13:33:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:34:33.528268789Z [err]  100.64.0.5 - - [14/Nov/2025 13:34:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:34:33.528277687Z [err]  100.64.0.5 - - [14/Nov/2025 13:34:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:34:33.528284140Z [err]  100.64.0.5 - - [14/Nov/2025 13:34:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:34:33.528288373Z [err]  100.64.0.5 - - [14/Nov/2025 13:34:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:34:33.528294070Z [err]  100.64.0.5 - - [14/Nov/2025 13:34:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:34:33.528300106Z [err]  100.64.0.5 - - [14/Nov/2025 13:34:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:35:33.598344934Z [err]  100.64.0.5 - - [14/Nov/2025 13:35:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:35:33.598351894Z [err]  100.64.0.5 - - [14/Nov/2025 13:35:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:35:33.598358197Z [err]  100.64.0.5 - - [14/Nov/2025 13:35:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:35:33.598364128Z [err]  100.64.0.5 - - [14/Nov/2025 13:35:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:35:33.598369697Z [err]  100.64.0.5 - - [14/Nov/2025 13:35:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:35:33.598374487Z [err]  100.64.0.5 - - [14/Nov/2025 13:35:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:36:33.681151168Z [err]  100.64.0.5 - - [14/Nov/2025 13:36:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:36:33.681155869Z [err]  100.64.0.5 - - [14/Nov/2025 13:36:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:36:33.681160822Z [err]  100.64.0.5 - - [14/Nov/2025 13:36:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:36:33.681165172Z [err]  100.64.0.5 - - [14/Nov/2025 13:36:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:36:33.681169296Z [err]  100.64.0.5 - - [14/Nov/2025 13:36:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:36:33.681173607Z [err]  100.64.0.5 - - [14/Nov/2025 13:36:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:37:33.570968892Z [err]  100.64.0.5 - - [14/Nov/2025 13:37:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:37:33.570976570Z [err]  100.64.0.5 - - [14/Nov/2025 13:37:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:37:33.570981419Z [err]  100.64.0.5 - - [14/Nov/2025 13:37:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:37:33.570985836Z [err]  100.64.0.5 - - [14/Nov/2025 13:37:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:37:33.570989829Z [err]  100.64.0.5 - - [14/Nov/2025 13:37:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:37:33.570994393Z [err]  100.64.0.5 - - [14/Nov/2025 13:37:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:38:33.582310997Z [err]  100.64.0.5 - - [14/Nov/2025 13:38:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:38:33.582317866Z [err]  100.64.0.5 - - [14/Nov/2025 13:38:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:38:33.582322166Z [err]  100.64.0.5 - - [14/Nov/2025 13:38:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:38:33.582326079Z [err]  100.64.0.5 - - [14/Nov/2025 13:38:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:38:33.582329915Z [err]  100.64.0.5 - - [14/Nov/2025 13:38:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:38:33.582335082Z [err]  100.64.0.5 - - [14/Nov/2025 13:38:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:39:33.713714985Z [err]  100.64.0.5 - - [14/Nov/2025 13:39:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:39:33.713720571Z [err]  100.64.0.5 - - [14/Nov/2025 13:39:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:39:33.713726346Z [err]  100.64.0.5 - - [14/Nov/2025 13:39:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:39:33.713738844Z [err]  100.64.0.5 - - [14/Nov/2025 13:39:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:39:33.713745832Z [err]  100.64.0.5 - - [14/Nov/2025 13:39:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:39:33.713752396Z [err]  100.64.0.5 - - [14/Nov/2025 13:39:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:40:33.618214121Z [err]  100.64.0.5 - - [14/Nov/2025 13:40:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:40:33.618221844Z [err]  100.64.0.5 - - [14/Nov/2025 13:40:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:40:33.618226213Z [err]  100.64.0.5 - - [14/Nov/2025 13:40:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:40:33.618230822Z [err]  100.64.0.5 - - [14/Nov/2025 13:40:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:40:33.618234724Z [err]  100.64.0.5 - - [14/Nov/2025 13:40:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:40:33.618238812Z [err]  100.64.0.5 - - [14/Nov/2025 13:40:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:41:33.633323983Z [err]  100.64.0.5 - - [14/Nov/2025 13:41:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:41:33.633329959Z [err]  100.64.0.5 - - [14/Nov/2025 13:41:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:41:33.633334432Z [err]  100.64.0.5 - - [14/Nov/2025 13:41:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:41:33.633338805Z [err]  100.64.0.5 - - [14/Nov/2025 13:41:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:41:33.633342769Z [err]  100.64.0.5 - - [14/Nov/2025 13:41:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:41:33.633346478Z [err]  100.64.0.5 - - [14/Nov/2025 13:41:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:42:33.645454621Z [err]  100.64.0.5 - - [14/Nov/2025 13:42:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:42:33.645460317Z [err]  100.64.0.5 - - [14/Nov/2025 13:42:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:42:33.645464833Z [err]  100.64.0.5 - - [14/Nov/2025 13:42:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:42:33.645469145Z [err]  100.64.0.5 - - [14/Nov/2025 13:42:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:42:33.645474666Z [err]  100.64.0.5 - - [14/Nov/2025 13:42:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:42:33.645478978Z [err]  100.64.0.5 - - [14/Nov/2025 13:42:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:43:33.876948222Z [err]  100.64.0.5 - - [14/Nov/2025 13:43:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:43:33.876952683Z [err]  100.64.0.5 - - [14/Nov/2025 13:43:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:43:33.876958365Z [err]  100.64.0.5 - - [14/Nov/2025 13:43:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:43:33.876963725Z [err]  100.64.0.5 - - [14/Nov/2025 13:43:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:43:33.876968417Z [err]  100.64.0.5 - - [14/Nov/2025 13:43:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:43:33.876975911Z [err]  100.64.0.5 - - [14/Nov/2025 13:43:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:44:33.722432412Z [err]  100.64.0.5 - - [14/Nov/2025 13:44:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:44:33.722439096Z [err]  100.64.0.5 - - [14/Nov/2025 13:44:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:44:33.722443865Z [err]  100.64.0.5 - - [14/Nov/2025 13:44:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:44:33.722448819Z [err]  100.64.0.5 - - [14/Nov/2025 13:44:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:44:33.722453345Z [err]  100.64.0.5 - - [14/Nov/2025 13:44:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:44:33.722457591Z [err]  100.64.0.5 - - [14/Nov/2025 13:44:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:45:33.722152544Z [err]  100.64.0.5 - - [14/Nov/2025 13:45:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:45:33.722162793Z [err]  100.64.0.5 - - [14/Nov/2025 13:45:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:45:33.722168398Z [err]  100.64.0.5 - - [14/Nov/2025 13:45:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:45:33.722173859Z [err]  100.64.0.5 - - [14/Nov/2025 13:45:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:45:33.722178700Z [err]  100.64.0.5 - - [14/Nov/2025 13:45:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:45:33.722187004Z [err]  100.64.0.5 - - [14/Nov/2025 13:45:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:46:33.786637722Z [err]  100.64.0.5 - - [14/Nov/2025 13:46:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:46:33.786643341Z [err]  100.64.0.5 - - [14/Nov/2025 13:46:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:46:33.786649440Z [err]  100.64.0.5 - - [14/Nov/2025 13:46:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:46:33.786654870Z [err]  100.64.0.5 - - [14/Nov/2025 13:46:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:46:33.786661548Z [err]  100.64.0.5 - - [14/Nov/2025 13:46:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:46:33.786666887Z [err]  100.64.0.5 - - [14/Nov/2025 13:46:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:47:33.624437175Z [err]  100.64.0.5 - - [14/Nov/2025 13:47:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:47:33.624446165Z [err]  100.64.0.5 - - [14/Nov/2025 13:47:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:47:33.624451501Z [err]  100.64.0.5 - - [14/Nov/2025 13:47:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:47:33.624456544Z [err]  100.64.0.5 - - [14/Nov/2025 13:47:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:47:33.624462247Z [err]  100.64.0.5 - - [14/Nov/2025 13:47:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:47:33.624467247Z [err]  100.64.0.5 - - [14/Nov/2025 13:47:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:48:33.639551545Z [err]  100.64.0.5 - - [14/Nov/2025 13:48:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:48:33.639557235Z [err]  100.64.0.5 - - [14/Nov/2025 13:48:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:48:33.639561690Z [err]  100.64.0.5 - - [14/Nov/2025 13:48:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:48:33.639565928Z [err]  100.64.0.5 - - [14/Nov/2025 13:48:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:48:33.639569891Z [err]  100.64.0.5 - - [14/Nov/2025 13:48:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:48:33.639574133Z [err]  100.64.0.5 - - [14/Nov/2025 13:48:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:49:33.652061937Z [err]  100.64.0.5 - - [14/Nov/2025 13:49:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:49:33.652070045Z [err]  100.64.0.5 - - [14/Nov/2025 13:49:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:49:33.652077334Z [err]  100.64.0.5 - - [14/Nov/2025 13:49:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:49:33.652083921Z [err]  100.64.0.5 - - [14/Nov/2025 13:49:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:49:33.652090839Z [err]  100.64.0.5 - - [14/Nov/2025 13:49:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:49:33.652098608Z [err]  100.64.0.5 - - [14/Nov/2025 13:49:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:50:33.851570494Z [err]  100.64.0.5 - - [14/Nov/2025 13:50:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:50:33.851576425Z [err]  100.64.0.5 - - [14/Nov/2025 13:50:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:50:33.851581844Z [err]  100.64.0.5 - - [14/Nov/2025 13:50:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:50:33.851588900Z [err]  100.64.0.5 - - [14/Nov/2025 13:50:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:50:33.851596881Z [err]  100.64.0.5 - - [14/Nov/2025 13:50:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:50:33.851603396Z [err]  100.64.0.5 - - [14/Nov/2025 13:50:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:51:33.745999220Z [err]  100.64.0.5 - - [14/Nov/2025 13:51:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:51:33.746005780Z [err]  100.64.0.5 - - [14/Nov/2025 13:51:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:51:33.746012649Z [err]  100.64.0.5 - - [14/Nov/2025 13:51:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:51:33.746018064Z [err]  100.64.0.5 - - [14/Nov/2025 13:51:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:51:33.746022447Z [err]  100.64.0.5 - - [14/Nov/2025 13:51:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:51:33.746026772Z [err]  100.64.0.5 - - [14/Nov/2025 13:51:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:52:33.773078283Z [err]  100.64.0.5 - - [14/Nov/2025 13:52:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:52:33.773082500Z [err]  100.64.0.5 - - [14/Nov/2025 13:52:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:52:33.773087910Z [err]  100.64.0.5 - - [14/Nov/2025 13:52:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:52:33.773093197Z [err]  100.64.0.5 - - [14/Nov/2025 13:52:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:52:33.773097252Z [err]  100.64.0.5 - - [14/Nov/2025 13:52:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:52:33.773101457Z [err]  100.64.0.5 - - [14/Nov/2025 13:52:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:53:33.794741969Z [err]  100.64.0.5 - - [14/Nov/2025 13:53:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:53:33.794754110Z [err]  100.64.0.5 - - [14/Nov/2025 13:53:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:53:33.794761914Z [err]  100.64.0.5 - - [14/Nov/2025 13:53:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:53:33.794769745Z [err]  100.64.0.5 - - [14/Nov/2025 13:53:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:53:33.794834464Z [err]  100.64.0.5 - - [14/Nov/2025 13:53:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:53:33.794838842Z [err]  100.64.0.5 - - [14/Nov/2025 13:53:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:54:33.897310001Z [err]  100.64.0.5 - - [14/Nov/2025 13:54:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:54:33.897314862Z [err]  100.64.0.5 - - [14/Nov/2025 13:54:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:54:33.897320357Z [err]  100.64.0.5 - - [14/Nov/2025 13:54:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:54:33.897324855Z [err]  100.64.0.5 - - [14/Nov/2025 13:54:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:54:33.897329436Z [err]  100.64.0.5 - - [14/Nov/2025 13:54:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:54:33.897334410Z [err]  100.64.0.5 - - [14/Nov/2025 13:54:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:55:33.802980313Z [err]  100.64.0.5 - - [14/Nov/2025 13:55:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:55:33.802986417Z [err]  100.64.0.5 - - [14/Nov/2025 13:55:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:55:33.802991961Z [err]  100.64.0.5 - - [14/Nov/2025 13:55:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:55:33.802998474Z [err]  100.64.0.5 - - [14/Nov/2025 13:55:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:55:33.803003810Z [err]  100.64.0.5 - - [14/Nov/2025 13:55:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:55:33.803008295Z [err]  100.64.0.5 - - [14/Nov/2025 13:55:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:56:33.813281891Z [err]  100.64.0.5 - - [14/Nov/2025 13:56:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:56:33.813291649Z [err]  100.64.0.5 - - [14/Nov/2025 13:56:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:56:33.813298082Z [err]  100.64.0.5 - - [14/Nov/2025 13:56:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:56:33.813305825Z [err]  100.64.0.5 - - [14/Nov/2025 13:56:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:56:33.813310774Z [err]  100.64.0.5 - - [14/Nov/2025 13:56:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:56:33.813316341Z [err]  100.64.0.5 - - [14/Nov/2025 13:56:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:57:33.821277169Z [err]  100.64.0.5 - - [14/Nov/2025 13:57:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:57:33.821287342Z [err]  100.64.0.5 - - [14/Nov/2025 13:57:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:57:33.821301914Z [err]  100.64.0.5 - - [14/Nov/2025 13:57:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:57:33.821307514Z [err]  100.64.0.5 - - [14/Nov/2025 13:57:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:57:33.821312686Z [err]  100.64.0.5 - - [14/Nov/2025 13:57:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:57:33.821318741Z [err]  100.64.0.5 - - [14/Nov/2025 13:57:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:58:33.834922066Z [err]  100.64.0.5 - - [14/Nov/2025 13:58:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:58:33.834930016Z [err]  100.64.0.5 - - [14/Nov/2025 13:58:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T13:58:33.834935986Z [err]  100.64.0.5 - - [14/Nov/2025 13:58:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:58:33.834940718Z [err]  100.64.0.5 - - [14/Nov/2025 13:58:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:58:33.834944870Z [err]  100.64.0.5 - - [14/Nov/2025 13:58:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:58:33.834949082Z [err]  100.64.0.5 - - [14/Nov/2025 13:58:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:59:33.920733433Z [err]  100.64.0.5 - - [14/Nov/2025 13:59:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T13:59:33.920741787Z [err]  100.64.0.5 - - [14/Nov/2025 13:59:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T13:59:33.920748248Z [err]  100.64.0.5 - - [14/Nov/2025 13:59:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T13:59:33.920753599Z [err]  100.64.0.5 - - [14/Nov/2025 13:59:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T13:59:33.920768939Z [err]  100.64.0.5 - - [14/Nov/2025 13:59:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T13:59:33.920774427Z [err]  100.64.0.5 - - [14/Nov/2025 13:59:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:00:34.052613170Z [err]  100.64.0.9 - - [14/Nov/2025 14:00:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:00:34.052619080Z [err]  100.64.0.9 - - [14/Nov/2025 14:00:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:00:34.052625493Z [err]  100.64.0.9 - - [14/Nov/2025 14:00:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:00:34.052630447Z [err]  100.64.0.9 - - [14/Nov/2025 14:00:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:00:34.052635117Z [err]  100.64.0.9 - - [14/Nov/2025 14:00:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:00:34.052640248Z [err]  100.64.0.9 - - [14/Nov/2025 14:00:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:01:33.868616384Z [err]  100.64.0.9 - - [14/Nov/2025 14:01:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:01:33.868624425Z [err]  100.64.0.9 - - [14/Nov/2025 14:01:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:01:33.868630877Z [err]  100.64.0.9 - - [14/Nov/2025 14:01:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:01:33.868636099Z [err]  100.64.0.9 - - [14/Nov/2025 14:01:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:01:33.868640786Z [err]  100.64.0.9 - - [14/Nov/2025 14:01:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:01:33.868648200Z [err]  100.64.0.9 - - [14/Nov/2025 14:01:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:02:33.886851497Z [err]  100.64.0.9 - - [14/Nov/2025 14:02:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:02:33.886862690Z [err]  100.64.0.9 - - [14/Nov/2025 14:02:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:02:33.886870293Z [err]  100.64.0.9 - - [14/Nov/2025 14:02:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:02:33.886876645Z [err]  100.64.0.9 - - [14/Nov/2025 14:02:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:02:33.886882502Z [err]  100.64.0.9 - - [14/Nov/2025 14:02:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:02:33.886889246Z [err]  100.64.0.9 - - [14/Nov/2025 14:02:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:03:33.883693557Z [err]  100.64.0.9 - - [14/Nov/2025 14:03:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:03:33.883699749Z [err]  100.64.0.9 - - [14/Nov/2025 14:03:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:03:33.883704233Z [err]  100.64.0.9 - - [14/Nov/2025 14:03:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:03:33.883708654Z [err]  100.64.0.9 - - [14/Nov/2025 14:03:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:03:33.883712857Z [err]  100.64.0.9 - - [14/Nov/2025 14:03:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:03:33.883716840Z [err]  100.64.0.9 - - [14/Nov/2025 14:03:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:04:33.898338090Z [err]  100.64.0.9 - - [14/Nov/2025 14:04:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:04:33.898348658Z [err]  100.64.0.9 - - [14/Nov/2025 14:04:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:04:33.898354511Z [err]  100.64.0.9 - - [14/Nov/2025 14:04:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:04:33.898359837Z [err]  100.64.0.9 - - [14/Nov/2025 14:04:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:04:33.898371507Z [err]  100.64.0.9 - - [14/Nov/2025 14:04:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:04:33.898377578Z [err]  100.64.0.9 - - [14/Nov/2025 14:04:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:05:33.905897472Z [err]  100.64.0.9 - - [14/Nov/2025 14:05:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:05:33.905903919Z [err]  100.64.0.9 - - [14/Nov/2025 14:05:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:05:33.905908907Z [err]  100.64.0.9 - - [14/Nov/2025 14:05:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:05:33.905913604Z [err]  100.64.0.9 - - [14/Nov/2025 14:05:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:05:33.905918148Z [err]  100.64.0.9 - - [14/Nov/2025 14:05:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:05:33.905922032Z [err]  100.64.0.9 - - [14/Nov/2025 14:05:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:06:33.915678195Z [err]  100.64.0.9 - - [14/Nov/2025 14:06:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:06:33.915684898Z [err]  100.64.0.9 - - [14/Nov/2025 14:06:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:06:33.915690428Z [err]  100.64.0.9 - - [14/Nov/2025 14:06:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:06:33.915694712Z [err]  100.64.0.9 - - [14/Nov/2025 14:06:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:06:33.915699849Z [err]  100.64.0.9 - - [14/Nov/2025 14:06:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:06:33.915705177Z [err]  100.64.0.9 - - [14/Nov/2025 14:06:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:07:34.069886506Z [err]  100.64.0.9 - - [14/Nov/2025 14:07:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:07:34.069890901Z [err]  100.64.0.9 - - [14/Nov/2025 14:07:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:07:34.069897055Z [err]  100.64.0.9 - - [14/Nov/2025 14:07:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:07:34.069901471Z [err]  100.64.0.9 - - [14/Nov/2025 14:07:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:07:34.069905622Z [err]  100.64.0.9 - - [14/Nov/2025 14:07:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:07:34.069909984Z [err]  100.64.0.9 - - [14/Nov/2025 14:07:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:08:33.953472318Z [err]  100.64.0.9 - - [14/Nov/2025 14:08:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:08:33.953479798Z [err]  100.64.0.9 - - [14/Nov/2025 14:08:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:08:33.953486721Z [err]  100.64.0.9 - - [14/Nov/2025 14:08:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:08:33.953492906Z [err]  100.64.0.9 - - [14/Nov/2025 14:08:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:08:33.953499144Z [err]  100.64.0.9 - - [14/Nov/2025 14:08:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:08:33.953505893Z [err]  100.64.0.9 - - [14/Nov/2025 14:08:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:09:33.962451630Z [err]  100.64.0.9 - - [14/Nov/2025 14:09:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:09:33.962458955Z [err]  100.64.0.9 - - [14/Nov/2025 14:09:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:09:33.962463180Z [err]  100.64.0.9 - - [14/Nov/2025 14:09:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:09:33.962467516Z [err]  100.64.0.9 - - [14/Nov/2025 14:09:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:09:33.962473298Z [err]  100.64.0.9 - - [14/Nov/2025 14:09:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:09:33.962477087Z [err]  100.64.0.9 - - [14/Nov/2025 14:09:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:10:33.971439923Z [err]  100.64.0.9 - - [14/Nov/2025 14:10:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:10:33.971445977Z [err]  100.64.0.9 - - [14/Nov/2025 14:10:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:10:33.971451217Z [err]  100.64.0.9 - - [14/Nov/2025 14:10:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:10:33.971455808Z [err]  100.64.0.9 - - [14/Nov/2025 14:10:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:10:33.971460529Z [err]  100.64.0.9 - - [14/Nov/2025 14:10:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:10:33.971466425Z [err]  100.64.0.9 - - [14/Nov/2025 14:10:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:11:33.974052213Z [err]  100.64.0.9 - - [14/Nov/2025 14:11:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:11:33.974058919Z [err]  100.64.0.9 - - [14/Nov/2025 14:11:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:11:33.974063536Z [err]  100.64.0.9 - - [14/Nov/2025 14:11:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:11:33.974068518Z [err]  100.64.0.9 - - [14/Nov/2025 14:11:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:11:33.974072715Z [err]  100.64.0.9 - - [14/Nov/2025 14:11:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:11:33.974077540Z [err]  100.64.0.9 - - [14/Nov/2025 14:11:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:12:34.126363944Z [err]  100.64.0.9 - - [14/Nov/2025 14:12:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:12:34.126372400Z [err]  100.64.0.9 - - [14/Nov/2025 14:12:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:12:34.126380137Z [err]  100.64.0.9 - - [14/Nov/2025 14:12:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:12:34.126387660Z [err]  100.64.0.9 - - [14/Nov/2025 14:12:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:12:34.126398458Z [err]  100.64.0.9 - - [14/Nov/2025 14:12:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:12:34.126407587Z [err]  100.64.0.9 - - [14/Nov/2025 14:12:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:13:33.965949272Z [err]  100.64.0.9 - - [14/Nov/2025 14:13:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:13:33.965955663Z [err]  100.64.0.9 - - [14/Nov/2025 14:13:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:13:33.965961006Z [err]  100.64.0.9 - - [14/Nov/2025 14:13:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:13:33.965965951Z [err]  100.64.0.9 - - [14/Nov/2025 14:13:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:13:33.965970465Z [err]  100.64.0.9 - - [14/Nov/2025 14:13:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:13:33.965974432Z [err]  100.64.0.9 - - [14/Nov/2025 14:13:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:14:33.986907956Z [err]  100.64.0.9 - - [14/Nov/2025 14:14:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:14:33.986919612Z [err]  100.64.0.9 - - [14/Nov/2025 14:14:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:14:33.986924365Z [err]  100.64.0.9 - - [14/Nov/2025 14:14:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:14:33.986929073Z [err]  100.64.0.9 - - [14/Nov/2025 14:14:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:14:33.986933649Z [err]  100.64.0.9 - - [14/Nov/2025 14:14:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:14:33.986950544Z [err]  100.64.0.9 - - [14/Nov/2025 14:14:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:15:33.993344842Z [err]  100.64.0.9 - - [14/Nov/2025 14:15:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:15:33.993351957Z [err]  100.64.0.9 - - [14/Nov/2025 14:15:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:15:33.993356506Z [err]  100.64.0.9 - - [14/Nov/2025 14:15:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:15:33.993360407Z [err]  100.64.0.9 - - [14/Nov/2025 14:15:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:15:33.993366593Z [err]  100.64.0.9 - - [14/Nov/2025 14:15:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:15:33.993370977Z [err]  100.64.0.9 - - [14/Nov/2025 14:15:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:16:34.037736369Z [err]  100.64.0.9 - - [14/Nov/2025 14:16:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:16:34.037743804Z [err]  100.64.0.9 - - [14/Nov/2025 14:16:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:16:34.037750108Z [err]  100.64.0.9 - - [14/Nov/2025 14:16:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:16:34.037756878Z [err]  100.64.0.9 - - [14/Nov/2025 14:16:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:16:34.037763584Z [err]  100.64.0.9 - - [14/Nov/2025 14:16:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:16:34.037771119Z [err]  100.64.0.9 - - [14/Nov/2025 14:16:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:17:33.897104744Z [err]  100.64.0.9 - - [14/Nov/2025 14:17:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:17:33.897113600Z [err]  100.64.0.9 - - [14/Nov/2025 14:17:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:17:33.897119815Z [err]  100.64.0.9 - - [14/Nov/2025 14:17:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:17:33.897125789Z [err]  100.64.0.9 - - [14/Nov/2025 14:17:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:17:33.897131686Z [err]  100.64.0.9 - - [14/Nov/2025 14:17:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:17:33.897137308Z [err]  100.64.0.9 - - [14/Nov/2025 14:17:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:18:33.904341911Z [err]  100.64.0.9 - - [14/Nov/2025 14:18:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:18:33.904347993Z [err]  100.64.0.9 - - [14/Nov/2025 14:18:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:18:33.904353297Z [err]  100.64.0.9 - - [14/Nov/2025 14:18:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:18:33.904357887Z [err]  100.64.0.9 - - [14/Nov/2025 14:18:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:18:33.904362768Z [err]  100.64.0.9 - - [14/Nov/2025 14:18:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:18:33.904367056Z [err]  100.64.0.9 - - [14/Nov/2025 14:18:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:19:33.925389848Z [err]  100.64.0.9 - - [14/Nov/2025 14:19:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:19:33.925396830Z [err]  100.64.0.9 - - [14/Nov/2025 14:19:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:19:33.925401766Z [err]  100.64.0.9 - - [14/Nov/2025 14:19:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:19:33.925405908Z [err]  100.64.0.9 - - [14/Nov/2025 14:19:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:19:33.925410324Z [err]  100.64.0.9 - - [14/Nov/2025 14:19:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:19:33.925414356Z [err]  100.64.0.9 - - [14/Nov/2025 14:19:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:20:34.063127209Z [err]  100.64.0.9 - - [14/Nov/2025 14:20:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:20:34.063132699Z [err]  100.64.0.9 - - [14/Nov/2025 14:20:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:20:34.063142306Z [err]  100.64.0.9 - - [14/Nov/2025 14:20:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:20:34.063150267Z [err]  100.64.0.9 - - [14/Nov/2025 14:20:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:20:34.063155550Z [err]  100.64.0.9 - - [14/Nov/2025 14:20:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:20:34.063160679Z [err]  100.64.0.9 - - [14/Nov/2025 14:20:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:21:33.948393503Z [err]  100.64.0.9 - - [14/Nov/2025 14:21:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:21:33.948409597Z [err]  100.64.0.9 - - [14/Nov/2025 14:21:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:21:33.948414677Z [err]  100.64.0.9 - - [14/Nov/2025 14:21:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:21:33.948419315Z [err]  100.64.0.9 - - [14/Nov/2025 14:21:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:21:33.948424445Z [err]  100.64.0.9 - - [14/Nov/2025 14:21:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:21:33.948429633Z [err]  100.64.0.9 - - [14/Nov/2025 14:21:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:22:33.979036352Z [err]  100.64.0.9 - - [14/Nov/2025 14:22:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:22:33.979049216Z [err]  100.64.0.9 - - [14/Nov/2025 14:22:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:22:33.979056626Z [err]  100.64.0.9 - - [14/Nov/2025 14:22:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:22:33.979060937Z [err]  100.64.0.9 - - [14/Nov/2025 14:22:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:22:33.979064916Z [err]  100.64.0.9 - - [14/Nov/2025 14:22:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:22:33.979068979Z [err]  100.64.0.9 - - [14/Nov/2025 14:22:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:23:33.983674683Z [err]  100.64.0.9 - - [14/Nov/2025 14:23:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:23:33.983683485Z [err]  100.64.0.9 - - [14/Nov/2025 14:23:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:23:33.983689774Z [err]  100.64.0.9 - - [14/Nov/2025 14:23:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:23:33.983696625Z [err]  100.64.0.9 - - [14/Nov/2025 14:23:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:23:33.983701544Z [err]  100.64.0.9 - - [14/Nov/2025 14:23:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:23:33.983707628Z [err]  100.64.0.9 - - [14/Nov/2025 14:23:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:24:34.062844080Z [err]  100.64.0.9 - - [14/Nov/2025 14:24:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:24:34.062852273Z [err]  100.64.0.9 - - [14/Nov/2025 14:24:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:24:34.062858441Z [err]  100.64.0.9 - - [14/Nov/2025 14:24:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:24:34.062863582Z [err]  100.64.0.9 - - [14/Nov/2025 14:24:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:24:34.062868514Z [err]  100.64.0.9 - - [14/Nov/2025 14:24:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:24:34.062874149Z [err]  100.64.0.9 - - [14/Nov/2025 14:24:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:25:33.916649198Z [err]  100.64.0.9 - - [14/Nov/2025 14:25:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:25:33.916658069Z [err]  100.64.0.9 - - [14/Nov/2025 14:25:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:25:33.916663512Z [err]  100.64.0.9 - - [14/Nov/2025 14:25:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:25:33.916669255Z [err]  100.64.0.9 - - [14/Nov/2025 14:25:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:25:33.916673795Z [err]  100.64.0.9 - - [14/Nov/2025 14:25:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:25:33.916678757Z [err]  100.64.0.9 - - [14/Nov/2025 14:25:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:26:33.931310657Z [err]  100.64.0.9 - - [14/Nov/2025 14:26:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:26:33.931316803Z [err]  100.64.0.9 - - [14/Nov/2025 14:26:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:26:33.931321176Z [err]  100.64.0.9 - - [14/Nov/2025 14:26:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:26:33.931325180Z [err]  100.64.0.9 - - [14/Nov/2025 14:26:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:26:33.931329819Z [err]  100.64.0.9 - - [14/Nov/2025 14:26:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:26:33.931333667Z [err]  100.64.0.9 - - [14/Nov/2025 14:26:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:27:33.937572864Z [err]  100.64.0.9 - - [14/Nov/2025 14:27:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:27:33.937580527Z [err]  100.64.0.9 - - [14/Nov/2025 14:27:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:27:33.937586660Z [err]  100.64.0.9 - - [14/Nov/2025 14:27:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:27:33.937594882Z [err]  100.64.0.9 - - [14/Nov/2025 14:27:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:27:33.937601626Z [err]  100.64.0.9 - - [14/Nov/2025 14:27:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:27:33.937607409Z [err]  100.64.0.9 - - [14/Nov/2025 14:27:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:28:33.944063244Z [err]  100.64.0.9 - - [14/Nov/2025 14:28:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:28:33.944072351Z [err]  100.64.0.9 - - [14/Nov/2025 14:28:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:28:33.944077679Z [err]  100.64.0.9 - - [14/Nov/2025 14:28:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:28:33.944082766Z [err]  100.64.0.9 - - [14/Nov/2025 14:28:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:28:33.944086882Z [err]  100.64.0.9 - - [14/Nov/2025 14:28:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:28:33.944094186Z [err]  100.64.0.9 - - [14/Nov/2025 14:28:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:29:33.971045052Z [err]  100.64.0.9 - - [14/Nov/2025 14:29:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:29:33.971055050Z [err]  100.64.0.9 - - [14/Nov/2025 14:29:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:29:33.971061259Z [err]  100.64.0.9 - - [14/Nov/2025 14:29:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:29:33.971084543Z [err]  100.64.0.9 - - [14/Nov/2025 14:29:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:29:33.971091092Z [err]  100.64.0.9 - - [14/Nov/2025 14:29:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:29:33.971097559Z [err]  100.64.0.9 - - [14/Nov/2025 14:29:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:30:33.827563516Z [err]  100.64.0.8 - - [14/Nov/2025 14:30:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:30:33.827573201Z [err]  100.64.0.8 - - [14/Nov/2025 14:30:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:30:33.827578976Z [err]  100.64.0.8 - - [14/Nov/2025 14:30:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:30:33.827583756Z [err]  100.64.0.8 - - [14/Nov/2025 14:30:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:30:33.827596466Z [err]  100.64.0.8 - - [14/Nov/2025 14:30:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:30:33.827601022Z [err]  100.64.0.8 - - [14/Nov/2025 14:30:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:31:33.845446638Z [err]  100.64.0.8 - - [14/Nov/2025 14:31:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:31:33.845452737Z [err]  100.64.0.8 - - [14/Nov/2025 14:31:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:31:33.845457530Z [err]  100.64.0.8 - - [14/Nov/2025 14:31:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:31:33.845462281Z [err]  100.64.0.8 - - [14/Nov/2025 14:31:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:31:33.845466580Z [err]  100.64.0.8 - - [14/Nov/2025 14:31:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:31:33.845470599Z [err]  100.64.0.8 - - [14/Nov/2025 14:31:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:32:33.857616172Z [err]  100.64.0.8 - - [14/Nov/2025 14:32:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:32:33.857622964Z [err]  100.64.0.8 - - [14/Nov/2025 14:32:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:32:33.857627634Z [err]  100.64.0.8 - - [14/Nov/2025 14:32:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:32:33.857632074Z [err]  100.64.0.8 - - [14/Nov/2025 14:32:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:32:33.857636612Z [err]  100.64.0.8 - - [14/Nov/2025 14:32:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:32:33.857641278Z [err]  100.64.0.8 - - [14/Nov/2025 14:32:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:33:33.883465882Z [err]  100.64.0.8 - - [14/Nov/2025 14:33:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:33:33.883474334Z [err]  100.64.0.8 - - [14/Nov/2025 14:33:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:33:33.883479949Z [err]  100.64.0.8 - - [14/Nov/2025 14:33:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:33:33.883485313Z [err]  100.64.0.8 - - [14/Nov/2025 14:33:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:33:33.883490380Z [err]  100.64.0.8 - - [14/Nov/2025 14:33:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:33:33.883495399Z [err]  100.64.0.8 - - [14/Nov/2025 14:33:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:34:33.970902206Z [err]  100.64.0.8 - - [14/Nov/2025 14:34:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:34:33.970908892Z [err]  100.64.0.8 - - [14/Nov/2025 14:34:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:34:33.970912587Z [err]  100.64.0.8 - - [14/Nov/2025 14:34:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:34:33.970916792Z [err]  100.64.0.8 - - [14/Nov/2025 14:34:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:34:33.970920979Z [err]  100.64.0.8 - - [14/Nov/2025 14:34:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:34:33.970924861Z [err]  100.64.0.8 - - [14/Nov/2025 14:34:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:35:33.840498122Z [err]  100.64.0.8 - - [14/Nov/2025 14:35:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:35:33.840505368Z [err]  100.64.0.8 - - [14/Nov/2025 14:35:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:35:33.840511643Z [err]  100.64.0.8 - - [14/Nov/2025 14:35:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:35:33.840518023Z [err]  100.64.0.8 - - [14/Nov/2025 14:35:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:35:33.840524361Z [err]  100.64.0.8 - - [14/Nov/2025 14:35:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:35:33.840529815Z [err]  100.64.0.8 - - [14/Nov/2025 14:35:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:36:33.856072829Z [err]  100.64.0.8 - - [14/Nov/2025 14:36:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:36:33.856079235Z [err]  100.64.0.8 - - [14/Nov/2025 14:36:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:36:33.856084459Z [err]  100.64.0.8 - - [14/Nov/2025 14:36:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:36:33.856090220Z [err]  100.64.0.8 - - [14/Nov/2025 14:36:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:36:33.856095106Z [err]  100.64.0.8 - - [14/Nov/2025 14:36:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:36:33.856099572Z [err]  100.64.0.8 - - [14/Nov/2025 14:36:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:37:33.880060562Z [err]  100.64.0.8 - - [14/Nov/2025 14:37:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:37:33.880069917Z [err]  100.64.0.8 - - [14/Nov/2025 14:37:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:37:33.880075434Z [err]  100.64.0.8 - - [14/Nov/2025 14:37:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:37:33.880081987Z [err]  100.64.0.8 - - [14/Nov/2025 14:37:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:37:33.880086738Z [err]  100.64.0.8 - - [14/Nov/2025 14:37:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:37:33.880091345Z [err]  100.64.0.8 - - [14/Nov/2025 14:37:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:38:33.889601536Z [err]  100.64.0.8 - - [14/Nov/2025 14:38:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:38:33.889608239Z [err]  100.64.0.8 - - [14/Nov/2025 14:38:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:38:33.889612902Z [err]  100.64.0.8 - - [14/Nov/2025 14:38:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:38:33.889616763Z [err]  100.64.0.8 - - [14/Nov/2025 14:38:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:38:33.889621153Z [err]  100.64.0.8 - - [14/Nov/2025 14:38:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:38:33.889639869Z [err]  100.64.0.8 - - [14/Nov/2025 14:38:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:39:33.902934719Z [err]  100.64.0.8 - - [14/Nov/2025 14:39:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:39:33.902946924Z [err]  100.64.0.8 - - [14/Nov/2025 14:39:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:39:33.902957334Z [err]  100.64.0.8 - - [14/Nov/2025 14:39:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:39:33.902966059Z [err]  100.64.0.8 - - [14/Nov/2025 14:39:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:39:33.902971686Z [err]  100.64.0.8 - - [14/Nov/2025 14:39:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:39:33.902978120Z [err]  100.64.0.8 - - [14/Nov/2025 14:39:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:40:34.021465820Z [err]  100.64.0.8 - - [14/Nov/2025 14:40:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:40:34.021472617Z [err]  100.64.0.8 - - [14/Nov/2025 14:40:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:40:34.021474319Z [err]  100.64.0.8 - - [14/Nov/2025 14:40:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:40:34.021479777Z [err]  100.64.0.8 - - [14/Nov/2025 14:40:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:40:34.021480194Z [err]  100.64.0.8 - - [14/Nov/2025 14:40:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:40:34.021485575Z [err]  100.64.0.8 - - [14/Nov/2025 14:40:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:41:33.895123589Z [err]  100.64.0.8 - - [14/Nov/2025 14:41:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:41:33.895133179Z [err]  100.64.0.8 - - [14/Nov/2025 14:41:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:41:33.895139008Z [err]  100.64.0.8 - - [14/Nov/2025 14:41:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:41:33.895145556Z [err]  100.64.0.8 - - [14/Nov/2025 14:41:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:41:33.895151534Z [err]  100.64.0.8 - - [14/Nov/2025 14:41:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:41:33.895478318Z [err]  100.64.0.8 - - [14/Nov/2025 14:41:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:42:33.896111847Z [err]  100.64.0.8 - - [14/Nov/2025 14:42:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:42:33.896122336Z [err]  100.64.0.8 - - [14/Nov/2025 14:42:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:42:33.896128509Z [err]  100.64.0.8 - - [14/Nov/2025 14:42:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:42:33.896133367Z [err]  100.64.0.8 - - [14/Nov/2025 14:42:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:42:33.896141899Z [err]  100.64.0.8 - - [14/Nov/2025 14:42:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:42:33.896146755Z [err]  100.64.0.8 - - [14/Nov/2025 14:42:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:43:33.909503741Z [err]  100.64.0.8 - - [14/Nov/2025 14:43:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:43:33.909510135Z [err]  100.64.0.8 - - [14/Nov/2025 14:43:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:43:33.909514764Z [err]  100.64.0.8 - - [14/Nov/2025 14:43:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:43:33.909518970Z [err]  100.64.0.8 - - [14/Nov/2025 14:43:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:43:33.909523065Z [err]  100.64.0.8 - - [14/Nov/2025 14:43:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:43:33.909527261Z [err]  100.64.0.8 - - [14/Nov/2025 14:43:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:44:33.915585750Z [err]  100.64.0.8 - - [14/Nov/2025 14:44:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:44:33.915590462Z [err]  100.64.0.8 - - [14/Nov/2025 14:44:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:44:33.915594354Z [err]  100.64.0.8 - - [14/Nov/2025 14:44:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:44:33.915598033Z [err]  100.64.0.8 - - [14/Nov/2025 14:44:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:44:33.915601983Z [err]  100.64.0.8 - - [14/Nov/2025 14:44:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:44:33.915606177Z [err]  100.64.0.8 - - [14/Nov/2025 14:44:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:45:34.006527751Z [err]  100.64.0.8 - - [14/Nov/2025 14:45:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:45:34.006542367Z [err]  100.64.0.8 - - [14/Nov/2025 14:45:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:45:34.006550074Z [err]  100.64.0.8 - - [14/Nov/2025 14:45:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:45:34.006557149Z [err]  100.64.0.8 - - [14/Nov/2025 14:45:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:45:34.006564233Z [err]  100.64.0.8 - - [14/Nov/2025 14:45:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:45:34.006573588Z [err]  100.64.0.8 - - [14/Nov/2025 14:45:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:46:33.829826617Z [err]  100.64.0.8 - - [14/Nov/2025 14:46:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:46:33.829834925Z [err]  100.64.0.8 - - [14/Nov/2025 14:46:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:46:33.829840903Z [err]  100.64.0.8 - - [14/Nov/2025 14:46:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:46:33.829846846Z [err]  100.64.0.8 - - [14/Nov/2025 14:46:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:46:33.829853258Z [err]  100.64.0.8 - - [14/Nov/2025 14:46:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:46:33.829858815Z [err]  100.64.0.8 - - [14/Nov/2025 14:46:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:47:33.847697063Z [err]  100.64.0.8 - - [14/Nov/2025 14:47:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:47:33.847705073Z [err]  100.64.0.8 - - [14/Nov/2025 14:47:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:47:33.847709682Z [err]  100.64.0.8 - - [14/Nov/2025 14:47:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:47:33.847713900Z [err]  100.64.0.8 - - [14/Nov/2025 14:47:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:47:33.847717855Z [err]  100.64.0.8 - - [14/Nov/2025 14:47:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:47:33.847721874Z [err]  100.64.0.8 - - [14/Nov/2025 14:47:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:48:33.861448922Z [err]  100.64.0.8 - - [14/Nov/2025 14:48:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:48:33.861458851Z [err]  100.64.0.8 - - [14/Nov/2025 14:48:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:48:33.861465979Z [err]  100.64.0.8 - - [14/Nov/2025 14:48:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:48:33.861473252Z [err]  100.64.0.8 - - [14/Nov/2025 14:48:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:48:33.861479870Z [err]  100.64.0.8 - - [14/Nov/2025 14:48:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:48:33.861486258Z [err]  100.64.0.8 - - [14/Nov/2025 14:48:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:49:33.869995209Z [err]  100.64.0.8 - - [14/Nov/2025 14:49:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:49:33.870005444Z [err]  100.64.0.8 - - [14/Nov/2025 14:49:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:49:33.870012114Z [err]  100.64.0.8 - - [14/Nov/2025 14:49:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:49:33.870018000Z [err]  100.64.0.8 - - [14/Nov/2025 14:49:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:49:33.870023383Z [err]  100.64.0.8 - - [14/Nov/2025 14:49:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:49:33.870028875Z [err]  100.64.0.8 - - [14/Nov/2025 14:49:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:50:33.870804112Z [err]  100.64.0.8 - - [14/Nov/2025 14:50:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:50:33.870809719Z [err]  100.64.0.8 - - [14/Nov/2025 14:50:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:50:33.870814503Z [err]  100.64.0.8 - - [14/Nov/2025 14:50:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:50:33.870818608Z [err]  100.64.0.8 - - [14/Nov/2025 14:50:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:50:33.870822340Z [err]  100.64.0.8 - - [14/Nov/2025 14:50:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:50:33.870826128Z [err]  100.64.0.8 - - [14/Nov/2025 14:50:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:51:34.001386675Z [err]  100.64.0.8 - - [14/Nov/2025 14:51:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:51:34.001390832Z [err]  100.64.0.8 - - [14/Nov/2025 14:51:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:51:34.001395584Z [err]  100.64.0.8 - - [14/Nov/2025 14:51:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:51:34.001400483Z [err]  100.64.0.8 - - [14/Nov/2025 14:51:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:51:34.001404913Z [err]  100.64.0.8 - - [14/Nov/2025 14:51:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:51:34.001409095Z [err]  100.64.0.8 - - [14/Nov/2025 14:51:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:52:34.134872800Z [err]  100.64.0.8 - - [14/Nov/2025 14:52:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:52:34.134880209Z [err]  100.64.0.8 - - [14/Nov/2025 14:52:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:52:34.134889643Z [err]  100.64.0.8 - - [14/Nov/2025 14:52:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:52:34.134906565Z [err]  100.64.0.8 - - [14/Nov/2025 14:52:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:52:34.134913661Z [err]  100.64.0.8 - - [14/Nov/2025 14:52:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:52:34.134921765Z [err]  100.64.0.8 - - [14/Nov/2025 14:52:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:53:33.972819616Z [err]  100.64.0.8 - - [14/Nov/2025 14:53:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:53:33.972826765Z [err]  100.64.0.8 - - [14/Nov/2025 14:53:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:53:33.972832060Z [err]  100.64.0.8 - - [14/Nov/2025 14:53:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:53:33.972836846Z [err]  100.64.0.8 - - [14/Nov/2025 14:53:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:53:33.972840725Z [err]  100.64.0.8 - - [14/Nov/2025 14:53:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:53:33.972845004Z [err]  100.64.0.8 - - [14/Nov/2025 14:53:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:54:34.023240993Z [err]  100.64.0.8 - - [14/Nov/2025 14:54:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:54:34.023248195Z [err]  100.64.0.8 - - [14/Nov/2025 14:54:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:54:34.023252203Z [err]  100.64.0.8 - - [14/Nov/2025 14:54:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:54:34.023256349Z [err]  100.64.0.8 - - [14/Nov/2025 14:54:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:54:34.023260602Z [err]  100.64.0.8 - - [14/Nov/2025 14:54:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:54:34.023264789Z [err]  100.64.0.8 - - [14/Nov/2025 14:54:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:55:34.029699444Z [err]  100.64.0.8 - - [14/Nov/2025 14:55:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:55:34.029712056Z [err]  100.64.0.8 - - [14/Nov/2025 14:55:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:55:34.029721422Z [err]  100.64.0.8 - - [14/Nov/2025 14:55:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:55:34.029730734Z [err]  100.64.0.8 - - [14/Nov/2025 14:55:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:55:34.029739772Z [err]  100.64.0.8 - - [14/Nov/2025 14:55:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:55:34.029748855Z [err]  100.64.0.8 - - [14/Nov/2025 14:55:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:56:34.039517980Z [err]  100.64.0.8 - - [14/Nov/2025 14:56:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:56:34.039527465Z [err]  100.64.0.8 - - [14/Nov/2025 14:56:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:56:34.039535740Z [err]  100.64.0.8 - - [14/Nov/2025 14:56:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:56:34.039542350Z [err]  100.64.0.8 - - [14/Nov/2025 14:56:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:56:34.039548453Z [err]  100.64.0.8 - - [14/Nov/2025 14:56:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:56:34.039555233Z [err]  100.64.0.8 - - [14/Nov/2025 14:56:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:57:34.047080983Z [err]  100.64.0.8 - - [14/Nov/2025 14:57:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:57:34.047085449Z [err]  100.64.0.8 - - [14/Nov/2025 14:57:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:57:34.047089594Z [err]  100.64.0.8 - - [14/Nov/2025 14:57:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:57:34.047093576Z [err]  100.64.0.8 - - [14/Nov/2025 14:57:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:57:34.047097785Z [err]  100.64.0.8 - - [14/Nov/2025 14:57:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:57:34.047102160Z [err]  100.64.0.8 - - [14/Nov/2025 14:57:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:58:33.958452025Z [err]  100.64.0.8 - - [14/Nov/2025 14:58:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:58:33.958457614Z [err]  100.64.0.8 - - [14/Nov/2025 14:58:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:58:33.958462030Z [err]  100.64.0.8 - - [14/Nov/2025 14:58:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:58:33.958466047Z [err]  100.64.0.8 - - [14/Nov/2025 14:58:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:58:33.958473249Z [err]  100.64.0.8 - - [14/Nov/2025 14:58:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:58:33.958477360Z [err]  100.64.0.8 - - [14/Nov/2025 14:58:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T14:59:33.972261806Z [err]  100.64.0.8 - - [14/Nov/2025 14:59:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T14:59:33.972270814Z [err]  100.64.0.8 - - [14/Nov/2025 14:59:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T14:59:33.972276436Z [err]  100.64.0.8 - - [14/Nov/2025 14:59:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T14:59:33.972282933Z [err]  100.64.0.8 - - [14/Nov/2025 14:59:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T14:59:33.972287553Z [err]  100.64.0.8 - - [14/Nov/2025 14:59:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T14:59:33.972292951Z [err]  100.64.0.8 - - [14/Nov/2025 14:59:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T15:00:33.999565434Z [err]  100.64.0.8 - - [14/Nov/2025 15:00:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T15:00:33.999572261Z [err]  100.64.0.8 - - [14/Nov/2025 15:00:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T15:00:33.999577545Z [err]  100.64.0.8 - - [14/Nov/2025 15:00:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T15:00:33.999582152Z [err]  100.64.0.8 - - [14/Nov/2025 15:00:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T15:00:33.999587193Z [err]  100.64.0.8 - - [14/Nov/2025 15:00:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T15:00:33.999606675Z [err]  100.64.0.8 - - [14/Nov/2025 15:00:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T15:01:34.004331585Z [err]  100.64.0.8 - - [14/Nov/2025 15:01:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T15:01:34.004339172Z [err]  100.64.0.8 - - [14/Nov/2025 15:01:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T15:01:34.004344271Z [err]  100.64.0.8 - - [14/Nov/2025 15:01:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T15:01:34.004348951Z [err]  100.64.0.8 - - [14/Nov/2025 15:01:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T15:01:34.004353834Z [err]  100.64.0.8 - - [14/Nov/2025 15:01:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T15:01:34.004358332Z [err]  100.64.0.8 - - [14/Nov/2025 15:01:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T15:02:34.019440242Z [err]  100.64.0.8 - - [14/Nov/2025 15:02:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T15:02:34.019444469Z [err]  100.64.0.8 - - [14/Nov/2025 15:02:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T15:02:34.019449215Z [err]  100.64.0.8 - - [14/Nov/2025 15:02:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T15:02:34.019453388Z [err]  100.64.0.8 - - [14/Nov/2025 15:02:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T15:02:34.019458041Z [err]  100.64.0.8 - - [14/Nov/2025 15:02:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T15:02:34.019462605Z [err]  100.64.0.8 - - [14/Nov/2025 15:02:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T15:03:34.027231244Z [err]  100.64.0.8 - - [14/Nov/2025 15:03:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T15:03:34.027237108Z [err]  100.64.0.8 - - [14/Nov/2025 15:03:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T15:03:34.027241613Z [err]  100.64.0.8 - - [14/Nov/2025 15:03:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T15:03:34.027247537Z [err]  100.64.0.8 - - [14/Nov/2025 15:03:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T15:03:34.027251792Z [err]  100.64.0.8 - - [14/Nov/2025 15:03:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T15:03:34.027255832Z [err]  100.64.0.8 - - [14/Nov/2025 15:03:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T15:04:34.050559078Z [err]  100.64.0.8 - - [14/Nov/2025 15:04:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T15:04:34.050569756Z [err]  100.64.0.8 - - [14/Nov/2025 15:04:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T15:04:34.050575195Z [err]  100.64.0.8 - - [14/Nov/2025 15:04:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T15:04:34.050580546Z [err]  100.64.0.8 - - [14/Nov/2025 15:04:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T15:04:34.050585809Z [err]  100.64.0.8 - - [14/Nov/2025 15:04:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T15:04:34.050590958Z [err]  100.64.0.8 - - [14/Nov/2025 15:04:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T15:05:33.906783870Z [err]  100.64.0.8 - - [14/Nov/2025 15:05:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T15:05:33.906791971Z [err]  100.64.0.8 - - [14/Nov/2025 15:05:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T15:05:33.906797900Z [err]  100.64.0.8 - - [14/Nov/2025 15:05:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T15:05:33.906803447Z [err]  100.64.0.8 - - [14/Nov/2025 15:05:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T15:05:33.906808960Z [err]  100.64.0.8 - - [14/Nov/2025 15:05:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T15:05:33.906813075Z [err]  100.64.0.8 - - [14/Nov/2025 15:05:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:31:08.124653267Z [err]  100.64.0.10 - - [14/Nov/2025 18:31:04] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T18:31:08.124661225Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:05] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:31:08.124667257Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:05] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:31:08.124674657Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:05] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:31:08.124680795Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:05] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:31:08.124686807Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:05] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:31:08.124692012Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:05] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:31:37.972678371Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:34] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:31:37.972685813Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:31:37.972691792Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:31:37.972697532Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:34] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:31:37.972704197Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:34] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:31:37.972710041Z [err]  100.64.0.3 - - [14/Nov/2025 18:31:34] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:32:07.981469282Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:04] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:32:07.981480302Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:04] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:32:07.981488025Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:04] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:32:07.981494487Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:04] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:32:07.981501259Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:04] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:32:07.981508719Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:05] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:32:37.987667252Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:32:37.987674198Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:34] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:32:37.987678893Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:32:37.987683499Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:34] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:32:37.987687733Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:34] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:32:37.987691764Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:35] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:32:57.987623907Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:54] "[33mGET / HTTP/1.1[0m" 404 -
+2025-11-14T18:32:57.987629648Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T18:32:57.987633802Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T18:32:58.024941734Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:58] "GET /admin HTTP/1.1" 200 -
+2025-11-14T18:32:59.122893752Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T18:32:59.423142639Z [err]  100.64.0.3 - - [14/Nov/2025 18:32:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T18:33:01.410010313Z [inf]  
+2025-11-14T18:33:01.410016261Z [inf]  [ADMIN] Daily cycle manually triggered from 100.64.0.3 at 2025-11-14T18:33:01.285764
+2025-11-14T18:33:01.410024359Z [inf]  [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-14T18:33:01.410029769Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-14T18:33:01.410034895Z [inf]  [CACHE] Cleared data cache at start of cycle 2025-11-14T18:33:01.354190
+2025-11-14T18:33:02.433872979Z [inf]  [INFO] Opinion.trade API: Retrieved 16 active markets
+2025-11-14T18:33:02.433882544Z [inf]  [INFO] Fetched 16 events from Opinion.trade
+2025-11-14T18:33:02.433888312Z [inf]  [INFO] Events grouped into 2 categories: {'Crypto': 5, 'Other': 11}
+2025-11-14T18:33:02.433896819Z [inf]  
+2025-11-14T18:33:02.433902226Z [inf]  [INFO] Processing cycle for ChatGPT
+2025-11-14T18:33:02.433908599Z [inf]  [INFO] ChatGPT - Analyzing 2 categories
+2025-11-14T18:33:03.176172828Z [inf]  [CACHE MISS] Fetched & cached technical data for BTC
+2025-11-14T18:33:03.441794940Z [inf]  [CACHE MISS] Fetched & cached news data for BTC
+2025-11-14T18:33:03.441800846Z [inf]  [CACHE MISS] Fetched & cached volatility data for BTC-USD
+2025-11-14T18:33:04.707737075Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:04] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:33:04.707743883Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:04] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:33:04.711114801Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:04] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:33:04.713459589Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:04] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:33:04.715167855Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:04] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:33:05.003338168Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:05] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:33:05.370482371Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-14T18:33:05.560265055Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-14T18:33:05.618340274Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-14T18:33:06.912864828Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:06.912872247Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:06.912876709Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:08.214216455Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:08.214225874Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:08.214231737Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:09.586487634Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:09.586494264Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:09.586499012Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:10.991348334Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:10.991355383Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:10.991360449Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:12.420335947Z [inf]  [INFO] ChatGPT - No opportunities found
+2025-11-14T18:33:12.420346640Z [inf]  [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:33:12.420352708Z [inf]  
+2025-11-14T18:33:12.420358124Z [inf]  [INFO] Processing cycle for Gemini
+2025-11-14T18:33:12.420368306Z [inf]  [INFO] Gemini - Analyzing 2 categories
+2025-11-14T18:33:12.581153945Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T18:33:12.581161665Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T18:33:12.581167390Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T18:33:12.581171805Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:12.581176985Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:12.581181616Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:12.581189600Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:12.581193748Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:12.581197824Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:12.582165419Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:12.582170357Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:12.582174400Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:12.583936945Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:12.583949426Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:12.583955381Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:12.585831353Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:12.585836375Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:12.585840629Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:12.585844822Z [inf]  [INFO] Gemini - No opportunities found
+2025-11-14T18:33:12.585848647Z [inf]  [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:33:12.585852713Z [inf]  
+2025-11-14T18:33:12.585856764Z [inf]  [INFO] Processing cycle for Qwen
+2025-11-14T18:33:12.585861170Z [inf]  [INFO] Qwen - Analyzing 2 categories
+2025-11-14T18:33:12.860418419Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T18:33:12.860445224Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T18:33:12.860451181Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T18:33:13.893982226Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:13.893992656Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:13.893999269Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:14.074806862Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:14.074812805Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:14.074817255Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:14.416784055Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:14.416789066Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:14.416794882Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:14.442978267Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:14.442989526Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:14.442996158Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:14.631552157Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:14.631558104Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:14.631561788Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:33:14.808645315Z [inf]  [INFO] Qwen - No opportunities found
+2025-11-14T18:33:14.808666958Z [inf]  [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:33:14.808671379Z [inf]  
+2025-11-14T18:33:14.808680288Z [inf]  [INFO] Processing cycle for Deepseek
+2025-11-14T18:33:14.808685267Z [inf]  [INFO] Deepseek - Analyzing 2 categories
+2025-11-14T18:33:14.997904618Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T18:33:14.997908670Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T18:33:14.997912406Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T18:33:34.996342296Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:33:34.996353227Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:34] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:33:34.996361911Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:33:34.996369784Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:34] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:33:34.996383346Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:34] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:33:35.195133372Z [err]  100.64.0.3 - - [14/Nov/2025 18:33:35] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:33:55.194525975Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:33:55.194533774Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:33:55.194538381Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:34:04.709074399Z [err]  100.64.0.3 - - [14/Nov/2025 18:34:04] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:34:04.709081605Z [err]  100.64.0.3 - - [14/Nov/2025 18:34:04] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:34:04.709085927Z [err]  100.64.0.3 - - [14/Nov/2025 18:34:04] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:34:04.709090406Z [err]  100.64.0.3 - - [14/Nov/2025 18:34:04] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:34:04.710453059Z [err]  100.64.0.3 - - [14/Nov/2025 18:34:04] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:34:05.021876331Z [err]  100.64.0.3 - - [14/Nov/2025 18:34:05] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:34:35.020676430Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:34:35.020681610Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:34:35.020685402Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:35:15.022460117Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:35:15.022470589Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:35:15.022478663Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:35:35.023102152Z [err]  100.64.0.5 - - [14/Nov/2025 18:35:33] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:35:35.023112275Z [err]  100.64.0.5 - - [14/Nov/2025 18:35:33] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:35:35.023118381Z [err]  100.64.0.5 - - [14/Nov/2025 18:35:33] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:35:35.023123785Z [err]  100.64.0.5 - - [14/Nov/2025 18:35:33] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:35:35.023128717Z [err]  100.64.0.5 - - [14/Nov/2025 18:35:33] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:35:35.023133716Z [err]  100.64.0.5 - - [14/Nov/2025 18:35:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:35:55.023101210Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:35:55.023110042Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:35:55.023119841Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:36:35.028921009Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:36:35.028942771Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:36:35.028949678Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:36:35.028956163Z [err]  100.64.0.5 - - [14/Nov/2025 18:36:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:36:35.028962178Z [err]  100.64.0.5 - - [14/Nov/2025 18:36:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:36:35.028968912Z [err]  100.64.0.5 - - [14/Nov/2025 18:36:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:36:35.028974749Z [err]  100.64.0.5 - - [14/Nov/2025 18:36:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:36:35.028980716Z [err]  100.64.0.5 - - [14/Nov/2025 18:36:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:36:35.028986910Z [err]  100.64.0.5 - - [14/Nov/2025 18:36:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:37:05.033740561Z [inf]  [INFO] Deepseek - Found 1 total opportunities across all categories
+2025-11-14T18:37:05.033749744Z [inf]  [INFO] Deepseek - Will execute top 1 opportunities (max_concurrent_positions: 2)
+2025-11-14T18:37:06.004178790Z [inf]  [INFO] Grok - Analyzing 2 categories
+2025-11-14T18:37:06.004839893Z [inf]  [BET FAILED] Deepseek - Opinion.trade error: Missing required fields
+2025-11-14T18:37:06.004845572Z [inf]  [EXECUTION FAILED] Deepseek - Execution failed: Missing required fields
+2025-11-14T18:37:06.004850039Z [inf]  [INFO] Deepseek - Executed bet 1/1
+2025-11-14T18:37:06.004854874Z [inf]  [INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:37:06.004859720Z [inf]  
+2025-11-14T18:37:06.004868189Z [inf]  [INFO] Processing cycle for Grok
+2025-11-14T18:37:06.205177097Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T18:37:06.205185269Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T18:37:06.205189708Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T18:37:07.584780201Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:37:07.584786278Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:37:07.584791252Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:37:08.979941143Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:37:08.979947781Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:37:08.979951890Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:37:10.376325116Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:37:10.376331776Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:37:10.376337503Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:37:12.004587934Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:37:12.004592225Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:37:12.004597459Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:37:13.413809886Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:37:13.413819281Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:37:13.413829253Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:37:14.991660195Z [inf]  [INFO] Grok - No opportunities found
+2025-11-14T18:37:14.991667386Z [inf]  [INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:37:14.991676594Z [inf]  [ADMIN] Daily cycle completed successfully
+2025-11-14T18:37:14.991684095Z [err]  100.64.0.3 - - [14/Nov/2025 18:37:14] "POST /admin/trigger-cycle HTTP/1.1" 200 -
+2025-11-14T18:37:34.844211782Z [err]  100.64.0.5 - - [14/Nov/2025 18:37:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:37:34.844225142Z [err]  100.64.0.5 - - [14/Nov/2025 18:37:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:37:34.844247785Z [err]  100.64.0.5 - - [14/Nov/2025 18:37:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:37:34.844260249Z [err]  100.64.0.5 - - [14/Nov/2025 18:37:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:37:34.844265777Z [err]  100.64.0.5 - - [14/Nov/2025 18:37:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:37:34.844271527Z [err]  100.64.0.5 - - [14/Nov/2025 18:37:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:38:34.848117488Z [err]  100.64.0.5 - - [14/Nov/2025 18:38:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:38:34.848124299Z [err]  100.64.0.5 - - [14/Nov/2025 18:38:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:38:34.848133581Z [err]  100.64.0.5 - - [14/Nov/2025 18:38:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:38:34.848140750Z [err]  100.64.0.5 - - [14/Nov/2025 18:38:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:38:34.848148195Z [err]  100.64.0.5 - - [14/Nov/2025 18:38:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:38:34.848154919Z [err]  100.64.0.5 - - [14/Nov/2025 18:38:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:39:34.860096484Z [err]  100.64.0.5 - - [14/Nov/2025 18:39:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:39:34.860105289Z [err]  100.64.0.5 - - [14/Nov/2025 18:39:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:39:34.860112321Z [err]  100.64.0.5 - - [14/Nov/2025 18:39:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:39:34.860119642Z [err]  100.64.0.5 - - [14/Nov/2025 18:39:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:39:34.860125988Z [err]  100.64.0.5 - - [14/Nov/2025 18:39:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:39:34.860132358Z [err]  100.64.0.5 - - [14/Nov/2025 18:39:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:40:04.861566754Z [inf]  [SECURITY] Failed admin login attempt from 100.64.0.9
+2025-11-14T18:40:04.861572942Z [err]  100.64.0.9 - - [14/Nov/2025 18:40:02] "[31m[1mPOST /admin/trigger-cycle HTTP/1.1[0m" 401 -
+2025-11-14T18:40:09.412370214Z [inf]  
+2025-11-14T18:40:09.412376170Z [inf]  [ADMIN] Daily cycle manually triggered from 100.64.0.9 at 2025-11-14T18:40:09.313276
+2025-11-14T18:40:09.412384255Z [inf]  [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-14T18:40:09.412390592Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-14T18:40:09.412396182Z [inf]  [CACHE] Cleared data cache at start of cycle 2025-11-14T18:40:09.389330
+2025-11-14T18:40:10.447670954Z [inf]  [INFO] Opinion.trade API: Retrieved 16 active markets
+2025-11-14T18:40:10.447675310Z [inf]  [INFO] Fetched 16 events from Opinion.trade
+2025-11-14T18:40:10.447680686Z [inf]  [INFO] Events grouped into 2 categories: {'Crypto': 5, 'Other': 11}
+2025-11-14T18:40:10.447685429Z [inf]  
+2025-11-14T18:40:10.447690521Z [inf]  [INFO] Processing cycle for ChatGPT
+2025-11-14T18:40:10.447694882Z [inf]  [INFO] ChatGPT - Analyzing 2 categories
+2025-11-14T18:40:11.071314844Z [inf]  [CACHE MISS] Fetched & cached technical data for BTC
+2025-11-14T18:40:11.411114809Z [inf]  [CACHE MISS] Fetched & cached news data for BTC
+2025-11-14T18:40:11.411184573Z [inf]  [CACHE MISS] Fetched & cached volatility data for BTC-USD
+2025-11-14T18:40:13.539623350Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-14T18:40:13.721980891Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-14T18:40:13.782834580Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-14T18:40:15.102048448Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:15.102060280Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:15.102068712Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:16.524123138Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:16.524129111Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:16.524133231Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:17.864218669Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:17.864225216Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:17.864233521Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:19.179159663Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:19.179165284Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:19.179174520Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:20.615749703Z [inf]  [INFO] ChatGPT - No opportunities found
+2025-11-14T18:40:20.615758738Z [inf]  [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:40:20.615767202Z [inf]  
+2025-11-14T18:40:20.615773150Z [inf]  [INFO] Processing cycle for Gemini
+2025-11-14T18:40:20.615779494Z [inf]  [INFO] Gemini - Analyzing 2 categories
+2025-11-14T18:40:20.802154229Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T18:40:20.802161696Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T18:40:20.802167691Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T18:40:20.803249862Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:20.803256885Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:20.803261450Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:20.804859255Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:20.804864671Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:20.804868825Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:20.806265496Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:20.806273055Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:20.806278192Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:20.808119515Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:20.808125521Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:20.808130557Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:20.810004936Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:20.810012283Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:20.810017400Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:20.810022186Z [inf]  [INFO] Gemini - No opportunities found
+2025-11-14T18:40:20.810028312Z [inf]  [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:40:20.810034460Z [inf]  
+2025-11-14T18:40:20.810039238Z [inf]  [INFO] Processing cycle for Qwen
+2025-11-14T18:40:20.810043513Z [inf]  [INFO] Qwen - Analyzing 2 categories
+2025-11-14T18:40:21.000493784Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T18:40:21.000504203Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T18:40:21.000511600Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T18:40:21.735722865Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:21.735730558Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:21.735737763Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:21.915545358Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:21.915556548Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:21.915564958Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:22.096361424Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:22.096385921Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:22.096394131Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:22.442798261Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:22.442804258Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:22.442810491Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:22.455225425Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:40:22.455232337Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:40:22.455238781Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:40:22.634673723Z [inf]  [INFO] Qwen - No opportunities found
+2025-11-14T18:40:22.634682778Z [inf]  [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:40:22.634688896Z [inf]  
+2025-11-14T18:40:22.634696368Z [inf]  [INFO] Processing cycle for Deepseek
+2025-11-14T18:40:22.634701682Z [inf]  [INFO] Deepseek - Analyzing 2 categories
+2025-11-14T18:40:22.823424335Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T18:40:22.823430959Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T18:40:22.823437248Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T18:40:32.762045924Z [err]  100.64.0.5 - - [14/Nov/2025 18:40:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:40:32.762052958Z [err]  100.64.0.5 - - [14/Nov/2025 18:40:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:40:32.762057897Z [err]  100.64.0.5 - - [14/Nov/2025 18:40:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:40:32.762064663Z [err]  100.64.0.5 - - [14/Nov/2025 18:40:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:40:32.762080819Z [err]  100.64.0.5 - - [14/Nov/2025 18:40:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:40:33.083721508Z [err]  100.64.0.5 - - [14/Nov/2025 18:40:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:41:13.088816215Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:41:13.088823062Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:41:13.088827446Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:41:33.088281976Z [err]  100.64.0.5 - - [14/Nov/2025 18:41:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:41:33.088291153Z [err]  100.64.0.5 - - [14/Nov/2025 18:41:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:41:33.088297511Z [err]  100.64.0.5 - - [14/Nov/2025 18:41:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:41:33.088302274Z [err]  100.64.0.5 - - [14/Nov/2025 18:41:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:41:33.088306974Z [err]  100.64.0.5 - - [14/Nov/2025 18:41:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:41:33.106821578Z [err]  100.64.0.5 - - [14/Nov/2025 18:41:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:41:37.950830100Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:41:37.950844804Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:41:37.950854204Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:42:17.960128315Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:42:17.960135074Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:42:17.960156381Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:42:37.961342335Z [err]  100.64.0.5 - - [14/Nov/2025 18:42:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:42:37.961350105Z [err]  100.64.0.5 - - [14/Nov/2025 18:42:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:42:37.961355001Z [err]  100.64.0.5 - - [14/Nov/2025 18:42:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:42:37.961359867Z [err]  100.64.0.5 - - [14/Nov/2025 18:42:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:42:37.961364577Z [err]  100.64.0.5 - - [14/Nov/2025 18:42:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:42:37.961369213Z [err]  100.64.0.5 - - [14/Nov/2025 18:42:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:43:07.966016714Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:43:07.966028264Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:43:07.966035973Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:43:37.967919505Z [err]  100.64.0.5 - - [14/Nov/2025 18:43:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:43:37.967930014Z [err]  100.64.0.5 - - [14/Nov/2025 18:43:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:43:37.967937264Z [err]  100.64.0.5 - - [14/Nov/2025 18:43:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:43:37.967943393Z [err]  100.64.0.5 - - [14/Nov/2025 18:43:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:43:37.967950421Z [err]  100.64.0.5 - - [14/Nov/2025 18:43:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:43:37.967956855Z [err]  100.64.0.5 - - [14/Nov/2025 18:43:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T18:43:37.967963040Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:43:37.967968612Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:43:37.967974029Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:44:17.970938930Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:44:17.970943048Z [inf]  [INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:44:17.970947504Z [inf]  [INFO] Deepseek - Found 1 total opportunities across all categories
+2025-11-14T18:44:17.970951334Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:44:17.970954142Z [inf]  
+2025-11-14T18:44:17.970958176Z [inf]  [INFO] Deepseek - Will execute top 1 opportunities (max_concurrent_positions: 2)
+2025-11-14T18:44:17.970962399Z [inf]  [INFO] Processing cycle for Grok
+2025-11-14T18:44:17.970965538Z [inf]  [BET FAILED] Deepseek - Opinion.trade error: Missing required fields
+2025-11-14T18:44:17.970970822Z [inf]  [INFO] Grok - Analyzing 2 categories
+2025-11-14T18:44:17.970974227Z [inf]  [EXECUTION FAILED] Deepseek - Execution failed: Missing required fields
+2025-11-14T18:44:17.970979125Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T18:44:17.970980984Z [inf]  [INFO] Deepseek - Executed bet 1/1
+2025-11-14T18:44:17.970986531Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T18:44:17.970992308Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T18:44:17.970997898Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:44:17.971002380Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:44:17.971006704Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:44:17.971010888Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:44:19.066643480Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:44:19.066654580Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:44:19.066662187Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:44:20.564298765Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:44:20.564305057Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:44:20.564309306Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:44:22.043667509Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T18:44:22.043676717Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T18:44:22.043681257Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T18:44:23.572443458Z [inf]  [INFO] Grok - No opportunities found
+2025-11-14T18:44:23.572452047Z [inf]  [INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T18:44:23.580098641Z [inf]  [ADMIN] Daily cycle completed successfully
+2025-11-14T18:44:23.582809501Z [err]  100.64.0.9 - - [14/Nov/2025 18:44:23] "POST /admin/trigger-cycle HTTP/1.1" 200 -
+2025-11-14T18:44:32.912746086Z [err]  100.64.0.5 - - [14/Nov/2025 18:44:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T18:44:32.912755464Z [err]  100.64.0.5 - - [14/Nov/2025 18:44:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T18:44:32.912762978Z [err]  100.64.0.5 - - [14/Nov/2025 18:44:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T18:44:32.912770922Z [err]  100.64.0.5 - - [14/Nov/2025 18:44:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T18:44:32.912780634Z [err]  100.64.0.5 - - [14/Nov/2025 18:44:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T18:44:33.031068211Z [err]  100.64.0.5 - - [14/Nov/2025 18:44:33] "GET /api/market-header HTTP/1.1" 200 -

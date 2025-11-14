@@ -99,18 +99,42 @@ class OpinionTradeAPI:
                 events = []
                 for market in markets:
                     try:
-                        # Derive category from market title (simple keyword matching)
+                        # Derive category from market title (comprehensive keyword matching)
                         title_lower = market.market_title.lower()
-                        if 'bitcoin' in title_lower or 'btc' in title_lower:
+                        
+                        # Crypto currencies
+                        if any(keyword in title_lower for keyword in ['bitcoin', 'btc', 'ethereum', 'eth', 'crypto', 'cryptocurrency']):
                             category = 'Crypto'
-                        elif 'ethereum' in title_lower or 'eth' in title_lower:
-                            category = 'Crypto'
-                        elif 'stock' in title_lower or 'nasdaq' in title_lower or 's&p' in title_lower:
+                        
+                        # Interest Rates & Monetary Policy
+                        elif any(keyword in title_lower for keyword in ['fomc', 'ecb', 'boj', 'fed', 'federal reserve', 'interest rate', 'rate decision', 'rates decision', 'monetary policy', 'central bank']):
+                            category = 'Rates'
+                        
+                        # Commodities
+                        elif any(keyword in title_lower for keyword in ['gold', 'comex', 'silver', 'oil', 'commodity', 'commodities', 'wti', 'brent']):
+                            category = 'Commodities'
+                        
+                        # Inflation & CPI
+                        elif any(keyword in title_lower for keyword in ['inflation', 'cpi', 'consumer price', 'pce', 'deflation']):
+                            category = 'Inflation'
+                        
+                        # Employment & Jobs
+                        elif any(keyword in title_lower for keyword in ['unemployment', 'jobs', 'payroll', 'employment', 'jobless', 'labor market']):
+                            category = 'Employment'
+                        
+                        # Stock Markets & Finance
+                        elif any(keyword in title_lower for keyword in ['stock', 'nasdaq', 's&p', 'dow', 'equity', 'market', 'shares']):
                             category = 'Finance'
-                        elif 'election' in title_lower or 'vote' in title_lower or 'president' in title_lower:
+                        
+                        # Politics & Elections
+                        elif any(keyword in title_lower for keyword in ['election', 'vote', 'president', 'congress', 'senate', 'political']):
                             category = 'Politics'
-                        elif 'sports' in title_lower or 'nfl' in title_lower or 'nba' in title_lower:
+                        
+                        # Sports (filtered out later)
+                        elif any(keyword in title_lower for keyword in ['sports', 'nfl', 'nba', 'mlb', 'nhl', 'soccer', 'football', 'basketball']):
                             category = 'Sports'
+                        
+                        # Fallback
                         else:
                             category = 'Other'
                         

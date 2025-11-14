@@ -1,0 +1,189 @@
+2025-11-14T19:05:33.318591886Z [err]  100.64.0.7 - - [14/Nov/2025 19:05:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:05:33.318598516Z [err]  100.64.0.7 - - [14/Nov/2025 19:05:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:05:33.318612689Z [err]  100.64.0.7 - - [14/Nov/2025 19:05:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:05:33.318617650Z [err]  100.64.0.7 - - [14/Nov/2025 19:05:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:05:33.318621645Z [err]  100.64.0.7 - - [14/Nov/2025 19:05:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:05:33.318625722Z [err]  100.64.0.7 - - [14/Nov/2025 19:05:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T19:06:33.322187436Z [err]  100.64.0.7 - - [14/Nov/2025 19:06:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:06:33.322201657Z [err]  100.64.0.7 - - [14/Nov/2025 19:06:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:06:33.322210479Z [err]  100.64.0.7 - - [14/Nov/2025 19:06:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:06:33.322216982Z [err]  100.64.0.7 - - [14/Nov/2025 19:06:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:06:33.322222712Z [err]  100.64.0.7 - - [14/Nov/2025 19:06:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:06:33.349053279Z [err]  100.64.0.7 - - [14/Nov/2025 19:06:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T19:07:33.357258380Z [err]  100.64.0.7 - - [14/Nov/2025 19:07:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:07:33.357265755Z [err]  100.64.0.7 - - [14/Nov/2025 19:07:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:07:33.357271300Z [err]  100.64.0.7 - - [14/Nov/2025 19:07:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:07:33.357275749Z [err]  100.64.0.7 - - [14/Nov/2025 19:07:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:07:33.357281161Z [err]  100.64.0.7 - - [14/Nov/2025 19:07:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:07:33.357285573Z [err]  100.64.0.7 - - [14/Nov/2025 19:07:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T19:08:23.361431618Z [inf]  
+2025-11-14T19:08:23.361440740Z [inf]  [ADMIN] Daily cycle manually triggered from 100.64.0.6 at 2025-11-14T19:08:21.367986
+2025-11-14T19:08:23.361447361Z [inf]  [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-14T19:08:23.361453920Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-14T19:08:23.361460722Z [inf]  [CACHE] Cleared data cache at start of cycle 2025-11-14T19:08:21.434818
+2025-11-14T19:08:23.361467333Z [inf]  [INFO] Opinion.trade API: Retrieved 16 active markets
+2025-11-14T19:08:23.361473962Z [inf]  [INFO] Fetched 16 events from Opinion.trade
+2025-11-14T19:08:23.361483420Z [inf]  [INFO] Events grouped into 2 categories: {'Crypto': 5, 'Other': 11}
+2025-11-14T19:08:23.361490503Z [inf]  
+2025-11-14T19:08:23.361496302Z [inf]  [INFO] Processing cycle for ChatGPT
+2025-11-14T19:08:23.361501774Z [inf]  [INFO] ChatGPT - Analyzing 2 categories
+2025-11-14T19:08:23.361507028Z [inf]  [CACHE MISS] Fetched & cached technical data for BTC
+2025-11-14T19:08:23.417937995Z [inf]  [CACHE MISS] Fetched & cached news data for BTC
+2025-11-14T19:08:23.480941039Z [inf]  [CACHE MISS] Fetched & cached volatility data for BTC-USD
+2025-11-14T19:08:25.144515680Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-14T19:08:25.779952733Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-14T19:08:25.839822115Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-14T19:08:27.072678156Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:27.072684230Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:27.072689007Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:28.280794640Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:28.280801052Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:28.280805492Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:29.615807216Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:29.615813571Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:29.615818566Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:31.083106993Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:31.083111951Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:31.083116630Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:32.487195073Z [inf]  [INFO] ChatGPT - No opportunities found
+2025-11-14T19:08:32.487201819Z [inf]  [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T19:08:32.487207395Z [inf]  
+2025-11-14T19:08:32.487211854Z [inf]  [INFO] Processing cycle for Gemini
+2025-11-14T19:08:32.487216253Z [inf]  [INFO] Gemini - Analyzing 2 categories
+2025-11-14T19:08:32.677063417Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T19:08:32.677070119Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T19:08:32.677074741Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T19:08:32.679316477Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:32.679322505Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:32.679328548Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:32.681241743Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:32.681247267Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:32.681251644Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:32.681255693Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:32.681259102Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:32.681262647Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:32.683050942Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:32.683057672Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:32.683072766Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:32.683078617Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:32.683084637Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:32.683090078Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:32.684526503Z [inf]  [INFO] Gemini - No opportunities found
+2025-11-14T19:08:32.684532457Z [inf]  [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T19:08:32.684537940Z [inf]  
+2025-11-14T19:08:32.684543613Z [inf]  [INFO] Processing cycle for Qwen
+2025-11-14T19:08:32.684549211Z [inf]  [INFO] Qwen - Analyzing 2 categories
+2025-11-14T19:08:32.849882248Z [err]  100.64.0.7 - - [14/Nov/2025 19:08:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:08:32.852130536Z [err]  100.64.0.7 - - [14/Nov/2025 19:08:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:08:32.853735696Z [err]  100.64.0.7 - - [14/Nov/2025 19:08:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:08:32.861073732Z [err]  100.64.0.7 - - [14/Nov/2025 19:08:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:08:32.861079608Z [err]  100.64.0.7 - - [14/Nov/2025 19:08:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:08:32.876673538Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T19:08:32.876682342Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T19:08:32.876687898Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T19:08:33.159231503Z [err]  100.64.0.7 - - [14/Nov/2025 19:08:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T19:08:33.730223043Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:33.730230002Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:33.730235684Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:33.913383235Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:33.913389586Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:33.913394991Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:34.133069878Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:34.133075440Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:34.133086116Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:34.279317104Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:34.279323501Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:34.279328608Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:34.464470284Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:08:34.464476941Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:08:34.464481657Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:08:34.815504048Z [inf]  [INFO] Qwen - No opportunities found
+2025-11-14T19:08:34.815510666Z [inf]  [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T19:08:34.815515246Z [inf]  
+2025-11-14T19:08:34.815519321Z [inf]  [INFO] Processing cycle for Deepseek
+2025-11-14T19:08:34.815523958Z [inf]  [INFO] Deepseek - Analyzing 2 categories
+2025-11-14T19:08:35.135023961Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T19:08:35.135029391Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T19:08:35.135034514Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T19:09:04.938902091Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:01] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:09:04.938909010Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:01] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:09:04.938914360Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:01] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:09:04.938920493Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:01] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:09:04.938925613Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:01] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:09:04.938930929Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:01] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T19:09:04.938938366Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:04] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:09:04.938944571Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:04] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:09:04.938950636Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:04] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:09:04.938956306Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:04] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:09:04.938962116Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:04] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:09:05.150246117Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:05] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T19:09:09.869587182Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:09:09.869593195Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:09:09.869597405Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:09:39.868371300Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:09:39.868378041Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:09:39.868382528Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:34] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:09:39.868386801Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:34] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:09:39.868390348Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:34] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:09:39.868395322Z [err]  100.64.0.7 - - [14/Nov/2025 19:09:35] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T19:09:45.835288493Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:09:45.835294330Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:09:45.835298130Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:10:25.837649815Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:10:25.837661033Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:10:25.837666581Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:10:32.837449235Z [err]  100.64.0.7 - - [14/Nov/2025 19:10:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:10:32.837455665Z [err]  100.64.0.7 - - [14/Nov/2025 19:10:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:10:32.837460792Z [err]  100.64.0.7 - - [14/Nov/2025 19:10:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:10:32.846927923Z [err]  100.64.0.7 - - [14/Nov/2025 19:10:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:10:32.846934671Z [err]  100.64.0.7 - - [14/Nov/2025 19:10:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:10:33.405122114Z [err]  100.64.0.7 - - [14/Nov/2025 19:10:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T19:11:03.222784525Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:11:03.222793333Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:11:03.222799549Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:11:33.223613706Z [err]  100.64.0.7 - - [14/Nov/2025 19:11:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:11:33.223622278Z [err]  100.64.0.7 - - [14/Nov/2025 19:11:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:11:33.223627508Z [err]  100.64.0.7 - - [14/Nov/2025 19:11:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:11:33.223632506Z [err]  100.64.0.7 - - [14/Nov/2025 19:11:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:11:33.223637308Z [err]  100.64.0.7 - - [14/Nov/2025 19:11:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:11:33.223642685Z [err]  100.64.0.7 - - [14/Nov/2025 19:11:33] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T19:11:53.220491339Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:11:53.220498916Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:11:53.220505646Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:12:23.222579789Z [inf]  [INFO] Deepseek - Found 1 total opportunities across all categories
+2025-11-14T19:12:23.222586565Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-14T19:12:23.222587079Z [inf]  [INFO] Deepseek - Will execute top 1 opportunities (max_concurrent_positions: 2)
+2025-11-14T19:12:23.222592616Z [inf]  [BET FAILED] Deepseek - Opinion.trade error: Missing required fields
+2025-11-14T19:12:23.222596649Z [inf]  [EXECUTION FAILED] Deepseek - Execution failed: Missing required fields
+2025-11-14T19:12:23.222600767Z [inf]  [INFO] Deepseek - Executed bet 1/1
+2025-11-14T19:12:23.222605265Z [inf]  [INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T19:12:23.222610403Z [inf]  
+2025-11-14T19:12:23.222615355Z [inf]  [INFO] Processing cycle for Grok
+2025-11-14T19:12:23.222619485Z [inf]  [INFO] Grok - Analyzing 2 categories
+2025-11-14T19:12:23.222626026Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-14T19:12:23.222630350Z [inf]  [CACHE HIT] News data for BTC
+2025-11-14T19:12:23.736338772Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:12:23.736345622Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:12:23.736352793Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:12:25.164965561Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:12:25.164972646Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:12:25.164979611Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:12:26.674867018Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:12:26.674873790Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:12:26.674886353Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:12:27.925973478Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:12:27.925988777Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:12:27.925994940Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:12:29.274478135Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T19:12:29.274484046Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T19:12:29.274488878Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T19:12:30.721303904Z [inf]  [INFO] Grok - No opportunities found
+2025-11-14T19:12:30.721313064Z [inf]  [INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-14T19:12:30.729416420Z [inf]  [ADMIN] Daily cycle completed successfully
+2025-11-14T19:12:30.732830764Z [err]  100.64.0.6 - - [14/Nov/2025 19:12:30] "POST /admin/trigger-cycle HTTP/1.1" 200 -
+2025-11-14T19:12:32.839253074Z [err]  100.64.0.7 - - [14/Nov/2025 19:12:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T19:12:32.839259479Z [err]  100.64.0.7 - - [14/Nov/2025 19:12:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T19:12:32.840857622Z [err]  100.64.0.7 - - [14/Nov/2025 19:12:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T19:12:32.847922432Z [err]  100.64.0.7 - - [14/Nov/2025 19:12:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T19:12:32.847934038Z [err]  100.64.0.7 - - [14/Nov/2025 19:12:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T19:12:33.151717897Z [err]  100.64.0.7 - - [14/Nov/2025 19:12:33] "GET /api/market-header HTTP/1.1" 200 -
