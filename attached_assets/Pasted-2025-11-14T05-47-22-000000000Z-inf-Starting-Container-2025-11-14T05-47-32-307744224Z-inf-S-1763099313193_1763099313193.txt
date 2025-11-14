@@ -1,0 +1,55 @@
+2025-11-14T05:47:22.000000000Z [inf]  Starting Container
+2025-11-14T05:47:32.307744224Z [inf]   * Serving Flask app 'api'
+2025-11-14T05:47:32.307750952Z [inf]   * Debug mode: on
+2025-11-14T05:47:32.307757670Z [err]  [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-11-14T05:47:32.307764266Z [err]   * Running on all addresses (0.0.0.0)
+2025-11-14T05:47:32.307769886Z [err]   * Running on http://127.0.0.1:8000
+2025-11-14T05:47:32.307814772Z [err]   * Running on http://10.154.214.239:8000
+2025-11-14T05:47:32.307827829Z [err]  [33mPress CTRL+C to quit[0m
+2025-11-14T05:47:32.307834402Z [err]   * Restarting with watchdog (inotify)
+2025-11-14T05:47:39.627743357Z [err]   * Debugger is active!
+2025-11-14T05:47:39.627750153Z [err]   * Debugger PIN: 102-994-142
+2025-11-14T05:47:40.252522719Z [err]  100.64.0.3 - - [14/Nov/2025 05:47:39] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T05:47:40.252530585Z [err]  100.64.0.2 - - [14/Nov/2025 05:47:39] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T05:47:40.252537238Z [err]  100.64.0.2 - - [14/Nov/2025 05:47:39] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T05:47:40.252563451Z [err]  100.64.0.2 - - [14/Nov/2025 05:47:39] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T05:47:40.252617829Z [err]  100.64.0.2 - - [14/Nov/2025 05:47:39] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T05:47:40.252624305Z [err]  100.64.0.2 - - [14/Nov/2025 05:47:39] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T05:47:40.559363535Z [err]  100.64.0.2 - - [14/Nov/2025 05:47:40] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T05:47:40.782926885Z [err]  100.64.0.4 - - [14/Nov/2025 05:47:40] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T05:47:41.284743088Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:40] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T05:47:41.284754809Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:40] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T05:47:41.284762136Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:41] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T05:47:41.284812626Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:40] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T05:47:41.284817626Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:40] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T05:47:41.284822072Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:40] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T05:47:51.270223222Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:51] "GET /admin HTTP/1.1" 200 -
+2025-11-14T05:47:53.227144182Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T05:47:53.516496082Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T05:47:56.265216681Z [inf]  
+2025-11-14T05:47:56.265221266Z [inf]  [ADMIN] Daily cycle manually triggered from 100.64.0.5 at 2025-11-14T05:47:56.124968
+2025-11-14T05:47:56.265225095Z [inf]  [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-14T05:47:56.265229074Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-14T05:47:56.384629174Z [inf]  [CACHE] Cleared data cache at start of cycle 2025-11-14T05:47:56.382195
+2025-11-14T05:47:57.434143599Z [inf]  [ERROR] Failed to fetch events from Opinion.trade: Failed to fetch markets: 'OpenapiMarketDataOpenAPI' object has no attribute 'topic_id'
+2025-11-14T05:47:57.434160160Z [inf]  [ADMIN] Daily cycle completed successfully
+2025-11-14T05:47:57.445944581Z [err]  100.64.0.5 - - [14/Nov/2025 05:47:57] "POST /admin/trigger-cycle HTTP/1.1" 200 -
+2025-11-14T05:48:05.280028317Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:05] "GET /admin HTTP/1.1" 200 -
+2025-11-14T05:48:06.309830929Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T05:48:06.309836333Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T05:48:06.318364568Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T05:48:10.657874781Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:10] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T05:48:10.661191505Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:10] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T05:48:10.665455303Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:10] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T05:48:10.668764817Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:10] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T05:48:10.672509350Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:10] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T05:48:11.263872114Z [err]  100.64.0.6 - - [14/Nov/2025 05:48:10] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T05:48:11.263882501Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:10] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T05:48:11.827114787Z [inf]  
+2025-11-14T05:48:11.827125522Z [inf]  [ADMIN] Daily cycle manually triggered from 100.64.0.5 at 2025-11-14T05:48:11.822014
+2025-11-14T05:48:11.827133250Z [inf]  [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-14T05:48:12.331629975Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-14T05:48:12.331634444Z [inf]  [CACHE] Cleared data cache at start of cycle 2025-11-14T05:48:11.901195
+2025-11-14T05:48:13.392588633Z [inf]  [ERROR] Failed to fetch events from Opinion.trade: Failed to fetch markets: 'OpenapiMarketDataOpenAPI' object has no attribute 'topic_id'
+2025-11-14T05:48:13.392594641Z [inf]  [ADMIN] Daily cycle completed successfully
+2025-11-14T05:48:13.392602476Z [err]  100.64.0.5 - - [14/Nov/2025 05:48:13] "POST /admin/trigger-cycle HTTP/1.1" 200 -

@@ -1,0 +1,367 @@
+2025-11-14T05:46:31.307736275Z [inf]  
+2025-11-14T05:46:36.609427704Z [inf]  [35m[Region: europe-west4][0m
+2025-11-14T05:46:36.609503492Z [inf]  [35m==============
+2025-11-14T05:46:36.609511904Z [inf]  Using Nixpacks
+2025-11-14T05:46:36.609515530Z [inf]  ==============
+2025-11-14T05:46:36.609520960Z [inf]  [0m
+2025-11-14T05:46:36.609625382Z [inf]  context: j93b-
+2025-11-14T05:46:36.695401242Z [inf]  ╔══════════════════════════════ Nixpacks v1.38.0 ══════════════════════════════╗
+2025-11-14T05:46:36.695436551Z [inf]  ║ node:setup │ nodejs_18, npm-9_x                                              ║
+2025-11-14T05:46:36.695441041Z [inf]  ║──────────────────────────────────────────────────────────────────────────────║
+2025-11-14T05:46:36.695444651Z [inf]  ║ setup      │ python3, gcc                                                    ║
+2025-11-14T05:46:36.695449741Z [inf]  ║──────────────────────────────────────────────────────────────────────────────║
+2025-11-14T05:46:36.695453201Z [inf]  ║ install    │ python -m venv --copies /opt/venv && . /opt/venv/bin/activate   ║
+2025-11-14T05:46:36.695457085Z [inf]  ║            │ && pip install uv==$NIXPACKS_UV_VERSION && uv sync --no-dev     ║
+2025-11-14T05:46:36.695460588Z [inf]  ║            │ --frozen                                                        ║
+2025-11-14T05:46:36.695464082Z [inf]  ║──────────────────────────────────────────────────────────────────────────────║
+2025-11-14T05:46:36.695467253Z [inf]  ║ start      │ python api.py                                                   ║
+2025-11-14T05:46:36.695470359Z [inf]  ╚══════════════════════════════════════════════════════════════════════════════╝
+2025-11-14T05:46:36.961591722Z [inf]  [internal] load build definition from Dockerfile
+2025-11-14T05:46:36.961648008Z [inf]  [internal] load build definition from Dockerfile
+2025-11-14T05:46:36.961673259Z [inf]  [internal] load build definition from Dockerfile
+2025-11-14T05:46:36.961734181Z [inf]  [internal] load build definition from Dockerfile
+2025-11-14T05:46:36.970831639Z [inf]  [internal] load build definition from Dockerfile
+2025-11-14T05:46:36.974188213Z [inf]  [internal] load metadata for ghcr.io/railwayapp/nixpacks:ubuntu-1745885067
+2025-11-14T05:46:37.119253997Z [inf]  [internal] load metadata for ghcr.io/railwayapp/nixpacks:ubuntu-1745885067
+2025-11-14T05:46:37.119416773Z [inf]  [internal] load .dockerignore
+2025-11-14T05:46:37.119591329Z [inf]  [internal] load .dockerignore
+2025-11-14T05:46:37.119865556Z [inf]  [internal] load .dockerignore
+2025-11-14T05:46:37.128178583Z [inf]  [internal] load .dockerignore
+2025-11-14T05:46:37.135484911Z [inf]  [internal] load build context
+2025-11-14T05:46:37.135745299Z [inf]  [internal] load build context
+2025-11-14T05:46:37.551009799Z [inf]  [internal] load build context
+2025-11-14T05:46:37.554728559Z [inf]  [stage-0  2/10] WORKDIR /app/
+2025-11-14T05:46:37.554753335Z [inf]  [stage-0  3/12] COPY .nixpacks/nixpkgs-bc8f8d1be58e8c8383e683a06e1e1e57893fff87.nix .nixpacks/nixpkgs-bc8f8d1be58e8c8383e683a06e1e1e57893fff87.nix
+2025-11-14T05:46:37.554763432Z [inf]  [stage-0  4/12] RUN nix-env -if .nixpacks/nixpkgs-bc8f8d1be58e8c8383e683a06e1e1e57893fff87.nix && nix-collect-garbage -d
+2025-11-14T05:46:37.554769945Z [inf]  [stage-0  5/12] COPY .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix
+2025-11-14T05:46:37.554799265Z [inf]  [stage-0  6/12] RUN nix-env -if .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix && nix-collect-garbage -d
+2025-11-14T05:46:37.554812152Z [inf]  [stage-0  7/12] COPY . /app/.
+2025-11-14T05:46:38.333241627Z [inf]  [stage-0  7/12] COPY . /app/.
+2025-11-14T05:46:38.335078129Z [inf]  [stage-0  8/12] RUN --mount=type=cache,id=s/14c1acd7-e253-4401-97fe-ae85de754b67-/root/cache/uv,target=/root/.cache/uv python -m venv --copies /opt/venv && . /opt/venv/bin/activate && pip install uv==0.4.30 && uv sync --no-dev --frozen
+2025-11-14T05:46:41.378038988Z [inf]  Collecting uv==0.4.30
+
+2025-11-14T05:46:41.404698523Z [inf]    Downloading uv-0.4.30-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+
+2025-11-14T05:46:41.414429987Z [inf]  Downloading uv-0.4.30-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (14.0 MB)
+
+2025-11-14T05:46:41.483626691Z [inf]     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.0/14.0 MB 253.6 MB/s eta 0:00:00
+2025-11-14T05:46:41.483779219Z [inf]  
+
+2025-11-14T05:46:41.52837532Z [inf]  Installing collected packages: uv
+
+2025-11-14T05:46:41.731168634Z [inf]  Successfully installed uv-0.4.30
+
+2025-11-14T05:46:41.92009471Z [inf]  warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+         If the cache and target directories are on different filesystems, hardlinking may not be supported.
+         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+
+2025-11-14T05:46:42.530061059Z [inf]  Installed 125 packages in 611ms
+
+2025-11-14T05:46:42.530215819Z [inf]   + about-time==4.2.1
+ + aiohappyeyeballs==2.6.1
+ + aiohttp==3.13.2
+2025-11-14T05:46:42.530225834Z [inf]  
+ + aiosignal==1.4.0
+ 
+2025-11-14T05:46:42.530228439Z [inf]  + 
+2025-11-14T05:46:42.53024908Z [inf]  alive-progress==3.3.0
+2025-11-14T05:46:42.530255535Z [inf]  
+ + altair==
+2025-11-14T05:46:42.530258217Z [inf]  5.5.0
+ + 
+2025-11-14T05:46:42.530290745Z [inf]  annotated-types==0.7.0
+ + anyio==4.11.0
+ + attrs
+2025-11-14T05:46:42.530297779Z [inf]  ==25.4.0
+ 
+2025-11-14T05:46:42.530307478Z [inf]  + beautifulsoup4==4.14.2
+2025-11-14T05:46:42.530319989Z [inf]  
+ + bitarray
+2025-11-14T05:46:42.530322094Z [inf]  ==3.8.0
+ 
+2025-11-14T05:46:42.530339666Z [inf]  + blinker==1.9.0
+ +
+2025-11-14T05:46:42.530361772Z [inf]   cachetools==6.2.1
+ + certifi==
+2025-11-14T05:46:42.530376012Z [inf]  2025.10.5
+ + 
+2025-11-14T05:46:42.530388208Z [inf]  cffi==2.0.0
+ 
+2025-11-14T05:46:42.530410995Z [inf]  + charset-normalizer==3.4.4
+2025-11-14T05:46:42.530425378Z [inf]  
+ + ckzg==2.1.5
+ +
+2025-11-14T05:46:42.530430009Z [inf]   click==8.3.0
+2025-11-14T05:46:42.530433592Z [inf]  
+ + curl-cffi
+2025-11-14T05:46:42.530436617Z [inf]  ==
+2025-11-14T05:46:42.530479993Z [inf]  0.13.0
+ + cytoolz==1.1.0
+ + distro==1.9.0
+ + eth-abi
+2025-11-14T05:46:42.530483409Z [inf]  ==5.2.0
+2025-11-14T05:46:42.530486475Z [inf]  
+ 
+2025-11-14T05:46:42.530501273Z [inf]  + eth-account==0.13.7
+2025-11-14T05:46:42.530505996Z [inf]  
+ + eth-hash
+2025-11-14T05:46:42.530531478Z [inf]  ==0.7.1
+ + eth-keyfile==0.8.1
+2025-11-14T05:46:42.53053723Z [inf]  
+ + eth-keys
+2025-11-14T05:46:42.530541075Z [inf]  ==0.7.0
+
+2025-11-14T05:46:42.530544395Z [inf]   + 
+2025-11-14T05:46:42.530568168Z [inf]  eth-rlp==2.2.0
+2025-11-14T05:46:42.530583107Z [inf]  
+ + eth-typing==5.2.1
+ + 
+2025-11-14T05:46:42.530585248Z [inf]  eth-utils==5.3.1
+ 
+2025-11-14T05:46:42.530641387Z [inf]  + eval-type-backport==0.2.2
+ + flask==3.1.2
+ + flask-cors==6.0.1
+ + frozendict
+2025-11-14T05:46:42.530647502Z [inf]  ==2.4.6
+ +
+2025-11-14T05:46:42.530672897Z [inf]   frozenlist==1.8.0
+ + gitdb==4.0.12
+ +
+2025-11-14T05:46:42.530675914Z [inf]   
+2025-11-14T05:46:42.530690538Z [inf]  gitpython==3.1.45
+ 
+2025-11-14T05:46:42.530720451Z [inf]  + google-auth==2.43.0
+ + google-genai==1.49.0
+ +
+2025-11-14T05:46:42.530734603Z [inf]   graphemeu==0.7.2
+ + grpcio
+2025-11-14T05:46:42.530753156Z [inf]  ==1.76.0
+ +
+2025-11-14T05:46:42.530756495Z [inf]   h11==0.16.0
+2025-11-14T05:46:42.530759892Z [inf]  
+ +
+2025-11-14T05:46:42.530770685Z [inf]   hexbytes==1.3.1
+2025-11-14T05:46:42.530774429Z [inf]  
+ + 
+2025-11-14T05:46:42.530777725Z [inf]  httpcore
+2025-11-14T05:46:42.530791502Z [inf]  ==1.0.9
+ + httpx==
+2025-11-14T05:46:42.53079395Z [inf]  0.28.1
+2025-11-14T05:46:42.530811705Z [inf]  
+ + idna==3.11
+ 
+2025-11-14T05:46:42.530815302Z [inf]  +
+2025-11-14T05:46:42.530838321Z [inf]   iniconfig==2.3.0
+ + itsdangerous==
+2025-11-14T05:46:42.530841662Z [inf]  2.2.0
+ +
+2025-11-14T05:46:42.530845049Z [inf]   
+2025-11-14T05:46:42.530868402Z [inf]  jinja2==3.1.6
+ + jiter==0.11.1
+2025-11-14T05:46:42.530873082Z [inf]  
+ +
+2025-11-14T05:46:42.530889434Z [inf]   joblib==1.5.2
+ + jsonschema
+2025-11-14T05:46:42.530893099Z [inf]  ==
+2025-11-14T05:46:42.530905349Z [inf]  4.25.1
+ + 
+2025-11-14T05:46:42.530908416Z [inf]  jsonschema-specifications==2025.9.1
+2025-11-14T05:46:42.530925079Z [inf]  
+ + markupsafe==3.0.3
+2025-11-14T05:46:42.530928875Z [inf]  
+ + multidict
+2025-11-14T05:46:42.530944067Z [inf]  ==6.7.0
+ + 
+2025-11-14T05:46:42.530962801Z [inf]  multitasking==0.0.12
+ + narwhals==2.10.2
+2025-11-14T05:46:42.531007879Z [inf]  
+ + nltk==3.9.2
+ + numpy==2.3.4
+ 
+2025-11-14T05:46:42.531013278Z [inf]  + openai==2.7.1
+ + opinion-api
+2025-11-14T05:46:42.531075329Z [inf]  ==0.1.2
+ + opinion-clob-sdk==0.2.5
+ + packaging==25.0
+ + pandas==2.3.3
+ +
+2025-11-14T05:46:42.531080164Z [inf]   pandas-stubs==2.3.2.250926
+2025-11-14T05:46:42.531083279Z [inf]  
+ + 
+2025-11-14T05:46:42.531086225Z [inf]  parsimonious
+2025-11-14T05:46:42.531115162Z [inf]  ==0.10.0
+ + peewee==3.18.3
+ +
+2025-11-14T05:46:42.531125446Z [inf]   pillow==12.0.0
+2025-11-14T05:46:42.531129219Z [inf]  
+ + 
+2025-11-14T05:46:42.531132063Z [inf]  platformdirs
+2025-11-14T05:46:42.531141567Z [inf]  ==4.5.0
+ +
+2025-11-14T05:46:42.531150752Z [inf]   plotly==6.4.0
+2025-11-14T05:46:42.531160832Z [inf]  
+ + pluggy
+2025-11-14T05:46:42.531164448Z [inf]  ==1.6.0
+2025-11-14T05:46:42.531166859Z [inf]  
+ 
+2025-11-14T05:46:42.531181427Z [inf]  + poly-eip712-structs==0.0.1
+2025-11-14T05:46:42.531185325Z [inf]  
+ + praw
+2025-11-14T05:46:42.5311997Z [inf]  ==7.8.1
+ + prawcore
+2025-11-14T05:46:42.531229007Z [inf]  ==2.4.0
+ + propcache==0.4.1
+ + protobuf
+2025-11-14T05:46:42.531236604Z [inf]  ==6.33.0
+ +
+2025-11-14T05:46:42.531238877Z [inf]   
+2025-11-14T05:46:42.531261245Z [inf]  pyarrow==21.0.0
+ + pyasn1
+2025-11-14T05:46:42.531270179Z [inf]  ==0.6.1
+ + pyasn1-modules
+2025-11-14T05:46:42.53132107Z [inf]  ==0.4.2
+ + pycparser==2.23
+ + pycryptodome==3.23.0
+ + 
+2025-11-14T05:46:42.531326916Z [inf]  pydantic==2.12.4
+ 
+2025-11-14T05:46:42.531329585Z [inf]  + pydantic-core
+2025-11-14T05:46:42.531351286Z [inf]  ==2.41.5
+ 
+2025-11-14T05:46:42.53135493Z [inf]  + pydeck
+2025-11-14T05:46:42.531371088Z [inf]  ==0.9.1
+ 
+2025-11-14T05:46:42.531380702Z [inf]  + pygments
+2025-11-14T05:46:42.531390107Z [inf]  ==2.19.2
+2025-11-14T05:46:42.531399563Z [inf]  
+ +
+2025-11-14T05:46:42.531409099Z [inf]   pytest==9.0.0
+2025-11-14T05:46:42.531419085Z [inf]  
+ + python-dateutil
+2025-11-14T05:46:42.531428189Z [inf]  ==2.9.0.post0
+ 
+2025-11-14T05:46:42.531438203Z [inf]  + python-dotenv==1.2.1
+2025-11-14T05:46:42.531451201Z [inf]  
+ + pytz
+2025-11-14T05:46:42.531461132Z [inf]  ==2025.2
+ +
+2025-11-14T05:46:42.531475877Z [inf]   pyunormalize==17.0.0
+2025-11-14T05:46:42.531479929Z [inf]  
+ + pyyaml
+2025-11-14T05:46:42.531485343Z [inf]  ==6.0.3
+ 
+2025-11-14T05:46:42.531499053Z [inf]  + referencing==0.37.0
+2025-11-14T05:46:42.531514974Z [inf]  
+ + regex==2025.11.3
+2025-11-14T05:46:42.531529861Z [inf]  
+ + requests
+2025-11-14T05:46:42.531533692Z [inf]  ==2.32.5
+2025-11-14T05:46:42.531548382Z [inf]  
+ +
+2025-11-14T05:46:42.531552197Z [inf]   requests-toolbelt==
+2025-11-14T05:46:42.531559804Z [inf]  1.0.0
+
+2025-11-14T05:46:42.531562835Z [inf]   
+2025-11-14T05:46:42.531584194Z [inf]  + rlp==4.1.0
+2025-11-14T05:46:42.531604422Z [inf]  
+ + rpds-py
+2025-11-14T05:46:42.531608739Z [inf]  ==0.28.0
+2025-11-14T05:46:42.531625029Z [inf]  
+ 
+2025-11-14T05:46:42.531628647Z [inf]  + rsa
+2025-11-14T05:46:42.531639892Z [inf]  ==4.9.1
+2025-11-14T05:46:42.531659619Z [inf]  
+ + sift-stack-py==
+2025-11-14T05:46:42.531662608Z [inf]  0.9.1
+ +
+2025-11-14T05:46:42.531675846Z [inf]   six==1.17.0
+2025-11-14T05:46:42.531687274Z [inf]  
+ + smmap
+2025-11-14T05:46:42.531701205Z [inf]  ==5.0.2
+ +
+2025-11-14T05:46:42.531704699Z [inf]   sniffio==1.3.1
+2025-11-14T05:46:42.531713397Z [inf]  
+ + soupsieve
+2025-11-14T05:46:42.531730116Z [inf]  ==2.8
+ + 
+2025-11-14T05:46:42.531734212Z [inf]  streamlit==1.51.0
+2025-11-14T05:46:42.531758516Z [inf]  
+ + streamlit-autorefresh==1.0.1
+ + tenacity
+2025-11-14T05:46:42.53176277Z [inf]  ==9.1.2
+
+2025-11-14T05:46:42.531766765Z [inf]   
+2025-11-14T05:46:42.531786069Z [inf]  + toml==0.10.2
+2025-11-14T05:46:42.531793099Z [inf]  
+ +
+2025-11-14T05:46:42.531819425Z [inf]   toolz==1.1.0
+ + 
+2025-11-14T05:46:42.531841275Z [inf]  tornado==6.5.2
+ +
+2025-11-14T05:46:42.531844863Z [inf]   tqdm
+2025-11-14T05:46:42.531848809Z [inf]  ==
+2025-11-14T05:46:42.531883338Z [inf]  4.67.1
+ + types-protobuf
+2025-11-14T05:46:42.531888142Z [inf]  ==6.32.1.20251105
+
+2025-11-14T05:46:42.5319025Z [inf]   + types-pytz
+2025-11-14T05:46:42.531919683Z [inf]  ==2025.2.0.20250809
+2025-11-14T05:46:42.53192331Z [inf]  
+ +
+2025-11-14T05:46:42.531935408Z [inf]   types-pyyaml==
+2025-11-14T05:46:42.531937817Z [inf]  6.0.12.20250915
+
+2025-11-14T05:46:42.531940005Z [inf]   
+2025-11-14T05:46:42.531952177Z [inf]  + types-requests
+2025-11-14T05:46:42.531957293Z [inf]  ==2.32.4.20250913
+2025-11-14T05:46:42.531981255Z [inf]  
+ + typing-extensions==
+2025-11-14T05:46:42.531992397Z [inf]  4.15.0
+
+2025-11-14T05:46:42.532001311Z [inf]   + 
+2025-11-14T05:46:42.532006662Z [inf]  typing-inspection==0.4.2
+2025-11-14T05:46:42.532040575Z [inf]  
+ + tzdata==2025.2
+2025-11-14T05:46:42.532050389Z [inf]  
+ + 
+2025-11-14T05:46:42.532062227Z [inf]  update-checker==0.18.0
+2025-11-14T05:46:42.532072541Z [inf]  
+ + urllib3
+2025-11-14T05:46:42.532075649Z [inf]  ==2.5.0
+ 
+2025-11-14T05:46:42.532096231Z [inf]  + watchdog==6.0.0
+ 
+2025-11-14T05:46:42.53210025Z [inf]  + web3
+2025-11-14T05:46:42.532107719Z [inf]  ==7.14.0
+2025-11-14T05:46:42.53212142Z [inf]  
+ + websocket-client==1.9.0
+2025-11-14T05:46:42.532135393Z [inf]  
+ + websockets==15.0.1
+2025-11-14T05:46:42.532143458Z [inf]  
+ + werkzeug==
+2025-11-14T05:46:42.532160984Z [inf]  3.1.3
+ + yarl
+2025-11-14T05:46:42.5321756Z [inf]  ==1.22.0
+ +
+2025-11-14T05:46:42.532184815Z [inf]   yfinance==0.2.66
+2025-11-14T05:46:42.532199365Z [inf]  
+
+2025-11-14T05:46:42.911391883Z [inf]  [stage-0  8/12] RUN --mount=type=cache,id=s/14c1acd7-e253-4401-97fe-ae85de754b67-/root/cache/uv,target=/root/.cache/uv python -m venv --copies /opt/venv && . /opt/venv/bin/activate && pip install uv==0.4.30 && uv sync --no-dev --frozen
+2025-11-14T05:46:42.912878829Z [inf]  [stage-0  9/12] COPY . /app/.
+2025-11-14T05:46:43.089690393Z [inf]  [stage-0  9/12] COPY . /app/.
+2025-11-14T05:46:43.092186303Z [inf]  [stage-0 10/12] RUN printf '\nPATH=/opt/venv/bin:$PATH' >> /root/.profile
+2025-11-14T05:46:43.186232766Z [inf]  [stage-0 10/12] RUN printf '\nPATH=/opt/venv/bin:$PATH' >> /root/.profile
+2025-11-14T05:46:43.187978355Z [inf]  [stage-0 11/12] RUN printf '\nPATH=/app/node_modules/.bin:$PATH' >> /root/.profile
+2025-11-14T05:46:43.364809092Z [inf]  [stage-0 11/12] RUN printf '\nPATH=/app/node_modules/.bin:$PATH' >> /root/.profile
+2025-11-14T05:46:43.366262206Z [inf]  [stage-0 12/12] COPY . /app
+2025-11-14T05:46:43.504257590Z [inf]  [stage-0 12/12] COPY . /app
+2025-11-14T05:46:43.506620547Z [inf]  exporting to docker image format
+2025-11-14T05:46:43.506641719Z [inf]  exporting to image
+2025-11-14T05:46:47.076667191Z [inf]  [auth] sharing credentials for production-europe-west4-drams3a.railway-registry.com
+2025-11-14T05:46:47.076715844Z [inf]  [auth] sharing credentials for production-europe-west4-drams3a.railway-registry.com
+2025-11-14T05:46:50.896258239Z [inf]  importing to docker
+2025-11-14T05:47:07.423902541Z [inf]  importing to docker
+2025-11-14T05:47:07.455793826Z [inf]  === Successfully Built! ===
+2025-11-14T05:47:07.455826884Z [inf]  Run:
+2025-11-14T05:47:07.455835566Z [inf]  docker run -it production-europe-west4-drams3a.railway-registry.com/14c1acd7-e253-4401-97fe-ae85de754b67:e21858bd-6658-45d9-a209-bc6841732a4a
+2025-11-14T05:47:07.605134200Z [inf]  [92mBuild time: 31.00 seconds[0m
