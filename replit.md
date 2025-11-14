@@ -7,6 +7,11 @@
 **Admin Panel**: Available at `/admin` route for manual cycle triggering
 
 **Recent Updates (Nov 14, 2025)**:
+- **Centralized Logging System**: Implemented comprehensive logging infrastructure
+  - All autonomous engine events logged to `logs/autonomous_cycle.log` (10MB rotation, 5 backups)
+  - Password-protected `/admin/logs` endpoint for log viewing
+  - Admin panel logs viewer with syntax highlighting
+  - Configurable log levels via `LOG_LEVEL` env var (default: INFO)
 - Improved event categorization system to detect Rates, Commodities, Inflation, Employment categories
 - Sports category filtering active (excluded from analysis)
 - Enhanced keyword matching for accurate event classification
