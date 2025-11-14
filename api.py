@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, render_template_string
 from flask_cors import CORS
 from database import TradingDatabase
 from autonomous_engine import AutonomousEngine
+from logger import autonomous_logger as logger
 import os
 from datetime import datetime, timedelta
 
@@ -654,6 +655,38 @@ def admin_page():
                 max-height: 300px;
                 overflow-y: auto;
             }
+            .logs-section {
+                margin-top: 40px;
+                padding-top: 30px;
+                border-top: 2px solid #e0e0e0;
+            }
+            .logs-viewer {
+                margin-top: 15px;
+                padding: 15px;
+                background: #1e1e1e;
+                color: #d4d4d4;
+                border-radius: 10px;
+                font-family: 'Courier New', monospace;
+                font-size: 12px;
+                max-height: 500px;
+                overflow-y: auto;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                display: none;
+            }
+            .logs-viewer.visible {
+                display: block;
+            }
+            .log-line {
+                line-height: 1.6;
+            }
+            .log-admin { color: #4ec9b0; }
+            .log-info { color: #9cdcfe; }
+            .log-category { color: #dcdcaa; }
+            .log-bet { color: #4fc1ff; }
+            .log-skip { color: #ce9178; }
+            .log-error { color: #f48771; }
+            .log-warning { color: #ffd700; }
         </style>
     </head>
     <body>
@@ -673,6 +706,15 @@ def admin_page():
             </form>
             
             <div id="status" class="status"></div>
+            
+            <div class="logs-section">
+                <h2>📋 System Logs</h2>
+                <p class="subtitle">View autonomous engine execution logs</p>
+                <button type="button" id="viewLogsBtn" style="margin-bottom: 15px;">
+                    View Recent Logs (Last 500 lines)
+                </button>
+                <div id="logsViewer" class="logs-viewer"></div>
+            </div>
         </div>
 
         <script>
@@ -739,6 +781,61 @@ def admin_page():
                     submitBtn.textContent = 'Run Daily Cycle';
                 }
             });
+
+            // Logs viewer functionality
+            const viewLogsBtn = document.getElementById('viewLogsBtn');
+            const logsViewer = document.getElementById('logsViewer');
+
+            viewLogsBtn.addEventListener('click', async () => {
+                const password = passwordInput.value;
+                
+                if (!password) {
+                    alert('Please enter admin password first');
+                    return;
+                }
+                
+                viewLogsBtn.disabled = true;
+                viewLogsBtn.textContent = 'Loading logs...';
+                
+                try {
+                    const response = await fetch(`/admin/logs?password=${encodeURIComponent(password)}&lines=500`);
+                    const data = await response.json();
+                    
+                    if (response.ok && data.success) {
+                        const logs = data.logs;
+                        
+                        // Apply syntax highlighting
+                        const formattedLogs = logs.split('\\n').map(line => {
+                            let className = 'log-line';
+                            if (line.includes('[ADMIN]')) className += ' log-admin';
+                            else if (line.includes('[INFO]')) className += ' log-info';
+                            else if (line.includes('[CATEGORY]')) className += ' log-category';
+                            else if (line.includes('[BET]')) className += ' log-bet';
+                            else if (line.includes('[SKIP]')) className += ' log-skip';
+                            else if (line.includes('[ERROR]')) className += ' log-error';
+                            else if (line.includes('[WARNING]')) className += ' log-warning';
+                            
+                            return `<div class="${className}">${line}</div>`;
+                        }).join('');
+                        
+                        logsViewer.innerHTML = formattedLogs || '<div class="log-line">No logs available yet. Run a daily cycle to generate logs.</div>';
+                        logsViewer.classList.add('visible');
+                        
+                        // Scroll to bottom
+                        logsViewer.scrollTop = logsViewer.scrollHeight;
+                        
+                        viewLogsBtn.textContent = 'Refresh Logs';
+                    } else {
+                        alert('Failed to load logs: ' + (data.error || 'Unknown error'));
+                        viewLogsBtn.textContent = 'View Recent Logs (Last 500 lines)';
+                    }
+                } catch (error) {
+                    alert('Network error: ' + error.message);
+                    viewLogsBtn.textContent = 'View Recent Logs (Last 500 lines)';
+                } finally {
+                    viewLogsBtn.disabled = false;
+                }
+            });
         </script>
     </body>
     </html>
@@ -764,19 +861,19 @@ def trigger_cycle():
         
         # Verify password using constant-time comparison
         if not provided_password or not hmac.compare_digest(admin_password, provided_password):
-            print(f"[SECURITY] Failed admin login attempt from {request.remote_addr}")
+            logger.warning(f"Failed admin login attempt from {request.remote_addr}", prefix="SECURITY")
             return jsonify({
                 'success': False,
                 'error': 'Invalid password'
             }), 401
         
         # Execute daily cycle
-        print(f"\n[ADMIN] Daily cycle manually triggered from {request.remote_addr} at {datetime.now().isoformat()}")
+        logger.admin(f"Daily cycle manually triggered from {request.remote_addr} at {datetime.now().isoformat()}")
         
         engine = AutonomousEngine(db)
         results = engine.run_daily_cycle()
         
-        print(f"[ADMIN] Daily cycle completed successfully")
+        logger.admin("Daily cycle completed successfully")
         
         return jsonify({
             'success': True,
@@ -787,13 +884,67 @@ def trigger_cycle():
     except Exception as e:
         import traceback
         error_traceback = traceback.format_exc()
-        print(f"[ERROR] Admin-triggered cycle failed: {str(e)}")
-        print(error_traceback)
+        logger.error(f"Admin-triggered cycle failed: {str(e)}\n{error_traceback}")
         
         return jsonify({
             'success': False,
             'error': str(e),
             'message': 'Daily cycle execution failed'
+        }), 500
+
+@app.route('/admin/logs', methods=['GET'])
+def get_admin_logs():
+    """
+    Admin endpoint to retrieve recent logs from autonomous_cycle.log
+    Requires password authentication via query parameter or header
+    """
+    import hmac
+    
+    try:
+        # Get password from query parameter or Authorization header
+        provided_password = request.args.get('password') or request.headers.get('X-Admin-Password', '')
+        
+        # Get admin password from environment
+        admin_password = os.getenv('ADMIN_PASSWORD')
+        if not admin_password:
+            return jsonify({
+                'success': False,
+                'error': 'Admin password not configured on server'
+            }), 500
+        
+        # Verify password using constant-time comparison
+        if not provided_password or not hmac.compare_digest(admin_password, provided_password):
+            logger.warning(f"Failed admin logs access attempt from {request.remote_addr}", prefix="SECURITY")
+            return jsonify({
+                'success': False,
+                'error': 'Invalid password'
+            }), 401
+        
+        # Get number of lines to return (default: 500)
+        lines = request.args.get('lines', 500, type=int)
+        lines = min(lines, 2000)  # Cap at 2000 lines for performance
+        
+        # Get recent logs
+        recent_logs = logger.get_recent_logs(lines=lines)
+        log_file_path = logger.get_log_file_path()
+        
+        return jsonify({
+            'success': True,
+            'logs': recent_logs,
+            'log_file_path': log_file_path,
+            'lines_returned': len(recent_logs.split('\n')),
+            'timestamp': datetime.now().isoformat()
+        }), 200
+        
+    except Exception as e:
+        import traceback
+        error_traceback = traceback.format_exc()
+        logger.error(f"Admin logs retrieval failed: {str(e)}\n{error_traceback}")
+        
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'message': 'Failed to retrieve logs'
         }), 500
 
 if __name__ == '__main__':

@@ -11,6 +11,7 @@ from data_collectors import AlphaVantageCollector, YFinanceCollector, RedditSent
 from prompt_system import create_trading_prompt, format_technical_report, format_fundamental_report, format_sentiment_report, format_news_report, format_volatility_report
 from database import TradingDatabase
 from learning_system import LearningSystem
+from logger import autonomous_logger as logger
 import os
 
 class AutonomousEngine:
@@ -44,7 +45,7 @@ class AutonomousEngine:
             self.daily_bet_limit = 5.0  # Máximo $5 por día
             self.bankroll_mode = 'TEST'
         
-        print(f"[BANKROLL MODE] {self.bankroll_mode} - Initial: ${self.initial_bankroll}, Daily limit: ${self.daily_bet_limit if self.daily_bet_limit else 'None'}")
+        logger.bankroll(f"{self.bankroll_mode} - Initial: ${self.initial_bankroll}, Daily limit: ${self.daily_bet_limit if self.daily_bet_limit else 'None'}")
         
         self.db = database
         self.learning_system = LearningSystem(database)
@@ -104,7 +105,7 @@ class AutonomousEngine:
         cycle_start = datetime.now()
         
         self._data_cache.clear()
-        print(f"[CACHE] Cleared data cache at start of cycle {cycle_start.isoformat()}")
+        logger.cache(f"Cleared data cache at start of cycle {cycle_start.isoformat()}")
         
         results = {
             'timestamp': cycle_start.isoformat(),
@@ -160,17 +161,17 @@ class AutonomousEngine:
         
         if not all_events_response.get('success'):
             error_msg = all_events_response.get('message', 'Unknown error')
-            print(f"[ERROR] Failed to fetch events from Opinion.trade: {error_msg}")
+            logger.error(f"Failed to fetch events from Opinion.trade: {logger.sanitize_text(error_msg, 100)}")
             return events_by_category
         
         all_events = all_events_response.get('events', [])
-        print(f"[INFO] Fetched {len(all_events)} events from Opinion.trade")
+        logger.info(f"Fetched {len(all_events)} events from Opinion.trade")
         
         # Filtrar eventos de Sports (categoría excluida)
         filtered_events = [event for event in all_events if event.get('category', 'general') != 'Sports']
         sports_filtered = len(all_events) - len(filtered_events)
         if sports_filtered > 0:
-            print(f"[INFO] Filtered out {sports_filtered} Sports events (category excluded)")
+            logger.info(f"Filtered out {sports_filtered} Sports events (category excluded)")
         
         # Agrupar por categoría
         for event in filtered_events:
@@ -180,7 +181,7 @@ class AutonomousEngine:
             events_by_category[category].append(event)
         
         categories_summary = {cat: len(events) for cat, events in events_by_category.items()}
-        print(f"[INFO] Events grouped into {len(events_by_category)} categories: {categories_summary}")
+        logger.category(f"Events grouped into {len(events_by_category)} categories: {categories_summary}")
         return events_by_category
     
     def _process_firm_multi_category_cycle(self, firm_name: str, events_by_category: Dict[str, List[Dict]]) -> Dict:
@@ -190,8 +191,8 @@ class AutonomousEngine:
         La IA analiza eventos en TODAS las categorías disponibles PRIMERO,
         luego ejecuta solo las mejores oportunidades globales.
         """
-        print(f"\n[INFO] Processing cycle for {firm_name}")
-        print(f"[INFO] {firm_name} - Analyzing {len(events_by_category)} categories")
+        logger.info(f"\nProcessing cycle for {firm_name}")
+        logger.analysis(firm_name, f"Analyzing {len(events_by_category)} categories")
         
         tier_status = self.risk_guard.get_tier_status(firm_name)
         bankroll_manager = self.bankroll_managers[firm_name]
@@ -258,14 +259,14 @@ class AutonomousEngine:
         
         # Fase 2: Ejecutar solo las MEJORES oportunidades globales
         if all_opportunities:
-            print(f"[INFO] {firm_name} - Found {len(all_opportunities)} total opportunities across all categories")
+            logger.analysis(firm_name, f"Found {len(all_opportunities)} total opportunities across all categories")
             # Ordenar todas las oportunidades por expected value
             all_opportunities.sort(key=lambda x: x.get('expected_value', 0), reverse=True)
             
             # Ejecutar solo hasta alcanzar el límite de apuestas concurrentes
             tier_config = tier_status.get('tier_config', {})
             max_bets = min(tier_config.get('max_concurrent_positions', 2), len(all_opportunities))
-            print(f"[INFO] {firm_name} - Will execute top {max_bets} opportunities (max_concurrent_positions: {tier_config.get('max_concurrent_positions', 2)})")
+            logger.analysis(firm_name, f"Will execute top {max_bets} opportunities (max_concurrent_positions: {tier_config.get('max_concurrent_positions', 2)})")
             
             for i, opportunity in enumerate(all_opportunities):
                 if i < max_bets:
@@ -275,8 +276,8 @@ class AutonomousEngine:
                         proposed_bet_size = opportunity.get('bet_size', 0)
                         
                         if current_daily_total + proposed_bet_size > self.daily_bet_limit:
-                            print(f"[DAILY LIMIT] {firm_name} - Proposed ${proposed_bet_size:.2f} would exceed daily limit "
-                                  f"(${current_daily_total:.2f} + ${proposed_bet_size:.2f} > ${self.daily_bet_limit})")
+                            logger.info(f"{firm_name} - Proposed ${proposed_bet_size:.2f} would exceed daily limit "
+                                  f"(${current_daily_total:.2f} + ${proposed_bet_size:.2f} > ${self.daily_bet_limit})", prefix="DAILY LIMIT")
                             firm_result['bets_skipped'] += 1
                             continue
                     
@@ -289,7 +290,7 @@ class AutonomousEngine:
                     firm_result['decisions'].append(executed_decision)
                     
                     # Solo incrementar si la ejecución fue exitosa
-                    print(f"[INFO] {firm_name} - Executed bet {i+1}/{max_bets}")
+                    logger.analysis(firm_name, f"Executed bet {i+1}/{max_bets}")
                     # Solo incrementar si la ejecución fue exitosa
                     if executed_decision.get('action') == 'BET':
                         firm_result['bets_placed'] += 1
@@ -299,16 +300,16 @@ class AutonomousEngine:
                         # Registrar en tracking diario (solo en TEST mode)
                         if self.daily_bet_limit is not None:
                             new_daily_total = self.db.add_to_daily_bet_total(bet_size)
-                            print(f"[DAILY TRACKING] {firm_name} - Daily total: ${new_daily_total:.2f} / ${self.daily_bet_limit}")
+                            logger.info(f"{firm_name} - Daily total: ${new_daily_total:.2f} / ${self.daily_bet_limit}", prefix="DAILY TRACKING")
                     else:
                         firm_result['bets_skipped'] += 1
                 else:
                     # Oportunidad no seleccionada para ejecución
                     firm_result['bets_skipped'] += 1
         else:
-            print(f"[INFO] {firm_name} - No opportunities found")
+            logger.analysis(firm_name, "No opportunities found")
         
-        print(f"[INFO] {firm_name} - Cycle complete: {firm_result['bets_placed']} bets placed, {firm_result['bets_skipped']} skipped, {firm_result['events_analyzed']} events analyzed")
+        logger.analysis(firm_name, f"Cycle complete: {firm_result['bets_placed']} bets placed, {firm_result['bets_skipped']} skipped, {firm_result['events_analyzed']} events analyzed")
         return firm_result
     
     def _process_firm_cycle(self, firm_name: str, events: List[Dict]) -> Dict:
@@ -425,7 +426,7 @@ class AutonomousEngine:
             
             if not allowed:
                 evaluation['reason'] = risk_reason or 'Risk check failed'
-                print(f"[RISK BLOCK] {firm_name} - {risk_reason}")
+                logger.log_risk_block(firm_name, risk_reason)
                 return evaluation
             
             evaluation['is_opportunity'] = True
@@ -857,11 +858,11 @@ class AutonomousEngine:
             result = self.opinion_api.submit_prediction(prediction_data)
             
             if result.get('status') == 'success':
-                print(f"[BET EXECUTED] {firm_name} - ${bet_size:.2f} on {event_description[:50]}...")
+                logger.log_bet_execution(firm_name, event_id, bet_size, event_description, True)
                 return result
             else:
                 error_msg = result.get('error', 'Unknown error from Opinion.trade')
-                print(f"[BET FAILED] {firm_name} - Opinion.trade error: {error_msg}")
+                logger.log_bet_execution(firm_name, event_id, bet_size, event_description, False, error_msg)
                 return {
                     'status': 'failed',
                     'error': error_msg,
@@ -870,7 +871,7 @@ class AutonomousEngine:
         
         except Exception as e:
             error_msg = f"Exception during bet execution: {str(e)}"
-            print(f"[BET ERROR] {firm_name} - {error_msg}")
+            logger.log_bet_execution(firm_name, event_id, bet_size, event_description, False, error_msg)
             return {
                 'status': 'failed',
                 'error': error_msg,
