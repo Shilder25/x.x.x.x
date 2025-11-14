@@ -1,0 +1,606 @@
+2025-11-14T06:09:01.000000000Z [inf]  Starting Container
+2025-11-14T06:09:08.444990066Z [inf]   * Serving Flask app 'api'
+2025-11-14T06:09:08.444994188Z [inf]   * Debug mode: on
+2025-11-14T06:09:08.444998314Z [err]  [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-11-14T06:09:08.445002751Z [err]   * Running on all addresses (0.0.0.0)
+2025-11-14T06:09:08.445007145Z [err]   * Running on http://127.0.0.1:8000
+2025-11-14T06:09:08.445011348Z [err]   * Running on http://10.232.48.252:8000
+2025-11-14T06:09:08.445016238Z [err]  [33mPress CTRL+C to quit[0m
+2025-11-14T06:09:08.466240256Z [err]   * Restarting with watchdog (inotify)
+2025-11-14T06:09:15.023413647Z [err]   * Debugger is active!
+2025-11-14T06:09:15.023417515Z [err]   * Debugger PIN: 559-071-470
+2025-11-14T06:09:35.047664786Z [err]  100.64.0.5 - - [14/Nov/2025 06:09:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:09:35.047674658Z [err]  100.64.0.4 - - [14/Nov/2025 06:09:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:09:35.047681327Z [err]  100.64.0.2 - - [14/Nov/2025 06:09:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:09:35.047688046Z [err]  100.64.0.3 - - [14/Nov/2025 06:09:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:09:35.047690480Z [err]  100.64.0.2 - - [14/Nov/2025 06:09:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:09:35.047698126Z [err]  100.64.0.2 - - [14/Nov/2025 06:09:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:09:35.047704168Z [err]  100.64.0.2 - - [14/Nov/2025 06:09:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:09:35.047708295Z [err]  100.64.0.2 - - [14/Nov/2025 06:09:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:09:35.047712349Z [err]  100.64.0.2 - - [14/Nov/2025 06:09:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:09:35.047717558Z [err]  100.64.0.3 - - [14/Nov/2025 06:09:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:09:35.047721366Z [err]  100.64.0.3 - - [14/Nov/2025 06:09:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:09:35.047725280Z [err]  100.64.0.3 - - [14/Nov/2025 06:09:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:09:35.047729143Z [err]  100.64.0.3 - - [14/Nov/2025 06:09:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:09:35.047733281Z [err]  100.64.0.3 - - [14/Nov/2025 06:09:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:10:35.430697633Z [err]  100.64.0.2 - - [14/Nov/2025 06:10:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:10:35.430703371Z [err]  100.64.0.3 - - [14/Nov/2025 06:10:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:10:35.430709595Z [err]  100.64.0.2 - - [14/Nov/2025 06:10:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:10:35.430715149Z [err]  100.64.0.3 - - [14/Nov/2025 06:10:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:10:35.430722410Z [err]  100.64.0.2 - - [14/Nov/2025 06:10:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:10:35.430728617Z [err]  100.64.0.3 - - [14/Nov/2025 06:10:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:10:35.430734835Z [err]  100.64.0.3 - - [14/Nov/2025 06:10:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:10:35.430740584Z [err]  100.64.0.2 - - [14/Nov/2025 06:10:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:10:35.430745881Z [err]  100.64.0.3 - - [14/Nov/2025 06:10:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:10:35.430752170Z [err]  100.64.0.2 - - [14/Nov/2025 06:10:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:10:35.430757885Z [err]  100.64.0.4 - - [14/Nov/2025 06:10:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:10:35.430763231Z [err]  100.64.0.6 - - [14/Nov/2025 06:10:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:10:35.430770109Z [err]  100.64.0.2 - - [14/Nov/2025 06:10:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:10:35.430777185Z [err]  100.64.0.3 - - [14/Nov/2025 06:10:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:11:35.508687513Z [err]  100.64.0.2 - - [14/Nov/2025 06:11:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:11:35.508693732Z [err]  100.64.0.2 - - [14/Nov/2025 06:11:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:11:35.508700421Z [err]  100.64.0.2 - - [14/Nov/2025 06:11:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:11:35.508706889Z [err]  100.64.0.3 - - [14/Nov/2025 06:11:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:11:35.508712708Z [err]  100.64.0.3 - - [14/Nov/2025 06:11:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:11:35.508725813Z [err]  100.64.0.3 - - [14/Nov/2025 06:11:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:11:35.508735439Z [err]  100.64.0.2 - - [14/Nov/2025 06:11:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:11:35.508744562Z [err]  100.64.0.2 - - [14/Nov/2025 06:11:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:11:35.508752499Z [err]  100.64.0.3 - - [14/Nov/2025 06:11:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:11:35.508761755Z [err]  100.64.0.3 - - [14/Nov/2025 06:11:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:11:35.508770477Z [err]  100.64.0.2 - - [14/Nov/2025 06:11:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:11:35.508779683Z [err]  100.64.0.7 - - [14/Nov/2025 06:11:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:11:35.508787996Z [err]  100.64.0.3 - - [14/Nov/2025 06:11:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:11:35.508796777Z [err]  100.64.0.2 - - [14/Nov/2025 06:11:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:12:35.795480635Z [err]  100.64.0.3 - - [14/Nov/2025 06:12:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:12:35.795483725Z [err]  100.64.0.2 - - [14/Nov/2025 06:12:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:12:35.795487783Z [err]  100.64.0.3 - - [14/Nov/2025 06:12:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:12:35.795492632Z [err]  100.64.0.3 - - [14/Nov/2025 06:12:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:12:35.795519690Z [err]  100.64.0.2 - - [14/Nov/2025 06:12:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:12:35.795529215Z [err]  100.64.0.2 - - [14/Nov/2025 06:12:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:12:35.795530585Z [err]  100.64.0.8 - - [14/Nov/2025 06:12:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:12:35.795537772Z [err]  100.64.0.2 - - [14/Nov/2025 06:12:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:12:35.795540198Z [err]  100.64.0.3 - - [14/Nov/2025 06:12:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:12:35.795545820Z [err]  100.64.0.2 - - [14/Nov/2025 06:12:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:12:35.795548422Z [err]  100.64.0.2 - - [14/Nov/2025 06:12:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:12:35.795553105Z [err]  100.64.0.4 - - [14/Nov/2025 06:12:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:12:35.795557907Z [err]  100.64.0.3 - - [14/Nov/2025 06:12:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:12:35.795562912Z [err]  100.64.0.3 - - [14/Nov/2025 06:12:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:12:55.780309148Z [err]  100.64.0.9 - - [14/Nov/2025 06:12:53] "GET /admin HTTP/1.1" 200 -
+2025-11-14T06:12:55.780318516Z [err]  100.64.0.9 - - [14/Nov/2025 06:12:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T06:12:55.780325512Z [err]  100.64.0.9 - - [14/Nov/2025 06:12:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T06:12:55.791552504Z [err]  100.64.0.9 - - [14/Nov/2025 06:12:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14T06:13:35.923199231Z [err]  100.64.0.2 - - [14/Nov/2025 06:13:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:13:35.923211999Z [err]  100.64.0.3 - - [14/Nov/2025 06:13:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:13:35.923223191Z [err]  100.64.0.3 - - [14/Nov/2025 06:13:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:13:35.923230684Z [err]  100.64.0.3 - - [14/Nov/2025 06:13:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:13:35.923237862Z [err]  100.64.0.3 - - [14/Nov/2025 06:13:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:13:35.923245773Z [err]  100.64.0.2 - - [14/Nov/2025 06:13:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:13:35.923246113Z [err]  100.64.0.2 - - [14/Nov/2025 06:13:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:13:35.923252196Z [err]  100.64.0.2 - - [14/Nov/2025 06:13:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:13:35.923255211Z [err]  100.64.0.3 - - [14/Nov/2025 06:13:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:13:35.923259410Z [err]  100.64.0.2 - - [14/Nov/2025 06:13:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:13:35.923262463Z [err]  100.64.0.10 - - [14/Nov/2025 06:13:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:13:35.923268907Z [err]  100.64.0.11 - - [14/Nov/2025 06:13:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:13:35.923275838Z [err]  100.64.0.3 - - [14/Nov/2025 06:13:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:13:35.923282527Z [err]  100.64.0.2 - - [14/Nov/2025 06:13:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:14:36.208266215Z [err]  100.64.0.2 - - [14/Nov/2025 06:14:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:14:36.208275361Z [err]  100.64.0.3 - - [14/Nov/2025 06:14:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:14:36.208280064Z [err]  100.64.0.2 - - [14/Nov/2025 06:14:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:14:36.208284882Z [err]  100.64.0.9 - - [14/Nov/2025 06:14:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:14:36.208289676Z [err]  100.64.0.12 - - [14/Nov/2025 06:14:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:14:36.208294217Z [err]  100.64.0.3 - - [14/Nov/2025 06:14:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:14:36.208298188Z [err]  100.64.0.2 - - [14/Nov/2025 06:14:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:14:36.208302289Z [err]  100.64.0.3 - - [14/Nov/2025 06:14:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:14:36.208303983Z [inf]  
+2025-11-14T06:14:36.208308603Z [err]  100.64.0.3 - - [14/Nov/2025 06:14:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:14:36.208309867Z [inf]  [ADMIN] Daily cycle manually triggered from 100.64.0.10 at 2025-11-14T06:14:35.234376
+2025-11-14T06:14:36.208314133Z [err]  100.64.0.3 - - [14/Nov/2025 06:14:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:14:36.208316076Z [inf]  [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-14T06:14:36.208319122Z [err]  100.64.0.2 - - [14/Nov/2025 06:14:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:14:36.208328375Z [err]  100.64.0.2 - - [14/Nov/2025 06:14:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:14:36.208332427Z [err]  100.64.0.2 - - [14/Nov/2025 06:14:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:14:36.208337083Z [err]  100.64.0.3 - - [14/Nov/2025 06:14:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:14:36.208649291Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-14T06:14:36.208654326Z [inf]  [CACHE] Cleared data cache at start of cycle 2025-11-14T06:14:35.408150
+2025-11-14T06:14:36.416640733Z [inf]  
+2025-11-14T06:14:36.416648617Z [inf]  ================================================================================
+2025-11-14T06:14:36.416655017Z [inf]  [DIAGNOSTIC] Inspecting SDK market object attributes:
+2025-11-14T06:14:36.416662496Z [inf]  ================================================================================
+2025-11-14T06:14:36.416669459Z [inf]  Type: <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>
+2025-11-14T06:14:36.416675937Z [inf]  Dir: ['_OpenapiMarketDataOpenAPI__properties', '__abstractmethods__', '__annotations__', '__class__', '__class_getitem__', '__class_vars__', '__copy__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__fields__', '__fields_set__', '__format__', '__ge__', '__get_pydantic_core_schema__', '__get_pydantic_json_schema__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__pretty__', '__private_attributes__', '__pydantic_complete__', '__pydantic_computed_fields__', '__pydantic_core_schema__', '__pydantic_custom_init__', '__pydantic_decorators__', '__pydantic_extra__', '__pydantic_fields__', '__pydantic_fields_set__', '__pydantic_generic_metadata__', '__pydantic_init_subclass__', '__pydantic_on_complete__', '__pydantic_parent_namespace__', '__pydantic_post_init__', '__pydantic_private__', '__pydantic_root_model__', '__pydantic_serializer__', '__pydantic_setattr_handlers__', '__pydantic_validator__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__repr_args__', '__repr_name__', '__repr_recursion__', '__repr_str__', '__rich_repr__', '__setattr__', '__setstate__', '__signature__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_calculate_keys', '_copy_and_set_values', '_get_value', '_iter', '_setattr_handler', 'chain_id', 'child_markets', 'condition_id', 'construct', 'copy', 'created_at', 'cutoff_at', 'dict', 'from_dict', 'from_json', 'from_orm', 'json', 'market_id', 'market_title', 'model_computed_fields', 'model_config', 'model_construct', 'model_copy', 'model_dump', 'model_dump_json', 'model_extra', 'model_fields', 'model_fields_set', 'model_json_schema', 'model_parametrized_name', 'model_post_init', 'model_rebuild', 'model_validate', 'model_validate_json', 'model_validate_strings', 'no_label', 'no_token_id', 'parse_file', 'parse_obj', 'parse_raw', 'question_id', 'quote_token', 'resolved_at', 'result_token_id', 'rules', 'schema', 'schema_json', 'status', 'status_enum', 'to_dict', 'to_json', 'to_str', 'update_forward_refs', 'validate', 'volume', 'yes_label', 'yes_token_id']
+2025-11-14T06:14:36.421595859Z [inf]  
+2025-11-14T06:14:36.421605292Z [inf]  All attributes and values:
+2025-11-14T06:14:36.421612139Z [inf]    chain_id: 56 (type: str)
+2025-11-14T06:14:36.421618281Z [inf]    child_markets: None (type: NoneType)
+2025-11-14T06:14:36.421623990Z [inf]    condition_id:  (type: str)
+2025-11-14T06:14:36.421632705Z [inf]    construct: <bound method BaseModel.construct of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.421638299Z [inf]    copy: <bound method BaseModel.copy of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.421643472Z [inf]    created_at: 1763051685 (type: int)
+2025-11-14T06:14:36.421649130Z [inf]    cutoff_at: 1763164800 (type: int)
+2025-11-14T06:14:36.421655048Z [inf]    dict: <bound method BaseModel.dict of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.421660701Z [inf]    from_dict: <bound method OpenapiMarketDataOpenAPI.from_dict of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.421665944Z [inf]    from_json: <bound method OpenapiMarketDataOpenAPI.from_json of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.421671641Z [inf]    from_orm: <bound method BaseModel.from_orm of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.421677425Z [inf]    json: <bound method BaseModel.json of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.421683663Z [inf]    market_id: 1741 (type: int)
+2025-11-14T06:14:36.421689509Z [inf]    market_title: Bitcoin Up or Down on November 14?(By 12:00 ET) (type: str)
+2025-11-14T06:14:36.421694966Z [inf]    model_computed_fields: {} (type: dict)
+2025-11-14T06:14:36.421700988Z [inf]    model_config: {'populate_by_name': True, 'validate_assignment': True, 'protected_namespaces': (), 'validate_by_alias': True, 'validate_by_name': True} (type: dict)
+2025-11-14T06:14:36.421713979Z [inf]    model_construct: <bound method BaseModel.model_construct of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.421719399Z [inf]    model_copy: <bound method BaseModel.model_copy of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.421725402Z [inf]    model_dump: <bound method BaseModel.model_dump of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.421730616Z [inf]    model_dump_json: <bound method BaseModel.model_dump_json of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.422401088Z [inf]    model_extra: None (type: NoneType)
+2025-11-14T06:14:36.422406852Z [inf]    model_fields: {'chain_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='chainId', alias_priority=2), 'child_markets': FieldInfo(annotation=Union[List[OpenapiChildMarketDataOpenAPI], NoneType], required=False, default=None, alias='childMarkets', alias_priority=2, description='Child markets'), 'condition_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='conditionId', alias_priority=2, description='Resolution info'), 'created_at': FieldInfo(annotation=Union[Annotated[int, Strict(strict=True)], NoneType], required=False, default=None, alias='createdAt', alias_priority=2, description='Time fields (moved to bottom)'), 'cutoff_at': FieldInfo(annotation=Union[Annotated[int, Strict(strict=True)], NoneType], required=False, default=None, alias='cutoffAt', alias_priority=2), 'market_id': FieldInfo(annotation=Union[Annotated[int, Strict(strict=True)], NoneType], required=False, default=None, alias='marketId', alias_priority=2, description='Basic market info'), 'market_title': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='marketTitle', alias_priority=2), 'no_label': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='noLabel', alias_priority=2), 'no_token_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='noTokenId', alias_priority=2), 'question_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='questionId', alias_priority=2, description='Additional data'), 'quote_token': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='quoteToken', alias_priority=2, description='Chain info'), 'resolved_at': FieldInfo(annotation=Union[Annotated[int, Strict(strict=True)], NoneType], required=False, default=None, alias='resolvedAt', alias_priority=2), 'result_token_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='resultTokenId', alias_priority=2), 'rules': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None), 'status': FieldInfo(annotation=Union[ModelsTopicStatus, NoneType], required=False, default=None), 'status_enum': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='statusEnum', alias_priority=2, description='Human-readable status'), 'volume': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, description='Market metrics'), 'yes_label': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='yesLabel', alias_priority=2, description='Labels and rules'), 'yes_token_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='yesTokenId', alias_priority=2, description='Token info')} (type: dict)
+2025-11-14T06:14:36.423739941Z [inf]    model_fields_set: {'no_label', 'question_id', 'market_title', 'no_token_id', 'yes_label', 'chain_id', 'child_markets', 'created_at', 'status', 'resolved_at', 'quote_token', 'result_token_id', 'cutoff_at', 'market_id', 'rules', 'yes_token_id', 'status_enum', 'condition_id', 'volume'} (type: set)
+2025-11-14T06:14:36.423745096Z [inf]    model_json_schema: <bound method BaseModel.model_json_schema of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.423749837Z [inf]    model_parametrized_name: <bound method BaseModel.model_parametrized_name of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.423753901Z [inf]    model_post_init: <bound method BaseModel.model_post_init of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.425740926Z [inf]    model_rebuild: <bound method BaseModel.model_rebuild of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.425747971Z [inf]    model_validate: <bound method BaseModel.model_validate of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.425752955Z [inf]    model_validate_json: <bound method BaseModel.model_validate_json of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.425758355Z [inf]    model_validate_strings: <bound method BaseModel.model_validate_strings of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.425763272Z [inf]    no_label: DOWN (type: str)
+2025-11-14T06:14:36.425768521Z [inf]    no_token_id: 91018970723383945947081266674754316249604136933795983503568791999316967625715 (type: str)
+2025-11-14T06:14:36.425772936Z [inf]    parse_file: <bound method BaseModel.parse_file of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.425777256Z [inf]    parse_obj: <bound method BaseModel.parse_obj of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.425781311Z [inf]    parse_raw: <bound method BaseModel.parse_raw of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.425786064Z [inf]    question_id: ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115 (type: str)
+2025-11-14T06:14:36.425791528Z [inf]    quote_token: 0x55d398326f99059fF775485246999027B3197955 (type: str)
+2025-11-14T06:14:36.425795844Z [inf]    resolved_at: 0 (type: int)
+2025-11-14T06:14:36.426133457Z [inf]    result_token_id:  (type: str)
+2025-11-14T06:14:36.426138898Z [inf]    rules: This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 '25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 '25 12:00 ET candle.
+2025-11-14T06:14:36.426143305Z [inf]  
+2025-11-14T06:14:36.426148056Z [inf]  This market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 '25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 '25 12:00 ET candle.
+2025-11-14T06:14:36.426152336Z [inf]  
+2025-11-14T06:14:36.426156274Z [inf]  If the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.
+2025-11-14T06:14:36.426160495Z [inf]  
+2025-11-14T06:14:36.426164371Z [inf]  The resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.
+2025-11-14T06:14:36.426168161Z [inf]  
+2025-11-14T06:14:36.426172617Z [inf]  Please note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets. (type: str)
+2025-11-14T06:14:36.426176941Z [inf]    schema: <bound method BaseModel.schema of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.426182363Z [inf]    schema_json: <bound method BaseModel.schema_json of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.426186269Z [inf]    status: ModelsTopicStatus.TopicStatusActivated (type: ModelsTopicStatus)
+2025-11-14T06:14:36.426189993Z [inf]    status_enum: Activated (type: str)
+2025-11-14T06:14:36.426193954Z [inf]    to_dict: <bound method OpenapiMarketDataOpenAPI.to_dict of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.426697407Z [inf]    to_json: <bound method OpenapiMarketDataOpenAPI.to_json of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.426703451Z [inf]    to_str: <bound method OpenapiMarketDataOpenAPI.to_str of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:14:36.427774086Z [inf]  [INFO] Fetched 17 events from Opinion.trade
+2025-11-14T06:14:36.427775002Z [inf]    update_forward_refs: <bound method BaseModel.update_forward_refs of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.427782300Z [inf]  [INFO] Events grouped into 1 categories: {'Unknown': 17}
+2025-11-14T06:14:36.427782371Z [inf]    validate: <bound method BaseModel.validate of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:14:36.427788568Z [inf]    volume: 9525.744000000000000000 (type: str)
+2025-11-14T06:14:36.427789114Z [inf]  
+2025-11-14T06:14:36.427794855Z [inf]    yes_label: UP (type: str)
+2025-11-14T06:14:36.427795277Z [inf]  [INFO] Processing cycle for ChatGPT
+2025-11-14T06:14:36.427801164Z [inf]    yes_token_id: 48882724128435502781310151024608110816311675396117519564621583904823670689991 (type: str)
+2025-11-14T06:14:36.427801294Z [inf]  [INFO] ChatGPT - Analyzing 1 categories
+2025-11-14T06:14:36.427807225Z [inf]  ================================================================================
+2025-11-14T06:14:36.427812649Z [inf]  
+2025-11-14T06:14:36.427816430Z [inf]  [INFO] Opinion.trade API: Retrieved 17 active markets
+2025-11-14T06:14:39.076883165Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-14T06:14:39.301088129Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-14T06:14:39.352723450Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-14T06:14:41.970895910Z [inf]  [INFO] ChatGPT - No opportunities found
+2025-11-14T06:14:41.970900194Z [inf]  [INFO] ChatGPT - Cycle complete: 0 bets placed, 3 skipped, 3 events analyzed
+2025-11-14T06:14:41.970904094Z [inf]  
+2025-11-14T06:14:41.970907942Z [inf]  [INFO] Processing cycle for Gemini
+2025-11-14T06:14:41.970911917Z [inf]  [INFO] Gemini - Analyzing 1 categories
+2025-11-14T06:14:42.147799221Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T06:14:42.147811055Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T06:14:42.147821617Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T06:14:42.153204860Z [inf]  [INFO] Gemini - No opportunities found
+2025-11-14T06:14:42.153214017Z [inf]  [INFO] Gemini - Cycle complete: 0 bets placed, 3 skipped, 3 events analyzed
+2025-11-14T06:14:42.153221474Z [inf]  
+2025-11-14T06:14:42.153229011Z [inf]  [INFO] Processing cycle for Qwen
+2025-11-14T06:14:42.153236170Z [inf]  [INFO] Qwen - Analyzing 1 categories
+2025-11-14T06:14:43.043314732Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T06:14:43.043320006Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T06:14:43.043324621Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T06:14:43.385826240Z [inf]  [INFO] Qwen - No opportunities found
+2025-11-14T06:14:43.385831456Z [inf]  [INFO] Qwen - Cycle complete: 0 bets placed, 3 skipped, 3 events analyzed
+2025-11-14T06:14:43.385836451Z [inf]  
+2025-11-14T06:14:43.385846200Z [inf]  [INFO] Processing cycle for Deepseek
+2025-11-14T06:14:43.385853460Z [inf]  [INFO] Deepseek - Analyzing 1 categories
+2025-11-14T06:15:13.297961109Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T06:15:13.297970535Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T06:15:13.297977465Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T06:15:33.298216899Z [err]  100.64.0.3 - - [14/Nov/2025 06:15:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:15:33.298224110Z [err]  100.64.0.3 - - [14/Nov/2025 06:15:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:15:33.298230731Z [err]  100.64.0.2 - - [14/Nov/2025 06:15:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:15:33.298238313Z [err]  100.64.0.3 - - [14/Nov/2025 06:15:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:15:33.298245438Z [err]  100.64.0.2 - - [14/Nov/2025 06:15:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:15:33.298252164Z [err]  100.64.0.2 - - [14/Nov/2025 06:15:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:15:33.298259926Z [err]  100.64.0.3 - - [14/Nov/2025 06:15:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:15:33.298266767Z [err]  100.64.0.3 - - [14/Nov/2025 06:15:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:15:33.298273338Z [err]  100.64.0.2 - - [14/Nov/2025 06:15:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:15:33.298281213Z [err]  100.64.0.2 - - [14/Nov/2025 06:15:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:15:33.298287653Z [err]  100.64.0.6 - - [14/Nov/2025 06:15:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:15:33.298294106Z [err]  100.64.0.13 - - [14/Nov/2025 06:15:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:15:33.298302044Z [err]  100.64.0.2 - - [14/Nov/2025 06:15:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:15:33.298308801Z [err]  100.64.0.3 - - [14/Nov/2025 06:15:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:16:33.362051469Z [err]  100.64.0.3 - - [14/Nov/2025 06:16:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:16:33.362054061Z [inf]  [INFO] Deepseek - No opportunities found
+2025-11-14T06:16:33.362061601Z [inf]  [INFO] Deepseek - Cycle complete: 0 bets placed, 3 skipped, 3 events analyzed
+2025-11-14T06:16:33.362062792Z [err]  100.64.0.2 - - [14/Nov/2025 06:16:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:16:33.362066219Z [inf]  
+2025-11-14T06:16:33.362071001Z [inf]  [INFO] Processing cycle for Grok
+2025-11-14T06:16:33.362075244Z [inf]  [INFO] Grok - Analyzing 1 categories
+2025-11-14T06:16:33.362079208Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T06:16:33.362083089Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T06:16:33.362087024Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T06:16:33.362092049Z [inf]  [INFO] Grok - No opportunities found
+2025-11-14T06:16:33.362096554Z [inf]  [INFO] Grok - Cycle complete: 0 bets placed, 3 skipped, 3 events analyzed
+2025-11-14T06:16:33.362100323Z [inf]  [ADMIN] Daily cycle completed successfully
+2025-11-14T06:16:33.362104128Z [err]  100.64.0.10 - - [14/Nov/2025 06:16:30] "POST /admin/trigger-cycle HTTP/1.1" 200 -
+2025-11-14T06:16:33.362107937Z [err]  100.64.0.7 - - [14/Nov/2025 06:16:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:16:33.362111604Z [err]  100.64.0.2 - - [14/Nov/2025 06:16:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:16:33.362115875Z [err]  100.64.0.2 - - [14/Nov/2025 06:16:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:16:33.362122134Z [err]  100.64.0.2 - - [14/Nov/2025 06:16:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:16:33.362126214Z [err]  100.64.0.3 - - [14/Nov/2025 06:16:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:16:33.362130241Z [err]  100.64.0.3 - - [14/Nov/2025 06:16:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:16:33.362696771Z [err]  100.64.0.2 - - [14/Nov/2025 06:16:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:16:33.362704584Z [err]  100.64.0.3 - - [14/Nov/2025 06:16:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:16:33.362709680Z [err]  100.64.0.3 - - [14/Nov/2025 06:16:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:16:33.362716046Z [err]  100.64.0.14 - - [14/Nov/2025 06:16:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:16:33.362721144Z [err]  100.64.0.2 - - [14/Nov/2025 06:16:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:16:33.362725620Z [err]  100.64.0.3 - - [14/Nov/2025 06:16:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:17:33.511106488Z [err]  100.64.0.3 - - [14/Nov/2025 06:17:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:17:33.511111937Z [err]  100.64.0.3 - - [14/Nov/2025 06:17:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:17:33.511118438Z [err]  100.64.0.3 - - [14/Nov/2025 06:17:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:17:33.511124107Z [err]  100.64.0.2 - - [14/Nov/2025 06:17:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:17:33.511129847Z [err]  100.64.0.2 - - [14/Nov/2025 06:17:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:17:33.511135470Z [err]  100.64.0.2 - - [14/Nov/2025 06:17:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:17:33.511142352Z [err]  100.64.0.2 - - [14/Nov/2025 06:17:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:17:33.511147876Z [err]  100.64.0.3 - - [14/Nov/2025 06:17:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:17:33.511153470Z [err]  100.64.0.3 - - [14/Nov/2025 06:17:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:17:33.511159513Z [err]  100.64.0.2 - - [14/Nov/2025 06:17:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:17:33.511165903Z [err]  $BTC-USD: possibly delisted; no price data found  (period=5d)
+2025-11-14T06:17:33.511171870Z [err]  $ETH-USD: possibly delisted; no price data found  (period=5d)
+2025-11-14T06:17:33.511179483Z [err]  $SOL-USD: possibly delisted; no price data found  (period=5d)
+2025-11-14T06:17:33.511185136Z [err]  100.64.0.7 - - [14/Nov/2025 06:17:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:17:33.511191508Z [err]  $BNB-USD: possibly delisted; no price data found  (period=5d)
+2025-11-14T06:17:33.511197225Z [err]  $DOGE-USD: possibly delisted; no price data found  (period=5d)
+2025-11-14T06:17:33.511203703Z [err]  $XRP-USD: possibly delisted; no price data found  (period=5d)
+2025-11-14T06:17:33.511210178Z [err]  100.64.0.2 - - [14/Nov/2025 06:17:31] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:17:33.511350616Z [err]  100.64.0.4 - - [14/Nov/2025 06:17:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:17:33.511364403Z [err]  100.64.0.3 - - [14/Nov/2025 06:17:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:18:33.553105979Z [err]  100.64.0.4 - - [14/Nov/2025 06:18:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:18:33.553113310Z [err]  100.64.0.4 - - [14/Nov/2025 06:18:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:18:33.553118936Z [err]  100.64.0.4 - - [14/Nov/2025 06:18:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:18:33.553124533Z [err]  100.64.0.4 - - [14/Nov/2025 06:18:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:18:33.553130343Z [err]  100.64.0.4 - - [14/Nov/2025 06:18:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:18:33.553136830Z [err]  100.64.0.15 - - [14/Nov/2025 06:18:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:18:33.553142324Z [err]  100.64.0.15 - - [14/Nov/2025 06:18:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:18:33.553147696Z [err]  100.64.0.15 - - [14/Nov/2025 06:18:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:18:33.553153086Z [err]  100.64.0.15 - - [14/Nov/2025 06:18:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:18:33.553158696Z [err]  100.64.0.15 - - [14/Nov/2025 06:18:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:18:33.553164449Z [err]  100.64.0.14 - - [14/Nov/2025 06:18:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:18:33.553169999Z [err]  100.64.0.16 - - [14/Nov/2025 06:18:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:18:33.553175854Z [err]  100.64.0.4 - - [14/Nov/2025 06:18:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:18:33.553181229Z [err]  100.64.0.15 - - [14/Nov/2025 06:18:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:19:13.665641851Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:12] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:19:13.665648750Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:12] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:19:13.665653568Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:12] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:19:13.665659381Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:12] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:19:13.665663659Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:12] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:19:13.665667983Z [err]  100.64.0.3 - - [14/Nov/2025 06:19:12] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:19:13.665672565Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:12] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:19:21.986990392Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:21] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:19:21.986997844Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:21] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:19:21.987004050Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:21] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:19:21.987010372Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:21] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:19:21.987016595Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:21] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:19:22.062903833Z [err]  100.64.0.4 - - [14/Nov/2025 06:19:22] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:19:22.325265734Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:22] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:19:32.002064041Z [err]  100.64.0.4 - - [14/Nov/2025 06:19:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:19:32.002068283Z [err]  100.64.0.4 - - [14/Nov/2025 06:19:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:19:32.002072273Z [err]  100.64.0.4 - - [14/Nov/2025 06:19:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:19:32.002077113Z [err]  100.64.0.4 - - [14/Nov/2025 06:19:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:19:32.002082140Z [err]  100.64.0.4 - - [14/Nov/2025 06:19:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:19:32.061276567Z [err]  100.64.0.17 - - [14/Nov/2025 06:19:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:19:32.247098731Z [err]  100.64.0.4 - - [14/Nov/2025 06:19:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:19:52.276274592Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:19:52.276282007Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:19:52.276290685Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:19:52.276302118Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:19:52.276308995Z [err]  100.64.0.3 - - [14/Nov/2025 06:19:52] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:19:52.276313657Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:19:52.458073780Z [err]  100.64.0.15 - - [14/Nov/2025 06:19:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:20:32.494826742Z [err]  100.64.0.4 - - [14/Nov/2025 06:20:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:20:32.494852108Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:22] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:20:32.494864865Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:22] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:20:32.494872063Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:23] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:20:32.494878320Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:23] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:20:32.494884798Z [err]  100.64.0.4 - - [14/Nov/2025 06:20:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:20:32.494892079Z [err]  100.64.0.4 - - [14/Nov/2025 06:20:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:20:32.494904406Z [err]  100.64.0.4 - - [14/Nov/2025 06:20:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:20:32.494905572Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:22] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:20:32.494915003Z [err]  100.64.0.4 - - [14/Nov/2025 06:20:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:20:32.494918823Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:22] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:20:32.494924041Z [err]  100.64.0.4 - - [14/Nov/2025 06:20:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:20:32.494932366Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:22] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:20:32.494935991Z [err]  100.64.0.12 - - [14/Nov/2025 06:20:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:20:52.474501517Z [err]  100.64.0.14 - - [14/Nov/2025 06:20:52] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:20:52.474512015Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:20:52.474518658Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:51] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:20:52.474526929Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:51] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:20:52.474534641Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:51] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:20:52.474541694Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:51] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:20:52.474549237Z [err]  100.64.0.15 - - [14/Nov/2025 06:20:51] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:21:32.484085721Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:23] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:21:32.484093444Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:23] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:21:32.484098574Z [err]  100.64.0.2 - - [14/Nov/2025 06:21:23] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:21:32.484103266Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:23] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:21:32.484107377Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:23] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:21:32.484111991Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:23] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:21:32.484115979Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:23] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:21:32.484120389Z [err]  100.64.0.4 - - [14/Nov/2025 06:21:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:21:32.484124280Z [err]  100.64.0.4 - - [14/Nov/2025 06:21:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:21:32.484128618Z [err]  100.64.0.4 - - [14/Nov/2025 06:21:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:21:32.484133037Z [err]  100.64.0.4 - - [14/Nov/2025 06:21:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:21:32.484137145Z [err]  100.64.0.4 - - [14/Nov/2025 06:21:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:21:32.484142135Z [err]  100.64.0.12 - - [14/Nov/2025 06:21:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:21:32.484146072Z [err]  100.64.0.4 - - [14/Nov/2025 06:21:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:22:02.472586920Z [err]  100.64.0.10 - - [14/Nov/2025 06:21:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:22:02.472602923Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:53] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:22:02.472610236Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:22:02.472614920Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:22:02.472619409Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:22:02.472625344Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:22:02.472630495Z [err]  100.64.0.15 - - [14/Nov/2025 06:21:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:22:32.537922520Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:29] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:22:32.537930798Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:29] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:22:32.537935464Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:29] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:22:32.537941315Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:29] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:22:32.537945791Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:29] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:22:32.537950764Z [err]  100.64.0.10 - - [14/Nov/2025 06:22:29] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:22:32.537956181Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:30] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:22:32.537960398Z [err]  100.64.0.4 - - [14/Nov/2025 06:22:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:22:32.537965129Z [err]  100.64.0.4 - - [14/Nov/2025 06:22:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:22:32.537971176Z [err]  100.64.0.4 - - [14/Nov/2025 06:22:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:22:32.537976574Z [err]  100.64.0.4 - - [14/Nov/2025 06:22:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:22:32.537980951Z [err]  100.64.0.4 - - [14/Nov/2025 06:22:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:22:32.537985793Z [err]  100.64.0.7 - - [14/Nov/2025 06:22:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:22:32.537990633Z [err]  100.64.0.4 - - [14/Nov/2025 06:22:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:22:52.561436735Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:51] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:22:52.561441102Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:51] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:22:52.561445771Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:51] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:22:52.561450233Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:51] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:22:52.561455069Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:51] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:22:52.561460600Z [err]  100.64.0.14 - - [14/Nov/2025 06:22:52] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:22:52.561465885Z [err]  100.64.0.15 - - [14/Nov/2025 06:22:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:23:32.566949184Z [err]  100.64.0.4 - - [14/Nov/2025 06:23:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:23:32.566968659Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:22] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:23:32.566974877Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:22] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:23:32.566975274Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:22] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:23:32.566992123Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:22] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:23:32.567002561Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:22] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:23:32.567011041Z [err]  100.64.0.10 - - [14/Nov/2025 06:23:23] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:23:32.567019215Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:23] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:23:32.567026027Z [err]  100.64.0.8 - - [14/Nov/2025 06:23:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:23:32.567031970Z [err]  100.64.0.4 - - [14/Nov/2025 06:23:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:23:32.567039244Z [err]  100.64.0.4 - - [14/Nov/2025 06:23:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:23:32.567046503Z [err]  100.64.0.4 - - [14/Nov/2025 06:23:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:23:32.567052550Z [err]  100.64.0.4 - - [14/Nov/2025 06:23:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:23:32.567059593Z [err]  100.64.0.4 - - [14/Nov/2025 06:23:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:24:02.585210125Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:24:02.585215205Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:24:02.585220476Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:24:02.585224568Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:24:02.585228883Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:24:02.585233082Z [err]  100.64.0.13 - - [14/Nov/2025 06:23:52] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:24:02.585237542Z [err]  100.64.0.15 - - [14/Nov/2025 06:23:53] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:24:32.650195167Z [err]  100.64.0.15 - - [14/Nov/2025 06:24:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:24:32.650202522Z [err]  100.64.0.15 - - [14/Nov/2025 06:24:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:24:32.650207407Z [err]  100.64.0.4 - - [14/Nov/2025 06:24:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:24:32.650212360Z [err]  100.64.0.15 - - [14/Nov/2025 06:24:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:24:32.650217873Z [err]  100.64.0.4 - - [14/Nov/2025 06:24:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:24:32.650222324Z [err]  100.64.0.4 - - [14/Nov/2025 06:24:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:24:32.650226453Z [err]  100.64.0.15 - - [14/Nov/2025 06:24:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:24:32.650230621Z [err]  100.64.0.15 - - [14/Nov/2025 06:24:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:24:32.650235006Z [err]  100.64.0.5 - - [14/Nov/2025 06:24:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:24:32.650239676Z [err]  100.64.0.4 - - [14/Nov/2025 06:24:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:24:32.650243480Z [err]  100.64.0.4 - - [14/Nov/2025 06:24:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:24:32.650247616Z [err]  100.64.0.3 - - [14/Nov/2025 06:24:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:24:32.650254783Z [err]  100.64.0.4 - - [14/Nov/2025 06:24:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:24:32.650258551Z [err]  100.64.0.15 - - [14/Nov/2025 06:24:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:25:22.719695177Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:14] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:25:22.719704889Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:14] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:25:22.719711865Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:14] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:25:22.719720700Z [err]  100.64.0.14 - - [14/Nov/2025 06:25:14] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:25:22.719728595Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:14] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:25:22.719736152Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:14] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:25:22.719742575Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:15] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:25:22.719749566Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:21] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:25:22.719756637Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:21] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:25:22.719764126Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:21] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:25:22.719772423Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:21] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:25:22.719779966Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:21] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:25:22.719787925Z [err]  100.64.0.3 - - [14/Nov/2025 06:25:22] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:25:22.719795991Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:22] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:25:31.935016397Z [err]  100.64.0.4 - - [14/Nov/2025 06:25:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:25:31.935021535Z [err]  100.64.0.4 - - [14/Nov/2025 06:25:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:25:31.935026421Z [err]  100.64.0.4 - - [14/Nov/2025 06:25:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:25:31.935030744Z [err]  100.64.0.4 - - [14/Nov/2025 06:25:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:25:31.935035042Z [err]  100.64.0.4 - - [14/Nov/2025 06:25:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:25:31.940374567Z [err]  100.64.0.17 - - [14/Nov/2025 06:25:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:25:32.244842986Z [err]  100.64.0.4 - - [14/Nov/2025 06:25:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:25:52.209046942Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:51] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:25:52.209051399Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:51] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:25:52.209055337Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:51] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:25:52.209059421Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:51] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:25:52.209063404Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:51] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:25:52.209067694Z [err]  100.64.0.10 - - [14/Nov/2025 06:25:52] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:25:52.344717311Z [err]  100.64.0.15 - - [14/Nov/2025 06:25:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:26:22.349263969Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:22] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:26:22.349269831Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:22] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:26:22.349274928Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:22] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:26:22.349279285Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:22] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:26:22.349283334Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:22] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:26:22.349287380Z [err]  100.64.0.3 - - [14/Nov/2025 06:26:22] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:26:22.524750670Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:22] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:26:31.971730037Z [err]  100.64.0.4 - - [14/Nov/2025 06:26:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:26:31.971742782Z [err]  100.64.0.4 - - [14/Nov/2025 06:26:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:26:31.971750952Z [err]  100.64.0.4 - - [14/Nov/2025 06:26:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:26:31.971757185Z [err]  100.64.0.4 - - [14/Nov/2025 06:26:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:26:31.971762653Z [err]  100.64.0.4 - - [14/Nov/2025 06:26:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:26:31.971770135Z [err]  100.64.0.6 - - [14/Nov/2025 06:26:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:26:32.302252312Z [err]  100.64.0.4 - - [14/Nov/2025 06:26:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:26:52.245239727Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:51] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:26:52.245246966Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:51] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:26:52.245251650Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:51] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:26:52.245257385Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:26:52.245262025Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:26:52.245266306Z [err]  100.64.0.9 - - [14/Nov/2025 06:26:52] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:26:52.322973715Z [err]  100.64.0.15 - - [14/Nov/2025 06:26:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:27:32.367881845Z [inf]  ================================================================================
+2025-11-14T06:27:32.367890989Z [inf]  [DIAGNOSTIC] Inspecting SDK market object attributes:
+2025-11-14T06:27:32.367897039Z [inf]  ================================================================================
+2025-11-14T06:27:32.367902123Z [inf]  Type: <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>
+2025-11-14T06:27:32.367907157Z [inf]  Dir: ['_OpenapiMarketDataOpenAPI__properties', '__abstractmethods__', '__annotations__', '__class__', '__class_getitem__', '__class_vars__', '__copy__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__fields__', '__fields_set__', '__format__', '__ge__', '__get_pydantic_core_schema__', '__get_pydantic_json_schema__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__pretty__', '__private_attributes__', '__pydantic_complete__', '__pydantic_computed_fields__', '__pydantic_core_schema__', '__pydantic_custom_init__', '__pydantic_decorators__', '__pydantic_extra__', '__pydantic_fields__', '__pydantic_fields_set__', '__pydantic_generic_metadata__', '__pydantic_init_subclass__', '__pydantic_on_complete__', '__pydantic_parent_namespace__', '__pydantic_post_init__', '__pydantic_private__', '__pydantic_root_model__', '__pydantic_serializer__', '__pydantic_setattr_handlers__', '__pydantic_validator__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__repr_args__', '__repr_name__', '__repr_recursion__', '__repr_str__', '__rich_repr__', '__setattr__', '__setstate__', '__signature__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_calculate_keys', '_copy_and_set_values', '_get_value', '_iter', '_setattr_handler', 'chain_id', 'child_markets', 'condition_id', 'construct', 'copy', 'created_at', 'cutoff_at', 'dict', 'from_dict', 'from_json', 'from_orm', 'json', 'market_id', 'market_title', 'model_computed_fields', 'model_config', 'model_construct', 'model_copy', 'model_dump', 'model_dump_json', 'model_extra', 'model_fields', 'model_fields_set', 'model_json_schema', 'model_parametrized_name', 'model_post_init', 'model_rebuild', 'model_validate', 'model_validate_json', 'model_validate_strings', 'no_label', 'no_token_id', 'parse_file', 'parse_obj', 'parse_raw', 'question_id', 'quote_token', 'resolved_at', 'result_token_id', 'rules', 'schema', 'schema_json', 'status', 'status_enum', 'to_dict', 'to_json', 'to_str', 'update_forward_refs', 'validate', 'volume', 'yes_label', 'yes_token_id']
+2025-11-14T06:27:32.367964303Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:22] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:27:32.367972305Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:22] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:27:32.367978370Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:22] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:27:32.367984122Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:23] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:27:32.367989069Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:23] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:27:32.367994345Z [err]  100.64.0.10 - - [14/Nov/2025 06:27:23] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:27:32.368001049Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:23] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:27:32.368008912Z [inf]  
+2025-11-14T06:27:32.368014734Z [inf]  [ADMIN] Daily cycle manually triggered from 100.64.0.13 at 2025-11-14T06:27:26.280553
+2025-11-14T06:27:32.368019437Z [inf]  [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-14T06:27:32.368024242Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-14T06:27:32.368028764Z [inf]  [CACHE] Cleared data cache at start of cycle 2025-11-14T06:27:26.351371
+2025-11-14T06:27:32.368033022Z [inf]  
+2025-11-14T06:27:32.368272078Z [inf]  
+2025-11-14T06:27:32.368277589Z [inf]  All attributes and values:
+2025-11-14T06:27:32.368282309Z [inf]    chain_id: 56 (type: str)
+2025-11-14T06:27:32.368287419Z [inf]    child_markets: None (type: NoneType)
+2025-11-14T06:27:32.368291527Z [inf]    condition_id:  (type: str)
+2025-11-14T06:27:32.368295768Z [inf]    construct: <bound method BaseModel.construct of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.368299695Z [inf]    copy: <bound method BaseModel.copy of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.369101089Z [inf]    created_at: 1763051685 (type: int)
+2025-11-14T06:27:32.369107665Z [inf]    cutoff_at: 1763164800 (type: int)
+2025-11-14T06:27:32.369112229Z [inf]    dict: <bound method BaseModel.dict of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.369116505Z [inf]    from_dict: <bound method OpenapiMarketDataOpenAPI.from_dict of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.370154857Z [inf]    from_json: <bound method OpenapiMarketDataOpenAPI.from_json of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.370161827Z [inf]    from_orm: <bound method BaseModel.from_orm of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.370167045Z [inf]    json: <bound method BaseModel.json of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.371075973Z [inf]    market_id: 1741 (type: int)
+2025-11-14T06:27:32.371081983Z [inf]    market_title: Bitcoin Up or Down on November 14?(By 12:00 ET) (type: str)
+2025-11-14T06:27:32.371087292Z [inf]    model_computed_fields: {} (type: dict)
+2025-11-14T06:27:32.371091804Z [inf]    model_config: {'populate_by_name': True, 'validate_assignment': True, 'protected_namespaces': (), 'validate_by_alias': True, 'validate_by_name': True} (type: dict)
+2025-11-14T06:27:32.371095642Z [inf]    model_construct: <bound method BaseModel.model_construct of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.371099836Z [inf]    model_copy: <bound method BaseModel.model_copy of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.372319837Z [inf]    model_dump: <bound method BaseModel.model_dump of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.372328147Z [inf]    model_dump_json: <bound method BaseModel.model_dump_json of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.373092939Z [inf]    model_extra: None (type: NoneType)
+2025-11-14T06:27:32.373101072Z [inf]    model_fields: {'chain_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='chainId', alias_priority=2), 'child_markets': FieldInfo(annotation=Union[List[OpenapiChildMarketDataOpenAPI], NoneType], required=False, default=None, alias='childMarkets', alias_priority=2, description='Child markets'), 'condition_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='conditionId', alias_priority=2, description='Resolution info'), 'created_at': FieldInfo(annotation=Union[Annotated[int, Strict(strict=True)], NoneType], required=False, default=None, alias='createdAt', alias_priority=2, description='Time fields (moved to bottom)'), 'cutoff_at': FieldInfo(annotation=Union[Annotated[int, Strict(strict=True)], NoneType], required=False, default=None, alias='cutoffAt', alias_priority=2), 'market_id': FieldInfo(annotation=Union[Annotated[int, Strict(strict=True)], NoneType], required=False, default=None, alias='marketId', alias_priority=2, description='Basic market info'), 'market_title': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='marketTitle', alias_priority=2), 'no_label': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='noLabel', alias_priority=2), 'no_token_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='noTokenId', alias_priority=2), 'question_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='questionId', alias_priority=2, description='Additional data'), 'quote_token': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='quoteToken', alias_priority=2, description='Chain info'), 'resolved_at': FieldInfo(annotation=Union[Annotated[int, Strict(strict=True)], NoneType], required=False, default=None, alias='resolvedAt', alias_priority=2), 'result_token_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='resultTokenId', alias_priority=2), 'rules': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None), 'status': FieldInfo(annotation=Union[ModelsTopicStatus, NoneType], required=False, default=None), 'status_enum': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='statusEnum', alias_priority=2, description='Human-readable status'), 'volume': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, description='Market metrics'), 'yes_label': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='yesLabel', alias_priority=2, description='Labels and rules'), 'yes_token_id': FieldInfo(annotation=Union[Annotated[str, Strict(strict=True)], NoneType], required=False, default=None, alias='yesTokenId', alias_priority=2, description='Token info')} (type: dict)
+2025-11-14T06:27:32.374200714Z [inf]    model_fields_set: {'no_label', 'question_id', 'market_title', 'no_token_id', 'yes_label', 'chain_id', 'child_markets', 'created_at', 'status', 'resolved_at', 'quote_token', 'result_token_id', 'cutoff_at', 'market_id', 'rules', 'yes_token_id', 'status_enum', 'condition_id', 'volume'} (type: set)
+2025-11-14T06:27:32.374207711Z [inf]    model_json_schema: <bound method BaseModel.model_json_schema of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.374213967Z [inf]    model_parametrized_name: <bound method BaseModel.model_parametrized_name of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.374219237Z [inf]    model_post_init: <bound method BaseModel.model_post_init of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.375474390Z [inf]    model_rebuild: <bound method BaseModel.model_rebuild of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.375481045Z [inf]    model_validate: <bound method BaseModel.model_validate of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.375486829Z [inf]    model_validate_json: <bound method BaseModel.model_validate_json of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.375492993Z [inf]    question_id: ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115 (type: str)
+2025-11-14T06:27:32.375493217Z [inf]    model_validate_strings: <bound method BaseModel.model_validate_strings of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.375521500Z [inf]    quote_token: 0x55d398326f99059fF775485246999027B3197955 (type: str)
+2025-11-14T06:27:32.375529526Z [inf]    resolved_at: 0 (type: int)
+2025-11-14T06:27:32.375542775Z [inf]    no_label: DOWN (type: str)
+2025-11-14T06:27:32.375555293Z [inf]    no_token_id: 91018970723383945947081266674754316249604136933795983503568791999316967625715 (type: str)
+2025-11-14T06:27:32.375563511Z [inf]    parse_file: <bound method BaseModel.parse_file of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.375571087Z [inf]    parse_obj: <bound method BaseModel.parse_obj of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.375578431Z [inf]    parse_raw: <bound method BaseModel.parse_raw of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.376461026Z [inf]    result_token_id:  (type: str)
+2025-11-14T06:27:32.376471941Z [inf]    rules: This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 '25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 '25 12:00 ET candle.
+2025-11-14T06:27:32.376481295Z [inf]  
+2025-11-14T06:27:32.376489085Z [inf]  This market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 '25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 '25 12:00 ET candle.
+2025-11-14T06:27:32.376495766Z [inf]  
+2025-11-14T06:27:32.376503232Z [inf]  If the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.
+2025-11-14T06:27:32.376510269Z [inf]  
+2025-11-14T06:27:32.376518909Z [inf]  The resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.
+2025-11-14T06:27:32.376526967Z [inf]  
+2025-11-14T06:27:32.376533860Z [inf]  Please note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets. (type: str)
+2025-11-14T06:27:32.376540271Z [inf]    schema: <bound method BaseModel.schema of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.376546671Z [inf]    schema_json: <bound method BaseModel.schema_json of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.376558266Z [inf]    status: ModelsTopicStatus.TopicStatusActivated (type: ModelsTopicStatus)
+2025-11-14T06:27:32.376564942Z [inf]    status_enum: Activated (type: str)
+2025-11-14T06:27:32.376571269Z [inf]    to_dict: <bound method OpenapiMarketDataOpenAPI.to_dict of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.377115313Z [inf]    to_json: <bound method OpenapiMarketDataOpenAPI.to_json of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.377120717Z [inf]    to_str: <bound method OpenapiMarketDataOpenAPI.to_str of OpenapiMarketDataOpenAPI(chain_id='56', child_markets=None, condition_id='', created_at=1763051685, cutoff_at=1763164800, market_id=1741, market_title='Bitcoin Up or Down on November 14?(By 12:00 ET)', no_label='DOWN', no_token_id='91018970723383945947081266674754316249604136933795983503568791999316967625715', question_id='ec43b6f4b8c74fa171f5bb38550917a748aa04c93de2f7f4f6a5c8faf09b5115', quote_token='0x55d398326f99059fF775485246999027B3197955', resolved_at=0, result_token_id='', rules='This market will resolve to "Up" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is lower than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nThis market will resolve to "Down" if the "Close" price for the Binance 1 minute candle for BTC/USDT Nov 13 \'25 12:00 in the ET timezone (noon) is higher than the final "Close" price for the Nov 14 \'25 12:00 ET candle.\n\nIf the final "Close" price for both of these candles is exactly equal on Binance, this market will resolve 50-50.\n\nThe resolution source for this market is Binance, specifically the BTC/USDT "Close" prices currently available at https://www.binance.com/en/trade/BTC_USDT with "1m" and "Candles" selected on the top bar.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other sources or spot markets.', status=<ModelsTopicStatus.TopicStatusActivated: 2>, status_enum='Activated', volume='9525.744000000000000000', yes_label='UP', yes_token_id='48882724128435502781310151024608110816311675396117519564621583904823670689991')> (type: method)
+2025-11-14T06:27:32.378372128Z [inf]    update_forward_refs: <bound method BaseModel.update_forward_refs of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.378380439Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-14T06:27:32.378382242Z [inf]    validate: <bound method BaseModel.validate of <class 'opinion_api.models.openapi_market_data_open_api.OpenapiMarketDataOpenAPI'>> (type: method)
+2025-11-14T06:27:32.378391303Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-14T06:27:32.378393224Z [inf]    volume: 9525.744000000000000000 (type: str)
+2025-11-14T06:27:32.378400813Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-14T06:27:32.378402198Z [inf]    yes_label: UP (type: str)
+2025-11-14T06:27:32.378409703Z [err]  100.64.0.4 - - [14/Nov/2025 06:27:31] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:27:32.378410249Z [inf]    yes_token_id: 48882724128435502781310151024608110816311675396117519564621583904823670689991 (type: str)
+2025-11-14T06:27:32.378416139Z [inf]  ================================================================================
+2025-11-14T06:27:32.378419239Z [err]  100.64.0.4 - - [14/Nov/2025 06:27:31] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:27:32.378421737Z [inf]  
+2025-11-14T06:27:32.378426917Z [inf]  [INFO] Opinion.trade API: Retrieved 17 active markets
+2025-11-14T06:27:32.378428862Z [err]  100.64.0.4 - - [14/Nov/2025 06:27:31] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:27:32.378432217Z [inf]  [INFO] Fetched 17 events from Opinion.trade
+2025-11-14T06:27:32.378438290Z [inf]  [INFO] Events grouped into 1 categories: {'Unknown': 17}
+2025-11-14T06:27:32.378442624Z [inf]  
+2025-11-14T06:27:32.378446847Z [inf]  [INFO] Processing cycle for ChatGPT
+2025-11-14T06:27:32.378450758Z [inf]  [INFO] ChatGPT - Analyzing 1 categories
+2025-11-14T06:27:32.378832519Z [err]  100.64.0.4 - - [14/Nov/2025 06:27:31] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:27:32.378837468Z [err]  100.64.0.4 - - [14/Nov/2025 06:27:31] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:27:32.378841737Z [err]  100.64.0.17 - - [14/Nov/2025 06:27:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:27:32.378845994Z [err]  100.64.0.4 - - [14/Nov/2025 06:27:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:27:32.436065103Z [inf]  [INFO] ChatGPT - No opportunities found
+2025-11-14T06:27:32.436074911Z [inf]  [INFO] ChatGPT - Cycle complete: 0 bets placed, 3 skipped, 3 events analyzed
+2025-11-14T06:27:32.436080878Z [inf]  
+2025-11-14T06:27:32.436088022Z [inf]  [INFO] Processing cycle for Gemini
+2025-11-14T06:27:32.436092401Z [inf]  [INFO] Gemini - Analyzing 1 categories
+2025-11-14T06:27:32.622496503Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T06:27:32.622503196Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T06:27:32.622507344Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T06:27:32.627758354Z [inf]  [INFO] Gemini - No opportunities found
+2025-11-14T06:27:32.627763509Z [inf]  [INFO] Gemini - Cycle complete: 0 bets placed, 3 skipped, 3 events analyzed
+2025-11-14T06:27:32.627767571Z [inf]  
+2025-11-14T06:27:32.627771291Z [inf]  [INFO] Processing cycle for Qwen
+2025-11-14T06:27:32.627774975Z [inf]  [INFO] Qwen - Analyzing 1 categories
+2025-11-14T06:27:33.593147879Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T06:27:33.593155648Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T06:27:33.593161416Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T06:27:34.010181080Z [inf]  [INFO] Qwen - No opportunities found
+2025-11-14T06:27:34.010189371Z [inf]  [INFO] Qwen - Cycle complete: 0 bets placed, 3 skipped, 3 events analyzed
+2025-11-14T06:27:34.010196407Z [inf]  
+2025-11-14T06:27:34.010203064Z [inf]  [INFO] Processing cycle for Deepseek
+2025-11-14T06:27:34.010207268Z [inf]  [INFO] Deepseek - Analyzing 1 categories
+2025-11-14T06:27:53.999084253Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:27:53.999088398Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:27:53.999092272Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:27:53.999096896Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:27:53.999102309Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:27:53.999106336Z [err]  100.64.0.10 - - [14/Nov/2025 06:27:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:27:53.999110472Z [err]  100.64.0.15 - - [14/Nov/2025 06:27:53] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:28:14.003549528Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-14T06:28:14.003557394Z [inf]  [CACHE HIT] News data for ETH
+2025-11-14T06:28:14.003562464Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-14T06:28:34.124686001Z [err]  100.64.0.4 - - [14/Nov/2025 06:28:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:28:34.124695575Z [err]  100.64.0.4 - - [14/Nov/2025 06:28:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:28:34.124702445Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:32] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-14T06:28:34.124715228Z [err]  100.64.0.7 - - [14/Nov/2025 06:28:31] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:28:34.124720466Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:28:34.124724311Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:28:34.124727915Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:28:34.124732115Z [err]  100.64.0.13 - - [14/Nov/2025 06:28:32] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:28:34.124736259Z [err]  100.64.0.4 - - [14/Nov/2025 06:28:32] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:28:34.124740054Z [err]  100.64.0.4 - - [14/Nov/2025 06:28:32] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:28:34.124743810Z [err]  100.64.0.4 - - [14/Nov/2025 06:28:32] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:28:34.124749169Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:28:34.124754119Z [err]  100.64.0.4 - - [14/Nov/2025 06:28:32] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:28:34.124758569Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:32] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:28:54.102467201Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-14T06:28:54.102472458Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-14T06:28:54.102476233Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-14T06:28:54.102480848Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-14T06:28:54.102484971Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-14T06:28:54.102488946Z [err]  100.64.0.14 - - [14/Nov/2025 06:28:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-14T06:28:54.102492777Z [err]  100.64.0.15 - - [14/Nov/2025 06:28:53] "GET /api/market-header HTTP/1.1" 200 -
