@@ -72,11 +72,11 @@ class BankrollManager:
         Fórmula: f* = (bp - q) / b donde b=odds, p=prob, q=1-p
         Usamos fracción conservadora para reducir volatilidad
         """
-        if probability <= 0.5 or expected_value <= 0:
+        if probability < 0.51 or expected_value <= 0:
             return {
                 'bet_size': 0,
                 'strategy': 'kelly_conservative',
-                'reason': 'Probabilidad insuficiente o EV negativo'
+                'reason': 'Probabilidad insuficiente (<51%) o EV negativo'
             }
         
         q = 1 - probability
@@ -107,11 +107,11 @@ class BankrollManager:
         Fixed Fractional: Apuesta un porcentaje fijo del bankroll
         Rango: 0.5% - 2% basado en confianza
         """
-        if probability < 0.55:
+        if probability < 0.51:
             return {
                 'bet_size': 0,
                 'strategy': 'fixed_fractional',
-                'reason': 'Probabilidad muy baja (<55%)'
+                'reason': 'Probabilidad muy baja (<51%)'
             }
         
         base_fraction = 0.01
@@ -140,11 +140,11 @@ class BankrollManager:
         """
         Proportional Betting: Tamaño proporcional a confianza y probabilidad
         """
-        if probability < 0.60 or confidence < 60:
+        if probability < 0.51 or confidence < 40:
             return {
                 'bet_size': 0,
                 'strategy': 'proportional',
-                'reason': 'Requisitos mínimos no cumplidos (prob>60%, conf>60%)'
+                'reason': 'Requisitos mínimos no cumplidos (prob>51%, conf>40%)'
             }
         
         prob_score = (probability - 0.5) * 2
@@ -171,7 +171,7 @@ class BankrollManager:
         Martingale Modificado: Incrementa después de pérdidas PERO con límites estrictos
         Máximo: 3 incrementos consecutivos, luego reset
         """
-        if probability < 0.55:
+        if probability < 0.51:
             return {
                 'bet_size': 0,
                 'strategy': 'martingale_modified',
@@ -205,7 +205,7 @@ class BankrollManager:
         Anti-Martingale: Incrementa tamaño después de GANAR
         Capitaliza rachas ganadoras
         """
-        if probability < 0.60:
+        if probability < 0.51:
             return {
                 'bet_size': 0,
                 'strategy': 'anti_martingale',
@@ -375,11 +375,11 @@ class BankrollManager:
         if expected_value <= 0:
             return False, "Valor esperado negativo o cero"
         
-        if probability < 0.55:
-            return False, "Probabilidad demasiado baja (<55%)"
+        if probability < 0.51:
+            return False, "Probabilidad demasiado baja (<51%)"
         
-        if confidence < 50:
-            return False, "Nivel de confianza insuficiente (<50%)"
+        if confidence < 40:
+            return False, "Nivel de confianza insuficiente (<40%)"
         
         return True, "Criterios mínimos cumplidos"
 
