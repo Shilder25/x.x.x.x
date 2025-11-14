@@ -166,8 +166,14 @@ class AutonomousEngine:
         all_events = all_events_response.get('events', [])
         print(f"[INFO] Fetched {len(all_events)} events from Opinion.trade")
         
+        # Filtrar eventos de Sports (categoría excluida)
+        filtered_events = [event for event in all_events if event.get('category', 'general') != 'Sports']
+        sports_filtered = len(all_events) - len(filtered_events)
+        if sports_filtered > 0:
+            print(f"[INFO] Filtered out {sports_filtered} Sports events (category excluded)")
+        
         # Agrupar por categoría
-        for event in all_events:
+        for event in filtered_events:
             category = event.get('category', 'general')
             if category not in events_by_category:
                 events_by_category[category] = []
@@ -545,8 +551,16 @@ class AutonomousEngine:
                 'fundamental_score': prediction.get('fundamental_score', 5),
                 'fundamental_analysis': prediction.get('fundamental_analysis', ''),
                 'volatility_score': prediction.get('volatility_score', 5),
-                'volatility_analysis': prediction.get('volatility_analysis', '')
+                'volatility_analysis': prediction.get('volatility_analysis', ''),
+                'probability_reasoning': prediction.get('probability_reasoning', ''),
+                'market_volume': float(event.get('volume', 0)) if event.get('volume') else None,
+                'market_yes_pool': None,
+                'market_no_pool': None
             }
+            
+            # Log warning if probability_reasoning is missing (transparency chain validation)
+            if not bet_data.get('probability_reasoning'):
+                print(f"[WARNING] {firm_name} - Missing probability_reasoning in prediction for event: {event_description[:50]}")
             
             bet_id = self.db.save_autonomous_bet(bet_data)
             decision['bet_id'] = bet_id
@@ -675,8 +689,16 @@ class AutonomousEngine:
                     'fundamental_score': prediction.get('fundamental_score', 5),
                     'fundamental_analysis': prediction.get('fundamental_analysis', ''),
                     'volatility_score': prediction.get('volatility_score', 5),
-                    'volatility_analysis': prediction.get('volatility_analysis', '')
+                    'volatility_analysis': prediction.get('volatility_analysis', ''),
+                    'probability_reasoning': prediction.get('probability_reasoning', ''),
+                    'market_volume': float(event.get('volume', 0)) if event.get('volume') else None,
+                    'market_yes_pool': None,
+                    'market_no_pool': None
                 }
+                
+                # Log warning if probability_reasoning is missing (transparency chain validation)
+                if not bet_data.get('probability_reasoning'):
+                    print(f"[WARNING] {firm_name} - Missing probability_reasoning in prediction for event: {event_description[:50]}")
                 
                 bet_id = self.db.save_autonomous_bet(bet_data)
                 decision['bet_id'] = bet_id

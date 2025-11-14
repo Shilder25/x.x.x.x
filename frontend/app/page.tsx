@@ -314,37 +314,81 @@ export default function Home() {
                     No AI decisions recorded yet. System will log all predictions when enabled.
                   </p>
                 ) : (
-                  <div style={{ overflowX: 'auto' }}>
-                    <table className="leaderboard-table">
-                      <thead>
-                        <tr>
-                          <th>AI</th>
-                          <th>EVENT</th>
-                          <th>CATEGORY</th>
-                          <th>PROB</th>
-                          <th>CONFIDENCE</th>
-                          <th>BET SIZE</th>
-                          <th>RESULT</th>
-                          <th>TIMESTAMP</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {aiDecisions.slice(0, 20).map((decision, idx) => (
-                          <tr key={idx}>
-                            <td style={{ fontWeight: 600 }}>{decision.firm_name}</td>
-                            <td style={{ maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                              {decision.event_description}
-                            </td>
-                            <td>{decision.category || 'N/A'}</td>
-                            <td>{(decision.probability * 100).toFixed(0)}%</td>
-                            <td>{decision.confidence}/10</td>
-                            <td>${decision.bet_size}</td>
-                            <td>{decision.actual_result === null ? 'Pending' : decision.actual_result === 1 ? 'Win' : 'Loss'}</td>
-                            <td style={{ fontSize: '0.75rem' }}>{new Date(decision.execution_timestamp).toLocaleDateString()}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {aiDecisions.slice(0, 20).map((decision, idx) => (
+                      <details key={idx} style={{ border: '2px solid #000', background: '#fff' }}>
+                        <summary style={{ 
+                          padding: '1rem', 
+                          cursor: 'pointer', 
+                          fontWeight: 600,
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ color: decision.firm_name === 'ChatGPT' ? '#3B82F6' : decision.firm_name === 'Gemini' ? '#8B5CF6' : decision.firm_name === 'Qwen' ? '#F97316' : decision.firm_name === 'Deepseek' ? '#000' : '#06B6D4' }}>
+                            {decision.firm_name}
+                          </span>
+                          <span style={{ fontWeight: 400, flex: 1, marginLeft: '1rem', marginRight: '1rem' }}>
+                            {decision.event_description}
+                          </span>
+                          <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>
+                            {(decision.probability * 100).toFixed(0)}% • ${decision.bet_size}
+                          </span>
+                        </summary>
+                        <div style={{ padding: '1.5rem', borderTop: '2px solid #000', background: '#F9FAFB' }}>
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
+                            <div>
+                              <div style={{ fontSize: '0.75rem', color: '#6B7280', marginBottom: '0.25rem' }}>CATEGORY</div>
+                              <div style={{ fontWeight: 600 }}>{decision.category || 'N/A'}</div>
+                            </div>
+                            <div>
+                              <div style={{ fontSize: '0.75rem', color: '#6B7280', marginBottom: '0.25rem' }}>CONFIDENCE</div>
+                              <div style={{ fontWeight: 600 }}>{decision.confidence}/10</div>
+                            </div>
+                            <div>
+                              <div style={{ fontSize: '0.75rem', color: '#6B7280', marginBottom: '0.25rem' }}>RESULT</div>
+                              <div style={{ fontWeight: 600, color: decision.actual_result === null ? '#6B7280' : decision.actual_result === 1 ? '#10B981' : '#EF4444' }}>
+                                {decision.actual_result === null ? 'Pending' : decision.actual_result === 1 ? 'Win ✓' : 'Loss ✗'}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div style={{ marginBottom: '1.5rem' }}>
+                            <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.75rem' }}>5-AREA ANALYSIS BREAKDOWN</h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.75rem' }}>
+                              {['sentiment', 'news', 'technical', 'fundamental', 'volatility'].map(area => (
+                                <div key={area} style={{ padding: '0.75rem', border: '1px solid #E5E7EB', background: '#fff' }}>
+                                  <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: '#6B7280', marginBottom: '0.25rem' }}>
+                                    {area}
+                                  </div>
+                                  <div style={{ fontSize: '1.25rem', fontWeight: 600, color: decision[`${area}_score`] >= 7 ? '#10B981' : decision[`${area}_score`] >= 5 ? '#F59E0B' : '#EF4444' }}>
+                                    {decision[`${area}_score`] || 'N/A'}/10
+                                  </div>
+                                  <div style={{ fontSize: '0.7rem', color: '#6B7280', marginTop: '0.5rem', lineHeight: '1.3' }}>
+                                    {decision[`${area}_analysis`] || 'No analysis available'}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {decision.probability_reasoning && (
+                            <div style={{ padding: '1rem', background: '#FEF3C7', border: '1px solid #F59E0B' }}>
+                              <div style={{ fontSize: '0.75rem', fontWeight: 600, marginBottom: '0.5rem', color: '#92400E' }}>
+                                💡 PROBABILITY CALCULATION REASONING
+                              </div>
+                              <div style={{ fontSize: '0.875rem', color: '#78350F', lineHeight: '1.5' }}>
+                                {decision.probability_reasoning}
+                              </div>
+                            </div>
+                          )}
+
+                          <div style={{ fontSize: '0.75rem', color: '#6B7280', marginTop: '1rem' }}>
+                            Timestamp: {new Date(decision.execution_timestamp).toLocaleString()}
+                          </div>
+                        </div>
+                      </details>
+                    ))}
                   </div>
                 )}
               </div>
@@ -361,35 +405,64 @@ export default function Home() {
                     No active positions. All predictions have been resolved.
                   </p>
                 ) : (
-                  <div style={{ overflowX: 'auto' }}>
-                    <table className="leaderboard-table">
-                      <thead>
-                        <tr>
-                          <th>AI</th>
-                          <th>EVENT</th>
-                          <th>CATEGORY</th>
-                          <th>BET SIZE</th>
-                          <th>PROB</th>
-                          <th>EXPECTED VALUE</th>
-                          <th>TIMESTAMP</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {activePositions.map((position, idx) => (
-                          <tr key={idx}>
-                            <td style={{ fontWeight: 600 }}>{position.firm_name}</td>
-                            <td style={{ maxWidth: '250px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                              {position.event_description}
-                            </td>
-                            <td>{position.category || 'N/A'}</td>
-                            <td>${position.bet_size}</td>
-                            <td>{(position.probability * 100).toFixed(0)}%</td>
-                            <td>{position.expected_value ? `$${position.expected_value.toFixed(2)}` : 'N/A'}</td>
-                            <td style={{ fontSize: '0.75rem' }}>{new Date(position.execution_timestamp).toLocaleDateString()}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {activePositions.map((position, idx) => {
+                      const potentialWin = position.bet_size * 2;
+                      const potentialLoss = position.bet_size;
+                      const expectedPL = (position.probability * potentialWin) - ((1 - position.probability) * potentialLoss);
+                      
+                      return (
+                        <div key={idx} style={{ border: '2px solid #000', background: '#fff', padding: '1.5rem' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+                            <div>
+                              <div style={{ fontSize: '0.75rem', color: '#6B7280', marginBottom: '0.25rem' }}>
+                                {position.category || 'GENERAL'} • {position.firm_name}
+                              </div>
+                              <div style={{ fontSize: '1rem', fontWeight: 600 }}>
+                                {position.event_description}
+                              </div>
+                            </div>
+                            <div style={{ textAlign: 'right' }}>
+                              <div style={{ fontSize: '0.75rem', color: '#6B7280', marginBottom: '0.25rem' }}>ACTIVE</div>
+                              <div style={{ fontSize: '1.25rem', fontWeight: 600, color: '#10B981' }}>
+                                {(position.probability * 100).toFixed(0)}%
+                              </div>
+                            </div>
+                          </div>
+
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', padding: '1rem', background: '#F9FAFB', border: '1px solid #E5E7EB' }}>
+                            <div>
+                              <div style={{ fontSize: '0.7rem', color: '#6B7280', marginBottom: '0.25rem' }}>BET SIZE</div>
+                              <div style={{ fontSize: '1rem', fontWeight: 600 }}>${position.bet_size.toFixed(2)}</div>
+                            </div>
+                            <div>
+                              <div style={{ fontSize: '0.7rem', color: '#6B7280', marginBottom: '0.25rem' }}>POTENTIAL WIN</div>
+                              <div style={{ fontSize: '1rem', fontWeight: 600, color: '#10B981' }}>+${potentialWin.toFixed(2)}</div>
+                            </div>
+                            <div>
+                              <div style={{ fontSize: '0.7rem', color: '#6B7280', marginBottom: '0.25rem' }}>POTENTIAL LOSS</div>
+                              <div style={{ fontSize: '1rem', fontWeight: 600, color: '#EF4444' }}>-${potentialLoss.toFixed(2)}</div>
+                            </div>
+                            <div>
+                              <div style={{ fontSize: '0.7rem', color: '#6B7280', marginBottom: '0.25rem' }}>EXPECTED VALUE</div>
+                              <div style={{ fontSize: '1rem', fontWeight: 600, color: expectedPL >= 0 ? '#10B981' : '#EF4444' }}>
+                                {expectedPL >= 0 ? '+' : ''}${expectedPL.toFixed(2)}
+                              </div>
+                            </div>
+                          </div>
+
+                          {position.market_volume !== null && position.market_volume !== undefined && (
+                            <div style={{ marginTop: '1rem', fontSize: '0.75rem', color: '#6B7280' }}>
+                              Opinion.trade Market Volume: ${position.market_volume.toLocaleString()}
+                            </div>
+                          )}
+
+                          <div style={{ fontSize: '0.75rem', color: '#6B7280', marginTop: '1rem' }}>
+                            Opened: {new Date(position.execution_timestamp).toLocaleString()}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -442,9 +515,105 @@ export default function Home() {
         )}
 
         {activeSection === 'MODELS' && (
-          <div style={{ padding: '2rem', textAlign: 'center' }}>
-            <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Model Details</h2>
-            <p style={{ color: '#6B7280' }}>Detailed information about each competing model will be displayed here.</p>
+          <div style={{ padding: '2rem' }}>
+            <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', textAlign: 'center', borderBottom: '2px solid #000', paddingBottom: '1rem' }}>
+              AI Model Details & Performance
+            </h2>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+              {[
+                { name: 'ChatGPT', model: 'gpt-4', strategy: 'Kelly Conservative', color: '#3B82F6', description: 'Conservative risk management with proven Kelly Criterion formula' },
+                { name: 'Gemini', model: 'gemini-2.0-flash-exp', strategy: 'Martingale Modified', color: '#8B5CF6', description: 'Increases bet size after losses with strict limits to recover quickly' },
+                { name: 'Qwen', model: 'qwen-plus', strategy: 'Fixed Fractional', color: '#F97316', description: 'Fixed percentage betting based on confidence levels for consistency' },
+                { name: 'Deepseek', model: 'deepseek-chat', strategy: 'Proportional', color: '#000000', description: 'Bet size proportional to combined probability and confidence scores' },
+                { name: 'Grok', model: 'grok-beta', strategy: 'Anti-Martingale', color: '#06B6D4', description: 'Increases bet size after wins to capitalize on winning streaks' }
+              ].map((ai) => {
+                const aiMetrics = liveMetrics.find(m => m.firm === ai.name) || {};
+                return (
+                  <div key={ai.name} style={{ border: '2px solid #000', background: '#fff', padding: '1.5rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: ai.color }}>
+                        {ai.name}
+                      </h3>
+                      <div style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', background: '#F3F4F6', border: '1px solid #E5E7EB', borderRadius: '4px' }}>
+                        {ai.strategy}
+                      </div>
+                    </div>
+
+                    <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #E5E7EB' }}>
+                      <div style={{ fontSize: '0.75rem', color: '#6B7280', marginBottom: '0.25rem' }}>MODEL</div>
+                      <div style={{ fontSize: '0.875rem', fontWeight: 500 }}>{ai.model}</div>
+                    </div>
+
+                    <div style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #E5E7EB' }}>
+                      <div style={{ fontSize: '0.75rem', color: '#6B7280', marginBottom: '0.5rem' }}>STRATEGY DESCRIPTION</div>
+                      <div style={{ fontSize: '0.875rem', lineHeight: '1.5', color: '#374151' }}>{ai.description}</div>
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem', marginBottom: '1rem' }}>
+                      <div>
+                        <div style={{ fontSize: '0.7rem', color: '#6B7280', marginBottom: '0.25rem' }}>TOTAL VALUE</div>
+                        <div style={{ fontSize: '1.125rem', fontWeight: 600 }}>
+                          ${aiMetrics.total_value?.toLocaleString() || '0'}
+                        </div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.7rem', color: '#6B7280', marginBottom: '0.25rem' }}>PROFIT/LOSS</div>
+                        <div style={{ fontSize: '1.125rem', fontWeight: 600, color: (aiMetrics.profit_loss || 0) >= 0 ? '#10B981' : '#EF4444' }}>
+                          {(aiMetrics.profit_loss || 0) >= 0 ? '+' : ''}${aiMetrics.profit_loss?.toLocaleString() || '0'}
+                        </div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.7rem', color: '#6B7280', marginBottom: '0.25rem' }}>WIN RATE</div>
+                        <div style={{ fontSize: '1.125rem', fontWeight: 600 }}>
+                          {aiMetrics.win_rate?.toFixed(1) || '0'}%
+                        </div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.7rem', color: '#6B7280', marginBottom: '0.25rem' }}>TOTAL BETS</div>
+                        <div style={{ fontSize: '1.125rem', fontWeight: 600 }}>
+                          {aiMetrics.total_bets || 0}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style={{ padding: '0.75rem', background: '#F9FAFB', border: '1px solid #E5E7EB', fontSize: '0.75rem' }}>
+                      <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>Risk Tier System</div>
+                      <div style={{ color: '#6B7280' }}>
+                        Adaptive 4-tier risk management: Conservative → Moderate → Aggressive → All-In, 
+                        based on performance and drawdown levels
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#F9FAFB', border: '2px solid #000' }}>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem' }}>About the Betting Strategies</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', fontSize: '0.875rem' }}>
+                <div>
+                  <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>Kelly Conservative</div>
+                  <div style={{ color: '#6B7280' }}>Uses 25% of Kelly fraction for safety, adjusts based on confidence</div>
+                </div>
+                <div>
+                  <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>Martingale Modified</div>
+                  <div style={{ color: '#6B7280' }}>1.5x multiplier after losses, max 3 consecutive increases</div>
+                </div>
+                <div>
+                  <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>Fixed Fractional</div>
+                  <div style={{ color: '#6B7280' }}>0.5-2% of bankroll based on confidence tiers</div>
+                </div>
+                <div>
+                  <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>Proportional</div>
+                  <div style={{ color: '#6B7280' }}>Bet size scales with probability × confidence score</div>
+                </div>
+                <div>
+                  <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>Anti-Martingale</div>
+                  <div style={{ color: '#6B7280' }}>1.3x multiplier after wins, max 3 consecutive increases</div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 

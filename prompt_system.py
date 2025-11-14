@@ -83,7 +83,8 @@ Debe emitir SOLO un objeto JSON válido con el siguiente formato exacto:
     "fundamental_score": [VALOR ENTRE 0-10: Calificación de confianza en datos fundamentales (P/E, earnings, etc.)],
     "fundamental_analysis": "[Justificación breve de la calificación - máximo 100 palabras]",
     "volatility_score": [VALOR ENTRE 0-10: Calificación de nivel de riesgo basado en volatilidad histórica],
-    "volatility_analysis": "[Justificación breve de la calificación - máximo 100 palabras]"
+    "volatility_analysis": "[Justificación breve de la calificación - máximo 100 palabras]",
+    "probability_reasoning": "[EXPLICACIÓN DETALLADA de cómo llegó a la probabilidad final. Debe incluir: (1) Promedio ponderado de los 5 scores (sentiment, news, technical, fundamental, volatility), (2) Ajustes aplicados basados en nivel de confianza, volatilidad y riesgo, (3) Razonamiento específico para el número final. Máximo 200 palabras. Ejemplo: 'Weighted avg of 5 areas: (7.5+8.0+6.5+7.0+5.0)/5 = 6.8/10 = 68% base probability. Adjusted down to 58% due to moderate volatility (5/10) and existing BTC exposure in portfolio. High news score (8/10) and strong sentiment (7.5/10) support bullish case, but technical indicators show neutral momentum (6.5/10). Conservative adjustment applied given market uncertainty.']"
 }}
 
 IMPORTANTE: 

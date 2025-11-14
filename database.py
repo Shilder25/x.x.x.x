@@ -165,6 +165,13 @@ class TradingDatabase:
             cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN volatility_analysis TEXT')
             print("Database migrated: Added 5-area analysis columns to autonomous_bets table")
         
+        if 'probability_reasoning' not in bet_columns:
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN probability_reasoning TEXT')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN market_volume REAL')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN market_yes_pool REAL')
+            cursor.execute('ALTER TABLE autonomous_bets ADD COLUMN market_no_pool REAL')
+            print("Database migrated: Added probability_reasoning and Opinion.trade market context columns to autonomous_bets table")
+        
         cursor.execute("PRAGMA table_info(virtual_portfolio)")
         portfolio_columns = [row[1] for row in cursor.fetchall()]
         
@@ -428,8 +435,9 @@ class TradingDatabase:
             technical_score, technical_analysis,
             fundamental_score, fundamental_analysis,
             volatility_score, volatility_analysis,
+            probability_reasoning, market_volume, market_yes_pool, market_no_pool,
             execution_timestamp, simulation_mode, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
             bet_data['firm_name'],
             bet_data['event_id'],
@@ -453,6 +461,10 @@ class TradingDatabase:
             bet_data.get('fundamental_analysis'),
             bet_data.get('volatility_score'),
             bet_data.get('volatility_analysis'),
+            bet_data.get('probability_reasoning'),
+            bet_data.get('market_volume'),
+            bet_data.get('market_yes_pool'),
+            bet_data.get('market_no_pool'),
             bet_data['execution_timestamp'],
             bet_data.get('simulation_mode', 1),
             datetime.now().isoformat()
@@ -716,8 +728,10 @@ class TradingDatabase:
     def get_latest_ai_thinking(self) -> List[Dict]:
         """
         Obtiene el análisis más reciente de cada IA con desglose de las 5 áreas.
+        Usa row_factory para acceso seguro a columnas opcionales.
         """
         conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
         firms = ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']
@@ -734,22 +748,26 @@ class TradingDatabase:
             row = cursor.fetchone()
             if row:
                 latest_thinking.append({
-                    'firm_name': row[1],
-                    'event_description': row[3],
-                    'category': row[4],
-                    'probability': row[6],
-                    'confidence': row[7],
-                    'sentiment_score': row[13],
-                    'sentiment_analysis': row[14],
-                    'news_score': row[15],
-                    'news_analysis': row[16],
-                    'technical_score': row[17],
-                    'technical_analysis': row[18],
-                    'fundamental_score': row[19],
-                    'fundamental_analysis': row[20],
-                    'volatility_score': row[21],
-                    'volatility_analysis': row[22],
-                    'execution_timestamp': row[25]
+                    'firm_name': row['firm_name'],
+                    'event_description': row['event_description'],
+                    'category': row['category'],
+                    'probability': row['probability'],
+                    'confidence': row['confidence'],
+                    'sentiment_score': row['sentiment_score'],
+                    'sentiment_analysis': row['sentiment_analysis'],
+                    'news_score': row['news_score'],
+                    'news_analysis': row['news_analysis'],
+                    'technical_score': row['technical_score'],
+                    'technical_analysis': row['technical_analysis'],
+                    'fundamental_score': row['fundamental_score'],
+                    'fundamental_analysis': row['fundamental_analysis'],
+                    'volatility_score': row['volatility_score'],
+                    'volatility_analysis': row['volatility_analysis'],
+                    'execution_timestamp': row['execution_timestamp'],
+                    'probability_reasoning': row['probability_reasoning'] if 'probability_reasoning' in row.keys() else None,
+                    'market_volume': row['market_volume'] if 'market_volume' in row.keys() else None,
+                    'market_yes_pool': row['market_yes_pool'] if 'market_yes_pool' in row.keys() else None,
+                    'market_no_pool': row['market_no_pool'] if 'market_no_pool' in row.keys() else None
                 })
         
         conn.close()

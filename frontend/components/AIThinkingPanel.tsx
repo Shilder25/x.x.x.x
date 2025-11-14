@@ -263,6 +263,46 @@ export default function AIThinkingPanel() {
                 </div>
               </div>
             </div>
+
+            {selectedAnalysis.probability_reasoning && (
+              <div style={{
+                marginTop: '1.5rem',
+                padding: '1rem',
+                background: '#FEF3C7',
+                border: '2px solid #F59E0B'
+              }}>
+                <div style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  color: '#92400E',
+                  marginBottom: '0.5rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}>
+                  💡 Probability Calculation Reasoning
+                </div>
+                <div style={{
+                  fontSize: '0.875rem',
+                  color: '#78350F',
+                  lineHeight: '1.6'
+                }}>
+                  {selectedAnalysis.probability_reasoning}
+                </div>
+              </div>
+            )}
+
+            {selectedAnalysis.market_volume && (
+              <div style={{
+                marginTop: '1rem',
+                padding: '0.75rem',
+                background: '#EFF6FF',
+                border: '1px solid #3B82F6',
+                fontSize: '0.75rem',
+                color: '#1E40AF'
+              }}>
+                <strong>Opinion.trade Market Volume:</strong> ${selectedAnalysis.market_volume.toLocaleString()}
+              </div>
+            )}
           )}
 
           {!selectedAnalysis && (
@@ -272,7 +312,7 @@ export default function AIThinkingPanel() {
               color: '#6B7280',
               fontSize: '0.875rem'
             }}>
-              Click on an AI above to view their detailed 5-area analysis
+              Click on an AI above to view their detailed 5-area analysis and probability reasoning
             </div>
           )}
         </div>
