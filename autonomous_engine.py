@@ -153,23 +153,15 @@ class AutonomousEngine:
         Returns:
             Dict con categorías como keys y listas de eventos como values
         """
-        print("[DEBUG] _fetch_events_by_category called")
         events_by_category = {}
         
-        # Primero obtener todos los eventos para ver qué categorías hay
-        # Opinion.trade SDK limit: max 20 per request
-        print("[DEBUG] Calling opinion_api.get_available_events(limit=20)...")
+        # Get available events (Opinion.trade SDK max limit: 20 per request)
         all_events_response = self.opinion_api.get_available_events(limit=20)
         
-        print(f"[DEBUG] Response success: {all_events_response.get('success')}")
-        print(f"[DEBUG] Response: {all_events_response}")
-        
         if not all_events_response.get('success'):
-            print(f"[DEBUG] Failed to get events - returning empty dict")
             return events_by_category
         
         all_events = all_events_response.get('events', [])
-        print(f"[DEBUG] Retrieved {len(all_events)} total events")
         
         # Agrupar por categoría
         for event in all_events:
@@ -178,7 +170,6 @@ class AutonomousEngine:
                 events_by_category[category] = []
             events_by_category[category].append(event)
         
-        print(f"[DEBUG] Grouped into {len(events_by_category)} categories: {list(events_by_category.keys())}")
         return events_by_category
     
     def _process_firm_multi_category_cycle(self, firm_name: str, events_by_category: Dict[str, List[Dict]]) -> Dict:

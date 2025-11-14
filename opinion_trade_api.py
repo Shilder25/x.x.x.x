@@ -65,21 +65,18 @@ class OpinionTradeAPI:
             print(f"✗ Failed to initialize Opinion.trade SDK: {e}")
             self.client = None
     
-    def get_available_events(self, limit: int = 50, category: Optional[str] = None) -> Dict:
+    def get_available_events(self, limit: int = 20, category: Optional[str] = None) -> Dict:
         """
         Fetch list of available markets from Opinion.trade for autonomous betting.
         
         Args:
-            limit: Maximum number of markets to retrieve (default 50)
+            limit: Maximum number of markets to retrieve (default 20, max 20 per SDK limit)
             category: Optional category filter (currently not supported by SDK)
         
         Returns:
             Dictionary with success status and list of markets
         """
-        print(f"[DEBUG] get_available_events called with limit={limit}, category={category}")
-        
         if not self.client:
-            print("[DEBUG] Client not initialized - returning error")
             return {
                 'success': False,
                 'error': 'Opinion.trade client not initialized',
@@ -87,25 +84,20 @@ class OpinionTradeAPI:
             }
         
         try:
-            print("[DEBUG] Calling client.get_markets...")
-            # Get active binary markets
+            # Get active binary markets (SDK max limit: 20)
             response = self.client.get_markets(
                 topic_type=TopicType.BINARY,
                 status=TopicStatusFilter.ACTIVATED,
                 page=1,
-                limit=limit
+                limit=min(limit, 20)  # SDK enforces max 20
             )
-            
-            print(f"[DEBUG] API response - errno: {response.errno}, errmsg: {response.errmsg if hasattr(response, 'errmsg') else 'N/A'}")
             
             if response.errno == 0:
                 markets = response.result.list
-                print(f"[DEBUG] Retrieved {len(markets)} markets from API")
                 
                 # Convert SDK market objects to our event format
                 events = []
                 for market in markets:
-                    print(f"[DEBUG] Processing market: {market.marketTitle[:60]}...")
                     events.append({
                         'event_id': str(market.marketId),
                         'market_id': market.marketId,
@@ -120,7 +112,6 @@ class OpinionTradeAPI:
                         'options': getattr(market, 'options', [])
                     })
                 
-                print(f"[DEBUG] Returning {len(events)} events successfully")
                 return {
                     'success': True,
                     'count': len(events),
@@ -130,11 +121,10 @@ class OpinionTradeAPI:
             else:
                 # Handle specific error codes
                 error_msg = response.errmsg
-                print(f"[DEBUG] API error {response.errno}: {error_msg}")
                 if response.errno == 10403 and "Invalid area" in error_msg:
                     error_msg = (
                         "Geographic restriction detected. Opinion.trade API blocked this request. "
-                        "This code must run from Railway deployment in EU West region (not from Replit). "
+                        "This code must run from Railway deployment in US West region (not from Replit). "
                         "Please ensure you're running this from the Railway production environment."
                     )
                 
@@ -145,9 +135,6 @@ class OpinionTradeAPI:
                 }
         
         except Exception as e:
-            print(f"[DEBUG] Exception in get_available_events: {str(e)}")
-            import traceback
-            traceback.print_exc()
             return {
                 'success': False,
                 'error': 'Unexpected error',
