@@ -226,7 +226,7 @@ export default function Home() {
               const firmColor = item.firm === 'ChatGPT' ? '#3B82F6' : 
                                item.firm === 'Gemini' ? '#8B5CF6' : 
                                item.firm === 'Qwen' ? '#F97316' : 
-                               item.firm === 'Deepseek' ? '#FFF' : '#06B6D4';
+                               item.firm === 'Deepseek' ? '#000' : '#06B6D4';
               
               return (
                 <details 

@@ -32,7 +32,7 @@
   - **CANCELLED ORDERS**: "How the 3-Strike System Works" box redesigned to white background with 2px black border (removed yellow styling)
   - **Tab Reordering**: BLOG section tabs now ordered as: PREDICTION ANALYSIS → AI DECISIONS → POSITIONS → CANCELLED ORDERS → METHODOLOGY
   - **Consistent Alpha Arena Branding**: All major sections use 2px black borders (#000), balanced use of black headers and light backgrounds for optimal readability
-  - Deepseek label color adjusted to #FFF for visibility on black headers
+  - **Deepseek Color Fix**: Changed from #FFF to #000 in LEADERBOARD for visibility on light gray background (#F9FAFB)
 - **Error Handling & Security**:
   - Numeric errno checking (== 10403) for "no trades yet" case eliminates false positives
   - Structured logging via logger.error() for proper observability
