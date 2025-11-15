@@ -12,6 +12,22 @@
   - **Fix 2: Opinion.trade API Payload** - Complete payload validation (market_id, token_id, side='BUY') eliminates "Missing required fields" errors
   - **Fix 3: Comprehensive Event Analysis Logging** - ALL events (bets + skips) now logged with probability, confidence, 5-area scores (S/N/T/F/V), and decision rationale
   - Token selection logic: probability ≥0.5 → buy YES token, <0.5 → buy NO token
+- **Auto-Redeem & OrderMonitor System**:
+  - **Auto-redeem**: Automatically calls redeem() when trades win (actual_result=1, profit_loss>0) during reconciliation
+  - **OrderMonitor 3-Strike System**: Reviews active orders every 30min via `/api/monitor-orders` endpoint
+    - Factor 1: Price manipulation >15%
+    - Factor 2: Stagnation >1 week
+    - Factor 3: AI contradiction
+    - Cancels orders after 3 consecutive strikes, logs all reviews in `cancelled_orders` table
+  - **New API Endpoints**: 
+    - `GET /api/recent-trades` - Last 20 trades from Opinion.trade
+    - `GET /api/ai-trades/<firm_name>` - Trade history for specific AI
+    - `GET /api/cancelled-orders` - Cancelled orders with strikes history
+    - `POST /api/monitor-orders` - Trigger order monitoring (requires CRON_SECRET, should run every 30min)
+- **Frontend Trade History**:
+  - RecentTradesSidebar component in LIVE tab sidebar
+  - Expandable leaderboard - click AI to view trade history
+  - CANCELLED ORDERS tab in BLOG section with detailed strikes breakdown
 - **Centralized Logging System**: Implemented comprehensive logging infrastructure
   - All autonomous engine events logged to `logs/autonomous_cycle.log` (10MB rotation, 5 backups)
   - Password-protected `/admin/logs` endpoint for log viewing

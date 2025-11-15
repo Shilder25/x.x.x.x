@@ -812,6 +812,7 @@ class OpinionTradeAPI:
             else:
                 return {
                     'success': False,
+                    'errno': response.errno,
                     'error': f'API error {response.errno}',
                     'message': response.errmsg
                 }

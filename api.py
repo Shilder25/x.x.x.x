@@ -485,12 +485,36 @@ def get_recent_trades():
                 'trades': trades_response.get('trades', [])
             })
         else:
-            return jsonify({
-                'success': False,
-                'error': trades_response.get('error', 'Unknown error')
-            }), 500
+            # Check if it's the expected "no trades yet" API error (errno 10403)
+            api_errno = trades_response.get('errno')
+            if api_errno == 10403:
+                # Expected case: no trades yet, return empty array gracefully
+                return jsonify({
+                    'success': True,
+                    'trades': [],
+                    'api_info': 'No trades recorded yet on Opinion.trade',
+                    'api_errno': api_errno
+                })
+            else:
+                # Unexpected API error - surface it properly
+                return jsonify({
+                    'success': False,
+                    'errno': api_errno,
+                    'error': trades_response.get('error', 'Unknown API error'),
+                    'message': trades_response.get('message', '')
+                }), 500
     except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 500
+        # Real server exception - surface it as error
+        import traceback
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error(f"Exception in /api/recent-trades: {str(e)}")
+        logger.error(traceback.format_exc())
+        return jsonify({
+            'success': False,
+            'error': 'Server error',
+            'message': str(e)
+        }), 500
 
 @app.route('/api/ai-trades/<firm_name>', methods=['GET'])
 def get_ai_trades(firm_name):
@@ -531,6 +555,69 @@ def get_cancelled_orders():
         })
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/monitor-orders', methods=['POST'])
+def monitor_orders():
+    """
+    Monitor active orders with 3-strike system (PROTECTED ENDPOINT).
+    
+    This endpoint should be called every 30 minutes by an external cron service
+    to review active positions and cancel orders after 3 consecutive strikes.
+    
+    Security: Requires X-Cron-Secret header matching CRON_SECRET environment variable.
+    
+    Returns:
+        JSON with monitoring execution results
+    """
+    from flask import request
+    import hmac
+    
+    # Verify authentication
+    expected_secret = os.getenv('CRON_SECRET')
+    if not expected_secret:
+        return jsonify({
+            'success': False,
+            'error': 'CRON_SECRET not configured on server',
+            'message': 'Endpoint not properly configured'
+        }), 500
+    
+    provided_secret = request.headers.get('X-Cron-Secret', '')
+    
+    # Use constant-time comparison to prevent timing attacks
+    if not provided_secret or not hmac.compare_digest(expected_secret, provided_secret):
+        print(f"[SECURITY] Unauthorized attempt to trigger order monitoring from {request.remote_addr}")
+        return jsonify({
+            'success': False,
+            'error': 'Unauthorized',
+            'message': 'Invalid or missing X-Cron-Secret header'
+        }), 401
+    
+    try:
+        print(f"\n[ORDER MONITOR] Triggered via API endpoint at {datetime.now().isoformat()}")
+        
+        from autonomous_engine import AutonomousEngine, OrderMonitor
+        engine = AutonomousEngine(db)
+        
+        order_monitor = OrderMonitor(engine.db, engine.opinion_api, engine.orchestrator)
+        monitoring_stats = order_monitor.monitor_all_orders()
+        
+        return jsonify({
+            'success': True,
+            'message': 'Order monitoring completed successfully',
+            'stats': monitoring_stats
+        }), 200
+        
+    except Exception as e:
+        import traceback
+        error_traceback = traceback.format_exc()
+        print(f"[ERROR] Order monitoring failed: {str(e)}")
+        print(error_traceback)
+        
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'message': 'Order monitoring failed'
+        }), 500
 
 @app.route('/api/run-daily-cycle', methods=['POST'])
 def run_daily_cycle():
