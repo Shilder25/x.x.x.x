@@ -370,6 +370,7 @@ class AutonomousEngine:
         event_id = event.get('id', 'unknown')
         event_description = event.get('description', event.get('title', 'Unknown event'))
         category = event.get('category', 'general')
+        market_id = event.get('market_id')
         
         evaluation = {
             'event': event,
@@ -385,6 +386,19 @@ class AutonomousEngine:
             'expected_value': 0
         }
         
+        # PREVENCIÓN DE DUPLICADOS: Verificar si ya existe orden activa en este mercado
+        if market_id:
+            orders_check = self.opinion_api.get_my_orders(market_id=market_id)
+            
+            if orders_check.get('success'):
+                active_orders = orders_check.get('orders', [])
+                
+                if active_orders:
+                    evaluation['reason'] = f"Duplicate prevention: {len(active_orders)} active order(s) already exist for market {market_id}"
+                    logger.info(f"{firm_name} - Skip duplicate: {evaluation['reason']}")
+                    logger.log_event_analysis(firm_name, event_description, {}, evaluation, 'SKIP')
+                    return evaluation
+        
         symbol = self._extract_symbol_from_event(event)
         
         try:
@@ -399,21 +413,29 @@ class AutonomousEngine:
             probability = prediction.get('probabilidad_final_prediccion', 0.5)
             confidence = prediction.get('nivel_confianza', 50)
             
-            expected_value = self._calculate_expected_value(probability)
+            # Calcular EV con fees (retorna dict con gross_ev y net_ev)
+            ev_calc = self._calculate_expected_value(
+                probability=probability,
+                market_price=None,  # Se usa probability como proxy si no hay precio de mercado
+                bet_size=10.0  # Tamaño nominal para cálculo inicial
+            )
             
             evaluation['probability'] = probability
             evaluation['confidence'] = confidence
-            evaluation['expected_value'] = expected_value
+            evaluation['expected_value'] = ev_calc['net_ev']  # Usar net EV para decisiones
+            evaluation['gross_ev'] = ev_calc['gross_ev']
+            evaluation['fee_cost'] = ev_calc['fee_cost']
             evaluation['prediction'] = prediction
             
-            should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, expected_value)
+            # Usar net_ev para decisión de apuesta
+            should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, ev_calc['net_ev'])
             
             if not should_bet:
                 evaluation['reason'] = bet_reason
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
                 return evaluation
             
-            bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, expected_value)
+            bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, ev_calc['net_ev'])
             
             if bet_calculation.get('bet_size', 0) == 0:
                 evaluation['reason'] = bet_calculation.get('reason', 'Bet size calculation returned 0')
@@ -437,7 +459,7 @@ class AutonomousEngine:
             evaluation['is_opportunity'] = True
             evaluation['bet_size'] = bet_size
             evaluation['bet_calculation'] = bet_calculation
-            evaluation['reason'] = f"Approved: EV={expected_value:.2f}, Prob={probability:.2%}, Conf={confidence}%"
+            evaluation['reason'] = f"Approved: Net EV={ev_calc['net_ev']:.2f}, Prob={probability:.2%}, Conf={confidence}%"
             
         except Exception as e:
             evaluation['reason'] = f"Exception during evaluation: {str(e)}"
@@ -464,7 +486,7 @@ class AutonomousEngine:
         category = opportunity.get('category', 'general')
         probability = opportunity.get('probability', 0.5)
         confidence = opportunity.get('confidence', 50)
-        expected_value = opportunity.get('expected_value', 0.0)
+        net_ev = opportunity.get('expected_value', 0.0)  # expected_value ya es net_ev del evaluation
         prediction = opportunity.get('prediction', {})
         
         decision = {
@@ -475,12 +497,12 @@ class AutonomousEngine:
             'action': 'BET',
             'probability': probability,
             'confidence': confidence,
-            'expected_value': expected_value,
+            'expected_value': net_ev,
             'reason': opportunity.get('reason', '')
         }
         
         # RE-VALIDAR bankroll constraints con estado ACTUAL (puede haber cambiado)
-        should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, expected_value)
+        should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, net_ev)
         
         if not should_bet:
             decision['action'] = 'SKIP'
@@ -489,7 +511,7 @@ class AutonomousEngine:
             return decision
         
         # RE-CALCULAR bet size con bankroll ACTUAL (reducido por apuestas anteriores)
-        bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, expected_value)
+        bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, net_ev)
         
         if bet_calculation.get('bet_size', 0) == 0:
             decision['action'] = 'SKIP'
@@ -549,7 +571,7 @@ class AutonomousEngine:
                 'bet_size': bet_size,
                 'probability': probability,
                 'confidence': confidence,
-                'expected_value': expected_value,
+                'expected_value': net_ev,
                 'betting_strategy': bankroll_manager.strategy.value,
                 'reasoning': decision.get('reason'),
                 'execution_timestamp': datetime.now().isoformat(),
@@ -621,19 +643,26 @@ class AutonomousEngine:
             probability = prediction.get('probabilidad_final_prediccion', 0.5)
             confidence = prediction.get('nivel_confianza', 50)
             
-            expected_value = self._calculate_expected_value(probability)
+            # Calcular EV con fees (retorna dict con gross_ev y net_ev)
+            ev_calc = self._calculate_expected_value(
+                probability=probability,
+                market_price=None,
+                bet_size=10.0
+            )
             
             decision['probability'] = probability
             decision['confidence'] = confidence
-            decision['expected_value'] = expected_value
+            decision['expected_value'] = ev_calc['net_ev']  # Usar net EV
+            decision['gross_ev'] = ev_calc['gross_ev']
+            decision['fee_cost'] = ev_calc['fee_cost']
             
-            should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, expected_value)
+            should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, ev_calc['net_ev'])
             
             if not should_bet:
                 decision['reason'] = bet_reason
                 return decision
             
-            bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, expected_value)
+            bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, ev_calc['net_ev'])
             
             if bet_calculation.get('bet_size', 0) == 0:
                 decision['reason'] = bet_calculation.get('reason', 'Bet size calculation returned 0')
@@ -674,7 +703,7 @@ class AutonomousEngine:
             decision['action'] = 'BET'
             decision['bet_size'] = bet_size
             decision['bet_calculation'] = bet_calculation
-            decision['reason'] = f"Approved: EV={expected_value:.2f}, Prob={probability:.2%}, Conf={confidence}%"
+            decision['reason'] = f"Approved: Net EV={ev_calc['net_ev']:.2f}, Prob={probability:.2%}, Conf={confidence}%"
             
             try:
                 bankroll_manager.record_bet(bet_size, probability, event_id, event_description)
@@ -687,7 +716,7 @@ class AutonomousEngine:
                     'bet_size': bet_size,
                     'probability': probability,
                     'confidence': confidence,
-                    'expected_value': expected_value,
+                    'expected_value': ev_calc['net_ev'],
                     'betting_strategy': bankroll_manager.strategy.value,
                     'reasoning': decision.get('reason'),
                     'execution_timestamp': datetime.now().isoformat(),
@@ -805,11 +834,50 @@ class AutonomousEngine:
                     print(f"[CACHE ERROR] Failed to fetch volatility data for {symbol}: {e}")
                     pass
         
+        # Agregar price history como contexto (si disponible)
+        price_history_report = ""
+        if symbol:
+            # Intentar obtener un market_id del evento si está disponible
+            market_id = None
+            if isinstance(symbol, dict) and 'market_id' in symbol:
+                market_id = symbol.get('market_id')
+            
+            # Si tenemos market_id, obtener price history
+            if market_id:
+                try:
+                    history_response = self.opinion_api.get_price_history(market_id=market_id, timeframe='24h')
+                    
+                    if history_response.get('success'):
+                        prices = history_response.get('prices', [])
+                        
+                        if len(prices) >= 2:
+                            first_price = prices[0]
+                            last_price = prices[-1]
+                            price_change = last_price - first_price
+                            price_change_pct = (price_change / first_price * 100) if first_price > 0 else 0
+                            
+                            trend = "alcista" if price_change > 0 else "bajista" if price_change < 0 else "neutral"
+                            
+                            price_history_report = f"\n\n**CONTEXTO DE MERCADO (últimas 24h)**:\n"
+                            price_history_report += f"- Precio inicial: {first_price:.4f}\n"
+                            price_history_report += f"- Precio actual: {last_price:.4f}\n"
+                            price_history_report += f"- Cambio: {price_change_pct:+.2f}%\n"
+                            price_history_report += f"- Tendencia: {trend.upper()}\n"
+                            price_history_report += f"- Datapoints: {len(prices)}\n"
+                            price_history_report += f"\n*Nota: Este contexto es informativo. La decisión debe basarse en análisis fundamental.*\n"
+                except Exception as e:
+                    print(f"[INFO] Could not fetch price history for market {market_id}: {e}")
+        
         try:
             firm = self.orchestrator.get_all_firms()[firm_name]
             
+            # Agregar price history al prompt si disponible
+            extended_event_description = event_description
+            if price_history_report:
+                extended_event_description += price_history_report
+            
             prompt = create_trading_prompt(
-                event_description=event_description,
+                event_description=extended_event_description,
                 technical_report=technical_report,
                 fundamental_report=fundamental_report,
                 sentiment_report=sentiment_report,
@@ -839,45 +907,48 @@ class AutonomousEngine:
         
         return None
     
-    def _calculate_expected_value(self, probability: float, odds: float = 2.0, bet_size: Optional[float] = None) -> float:
+    def _calculate_expected_value(self, probability: float, market_price: Optional[float] = None, bet_size: float = 10.0) -> Dict[str, float]:
         """
-        Calcula el valor esperado de una apuesta considerando fees reales de Opinion.trade.
-        EV = (probability * win_amount) - ((1 - probability) * loss_amount) - trading_fees
+        Calcula el valor esperado de una apuesta con fees reales de Opinion.trade.
         
         Args:
-            probability: Probabilidad de ganar (0-1)
-            odds: Odds del mercado (default 2.0 para mercados binarios)
-            bet_size: Tamaño de la apuesta (opcional, si no se provee retorna EV sin fees)
+            probability: Probabilidad estimada de que ocurra el evento (0-1)
+            market_price: Precio actual del mercado (0-1). Si None, usa probability como proxy
+            bet_size: Tamaño de la apuesta en USD
         
         Returns:
-            Expected value, neto después de fees si bet_size es provisto
+            Dictionary con 'gross_ev' y 'net_ev' (valores absolutos en USD)
         """
-        # Calcular EV bruto
-        win_amount = odds - 1
-        loss_amount = 1
-        gross_ev = (probability * win_amount) - ((1 - probability) * loss_amount)
+        # Si no hay market_price, usar probability como fallback
+        if market_price is None:
+            market_price = probability
         
-        # Si no hay bet_size, retornar EV bruto (backward compatibility)
-        if bet_size is None:
-            return gross_ev
+        # En mercados binarios: payout = 1 si gana, 0 si pierde
+        # Costo de entrada = market_price (lo que pagas por el token)
+        # Expected payout = probability * 1 = probability
+        # Gross EV = (expected_payout - cost) * bet_size
+        gross_ev = (probability - market_price) * bet_size
         
-        # Obtener fees reales de Opinion.trade
-        fees_response = self.opinion_api.get_fee_rates()
+        # Obtener fees cacheados de Opinion.trade
+        fees_response = self.opinion_api.get_fee_rates(use_cache=True)
         if fees_response.get('success'):
-            taker_fee = fees_response.get('taker_fee', 0.02)  # Default 2% si falla
+            taker_fee = fees_response.get('taker_fee', 0.02)
         else:
-            taker_fee = 0.02  # Fallback conservador
+            taker_fee = 0.02  # Fallback conservador (2%)
         
-        # En mercados binarios, el precio es la probabilidad
-        # Notional ejecutado = precio * tamaño
-        # Fees se aplican al notional, no al stake
-        executed_notional = probability * bet_size
+        # Fees se aplican al notional ejecutado (market_price * bet_size)
+        executed_notional = market_price * bet_size
         fee_cost = executed_notional * taker_fee
         
-        # EV neto = (EV bruto * bet_size) - fees
-        net_ev = (gross_ev * bet_size) - fee_cost
+        # Net EV = Gross EV - fees
+        net_ev = gross_ev - fee_cost
         
-        return net_ev / bet_size  # Retornar EV normalizado por unidad
+        return {
+            'gross_ev': gross_ev,
+            'net_ev': net_ev,
+            'fee_cost': fee_cost,
+            'taker_fee_rate': taker_fee
+        }
     
     def _execute_bet(self, firm_name: str, event: Dict, event_description: str,
                     bet_size: float, probability: float, prediction: Dict) -> Dict:
@@ -905,6 +976,36 @@ class AutonomousEngine:
         token_id = yes_token_id if probability >= 0.5 else no_token_id
         outcome_label = 'YES' if probability >= 0.5 else 'NO'
         
+        # VALIDACIÓN DE PRECIO: Verificar precio actual antes de ejecutar
+        price_check = self.opinion_api.get_latest_price(token_id)
+        
+        if price_check.get('success'):
+            current_price = price_check.get('price', probability)
+            expected_price = probability
+            
+            # Calcular diferencia porcentual
+            if expected_price > 0:
+                price_diff_pct = abs(current_price - expected_price) / expected_price
+            else:
+                price_diff_pct = 0
+            
+            # Rechazar si el spread es >5% (protección contra slippage excesivo)
+            if price_diff_pct > 0.05:
+                error_msg = f"Price validation failed: expected {expected_price:.4f}, got {current_price:.4f} (diff: {price_diff_pct:.2%})"
+                logger.error(f"{firm_name} - {error_msg}")
+                return {
+                    'status': 'failed',
+                    'error': error_msg,
+                    'error_type': 'price_validation_failed',
+                    'expected_price': expected_price,
+                    'current_price': current_price,
+                    'price_diff': price_diff_pct
+                }
+        else:
+            # Si falla la validación de precio, usar probability como fallback pero loggear warning
+            logger.warning(f"{firm_name} - Could not validate price for token {token_id}: {price_check.get('error')}")
+            current_price = probability
+        
         prediction_data = {
             'market_id': market_id,
             'token_id': token_id,
@@ -915,7 +1016,8 @@ class AutonomousEngine:
                 'firm_name': firm_name,
                 'reasoning': prediction.get('analisis_sintesis', ''),
                 'risk_posture': prediction.get('postura_riesgo', 'NEUTRAL'),
-                'outcome': outcome_label
+                'outcome': outcome_label,
+                'validated_price': current_price
             }
         }
         
@@ -1088,14 +1190,77 @@ class AutonomousEngine:
             stats['checked'] += 1
             stats['by_firm'][firm_name]['checked'] += 1
             
-            # TODO: Reconciliación manual requerida
-            # get_prediction_result() no existe en SDK
-            # Usar get_my_trades() para verificar status de trades
-            # o implementar reconciliación manual vía UI
+            # Reconciliación usando get_my_trades()
             try:
-                # TEMP: Skip reconciliación automática hasta implementar con get_my_trades()
-                # La reconciliación se hará manualmente o con implementación futura
-                continue
+                # Obtener trades recientes del usuario
+                trades_response = self.opinion_api.get_my_trades(limit=100, market_id=None)
+                
+                if not trades_response.get('success'):
+                    stats['errors'] += 1
+                    stats['by_firm'][firm_name]['errors'] += 1
+                    self.execution_log.append({
+                        'timestamp': datetime.now().isoformat(),
+                        'action': 'reconciliation_api_error',
+                        'firm_name': firm_name,
+                        'bet_id': bet_id,
+                        'error': trades_response.get('error', 'Unknown API error')
+                    })
+                    continue
+                
+                trades = trades_response.get('trades', [])
+                
+                # Buscar trade que coincida con opinion_trade_id
+                matching_trade = None
+                for trade in trades:
+                    if trade.get('id') == opinion_trade_id or trade.get('order_id') == opinion_trade_id:
+                        matching_trade = trade
+                        break
+                
+                # Si encontramos el trade, verificar si está resuelto
+                if matching_trade:
+                    trade_status = matching_trade.get('status', 'unknown')
+                    
+                    # Si el trade está resuelto/settled
+                    if trade_status in ['settled', 'completed', 'resolved']:
+                        # Calcular profit/loss basado en el trade
+                        # En mercados binarios: ganancia = (payout - costo) o pérdida = -costo
+                        filled_amount = matching_trade.get('filled_amount', 0)
+                        average_price = matching_trade.get('average_price', 0)
+                        side = matching_trade.get('side', 'BUY')
+                        
+                        # Determinar resultado (1 = ganó, 0 = perdió)
+                        # Esto es simplificado - en producción necesitaríamos verificar el outcome del mercado
+                        actual_result = 1 if matching_trade.get('profit_loss', 0) > 0 else 0
+                        profit_loss = matching_trade.get('profit_loss', 0)
+                        
+                        # Actualizar en la base de datos
+                        self.db.update_autonomous_bet_result(
+                            bet_id=bet_id,
+                            actual_result=actual_result,
+                            profit_loss=profit_loss
+                        )
+                        
+                        # Actualizar bankroll manager
+                        if firm_name in self.bankroll_managers:
+                            bankroll_manager = self.bankroll_managers[firm_name]
+                            bankroll_manager.record_result(
+                                bet_id=bet_id,
+                                won=(actual_result == 1),
+                                profit_loss=profit_loss
+                            )
+                        
+                        stats['resolved'] += 1
+                        stats['updated'] += 1
+                        stats['by_firm'][firm_name]['resolved'] += 1
+                        
+                        self.execution_log.append({
+                            'timestamp': datetime.now().isoformat(),
+                            'action': 'reconciliation',
+                            'firm_name': firm_name,
+                            'bet_id': bet_id,
+                            'outcome': 'won' if actual_result == 1 else 'lost',
+                            'profit_loss': profit_loss
+                        })
                     
             except Exception as e:
                 stats['errors'] += 1

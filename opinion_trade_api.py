@@ -39,6 +39,11 @@ class OpinionTradeAPI:
         # Initialize SDK client
         self.client = None
         self._initialize_client()
+        
+        # Fee cache (1 hour TTL)
+        self._cached_fees: Optional[Dict] = None
+        self._fees_cache_timestamp: Optional[datetime] = None
+        self._fees_cache_ttl_seconds = 3600  # 1 hour
     
     def _initialize_client(self):
         """Initialize Opinion.trade SDK client with production configuration."""
@@ -531,13 +536,22 @@ class OpinionTradeAPI:
                 'message': str(e)
             }
     
-    def get_fee_rates(self) -> Dict:
+    def get_fee_rates(self, use_cache: bool = True) -> Dict:
         """
-        Get current trading fee rates from Opinion.trade.
+        Get current trading fee rates from Opinion.trade with caching.
+        
+        Args:
+            use_cache: Whether to use cached fees (default True)
         
         Returns:
             Dictionary with maker and taker fees
         """
+        # Check cache if enabled
+        if use_cache and self._cached_fees and self._fees_cache_timestamp:
+            cache_age = (datetime.now() - self._fees_cache_timestamp).total_seconds()
+            if cache_age < self._fees_cache_ttl_seconds:
+                return self._cached_fees
+        
         if not self.client:
             return {
                 'success': False,
@@ -549,12 +563,18 @@ class OpinionTradeAPI:
             
             if response.errno == 0:
                 fees = response.result.data
-                return {
+                result = {
                     'success': True,
                     'maker_fee': float(getattr(fees, 'makerFee', 0)) / 10000,  # Convert basis points to decimal
                     'taker_fee': float(getattr(fees, 'takerFee', 0)) / 10000,
                     'data': fees
                 }
+                
+                # Update cache
+                self._cached_fees = result
+                self._fees_cache_timestamp = datetime.now()
+                
+                return result
             else:
                 return {
                     'success': False,

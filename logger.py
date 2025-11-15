@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
+from typing import Optional
 
 class AutonomousLogger:
     """
@@ -117,7 +118,7 @@ class AutonomousLogger:
         return sanitized
     
     def log_bet_execution(self, firm_name: str, event_id: str, bet_size: float, 
-                         event_snippet: str, success: bool, error_msg: str = None):
+                         event_snippet: str, success: bool, error_msg: Optional[str] = None):
         """
         Log estructurado de ejecución de apuesta.
         
@@ -137,9 +138,9 @@ class AutonomousLogger:
             error_safe = self.sanitize_text(error_msg, 100) if error_msg else "Unknown error"
             self.error(f"{firm_name} - Failed bet on {event_snippet_safe} (event_id={event_id}): {error_safe}", prefix="BET ERROR")
     
-    def log_risk_block(self, firm_name: str, risk_reason: str):
+    def log_risk_block(self, firm_name: str, risk_reason: Optional[str]):
         """Log de bloqueo por riesgo"""
-        reason_safe = self.sanitize_text(risk_reason, 150)
+        reason_safe = self.sanitize_text(risk_reason or "Unknown reason", 150)
         self.info(f"{firm_name} - {reason_safe}", prefix="RISK BLOCK")
     
     def log_event_analysis(self, firm_name: str, event_description: str, 
