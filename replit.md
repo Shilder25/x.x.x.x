@@ -24,10 +24,13 @@
     - `GET /api/ai-trades/<firm_name>` - Trade history for specific AI
     - `GET /api/cancelled-orders` - Cancelled orders with strikes history
     - `POST /api/monitor-orders` - Trigger order monitoring (requires CRON_SECRET, should run every 30min)
-- **Frontend Trade History**:
-  - RecentTradesSidebar component in LIVE tab sidebar
+- **Frontend Trade History & UI Updates**:
+  - **Toggle Sidebar**: BenchmarkPanel has toggle button ("A Better Benchmark" ↔ "Recent Trades") - saves space without extra panels
+  - Recent trades view integrated directly into BenchmarkPanel with auto-refresh every 30 seconds
   - Expandable leaderboard - click AI to view trade history
   - CANCELLED ORDERS tab in BLOG section with detailed strikes breakdown
+  - **Consistent Alpha Arena Branding**: All major sections (LIVE, LEADERBOARD, CANCELLED ORDERS) use 2px black borders (#000) and black headers with white text for uniform design aesthetic
+  - Deepseek label color adjusted to #FFF for visibility on black headers
 - **Error Handling & Security**:
   - Numeric errno checking (== 10403) for "no trades yet" case eliminates false positives
   - Structured logging via logger.error() for proper observability
