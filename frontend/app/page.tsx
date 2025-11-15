@@ -40,6 +40,7 @@ export default function Home() {
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [aiDecisions, setAiDecisions] = useState<any[]>([]);
   const [activePositions, setActivePositions] = useState<any[]>([]);
+  const [aiTrades, setAiTrades] = useState<{[key: string]: any[]}>({});
 
   useEffect(() => {
     fetchMarketData();
@@ -140,6 +141,25 @@ export default function Home() {
     }
   };
 
+  const fetchAITrades = async (firmName: string) => {
+    if (aiTrades[firmName]) return;
+    
+    try {
+      const response = await fetch(getApiUrl(`/api/ai-trades/${firmName}?limit=50`));
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setAiTrades(prev => ({
+            ...prev,
+            [firmName]: data.trades || []
+          }));
+        }
+      }
+    } catch (error) {
+      console.error(`Error fetching trades for ${firmName}:`, error);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Market Header */}
@@ -175,41 +195,141 @@ export default function Home() {
         )}
 
         {activeSection === 'LEADERBOARD' && (
-          <div>
-            <table className="leaderboard-table">
-              <thead>
-                <tr>
-                  <th>RANK</th>
-                  <th>MODEL</th>
-                  <th>TOTAL VALUE</th>
-                  <th>P&L</th>
-                  <th>WIN RATE</th>
-                  <th>TOTAL BETS</th>
-                  <th>ACCURACY</th>
-                </tr>
-              </thead>
-              <tbody>
-                {leaderboard.map((item, index) => (
-                  <tr key={item.firm}>
-                    <td className="leaderboard-rank">#{index + 1}</td>
-                    <td style={{ fontWeight: 500 }}>{item.firm}</td>
-                    <td className="leaderboard-value">
-                      ${item.total_value?.toLocaleString() || '0'}
-                    </td>
-                    <td className={`leaderboard-value ${item.profit_loss >= 0 ? 'text-positive' : 'text-negative'}`}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div style={{ marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.5rem' }}>AI Trading Leaderboard</h2>
+              <p style={{ fontSize: '0.875rem', color: '#6B7280' }}>Click on any AI to view their complete trade history</p>
+            </div>
+            
+            {leaderboard.map((item, index) => {
+              const firmColor = item.firm === 'ChatGPT' ? '#3B82F6' : 
+                               item.firm === 'Gemini' ? '#8B5CF6' : 
+                               item.firm === 'Qwen' ? '#F97316' : 
+                               item.firm === 'Deepseek' ? '#000' : '#06B6D4';
+              
+              return (
+                <details 
+                  key={item.firm}
+                  style={{ border: '2px solid #000', background: '#fff' }}
+                  onToggle={(e) => {
+                    if ((e.target as HTMLDetailsElement).open) {
+                      fetchAITrades(item.firm);
+                    }
+                  }}
+                >
+                  <summary style={{ 
+                    padding: '1.5rem', 
+                    cursor: 'pointer',
+                    display: 'grid',
+                    gridTemplateColumns: '60px 1fr 150px 150px 120px 120px 120px',
+                    gap: '1rem',
+                    alignItems: 'center',
+                    fontWeight: 500,
+                    background: '#F9FAFB'
+                  }}>
+                    <span style={{ fontSize: '1.25rem', fontWeight: 600 }}>#{index + 1}</span>
+                    <span style={{ fontWeight: 600, color: firmColor }}>{item.firm}</span>
+                    <span style={{ textAlign: 'right' }}>${item.total_value?.toLocaleString() || '0'}</span>
+                    <span style={{ 
+                      textAlign: 'right',
+                      color: item.profit_loss >= 0 ? '#10B981' : '#EF4444',
+                      fontWeight: 600
+                    }}>
                       {item.profit_loss >= 0 ? '+' : ''}${item.profit_loss?.toLocaleString() || '0'}
-                    </td>
-                    <td className="leaderboard-value">
-                      {item.win_rate?.toFixed(1) || '0'}%
-                    </td>
-                    <td className="leaderboard-value">{item.total_bets || 0}</td>
-                    <td className="leaderboard-value">
-                      {item.accuracy?.toFixed(1) || '0'}%
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    </span>
+                    <span style={{ textAlign: 'right' }}>{item.win_rate?.toFixed(1) || '0'}%</span>
+                    <span style={{ textAlign: 'right' }}>{item.total_bets || 0} bets</span>
+                    <span style={{ textAlign: 'right' }}>{item.accuracy?.toFixed(1) || '0'}%</span>
+                  </summary>
+                  
+                  <div style={{ padding: '2rem', borderTop: '2px solid #000' }}>
+                    <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem' }}>
+                      Trade History - {item.firm}
+                    </h3>
+                    
+                    {!aiTrades[item.firm] ? (
+                      <div style={{ padding: '2rem', textAlign: 'center', color: '#6B7280' }}>
+                        Loading trades...
+                      </div>
+                    ) : aiTrades[item.firm].length === 0 ? (
+                      <div style={{ padding: '2rem', textAlign: 'center', color: '#6B7280' }}>
+                        No trades recorded yet
+                      </div>
+                    ) : (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                        {aiTrades[item.firm].slice(0, 20).map((trade, idx) => (
+                          <div key={idx} style={{ 
+                            padding: '1rem', 
+                            border: '1px solid #E5E7EB', 
+                            background: '#F9FAFB',
+                            borderRadius: '4px'
+                          }}>
+                            <div style={{ 
+                              display: 'flex', 
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              marginBottom: '0.75rem'
+                            }}>
+                              <div>
+                                <div style={{ fontSize: '0.875rem', fontWeight: 600 }}>
+                                  {trade.event_description}
+                                </div>
+                                <div style={{ fontSize: '0.75rem', color: '#6B7280', marginTop: '0.25rem' }}>
+                                  {trade.category || 'General'} • {new Date(trade.execution_timestamp).toLocaleString()}
+                                </div>
+                              </div>
+                              <div style={{ textAlign: 'right' }}>
+                                <div style={{ 
+                                  fontSize: '0.875rem', 
+                                  fontWeight: 600,
+                                  color: trade.actual_result === null ? '#6B7280' : 
+                                         trade.actual_result === 1 ? '#10B981' : '#EF4444'
+                                }}>
+                                  {trade.actual_result === null ? 'PENDING' : 
+                                   trade.actual_result === 1 ? 'WIN ✓' : 'LOSS ✗'}
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div style={{ 
+                              display: 'grid', 
+                              gridTemplateColumns: 'repeat(4, 1fr)', 
+                              gap: '1rem',
+                              fontSize: '0.75rem'
+                            }}>
+                              <div>
+                                <div style={{ color: '#6B7280', marginBottom: '0.25rem' }}>Bet Size</div>
+                                <div style={{ fontWeight: 600 }}>${trade.bet_size?.toFixed(2) || '0'}</div>
+                              </div>
+                              <div>
+                                <div style={{ color: '#6B7280', marginBottom: '0.25rem' }}>Probability</div>
+                                <div style={{ fontWeight: 600 }}>{(trade.probability * 100).toFixed(0)}%</div>
+                              </div>
+                              <div>
+                                <div style={{ color: '#6B7280', marginBottom: '0.25rem' }}>Confidence</div>
+                                <div style={{ fontWeight: 600 }}>{trade.confidence || 'N/A'}/10</div>
+                              </div>
+                              <div>
+                                <div style={{ color: '#6B7280', marginBottom: '0.25rem' }}>P/L</div>
+                                <div style={{ 
+                                  fontWeight: 600,
+                                  color: trade.profit_loss > 0 ? '#10B981' : 
+                                         trade.profit_loss < 0 ? '#EF4444' : '#6B7280'
+                                }}>
+                                  {trade.profit_loss !== null && trade.profit_loss !== undefined ? 
+                                   `${trade.profit_loss >= 0 ? '+' : ''}$${trade.profit_loss.toFixed(2)}` : 
+                                   '-'}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </details>
+              );
+            })}
           </div>
         )}
 
