@@ -145,7 +145,9 @@ class OpinionTradeAPI:
                         
                         # Parse options to find YES and NO token IDs
                         for option in options:
-                            outcome_name = getattr(option, 'outcome', '').upper()
+                            outcome_value = getattr(option, 'outcome', '')
+                            # Defensively handle non-string outcome values
+                            outcome_name = str(outcome_value).upper() if outcome_value else ''
                             token_id = getattr(option, 'token_id', None)
                             
                             if 'YES' in outcome_name or outcome_name == '1':

@@ -392,6 +392,8 @@ class AutonomousEngine:
             
             if 'error' in prediction:
                 evaluation['reason'] = f"Prediction error: {prediction.get('error')}"
+                evaluation['prediction'] = prediction
+                logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
                 return evaluation
             
             probability = prediction.get('probabilidad_final_prediccion', 0.5)
@@ -408,12 +410,14 @@ class AutonomousEngine:
             
             if not should_bet:
                 evaluation['reason'] = bet_reason
+                logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
                 return evaluation
             
             bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, expected_value)
             
             if bet_calculation.get('bet_size', 0) == 0:
                 evaluation['reason'] = bet_calculation.get('reason', 'Bet size calculation returned 0')
+                logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
                 return evaluation
             
             bet_size = bet_calculation['bet_size']
@@ -427,6 +431,7 @@ class AutonomousEngine:
             if not allowed:
                 evaluation['reason'] = risk_reason or 'Risk check failed'
                 logger.log_risk_block(firm_name, risk_reason)
+                logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
                 return evaluation
             
             evaluation['is_opportunity'] = True
@@ -437,16 +442,11 @@ class AutonomousEngine:
         except Exception as e:
             evaluation['reason'] = f"Exception during evaluation: {str(e)}"
             evaluation['error'] = str(e)
+            logger.log_event_analysis(firm_name, event_description, {}, evaluation, 'SKIP')
+            return evaluation
         
-        # Log análisis detallado del evento
-        action = 'BET' if evaluation['is_opportunity'] else 'SKIP'
-        logger.log_event_analysis(
-            firm_name=firm_name,
-            event_description=event_description,
-            prediction=evaluation.get('prediction', {}),
-            decision=evaluation,
-            action=action
-        )
+        # Log análisis detallado del evento (caso de oportunidad aprobada)
+        logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'BET')
         
         return evaluation
     
