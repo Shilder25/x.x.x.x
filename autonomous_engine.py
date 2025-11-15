@@ -414,37 +414,56 @@ class AutonomousEngine:
             confidence = prediction.get('nivel_confianza', 50)
             
             # Obtener precio real del mercado para cálculo de EV preciso
-            market_price = None
-            token_id = event.get('yes_token_id') if probability >= 0.5 else event.get('no_token_id')
+            # Determinar qué lado comprar basado en probability
+            buying_yes = probability >= 0.5
+            token_id = event.get('yes_token_id') if buying_yes else event.get('no_token_id')
             
-            if token_id:
-                price_response = self.opinion_api.get_latest_price(token_id)
-                if price_response.get('success'):
-                    market_price = price_response.get('price')
+            if not token_id:
+                evaluation['reason'] = "Missing token_id - cannot fetch market price"
+                logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                return evaluation
+            
+            price_response = self.opinion_api.get_latest_price(token_id)
+            if not price_response.get('success'):
+                evaluation['reason'] = f"Failed to fetch market price: {price_response.get('error')}"
+                logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                return evaluation
+            
+            market_price = price_response.get('price')
+            if market_price is None:
+                evaluation['reason'] = "Market price unavailable"
+                logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                return evaluation
+            
+            # CRÍTICO: Ajustar probabilidad según el lado que compramos
+            # Si compramos YES → usar probability tal cual
+            # Si compramos NO → usar (1 - probability) porque estamos apostando al evento NO ocurra
+            side_probability = probability if buying_yes else (1 - probability)
             
             # Calcular EV con fees (retorna dict con gross_ev y net_ev)
             ev_calc = self._calculate_expected_value(
-                probability=probability,
-                market_price=market_price,  # Precio real del mercado o None
+                probability=side_probability,  # Probabilidad del LADO que compramos
+                market_price=market_price,  # Precio real del mercado (garantizado no None)
                 bet_size=10.0  # Tamaño nominal para cálculo inicial
             )
             
-            evaluation['probability'] = probability
+            evaluation['probability'] = probability  # Guardar probability original del AI
+            evaluation['side_probability'] = side_probability  # Guardar probability del lado que compramos
             evaluation['confidence'] = confidence
             evaluation['expected_value'] = ev_calc['net_ev']  # Usar net EV para decisiones
             evaluation['gross_ev'] = ev_calc['gross_ev']
             evaluation['fee_cost'] = ev_calc['fee_cost']
             evaluation['prediction'] = prediction
             
-            # Usar net_ev para decisión de apuesta
-            should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, ev_calc['net_ev'])
+            # CRÍTICO: Usar side_probability para decisiones de bankroll (no probability original)
+            should_bet, bet_reason = bankroll_manager.should_bet(side_probability, confidence, ev_calc['net_ev'])
             
             if not should_bet:
                 evaluation['reason'] = bet_reason
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
                 return evaluation
             
-            bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, ev_calc['net_ev'])
+            bet_calculation = bankroll_manager.calculate_bet_size(side_probability, confidence, ev_calc['net_ev'])
             
             if bet_calculation.get('bet_size', 0) == 0:
                 evaluation['reason'] = bet_calculation.get('reason', 'Bet size calculation returned 0')
@@ -493,7 +512,8 @@ class AutonomousEngine:
         event_id = opportunity.get('event_id', '')
         event_description = opportunity.get('event_description', '')
         category = opportunity.get('category', 'general')
-        probability = opportunity.get('probability', 0.5)
+        probability = opportunity.get('probability', 0.5)  # Probability original del AI
+        side_probability = opportunity.get('side_probability', probability)  # Probability del lado que compramos
         confidence = opportunity.get('confidence', 50)
         net_ev = opportunity.get('expected_value', 0.0)  # expected_value ya es net_ev del evaluation
         prediction = opportunity.get('prediction', {})
@@ -505,13 +525,15 @@ class AutonomousEngine:
             'timestamp': datetime.now().isoformat(),
             'action': 'BET',
             'probability': probability,
+            'side_probability': side_probability,
             'confidence': confidence,
             'expected_value': net_ev,
             'reason': opportunity.get('reason', '')
         }
         
         # RE-VALIDAR bankroll constraints con estado ACTUAL (puede haber cambiado)
-        should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, net_ev)
+        # CRÍTICO: Usar side_probability (no probability) para validaciones correctas
+        should_bet, bet_reason = bankroll_manager.should_bet(side_probability, confidence, net_ev)
         
         if not should_bet:
             decision['action'] = 'SKIP'
@@ -520,7 +542,8 @@ class AutonomousEngine:
             return decision
         
         # RE-CALCULAR bet size con bankroll ACTUAL (reducido por apuestas anteriores)
-        bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, net_ev)
+        # CRÍTICO: Usar side_probability (no probability) para sizing correcto
+        bet_calculation = bankroll_manager.calculate_bet_size(side_probability, confidence, net_ev)
         
         if bet_calculation.get('bet_size', 0) == 0:
             decision['action'] = 'SKIP'
@@ -556,7 +579,7 @@ class AutonomousEngine:
             event=event,
             event_description=event_description,
             bet_size=bet_size,
-            probability=probability,
+            probability=probability,  # CORRECCIÓN: Usar probability ORIGINAL para determinar lado
             prediction=prediction
         )
         decision['execution'] = execution_result
@@ -570,7 +593,8 @@ class AutonomousEngine:
         
         # Solo si la ejecución fue exitosa → persistir en bankroll y DB (con rollback si falla)
         try:
-            bankroll_manager.record_bet(bet_size, probability, event_id, event_description)
+            # CRÍTICO: Usar side_probability para bankroll ledger correcto
+            bankroll_manager.record_bet(bet_size, side_probability, event_id, event_description)
             
             bet_data = {
                 'firm_name': firm_name,
@@ -578,7 +602,7 @@ class AutonomousEngine:
                 'event_description': event_description,
                 'category': category,
                 'bet_size': bet_size,
-                'probability': probability,
+                'probability': side_probability,  # CRÍTICO: Usar side_probability
                 'confidence': confidence,
                 'expected_value': net_ev,
                 'betting_strategy': bankroll_manager.strategy.value,
@@ -628,6 +652,7 @@ class AutonomousEngine:
         event_id = event.get('id', 'unknown')
         event_description = event.get('description', event.get('title', 'Unknown event'))
         category = event.get('category', 'general')
+        market_id = event.get('market_id')  # Necesario para price history
         
         decision = {
             'event_id': event_id,
@@ -653,34 +678,51 @@ class AutonomousEngine:
             confidence = prediction.get('nivel_confianza', 50)
             
             # Obtener precio real del mercado para cálculo de EV preciso
-            market_price = None
-            token_id = event.get('yes_token_id') if probability >= 0.5 else event.get('no_token_id')
+            # Determinar qué lado comprar basado en probability
+            buying_yes = probability >= 0.5
+            token_id = event.get('yes_token_id') if buying_yes else event.get('no_token_id')
             
-            if token_id:
-                price_response = self.opinion_api.get_latest_price(token_id)
-                if price_response.get('success'):
-                    market_price = price_response.get('price')
+            if not token_id:
+                decision['reason'] = "Missing token_id - cannot fetch market price"
+                return decision
+            
+            price_response = self.opinion_api.get_latest_price(token_id)
+            if not price_response.get('success'):
+                decision['reason'] = f"Failed to fetch market price: {price_response.get('error')}"
+                return decision
+            
+            market_price = price_response.get('price')
+            if market_price is None:
+                decision['reason'] = "Market price unavailable"
+                return decision
+            
+            # CRÍTICO: Ajustar probabilidad según el lado que compramos
+            # Si compramos YES → usar probability tal cual
+            # Si compramos NO → usar (1 - probability) porque estamos apostando al evento NO ocurra
+            side_probability = probability if buying_yes else (1 - probability)
             
             # Calcular EV con fees (retorna dict con gross_ev y net_ev)
             ev_calc = self._calculate_expected_value(
-                probability=probability,
-                market_price=market_price,  # Precio real del mercado o None
+                probability=side_probability,  # Probabilidad del LADO que compramos
+                market_price=market_price,  # Precio real del mercado (garantizado no None)
                 bet_size=10.0
             )
             
-            decision['probability'] = probability
+            decision['probability'] = probability  # Guardar probability original del AI
+            decision['side_probability'] = side_probability  # Guardar probability del lado que compramos
             decision['confidence'] = confidence
             decision['expected_value'] = ev_calc['net_ev']  # Usar net EV
             decision['gross_ev'] = ev_calc['gross_ev']
             decision['fee_cost'] = ev_calc['fee_cost']
             
-            should_bet, bet_reason = bankroll_manager.should_bet(probability, confidence, ev_calc['net_ev'])
+            # CRÍTICO: Usar side_probability para decisiones de bankroll (no probability original)
+            should_bet, bet_reason = bankroll_manager.should_bet(side_probability, confidence, ev_calc['net_ev'])
             
             if not should_bet:
                 decision['reason'] = bet_reason
                 return decision
             
-            bet_calculation = bankroll_manager.calculate_bet_size(probability, confidence, ev_calc['net_ev'])
+            bet_calculation = bankroll_manager.calculate_bet_size(side_probability, confidence, ev_calc['net_ev'])
             
             if bet_calculation.get('bet_size', 0) == 0:
                 decision['reason'] = bet_calculation.get('reason', 'Bet size calculation returned 0')
@@ -705,7 +747,7 @@ class AutonomousEngine:
                 event=event,
                 event_description=event_description,
                 bet_size=bet_size,
-                probability=probability,
+                probability=probability,  # CORRECCIÓN: Usar probability ORIGINAL para determinar lado
                 prediction=prediction
             )
             decision['execution'] = execution_result
@@ -724,7 +766,8 @@ class AutonomousEngine:
             decision['reason'] = f"Approved: Net EV={ev_calc['net_ev']:.2f}, Prob={probability:.2%}, Conf={confidence}%"
             
             try:
-                bankroll_manager.record_bet(bet_size, probability, event_id, event_description)
+                # CRÍTICO: Usar side_probability para bankroll ledger correcto
+                bankroll_manager.record_bet(bet_size, side_probability, event_id, event_description)
                 
                 bet_data = {
                     'firm_name': firm_name,
@@ -732,7 +775,7 @@ class AutonomousEngine:
                     'event_description': event_description,
                     'category': category,
                     'bet_size': bet_size,
-                    'probability': probability,
+                    'probability': side_probability,  # CRÍTICO: Usar side_probability
                     'confidence': confidence,
                     'expected_value': ev_calc['net_ev'],
                     'betting_strategy': bankroll_manager.strategy.value,
