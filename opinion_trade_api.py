@@ -110,6 +110,18 @@ class OpinionTradeAPI:
                 
                 for market in markets:
                     try:
+                        # Fetch full market details to get options/tokens
+                        # NOTE: get_markets() returns markets WITHOUT options field
+                        # We need to call get_market(id) for each market to get tokens
+                        market_details_response = self.client.get_market(market.market_id)
+                        
+                        if market_details_response.errno != 0:
+                            print(f"[WARNING] Failed to get details for market {market.market_id}: {market_details_response.errmsg}")
+                            skipped_count += 1
+                            continue
+                        
+                        market_full = market_details_response.result.data
+                        
                         # Derive category from market title (comprehensive keyword matching)
                         title_lower = market.market_title.lower()
                         
@@ -149,50 +161,47 @@ class OpinionTradeAPI:
                         else:
                             category = 'Other'
                         
-                        # Extract outcome token IDs from market.options
-                        options = getattr(market, 'options', [])
+                        # Extract outcome token IDs from market details (NOT from market list)
+                        options = getattr(market_full, 'options', [])
                         yes_token_id = None
                         no_token_id = None
-                        
-                        # Capture market structure for first market
-                        market_debug = {}
-                        if len(debug_info) == 0:
-                            options_debug = []
-                            for opt in options:
-                                options_debug.append({
-                                    'type': str(type(opt)),
-                                    'outcome': getattr(opt, 'outcome', 'NO_OUTCOME_ATTR'),
-                                    'token_id': getattr(opt, 'token_id', 'NO_TOKEN_ID_ATTR'),
-                                    'all_attrs': [attr for attr in dir(opt) if not attr.startswith('_')]
-                                })
-                            
-                            market_debug = {
-                                'market_id': market.market_id,
-                                'title': market.market_title,
-                                'has_options': hasattr(market, 'options'),
-                                'options_type': str(type(options)),
-                                'options_count': len(options) if options else 0,
-                                'options_details': options_debug,
-                                'market_attrs': [attr for attr in dir(market) if not attr.startswith('_')][:20]
-                            }
                         
                         # Parse options to find YES and NO token IDs
                         for option in options:
                             outcome_value = getattr(option, 'outcome', '')
                             outcome_name = str(outcome_value).upper() if outcome_value else ''
-                            token_id = getattr(option, 'token_id', None)
+                            token_id = getattr(option, 'tokenId', None)  # Note: may be 'tokenId' not 'token_id'
                             
-                            if 'YES' in outcome_name or outcome_name == '1':
+                            # Try alternative field names
+                            if not token_id:
+                                token_id = getattr(option, 'token_id', None)
+                            
+                            if 'YES' in outcome_name or outcome_name == '1' or outcome_name == 'TRUE':
                                 yes_token_id = token_id
-                            elif 'NO' in outcome_name or outcome_name == '0':
+                            elif 'NO' in outcome_name or outcome_name == '0' or outcome_name == 'FALSE':
                                 no_token_id = token_id
                         
                         # Skip markets without binary YES/NO tokens
                         if not yes_token_id or not no_token_id:
                             skipped_count += 1
-                            if market_debug:
-                                market_debug['skip_reason'] = f'Missing tokens: yes={yes_token_id}, no={no_token_id}'
-                                debug_info.append(market_debug)
+                            # Debug first skipped market
+                            if len(debug_info) == 0:
+                                options_debug = []
+                                for opt in options:
+                                    options_debug.append({
+                                        'type': str(type(opt)),
+                                        'outcome': getattr(opt, 'outcome', 'NO_OUTCOME'),
+                                        'tokenId': getattr(opt, 'tokenId', 'NO_TOKENID'),
+                                        'token_id': getattr(opt, 'token_id', 'NO_TOKEN_ID'),
+                                        'all_attrs': [attr for attr in dir(opt) if not attr.startswith('_')]
+                                    })
+                                debug_info.append({
+                                    'market_id': market.market_id,
+                                    'title': market.market_title,
+                                    'options_count': len(options),
+                                    'options_details': options_debug,
+                                    'skip_reason': f'Missing tokens: yes={yes_token_id}, no={no_token_id}'
+                                })
                             print(f"[WARNING] Skipping market {market.market_id} '{market.market_title[:50]}...' - missing binary tokens (yes={yes_token_id}, no={no_token_id})")
                             continue
                         
