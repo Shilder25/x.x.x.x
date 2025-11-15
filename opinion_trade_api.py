@@ -530,6 +530,397 @@ class OpinionTradeAPI:
                 'error': 'Unexpected error',
                 'message': str(e)
             }
+    
+    def get_fee_rates(self) -> Dict:
+        """
+        Get current trading fee rates from Opinion.trade.
+        
+        Returns:
+            Dictionary with maker and taker fees
+        """
+        if not self.client:
+            return {
+                'success': False,
+                'error': 'Opinion.trade client not initialized'
+            }
+        
+        try:
+            response = self.client.get_fee_rates()
+            
+            if response.errno == 0:
+                fees = response.result.data
+                return {
+                    'success': True,
+                    'maker_fee': float(getattr(fees, 'makerFee', 0)) / 10000,  # Convert basis points to decimal
+                    'taker_fee': float(getattr(fees, 'takerFee', 0)) / 10000,
+                    'data': fees
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'API error {response.errno}',
+                    'message': response.errmsg
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': 'Unexpected error',
+                'message': str(e)
+            }
+    
+    def get_latest_price(self, token_id: str) -> Dict:
+        """
+        Get the latest price for a specific outcome token.
+        
+        Args:
+            token_id: The outcome token ID
+        
+        Returns:
+            Latest price data or error dictionary
+        """
+        if not self.client:
+            return {
+                'success': False,
+                'error': 'Opinion.trade client not initialized'
+            }
+        
+        try:
+            response = self.client.get_latest_price(token_id)
+            
+            if response.errno == 0:
+                price_data = response.result.data
+                return {
+                    'success': True,
+                    'price': float(getattr(price_data, 'price', 0)),
+                    'timestamp': getattr(price_data, 'timestamp', 0),
+                    'data': price_data
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'API error {response.errno}',
+                    'message': response.errmsg
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': 'Unexpected error',
+                'message': str(e)
+            }
+    
+    def get_my_orders(self, market_id: Optional[int] = None) -> Dict:
+        """
+        Get active/pending orders from Opinion.trade.
+        
+        Args:
+            market_id: Optional market ID to filter orders
+        
+        Returns:
+            Dictionary with list of active orders
+        """
+        if not self.client:
+            return {
+                'success': False,
+                'error': 'Opinion.trade client not initialized'
+            }
+        
+        try:
+            response = self.client.get_my_orders(limit=100)
+            
+            if response.errno == 0:
+                orders = response.result.list
+                
+                # Filter by market_id if provided
+                if market_id is not None:
+                    orders = [o for o in orders if getattr(o, 'marketId', None) == market_id]
+                
+                formatted_orders = []
+                for order in orders:
+                    formatted_orders.append({
+                        'order_id': getattr(order, 'orderId', None),
+                        'market_id': getattr(order, 'marketId', None),
+                        'token_id': getattr(order, 'tokenId', None),
+                        'side': getattr(order, 'side', None),
+                        'price': float(getattr(order, 'price', 0)),
+                        'amount': float(getattr(order, 'amount', 0)) / 1e18,
+                        'status': getattr(order, 'status', 'unknown'),
+                        'created_at': getattr(order, 'createdAt', 0)
+                    })
+                
+                return {
+                    'success': True,
+                    'count': len(formatted_orders),
+                    'orders': formatted_orders
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'API error {response.errno}',
+                    'message': response.errmsg
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': 'Unexpected error',
+                'message': str(e)
+            }
+    
+    def get_price_history(self, market_id: int, timeframe: str = '24h') -> Dict:
+        """
+        Get historical price data for a market.
+        
+        Args:
+            market_id: The Opinion.trade market ID
+            timeframe: Time range (e.g., '1h', '24h', '7d')
+        
+        Returns:
+            Price history data or error dictionary
+        """
+        if not self.client:
+            return {
+                'success': False,
+                'error': 'Opinion.trade client not initialized'
+            }
+        
+        try:
+            # Get market details to get token IDs
+            market_response = self.get_market_details(market_id)
+            if not market_response.get('success'):
+                return market_response
+            
+            options = market_response['data'].get('options', [])
+            if not options:
+                return {
+                    'success': False,
+                    'error': 'No options found',
+                    'message': 'Market has no outcome tokens'
+                }
+            
+            # Get price history for first token (YES token typically)
+            token_id = getattr(options[0], 'token_id', None) if options else None
+            if not token_id:
+                return {
+                    'success': False,
+                    'error': 'No token ID',
+                    'message': 'Could not extract token ID from market options'
+                }
+            
+            response = self.client.get_price_history(token_id)
+            
+            if response.errno == 0:
+                history = response.result.list
+                
+                formatted_history = []
+                for point in history:
+                    formatted_history.append({
+                        'timestamp': getattr(point, 'timestamp', 0),
+                        'price': float(getattr(point, 'price', 0)),
+                        'volume': float(getattr(point, 'volume', 0)) / 1e18
+                    })
+                
+                return {
+                    'success': True,
+                    'market_id': market_id,
+                    'token_id': token_id,
+                    'timeframe': timeframe,
+                    'history': formatted_history
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'API error {response.errno}',
+                    'message': response.errmsg
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': 'Unexpected error',
+                'message': str(e)
+            }
+    
+    def get_my_trades(self, limit: int = 50, market_id: Optional[int] = None) -> Dict:
+        """
+        Get historical trades executed by this account.
+        
+        Args:
+            limit: Maximum number of trades to return (default 50)
+            market_id: Optional market ID to filter trades
+        
+        Returns:
+            Dictionary with list of historical trades
+        """
+        if not self.client:
+            return {
+                'success': False,
+                'error': 'Opinion.trade client not initialized'
+            }
+        
+        try:
+            response = self.client.get_my_trades(limit=limit)
+            
+            if response.errno == 0:
+                trades = response.result.list
+                
+                # Filter by market_id if provided
+                if market_id is not None:
+                    trades = [t for t in trades if getattr(t, 'marketId', None) == market_id]
+                
+                formatted_trades = []
+                for trade in trades:
+                    formatted_trades.append({
+                        'trade_id': getattr(trade, 'tradeId', None),
+                        'order_id': getattr(trade, 'orderId', None),
+                        'market_id': getattr(trade, 'marketId', None),
+                        'token_id': getattr(trade, 'tokenId', None),
+                        'side': getattr(trade, 'side', None),
+                        'price': float(getattr(trade, 'price', 0)),
+                        'amount': float(getattr(trade, 'amount', 0)) / 1e18,
+                        'fee': float(getattr(trade, 'fee', 0)) / 1e18,
+                        'timestamp': getattr(trade, 'timestamp', 0),
+                        'status': getattr(trade, 'status', 'unknown')
+                    })
+                
+                return {
+                    'success': True,
+                    'count': len(formatted_trades),
+                    'trades': formatted_trades
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'API error {response.errno}',
+                    'message': response.errmsg
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': 'Unexpected error',
+                'message': str(e)
+            }
+    
+    def redeem(self, token_ids: List[str]) -> Dict:
+        """
+        Redeem winning tokens from resolved markets.
+        
+        Args:
+            token_ids: List of token IDs to redeem
+        
+        Returns:
+            Redemption result or error dictionary
+        """
+        if not self.client:
+            return {
+                'success': False,
+                'error': 'Opinion.trade client not initialized'
+            }
+        
+        try:
+            response = self.client.redeem(token_ids)
+            
+            if response.errno == 0:
+                return {
+                    'success': True,
+                    'message': 'Tokens redeemed successfully',
+                    'data': response.result
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'API error {response.errno}',
+                    'message': response.errmsg
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': 'Unexpected error',
+                'message': str(e)
+            }
+    
+    def cancel_order(self, order_id: str) -> Dict:
+        """
+        Cancel a specific pending order.
+        
+        Args:
+            order_id: The order ID to cancel
+        
+        Returns:
+            Cancellation result or error dictionary
+        """
+        if not self.client:
+            return {
+                'success': False,
+                'error': 'Opinion.trade client not initialized'
+            }
+        
+        try:
+            response = self.client.cancel_order(order_id)
+            
+            if response.errno == 0:
+                return {
+                    'success': True,
+                    'message': f'Order {order_id} cancelled successfully',
+                    'data': response.result
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'API error {response.errno}',
+                    'message': response.errmsg
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': 'Unexpected error',
+                'message': str(e)
+            }
+    
+    def cancel_all_orders(self, market_id: Optional[int] = None) -> Dict:
+        """
+        Cancel all pending orders, optionally filtered by market.
+        
+        Args:
+            market_id: Optional market ID to cancel only orders in that market
+        
+        Returns:
+            Cancellation result or error dictionary
+        """
+        if not self.client:
+            return {
+                'success': False,
+                'error': 'Opinion.trade client not initialized'
+            }
+        
+        try:
+            response = self.client.cancel_all_orders()
+            
+            if response.errno == 0:
+                cancelled_count = getattr(response.result, 'cancelledCount', 0)
+                return {
+                    'success': True,
+                    'message': f'Cancelled {cancelled_count} orders',
+                    'cancelled_count': cancelled_count,
+                    'data': response.result
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': f'API error {response.errno}',
+                    'message': response.errmsg
+                }
+        
+        except Exception as e:
+            return {
+                'success': False,
+                'error': 'Unexpected error',
+                'message': str(e)
+            }
 
 
 # Backward compatibility aliases
