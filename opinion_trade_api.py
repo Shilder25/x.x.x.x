@@ -106,7 +106,6 @@ class OpinionTradeAPI:
                 # Convert SDK market objects to our event format
                 events = []
                 skipped_count = 0
-                debug_info = []  # Capture debug information for response
                 
                 for market in markets:
                     try:
@@ -121,28 +120,6 @@ class OpinionTradeAPI:
                             continue
                         
                         market_full = market_details_response.result.data
-                        
-                        # DEBUG: Print EVERYTHING about the first market object to find where tokens are
-                        if len(debug_info) == 0:
-                            print("\n" + "="*80)
-                            print("FULL MARKET OBJECT DEBUG")
-                            print("="*80)
-                            print(f"Object type: {type(market_full)}")
-                            print(f"Object repr: {repr(market_full)}")
-                            
-                            all_attrs = [attr for attr in dir(market_full) if not attr.startswith('_')]
-                            print(f"\nAll attributes ({len(all_attrs)}): {all_attrs}")
-                            
-                            print("\nAttribute values:")
-                            for attr in all_attrs:
-                                try:
-                                    value = getattr(market_full, attr, 'N/A')
-                                    # Print first 200 chars of value
-                                    value_str = str(value)[:200]
-                                    print(f"  {attr}: {value_str}")
-                                except Exception as e:
-                                    print(f"  {attr}: ERROR - {e}")
-                            print("="*80 + "\n")
                         
                         # Derive category from market title (comprehensive keyword matching)
                         title_lower = market.market_title.lower()
@@ -183,47 +160,16 @@ class OpinionTradeAPI:
                         else:
                             category = 'Other'
                         
-                        # Extract outcome token IDs from market details (NOT from market list)
-                        options = getattr(market_full, 'options', [])
-                        yes_token_id = None
-                        no_token_id = None
-                        
-                        # Parse options to find YES and NO token IDs
-                        for option in options:
-                            outcome_value = getattr(option, 'outcome', '')
-                            outcome_name = str(outcome_value).upper() if outcome_value else ''
-                            token_id = getattr(option, 'tokenId', None)  # Note: may be 'tokenId' not 'token_id'
-                            
-                            # Try alternative field names
-                            if not token_id:
-                                token_id = getattr(option, 'token_id', None)
-                            
-                            if 'YES' in outcome_name or outcome_name == '1' or outcome_name == 'TRUE':
-                                yes_token_id = token_id
-                            elif 'NO' in outcome_name or outcome_name == '0' or outcome_name == 'FALSE':
-                                no_token_id = token_id
+                        # Extract token IDs directly from market attributes
+                        # Opinion.trade SDK stores tokens as direct attributes, not in an options array
+                        yes_token_id = getattr(market_full, 'yes_token_id', None)
+                        no_token_id = getattr(market_full, 'no_token_id', None)
+                        yes_label = getattr(market_full, 'yes_label', 'YES')
+                        no_label = getattr(market_full, 'no_label', 'NO')
                         
                         # Skip markets without binary YES/NO tokens
                         if not yes_token_id or not no_token_id:
                             skipped_count += 1
-                            # Debug first skipped market
-                            if len(debug_info) == 0:
-                                options_debug = []
-                                for opt in options:
-                                    options_debug.append({
-                                        'type': str(type(opt)),
-                                        'outcome': getattr(opt, 'outcome', 'NO_OUTCOME'),
-                                        'tokenId': getattr(opt, 'tokenId', 'NO_TOKENID'),
-                                        'token_id': getattr(opt, 'token_id', 'NO_TOKEN_ID'),
-                                        'all_attrs': [attr for attr in dir(opt) if not attr.startswith('_')]
-                                    })
-                                debug_info.append({
-                                    'market_id': market.market_id,
-                                    'title': market.market_title,
-                                    'options_count': len(options),
-                                    'options_details': options_debug,
-                                    'skip_reason': f'Missing tokens: yes={yes_token_id}, no={no_token_id}'
-                                })
                             print(f"[WARNING] Skipping market {market.market_id} '{market.market_title[:50]}...' - missing binary tokens (yes={yes_token_id}, no={no_token_id})")
                             continue
                         
@@ -255,8 +201,7 @@ class OpinionTradeAPI:
                     'success': True,
                     'count': len(events),
                     'events': events,
-                    'message': f'Retrieved {len(events)} available markets from Opinion.trade (skipped {skipped_count})',
-                    'debug_info': debug_info if debug_info else None
+                    'message': f'Retrieved {len(events)} available markets from Opinion.trade (skipped {skipped_count})'
                 }
             else:
                 # Handle specific error codes
