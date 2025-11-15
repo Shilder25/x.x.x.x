@@ -41,6 +41,7 @@ export default function Home() {
   const [aiDecisions, setAiDecisions] = useState<any[]>([]);
   const [activePositions, setActivePositions] = useState<any[]>([]);
   const [aiTrades, setAiTrades] = useState<{[key: string]: any[]}>({});
+  const [cancelledOrders, setCancelledOrders] = useState<any[]>([]);
 
   useEffect(() => {
     fetchMarketData();
@@ -49,6 +50,7 @@ export default function Home() {
     fetchLeaderboard();
     fetchAIDecisions();
     fetchActivePositions();
+    fetchCancelledOrders();
     
     const interval = setInterval(() => {
       fetchMarketData();
@@ -57,6 +59,7 @@ export default function Home() {
       fetchLeaderboard();
       fetchAIDecisions();
       fetchActivePositions();
+      fetchCancelledOrders();
     }, 30000);
     
     return () => clearInterval(interval);
@@ -157,6 +160,20 @@ export default function Home() {
       }
     } catch (error) {
       console.error(`Error fetching trades for ${firmName}:`, error);
+    }
+  };
+
+  const fetchCancelledOrders = async () => {
+    try {
+      const response = await fetch(getApiUrl('/api/cancelled-orders?limit=50'));
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setCancelledOrders(data.cancelled_orders || []);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching cancelled orders:', error);
     }
   };
 
@@ -359,6 +376,12 @@ export default function Home() {
                 onClick={() => setActiveBlogTab('METHODOLOGY')}
               >
                 METHODOLOGY
+              </button>
+              <button 
+                className={`blog-tab ${activeBlogTab === 'CANCELLED ORDERS' ? 'active' : ''}`}
+                onClick={() => setActiveBlogTab('CANCELLED ORDERS')}
+              >
+                CANCELLED ORDERS
               </button>
             </div>
             
@@ -630,6 +653,202 @@ export default function Home() {
                     Every analysis score and reasoning text is stored in the database and exposed via API endpoints, 
                     allowing full transparency and validation of AI decision-making processes.
                   </p>
+                </div>
+              </div>
+            )}
+
+            {activeBlogTab === 'CANCELLED ORDERS' && (
+              <div className="blog-section">
+                <h2>Cancelled Orders - 3-Strike System</h2>
+                <p style={{ marginBottom: '1rem', color: '#6B7280' }}>
+                  Orders automatically cancelled after 3 consecutive negative reviews (30-min monitoring intervals)
+                </p>
+                
+                {cancelledOrders.length === 0 ? (
+                  <div style={{ padding: '2rem', textAlign: 'center', color: '#6B7280', background: '#F9FAFB', border: '1px solid #E5E7EB' }}>
+                    No orders have been cancelled yet. The OrderMonitor system reviews active orders every 30 minutes.
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {cancelledOrders.map((order, idx) => {
+                      const firmColor = order.firm_name === 'ChatGPT' ? '#3B82F6' : 
+                                       order.firm_name === 'Gemini' ? '#8B5CF6' : 
+                                       order.firm_name === 'Qwen' ? '#F97316' : 
+                                       order.firm_name === 'Deepseek' ? '#000' : '#06B6D4';
+                      
+                      let strikesHistory = [];
+                      try {
+                        strikesHistory = typeof order.strikes_history === 'string' 
+                          ? JSON.parse(order.strikes_history) 
+                          : order.strikes_history || [];
+                      } catch (e) {
+                        strikesHistory = [];
+                      }
+                      
+                      return (
+                        <details key={idx} style={{ border: '2px solid #EF4444', background: '#FEF2F2' }}>
+                          <summary style={{ 
+                            padding: '1.25rem', 
+                            cursor: 'pointer',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            fontWeight: 600
+                          }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                              <span style={{ 
+                                fontSize: '0.75rem', 
+                                padding: '0.25rem 0.5rem', 
+                                background: '#EF4444', 
+                                color: '#fff',
+                                borderRadius: '4px',
+                                fontWeight: 600
+                              }}>
+                                CANCELLED
+                              </span>
+                              <span style={{ color: firmColor, fontSize: '1rem' }}>
+                                {order.firm_name}
+                              </span>
+                              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>
+                                Order #{order.order_id}
+                              </span>
+                            </div>
+                            <span style={{ fontSize: '0.75rem', color: '#6B7280' }}>
+                              {new Date(order.timestamp).toLocaleString()}
+                            </span>
+                          </summary>
+                          
+                          <div style={{ padding: '1.5rem', borderTop: '2px solid #EF4444', background: '#fff' }}>
+                            <div style={{ marginBottom: '1.5rem', padding: '1rem', background: '#FEE2E2', border: '1px solid #EF4444' }}>
+                              <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#991B1B', marginBottom: '0.5rem' }}>
+                                CANCELLATION REASON
+                              </div>
+                              <div style={{ fontSize: '0.875rem', color: '#7F1D1D' }}>
+                                {order.cancel_reason}
+                              </div>
+                            </div>
+                            
+                            <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '1rem' }}>
+                              Strikes History ({strikesHistory.length} reviews)
+                            </h4>
+                            
+                            {strikesHistory.length === 0 ? (
+                              <div style={{ padding: '1rem', textAlign: 'center', color: '#6B7280', background: '#F9FAFB', border: '1px solid #E5E7EB' }}>
+                                No strike history recorded
+                              </div>
+                            ) : (
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                                {strikesHistory.map((strike: any, sIdx: number) => (
+                                  <div key={sIdx} style={{ 
+                                    padding: '1rem', 
+                                    border: `2px solid ${strike.strike_issued ? '#EF4444' : '#10B981'}`,
+                                    background: strike.strike_issued ? '#FEF2F2' : '#F0FDF4',
+                                    borderRadius: '4px'
+                                  }}>
+                                    <div style={{ 
+                                      display: 'flex', 
+                                      justifyContent: 'space-between',
+                                      marginBottom: '0.75rem'
+                                    }}>
+                                      <span style={{ 
+                                        fontSize: '0.75rem', 
+                                        fontWeight: 600,
+                                        color: strike.strike_issued ? '#991B1B' : '#166534'
+                                      }}>
+                                        Review #{sIdx + 1}
+                                      </span>
+                                      <span style={{ 
+                                        fontSize: '0.75rem', 
+                                        padding: '0.25rem 0.5rem',
+                                        background: strike.strike_issued ? '#EF4444' : '#10B981',
+                                        color: '#fff',
+                                        borderRadius: '4px',
+                                        fontWeight: 600
+                                      }}>
+                                        {strike.strike_issued ? '⚠ STRIKE' : '✓ PASS'}
+                                      </span>
+                                    </div>
+                                    
+                                    <div style={{ 
+                                      display: 'grid', 
+                                      gridTemplateColumns: 'repeat(3, 1fr)',
+                                      gap: '0.75rem',
+                                      fontSize: '0.75rem',
+                                      marginBottom: '0.75rem'
+                                    }}>
+                                      <div>
+                                        <div style={{ color: '#6B7280', marginBottom: '0.25rem' }}>Price Manipulation</div>
+                                        <div style={{ 
+                                          fontWeight: 600,
+                                          color: strike.factors?.price_manipulation ? '#EF4444' : '#10B981'
+                                        }}>
+                                          {strike.factors?.price_manipulation ? 'YES ✗' : 'NO ✓'}
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div style={{ color: '#6B7280', marginBottom: '0.25rem' }}>Stagnation >1wk</div>
+                                        <div style={{ 
+                                          fontWeight: 600,
+                                          color: strike.factors?.time_stagnation ? '#EF4444' : '#10B981'
+                                        }}>
+                                          {strike.factors?.time_stagnation ? 'YES ✗' : 'NO ✓'}
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div style={{ color: '#6B7280', marginBottom: '0.25rem' }}>AI Contradiction</div>
+                                        <div style={{ 
+                                          fontWeight: 600,
+                                          color: strike.factors?.ai_contradiction ? '#EF4444' : '#10B981'
+                                        }}>
+                                          {strike.factors?.ai_contradiction ? 'YES ✗' : 'NO ✓'}
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    {strike.reason && (
+                                      <div style={{ 
+                                        fontSize: '0.75rem', 
+                                        color: '#6B7280',
+                                        padding: '0.75rem',
+                                        background: '#F9FAFB',
+                                        border: '1px solid #E5E7EB',
+                                        borderRadius: '4px'
+                                      }}>
+                                        {strike.reason}
+                                      </div>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </details>
+                      );
+                    })}
+                  </div>
+                )}
+                
+                <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#FEF3C7', border: '2px solid #F59E0B' }}>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem', color: '#92400E' }}>
+                    How the 3-Strike System Works
+                  </h3>
+                  <ul style={{ fontSize: '0.875rem', color: '#78350F', lineHeight: '1.6', paddingLeft: '1.5rem' }}>
+                    <li style={{ marginBottom: '0.5rem' }}>
+                      OrderMonitor reviews all active positions every 30 minutes
+                    </li>
+                    <li style={{ marginBottom: '0.5rem' }}>
+                      Each review checks 3 factors: Price manipulation (>15% change), Time stagnation (>1 week), AI contradiction
+                    </li>
+                    <li style={{ marginBottom: '0.5rem' }}>
+                      Strike issued if ANY factor triggers; strike count RESETS to 0 when all factors clear
+                    </li>
+                    <li style={{ marginBottom: '0.5rem' }}>
+                      After 3 CONSECUTIVE strikes, order is automatically cancelled via Opinion.trade API
+                    </li>
+                    <li>
+                      All reviews logged with detailed factor breakdown and cancellation reasons
+                    </li>
+                  </ul>
                 </div>
               </div>
             )}
