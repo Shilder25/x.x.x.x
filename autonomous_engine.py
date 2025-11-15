@@ -432,7 +432,9 @@ class AutonomousEngine:
             
             price_response = self.opinion_api.get_latest_price(token_id)
             if not price_response.get('success'):
-                evaluation['reason'] = f"Failed to fetch market price: {price_response.get('error')}"
+                error_msg = price_response.get('message', 'Unknown error')
+                evaluation['reason'] = f"Failed to fetch market price: {price_response.get('error')} - {error_msg}"
+                logger.warning(f"{firm_name} - Price fetch failed for token_id={token_id}: {price_response.get('error')} | Message: {error_msg}")
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
                 return evaluation
             

@@ -624,17 +624,21 @@ class OpinionTradeAPI:
                     'data': price_data
                 }
             else:
+                logger.warning(f"get_latest_price failed for token_id={token_id}: errno={response.errno}, errmsg={response.errmsg}")
                 return {
                     'success': False,
                     'error': f'API error {response.errno}',
-                    'message': response.errmsg
+                    'message': response.errmsg,
+                    'token_id': token_id
                 }
         
         except Exception as e:
+            logger.error(f"get_latest_price exception for token_id={token_id}: {str(e)}")
             return {
                 'success': False,
                 'error': 'Unexpected error',
-                'message': str(e)
+                'message': str(e),
+                'token_id': token_id
             }
     
     def get_my_orders(self, market_id: Optional[int] = None) -> Dict:
