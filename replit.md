@@ -28,6 +28,18 @@
   - RecentTradesSidebar component in LIVE tab sidebar
   - Expandable leaderboard - click AI to view trade history
   - CANCELLED ORDERS tab in BLOG section with detailed strikes breakdown
+- **Error Handling & Security**:
+  - Numeric errno checking (== 10403) for "no trades yet" case eliminates false positives
+  - Structured logging via logger.error() for proper observability
+  - CRON_SECRET authentication protects POST endpoints
+  - All API errors properly surfaced with HTTP 500 status codes
+- **Configuration Required**:
+  - **CRON_SECRET**: Create this secret in Replit environment variables (e.g., generate random 32-char string)
+  - **External Cron Job**: Configure cron-job.org to POST to `/api/monitor-orders` every 30 minutes
+    - URL: `https://your-deployment-url.railway.app/api/monitor-orders`
+    - Method: POST
+    - Header: `X-Cron-Secret: <your-CRON_SECRET-value>`
+    - Schedule: Every 30 minutes (*/30 * * * *)
 - **Centralized Logging System**: Implemented comprehensive logging infrastructure
   - All autonomous engine events logged to `logs/autonomous_cycle.log` (10MB rotation, 5 backups)
   - Password-protected `/admin/logs` endpoint for log viewing
