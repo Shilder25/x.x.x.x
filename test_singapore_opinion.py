@@ -25,7 +25,7 @@ def test_opinion_trade_singapore():
     wallet_address = account.address
     
     print(f"\n📍 Deployment Location: Singapore (Southeast Asia)")
-    print(f"🔑 API Key: {api_key[:20]}...")
+    print(f"🔑 API Key: Configured")
     print(f"💼 Wallet: {wallet_address}")
     
     try:

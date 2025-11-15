@@ -40,7 +40,7 @@ def probe_opinion_trade(region_name="Unknown"):
         
         print(f"📍 Testing from: {region_name}")
         print(f"💼 Wallet: {wallet_address}")
-        print(f"🔑 API Key: {api_key[:15]}...")
+        print(f"🔑 API Key: Configured")
         
         # Initialize SDK
         print("\n⏳ Initializing SDK...")

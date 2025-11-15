@@ -39,7 +39,7 @@ def check_api_connectivity():
         
         print(f"✅ Cliente inicializado correctamente")
         print(f"   Wallet: {api.wallet_address}")
-        print(f"   API Key: {api.api_key[:8]}..." if api.api_key else "   API Key: No configurado")
+        print(f"   API Key: {'Configurado' if api.api_key else 'No configurado'}")
         
     except Exception as e:
         print(f"❌ ERROR durante inicialización: {str(e)}")

@@ -169,7 +169,7 @@ def main():
         print("\nNext Steps:")
         print("  1. Contact Opinion.trade support for IP whitelist")
         print("  2. Request access from EU West region (Amsterdam)")
-        print("  3. Provide API key: " + os.environ.get("OPINION_TRADE_API_KEY", "")[:20] + "...")
+        print("  3. Provide your API key from environment variables")
     
     print("="*80)
     
