@@ -1310,6 +1310,35 @@ class AutonomousEngine:
                                 profit_loss=profit_loss
                             )
                         
+                        # AUTO-REDEEM: Si ganó, redimir tokens automáticamente
+                        if actual_result == 1 and profit_loss > 0:
+                            token_id = matching_trade.get('token_id')
+                            if token_id:
+                                try:
+                                    redeem_result = self.opinion_api.redeem([token_id])
+                                    if redeem_result.get('success'):
+                                        logger.info(f"{firm_name} - Auto-redeemed winning token {token_id} from bet {bet_id}")
+                                        self.execution_log.append({
+                                            'timestamp': datetime.now().isoformat(),
+                                            'action': 'auto_redeem_success',
+                                            'firm_name': firm_name,
+                                            'bet_id': bet_id,
+                                            'token_id': token_id,
+                                            'profit_redeemed': profit_loss
+                                        })
+                                    else:
+                                        logger.warning(f"{firm_name} - Auto-redeem failed for token {token_id}: {redeem_result.get('error')}")
+                                        self.execution_log.append({
+                                            'timestamp': datetime.now().isoformat(),
+                                            'action': 'auto_redeem_failed',
+                                            'firm_name': firm_name,
+                                            'bet_id': bet_id,
+                                            'token_id': token_id,
+                                            'error': redeem_result.get('error')
+                                        })
+                                except Exception as redeem_error:
+                                    logger.error(f"{firm_name} - Exception during auto-redeem: {redeem_error}")
+                        
                         stats['resolved'] += 1
                         stats['updated'] += 1
                         stats['by_firm'][firm_name]['resolved'] += 1
@@ -1355,3 +1384,213 @@ class AutonomousEngine:
             print(f"[TIER CHANGE] {firm_name}: {adaptation_details.get('description')}")
         
         return adaptation_details
+
+
+class OrderMonitor:
+    """
+    Sistema de monitoreo de órdenes activas con sistema de 3-strikes.
+    Evalúa órdenes cada 30min y decide si cancelarlas basado en:
+    1. Precio manipulado (>15% cambio súbito)
+    2. Tiempo estancado (>1 semana sin resolverse)
+    3. Contradicción de IA (nueva predicción contradice posición)
+    """
+    
+    def __init__(self, opinion_api: OpinionTradeAPI, database: TradingDatabase, orchestrator: FirmOrchestrator):
+        self.opinion_api = opinion_api
+        self.db = database
+        self.orchestrator = orchestrator
+        
+        # Historial de strikes: {order_id: {'strikes': int, 'reasons': [], 'last_check': timestamp, 'original_price': float}}
+        self.strikes_history = {}
+        
+        # Configuración
+        self.MAX_STRIKES = 3
+        self.PRICE_MANIPULATION_THRESHOLD = 0.15  # 15% cambio
+        self.STAGNATION_DAYS = 7  # 1 semana
+        self.CHECK_INTERVAL_MINUTES = 30
+    
+    def monitor_all_orders(self) -> Dict:
+        """
+        Monitorea todas las órdenes activas y cancela las que alcancen 3 strikes.
+        """
+        stats = {
+            'total_checked': 0,
+            'strikes_added': 0,
+            'strikes_reset': 0,
+            'cancelled': 0,
+            'errors': 0
+        }
+        
+        # Obtener órdenes activas desde Opinion.trade
+        orders_response = self.opinion_api.get_my_orders(limit=100)
+        
+        if not orders_response.get('success'):
+            logger.error(f"OrderMonitor - Failed to fetch orders: {orders_response.get('error')}")
+            return stats
+        
+        active_orders = orders_response.get('orders', [])
+        stats['total_checked'] = len(active_orders)
+        
+        for order in active_orders:
+            order_id = order.get('order_id')
+            if not order_id:
+                continue
+            
+            # Evaluar orden
+            evaluation = self._evaluate_order(order)
+            
+            if evaluation['has_issue']:
+                # Incrementar strikes
+                self._add_strike(order_id, evaluation['issue_reason'], order)
+                stats['strikes_added'] += 1
+                
+                # Verificar si alcanzó 3 strikes
+                if self.strikes_history[order_id]['strikes'] >= self.MAX_STRIKES:
+                    # CANCELAR ORDEN
+                    cancel_result = self._cancel_order_with_logging(order_id, order)
+                    if cancel_result['success']:
+                        stats['cancelled'] += 1
+                    else:
+                        stats['errors'] += 1
+            else:
+                # Resetear strikes si la orden mejoró
+                if order_id in self.strikes_history and self.strikes_history[order_id]['strikes'] > 0:
+                    self._reset_strikes(order_id)
+                    stats['strikes_reset'] += 1
+        
+        return stats
+    
+    def _evaluate_order(self, order: Dict) -> Dict:
+        """
+        Evalúa una orden y retorna si tiene algún problema.
+        """
+        order_id = order.get('order_id')
+        market_id = order.get('market_id')
+        token_id = order.get('token_id')
+        current_price = order.get('price', 0)
+        created_at = order.get('created_at', 0)
+        
+        # Inicializar si es primera vez
+        if order_id not in self.strikes_history:
+            self.strikes_history[order_id] = {
+                'strikes': 0,
+                'reasons': [],
+                'last_check': datetime.now().isoformat(),
+                'original_price': current_price,
+                'created_at': created_at
+            }
+        
+        order_data = self.strikes_history[order_id]
+        
+        # FACTOR 1: Precio manipulado (>15% cambio súbito desde última revisión)
+        if token_id:
+            latest_price_response = self.opinion_api.get_latest_price(token_id)
+            if latest_price_response.get('success'):
+                latest_price = latest_price_response.get('price', current_price)
+                price_change = abs(latest_price - order_data['original_price']) / order_data['original_price']
+                
+                if price_change > self.PRICE_MANIPULATION_THRESHOLD:
+                    return {
+                        'has_issue': True,
+                        'issue_reason': f'Price manipulation detected: {price_change*100:.1f}% change (threshold: {self.PRICE_MANIPULATION_THRESHOLD*100}%)'
+                    }
+        
+        # FACTOR 2: Tiempo estancado (>1 semana sin resolverse)
+        order_age_seconds = datetime.now().timestamp() - (created_at / 1000 if created_at > 1e10 else created_at)
+        order_age_days = order_age_seconds / 86400
+        
+        if order_age_days > self.STAGNATION_DAYS:
+            return {
+                'has_issue': True,
+                'issue_reason': f'Order stagnant for {order_age_days:.1f} days (threshold: {self.STAGNATION_DAYS} days)'
+            }
+        
+        # FACTOR 3: Contradicción de IA (nueva predicción contradice posición)
+        # TODO: Implementar cuando tengamos acceso a la firma que hizo la orden
+        # Por ahora, este factor no se evalúa
+        
+        return {
+            'has_issue': False,
+            'issue_reason': None
+        }
+    
+    def _add_strike(self, order_id: str, reason: str, order: Dict):
+        """
+        Agrega un strike a una orden.
+        """
+        if order_id not in self.strikes_history:
+            self.strikes_history[order_id] = {
+                'strikes': 0,
+                'reasons': [],
+                'last_check': datetime.now().isoformat(),
+                'original_price': order.get('price', 0),
+                'created_at': order.get('created_at', 0)
+            }
+        
+        self.strikes_history[order_id]['strikes'] += 1
+        self.strikes_history[order_id]['reasons'].append({
+            'timestamp': datetime.now().isoformat(),
+            'reason': reason
+        })
+        self.strikes_history[order_id]['last_check'] = datetime.now().isoformat()
+        
+        logger.warning(f"OrderMonitor - Strike {self.strikes_history[order_id]['strikes']}/3 added to order {order_id}: {reason}")
+    
+    def _reset_strikes(self, order_id: str):
+        """
+        Resetea los strikes de una orden que mejoró.
+        """
+        if order_id in self.strikes_history:
+            logger.info(f"OrderMonitor - Resetting strikes for order {order_id} (order improved)")
+            self.strikes_history[order_id]['strikes'] = 0
+            self.strikes_history[order_id]['reasons'] = []
+    
+    def _cancel_order_with_logging(self, order_id: str, order: Dict) -> Dict:
+        """
+        Cancela una orden y registra en la base de datos.
+        """
+        strikes_data = self.strikes_history.get(order_id, {})
+        
+        # Cancelar en Opinion.trade
+        cancel_result = self.opinion_api.cancel_order(order_id)
+        
+        if cancel_result.get('success'):
+            # Registrar en base de datos
+            cancel_reason = f"3 consecutive strikes: {', '.join([r['reason'] for r in strikes_data.get('reasons', [])])}"
+            
+            self.db.save_cancelled_order({
+                'order_id': order_id,
+                'firm_name': 'Unknown',  # TODO: Obtener de la orden o DB
+                'event_id': str(order.get('market_id')),
+                'event_description': f"Market {order.get('market_id')}",
+                'cancel_reason': cancel_reason,
+                'strikes_history': strikes_data.get('reasons', []),
+                'original_bet_size': order.get('amount', 0),
+                'probability': None,
+                'created_at': datetime.fromtimestamp(order.get('created_at', 0) / 1000).isoformat() if order.get('created_at') else datetime.now().isoformat()
+            })
+            
+            logger.info(f"OrderMonitor - Order {order_id} cancelled after 3 strikes: {cancel_reason}")
+            
+            # Limpiar del historial
+            del self.strikes_history[order_id]
+            
+            return {'success': True}
+        else:
+            logger.error(f"OrderMonitor - Failed to cancel order {order_id}: {cancel_result.get('error')}")
+            return {'success': False, 'error': cancel_result.get('error')}
+    
+    def get_strikes_summary(self) -> List[Dict]:
+        """
+        Retorna resumen de strikes actuales para debugging.
+        """
+        summary = []
+        for order_id, data in self.strikes_history.items():
+            if data['strikes'] > 0:
+                summary.append({
+                    'order_id': order_id,
+                    'strikes': data['strikes'],
+                    'reasons': data['reasons'],
+                    'last_check': data['last_check']
+                })
+        return summary

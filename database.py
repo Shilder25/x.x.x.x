@@ -131,6 +131,22 @@ class TradingDatabase:
         )
         ''')
         
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS cancelled_orders (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            order_id TEXT NOT NULL,
+            firm_name TEXT NOT NULL,
+            event_id TEXT,
+            event_description TEXT,
+            cancel_reason TEXT NOT NULL,
+            strikes_history TEXT,
+            original_bet_size REAL,
+            probability REAL,
+            created_at TEXT NOT NULL,
+            cancelled_at TEXT NOT NULL
+        )
+        ''')
+        
         self._migrate_schema(cursor)
         
         conn.commit()
@@ -724,6 +740,80 @@ class TradingDatabase:
             })
         
         return cycles
+    
+    def save_cancelled_order(self, order_data: Dict) -> int:
+        """
+        Guarda una orden cancelada en la base de datos con el historial de strikes.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        INSERT INTO cancelled_orders (
+            order_id, firm_name, event_id, event_description,
+            cancel_reason, strikes_history, original_bet_size, probability,
+            created_at, cancelled_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            order_data['order_id'],
+            order_data['firm_name'],
+            order_data.get('event_id'),
+            order_data.get('event_description'),
+            order_data['cancel_reason'],
+            json.dumps(order_data.get('strikes_history', [])),
+            order_data.get('original_bet_size'),
+            order_data.get('probability'),
+            order_data.get('created_at', datetime.now().isoformat()),
+            datetime.now().isoformat()
+        ))
+        
+        cancelled_id = cursor.lastrowid
+        conn.commit()
+        conn.close()
+        
+        return cancelled_id
+    
+    def get_cancelled_orders(self, firm_name: Optional[str] = None, limit: int = 50) -> List[Dict]:
+        """
+        Obtiene órdenes canceladas con historial de strikes.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        if firm_name:
+            cursor.execute('''
+            SELECT * FROM cancelled_orders
+            WHERE firm_name = ?
+            ORDER BY cancelled_at DESC
+            LIMIT ?
+            ''', (firm_name, limit))
+        else:
+            cursor.execute('''
+            SELECT * FROM cancelled_orders
+            ORDER BY cancelled_at DESC
+            LIMIT ?
+            ''', (limit,))
+        
+        rows = cursor.fetchall()
+        conn.close()
+        
+        cancelled_orders = []
+        for row in rows:
+            cancelled_orders.append({
+                'id': row[0],
+                'order_id': row[1],
+                'firm_name': row[2],
+                'event_id': row[3],
+                'event_description': row[4],
+                'cancel_reason': row[5],
+                'strikes_history': json.loads(row[6]) if row[6] else [],
+                'original_bet_size': row[7],
+                'probability': row[8],
+                'created_at': row[9],
+                'cancelled_at': row[10]
+            })
+        
+        return cancelled_orders
     
     def get_latest_ai_thinking(self) -> List[Dict]:
         """

@@ -468,6 +468,70 @@ def get_active_positions():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/recent-trades', methods=['GET'])
+def get_recent_trades():
+    """Get recent trades from Opinion.trade (últimos 20 trades)"""
+    try:
+        from opinion_trade_api import OpinionTradeAPI
+        
+        limit = request.args.get('limit', 20, type=int)
+        
+        opinion_api = OpinionTradeAPI()
+        trades_response = opinion_api.get_my_trades(limit=limit)
+        
+        if trades_response.get('success'):
+            return jsonify({
+                'success': True,
+                'trades': trades_response.get('trades', [])
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': trades_response.get('error', 'Unknown error')
+            }), 500
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/ai-trades/<firm_name>', methods=['GET'])
+def get_ai_trades(firm_name):
+    """Get trade history for a specific AI from database"""
+    try:
+        limit = request.args.get('limit', 100, type=int)
+        
+        # Validar que el firm_name sea válido
+        if firm_name not in AI_FIRMS:
+            return jsonify({
+                'success': False,
+                'error': f'Invalid firm name: {firm_name}'
+            }), 400
+        
+        # Obtener trades de la base de datos para esta IA
+        bets = db.get_autonomous_bets(firm_name=firm_name, limit=limit)
+        
+        return jsonify({
+            'success': True,
+            'firm_name': firm_name,
+            'trades': bets
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/cancelled-orders', methods=['GET'])
+def get_cancelled_orders():
+    """Get cancelled orders with strikes history and reasons"""
+    try:
+        limit = request.args.get('limit', 50, type=int)
+        firm_name = request.args.get('firm', None)
+        
+        cancelled_orders = db.get_cancelled_orders(firm_name=firm_name, limit=limit)
+        
+        return jsonify({
+            'success': True,
+            'cancelled_orders': cancelled_orders
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 @app.route('/api/run-daily-cycle', methods=['POST'])
 def run_daily_cycle():
     """
