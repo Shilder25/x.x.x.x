@@ -598,7 +598,7 @@ def monitor_orders():
         from autonomous_engine import AutonomousEngine, OrderMonitor
         engine = AutonomousEngine(db)
         
-        order_monitor = OrderMonitor(engine.db, engine.opinion_api, engine.orchestrator)
+        order_monitor = OrderMonitor(engine.opinion_api, engine.db, engine.orchestrator)
         monitoring_stats = order_monitor.monitor_all_orders()
         
         return jsonify({
