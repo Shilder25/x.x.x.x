@@ -458,6 +458,7 @@ class AutonomousEngine:
         Guarda en DB y envía a Opinion.trade si no es simulación.
         Actualiza estado de managers después de ejecutar.
         """
+        event = opportunity.get('event', {})
         event_id = opportunity.get('event_id', '')
         event_description = opportunity.get('event_description', '')
         category = opportunity.get('category', 'general')
@@ -838,16 +839,45 @@ class AutonomousEngine:
         
         return None
     
-    def _calculate_expected_value(self, probability: float, odds: float = 2.0) -> float:
+    def _calculate_expected_value(self, probability: float, odds: float = 2.0, bet_size: Optional[float] = None) -> float:
         """
-        Calcula el valor esperado de una apuesta.
-        EV = (probability * win_amount) - ((1 - probability) * loss_amount)
+        Calcula el valor esperado de una apuesta considerando fees reales de Opinion.trade.
+        EV = (probability * win_amount) - ((1 - probability) * loss_amount) - trading_fees
+        
+        Args:
+            probability: Probabilidad de ganar (0-1)
+            odds: Odds del mercado (default 2.0 para mercados binarios)
+            bet_size: Tamaño de la apuesta (opcional, si no se provee retorna EV sin fees)
+        
+        Returns:
+            Expected value, neto después de fees si bet_size es provisto
         """
+        # Calcular EV bruto
         win_amount = odds - 1
         loss_amount = 1
+        gross_ev = (probability * win_amount) - ((1 - probability) * loss_amount)
         
-        ev = (probability * win_amount) - ((1 - probability) * loss_amount)
-        return ev
+        # Si no hay bet_size, retornar EV bruto (backward compatibility)
+        if bet_size is None:
+            return gross_ev
+        
+        # Obtener fees reales de Opinion.trade
+        fees_response = self.opinion_api.get_fee_rates()
+        if fees_response.get('success'):
+            taker_fee = fees_response.get('taker_fee', 0.02)  # Default 2% si falla
+        else:
+            taker_fee = 0.02  # Fallback conservador
+        
+        # En mercados binarios, el precio es la probabilidad
+        # Notional ejecutado = precio * tamaño
+        # Fees se aplican al notional, no al stake
+        executed_notional = probability * bet_size
+        fee_cost = executed_notional * taker_fee
+        
+        # EV neto = (EV bruto * bet_size) - fees
+        net_ev = (gross_ev * bet_size) - fee_cost
+        
+        return net_ev / bet_size  # Retornar EV normalizado por unidad
     
     def _execute_bet(self, firm_name: str, event: Dict, event_description: str,
                     bet_size: float, probability: float, prediction: Dict) -> Dict:
@@ -1058,55 +1088,14 @@ class AutonomousEngine:
             stats['checked'] += 1
             stats['by_firm'][firm_name]['checked'] += 1
             
-            # Consultar Opinion.trade para ver si fue resuelta
+            # TODO: Reconciliación manual requerida
+            # get_prediction_result() no existe en SDK
+            # Usar get_my_trades() para verificar status de trades
+            # o implementar reconciliación manual vía UI
             try:
-                result = self.opinion_api.get_prediction_result(opinion_trade_id)
-                
-                if not result.get('success'):
-                    # Log cuando Opinion.trade devuelve error
-                    self.execution_log.append({
-                        'timestamp': datetime.now().isoformat(),
-                        'action': 'reconciliation_api_error',
-                        'firm_name': firm_name,
-                        'bet_id': bet_id,
-                        'error': result.get('error', 'Unknown API error'),
-                        'message': result.get('message', '')
-                    })
-                    continue
-                
-                if result.get('resolved'):
-                    # La apuesta fue resuelta
-                    outcome = result.get('outcome')  # 1 (ganó) o 0 (perdió)
-                    profit_loss = result.get('profit_loss', 0)
-                    
-                    # Actualizar en la base de datos
-                    self.db.update_autonomous_bet_result(
-                        bet_id=bet_id,
-                        actual_result=outcome,
-                        profit_loss=profit_loss
-                    )
-                    
-                    # Actualizar bankroll manager
-                    if firm_name in self.bankroll_managers:
-                        bankroll_manager = self.bankroll_managers[firm_name]
-                        bankroll_manager.record_result(
-                            bet_id=bet_id,
-                            won=(outcome == 1),
-                            profit_loss=profit_loss
-                        )
-                    
-                    stats['resolved'] += 1
-                    stats['updated'] += 1
-                    stats['by_firm'][firm_name]['resolved'] += 1
-                    
-                    self.execution_log.append({
-                        'timestamp': datetime.now().isoformat(),
-                        'action': 'reconciliation',
-                        'firm_name': firm_name,
-                        'bet_id': bet_id,
-                        'outcome': 'won' if outcome == 1 else 'lost',
-                        'profit_loss': profit_loss
-                    })
+                # TEMP: Skip reconciliación automática hasta implementar con get_my_trades()
+                # La reconciliación se hará manualmente o con implementación futura
+                continue
                     
             except Exception as e:
                 stats['errors'] += 1
