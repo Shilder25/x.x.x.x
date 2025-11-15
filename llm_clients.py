@@ -123,7 +123,7 @@ class ChatGPTFirm(TradingFirm):
                     {"role": "system", "content": "You are an expert trading analyst. Respond in valid JSON format only."},
                     {"role": "user", "content": prompt}
                 ],
-                max_completion_tokens=4096,
+                max_tokens=4096,
                 response_format={"type": "json_object"}
             )
             
