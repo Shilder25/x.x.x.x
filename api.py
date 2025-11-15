@@ -26,7 +26,8 @@ def health_check():
         env_status = {
             'database': 'connected' if db else 'error',
             'api_keys_configured': {
-                'openai': bool(os.getenv('AI_INTEGRATIONS_OPENAI_API_KEY')),
+                'openai': bool(os.getenv('AI_INTEGRATIONS_OPENAI_API_KEY') or os.getenv('OPENAI_API_KEY')),
+                'gemini': bool(os.getenv('AI_INTEGRATIONS_GEMINI_API_KEY') or os.getenv('GEMINI_API_KEY')),
                 'deepseek': bool(os.getenv('DEEPSEEK_API_KEY')),
                 'qwen': bool(os.getenv('QWEN_API_KEY')),
                 'xai': bool(os.getenv('XAI_API_KEY')),
