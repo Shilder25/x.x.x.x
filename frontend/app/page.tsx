@@ -210,17 +210,23 @@ export default function Home() {
         )}
 
         {activeSection === 'LEADERBOARD' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '0 2rem' }}>
+            <div style={{ 
+              marginBottom: '1rem',
+              padding: '1.5rem',
+              background: '#000',
+              color: '#fff',
+              border: '2px solid #000'
+            }}>
               <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.5rem' }}>AI Trading Leaderboard</h2>
-              <p style={{ fontSize: '0.875rem', color: '#6B7280' }}>Click on any AI to view their complete trade history</p>
+              <p style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>Click on any AI to view their complete trade history</p>
             </div>
             
             {leaderboard.map((item, index) => {
               const firmColor = item.firm === 'ChatGPT' ? '#3B82F6' : 
                                item.firm === 'Gemini' ? '#8B5CF6' : 
                                item.firm === 'Qwen' ? '#F97316' : 
-                               item.firm === 'Deepseek' ? '#000' : '#06B6D4';
+                               item.firm === 'Deepseek' ? '#FFF' : '#06B6D4';
               
               return (
                 <details 
@@ -240,11 +246,12 @@ export default function Home() {
                     gap: '1rem',
                     alignItems: 'center',
                     fontWeight: 500,
-                    background: '#F9FAFB'
+                    background: '#000',
+                    color: '#fff'
                   }}>
-                    <span style={{ fontSize: '1.25rem', fontWeight: 600 }}>#{index + 1}</span>
+                    <span style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff' }}>#{index + 1}</span>
                     <span style={{ fontWeight: 600, color: firmColor }}>{item.firm}</span>
-                    <span style={{ textAlign: 'right' }}>${item.total_value?.toLocaleString() || '0'}</span>
+                    <span style={{ textAlign: 'right', color: '#fff' }}>${item.total_value?.toLocaleString() || '0'}</span>
                     <span style={{ 
                       textAlign: 'right',
                       color: item.profit_loss >= 0 ? '#10B981' : '#EF4444',
@@ -252,13 +259,21 @@ export default function Home() {
                     }}>
                       {item.profit_loss >= 0 ? '+' : ''}${item.profit_loss?.toLocaleString() || '0'}
                     </span>
-                    <span style={{ textAlign: 'right' }}>{item.win_rate?.toFixed(1) || '0'}%</span>
-                    <span style={{ textAlign: 'right' }}>{item.total_bets || 0} bets</span>
-                    <span style={{ textAlign: 'right' }}>{item.accuracy?.toFixed(1) || '0'}%</span>
+                    <span style={{ textAlign: 'right', color: '#fff' }}>{item.win_rate?.toFixed(1) || '0'}%</span>
+                    <span style={{ textAlign: 'right', color: '#fff' }}>{item.total_bets || 0} bets</span>
+                    <span style={{ textAlign: 'right', color: '#fff' }}>{item.accuracy?.toFixed(1) || '0'}%</span>
                   </summary>
                   
-                  <div style={{ padding: '2rem', borderTop: '2px solid #000' }}>
-                    <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem' }}>
+                  <div style={{ padding: '2rem', borderTop: '2px solid #000', background: '#fff' }}>
+                    <h3 style={{ 
+                      fontSize: '1.125rem', 
+                      fontWeight: 600, 
+                      marginBottom: '1.5rem',
+                      padding: '0.75rem',
+                      background: '#000',
+                      color: '#fff',
+                      border: '2px solid #000'
+                    }}>
                       Trade History - {item.firm}
                     </h3>
                     
@@ -275,9 +290,8 @@ export default function Home() {
                         {aiTrades[item.firm].slice(0, 20).map((trade, idx) => (
                           <div key={idx} style={{ 
                             padding: '1rem', 
-                            border: '1px solid #E5E7EB', 
-                            background: '#F9FAFB',
-                            borderRadius: '4px'
+                            border: '2px solid #000', 
+                            background: '#fff'
                           }}>
                             <div style={{ 
                               display: 'flex', 
@@ -657,13 +671,21 @@ export default function Home() {
 
             {activeBlogTab === 'CANCELLED ORDERS' && (
               <div className="blog-section">
-                <h2>Cancelled Orders - 3-Strike System</h2>
-                <p style={{ marginBottom: '1rem', color: '#6B7280' }}>
-                  Orders automatically cancelled after 3 consecutive negative reviews (30-min monitoring intervals)
-                </p>
+                <div style={{ 
+                  padding: '1.5rem',
+                  background: '#000',
+                  color: '#fff',
+                  border: '2px solid #000',
+                  marginBottom: '1.5rem'
+                }}>
+                  <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.5rem' }}>Cancelled Orders - 3-Strike System</h2>
+                  <p style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>
+                    Orders automatically cancelled after 3 consecutive negative reviews (30-min monitoring intervals)
+                  </p>
+                </div>
                 
                 {cancelledOrders.length === 0 ? (
-                  <div style={{ padding: '2rem', textAlign: 'center', color: '#6B7280', background: '#F9FAFB', border: '1px solid #E5E7EB' }}>
+                  <div style={{ padding: '2rem', textAlign: 'center', color: '#6B7280', background: '#fff', border: '2px solid #000' }}>
                     No orders have been cancelled yet. The OrderMonitor system reviews active orders every 30 minutes.
                   </div>
                 ) : (
@@ -684,14 +706,16 @@ export default function Home() {
                       }
                       
                       return (
-                        <details key={idx} style={{ border: '2px solid #EF4444', background: '#FEF2F2' }}>
+                        <details key={idx} style={{ border: '2px solid #000', background: '#fff' }}>
                           <summary style={{ 
                             padding: '1.25rem', 
                             cursor: 'pointer',
                             display: 'flex',
                             justifyContent: 'space-between',
                             alignItems: 'center',
-                            fontWeight: 600
+                            fontWeight: 600,
+                            background: '#000',
+                            color: '#fff'
                           }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                               <span style={{ 
@@ -704,20 +728,20 @@ export default function Home() {
                               }}>
                                 CANCELLED
                               </span>
-                              <span style={{ color: firmColor, fontSize: '1rem' }}>
+                              <span style={{ color: firmColor, fontSize: '1rem', fontWeight: 600 }}>
                                 {order.firm_name}
                               </span>
-                              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>
+                              <span style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>
                                 Order #{order.order_id}
                               </span>
                             </div>
-                            <span style={{ fontSize: '0.75rem', color: '#6B7280' }}>
+                            <span style={{ fontSize: '0.75rem', color: '#9CA3AF' }}>
                               {new Date(order.timestamp).toLocaleString()}
                             </span>
                           </summary>
                           
-                          <div style={{ padding: '1.5rem', borderTop: '2px solid #EF4444', background: '#fff' }}>
-                            <div style={{ marginBottom: '1.5rem', padding: '1rem', background: '#FEE2E2', border: '1px solid #EF4444' }}>
+                          <div style={{ padding: '1.5rem', borderTop: '2px solid #000', background: '#fff' }}>
+                            <div style={{ marginBottom: '1.5rem', padding: '1rem', background: '#FEE2E2', border: '2px solid #EF4444' }}>
                               <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#991B1B', marginBottom: '0.5rem' }}>
                                 CANCELLATION REASON
                               </div>
@@ -726,12 +750,20 @@ export default function Home() {
                               </div>
                             </div>
                             
-                            <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '1rem' }}>
+                            <h4 style={{ 
+                              fontSize: '0.875rem', 
+                              fontWeight: 600, 
+                              marginBottom: '1rem',
+                              padding: '0.75rem',
+                              background: '#000',
+                              color: '#fff',
+                              border: '2px solid #000'
+                            }}>
                               Strikes History ({strikesHistory.length} reviews)
                             </h4>
                             
                             {strikesHistory.length === 0 ? (
-                              <div style={{ padding: '1rem', textAlign: 'center', color: '#6B7280', background: '#F9FAFB', border: '1px solid #E5E7EB' }}>
+                              <div style={{ padding: '1rem', textAlign: 'center', color: '#6B7280', background: '#fff', border: '2px solid #000' }}>
                                 No strike history recorded
                               </div>
                             ) : (
@@ -809,8 +841,7 @@ export default function Home() {
                                         color: '#6B7280',
                                         padding: '0.75rem',
                                         background: '#F9FAFB',
-                                        border: '1px solid #E5E7EB',
-                                        borderRadius: '4px'
+                                        border: '2px solid #E5E7EB'
                                       }}>
                                         {strike.reason}
                                       </div>
