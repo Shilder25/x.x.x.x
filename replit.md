@@ -1,146 +1,148 @@
-# TradingAgents Framework
+# Overview
 
-## ✅ Deployment Status
+TradingAgents is an autonomous AI-powered prediction market trading system that orchestrates multiple AI models (ChatGPT, Gemini, Qwen, Deepseek, Grok) to analyze and place bets on Opinion.trade markets. The system operates as a competitive arena where different AI "firms" make independent trading decisions based on multi-source data analysis (technical indicators, sentiment, news, volatility) and compete for the best Sharpe Ratio. It features a Flask REST API backend for autonomous trading logic and a Next.js React frontend ("Alpha Arena UI") for real-time monitoring and visualization.
 
-**Status**: OPERATIONAL on Railway (EU West region)  
-**API Access**: Opinion.trade API working correctly from Railway deployment  
-**Admin Panel**: Available at `/admin` route for manual cycle triggering
+The system is designed for deployment on Railway with automatic daily prediction cycles, comprehensive risk management through a 4-tier adaptive system, and bankroll protection mechanisms. It operates in two modes: TEST mode (small amounts for safe experimentation) and PRODUCTION mode (real trading with larger capital).
 
-**Recent Updates (Nov 15, 2025)**:
-- **CRITICAL BUG FIXES - Production Ready**:
-  - **Fix 1: Token ID Extraction** - Extract YES/NO token IDs from market.options during event fetching with defensive parsing
-  - **Fix 2: Opinion.trade API Payload** - Complete payload validation (market_id, token_id, side='BUY') eliminates "Missing required fields" errors
-  - **Fix 3: Comprehensive Event Analysis Logging** - ALL events (bets + skips) now logged with probability, confidence, 5-area scores (S/N/T/F/V), and decision rationale
-  - Token selection logic: probability ≥0.5 → buy YES token, <0.5 → buy NO token
-- **Auto-Redeem & OrderMonitor System**:
-  - **Auto-redeem**: Automatically calls redeem() when trades win (actual_result=1, profit_loss>0) during reconciliation
-  - **OrderMonitor 3-Strike System**: Reviews active orders every 30min via `/api/monitor-orders` endpoint
-    - Factor 1: Price manipulation >15%
-    - Factor 2: Stagnation >1 week
-    - Factor 3: AI contradiction
-    - Cancels orders after 3 consecutive strikes, logs all reviews in `cancelled_orders` table
-  - **New API Endpoints**: 
-    - `GET /api/recent-trades` - Last 20 trades from Opinion.trade
-    - `GET /api/ai-trades/<firm_name>` - Trade history for specific AI
-    - `GET /api/cancelled-orders` - Cancelled orders with strikes history
-    - `POST /api/monitor-orders` - Trigger order monitoring (requires CRON_SECRET, should run every 30min)
-- **Frontend Trade History & UI Updates**:
-  - **Toggle Sidebar**: BenchmarkPanel has toggle button ("A Better Benchmark" ↔ "Recent Trades") with minHeight:140px to prevent layout shifts
-  - Recent trades view integrated directly into BenchmarkPanel with auto-refresh every 30 seconds
-  - Expandable leaderboard - click AI to view trade history
-  - **LEADERBOARD Visual Improvements**: Summary cards use light background (#F9FAFB) with dark text for better contrast instead of all-black backgrounds
-  - **CANCELLED ORDERS**: "How the 3-Strike System Works" box redesigned to white background with 2px black border (removed yellow styling)
-  - **Tab Reordering**: BLOG section tabs now ordered as: PREDICTION ANALYSIS → AI DECISIONS → POSITIONS → CANCELLED ORDERS → METHODOLOGY
-  - **Consistent Alpha Arena Branding**: All major sections use 2px black borders (#000), balanced use of black headers and light backgrounds for optimal readability
-  - **Deepseek Color Fix**: Changed from #FFF to #000 in LEADERBOARD for visibility on light gray background (#F9FAFB)
-- **Error Handling & Security**:
-  - Numeric errno checking (== 10403) for "no trades yet" case eliminates false positives
-  - Structured logging via logger.error() for proper observability
-  - CRON_SECRET authentication protects POST endpoints
-  - All API errors properly surfaced with HTTP 500 status codes
-- **Configuration Required**:
-  - **CRON_SECRET**: Create this secret in Replit environment variables (e.g., generate random 32-char string)
-  - **External Cron Job**: Configure cron-job.org to POST to `/api/monitor-orders` every 30 minutes
-    - URL: `https://your-deployment-url.railway.app/api/monitor-orders`
-    - Method: POST
-    - Header: `X-Cron-Secret: <your-CRON_SECRET-value>`
-    - Schedule: Every 30 minutes (*/30 * * * *)
-- **Centralized Logging System**: Implemented comprehensive logging infrastructure
-  - All autonomous engine events logged to `logs/autonomous_cycle.log` (10MB rotation, 5 backups)
-  - Password-protected `/admin/logs` endpoint for log viewing
-  - Admin panel logs viewer with syntax highlighting
-  - Configurable log levels via `LOG_LEVEL` env var (default: INFO)
-- Event categorization system detects Rates, Commodities, Inflation, Employment, Finance categories via keyword matching
-- Sports category filtering active (excluded from analysis)
-- Enhanced keyword matching for accurate event classification
+# User Preferences
 
-## Overview
-This project is a multi-LLM prediction market framework where five AI prediction agents (ChatGPT, Gemini, Qwen, Deepseek, Grok) autonomously compete on Opinion.trade. The system tracks performance, maintains virtual portfolios, and employs a sophisticated prompt system simulating a 7-role internal decision-making process for each LLM. The framework supports continuous adaptation of AI strategies based on performance, aiming for ongoing improvement in financial market prediction.
-
-## User Preferences
 Preferred communication style: Simple, everyday language.
 
-## System Architecture
+# System Architecture
 
-### Frontend Architecture
-The application uses **React/Next.js** (TypeScript + Tailwind CSS) for a single-page interface that replicates the **Alpha Arena (Nof1.ai) design aesthetic**, characterized by **BLACK BORDERS (2px solid #000)** around all major components. It includes a market header, horizontal navigation, a 75/25 layout on the LIVE page, and a leaderboard table. The Next.js frontend runs on port 5000.
+## Backend Architecture (Flask + Python)
 
-### Backend Architecture
-The backend employs a two-layer architecture:
-1.  **Flask REST API** (port 8000): Provides 8 endpoints for frontend data consumption, including real-time crypto prices, AI performance metrics, and leaderboard data.
-2.  **Python Backend Services**: A modular design encompassing:
-    *   **`TradingDatabase`**: SQLite-based persistence for predictions, firm performance, and virtual portfolios.
-    *   **`FirmOrchestrator`**: Manages LLM clients and prediction generation.
-    *   **Data Collectors**: Specialized classes for technical, fundamental, sentiment, and volatility data.
-    *   **Prompt System**: Generates structured prompts for LLMs.
-    *   **`RecommendationEngine`**: Analyzes historical performance.
-    *   **`OpinionTradeAPI`**: Handles automated prediction submission.
-    *   **`Autonomous Engine`**: Orchestrates daily prediction cycles, event analysis, and risk-aware betting.
-    *   **`Risk Management System`**: Multi-level adaptive system with profit/loss thresholds, daily loss, and category exposure limits.
-    *   **`Bankroll Management`**: Assigns diverse betting strategies (e.g., Kelly Criterion, Martingale) to each AI.
-    *   **`Learning System`**: Provides continuous improvement through performance analysis and pattern recognition.
-    *   **`daily_watchdog.py`**: Daily maintenance system for counter resets and system health checks.
-    *   **`reconciliation.py`**: Balance reconciliation engine (local DB vs Opinion.trade API).
+**Core Components:**
+- **Autonomous Engine** (`autonomous_engine.py`): Orchestrates the entire trading cycle - fetches markets from Opinion.trade, analyzes events using multiple data sources, coordinates AI predictions, and executes trades while respecting risk limits
+- **LLM Integration** (`llm_clients.py`): Manages connections to 5 different AI models with retry logic, rate limit handling, and response validation
+- **Opinion.trade SDK Integration** (`opinion_trade_api.py`): Wraps the official `opinion-clob-sdk` for BNB Chain mainnet interaction, handles market fetching and order placement
+- **Database Layer** (`database.py`): SQLite-based persistence for predictions, firm performance, virtual portfolios, and betting history
 
-### LLM Integration Architecture
-A multi-provider approach supports various LLM APIs (OpenAI, Google Gemini, Qwen, Deepseek, Grok) with built-in rate limiting and cost tracking.
+**Risk Management System:**
+- **4-Tier Adaptive Risk Guard** (`tier_risk_guard.py`, `risk_tiers.py`): Progressive risk reduction based on portfolio balance (Conservative → Defensive → Recovery → Emergency/Suspended)
+- **Bankroll Management** (`bankroll_manager.py`): Multiple betting strategies per firm (Kelly Conservative, Fixed Fractional, Proportional, Martingale variants)
+- **Circuit Breakers**: Automatic trading suspension at -40% drawdown, daily loss caps, maximum concurrent position limits
 
-### Data Collection Architecture
-The system uses a 5-Area Analysis Framework where each AI analyzes events through 5 mandatory data sources with transparent scoring:
-*   **`AlphaVantageCollector`**: Technical indicators.
-*   **`NewsCollector`**: Financial news and sentiment.
-*   **`VolatilityCollector`**: Historical volatility and ATR.
-*   **`YFinanceCollector`**: Fundamental data.
-*   **`RedditSentimentCollector`**: Social media sentiment analysis.
-API calls are optimized with a shared caching layer to reduce redundant requests.
+**Data Collection Pipeline:**
+- **AlphaVantageCollector**: Technical indicators (RSI, MACD)
+- **YFinanceCollector**: Fundamental market data
+- **RedditSentimentCollector**: Social sentiment via VADER
+- **NewsCollector**: News aggregation and analysis
+- **VolatilityCollector**: Market volatility metrics
 
-### Data Storage
-An embedded SQLite database stores `predictions`, `firm_performance`, `virtual_portfolio`, `autonomous_bets`, `autonomous_cycles`, `strategy_adaptations`, and `daily_bet_tracking`.
+**Prompt Engineering System** (`prompt_system.py`): 
+- Three-stage reasoning framework simulating internal firm decision-making
+- Synthesizes multi-source data into structured JSON predictions
+- Debate simulation (bullish vs bearish) before final decision
 
-### Visualization Layer
-**Frontend**: Recharts (React) for interactive charts.
+**Learning & Adaptation:**
+- **LearningSystem** (`learning_system.py`): Analyzes historical performance and generates actionable insights for strategy improvement
+- **RecommendationEngine** (`recommendation_engine.py`): Recommends best-performing firms based on ROI, accuracy, and cost-efficiency
 
-## External Dependencies
+**Deployment & Monitoring:**
+- **Health Check Endpoint** (`/health`): Monitors API keys, database connectivity, and system status
+- **Daily Watchdog** (`daily_watchdog.py`): Automated maintenance tasks and daily counter resets
+- **Reconciliation Engine** (`reconciliation.py`): Detects discrepancies between local state and Opinion.trade balances
+- **Centralized Logging** (`logger.py`): Rotating file logs with configurable levels, structured for debugging and auditing
 
-### LLM APIs
-*   OpenAI (ChatGPT)
-*   Google Gemini
-*   Qwen
-*   Deepseek
-*   Grok (XAI)
+## Frontend Architecture (Next.js + React)
 
-### Financial Data APIs
-*   Alpha Vantage
-*   Yahoo Finance
+**Not visible in provided files, but referenced:**
+- Next.js React application serving on port 5000
+- "Alpha Arena UI" for real-time visualization
+- Consumes Flask API endpoints for leaderboard, metrics, positions, and decision history
 
-### Social Media Data
-*   Reddit API (PRAW)
+## Deployment Configuration
 
-### Python Libraries (Backend)
-*   `flask`, `flask-cors`
-*   `pandas`, `yfinance`
-*   `praw`, `nltk`
-*   `tenacity`
-*   `sqlite3`
-*   `openai`, `google-genai`
-*   `opinion-clob-sdk`, `eth-account`
+**Railway Integration:**
+- Nixpacks builder for automatic Python + Node.js environment setup
+- Configurable via `railway.json` with restart policies
+- Environment-based configuration (TEST vs PRODUCTION modes via `BANKROLL_MODE`)
+- System enable/disable switch (`SYSTEM_ENABLED` env var)
 
-### JavaScript Libraries (Frontend)
-*   `next`, `react`, `react-dom`
-*   `recharts`
-*   `tailwindcss`
-*   `typescript`
+**Multi-Process Launcher** (`main.py`, `app.py`):
+- Orchestrates both Flask backend and Next.js frontend startup
+- Production detection via `REPL_DEPLOYMENT` environment variable
+- Graceful shutdown handling for both processes
 
-### Environment Variables Required
-*   `AI_INTEGRATIONS_OPENAI_API_KEY`
-*   `AI_INTEGRATIONS_OPENAI_BASE_URL`
-*   `ALPHA_VANTAGE_API_KEY`
-*   `REDDIT_CLIENT_ID`
-*   `REDDIT_CLIENT_SECRET`
-*   `OPINION_TRADE_API_KEY`
-*   `DEEPSEEK_API_KEY`
-*   `QWEN_API_KEY`
-*   `XAI_API_KEY`
-*   `ADMIN_PASSWORD`
-*   `BANKROLL_MODE`
-*   `OPINION_WALLET_PRIVATE_KEY`
+## Architectural Decisions
+
+**Why SQLite over PostgreSQL:**
+- Simpler deployment with no external database dependency
+- Sufficient for single-instance deployment
+- Easy local development and testing
+- Note: System is designed to potentially add PostgreSQL later if needed
+
+**Why Flask over FastAPI:**
+- Simpler debugging and development workflow
+- Extensive middleware ecosystem (CORS, etc.)
+- Better suited for the admin panel and template rendering needs
+
+**Why Opinion.trade SDK over Direct API:**
+- Official SDK handles BNB Chain wallet signing complexity
+- Built-in retry logic and error handling
+- Mainnet configuration abstraction
+
+**Why Multi-AI Orchestration:**
+- Diversification reduces single-model bias
+- Competitive dynamics reveal which models excel at different event types
+- Performance tracking enables adaptive strategy selection
+
+**Why 4-Tier Risk System:**
+- Prevents catastrophic losses through progressive risk reduction
+- Automatic circuit breakers protect bankroll
+- Stretches capital over 1-2 months for sustained operation
+
+**Why Separate Data Collectors:**
+- Modular design allows independent data source updates
+- Each collector handles its own API rate limits and errors
+- Easy to add/remove data sources without affecting core logic
+
+# External Dependencies
+
+## AI/LLM APIs
+- **OpenAI API** (GPT-4): Requires `AI_INTEGRATIONS_OPENAI_API_KEY`
+- **Google Gemini** (gemini-2.0-flash-exp): SDK integration
+- **Qwen API**: Requires `QWEN_API_KEY`
+- **Deepseek API**: Requires `DEEPSEEK_API_KEY`
+- **xAI Grok** (grok-beta): Requires `XAI_API_KEY`
+
+## Prediction Market Platform
+- **Opinion.trade**: Official SDK (`opinion-clob-sdk` v0.2.5)
+  - Requires `OPINION_TRADE_API_KEY`
+  - Requires `OPINION_WALLET_PRIVATE_KEY` for BNB Chain transactions
+  - Operates on BNB Chain Mainnet (Chain ID 56)
+  - Uses proxy endpoint: `https://proxy.opinion.trade:8443`
+
+## Financial Data APIs
+- **Alpha Vantage**: Technical indicators (RSI, MACD, quotes)
+- **Yahoo Finance** (`yfinance`): Fundamental market data
+- **Reddit API** (`praw`): Social sentiment analysis
+
+## Blockchain Infrastructure
+- **Web3.py**: Ethereum/BNB Chain interaction
+- **eth-account**: Wallet management and transaction signing
+- **BNB Chain RPC**: Multiple provider fallbacks (Binance, NodeReal, Ankr, etc.)
+
+## Python Libraries
+- **Flask + Flask-CORS**: REST API and frontend serving
+- **SQLite3**: Database (built-in, no external service)
+- **NLTK + VADER**: Sentiment analysis
+- **Pandas**: Data processing and analysis
+- **Tenacity**: Retry logic for API calls
+
+## Frontend (Next.js)
+- React-based UI framework
+- Communicates with Flask API on port 8000
+- Serves on port 5000
+
+## Deployment Platform
+- **Railway**: Primary deployment target
+- **Replit**: Alternative deployment (legacy support via `app.py`)
+- **Nixpacks**: Automatic build system (Python + Node.js detection)
+
+## Environment Configuration Variables
+- `SYSTEM_ENABLED`: Master switch for autonomous trading
+- `BANKROLL_MODE`: TEST ($50 initial, $5 daily cap) or PRODUCTION ($5000 initial, no cap)
+- `LOG_LEVEL`: Logging verbosity (DEBUG, INFO, WARNING, ERROR)
+- All API keys mentioned above
