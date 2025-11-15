@@ -49,6 +49,16 @@ def health_check():
             'timestamp': datetime.now().isoformat()
         }), 500
 
+@app.route('/test-opinion-detailed', methods=['GET'])
+def test_opinion_detailed():
+    """Test Opinion.trade API with detailed parsing diagnostics"""
+    from opinion_trade_api import OpinionTradeAPI
+    
+    opinion_api = OpinionTradeAPI()
+    result = opinion_api.get_available_events(limit=5)
+    
+    return jsonify(result), 200
+
 @app.route('/test-opinion', methods=['GET'])
 def test_opinion_trade():
     """

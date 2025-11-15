@@ -152,12 +152,27 @@ class OpinionTradeAPI:
                         yes_token_id = None
                         no_token_id = None
                         
+                        # DEBUG: Print market structure for first market only
+                        if not yes_token_id and not no_token_id and skipped_count == 0:
+                            print(f"[DEBUG] Market #{market.market_id} structure:")
+                            print(f"  - title: {market.market_title}")
+                            print(f"  - has options attr: {hasattr(market, 'options')}")
+                            print(f"  - options type: {type(options)}")
+                            print(f"  - options length: {len(options) if options else 0}")
+                            if options:
+                                print(f"  - first option type: {type(options[0])}")
+                                print(f"  - first option attrs: {dir(options[0])[:10]}")
+                        
                         # Parse options to find YES and NO token IDs
                         for option in options:
                             outcome_value = getattr(option, 'outcome', '')
                             # Defensively handle non-string outcome values
                             outcome_name = str(outcome_value).upper() if outcome_value else ''
                             token_id = getattr(option, 'token_id', None)
+                            
+                            # DEBUG: Print option details for first market
+                            if skipped_count == 0:
+                                print(f"    Option: outcome='{outcome_value}', token_id={token_id}")
                             
                             if 'YES' in outcome_name or outcome_name == '1':
                                 yes_token_id = token_id
