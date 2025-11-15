@@ -1429,7 +1429,7 @@ class OrderMonitor:
         }
         
         # Obtener órdenes activas desde Opinion.trade
-        orders_response = self.opinion_api.get_my_orders(limit=100)
+        orders_response = self.opinion_api.get_my_orders()
         
         if not orders_response.get('success'):
             logger.error(f"OrderMonitor - Failed to fetch orders: {orders_response.get('error')}")

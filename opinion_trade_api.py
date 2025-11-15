@@ -97,11 +97,15 @@ class OpinionTradeAPI:
                 limit=min(limit, 20)  # SDK enforces max 20
             )
             
+            print(f"[DEBUG] Opinion.trade API response - errno: {response.errno}, has result: {hasattr(response, 'result')}")
+            
             if response.errno == 0:
                 markets = response.result.list
+                print(f"[DEBUG] Opinion.trade returned {len(markets)} raw markets from API")
                 
                 # Convert SDK market objects to our event format
                 events = []
+                skipped_count = 0
                 for market in markets:
                     try:
                         # Derive category from market title (comprehensive keyword matching)
@@ -162,7 +166,8 @@ class OpinionTradeAPI:
                         
                         # Skip markets without binary YES/NO tokens
                         if not yes_token_id or not no_token_id:
-                            print(f"[WARNING] Skipping market {market.market_id} - missing binary outcome tokens")
+                            skipped_count += 1
+                            print(f"[WARNING] Skipping market {market.market_id} '{market.market_title[:50]}...' - missing binary tokens (yes={yes_token_id}, no={no_token_id})")
                             continue
                         
                         events.append({
@@ -188,12 +193,12 @@ class OpinionTradeAPI:
                         print(f"[ERROR] Failed to convert market {getattr(market, 'market_id', 'unknown')}: {e}")
                         continue
                 
-                print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets")
+                print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets (skipped {skipped_count} without YES/NO tokens)")
                 return {
                     'success': True,
                     'count': len(events),
                     'events': events,
-                    'message': f'Retrieved {len(events)} available markets from Opinion.trade'
+                    'message': f'Retrieved {len(events)} available markets from Opinion.trade (skipped {skipped_count})'
                 }
             else:
                 # Handle specific error codes
@@ -647,7 +652,7 @@ class OpinionTradeAPI:
             }
         
         try:
-            response = self.client.get_my_orders(limit=100)
+            response = self.client.get_my_orders()
             
             if response.errno == 0:
                 orders = response.result.list
