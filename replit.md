@@ -6,13 +6,18 @@
 **API Access**: Opinion.trade API working correctly from Railway deployment  
 **Admin Panel**: Available at `/admin` route for manual cycle triggering
 
-**Recent Updates (Nov 14, 2025)**:
+**Recent Updates (Nov 15, 2025)**:
+- **CRITICAL BUG FIXES - Production Ready**:
+  - **Fix 1: Token ID Extraction** - Extract YES/NO token IDs from market.options during event fetching with defensive parsing
+  - **Fix 2: Opinion.trade API Payload** - Complete payload validation (market_id, token_id, side='BUY') eliminates "Missing required fields" errors
+  - **Fix 3: Comprehensive Event Analysis Logging** - ALL events (bets + skips) now logged with probability, confidence, 5-area scores (S/N/T/F/V), and decision rationale
+  - Token selection logic: probability ≥0.5 → buy YES token, <0.5 → buy NO token
 - **Centralized Logging System**: Implemented comprehensive logging infrastructure
   - All autonomous engine events logged to `logs/autonomous_cycle.log` (10MB rotation, 5 backups)
   - Password-protected `/admin/logs` endpoint for log viewing
   - Admin panel logs viewer with syntax highlighting
   - Configurable log levels via `LOG_LEVEL` env var (default: INFO)
-- Improved event categorization system to detect Rates, Commodities, Inflation, Employment categories
+- Event categorization system detects Rates, Commodities, Inflation, Employment, Finance categories via keyword matching
 - Sports category filtering active (excluded from analysis)
 - Enhanced keyword matching for accurate event classification
 
