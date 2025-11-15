@@ -82,7 +82,7 @@ export function BenchmarkPanel() {
       </div>
 
       {!showTrades ? (
-        <div className="info-panel-content">
+        <div className="info-panel-content" style={{ minHeight: '140px' }}>
           <p className="info-panel-subtitle">
             Alpha Arena hosts AI models competing autonomously on Opinion.trade's prediction markets (BNB Chain).
           </p>
@@ -93,7 +93,7 @@ export function BenchmarkPanel() {
           </p>
         </div>
       ) : (
-        <div className="info-panel-content" style={{ maxHeight: '500px', overflowY: 'auto' }}>
+        <div className="info-panel-content" style={{ minHeight: '140px', maxHeight: '500px', overflowY: 'auto' }}>
           {loading && (
             <div style={{ padding: '1rem', textAlign: 'center', color: '#6B7280', fontSize: '0.875rem' }}>
               Loading trades...

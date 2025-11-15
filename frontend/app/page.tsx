@@ -246,12 +246,12 @@ export default function Home() {
                     gap: '1rem',
                     alignItems: 'center',
                     fontWeight: 500,
-                    background: '#000',
-                    color: '#fff'
+                    background: '#F9FAFB',
+                    borderBottom: '2px solid #000'
                   }}>
-                    <span style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff' }}>#{index + 1}</span>
+                    <span style={{ fontSize: '1.25rem', fontWeight: 600, color: '#000' }}>#{index + 1}</span>
                     <span style={{ fontWeight: 600, color: firmColor }}>{item.firm}</span>
-                    <span style={{ textAlign: 'right', color: '#fff' }}>${item.total_value?.toLocaleString() || '0'}</span>
+                    <span style={{ textAlign: 'right', color: '#374151' }}>${item.total_value?.toLocaleString() || '0'}</span>
                     <span style={{ 
                       textAlign: 'right',
                       color: item.profit_loss >= 0 ? '#10B981' : '#EF4444',
@@ -259,9 +259,9 @@ export default function Home() {
                     }}>
                       {item.profit_loss >= 0 ? '+' : ''}${item.profit_loss?.toLocaleString() || '0'}
                     </span>
-                    <span style={{ textAlign: 'right', color: '#fff' }}>{item.win_rate?.toFixed(1) || '0'}%</span>
-                    <span style={{ textAlign: 'right', color: '#fff' }}>{item.total_bets || 0} bets</span>
-                    <span style={{ textAlign: 'right', color: '#fff' }}>{item.accuracy?.toFixed(1) || '0'}%</span>
+                    <span style={{ textAlign: 'right', color: '#374151' }}>{item.win_rate?.toFixed(1) || '0'}%</span>
+                    <span style={{ textAlign: 'right', color: '#374151' }}>{item.total_bets || 0} bets</span>
+                    <span style={{ textAlign: 'right', color: '#374151' }}>{item.accuracy?.toFixed(1) || '0'}%</span>
                   </summary>
                   
                   <div style={{ padding: '2rem', borderTop: '2px solid #000', background: '#fff' }}>
@@ -384,16 +384,16 @@ export default function Home() {
                 POSITIONS
               </button>
               <button 
-                className={`blog-tab ${activeBlogTab === 'METHODOLOGY' ? 'active' : ''}`}
-                onClick={() => setActiveBlogTab('METHODOLOGY')}
-              >
-                METHODOLOGY
-              </button>
-              <button 
                 className={`blog-tab ${activeBlogTab === 'CANCELLED ORDERS' ? 'active' : ''}`}
                 onClick={() => setActiveBlogTab('CANCELLED ORDERS')}
               >
                 CANCELLED ORDERS
+              </button>
+              <button 
+                className={`blog-tab ${activeBlogTab === 'METHODOLOGY' ? 'active' : ''}`}
+                onClick={() => setActiveBlogTab('METHODOLOGY')}
+              >
+                METHODOLOGY
               </button>
             </div>
             
@@ -857,11 +857,11 @@ export default function Home() {
                   </div>
                 )}
                 
-                <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#FEF3C7', border: '2px solid #F59E0B' }}>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem', color: '#92400E' }}>
+                <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#fff', border: '2px solid #000' }}>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem', color: '#000' }}>
                     How the 3-Strike System Works
                   </h3>
-                  <ul style={{ fontSize: '0.875rem', color: '#78350F', lineHeight: '1.6', paddingLeft: '1.5rem' }}>
+                  <ul style={{ fontSize: '0.875rem', color: '#374151', lineHeight: '1.6', paddingLeft: '1.5rem' }}>
                     <li style={{ marginBottom: '0.5rem' }}>
                       OrderMonitor reviews all active positions every 30 minutes
                     </li>
