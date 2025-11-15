@@ -6,6 +6,7 @@ import NavigationTabs from '@/components/NavigationTabs';
 import PerformanceChart from '@/components/PerformanceChart';
 import { BenchmarkPanel, ContestantsPanel, CompetitionRulesPanel } from '@/components/InfoPanels';
 import AIThinkingPanel from '@/components/AIThinkingPanel';
+import RecentTradesSidebar from '@/components/RecentTradesSidebar';
 import { getApiUrl } from '@/lib/config';
 
 type MarketData = {
@@ -164,6 +165,7 @@ export default function Home() {
                 <BenchmarkPanel />
                 <ContestantsPanel />
                 <CompetitionRulesPanel />
+                <RecentTradesSidebar />
               </div>
             </div>
             
