@@ -98,11 +98,16 @@ class TradingFirm:
 class ChatGPTFirm(TradingFirm):
     def __init__(self):
         super().__init__("ChatGPT")
-        # Using Replit AI Integrations for OpenAI - no API key needed, charges billed to credits
-        self.client = OpenAI(
-            api_key=os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY"),
-            base_url=os.environ.get("AI_INTEGRATIONS_OPENAI_BASE_URL")
-        )
+        # Use direct OpenAI API (works on both Replit and Railway)
+        api_key = os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY") or os.environ.get("OPENAI_API_KEY")
+        base_url = os.environ.get("AI_INTEGRATIONS_OPENAI_BASE_URL")  # None if not on Replit
+        
+        if base_url:
+            # On Replit with AI Integrations
+            self.client = OpenAI(api_key=api_key, base_url=base_url)
+        else:
+            # On Railway or standalone (uses standard OpenAI API)
+            self.client = OpenAI(api_key=api_key)
     
     @retry(
         stop=stop_after_attempt(5),
@@ -147,14 +152,19 @@ class ChatGPTFirm(TradingFirm):
 class GeminiFirm(TradingFirm):
     def __init__(self):
         super().__init__("Gemini")
-        # Using Replit AI Integrations for Gemini - no API key needed, charges billed to credits
-        self.client = genai.Client(
-            api_key=os.environ.get("AI_INTEGRATIONS_GEMINI_API_KEY"),
-            http_options={
-                'api_version': '',
-                'base_url': os.environ.get("AI_INTEGRATIONS_GEMINI_BASE_URL")
-            }
-        )
+        # Use direct Google Gemini API (works on both Replit and Railway)
+        api_key = os.environ.get("AI_INTEGRATIONS_GEMINI_API_KEY") or os.environ.get("GEMINI_API_KEY")
+        base_url = os.environ.get("AI_INTEGRATIONS_GEMINI_BASE_URL")
+        
+        if base_url:
+            # On Replit with AI Integrations
+            self.client = genai.Client(
+                api_key=api_key,
+                http_options={'api_version': '', 'base_url': base_url}
+            )
+        else:
+            # On Railway or standalone (uses standard Google API)
+            self.client = genai.Client(api_key=api_key)
     
     @retry(
         stop=stop_after_attempt(5),
@@ -195,8 +205,11 @@ class GeminiFirm(TradingFirm):
 class QwenFirm(TradingFirm):
     def __init__(self):
         super().__init__("Qwen")
+        api_key = os.environ.get("QWEN_API_KEY")
+        if not api_key:
+            print(f"[{self.firm_name}] WARNING: QWEN_API_KEY not configured")
         self.client = OpenAI(
-            api_key=os.environ.get("QWEN_API_KEY", "dummy"),
+            api_key=api_key or "not-configured",
             base_url="https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
         )
     
@@ -241,8 +254,11 @@ class QwenFirm(TradingFirm):
 class DeepseekFirm(TradingFirm):
     def __init__(self):
         super().__init__("Deepseek")
+        api_key = os.environ.get("DEEPSEEK_API_KEY")
+        if not api_key:
+            print(f"[{self.firm_name}] WARNING: DEEPSEEK_API_KEY not configured")
         self.client = OpenAI(
-            api_key=os.environ.get("DEEPSEEK_API_KEY", "dummy"),
+            api_key=api_key or "not-configured",
             base_url="https://api.deepseek.com"
         )
     
@@ -288,9 +304,12 @@ class GrokFirm(TradingFirm):
     def __init__(self):
         super().__init__("Grok")
         # Using xAI API endpoint as per blueprint
+        api_key = os.environ.get("XAI_API_KEY")
+        if not api_key:
+            print(f"[{self.firm_name}] WARNING: XAI_API_KEY not configured")
         self.client = OpenAI(
             base_url="https://api.x.ai/v1",
-            api_key=os.environ.get("XAI_API_KEY", "dummy")
+            api_key=api_key or "not-configured"
         )
     
     @retry(
