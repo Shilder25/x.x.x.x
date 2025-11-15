@@ -438,6 +438,16 @@ class AutonomousEngine:
             evaluation['reason'] = f"Exception during evaluation: {str(e)}"
             evaluation['error'] = str(e)
         
+        # Log análisis detallado del evento
+        action = 'BET' if evaluation['is_opportunity'] else 'SKIP'
+        logger.log_event_analysis(
+            firm_name=firm_name,
+            event_description=event_description,
+            prediction=evaluation.get('prediction', {}),
+            decision=evaluation,
+            action=action
+        )
+        
         return evaluation
     
     def _execute_opportunity(self, firm_name: str, opportunity: Dict,
@@ -511,7 +521,7 @@ class AutonomousEngine:
         # Esto evita inconsistencia de estado si la ejecución falla
         execution_result = self._execute_bet(
             firm_name=firm_name,
-            event_id=event_id,
+            event=event,
             event_description=event_description,
             bet_size=bet_size,
             probability=probability,
@@ -644,7 +654,7 @@ class AutonomousEngine:
             # EJECUTAR PRIMERO - solo persistir si tiene éxito
             execution_result = self._execute_bet(
                 firm_name=firm_name,
-                event_id=event_id,
+                event=event,
                 event_description=event_description,
                 bet_size=bet_size,
                 probability=probability,
@@ -839,27 +849,52 @@ class AutonomousEngine:
         ev = (probability * win_amount) - ((1 - probability) * loss_amount)
         return ev
     
-    def _execute_bet(self, firm_name: str, event_id: str, event_description: str,
+    def _execute_bet(self, firm_name: str, event: Dict, event_description: str,
                     bet_size: float, probability: float, prediction: Dict) -> Dict:
         """
         Ejecuta una apuesta real en Opinion.trade con manejo transaccional robusto.
         Si falla la ejecución real, registra el error y retorna status de fallo.
         """
+        # Extract required fields from event
+        market_id = event.get('market_id')
+        yes_token_id = event.get('yes_token_id')
+        no_token_id = event.get('no_token_id')
+        event_id = event.get('event_id', 'unknown')
+        
+        # Validate required fields
+        if not market_id or not yes_token_id or not no_token_id:
+            error_msg = f"Missing required fields: market_id={market_id}, yes_token_id={yes_token_id}, no_token_id={no_token_id}"
+            logger.error(f"{firm_name} - Bet validation failed: {error_msg}")
+            return {
+                'status': 'failed',
+                'error': error_msg,
+                'error_type': 'validation_error'
+            }
+        
+        # Select token based on probability (>=0.5 = buy YES, <0.5 = buy NO)
+        token_id = yes_token_id if probability >= 0.5 else no_token_id
+        outcome_label = 'YES' if probability >= 0.5 else 'NO'
+        
         prediction_data = {
-            'event_id': event_id,
+            'market_id': market_id,
+            'token_id': token_id,
             'probability': probability,
             'amount': bet_size,
-            'firm_name': firm_name,
-            'reasoning': prediction.get('analisis_sintesis', ''),
-            'risk_posture': prediction.get('postura_riesgo', 'NEUTRAL')
+            'side': 'BUY',
+            'metadata': {
+                'firm_name': firm_name,
+                'reasoning': prediction.get('analisis_sintesis', ''),
+                'risk_posture': prediction.get('postura_riesgo', 'NEUTRAL'),
+                'outcome': outcome_label
+            }
         }
         
         try:
             result = self.opinion_api.submit_prediction(prediction_data)
             
-            if result.get('status') == 'success':
+            if result.get('success'):
                 logger.log_bet_execution(firm_name, event_id, bet_size, event_description, True)
-                return result
+                return {'status': 'success', **result}
             else:
                 error_msg = result.get('error', 'Unknown error from Opinion.trade')
                 logger.log_bet_execution(firm_name, event_id, bet_size, event_description, False, error_msg)

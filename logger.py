@@ -142,6 +142,38 @@ class AutonomousLogger:
         reason_safe = self.sanitize_text(risk_reason, 150)
         self.info(f"{firm_name} - {reason_safe}", prefix="RISK BLOCK")
     
+    def log_event_analysis(self, firm_name: str, event_description: str, 
+                          prediction: dict, decision: dict, action: str):
+        """
+        Log detallado del análisis de cada evento (tanto BETs como SKIPs).
+        
+        Args:
+            firm_name: Nombre de la IA
+            event_description: Descripción del evento
+            prediction: Diccionario con la predicción del LLM
+            decision: Diccionario con la decisión final
+            action: 'BET' o 'SKIP'
+        """
+        event_snippet = self.sanitize_text(event_description, 50)
+        
+        # Extraer scores de las 5 áreas
+        sentiment_score = prediction.get('sentiment_score', 'N/A')
+        news_score = prediction.get('news_score', 'N/A')
+        technical_score = prediction.get('technical_score', 'N/A')
+        fundamental_score = prediction.get('fundamental_score', 'N/A')
+        volatility_score = prediction.get('volatility_score', 'N/A')
+        
+        probability = decision.get('probability', prediction.get('probabilidad_final_prediccion', 0))
+        confidence = decision.get('confidence', prediction.get('nivel_confianza', 0))
+        reason = self.sanitize_text(decision.get('reason', 'No reason provided'), 80)
+        
+        # Log estructurado
+        if action == 'BET':
+            bet_size = decision.get('bet_size', 0)
+            self.bet(f"{firm_name} - ${bet_size:.2f} on '{event_snippet}' | Prob={probability:.2%}, Conf={confidence}% | Scores: S={sentiment_score}, N={news_score}, T={technical_score}, F={fundamental_score}, V={volatility_score}")
+        else:  # SKIP
+            self.skip(f"{firm_name} - '{event_snippet}' | Prob={probability:.2%}, Conf={confidence}% | Scores: S={sentiment_score}, N={news_score}, T={technical_score}, F={fundamental_score}, V={volatility_score} | Reason: {reason}")
+    
     def get_recent_logs(self, lines: int = 500) -> str:
         """
         Obtiene las últimas N líneas del archivo de log.

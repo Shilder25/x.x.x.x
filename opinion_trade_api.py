@@ -138,6 +138,26 @@ class OpinionTradeAPI:
                         else:
                             category = 'Other'
                         
+                        # Extract outcome token IDs from market.options
+                        options = getattr(market, 'options', [])
+                        yes_token_id = None
+                        no_token_id = None
+                        
+                        # Parse options to find YES and NO token IDs
+                        for option in options:
+                            outcome_name = getattr(option, 'outcome', '').upper()
+                            token_id = getattr(option, 'token_id', None)
+                            
+                            if 'YES' in outcome_name or outcome_name == '1':
+                                yes_token_id = token_id
+                            elif 'NO' in outcome_name or outcome_name == '0':
+                                no_token_id = token_id
+                        
+                        # Skip markets without binary YES/NO tokens
+                        if not yes_token_id or not no_token_id:
+                            print(f"[WARNING] Skipping market {market.market_id} - missing binary outcome tokens")
+                            continue
+                        
                         events.append({
                             'event_id': str(market.market_id),
                             'market_id': market.market_id,
@@ -150,6 +170,9 @@ class OpinionTradeAPI:
                             'chain_id': market.chain_id,
                             'yes_label': getattr(market, 'yes_label', 'YES'),
                             'no_label': getattr(market, 'no_label', 'NO'),
+                            'yes_token_id': yes_token_id,
+                            'no_token_id': no_token_id,
+                            'options': options,
                             'volume': getattr(market, 'volume', '0'),
                             'created_at': getattr(market, 'created_at', 0),
                             'cutoff_at': getattr(market, 'cutoff_at', 0)
