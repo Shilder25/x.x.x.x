@@ -402,7 +402,7 @@ class AutonomousEngine:
         symbol = self._extract_symbol_from_event(event)
         
         try:
-            prediction = self._get_firm_prediction(firm_name, event_description, symbol or '')
+            prediction = self._get_firm_prediction(firm_name, event_description, symbol or '', market_id)
             
             if 'error' in prediction:
                 evaluation['reason'] = f"Prediction error: {prediction.get('error')}"
@@ -413,10 +413,19 @@ class AutonomousEngine:
             probability = prediction.get('probabilidad_final_prediccion', 0.5)
             confidence = prediction.get('nivel_confianza', 50)
             
+            # Obtener precio real del mercado para cálculo de EV preciso
+            market_price = None
+            token_id = event.get('yes_token_id') if probability >= 0.5 else event.get('no_token_id')
+            
+            if token_id:
+                price_response = self.opinion_api.get_latest_price(token_id)
+                if price_response.get('success'):
+                    market_price = price_response.get('price')
+            
             # Calcular EV con fees (retorna dict con gross_ev y net_ev)
             ev_calc = self._calculate_expected_value(
                 probability=probability,
-                market_price=None,  # Se usa probability como proxy si no hay precio de mercado
+                market_price=market_price,  # Precio real del mercado o None
                 bet_size=10.0  # Tamaño nominal para cálculo inicial
             )
             
@@ -634,7 +643,7 @@ class AutonomousEngine:
         symbol = self._extract_symbol_from_event(event)
         
         try:
-            prediction = self._get_firm_prediction(firm_name, event_description, symbol or '')
+            prediction = self._get_firm_prediction(firm_name, event_description, symbol or '', market_id)
             
             if 'error' in prediction:
                 decision['reason'] = f"Prediction error: {prediction.get('error')}"
@@ -643,10 +652,19 @@ class AutonomousEngine:
             probability = prediction.get('probabilidad_final_prediccion', 0.5)
             confidence = prediction.get('nivel_confianza', 50)
             
+            # Obtener precio real del mercado para cálculo de EV preciso
+            market_price = None
+            token_id = event.get('yes_token_id') if probability >= 0.5 else event.get('no_token_id')
+            
+            if token_id:
+                price_response = self.opinion_api.get_latest_price(token_id)
+                if price_response.get('success'):
+                    market_price = price_response.get('price')
+            
             # Calcular EV con fees (retorna dict con gross_ev y net_ev)
             ev_calc = self._calculate_expected_value(
                 probability=probability,
-                market_price=None,
+                market_price=market_price,  # Precio real del mercado o None
                 bet_size=10.0
             )
             
@@ -758,10 +776,16 @@ class AutonomousEngine:
         
         return decision
     
-    def _get_firm_prediction(self, firm_name: str, event_description: str, symbol: str) -> Dict:
+    def _get_firm_prediction(self, firm_name: str, event_description: str, symbol: str, market_id: Optional[str] = None) -> Dict:
         """
         Obtiene predicción de una IA para un evento específico, recolectando datos de 5 áreas.
         Usa caché compartido para reducir llamadas a APIs externas cuando múltiples firmas analizan el mismo símbolo.
+        
+        Args:
+            firm_name: Nombre de la IA/firma
+            event_description: Descripción del evento a predecir
+            symbol: Símbolo del asset (BTC, AAPL, etc.) si aplica
+            market_id: ID del mercado en Opinion.trade (para price history)
         """
         technical_report = "Not available"
         fundamental_report = "Not available"
@@ -836,37 +860,31 @@ class AutonomousEngine:
         
         # Agregar price history como contexto (si disponible)
         price_history_report = ""
-        if symbol:
-            # Intentar obtener un market_id del evento si está disponible
-            market_id = None
-            if isinstance(symbol, dict) and 'market_id' in symbol:
-                market_id = symbol.get('market_id')
-            
-            # Si tenemos market_id, obtener price history
-            if market_id:
-                try:
-                    history_response = self.opinion_api.get_price_history(market_id=market_id, timeframe='24h')
+        
+        if market_id:
+            try:
+                history_response = self.opinion_api.get_price_history(market_id=market_id, timeframe='24h')
+                
+                if history_response.get('success'):
+                    prices = history_response.get('prices', [])
                     
-                    if history_response.get('success'):
-                        prices = history_response.get('prices', [])
+                    if len(prices) >= 2:
+                        first_price = prices[0]
+                        last_price = prices[-1]
+                        price_change = last_price - first_price
+                        price_change_pct = (price_change / first_price * 100) if first_price > 0 else 0
                         
-                        if len(prices) >= 2:
-                            first_price = prices[0]
-                            last_price = prices[-1]
-                            price_change = last_price - first_price
-                            price_change_pct = (price_change / first_price * 100) if first_price > 0 else 0
-                            
-                            trend = "alcista" if price_change > 0 else "bajista" if price_change < 0 else "neutral"
-                            
-                            price_history_report = f"\n\n**CONTEXTO DE MERCADO (últimas 24h)**:\n"
-                            price_history_report += f"- Precio inicial: {first_price:.4f}\n"
-                            price_history_report += f"- Precio actual: {last_price:.4f}\n"
-                            price_history_report += f"- Cambio: {price_change_pct:+.2f}%\n"
-                            price_history_report += f"- Tendencia: {trend.upper()}\n"
-                            price_history_report += f"- Datapoints: {len(prices)}\n"
-                            price_history_report += f"\n*Nota: Este contexto es informativo. La decisión debe basarse en análisis fundamental.*\n"
-                except Exception as e:
-                    print(f"[INFO] Could not fetch price history for market {market_id}: {e}")
+                        trend = "alcista" if price_change > 0 else "bajista" if price_change < 0 else "neutral"
+                        
+                        price_history_report = f"\n\n**CONTEXTO DE MERCADO (últimas 24h)**:\n"
+                        price_history_report += f"- Precio inicial: {first_price:.4f}\n"
+                        price_history_report += f"- Precio actual: {last_price:.4f}\n"
+                        price_history_report += f"- Cambio: {price_change_pct:+.2f}%\n"
+                        price_history_report += f"- Tendencia: {trend.upper()}\n"
+                        price_history_report += f"- Datapoints: {len(prices)}\n"
+                        price_history_report += f"\n*Nota: Este contexto es informativo. La decisión debe basarse en análisis fundamental.*\n"
+            except Exception as e:
+                print(f"[INFO] Could not fetch price history for market {market_id}: {e}")
         
         try:
             firm = self.orchestrator.get_all_firms()[firm_name]
