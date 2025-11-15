@@ -786,7 +786,7 @@ export default function Home() {
                                         </div>
                                       </div>
                                       <div>
-                                        <div style={{ color: '#6B7280', marginBottom: '0.25rem' }}>Stagnation >1wk</div>
+                                        <div style={{ color: '#6B7280', marginBottom: '0.25rem' }}>Stagnation {'>'}1wk</div>
                                         <div style={{ 
                                           fontWeight: 600,
                                           color: strike.factors?.time_stagnation ? '#EF4444' : '#10B981'
@@ -837,7 +837,7 @@ export default function Home() {
                       OrderMonitor reviews all active positions every 30 minutes
                     </li>
                     <li style={{ marginBottom: '0.5rem' }}>
-                      Each review checks 3 factors: Price manipulation (>15% change), Time stagnation (>1 week), AI contradiction
+                      Each review checks 3 factors: Price manipulation ({'>'}15% change), Time stagnation ({'>'}1 week), AI contradiction
                     </li>
                     <li style={{ marginBottom: '0.5rem' }}>
                       Strike issued if ANY factor triggers; strike count RESETS to 0 when all factors clear
