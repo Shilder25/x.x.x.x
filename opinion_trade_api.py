@@ -122,6 +122,28 @@ class OpinionTradeAPI:
                         
                         market_full = market_details_response.result.data
                         
+                        # DEBUG: Print EVERYTHING about the first market object to find where tokens are
+                        if len(debug_info) == 0:
+                            print("\n" + "="*80)
+                            print("FULL MARKET OBJECT DEBUG")
+                            print("="*80)
+                            print(f"Object type: {type(market_full)}")
+                            print(f"Object repr: {repr(market_full)}")
+                            
+                            all_attrs = [attr for attr in dir(market_full) if not attr.startswith('_')]
+                            print(f"\nAll attributes ({len(all_attrs)}): {all_attrs}")
+                            
+                            print("\nAttribute values:")
+                            for attr in all_attrs:
+                                try:
+                                    value = getattr(market_full, attr, 'N/A')
+                                    # Print first 200 chars of value
+                                    value_str = str(value)[:200]
+                                    print(f"  {attr}: {value_str}")
+                                except Exception as e:
+                                    print(f"  {attr}: ERROR - {e}")
+                            print("="*80 + "\n")
+                        
                         # Derive category from market title (comprehensive keyword matching)
                         title_lower = market.market_title.lower()
                         
