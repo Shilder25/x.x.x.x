@@ -187,7 +187,6 @@ class OpinionTradeAPI:
                             'no_label': getattr(market, 'no_label', 'NO'),
                             'yes_token_id': yes_token_id,
                             'no_token_id': no_token_id,
-                            'options': options,
                             'volume': getattr(market, 'volume', '0'),
                             'created_at': getattr(market, 'created_at', 0),
                             'cutoff_at': getattr(market, 'cutoff_at', 0)
