@@ -12,7 +12,7 @@ CORS(app)
 db = TradingDatabase()
 
 AI_FIRMS = {
-    'ChatGPT': {'model': 'gpt-5-2025-08-07 → gpt-4o', 'color': '#3B82F6'},
+    'ChatGPT': {'model': 'gpt-4o', 'color': '#3B82F6'},
     'Gemini': {'model': 'gemini-2.5-pro → gemini-2.5-flash', 'color': '#8B5CF6'},
     'Qwen': {'model': 'qwen-max-2025-01-25', 'color': '#F97316'},
     'Deepseek': {'model': 'deepseek-chat', 'color': '#000000'},

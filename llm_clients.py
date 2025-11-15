@@ -116,75 +116,36 @@ class ChatGPTFirm(TradingFirm):
         reraise=True
     )
     def generate_prediction(self, prompt: str) -> Dict:
-        # Try GPT-5 first (best for financial analysis), fallback to GPT-4o if not available
-        models_to_try = ["gpt-5-2025-08-07", "gpt-4o"]
-        
-        for model_name in models_to_try:
-            try:
-                response = self.client.chat.completions.create(
-                    model=model_name,
-                    messages=[
-                        {"role": "system", "content": "You are an expert trading analyst. Respond in valid JSON format only."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    max_completion_tokens=4096,
-                    response_format={"type": "json_object"}
-                )
-                
-                content = response.choices[0].message.content
-                
-                if not content or content.strip() == "":
-                    print(f"[{self.firm_name}] WARNING: Empty response from {model_name}")
-                    continue
-                
-                tokens = response.usage.total_tokens if response.usage else 0
-                
-                self.total_tokens += tokens
-                self.estimated_cost += self._estimate_cost(tokens, 0.005, 0.015)
-                
-                prediction = json.loads(content)
-                prediction = validate_and_normalize_prediction(prediction, self.firm_name)
-                prediction['tokens_used'] = tokens
-                prediction['estimated_cost'] = self._estimate_cost(tokens, 0.005, 0.015)
-                prediction['model_used'] = model_name
-                
-                return prediction
-                
-            except json.JSONDecodeError as e:
-                print(f"[{self.firm_name}] JSON decode error with {model_name}: {str(e)}")
-                print(f"[{self.firm_name}] Response content: {content[:200] if 'content' in locals() else 'N/A'}")
-                if model_name == models_to_try[-1]:
-                    return {
-                        'error': f'Invalid JSON response: {str(e)}',
-                        'firm_name': self.firm_name,
-                        'timestamp': datetime.now().isoformat()
-                    }
-                continue
-                
-            except Exception as e:
-                error_msg = str(e)
-                print(f"[{self.firm_name}] Error with {model_name}: {error_msg}")
-                
-                # If it's an invalid model error, try next model
-                if "model" in error_msg.lower() and "not found" in error_msg.lower():
-                    print(f"[{self.firm_name}] Model {model_name} not available, trying fallback...")
-                    continue
-                
-                # If it's the last model, return error
-                if model_name == models_to_try[-1]:
-                    return {
-                        'error': error_msg,
-                        'firm_name': self.firm_name,
-                        'timestamp': datetime.now().isoformat()
-                    }
-                continue
-        
-        # Should never reach here, but just in case
-        return {
-            'error': 'All models failed',
-            'firm_name': self.firm_name,
-            'timestamp': datetime.now().isoformat()
-        }
+        try:
+            response = self.client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": "You are an expert trading analyst. Respond in valid JSON format only."},
+                    {"role": "user", "content": prompt}
+                ],
+                max_completion_tokens=4096,
+                response_format={"type": "json_object"}
+            )
+            
+            content = response.choices[0].message.content
+            tokens = response.usage.total_tokens if response.usage else 0
+            
+            self.total_tokens += tokens
+            self.estimated_cost += self._estimate_cost(tokens, 0.005, 0.015)
+            
+            prediction = json.loads(content)
+            prediction = validate_and_normalize_prediction(prediction, self.firm_name)
+            prediction['tokens_used'] = tokens
+            prediction['estimated_cost'] = self._estimate_cost(tokens, 0.005, 0.015)
+            prediction['model_used'] = 'gpt-4o'
+            
+            return prediction
+        except Exception as e:
+            return {
+                'error': str(e),
+                'firm_name': self.firm_name,
+                'timestamp': datetime.now().isoformat()
+            }
 
 
 class GeminiFirm(TradingFirm):
