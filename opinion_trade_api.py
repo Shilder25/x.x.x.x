@@ -106,6 +106,8 @@ class OpinionTradeAPI:
                 # Convert SDK market objects to our event format
                 events = []
                 skipped_count = 0
+                debug_info = []  # Capture debug information for response
+                
                 for market in markets:
                     try:
                         # Derive category from market title (comprehensive keyword matching)
@@ -152,27 +154,33 @@ class OpinionTradeAPI:
                         yes_token_id = None
                         no_token_id = None
                         
-                        # DEBUG: Print market structure for first market only
-                        if not yes_token_id and not no_token_id and skipped_count == 0:
-                            print(f"[DEBUG] Market #{market.market_id} structure:")
-                            print(f"  - title: {market.market_title}")
-                            print(f"  - has options attr: {hasattr(market, 'options')}")
-                            print(f"  - options type: {type(options)}")
-                            print(f"  - options length: {len(options) if options else 0}")
-                            if options:
-                                print(f"  - first option type: {type(options[0])}")
-                                print(f"  - first option attrs: {dir(options[0])[:10]}")
+                        # Capture market structure for first market
+                        market_debug = {}
+                        if len(debug_info) == 0:
+                            options_debug = []
+                            for opt in options:
+                                options_debug.append({
+                                    'type': str(type(opt)),
+                                    'outcome': getattr(opt, 'outcome', 'NO_OUTCOME_ATTR'),
+                                    'token_id': getattr(opt, 'token_id', 'NO_TOKEN_ID_ATTR'),
+                                    'all_attrs': [attr for attr in dir(opt) if not attr.startswith('_')]
+                                })
+                            
+                            market_debug = {
+                                'market_id': market.market_id,
+                                'title': market.market_title,
+                                'has_options': hasattr(market, 'options'),
+                                'options_type': str(type(options)),
+                                'options_count': len(options) if options else 0,
+                                'options_details': options_debug,
+                                'market_attrs': [attr for attr in dir(market) if not attr.startswith('_')][:20]
+                            }
                         
                         # Parse options to find YES and NO token IDs
                         for option in options:
                             outcome_value = getattr(option, 'outcome', '')
-                            # Defensively handle non-string outcome values
                             outcome_name = str(outcome_value).upper() if outcome_value else ''
                             token_id = getattr(option, 'token_id', None)
-                            
-                            # DEBUG: Print option details for first market
-                            if skipped_count == 0:
-                                print(f"    Option: outcome='{outcome_value}', token_id={token_id}")
                             
                             if 'YES' in outcome_name or outcome_name == '1':
                                 yes_token_id = token_id
@@ -182,6 +190,9 @@ class OpinionTradeAPI:
                         # Skip markets without binary YES/NO tokens
                         if not yes_token_id or not no_token_id:
                             skipped_count += 1
+                            if market_debug:
+                                market_debug['skip_reason'] = f'Missing tokens: yes={yes_token_id}, no={no_token_id}'
+                                debug_info.append(market_debug)
                             print(f"[WARNING] Skipping market {market.market_id} '{market.market_title[:50]}...' - missing binary tokens (yes={yes_token_id}, no={no_token_id})")
                             continue
                         
@@ -213,7 +224,8 @@ class OpinionTradeAPI:
                     'success': True,
                     'count': len(events),
                     'events': events,
-                    'message': f'Retrieved {len(events)} available markets from Opinion.trade (skipped {skipped_count})'
+                    'message': f'Retrieved {len(events)} available markets from Opinion.trade (skipped {skipped_count})',
+                    'debug_info': debug_info if debug_info else None
                 }
             else:
                 # Handle specific error codes
