@@ -8,6 +8,7 @@ from opinion_clob_sdk.model import TopicType, TopicStatusFilter
 from opinion_clob_sdk.chain.py_order_utils.model.order import PlaceOrderDataInput
 from opinion_clob_sdk.chain.py_order_utils.model.sides import OrderSide
 from opinion_clob_sdk.chain.py_order_utils.model.order_type import LIMIT_ORDER
+from logger import autonomous_logger as logger
 
 
 class OpinionTradeAPI:
