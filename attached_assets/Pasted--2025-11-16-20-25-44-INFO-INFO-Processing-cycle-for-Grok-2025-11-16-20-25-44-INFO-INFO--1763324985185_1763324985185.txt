@@ -1,0 +1,35 @@
+[2025-11-16 20:25:44] [INFO] [INFO] 
+Processing cycle for Grok
+[2025-11-16 20:25:44] [INFO] [INFO] Grok - Analyzing 2 categories
+[2025-11-16 20:25:55] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=13, asks_count=4
+[2025-11-16 20:25:55] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.42, ask=0.52, mid=0.47
+[2025-11-16 20:25:55] [INFO] [BET] Grok - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=7
+[2025-11-16 20:26:05] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:26:05] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.23, ask=0.264, mid=0.247
+[2025-11-16 20:26:05] [INFO] [BET] Grok - $5.00 on 'This market will resolve to the project (Monad or ...' | Prob=48.00%, Conf=45% | Scores: S=0, N=0, T=6, F=0, V=8
+[2025-11-16 20:26:16] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:26:16] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.008, ask=0.147, mid=0.0775
+[2025-11-16 20:26:16] [INFO] [BET] Grok - $5.00 on 'This is a market on whether any crypto project or ...' | Prob=60.00%, Conf=65% | Scores: S=5, N=5, T=6, F=5, V=8
+[2025-11-16 20:26:29] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=11
+[2025-11-16 20:26:29] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.63, ask=0.795, mid=0.7125
+[2025-11-16 20:26:29] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the Supreme C...' | Prob=40.00%, Conf=60% | Scores: S=5, N=5, T=6, F=0, V=4 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:26:41] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 20:26:41] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98105, ask=0.998, mid=0.989525
+[2025-11-16 20:26:41] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=45.00%, Conf=60% | Scores: S=0, N=0, T=5, F=0, V=4 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:26:51] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=44
+[2025-11-16 20:26:51] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.116, ask=0.118, mid=0.11699999999999999
+[2025-11-16 20:26:51] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if any Binance 1...' | Prob=50.00%, Conf=50% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Probabilidad demasiado baja (<51%)
+[2025-11-16 20:26:51] [INFO] [INFO] Grok - Found 3 total opportunities across all categories
+[2025-11-16 20:26:51] [INFO] [INFO] Grok - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-16 20:26:51] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:26:51] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.127, ask=0.142, mid=0.1345
+[2025-11-16 20:26:51] [ERROR] [ERROR] Grok - Price validation failed: expected 0.6000, got 0.1345 (diff: 77.58%)
+[2025-11-16 20:26:51] [INFO] [INFO] Grok - Executed bet 1/2
+[2025-11-16 20:26:52] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:26:52] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.22, ask=0.272, mid=0.246
+[2025-11-16 20:26:52] [ERROR] [ERROR] Grok - Price validation failed: expected 0.4800, got 0.2460 (diff: 48.75%)
+[2025-11-16 20:26:52] [INFO] [INFO] Grok - Executed bet 2/2
+[2025-11-16 20:26:52] [INFO] [INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:26:52] [INFO] [INFO] Starting OrderMonitor to review active positions...
+[2025-11-16 20:26:52] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-16 20:26:52] [INFO] [INFO] OrderMonitor completed: {'total_checked': 0, 'strikes_added': 0, 'strikes_reset': 0, 'cancelled': 0, 'errors': 0}

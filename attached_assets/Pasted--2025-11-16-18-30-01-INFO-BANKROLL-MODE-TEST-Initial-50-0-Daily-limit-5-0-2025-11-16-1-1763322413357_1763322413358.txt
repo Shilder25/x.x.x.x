@@ -1,0 +1,260 @@
+[2025-11-16 18:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-16 18:30:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-16 18:37:06] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.6 at 2025-11-16T18:37:06.270482
+[2025-11-16 18:37:06] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-16 18:37:10] [INFO] [INFO] Fetched 14 events from Opinion.trade
+[2025-11-16 18:37:10] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 8}
+[2025-11-16 18:37:10] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-16 18:37:10] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+[2025-11-16 18:37:12] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:37:13] [INFO] [SKIP] ChatGPT - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:37:14] [INFO] [SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:37:14] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:37:15] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:37:15] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:37:15] [INFO] [INFO] ChatGPT - No opportunities found
+[2025-11-16 18:37:15] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 18:37:15] [INFO] [INFO] 
+Processing cycle for Gemini
+[2025-11-16 18:37:15] [INFO] [INFO] Gemini - Analyzing 2 categories
+[2025-11-16 18:37:57] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=7, asks_count=2
+[2025-11-16 18:37:57] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.48, ask=0.929, mid=0.7045
+[2025-11-16 18:37:57] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=52.00%, Conf=55% | Scores: S=0, N=0, T=5, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 18:38:32] [INFO] [INFO] get_orderbook: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bids_count=31, asks_count=16
+[2025-11-16 18:38:32] [INFO] [INFO] get_latest_price: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bid=0.731, ask=0.789, mid=0.76
+[2025-11-16 18:38:32] [INFO] [SKIP] Gemini - 'This market will resolve to the project (Monad or ...' | Prob=50.00%, Conf=5% | Scores: S=0, N=0, T=1, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 18:39:12] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 18:39:12] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.131, ask=0.135, mid=0.133
+[2025-11-16 18:39:12] [INFO] [BET] Gemini - $5.00 on 'This is a market on whether any crypto project or ...' | Prob=65.00%, Conf=70% | Scores: S=0, N=0, T=1, F=0, V=3
+[2025-11-16 18:39:55] [INFO] [INFO] get_orderbook: token_id=25759712766022771123719459322915923244234836050506319634791370371911956014912, bids_count=11, asks_count=18
+[2025-11-16 18:39:55] [INFO] [INFO] get_latest_price: token_id=25759712766022771123719459322915923244234836050506319634791370371911956014912, bid=0.15, ask=0.326, mid=0.238
+[2025-11-16 18:39:55] [INFO] [BET] Gemini - $5.00 on 'This market will resolve to "Yes" if the Supreme C...' | Prob=58.00%, Conf=60% | Scores: S=0, N=0, T=0, F=0, V=0
+[2025-11-16 18:40:40] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 18:40:40] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.979, ask=0.982, mid=0.9804999999999999
+[2025-11-16 18:40:40] [INFO] [SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=2.00%, Conf=95% | Scores: S=0, N=0, T=0, F=8, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-16 18:41:18] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=44
+[2025-11-16 18:41:18] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.001, ask=0.18, mid=0.0905
+[2025-11-16 18:41:18] [INFO] [BET] Gemini - $5.00 on 'This market will resolve to "Yes" if any Binance 1...' | Prob=54.00%, Conf=60% | Scores: S=0, N=0, T=0, F=0, V=5
+[2025-11-16 18:41:18] [INFO] [INFO] Gemini - Found 3 total opportunities across all categories
+[2025-11-16 18:41:18] [INFO] [INFO] Gemini - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-16 18:41:18] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 18:41:18] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.129, ask=0.999, mid=0.5640000000000001
+[2025-11-16 18:41:18] [ERROR] [ERROR] Gemini - Price validation failed: expected 0.6500, got 0.5640 (diff: 13.23%)
+[2025-11-16 18:41:18] [INFO] [INFO] Gemini - Executed bet 1/2
+[2025-11-16 18:41:19] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=44
+[2025-11-16 18:41:19] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.116, ask=0.25, mid=0.183
+[2025-11-16 18:41:19] [ERROR] [ERROR] Gemini - Price validation failed: expected 0.5400, got 0.1830 (diff: 66.11%)
+[2025-11-16 18:41:19] [INFO] [INFO] Gemini - Executed bet 2/2
+[2025-11-16 18:41:19] [INFO] [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 18:41:19] [INFO] [INFO] 
+Processing cycle for Qwen
+[2025-11-16 18:41:19] [INFO] [INFO] Qwen - Analyzing 2 categories
+[2025-11-16 18:41:20] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:41:20] [INFO] [SKIP] Qwen - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:41:21] [INFO] [SKIP] Qwen - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:41:21] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:41:22] [INFO] [SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:41:22] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:41:22] [INFO] [INFO] Qwen - No opportunities found
+[2025-11-16 18:41:22] [INFO] [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 18:41:22] [INFO] [INFO] 
+Processing cycle for Deepseek
+[2025-11-16 18:41:22] [INFO] [INFO] Deepseek - Analyzing 2 categories
+[2025-11-16 18:41:23] [INFO] [SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 18:41:23] [INFO] [SKIP] Deepseek - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 18:41:23] [INFO] [SKIP] Deepseek - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 18:41:24] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 18:41:24] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 18:41:25] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 18:41:25] [INFO] [INFO] Deepseek - No opportunities found
+[2025-11-16 18:41:25] [INFO] [INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 18:41:25] [INFO] [INFO] 
+Processing cycle for Grok
+[2025-11-16 18:41:25] [INFO] [INFO] Grok - Analyzing 2 categories
+[2025-11-16 18:41:25] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 18:41:26] [INFO] [SKIP] Grok - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 18:41:26] [INFO] [SKIP] Grok - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 18:41:26] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 18:41:26] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 18:41:26] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 18:41:26] [INFO] [INFO] Grok - No opportunities found
+[2025-11-16 18:41:26] [INFO] [INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 18:41:26] [INFO] [INFO] Starting OrderMonitor to review active positions...
+[2025-11-16 18:41:27] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-16 18:41:27] [INFO] [INFO] OrderMonitor completed: {'total_checked': 0, 'strikes_added': 0, 'strikes_reset': 0, 'cancelled': 0, 'errors': 0}
+[2025-11-16 18:41:27] [INFO] [ADMIN] Daily cycle completed successfully
+[2025-11-16 19:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-16 19:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-16 19:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-16 19:30:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-16 19:38:44] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.4 at 2025-11-16T19:38:44.327360
+[2025-11-16 19:38:44] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-16 19:38:48] [INFO] [INFO] Fetched 14 events from Opinion.trade
+[2025-11-16 19:38:48] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 8}
+[2025-11-16 19:38:48] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-16 19:38:48] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+[2025-11-16 19:38:50] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:38:51] [INFO] [SKIP] ChatGPT - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:38:51] [INFO] [SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:38:52] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:38:52] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:38:53] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:38:53] [INFO] [INFO] ChatGPT - No opportunities found
+[2025-11-16 19:38:53] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:38:53] [INFO] [INFO] 
+Processing cycle for Gemini
+[2025-11-16 19:38:53] [INFO] [INFO] Gemini - Analyzing 2 categories
+[2025-11-16 19:39:00] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.4 at 2025-11-16T19:39:00.109769
+[2025-11-16 19:39:00] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-16 19:39:05] [INFO] [INFO] Fetched 14 events from Opinion.trade
+[2025-11-16 19:39:05] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 8}
+[2025-11-16 19:39:05] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-16 19:39:05] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+[2025-11-16 19:39:06] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:39:07] [INFO] [SKIP] ChatGPT - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:39:08] [INFO] [SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:39:08] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:39:09] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:39:09] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:39:09] [INFO] [INFO] ChatGPT - No opportunities found
+[2025-11-16 19:39:09] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:39:09] [INFO] [INFO] 
+Processing cycle for Gemini
+[2025-11-16 19:39:09] [INFO] [INFO] Gemini - Analyzing 2 categories
+[2025-11-16 19:39:43] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=4, asks_count=13
+[2025-11-16 19:39:43] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.45, ask=0.75, mid=0.6
+[2025-11-16 19:39:43] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=57.00%, Conf=60% | Scores: S=2, N=2, T=8, F=0, V=9 | Reason: Valor esperado negativo o cero
+[2025-11-16 19:40:00] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=4, asks_count=13
+[2025-11-16 19:40:00] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.3, ask=0.59, mid=0.44499999999999995
+[2025-11-16 19:40:00] [INFO] [BET] Gemini - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=53.00%, Conf=55% | Scores: S=5, N=5, T=6, F=5, V=6
+[2025-11-16 19:40:25] [INFO] [INFO] get_orderbook: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bids_count=30, asks_count=16
+[2025-11-16 19:40:25] [INFO] [INFO] get_latest_price: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bid=0.76, ask=0.78, mid=0.77
+[2025-11-16 19:40:25] [INFO] [BET] Gemini - $5.00 on 'This market will resolve to the project (Monad or ...' | Prob=82.00%, Conf=80% | Scores: S=0, N=0, T=1, F=8, V=5
+[2025-11-16 19:40:33] [INFO] [INFO] get_orderbook: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bids_count=30, asks_count=16
+[2025-11-16 19:40:33] [INFO] [INFO] get_latest_price: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bid=0.736, ask=0.846, mid=0.7909999999999999
+[2025-11-16 19:40:33] [INFO] [SKIP] Gemini - 'This market will resolve to the project (Monad or ...' | Prob=53.00%, Conf=55% | Scores: S=0, N=0, T=0, F=0, V=1 | Reason: Valor esperado negativo o cero
+[2025-11-16 19:41:07] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 19:41:07] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.122, ask=0.142, mid=0.132
+[2025-11-16 19:41:07] [INFO] [BET] Gemini - $5.00 on 'This is a market on whether any crypto project or ...' | Prob=61.00%, Conf=65% | Scores: S=0, N=1, T=1, F=0, V=4
+[2025-11-16 19:41:10] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 19:41:10] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.02, ask=0.162, mid=0.091
+[2025-11-16 19:41:10] [INFO] [BET] Gemini - $5.00 on 'This is a market on whether any crypto project or ...' | Prob=72.00%, Conf=75% | Scores: S=0, N=0, T=0, F=0, V=2
+[2025-11-16 19:41:44] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=11
+[2025-11-16 19:41:44] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.45, ask=0.799, mid=0.6245
+[2025-11-16 19:41:44] [INFO] [BET] Gemini - $5.00 on 'This market will resolve to "Yes" if the Supreme C...' | Prob=20.00%, Conf=80% | Scores: S=0, N=0, T=0, F=0, V=5
+[2025-11-16 19:41:52] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=11
+[2025-11-16 19:41:52] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.726, ask=0.768, mid=0.747
+[2025-11-16 19:41:52] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if the Supreme C...' | Prob=25.00%, Conf=75% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Valor esperado negativo o cero
+[2025-11-16 19:42:27] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 19:42:27] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98105, ask=0.99, mid=0.985525
+[2025-11-16 19:42:27] [INFO] [SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=2.00%, Conf=98% | Scores: S=0, N=0, T=0, F=9, V=1 | Reason: Valor esperado negativo o cero
+[2025-11-16 19:42:54] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 19:42:54] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.977, ask=0.984, mid=0.9804999999999999
+[2025-11-16 19:42:54] [INFO] [SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=2.00%, Conf=98% | Scores: S=7, N=7, T=8, F=9, V=9 | Reason: Valor esperado negativo o cero
+[2025-11-16 19:43:07] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=43, asks_count=12
+[2025-11-16 19:43:07] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.601, ask=0.884, mid=0.7424999999999999
+[2025-11-16 19:43:07] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if any Binance 1...' | Prob=48.00%, Conf=55% | Scores: S=2, N=2, T=1, F=1, V=5 | Reason: Valor esperado negativo o cero
+[2025-11-16 19:43:07] [INFO] [INFO] Gemini - Found 3 total opportunities across all categories
+[2025-11-16 19:43:07] [INFO] [INFO] Gemini - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-16 19:43:08] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 19:43:08] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.001, ask=0.18, mid=0.0905
+[2025-11-16 19:43:08] [ERROR] [ERROR] Gemini - Price validation failed: expected 0.6100, got 0.0905 (diff: 85.16%)
+[2025-11-16 19:43:08] [INFO] [INFO] Gemini - Executed bet 1/2
+[2025-11-16 19:43:08] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=19, asks_count=11
+[2025-11-16 19:43:08] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.45, ask=0.795, mid=0.6225
+[2025-11-16 19:43:08] [ERROR] [ERROR] Gemini - Price validation failed: expected 0.2000, got 0.6225 (diff: 211.25%)
+[2025-11-16 19:43:08] [INFO] [INFO] Gemini - Executed bet 2/2
+[2025-11-16 19:43:08] [INFO] [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:43:08] [INFO] [INFO] 
+Processing cycle for Qwen
+[2025-11-16 19:43:08] [INFO] [INFO] Qwen - Analyzing 2 categories
+[2025-11-16 19:43:10] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:10] [INFO] [SKIP] Qwen - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:10] [INFO] [SKIP] Qwen - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:11] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:11] [INFO] [SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:12] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:12] [INFO] [INFO] Qwen - No opportunities found
+[2025-11-16 19:43:12] [INFO] [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:43:12] [INFO] [INFO] 
+Processing cycle for Deepseek
+[2025-11-16 19:43:12] [INFO] [INFO] Deepseek - Analyzing 2 categories
+[2025-11-16 19:43:12] [INFO] [SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:13] [INFO] [SKIP] Deepseek - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:13] [INFO] [SKIP] Deepseek - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:14] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:14] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:15] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:15] [INFO] [INFO] Deepseek - No opportunities found
+[2025-11-16 19:43:15] [INFO] [INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:43:15] [INFO] [INFO] 
+Processing cycle for Grok
+[2025-11-16 19:43:15] [INFO] [INFO] Grok - Analyzing 2 categories
+[2025-11-16 19:43:15] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:16] [INFO] [SKIP] Grok - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:16] [INFO] [SKIP] Grok - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:16] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:17] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:17] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:17] [INFO] [INFO] Grok - No opportunities found
+[2025-11-16 19:43:17] [INFO] [INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:43:17] [INFO] [INFO] Starting OrderMonitor to review active positions...
+[2025-11-16 19:43:17] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-16 19:43:17] [INFO] [INFO] OrderMonitor completed: {'total_checked': 0, 'strikes_added': 0, 'strikes_reset': 0, 'cancelled': 0, 'errors': 0}
+[2025-11-16 19:43:17] [INFO] [ADMIN] Daily cycle completed successfully
+[2025-11-16 19:43:31] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=43
+[2025-11-16 19:43:31] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.116, ask=0.17, mid=0.14300000000000002
+[2025-11-16 19:43:31] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if any Binance 1...' | Prob=53.00%, Conf=30% | Scores: S=0, N=0, T=0, F=0, V=5 | Reason: Nivel de confianza insuficiente (<40%)
+[2025-11-16 19:43:31] [INFO] [INFO] Gemini - Found 2 total opportunities across all categories
+[2025-11-16 19:43:31] [INFO] [INFO] Gemini - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-16 19:43:32] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 19:43:32] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.1, ask=0.147, mid=0.1235
+[2025-11-16 19:43:32] [ERROR] [ERROR] Gemini - Price validation failed: expected 0.7200, got 0.1235 (diff: 82.85%)
+[2025-11-16 19:43:32] [INFO] [INFO] Gemini - Executed bet 1/2
+[2025-11-16 19:43:32] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=4, asks_count=13
+[2025-11-16 19:43:32] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.48, ask=0.8, mid=0.64
+[2025-11-16 19:43:32] [ERROR] [ERROR] Gemini - Price validation failed: expected 0.5300, got 0.6400 (diff: 20.75%)
+[2025-11-16 19:43:32] [INFO] [INFO] Gemini - Executed bet 2/2
+[2025-11-16 19:43:32] [INFO] [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:43:32] [INFO] [INFO] 
+Processing cycle for Qwen
+[2025-11-16 19:43:32] [INFO] [INFO] Qwen - Analyzing 2 categories
+[2025-11-16 19:43:33] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:34] [INFO] [SKIP] Qwen - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:34] [INFO] [SKIP] Qwen - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:34] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:35] [INFO] [SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:35] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 19:43:35] [INFO] [INFO] Qwen - No opportunities found
+[2025-11-16 19:43:35] [INFO] [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:43:35] [INFO] [INFO] 
+Processing cycle for Deepseek
+[2025-11-16 19:43:35] [INFO] [INFO] Deepseek - Analyzing 2 categories
+[2025-11-16 19:43:36] [INFO] [SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:36] [INFO] [SKIP] Deepseek - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:37] [INFO] [SKIP] Deepseek - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:37] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:38] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:38] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Authentication Fails,...
+[2025-11-16 19:43:38] [INFO] [INFO] Deepseek - No opportunities found
+[2025-11-16 19:43:38] [INFO] [INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:43:38] [INFO] [INFO] 
+Processing cycle for Grok
+[2025-11-16 19:43:38] [INFO] [INFO] Grok - Analyzing 2 categories
+[2025-11-16 19:43:39] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:39] [INFO] [SKIP] Grok - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:39] [INFO] [SKIP] Grok - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:40] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:40] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:40] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 400 - {'code': 'Client specified an invalid argume...
+[2025-11-16 19:43:40] [INFO] [INFO] Grok - No opportunities found
+[2025-11-16 19:43:40] [INFO] [INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 19:43:40] [INFO] [INFO] Starting OrderMonitor to review active positions...
+[2025-11-16 19:43:40] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-16 19:43:40] [INFO] [INFO] OrderMonitor completed: {'total_checked': 0, 'strikes_added': 0, 'strikes_reset': 0, 'cancelled': 0, 'errors': 0}
+[2025-11-16 19:43:40] [INFO] [ADMIN] Daily cycle completed successfully
+[2025-11-16 19:46:40] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.9 at 2025-11-16T19:46:40.532328
+[2025-11-16 19:46:40] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0

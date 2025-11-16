@@ -1,0 +1,270 @@
+[2025-11-16 20:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-16 20:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-16 20:01:22] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.5 at 2025-11-16T20:01:22.590811
+[2025-11-16 20:01:22] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-16 20:01:26] [INFO] [INFO] Fetched 14 events from Opinion.trade
+[2025-11-16 20:01:26] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 8}
+[2025-11-16 20:01:26] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-16 20:01:26] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+[2025-11-16 20:01:45] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=13, asks_count=4
+[2025-11-16 20:01:45] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.375, ask=0.52, mid=0.4475
+[2025-11-16 20:01:45] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=48.00%, Conf=55% | Scores: S=5, N=4, T=6, F=3, V=7
+[2025-11-16 20:02:20] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:02:20] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.233, ask=0.265, mid=0.249
+[2025-11-16 20:02:20] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to the project (Monad or ...' | Prob=48.00%, Conf=45% | Scores: S=5, N=4, T=4, F=3, V=3
+[2025-11-16 20:02:38] [INFO] [INFO] get_orderbook: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bids_count=17, asks_count=13
+[2025-11-16 20:02:38] [INFO] [INFO] get_latest_price: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bid=0.85, ask=0.878, mid=0.864
+[2025-11-16 20:02:38] [INFO] [SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=45.00%, Conf=60% | Scores: S=5, N=4, T=5, F=3, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:02:56] [INFO] [INFO] get_orderbook: token_id=25759712766022771123719459322915923244234836050506319634791370371911956014912, bids_count=11, asks_count=18
+[2025-11-16 20:02:56] [INFO] [INFO] get_latest_price: token_id=25759712766022771123719459322915923244234836050506319634791370371911956014912, bid=0.22, ask=0.39, mid=0.305
+[2025-11-16 20:02:56] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Yes" if the Supreme C...' | Prob=55.00%, Conf=45% | Scores: S=5, N=4, T=6, F=3, V=2
+[2025-11-16 20:03:17] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 20:03:17] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.977, ask=0.98199, mid=0.979495
+[2025-11-16 20:03:17] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=35.00%, Conf=60% | Scores: S=5, N=4, T=6, F=3, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:03:34] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=44
+[2025-11-16 20:03:34] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.059, ask=0.29, mid=0.1745
+[2025-11-16 20:03:35] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Yes" if any Binance 1...' | Prob=65.00%, Conf=60% | Scores: S=6, N=5, T=5, F=4, V=7
+[2025-11-16 20:03:35] [INFO] [INFO] ChatGPT - Found 4 total opportunities across all categories
+[2025-11-16 20:03:35] [INFO] [INFO] ChatGPT - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-16 20:03:35] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=44
+[2025-11-16 20:03:35] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.112, ask=0.12, mid=0.11599999999999999
+[2025-11-16 20:03:35] [ERROR] [ERROR] ChatGPT - Price validation failed: expected 0.6500, got 0.1160 (diff: 82.15%)
+[2025-11-16 20:03:35] [INFO] [INFO] ChatGPT - Executed bet 1/2
+[2025-11-16 20:03:35] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:03:35] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.223, ask=0.264, mid=0.2435
+[2025-11-16 20:03:35] [ERROR] [ERROR] ChatGPT - Price validation failed: expected 0.4800, got 0.2435 (diff: 49.27%)
+[2025-11-16 20:03:36] [INFO] [INFO] ChatGPT - Executed bet 2/2
+[2025-11-16 20:03:36] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:03:36] [INFO] [INFO] 
+Processing cycle for Gemini
+[2025-11-16 20:03:36] [INFO] [INFO] Gemini - Analyzing 2 categories
+[2025-11-16 20:04:18] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=4, asks_count=13
+[2025-11-16 20:04:18] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.48, ask=0.7, mid=0.59
+[2025-11-16 20:04:18] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=53.00%, Conf=55% | Scores: S=2, N=2, T=6, F=0, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:04:59] [INFO] [INFO] get_orderbook: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bids_count=30, asks_count=16
+[2025-11-16 20:04:59] [INFO] [INFO] get_latest_price: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bid=0.75, ask=0.77, mid=0.76
+[2025-11-16 20:04:59] [INFO] [SKIP] Gemini - 'This market will resolve to the project (Monad or ...' | Prob=52.00%, Conf=55% | Scores: S=0, N=0, T=0, F=0, V=1 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:05:49] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:05:49] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.1, ask=0.135, mid=0.11750000000000001
+[2025-11-16 20:05:49] [INFO] [BET] Gemini - $5.00 on 'This is a market on whether any crypto project or ...' | Prob=80.00%, Conf=80% | Scores: S=1, N=1, T=1, F=1, V=3
+[2025-11-16 20:06:34] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=11
+[2025-11-16 20:06:34] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.501, ask=0.8, mid=0.6505000000000001
+[2025-11-16 20:06:34] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if the Supreme C...' | Prob=35.00%, Conf=70% | Scores: S=0, N=2, T=0, F=7, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:07:11] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 20:07:11] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.981, ask=0.987, mid=0.984
+[2025-11-16 20:07:11] [INFO] [SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=2.00%, Conf=95% | Scores: S=0, N=0, T=0, F=8, V=2 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:07:58] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=44, asks_count=12
+[2025-11-16 20:07:58] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.53, ask=0.975, mid=0.7525
+[2025-11-16 20:07:58] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if any Binance 1...' | Prob=30.00%, Conf=70% | Scores: S=5, N=5, T=5, F=1, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:07:58] [INFO] [INFO] Gemini - Found 1 total opportunities across all categories
+[2025-11-16 20:07:58] [INFO] [INFO] Gemini - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-16 20:07:59] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:07:59] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.131, ask=0.132, mid=0.1315
+[2025-11-16 20:07:59] [ERROR] [ERROR] Gemini - Price validation failed: expected 0.8000, got 0.1315 (diff: 83.56%)
+[2025-11-16 20:07:59] [INFO] [INFO] Gemini - Executed bet 1/1
+[2025-11-16 20:07:59] [INFO] [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:07:59] [INFO] [INFO] 
+Processing cycle for Qwen
+[2025-11-16 20:07:59] [INFO] [INFO] Qwen - Analyzing 2 categories
+[2025-11-16 20:08:00] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:08:01] [INFO] [SKIP] Qwen - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:08:02] [INFO] [SKIP] Qwen - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:08:03] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:08:03] [INFO] [SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:08:03] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:08:03] [INFO] [INFO] Qwen - No opportunities found
+[2025-11-16 20:08:03] [INFO] [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:08:03] [INFO] [INFO] 
+Processing cycle for Deepseek
+[2025-11-16 20:08:03] [INFO] [INFO] Deepseek - Analyzing 2 categories
+[2025-11-16 20:08:42] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=13, asks_count=4
+[2025-11-16 20:08:42] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.42, ask=0.55, mid=0.485
+[2025-11-16 20:08:42] [INFO] [BET] Deepseek - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=48.00%, Conf=55% | Scores: S=3, N=3, T=6, F=2, V=8
+[2025-11-16 20:09:13] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:09:13] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.17, ask=0.267, mid=0.21850000000000003
+[2025-11-16 20:09:13] [INFO] [BET] Deepseek - $5.00 on 'This market will resolve to the project (Monad or ...' | Prob=48.00%, Conf=45% | Scores: S=3, N=2, T=6, F=1, V=8
+[2025-11-16 20:09:43] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:09:43] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.127, ask=0.135, mid=0.131
+[2025-11-16 20:09:43] [INFO] [BET] Deepseek - $5.00 on 'This is a market on whether any crypto project or ...' | Prob=52.00%, Conf=55% | Scores: S=3, N=2, T=5, F=1, V=8
+[2025-11-16 20:10:19] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=19, asks_count=11
+[2025-11-16 20:10:19] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.743, ask=0.799, mid=0.771
+[2025-11-16 20:10:19] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=55% | Scores: S=2, N=2, T=4, F=1, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:10:55] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 20:10:55] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98, ask=0.983, mid=0.9815
+[2025-11-16 20:10:55] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” immediately if a...' | Prob=15.00%, Conf=85% | Scores: S=2, N=2, T=3, F=2, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:11:29] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=44, asks_count=12
+[2025-11-16 20:11:29] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.835, ask=0.941, mid=0.8879999999999999
+[2025-11-16 20:11:29] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=35% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:11:29] [INFO] [INFO] Deepseek - Found 3 total opportunities across all categories
+[2025-11-16 20:11:29] [INFO] [INFO] Deepseek - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-16 20:11:29] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:11:29] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.129, ask=0.132, mid=0.1305
+[2025-11-16 20:11:29] [ERROR] [ERROR] Deepseek - Price validation failed: expected 0.5200, got 0.1305 (diff: 74.90%)
+[2025-11-16 20:11:29] [INFO] [INFO] Deepseek - Executed bet 1/2
+[2025-11-16 20:11:30] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:11:30] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.17, ask=0.284, mid=0.22699999999999998
+[2025-11-16 20:11:30] [ERROR] [ERROR] Deepseek - Price validation failed: expected 0.4800, got 0.2270 (diff: 52.71%)
+[2025-11-16 20:11:30] [INFO] [INFO] Deepseek - Executed bet 2/2
+[2025-11-16 20:11:30] [INFO] [INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:11:30] [INFO] [INFO] 
+Processing cycle for Grok
+[2025-11-16 20:11:30] [INFO] [INFO] Grok - Analyzing 2 categories
+[2025-11-16 20:11:41] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=4, asks_count=13
+[2025-11-16 20:11:41] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.48, ask=0.75, mid=0.615
+[2025-11-16 20:11:41] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=55.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:11:51] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:11:51] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.226, ask=0.82, mid=0.523
+[2025-11-16 20:11:51] [INFO] [SKIP] Grok - 'This market will resolve to the project (Monad or ...' | Prob=48.00%, Conf=45% | Scores: S=0, N=1, T=6, F=0, V=4 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:12:02] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:12:02] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.129, ask=0.142, mid=0.1355
+[2025-11-16 20:12:02] [INFO] [BET] Grok - $5.00 on 'This is a market on whether any crypto project or ...' | Prob=65.00%, Conf=60% | Scores: S=5, N=5, T=7, F=5, V=8
+[2025-11-16 20:12:15] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=11
+[2025-11-16 20:12:15] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.744, ask=0.77, mid=0.757
+[2025-11-16 20:12:15] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the Supreme C...' | Prob=35.00%, Conf=65% | Scores: S=0, N=0, T=6, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:12:29] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 20:12:29] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.981, ask=0.989, mid=0.985
+[2025-11-16 20:12:29] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=5.00%, Conf=70% | Scores: S=0, N=0, T=2, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:12:40] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=44, asks_count=12
+[2025-11-16 20:12:40] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.031, ask=0.884, mid=0.4575
+[2025-11-16 20:12:40] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if any Binance 1...' | Prob=40.00%, Conf=30% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Nivel de confianza insuficiente (<40%)
+[2025-11-16 20:12:40] [INFO] [INFO] Grok - Found 1 total opportunities across all categories
+[2025-11-16 20:12:40] [INFO] [INFO] Grok - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-16 20:12:41] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:12:41] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.1, ask=0.14, mid=0.12000000000000001
+[2025-11-16 20:12:41] [ERROR] [ERROR] Grok - Price validation failed: expected 0.6500, got 0.1200 (diff: 81.54%)
+[2025-11-16 20:12:41] [INFO] [INFO] Grok - Executed bet 1/1
+[2025-11-16 20:12:41] [INFO] [INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:12:41] [INFO] [INFO] Starting OrderMonitor to review active positions...
+[2025-11-16 20:12:41] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-16 20:12:41] [INFO] [INFO] OrderMonitor completed: {'total_checked': 0, 'strikes_added': 0, 'strikes_reset': 0, 'cancelled': 0, 'errors': 0}
+[2025-11-16 20:12:41] [INFO] [ADMIN] Daily cycle completed successfully
+[2025-11-16 20:16:22] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.5 at 2025-11-16T20:16:22.763459
+[2025-11-16 20:16:22] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-16 20:16:26] [INFO] [INFO] Fetched 14 events from Opinion.trade
+[2025-11-16 20:16:26] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 8}
+[2025-11-16 20:16:26] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-16 20:16:26] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+[2025-11-16 20:16:43] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=13, asks_count=4
+[2025-11-16 20:16:43] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.41, ask=0.7, mid=0.5549999999999999
+[2025-11-16 20:16:43] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=0, N=0, T=4, F=0, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:16:56] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:16:56] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.222, ask=0.44, mid=0.331
+[2025-11-16 20:16:56] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to the project (Monad or ...' | Prob=45.00%, Conf=40% | Scores: S=5, N=5, T=4, F=0, V=3
+[2025-11-16 20:17:05] [INFO] [INFO] get_orderbook: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bids_count=17, asks_count=13
+[2025-11-16 20:17:05] [INFO] [INFO] get_latest_price: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bid=0.75, ask=0.999, mid=0.8745
+[2025-11-16 20:17:05] [INFO] [SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=35.00%, Conf=60% | Scores: S=5, N=4, T=5, F=3, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:17:26] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=11
+[2025-11-16 20:17:26] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.17, ask=0.768, mid=0.46900000000000003
+[2025-11-16 20:17:26] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=40% | Scores: S=5, N=5, T=6, F=4, V=8
+[2025-11-16 20:17:40] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 20:17:40] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.977, ask=0.984, mid=0.9804999999999999
+[2025-11-16 20:17:40] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=35.00%, Conf=65% | Scores: S=5, N=5, T=6, F=5, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:17:53] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=44, asks_count=12
+[2025-11-16 20:17:53] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.82, ask=0.999, mid=0.9095
+[2025-11-16 20:17:53] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=40.00%, Conf=30% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:17:53] [INFO] [INFO] ChatGPT - Found 2 total opportunities across all categories
+[2025-11-16 20:17:53] [INFO] [INFO] ChatGPT - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-16 20:17:54] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:17:54] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.154, ask=0.282, mid=0.21799999999999997
+[2025-11-16 20:17:54] [ERROR] [ERROR] ChatGPT - Price validation failed: expected 0.4500, got 0.2180 (diff: 51.56%)
+[2025-11-16 20:17:54] [INFO] [INFO] ChatGPT - Executed bet 1/2
+[2025-11-16 20:17:54] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=11
+[2025-11-16 20:17:54] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.17, ask=0.88, mid=0.525
+[2025-11-16 20:17:54] [ERROR] [ERROR] ChatGPT - Price validation failed: expected 0.4500, got 0.5250 (diff: 16.67%)
+[2025-11-16 20:17:54] [INFO] [INFO] ChatGPT - Executed bet 2/2
+[2025-11-16 20:17:54] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:17:54] [INFO] [INFO] 
+Processing cycle for Gemini
+[2025-11-16 20:17:54] [INFO] [INFO] Gemini - Analyzing 2 categories
+[2025-11-16 20:18:44] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=13, asks_count=4
+[2025-11-16 20:18:44] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.4, ask=0.7, mid=0.55
+[2025-11-16 20:18:44] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=47.00%, Conf=55% | Scores: S=3, N=3, T=5, F=1, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:19:22] [INFO] [INFO] get_orderbook: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bids_count=30, asks_count=16
+[2025-11-16 20:19:22] [INFO] [INFO] get_latest_price: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bid=0.726, ask=0.767, mid=0.7464999999999999
+[2025-11-16 20:19:22] [INFO] [SKIP] Gemini - 'This market will resolve to the project (Monad or ...' | Prob=51.00%, Conf=10% | Scores: S=0, N=0, T=2, F=0, V=3 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:20:11] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:20:11] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.12, ask=0.135, mid=0.1275
+[2025-11-16 20:20:11] [INFO] [BET] Gemini - $5.00 on 'This is a market on whether any crypto project or ...' | Prob=65.00%, Conf=65% | Scores: S=1, N=1, T=2, F=1, V=7
+[2025-11-16 20:20:49] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=19, asks_count=11
+[2025-11-16 20:20:49] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.501, ask=0.999, mid=0.75
+[2025-11-16 20:20:49] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if the Supreme C...' | Prob=30.00%, Conf=65% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:21:25] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 20:21:25] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98105, ask=0.986, mid=0.983525
+[2025-11-16 20:21:25] [INFO] [SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=2.00%, Conf=98% | Scores: S=0, N=0, T=0, F=7, V=3 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:22:11] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=44
+[2025-11-16 20:22:11] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.01, ask=0.263, mid=0.1365
+[2025-11-16 20:22:11] [INFO] [BET] Gemini - $5.00 on 'This market will resolve to "Yes" if any Binance 1...' | Prob=62.00%, Conf=65% | Scores: S=7, N=6, T=5, F=2, V=8
+[2025-11-16 20:22:11] [INFO] [INFO] Gemini - Found 2 total opportunities across all categories
+[2025-11-16 20:22:11] [INFO] [INFO] Gemini - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-16 20:22:11] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:22:11] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.122, ask=0.147, mid=0.1345
+[2025-11-16 20:22:11] [ERROR] [ERROR] Gemini - Price validation failed: expected 0.6500, got 0.1345 (diff: 79.31%)
+[2025-11-16 20:22:11] [INFO] [INFO] Gemini - Executed bet 1/2
+[2025-11-16 20:22:12] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=44
+[2025-11-16 20:22:12] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.111, ask=0.165, mid=0.138
+[2025-11-16 20:22:12] [ERROR] [ERROR] Gemini - Price validation failed: expected 0.6200, got 0.1380 (diff: 77.74%)
+[2025-11-16 20:22:12] [INFO] [INFO] Gemini - Executed bet 2/2
+[2025-11-16 20:22:12] [INFO] [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:22:12] [INFO] [INFO] 
+Processing cycle for Qwen
+[2025-11-16 20:22:12] [INFO] [INFO] Qwen - Analyzing 2 categories
+[2025-11-16 20:22:13] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:22:14] [INFO] [SKIP] Qwen - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:22:14] [INFO] [SKIP] Qwen - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:22:16] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:22:16] [INFO] [SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:22:17] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 20:22:17] [INFO] [INFO] Qwen - No opportunities found
+[2025-11-16 20:22:17] [INFO] [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:22:17] [INFO] [INFO] 
+Processing cycle for Deepseek
+[2025-11-16 20:22:17] [INFO] [INFO] Deepseek - Analyzing 2 categories
+[2025-11-16 20:22:51] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=13, asks_count=4
+[2025-11-16 20:22:51] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.4, ask=0.55, mid=0.47500000000000003
+[2025-11-16 20:22:51] [INFO] [BET] Deepseek - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=47.00%, Conf=55% | Scores: S=2, N=2, T=6, F=1, V=8
+[2025-11-16 20:23:26] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:23:26] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.225, ask=0.311, mid=0.268
+[2025-11-16 20:23:26] [INFO] [BET] Deepseek - $5.00 on 'This market will resolve to the project (Monad or ...' | Prob=48.00%, Conf=45% | Scores: S=3, N=2, T=5, F=1, V=8
+[2025-11-16 20:23:57] [INFO] [INFO] get_orderbook: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bids_count=17, asks_count=13
+[2025-11-16 20:23:57] [INFO] [INFO] get_latest_price: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bid=0.5, ask=0.87, mid=0.685
+[2025-11-16 20:23:57] [INFO] [SKIP] Deepseek - 'This is a market on whether any crypto project or ...' | Prob=35.00%, Conf=65% | Scores: S=2, N=1, T=4, F=1, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:24:35] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=19, asks_count=11
+[2025-11-16 20:24:35] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.63, ask=0.768, mid=0.6990000000000001
+[2025-11-16 20:24:35] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the Supreme C...' | Prob=48.00%, Conf=55% | Scores: S=2, N=1, T=3, F=1, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:25:14] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 20:25:14] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.981, ask=0.98199, mid=0.981495
+[2025-11-16 20:25:14] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” immediately if a...' | Prob=25.00%, Conf=65% | Scores: S=2, N=1, T=4, F=1, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:25:43] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=44, asks_count=12
+[2025-11-16 20:25:43] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.82, ask=0.888, mid=0.854
+[2025-11-16 20:25:43] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=45% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:25:43] [INFO] [INFO] Deepseek - Found 2 total opportunities across all categories
+[2025-11-16 20:25:43] [INFO] [INFO] Deepseek - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-16 20:25:43] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:25:43] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.155, ask=0.267, mid=0.21100000000000002
+[2025-11-16 20:25:43] [ERROR] [ERROR] Deepseek - Price validation failed: expected 0.4800, got 0.2110 (diff: 56.04%)
+[2025-11-16 20:25:43] [INFO] [INFO] Deepseek - Executed bet 1/2
+[2025-11-16 20:25:43] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=13, asks_count=4
+[2025-11-16 20:25:43] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.375, ask=0.52, mid=0.4475
+[2025-11-16 20:25:44] [ERROR] [BET ERROR] Deepseek - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+[2025-11-16 20:25:44] [INFO] [INFO] Deepseek - Executed bet 2/2
+[2025-11-16 20:25:44] [INFO] [INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 20:25:44] [INFO] [INFO] 
+Processing cycle for Grok
+[2025-11-16 20:25:44] [INFO] [INFO] Grok - Analyzing 2 categories
+[2025-11-16 20:25:55] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=13, asks_count=4
+[2025-11-16 20:25:55] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.42, ask=0.52, mid=0.47
+[2025-11-16 20:25:55] [INFO] [BET] Grok - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=7
+[2025-11-16 20:26:05] [INFO] [INFO] get_orderbook: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bids_count=16, asks_count=30
+[2025-11-16 20:26:05] [INFO] [INFO] get_latest_price: token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981, bid=0.23, ask=0.264, mid=0.247
+[2025-11-16 20:26:05] [INFO] [BET] Grok - $5.00 on 'This market will resolve to the project (Monad or ...' | Prob=48.00%, Conf=45% | Scores: S=0, N=0, T=6, F=0, V=8
+[2025-11-16 20:26:16] [INFO] [INFO] get_orderbook: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bids_count=13, asks_count=17
+[2025-11-16 20:26:16] [INFO] [INFO] get_latest_price: token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109, bid=0.008, ask=0.147, mid=0.0775
+[2025-11-16 20:26:16] [INFO] [BET] Grok - $5.00 on 'This is a market on whether any crypto project or ...' | Prob=60.00%, Conf=65% | Scores: S=5, N=5, T=6, F=5, V=8
+[2025-11-16 20:26:29] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=11
+[2025-11-16 20:26:29] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.63, ask=0.795, mid=0.7125
+[2025-11-16 20:26:29] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the Supreme C...' | Prob=40.00%, Conf=60% | Scores: S=5, N=5, T=6, F=0, V=4 | Reason: Valor esperado negativo o cero
+[2025-11-16 20:26:41] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=15
+[2025-11-16 20:26:41] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98105, ask=0.998, mid=0.989525
+[2025-11-16 20:26:41] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=45.00%, Conf=60% | Scores: S=0, N=0, T=5, F=0, V=4 | Reason: Valor esperado negativo o cero
