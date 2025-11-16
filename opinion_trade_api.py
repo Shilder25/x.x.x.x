@@ -601,6 +601,10 @@ class OpinionTradeAPI:
         """
         Get the latest price for a specific outcome token.
         
+        WORKAROUND: SDK's get_latest_price() has bug (error 10004: "needs a pointer to a slice or a map")
+        Using get_orderbook() instead to fetch best bid/ask and calculate mid-price.
+        This is actually better as it shows current market state rather than last trade.
+        
         Args:
             token_id: The outcome token ID
         
@@ -614,24 +618,74 @@ class OpinionTradeAPI:
             }
         
         try:
-            response = self.client.get_latest_price(token_id)
+            # WORKAROUND: Use orderbook instead of buggy get_latest_price SDK method
+            orderbook_response = self.get_orderbook(token_id)
             
-            if response.errno == 0:
-                price_data = response.result.data
-                return {
-                    'success': True,
-                    'price': float(getattr(price_data, 'price', 0)),
-                    'timestamp': getattr(price_data, 'timestamp', 0),
-                    'data': price_data
-                }
-            else:
-                logger.warning(f"get_latest_price failed for token_id={token_id}: errno={response.errno}, errmsg={response.errmsg}")
+            if not orderbook_response.get('success'):
+                logger.warning(f"get_latest_price: orderbook fetch failed for token_id={token_id}: {orderbook_response.get('message', 'Unknown error')}")
                 return {
                     'success': False,
-                    'error': f'API error {response.errno}',
-                    'message': response.errmsg,
+                    'error': orderbook_response.get('error', 'Orderbook fetch failed'),
+                    'message': orderbook_response.get('message', 'Could not fetch orderbook'),
                     'token_id': token_id
                 }
+            
+            orderbook = orderbook_response.get('data', {})
+            best_bid = orderbook.get('best_bid')
+            best_ask = orderbook.get('best_ask')
+            
+            # Calculate mid-price from best bid/ask
+            if best_bid and best_ask:
+                # Extract prices from bid/ask objects
+                bid_price = float(getattr(best_bid, 'price', 0))
+                ask_price = float(getattr(best_ask, 'price', 0))
+                
+                if bid_price > 0 and ask_price > 0:
+                    mid_price = (bid_price + ask_price) / 2.0
+                    logger.info(f"get_latest_price: token_id={token_id}, bid={bid_price}, ask={ask_price}, mid={mid_price}")
+                    return {
+                        'success': True,
+                        'price': mid_price,
+                        'bid_price': bid_price,
+                        'ask_price': ask_price,
+                        'spread': ask_price - bid_price,
+                        'timestamp': int(datetime.now().timestamp()),
+                        'data': {'source': 'orderbook', 'bid': best_bid, 'ask': best_ask}
+                    }
+            
+            # Fallback: if only bid or only ask available
+            if best_bid:
+                bid_price = float(getattr(best_bid, 'price', 0))
+                if bid_price > 0:
+                    logger.info(f"get_latest_price: token_id={token_id}, using bid_price={bid_price} (no ask available)")
+                    return {
+                        'success': True,
+                        'price': bid_price,
+                        'bid_price': bid_price,
+                        'timestamp': int(datetime.now().timestamp()),
+                        'data': {'source': 'orderbook_bid_only', 'bid': best_bid}
+                    }
+            
+            if best_ask:
+                ask_price = float(getattr(best_ask, 'price', 0))
+                if ask_price > 0:
+                    logger.info(f"get_latest_price: token_id={token_id}, using ask_price={ask_price} (no bid available)")
+                    return {
+                        'success': True,
+                        'price': ask_price,
+                        'ask_price': ask_price,
+                        'timestamp': int(datetime.now().timestamp()),
+                        'data': {'source': 'orderbook_ask_only', 'ask': best_ask}
+                    }
+            
+            # No valid prices found
+            logger.warning(f"get_latest_price: token_id={token_id} - No valid bid/ask prices in orderbook")
+            return {
+                'success': False,
+                'error': 'No market price available',
+                'message': 'Orderbook has no valid bid or ask prices',
+                'token_id': token_id
+            }
         
         except Exception as e:
             logger.error(f"get_latest_price exception for token_id={token_id}: {str(e)}")

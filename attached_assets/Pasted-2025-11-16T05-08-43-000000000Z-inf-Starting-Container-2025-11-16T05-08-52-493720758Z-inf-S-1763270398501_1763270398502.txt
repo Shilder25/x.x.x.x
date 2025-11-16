@@ -1,0 +1,671 @@
+2025-11-16T05:08:43.000000000Z [inf]  Starting Container
+2025-11-16T05:08:52.493720758Z [inf]   * Serving Flask app 'api'
+2025-11-16T05:08:52.493727417Z [inf]   * Debug mode: on
+2025-11-16T05:08:52.493733509Z [err]  [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-11-16T05:08:52.493739298Z [err]   * Running on all addresses (0.0.0.0)
+2025-11-16T05:08:52.493745261Z [err]   * Running on http://127.0.0.1:8000
+2025-11-16T05:08:52.493750975Z [err]   * Running on http://10.154.189.224:8000
+2025-11-16T05:08:52.493756830Z [err]  [33mPress CTRL+C to quit[0m
+2025-11-16T05:08:52.493762734Z [err]   * Restarting with watchdog (inotify)
+2025-11-16T05:09:00.678181950Z [err]   * Debugger is active!
+2025-11-16T05:09:00.678186940Z [err]   * Debugger PIN: 267-866-670
+2025-11-16T05:09:00.678191599Z [err]  100.64.0.2 - - [16/Nov/2025 05:09:00] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:09:00.678195844Z [err]  100.64.0.2 - - [16/Nov/2025 05:09:00] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:09:00.678200244Z [err]  100.64.0.2 - - [16/Nov/2025 05:09:00] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:09:00.678205542Z [err]  100.64.0.2 - - [16/Nov/2025 05:09:00] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:09:00.678210772Z [err]  100.64.0.2 - - [16/Nov/2025 05:09:00] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:09:00.678215778Z [err]  100.64.0.2 - - [16/Nov/2025 05:09:00] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:09:01.690047159Z [err]  100.64.0.2 - - [16/Nov/2025 05:09:01] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:09:08.571016936Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:09:08.571028497Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:09:08.571035535Z [err]  100.64.0.4 - - [16/Nov/2025 05:09:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:09:08.571042193Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:09:08.571130341Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:09:08.571137504Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:09:08.571145066Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:09:08.571151449Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:09:48.156918831Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:09:48.156927004Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:09:48.156931994Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:09:48.156936266Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:09:48.156940897Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:09:48.156945557Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:09:48.156950192Z [err]  100.64.0.5 - - [16/Nov/2025 05:09:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:09:48.156954206Z [err]  100.64.0.3 - - [16/Nov/2025 05:09:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:09:48.156958502Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:42] "[33mGET / HTTP/1.1[0m" 404 -
+2025-11-16T05:09:48.156962229Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T05:09:48.156966205Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T05:09:48.156970151Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:46] "GET /admin HTTP/1.1" 200 -
+2025-11-16T05:09:48.156974780Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T05:09:48.651098665Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T05:09:52.790347099Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:09:52.790359156Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:09:52.790368500Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:09:52.790374090Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:09:52.790398783Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:09:52.790402869Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:09:52.790407099Z [err]  100.64.0.6 - - [16/Nov/2025 05:09:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:10:12.335005006Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:10:12.335015280Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:10:12.335021831Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:10:12.335027461Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:10:12.335033017Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:10:12.335039691Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:10:12.335045308Z [err]  100.64.0.3 - - [16/Nov/2025 05:10:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:10:12.335060179Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:10:42.338897083Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:10:42.338904078Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:10:42.338910379Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:10:42.338916885Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:10:42.338923561Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:10:42.338929182Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:10:42.338935311Z [err]  100.64.0.2 - - [16/Nov/2025 05:10:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:10:42.338943643Z [err]  100.64.0.7 - - [16/Nov/2025 05:10:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:10:52.064510713Z [err]  100.64.0.6 - - [16/Nov/2025 05:10:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:10:52.072650601Z [err]  100.64.0.6 - - [16/Nov/2025 05:10:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:10:52.072661947Z [err]  100.64.0.6 - - [16/Nov/2025 05:10:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:10:52.074949043Z [err]  100.64.0.6 - - [16/Nov/2025 05:10:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:10:52.074957218Z [err]  100.64.0.6 - - [16/Nov/2025 05:10:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:10:52.077932841Z [err]  100.64.0.6 - - [16/Nov/2025 05:10:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:10:52.385379278Z [err]  100.64.0.6 - - [16/Nov/2025 05:10:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:11:12.391568110Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:11:12.391573626Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:11:12.391578391Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:11:12.391583472Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:11:12.391589064Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:11:12.391594351Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:11:12.391599017Z [err]  100.64.0.8 - - [16/Nov/2025 05:11:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:11:12.391607423Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:11:42.395576318Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:11:42.395579978Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:11:42.395588190Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:11:42.395594204Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:11:42.395601105Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:11:42.395607486Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:11:42.395613104Z [err]  100.64.0.7 - - [16/Nov/2025 05:11:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:11:42.395618907Z [err]  100.64.0.4 - - [16/Nov/2025 05:11:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:11:52.146970212Z [err]  100.64.0.6 - - [16/Nov/2025 05:11:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:11:52.146975527Z [err]  100.64.0.6 - - [16/Nov/2025 05:11:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:11:52.146979354Z [err]  100.64.0.6 - - [16/Nov/2025 05:11:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:11:52.146984034Z [err]  100.64.0.6 - - [16/Nov/2025 05:11:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:11:52.146987956Z [err]  100.64.0.6 - - [16/Nov/2025 05:11:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:11:52.146992113Z [err]  100.64.0.6 - - [16/Nov/2025 05:11:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:11:52.380016411Z [err]  100.64.0.6 - - [16/Nov/2025 05:11:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:12:11.704436408Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:12:11.704448678Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:12:11.704461602Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:12:11.704469972Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:12:11.704477733Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:12:11.704485325Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:12:11.704493156Z [err]  100.64.0.3 - - [16/Nov/2025 05:12:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:12:11.704501111Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:12:11.704509453Z [err]  100.64.0.2 - - [16/Nov/2025 05:12:09] "GET /admin HTTP/1.1" 200 -
+2025-11-16T05:12:11.704517601Z [err]  100.64.0.2 - - [16/Nov/2025 05:12:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T05:12:11.704525750Z [err]  100.64.0.2 - - [16/Nov/2025 05:12:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T05:12:41.699859896Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:12:41.699875102Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:12:41.699884794Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:12:41.699892956Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:12:41.699900786Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:12:41.699909205Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:12:41.699916771Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:12:41.699924991Z [err]  100.64.0.7 - - [16/Nov/2025 05:12:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:12:46.335751586Z [err]  [2025-11-16 05:12:46] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-16T05:12:46.094764
+2025-11-16T05:12:46.335757707Z [err]  [2025-11-16 05:12:46] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-16T05:12:46.335764614Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-16T05:12:47.613738597Z [err]  100.64.0.2 - - [16/Nov/2025 05:12:47] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+2025-11-16T05:12:49.282235395Z [inf]  [DEBUG] Opinion.trade API response - errno: 0, has result: True
+2025-11-16T05:12:49.282239425Z [inf]  [DEBUG] Opinion.trade returned 15 raw markets from API
+2025-11-16T05:12:52.254252020Z [err]  100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:12:52.254260096Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:12:52.254266426Z [err]  100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:12:52.254279909Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:12:52.254319071Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:12:52.254326470Z [err]  100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:12:52.254338989Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:12:52.254344700Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:12:52.254348739Z [err]  100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:12:52.254353698Z [err]  100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:12:52.254360925Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:12:52.254366804Z [err]  100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:12:52.401300898Z [err]  100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:12:52.401320036Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:12:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:12:52.598538819Z [inf]  [INFO] Opinion.trade API: Retrieved 15 active markets (skipped 0 without YES/NO tokens)
+2025-11-16T05:12:52.598563954Z [err]  [2025-11-16 05:12:52] [INFO] [INFO] Fetched 15 events from Opinion.trade
+2025-11-16T05:12:52.598571481Z [err]  INFO:autonomous_engine:[INFO] Fetched 15 events from Opinion.trade
+2025-11-16T05:12:52.602138895Z [err]  [2025-11-16 05:12:52] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 9}
+2025-11-16T05:12:52.602149044Z [err]  INFO:autonomous_engine:[CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 9}
+2025-11-16T05:12:52.602156411Z [err]  [2025-11-16 05:12:52] [INFO] [INFO] 
+2025-11-16T05:12:52.602163644Z [err]  Processing cycle for ChatGPT
+2025-11-16T05:12:52.602170085Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-16T05:12:52.602177782Z [err]  Processing cycle for ChatGPT
+2025-11-16T05:12:52.602184728Z [err]  [2025-11-16 05:12:52] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+2025-11-16T05:12:52.602191874Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 2 categories
+2025-11-16T05:12:53.553444334Z [inf]  [CACHE MISS] Fetched & cached technical data for BTC
+2025-11-16T05:12:53.724750047Z [inf]  [CACHE MISS] Fetched & cached news data for BTC
+2025-11-16T05:12:53.797437219Z [inf]  [CACHE MISS] Fetched & cached volatility data for BTC-USD
+2025-11-16T05:13:13.799707818Z [err]  [2025-11-16 05:13:05] [WARNING] [WARNING] get_latest_price failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:13.799718077Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:13.799754486Z [err]  [2025-11-16 05:13:05] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:13.799759824Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:13.799765091Z [err]  [2025-11-16 05:13:05] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=8 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:13.799770175Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=8 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:13.799775146Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-16T05:13:13.799781718Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-16T05:13:13.799786805Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-16T05:13:13.803139580Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:13:13.803150743Z [err]  100.64.0.5 - - [16/Nov/2025 05:13:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:13:13.803158348Z [err]  INFO:werkzeug:100.64.0.5 - - [16/Nov/2025 05:13:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:13:13.803163575Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:13:13.803165318Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:13:13.803172727Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:13:13.803176587Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:13:13.803184155Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:13:13.803190697Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:13:13.803197628Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:13:13.803204706Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:13:13.803210880Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:13.803218466Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:13.803226486Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:13.803232728Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:13.803239975Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:13:16.923611943Z [err]  [2025-11-16 05:13:16] [WARNING] [WARNING] get_latest_price failed for token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:16.923617888Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:16.923624206Z [err]  [2025-11-16 05:13:16] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:16.923629820Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:16.923635881Z [err]  [2025-11-16 05:13:16] [INFO] [SKIP] ChatGPT - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=4, F=1, V=2 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:16.923641097Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=4, F=1, V=2 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:17.410228417Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:13:17.410235732Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:13:17.410242283Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:13:26.418564876Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:13:26.418573777Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:26.418581749Z [err]  [2025-11-16 05:13:26] [INFO] [SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:26.418584935Z [err]  [2025-11-16 05:13:26] [WARNING] [WARNING] get_latest_price failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:26.418590653Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:26.418591750Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:26.418598472Z [err]  [2025-11-16 05:13:26] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:26.418600382Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:13:26.418606654Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:13:45.978698974Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:13:45.978706834Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:13:45.978712412Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:45.978718697Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:45.978724754Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:13:45.978730510Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:13:45.978736069Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:45.978744060Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:45.978752069Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:13:45.978758894Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:13:45.978765032Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:13:45.978770978Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:13:45.978776959Z [err]  100.64.0.4 - - [16/Nov/2025 05:13:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:13:45.978783504Z [err]  INFO:werkzeug:100.64.0.4 - - [16/Nov/2025 05:13:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:13:45.978790892Z [err]  100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:13:45.978797251Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:13:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:13:45.981741276Z [err]  [2025-11-16 05:13:38] [WARNING] [WARNING] get_latest_price failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:45.981752480Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:45.981760223Z [err]  [2025-11-16 05:13:38] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:45.981766052Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:45.981772253Z [err]  [2025-11-16 05:13:38] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=1, V=3 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:45.981779764Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=1, V=3 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:45.981786696Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:13:45.981793588Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:13:45.981804016Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:13:50.441946053Z [err]  [2025-11-16 05:13:50] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:50.441957750Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:50.441963961Z [err]  [2025-11-16 05:13:50] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=6, F=0, V=7 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:50.441971102Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=6, F=0, V=7 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:50.441984059Z [err]  [2025-11-16 05:13:50] [WARNING] [WARNING] get_latest_price failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:50.441988990Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:52.551806520Z [err]  100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:52.551812500Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:52.551817149Z [err]  100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:13:52.551822085Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:13:52.551826152Z [err]  100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:52.551829753Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:13:52.551833726Z [err]  100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:13:52.551837588Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:13:52.551841074Z [err]  100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:13:52.551844852Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:13:52.551849153Z [err]  100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:13:52.551853270Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:13:52.551856957Z [err]  100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:13:52.552118301Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:13:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:13:57.807394971Z [err]  [2025-11-16 05:13:57] [WARNING] [WARNING] get_latest_price failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:57.807398958Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:57.807406252Z [err]  [2025-11-16 05:13:57] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:57.807411299Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:13:57.807415195Z [err]  [2025-11-16 05:13:57] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:57.807419205Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:13:57.807422969Z [err]  [2025-11-16 05:13:57] [INFO] [INFO] ChatGPT - No opportunities found
+2025-11-16T05:13:57.807427155Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - No opportunities found
+2025-11-16T05:13:57.807430948Z [err]  [2025-11-16 05:13:57] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-16T05:13:57.811020578Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-16T05:13:57.811028634Z [err]  [2025-11-16 05:13:57] [INFO] [INFO] 
+2025-11-16T05:13:57.811036746Z [err]  Processing cycle for Gemini
+2025-11-16T05:13:57.811042873Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-16T05:13:57.811049824Z [err]  Processing cycle for Gemini
+2025-11-16T05:13:57.811056767Z [err]  [2025-11-16 05:13:57] [INFO] [INFO] Gemini - Analyzing 2 categories
+2025-11-16T05:13:57.811063734Z [err]  INFO:autonomous_engine:[INFO] Gemini - Analyzing 2 categories
+2025-11-16T05:13:58.654027447Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-16T05:13:58.654034299Z [inf]  [CACHE HIT] News data for BTC
+2025-11-16T05:13:58.654040817Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-16T05:14:08.644511884Z [err]  100.64.0.2 - - [16/Nov/2025 05:14:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:14:08.644525221Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:14:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:14:08.644533087Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:14:08.644539942Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:14:08.644561858Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:14:08.644563200Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:14:08.644570645Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:14:08.644571170Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:14:08.644578993Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:14:08.644579239Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:08.644587717Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:08.644587989Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:14:08.644594620Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:08.644601063Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:14:08.644602636Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:08.644610301Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:14:38.662487464Z [err]  [2025-11-16 05:14:36] [WARNING] [WARNING] get_latest_price failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:14:38.662505209Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:14:38.662512756Z [err]  [2025-11-16 05:14:36] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:14:38.662519245Z [err]  WARNING:autonomous_engine:[WARNING] Gemini - Price fetch failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:14:38.662526619Z [err]  [2025-11-16 05:14:36] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=5, F=0, V=8 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:14:38.662534418Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=5, F=0, V=8 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:14:38.662540794Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:14:38.662546864Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:14:38.662552742Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:14:38.662559171Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:38.665877126Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:38.665894446Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:14:38.665903301Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:14:38.665911586Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:38.665918456Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:38.665928758Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:14:38.665937502Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:14:38.665943379Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:14:38.665949872Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:14:38.665957855Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:14:38.665965452Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:14:38.665970806Z [err]  100.64.0.6 - - [16/Nov/2025 05:14:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:14:38.665976327Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:14:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:14:38.665982299Z [err]  100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:14:38.665988824Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:14:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:14:58.253179534Z [err]  100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:58.253186311Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:58.253191905Z [err]  100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:14:58.253197936Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:14:58.253204164Z [err]  100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:58.253209456Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:14:58.253215744Z [err]  100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:14:58.253222554Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:14:58.253228693Z [err]  100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:14:58.253234246Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:14:58.253239468Z [err]  100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:14:58.253245669Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:14:58.253251647Z [err]  100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:14:58.253257831Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:14:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:15:08.209350602Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:15:08.209360329Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:15:08.213042631Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:08.213055394Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:08.213062797Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:08.213069428Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:08.216513526Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:15:08.216519983Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:15:08.225417361Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:15:08.225424065Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:15:08.225428855Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:15:08.225432845Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:15:08.301779754Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:15:08.301791781Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:15:08.899897625Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:15:08.899948233Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:15:10.041746216Z [err]  [2025-11-16 05:15:10] [WARNING] [WARNING] get_latest_price failed for token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:15:10.041755078Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:15:10.041763066Z [err]  [2025-11-16 05:15:10] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:15:10.041769884Z [err]  WARNING:autonomous_engine:[WARNING] Gemini - Price fetch failed for token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:15:10.041776686Z [err]  [2025-11-16 05:15:10] [INFO] [SKIP] Gemini - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=1, F=0, V=2 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:15:10.041783147Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=1, F=0, V=2 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:15:10.259285314Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:15:10.259300649Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:15:10.259312923Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:15:40.266209953Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:40.266211908Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:15:40.266224651Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:40.266231683Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:15:40.266237585Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:15:40.266243685Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:40.266248356Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:40.266252407Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:15:40.266256265Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:15:40.266260154Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:15:40.266265301Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:15:40.266269539Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:15:40.266274822Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:15:40.266278658Z [err]  100.64.0.3 - - [16/Nov/2025 05:15:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:15:40.266282400Z [err]  INFO:werkzeug:100.64.0.3 - - [16/Nov/2025 05:15:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:15:40.266286269Z [err]  100.64.0.7 - - [16/Nov/2025 05:15:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:15:47.923457683Z [err]  [2025-11-16 05:15:47] [WARNING] [WARNING] get_latest_price failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:15:47.923465308Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:15:47.923472899Z [err]  [2025-11-16 05:15:47] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:15:47.923479380Z [err]  WARNING:autonomous_engine:[WARNING] Gemini - Price fetch failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:15:47.923487244Z [err]  [2025-11-16 05:15:47] [INFO] [SKIP] Gemini - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=0, N=2, T=1, F=0, V=3 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:15:47.923493538Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=0, N=2, T=1, F=0, V=3 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:15:47.923500084Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:15:47.923507249Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:15:47.923513871Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:15:52.114936073Z [err]  100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:52.114940497Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:52.114945450Z [err]  100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:15:52.114954422Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:15:52.114958505Z [err]  100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:15:52.114962148Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:15:52.114966675Z [err]  100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:52.114971217Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:15:52.114975934Z [err]  100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:15:52.114979957Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:15:52.114984140Z [err]  100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:15:52.114989021Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:15:52.403233901Z [err]  100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:15:52.403242673Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:15:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:16:12.405842622Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:12.405855049Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:12.405862699Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:12.405870732Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:12.405877725Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:16:12.405884749Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:16:12.405891113Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:16:12.405897288Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:16:12.405903300Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:16:12.405912759Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:16:12.405922358Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:16:12.405930122Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:16:12.405935755Z [err]  100.64.0.6 - - [16/Nov/2025 05:16:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:16:12.405941620Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:16:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:16:12.405948463Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:16:12.405954218Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:16:22.365699678Z [err]  [2025-11-16 05:16:22] [WARNING] [WARNING] get_latest_price failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:16:22.365716933Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:16:22.365726253Z [err]  [2025-11-16 05:16:22] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:16:22.365734072Z [err]  WARNING:autonomous_engine:[WARNING] Gemini - Price fetch failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:16:22.365741359Z [err]  [2025-11-16 05:16:22] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:16:22.365749550Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:16:23.094290656Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:16:23.094296083Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:16:23.094305394Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:16:42.619792664Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:16:42.619810695Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:16:42.619819276Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:42.619827366Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:42.619841641Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:42.619852823Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:42.619861303Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:16:42.619872940Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:16:42.619882185Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:16:42.619891186Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:16:42.619898810Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:16:42.619906716Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:16:42.619917777Z [err]  100.64.0.4 - - [16/Nov/2025 05:16:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:16:42.619924418Z [err]  INFO:werkzeug:100.64.0.4 - - [16/Nov/2025 05:16:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:16:42.619931966Z [err]  100.64.0.7 - - [16/Nov/2025 05:16:39] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:16:42.619939695Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:16:39] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:16:52.158159980Z [err]  100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:52.158170551Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:52.158179990Z [err]  100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:16:52.158186605Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:16:52.158192330Z [err]  100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:16:52.158198789Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:16:52.158205079Z [err]  100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:16:52.158210929Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:16:52.158239895Z [err]  100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:52.158244356Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:16:52.158248534Z [err]  100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:16:52.158252528Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:16:52.503208672Z [err]  100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:16:52.503221191Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:16:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:17:00.654800310Z [err]  [2025-11-16 05:17:00] [WARNING] [WARNING] get_latest_price failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:17:00.654806594Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:17:00.654811706Z [err]  [2025-11-16 05:17:00] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:17:00.654819167Z [err]  WARNING:autonomous_engine:[WARNING] Gemini - Price fetch failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:17:00.654825727Z [err]  [2025-11-16 05:17:00] [INFO] [SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=1, N=1, T=1, F=9, V=2 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:17:00.654832646Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=1, N=1, T=1, F=9, V=2 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:17:08.309418597Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:17:08.309427428Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:17:08.315337920Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:08.315344623Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:08.322222668Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:08.322231806Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:08.322238214Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:17:08.322243782Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:17:08.331220674Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:17:08.331233328Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:17:08.331240545Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:17:08.331248037Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:17:08.448055445Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:17:08.448065060Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:17:09.175151175Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:09] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:17:09.175157139Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:09] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:17:38.766438056Z [err]  [2025-11-16 05:17:35] [INFO] [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-16T05:17:38.766467688Z [err]  [2025-11-16 05:17:35] [WARNING] [WARNING] get_latest_price failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:17:38.766480647Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:17:38.766487746Z [err]  [2025-11-16 05:17:35] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:17:38.766494768Z [err]  WARNING:autonomous_engine:[WARNING] Gemini - Price fetch failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:17:38.766501691Z [err]  [2025-11-16 05:17:35] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=8 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:17:38.766512787Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=8 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:17:38.766519163Z [err]  [2025-11-16 05:17:35] [INFO] [INFO] Gemini - No opportunities found
+2025-11-16T05:17:38.766526065Z [err]  INFO:autonomous_engine:[INFO] Gemini - No opportunities found
+2025-11-16T05:17:38.768531253Z [err]  INFO:autonomous_engine:[INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-16T05:17:38.768532109Z [err]  [2025-11-16 05:17:36] [INFO] [SKIP] Qwen - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.768545872Z [err]  [2025-11-16 05:17:35] [INFO] [INFO] 
+2025-11-16T05:17:38.768546072Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.768555841Z [err]  Processing cycle for Qwen
+2025-11-16T05:17:38.768562679Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-16T05:17:38.768569668Z [err]  Processing cycle for Qwen
+2025-11-16T05:17:38.768576280Z [err]  [2025-11-16 05:17:35] [INFO] [INFO] Qwen - Analyzing 2 categories
+2025-11-16T05:17:38.768581783Z [err]  INFO:autonomous_engine:[INFO] Qwen - Analyzing 2 categories
+2025-11-16T05:17:38.768586557Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-16T05:17:38.768590602Z [inf]  [CACHE HIT] News data for BTC
+2025-11-16T05:17:38.768604367Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-16T05:17:38.768610197Z [err]  [2025-11-16 05:17:36] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.768616013Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.768625519Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:17:38.768631478Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:17:38.768640701Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:17:38.770235831Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:17:38.770260402Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:17:38.770268964Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:17:38.770276507Z [err]  [2025-11-16 05:17:37] [INFO] [SKIP] Qwen - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.770284095Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.770293216Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:17:38.770302511Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:17:38.770310050Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:17:38.770317157Z [err]  [2025-11-16 05:17:37] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.770322732Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.770328728Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:17:38.770334137Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:17:38.770341904Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:17:38.770347780Z [err]  [2025-11-16 05:17:37] [INFO] [SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.771676090Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.771683487Z [err]  [2025-11-16 05:17:38] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.771688539Z [err]  [2025-11-16 05:17:38] [INFO] [INFO] Deepseek - Analyzing 2 categories
+2025-11-16T05:17:38.771688925Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-16T05:17:38.771694740Z [err]  [2025-11-16 05:17:38] [INFO] [INFO] Qwen - No opportunities found
+2025-11-16T05:17:38.771699504Z [err]  INFO:autonomous_engine:[INFO] Deepseek - Analyzing 2 categories
+2025-11-16T05:17:38.771700536Z [err]  INFO:autonomous_engine:[INFO] Qwen - No opportunities found
+2025-11-16T05:17:38.771706382Z [err]  [2025-11-16 05:17:38] [INFO] [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-16T05:17:38.771708090Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:38.771713461Z [err]  INFO:autonomous_engine:[INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-16T05:17:38.771719062Z [err]  [2025-11-16 05:17:38] [INFO] [INFO] 
+2025-11-16T05:17:38.771724806Z [err]  Processing cycle for Deepseek
+2025-11-16T05:17:38.771729933Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-16T05:17:38.771735195Z [err]  Processing cycle for Deepseek
+2025-11-16T05:17:38.774221875Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:38.774227747Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:17:38.774231554Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:17:38.774235630Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:38.774239459Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:38.774243550Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:17:38.774247740Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:17:38.774259165Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:17:38.774262969Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:17:38.774266685Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:17:38.774270556Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:17:38.774274663Z [err]  100.64.0.9 - - [16/Nov/2025 05:17:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:17:38.774280904Z [err]  INFO:werkzeug:100.64.0.9 - - [16/Nov/2025 05:17:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:17:38.774284350Z [err]  100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:17:38.774288590Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:17:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:17:38.774292437Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-16T05:17:38.779271226Z [inf]  [CACHE HIT] News data for BTC
+2025-11-16T05:17:38.779279551Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-16T05:17:58.780041997Z [err]  100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:58.780050945Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:58.780056375Z [err]  100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:17:58.780061061Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:17:58.780066409Z [err]  100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:17:58.780072331Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:17:58.780078383Z [err]  100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:58.780084747Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:17:58.780092035Z [err]  100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:17:58.780100351Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:17:58.780109114Z [err]  100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:17:58.780116324Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:17:58.780122599Z [err]  100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:17:58.780132308Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:17:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:18:08.470520973Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:18:08.470553873Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:08.470568826Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:08.470574355Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:08.470579299Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:08.470584247Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:18:08.470588854Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:18:08.470596843Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:18:08.470601869Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:18:08.470608477Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:18:08.470614743Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:18:08.470622556Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:18:08.473852028Z [err]  100.64.0.9 - - [16/Nov/2025 05:18:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:18:08.473878574Z [err]  INFO:werkzeug:100.64.0.9 - - [16/Nov/2025 05:18:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:18:08.667733399Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:18:08.667744169Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:18:28.667733895Z [err]  [2025-11-16 05:18:22] [WARNING] [WARNING] get_latest_price failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:18:28.667741356Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:18:28.667751771Z [err]  [2025-11-16 05:18:22] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:18:28.667756374Z [err]  WARNING:autonomous_engine:[WARNING] Deepseek - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:18:28.667761173Z [err]  [2025-11-16 05:18:22] [INFO] [SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=6, F=1, V=9 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:18:28.667766814Z [err]  INFO:autonomous_engine:[SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=6, F=1, V=9 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:18:28.667772939Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:18:28.667777695Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:18:28.667782037Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:18:38.481391664Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:38.481401184Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:38.481552393Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:18:38.481557314Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:18:38.481563453Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:18:38.481570979Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:18:38.481575940Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:38.481581293Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:38.481588768Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:18:38.481593749Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:18:38.481598348Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:18:38.481605057Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:18:38.481609846Z [err]  100.64.0.3 - - [16/Nov/2025 05:18:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:18:38.481614618Z [err]  INFO:werkzeug:100.64.0.3 - - [16/Nov/2025 05:18:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:18:38.534047448Z [err]  100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:18:38.534052541Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:18:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:18:58.533762102Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:18:58.533772171Z [err]  100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:18:58.533779404Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:18:58.533792352Z [err]  100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:18:58.533810504Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:58.533819330Z [err]  100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:18:58.533826647Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:18:58.533827208Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:18:58.533834596Z [err]  100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:18:58.533839936Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:18:58.533845387Z [err]  100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:58.533852614Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:18:58.533858221Z [err]  100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:18:58.533975478Z [err]  100.64.0.6 - - [16/Nov/2025 05:18:52] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:19:07.555787731Z [err]  [2025-11-16 05:19:07] [WARNING] [WARNING] get_latest_price failed for token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:07.555801051Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:07.555809198Z [err]  [2025-11-16 05:19:07] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:07.555816314Z [err]  WARNING:autonomous_engine:[WARNING] Deepseek - Price fetch failed for token_id=60758352563811967586483946617612387888020603975157290640347371584990829530981: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:07.555823157Z [err]  [2025-11-16 05:19:07] [INFO] [SKIP] Deepseek - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=3, N=2, T=5, F=1, V=8 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:19:07.555830732Z [err]  INFO:autonomous_engine:[SKIP] Deepseek - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=3, N=2, T=5, F=1, V=8 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:19:07.683412444Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:19:07.683430858Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:19:07.683437646Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:19:08.614315707Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:19:08.614323349Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:19:08.614329712Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:19:08.614336037Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:19:08.614341519Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:19:08.614347749Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:19:08.614358566Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:19:08.614365299Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:19:08.614371569Z [err]  100.64.0.6 - - [16/Nov/2025 05:19:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:19:08.614378196Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:19:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:19:08.614383715Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:19:08.614389700Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:19:08.614454394Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:19:08.614458262Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:19:08.614462196Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:19:08.614466234Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:19:28.634931734Z [err]  [2025-11-16 05:19:26] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-16T05:19:26.044694
+2025-11-16T05:19:28.634938340Z [err]  INFO:autonomous_engine:[ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-16T05:19:26.044694
+2025-11-16T05:19:28.634945033Z [err]  [2025-11-16 05:19:26] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-16T05:19:28.634951693Z [err]  INFO:autonomous_engine:[BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-16T05:19:28.635574694Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-16T05:19:28.635583901Z [err]  DEBUG:autonomous_engine:[CACHE] Cleared data cache at start of cycle 2025-11-16T05:19:26.124883
+2025-11-16T05:19:28.635589653Z [inf]  [DEBUG] Opinion.trade API response - errno: 0, has result: True
+2025-11-16T05:19:28.635594689Z [inf]  [DEBUG] Opinion.trade returned 15 raw markets from API
+2025-11-16T05:19:30.772974081Z [inf]  [INFO] Opinion.trade API: Retrieved 15 active markets (skipped 0 without YES/NO tokens)
+2025-11-16T05:19:30.772986225Z [err]  [2025-11-16 05:19:30] [INFO] [INFO] Fetched 15 events from Opinion.trade
+2025-11-16T05:19:30.772993235Z [err]  INFO:autonomous_engine:[INFO] Fetched 15 events from Opinion.trade
+2025-11-16T05:19:30.773000088Z [err]  [2025-11-16 05:19:30] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 9}
+2025-11-16T05:19:30.773006749Z [err]  INFO:autonomous_engine:[CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 9}
+2025-11-16T05:19:30.773014993Z [err]  [2025-11-16 05:19:30] [INFO] [INFO] 
+2025-11-16T05:19:30.773021325Z [err]  Processing cycle for ChatGPT
+2025-11-16T05:19:30.773027406Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-16T05:19:30.773033564Z [err]  Processing cycle for ChatGPT
+2025-11-16T05:19:30.773040105Z [err]  [2025-11-16 05:19:30] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+2025-11-16T05:19:30.773046533Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 2 categories
+2025-11-16T05:19:31.685329057Z [inf]  [CACHE MISS] Fetched & cached technical data for BTC
+2025-11-16T05:19:32.157349812Z [inf]  [CACHE MISS] Fetched & cached news data for BTC
+2025-11-16T05:19:32.795772843Z [inf]  [CACHE MISS] Fetched & cached volatility data for BTC-USD
+2025-11-16T05:19:38.675918298Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:19:38.675927073Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:19:38.675934931Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:19:38.675942749Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:19:38.675949662Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:19:38.675953923Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:19:38.675958428Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:19:38.675965410Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:19:38.675965526Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:19:38.675975258Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:19:38.675976467Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:19:38.675982912Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:19:38.675987719Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:19:38.675993529Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:19:38.675998256Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:19:38.676005322Z [err]  100.64.0.7 - - [16/Nov/2025 05:19:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:19:46.806012056Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:46.806027673Z [err]  [2025-11-16 05:19:46] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=5, V=7 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:19:46.806031831Z [err]  [2025-11-16 05:19:46] [WARNING] [WARNING] get_latest_price failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:46.806040150Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:46.806040400Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=5, V=7 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:19:46.806047923Z [err]  [2025-11-16 05:19:46] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:47.693193701Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-16T05:19:47.693200119Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-16T05:19:47.693205170Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-16T05:19:47.696299541Z [err]  [2025-11-16 05:19:47] [WARNING] [WARNING] get_latest_price failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:47.696303392Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: errno=10004, errmsg=GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:47.696307361Z [err]  [2025-11-16 05:19:47] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:47.696311443Z [err]  WARNING:autonomous_engine:[WARNING] Deepseek - Price fetch failed for token_id=15667508119522618704974492339108806331160935332314347072444716606165452203109: API error 10004 | Message: GetLatestTradeForToken failed. err:needs a pointer to a slice or a map
+2025-11-16T05:19:47.696315681Z [err]  [2025-11-16 05:19:47] [INFO] [SKIP] Deepseek - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=2, N=1, T=5, F=1, V=7 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:19:47.696319865Z [err]  INFO:autonomous_engine:[SKIP] Deepseek - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=2, N=1, T=5, F=1, V=7 | Reason: Failed to fetch market price: API error 10004 - GetLatestTradeForToken failed. e...
+2025-11-16T05:19:47.924162261Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:19:47.924179511Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:19:47.924188034Z [inf]  [CACHE HIT] Volatility data for ETH
