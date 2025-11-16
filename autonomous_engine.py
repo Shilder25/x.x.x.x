@@ -147,7 +147,7 @@ class AutonomousEngine:
         
         # Monitorear órdenes activas con sistema 3-strikes
         logger.info("Starting OrderMonitor to review active positions...")
-        order_monitor = OrderMonitor(self.db, self.opinion_api, self.orchestrator)
+        order_monitor = OrderMonitor(self.opinion_api, self.db, self.orchestrator)
         monitoring_stats = order_monitor.monitor_all_orders()
         results['order_monitoring'] = monitoring_stats
         logger.info(f"OrderMonitor completed: {monitoring_stats}")
