@@ -925,7 +925,8 @@ class TradingDatabase:
         
         cursor.execute('''
         SELECT * FROM autonomous_bets
-        WHERE actual_result IS NULL
+        WHERE actual_result IS NULL 
+        AND status = 'EXECUTED'
         ORDER BY created_at DESC
         LIMIT 50
         ''')

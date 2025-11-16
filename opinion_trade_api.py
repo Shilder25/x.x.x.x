@@ -99,7 +99,7 @@ class OpinionTradeAPI:
             while len(all_markets) < limit:
                 response = self.client.get_markets(
                     topic_type=TopicType.BINARY,
-                    status=TopicStatusFilter.ACTIVATED,
+                    status=TopicStatusFilter.ALL,
                     page=page,
                     limit=batch_size
                 )
@@ -119,7 +119,12 @@ class OpinionTradeAPI:
                     print(f"[PAGINATION] No more markets found on page {page}, stopping")
                     break
                 
-                all_markets.extend(markets)
+                # Filter out RESOLVED markets (we can only bet on active markets)
+                # Note: status is an enum, use getattr to get the name (e.g., "RESOLVED" instead of "TopicStatus.RESOLVED")
+                active_markets = [m for m in markets if getattr(m.status, "name", str(m.status)).upper() not in ['RESOLVED', 'CLOSED', 'CANCELLED']]
+                print(f"[PAGINATION] Page {page}: {len(active_markets)}/{len(markets)} markets are active (filtered out resolved/closed)")
+                
+                all_markets.extend(active_markets)
                 
                 # If we got fewer than batch_size, we've reached the end
                 if len(markets) < batch_size:

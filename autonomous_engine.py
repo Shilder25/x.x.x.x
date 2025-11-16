@@ -951,34 +951,16 @@ class AutonomousEngine:
         token_id = yes_token_id if probability >= 0.5 else no_token_id
         outcome_label = 'YES' if probability >= 0.5 else 'NO'
         
-        # VALIDACIÓN DE PRECIO: Verificar precio actual antes de ejecutar
+        # Get current market price for logging purposes
+        # NOTE: We don't reject based on price difference because AI probability
+        # vs market price difference is EXACTLY what we're trying to exploit
         price_check = self.opinion_api.get_latest_price(token_id)
         
         if price_check.get('success'):
             current_price = price_check.get('price', probability)
-            expected_price = probability
-            
-            # Calcular diferencia porcentual
-            if expected_price > 0:
-                price_diff_pct = abs(current_price - expected_price) / expected_price
-            else:
-                price_diff_pct = 0
-            
-            # Rechazar si el spread es >5% (protección contra slippage excesivo)
-            if price_diff_pct > 0.05:
-                error_msg = f"Price validation failed: expected {expected_price:.4f}, got {current_price:.4f} (diff: {price_diff_pct:.2%})"
-                logger.error(f"{firm_name} - {error_msg}")
-                return {
-                    'status': 'failed',
-                    'error': error_msg,
-                    'error_type': 'price_validation_failed',
-                    'expected_price': expected_price,
-                    'current_price': current_price,
-                    'price_diff': price_diff_pct
-                }
+            logger.info(f"{firm_name} - Market price: {current_price:.4f}, AI probability: {probability:.4f}")
         else:
-            # Si falla la validación de precio, usar probability como fallback pero loggear warning
-            logger.warning(f"{firm_name} - Could not validate price for token {token_id}: {price_check.get('error')}")
+            logger.warning(f"{firm_name} - Could not fetch price for token {token_id}: {price_check.get('error')}")
             current_price = probability
         
         prediction_data = {
