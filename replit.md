@@ -4,6 +4,34 @@ TradingAgents is an autonomous AI-powered prediction market trading system that 
 
 The system is designed for deployment on Railway with automatic daily prediction cycles, comprehensive risk management through a 4-tier adaptive system, and bankroll protection mechanisms. It operates in two modes: TEST mode (small amounts for safe experimentation) and PRODUCTION mode (real trading with larger capital).
 
+# Recent Changes (November 16, 2025)
+
+**Critical Fixes Implemented:**
+
+1. **Pagination Fix** - Resolved "only 2 categories" issue
+   - Implemented multi-page fetching in `opinion_trade_api.py::get_available_events()`
+   - Now fetches up to 200 markets across ALL categories (not just first 20)
+   - Pagination loop walks through pages in 20-market batches until reaching limit or end of data
+   - Each market requires individual `get_market()` call to fetch full details including token IDs
+
+2. **Fee Calculation Fix** - Corrected EV calculation to prevent rejecting positive-EV bets
+   - Refactored `autonomous_engine.py::_calculate_expected_value()` for clarity
+   - Opinion.trade's 3% taker fee now correctly applies ONLY to payout when winning (not to purchase cost)
+   - Formula: `net_ev = gross_ev - fee_cost` where `fee_cost = probability * bet_size * taker_fee`
+   - Verified with unit tests (`test_ev_calculation.py`) - all scenarios pass
+   - Previous formula was mathematically correct but less clear; new version makes fee treatment explicit
+
+3. **Detailed Logging** - Enhanced observability for debugging
+   - Added comprehensive logging throughout `autonomous_engine.py`
+   - Logs show: total events fetched, per-category breakdown, EV calculations, rejection reasons
+   - Uses tagged prefixes: `[PAGINATION]`, `[EV DEBUG]`, `[CATEGORY]`, `[APPROVED BET]`
+   - Enables diagnosis of why system isn't making expected bets
+
+**Testing Status:**
+- ✅ Unit tests for EV calculation pass (4/4 scenarios)
+- ✅ API workflow running without errors
+- ⚠️ End-to-end test from Replit blocked by Opinion.trade geo-restriction (expected; requires Railway deployment)
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
