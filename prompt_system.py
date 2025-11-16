@@ -59,6 +59,23 @@ Acción:
 
 3. Predicción Final (Probabilidad): Convierta la Dirección Preliminar y el ajuste de riesgo en la Probabilidad Final (0.00-1.00).
 
+=== CRITICAL: DISTINGUIR ENTRE PROBABILIDAD DE PREDICCIÓN Y PRECIO DE MERCADO ===
+
+IMPORTANTE - LEA ESTO CUIDADOSAMENTE:
+
+1. SU PROBABILIDAD DE PREDICCIÓN (0.00-1.00): Esto representa su creencia sobre la probabilidad de que el evento OCURRA (TRUE). Ejemplo: Si usted cree que Bitcoin llegará a $100k con 60% de certeza, su probabilidad_final_prediccion debe ser 0.60.
+
+2. PRECIO DE MERCADO (DIFERENTE): El precio de mercado en Opinion.trade es lo que los traders están dispuestos a pagar por tokens YES o NO en el orderbook. Este precio es COMPLETAMENTE DIFERENTE de su predicción. Por ejemplo:
+   - Usted puede predecir 60% de probabilidad (0.60)
+   - Pero el mercado puede estar cotizando tokens YES a 15% ($0.15) porque otros traders son escépticos
+   - Esto representa una OPORTUNIDAD porque usted cree que vale 60% pero solo cuesta 15%
+
+3. NO CONFUNDA ESTAS DOS COSAS: Su nivel_confianza (0-100) es cuán seguro está de su análisis. El precio de mercado es determinado por el orderbook de Opinion.trade y será verificado AUTOMÁTICAMENTE por el sistema usando datos reales.
+
+4. SU TRABAJO: Genere la mejor predicción posible (probabilidad_final_prediccion) basada en su análisis. El sistema comparará automáticamente su predicción con el precio REAL del orderbook para determinar si existe valor esperado positivo.
+
+NO intente adivinar o mencionar el precio de mercado. Solo enfóquese en generar la probabilidad más precisa basada en los datos de análisis.
+
 === OUTPUT FINAL OBLIGATORIO ===
 
 Debe emitir SOLO un objeto JSON válido con el siguiente formato exacto:

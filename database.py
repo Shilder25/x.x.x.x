@@ -97,9 +97,15 @@ class TradingDatabase:
         try:
             cursor.execute("SELECT status FROM autonomous_bets LIMIT 1")
         except sqlite3.OperationalError:
-            cursor.execute("ALTER TABLE autonomous_bets ADD COLUMN status TEXT DEFAULT 'EXECUTED'")
-            cursor.execute("ALTER TABLE autonomous_bets ADD COLUMN failure_reason TEXT")
-            cursor.execute("ALTER TABLE autonomous_bets ADD COLUMN market_price REAL")
+            try:
+                # Migration without nested transactions - rely on outer transaction
+                cursor.execute("ALTER TABLE autonomous_bets ADD COLUMN status TEXT DEFAULT 'EXECUTED'")
+                cursor.execute("ALTER TABLE autonomous_bets ADD COLUMN failure_reason TEXT")
+                cursor.execute("ALTER TABLE autonomous_bets ADD COLUMN market_price REAL")
+                print("Database migrated: Added status, failure_reason, and market_price columns to autonomous_bets table")
+            except Exception as migration_error:
+                print(f"[ERROR] Migration failed: {migration_error}. Transaction will be rolled back by outer handler.")
+                raise
         
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS autonomous_cycles (
@@ -512,18 +518,26 @@ class TradingDatabase:
         
         return bet_id
     
-    def update_bet_status(self, bet_id: int, status: str, failure_reason: str = None):
+    def update_bet_status(self, bet_id: int, status: str, failure_reason: str = None, bet_size: float = None):
         """
         Actualiza el estado de una decisión AI (APPROVED → EXECUTED o FAILED).
+        También puede actualizar el bet_size si cambió durante re-validación.
         """
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
-        cursor.execute('''
-        UPDATE autonomous_bets
-        SET status = ?, failure_reason = ?
-        WHERE id = ?
-        ''', (status, failure_reason, bet_id))
+        if bet_size is not None:
+            cursor.execute('''
+            UPDATE autonomous_bets
+            SET status = ?, failure_reason = ?, bet_size = ?
+            WHERE id = ?
+            ''', (status, failure_reason, bet_size, bet_id))
+        else:
+            cursor.execute('''
+            UPDATE autonomous_bets
+            SET status = ?, failure_reason = ?
+            WHERE id = ?
+            ''', (status, failure_reason, bet_id))
         
         conn.commit()
         conn.close()
@@ -659,7 +673,10 @@ class TradingDatabase:
                 'execution_timestamp': row[25],
                 'resolution_timestamp': row[26],
                 'simulation_mode': row[27],
-                'created_at': row[28]
+                'status': row[28],
+                'failure_reason': row[29],
+                'market_price': row[30],
+                'created_at': row[31]
             })
         
         return bets
@@ -940,7 +957,10 @@ class TradingDatabase:
                 'fundamental_analysis': row[20],
                 'volatility_score': row[21],
                 'volatility_analysis': row[22],
-                'execution_timestamp': row[25]
+                'execution_timestamp': row[25],
+                'status': row[28],
+                'failure_reason': row[29],
+                'market_price': row[30]
             })
         
         return positions

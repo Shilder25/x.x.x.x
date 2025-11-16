@@ -319,51 +319,6 @@ class AutonomousEngine:
         logger.analysis(firm_name, f"Cycle complete: {firm_result['bets_placed']} bets placed, {firm_result['bets_skipped']} skipped, {firm_result['events_analyzed']} events analyzed")
         return firm_result
     
-    def _process_firm_cycle(self, firm_name: str, events: List[Dict]) -> Dict:
-        """
-        Procesa el ciclo completo para una IA específica (método legacy).
-        Mantenido para compatibilidad.
-        """
-        tier_status = self.risk_guard.get_tier_status(firm_name)
-        bankroll_manager = self.bankroll_managers[firm_name]
-        
-        firm_result = {
-            'firm_name': firm_name,
-            'events_analyzed': 0,
-            'bets_placed': 0,
-            'bets_skipped': 0,
-            'total_bet_amount': 0,
-            'risk_tier': tier_status.get('current_tier', 'conservative'),
-            'current_balance': tier_status.get('current_balance', 0),
-            'decisions': []
-        }
-        
-        active_positions_response = self.opinion_api.get_active_positions()
-        active_positions = active_positions_response.get('positions', []) if active_positions_response.get('success') else []
-        
-        for event in events[:10]:
-            decision = self._analyze_event_for_firm(
-                firm_name=firm_name,
-                event=event,
-                bankroll_manager=bankroll_manager,
-                active_positions=active_positions
-            )
-            
-            firm_result['events_analyzed'] += 1
-            firm_result['decisions'].append(decision)
-            
-            if decision.get('action') == 'BET':
-                firm_result['bets_placed'] += 1
-                firm_result['total_bet_amount'] += decision.get('bet_size', 0)
-            else:
-                firm_result['bets_skipped'] += 1
-            
-            tier_config = tier_status.get('tier_config', {})
-            if firm_result['bets_placed'] >= tier_config.get('max_concurrent_positions', 2):
-                break
-        
-        return firm_result
-    
     def _evaluate_event_opportunity(self, firm_name: str, event: Dict,
                                     bankroll_manager: BankrollManager,
                                     active_positions: List[Dict]) -> Dict:
@@ -624,6 +579,12 @@ class AutonomousEngine:
             decision['action'] = 'SKIP'
             decision['reason'] = f"Bankroll check failed at execution: {bet_reason}"
             decision['bankroll_check_failed'] = True
+            
+            # Update APPROVED decision to FAILED for transparency
+            approved_bet_id = opportunity.get('approved_bet_id')
+            if approved_bet_id:
+                self.db.update_bet_status(approved_bet_id, 'FAILED', decision['reason'])
+            
             return decision
         
         # RE-CALCULAR bet size con bankroll ACTUAL (reducido por apuestas anteriores)
@@ -634,6 +595,12 @@ class AutonomousEngine:
             decision['action'] = 'SKIP'
             decision['reason'] = f"Bet size recalculation returned 0: {bet_calculation.get('reason', 'Unknown')}"
             decision['bet_size_recalc_failed'] = True
+            
+            # Update APPROVED decision to FAILED for transparency
+            approved_bet_id = opportunity.get('approved_bet_id')
+            if approved_bet_id:
+                self.db.update_bet_status(approved_bet_id, 'FAILED', decision['reason'])
+            
             return decision
         
         # Usar el bet_size RE-CALCULADO (puede ser menor que el original)
@@ -655,6 +622,12 @@ class AutonomousEngine:
             decision['action'] = 'SKIP'
             decision['reason'] = f"Risk check failed at execution: {risk_reason}"
             print(f"[RISK BLOCK] {firm_name} - {risk_reason}")
+            
+            # Update APPROVED decision to FAILED for transparency
+            approved_bet_id = opportunity.get('approved_bet_id')
+            if approved_bet_id:
+                self.db.update_bet_status(approved_bet_id, 'FAILED', decision['reason'])
+            
             return decision
         
         # EJECUTAR PRIMERO - solo persistir si tiene éxito
@@ -723,11 +696,12 @@ class AutonomousEngine:
             # Check if we have an approved_bet_id to update, otherwise create new
             approved_bet_id = opportunity.get('approved_bet_id')
             if approved_bet_id:
-                # Update APPROVED decision to EXECUTED
-                self.db.update_bet_status(approved_bet_id, 'EXECUTED', None)
+                # Update APPROVED decision to EXECUTED with actual bet_size used
+                self.db.update_bet_status(approved_bet_id, 'EXECUTED', None, bet_size)
                 bet_id = approved_bet_id
             else:
-                # Legacy flow - create new bet with EXECUTED status
+                # Legacy flow - create new bet with EXECUTED status (should not happen in new flow)
+                logger.warning(f"[LEGACY FLOW] {firm_name} - Creating new bet without approved_bet_id. This should not happen in new transparency flow.")
                 bet_data['status'] = 'EXECUTED'
                 bet_id = self.db.save_autonomous_bet(bet_data)
             
@@ -740,183 +714,6 @@ class AutonomousEngine:
             decision['action'] = 'ERROR'
             decision['reason'] = f"Persistence failed after successful execution (rolled back): {persist_error}"
             decision['error'] = str(persist_error)
-        
-        return decision
-    
-    def _analyze_event_for_firm(self, firm_name: str, event: Dict,
-                                bankroll_manager: BankrollManager,
-                                active_positions: List[Dict]) -> Dict:
-        """
-        Analiza un evento específico y decide si apostar (método legacy con ejecución inmediata).
-        Usado por el flujo single-category antiguo.
-        """
-        event_id = event.get('id', 'unknown')
-        event_description = event.get('description', event.get('title', 'Unknown event'))
-        category = event.get('category', 'general')
-        market_id = event.get('market_id')  # Necesario para price history
-        
-        decision = {
-            'event_id': event_id,
-            'event_description': event_description,
-            'category': category,
-            'timestamp': datetime.now().isoformat(),
-            'action': 'SKIP',
-            'reason': '',
-            'bet_size': 0,
-            'probability': 0
-        }
-        
-        symbol = self._extract_symbol_from_event(event)
-        
-        try:
-            prediction = self._get_firm_prediction(firm_name, event_description, symbol or '', market_id)
-            
-            if 'error' in prediction:
-                decision['reason'] = f"Prediction error: {prediction.get('error')}"
-                return decision
-            
-            probability = prediction.get('probabilidad_final_prediccion', 0.5)
-            confidence = prediction.get('nivel_confianza', 50)
-            
-            # Obtener precio real del mercado para cálculo de EV preciso
-            # Determinar qué lado comprar basado en probability
-            buying_yes = probability >= 0.5
-            token_id = event.get('yes_token_id') if buying_yes else event.get('no_token_id')
-            
-            if not token_id:
-                decision['reason'] = "Missing token_id - cannot fetch market price"
-                return decision
-            
-            price_response = self.opinion_api.get_latest_price(token_id)
-            if not price_response.get('success'):
-                decision['reason'] = f"Failed to fetch market price: {price_response.get('error')}"
-                return decision
-            
-            market_price = price_response.get('price')
-            if market_price is None:
-                decision['reason'] = "Market price unavailable"
-                return decision
-            
-            # CRÍTICO: Ajustar probabilidad según el lado que compramos
-            # Si compramos YES → usar probability tal cual
-            # Si compramos NO → usar (1 - probability) porque estamos apostando al evento NO ocurra
-            side_probability = probability if buying_yes else (1 - probability)
-            
-            # Calcular EV con fees (retorna dict con gross_ev y net_ev)
-            ev_calc = self._calculate_expected_value(
-                probability=side_probability,  # Probabilidad del LADO que compramos
-                market_price=market_price,  # Precio real del mercado (garantizado no None)
-                bet_size=10.0
-            )
-            
-            decision['probability'] = probability  # Guardar probability original del AI
-            decision['side_probability'] = side_probability  # Guardar probability del lado que compramos
-            decision['confidence'] = confidence
-            decision['expected_value'] = ev_calc['net_ev']  # Usar net EV
-            decision['gross_ev'] = ev_calc['gross_ev']
-            decision['fee_cost'] = ev_calc['fee_cost']
-            
-            # CRÍTICO: Usar side_probability para decisiones de bankroll (no probability original)
-            should_bet, bet_reason = bankroll_manager.should_bet(side_probability, confidence, ev_calc['net_ev'])
-            
-            if not should_bet:
-                decision['reason'] = bet_reason
-                return decision
-            
-            bet_calculation = bankroll_manager.calculate_bet_size(side_probability, confidence, ev_calc['net_ev'])
-            
-            if bet_calculation.get('bet_size', 0) == 0:
-                decision['reason'] = bet_calculation.get('reason', 'Bet size calculation returned 0')
-                return decision
-            
-            bet_size = bet_calculation['bet_size']
-            
-            allowed, risk_reason = self.risk_guard.can_place_bet(
-                firm_name=firm_name,
-                bet_amount=bet_size,
-                active_positions=active_positions
-            )
-            
-            if not allowed:
-                decision['reason'] = risk_reason or 'Risk check failed'
-                print(f"[RISK BLOCK] {firm_name} - {risk_reason}")
-                return decision
-            
-            # EJECUTAR PRIMERO - solo persistir si tiene éxito
-            execution_result = self._execute_bet(
-                firm_name=firm_name,
-                event=event,
-                event_description=event_description,
-                bet_size=bet_size,
-                probability=probability,  # CORRECCIÓN: Usar probability ORIGINAL para determinar lado
-                prediction=prediction
-            )
-            decision['execution'] = execution_result
-            
-            # Si la ejecución falló, retornar sin persistir
-            if execution_result.get('status') != 'success':
-                decision['action'] = 'SKIP'
-                decision['reason'] = f"Execution failed: {execution_result.get('error', 'Unknown error')}"
-                print(f"[EXECUTION FAILED] {firm_name} - {decision['reason']}")
-                return decision
-            
-            # Solo si la ejecución fue exitosa → persistir (con rollback si falla)
-            decision['action'] = 'BET'
-            decision['bet_size'] = bet_size
-            decision['bet_calculation'] = bet_calculation
-            decision['reason'] = f"Approved: Net EV={ev_calc['net_ev']:.2f}, Prob={probability:.2%}, Conf={confidence}%"
-            
-            try:
-                # CRÍTICO: Usar side_probability para bankroll ledger correcto
-                bankroll_manager.record_bet(bet_size, side_probability, event_id, event_description)
-                
-                bet_data = {
-                    'firm_name': firm_name,
-                    'event_id': event_id,
-                    'event_description': event_description,
-                    'category': category,
-                    'bet_size': bet_size,
-                    'probability': side_probability,  # CRÍTICO: Usar side_probability
-                    'confidence': confidence,
-                    'expected_value': ev_calc['net_ev'],
-                    'betting_strategy': bankroll_manager.strategy.value,
-                    'reasoning': decision.get('reason'),
-                    'execution_timestamp': datetime.now().isoformat(),
-                    'simulation_mode': 0,
-                    'sentiment_score': prediction.get('sentiment_score', 5),
-                    'sentiment_analysis': prediction.get('sentiment_analysis', ''),
-                    'news_score': prediction.get('news_score', 5),
-                    'news_analysis': prediction.get('news_analysis', ''),
-                    'technical_score': prediction.get('technical_score', 5),
-                    'technical_analysis': prediction.get('technical_analysis', ''),
-                    'fundamental_score': prediction.get('fundamental_score', 5),
-                    'fundamental_analysis': prediction.get('fundamental_analysis', ''),
-                    'volatility_score': prediction.get('volatility_score', 5),
-                    'volatility_analysis': prediction.get('volatility_analysis', ''),
-                    'probability_reasoning': prediction.get('probability_reasoning', ''),
-                    'market_volume': float(event.get('volume', 0)) if event.get('volume') else None,
-                    'market_yes_pool': None,
-                    'market_no_pool': None
-                }
-                
-                # Log warning if probability_reasoning is missing (transparency chain validation)
-                if not bet_data.get('probability_reasoning'):
-                    print(f"[WARNING] {firm_name} - Missing probability_reasoning in prediction for event: {event_description[:50]}")
-                
-                bet_id = self.db.save_autonomous_bet(bet_data)
-                decision['bet_id'] = bet_id
-                
-            except Exception as persist_error:
-                # ROLLBACK: Revertir bankroll mutation si persistence falla
-                bankroll_manager.rollback_last_bet()
-                print(f"[PERSISTENCE ERROR] {firm_name} - Bet executed but persistence failed, bankroll rolled back: {persist_error}")
-                decision['action'] = 'ERROR'
-                decision['reason'] = f"Persistence failed after successful execution (rolled back): {persist_error}"
-                decision['error'] = str(persist_error)
-            
-        except Exception as e:
-            decision['reason'] = f"Exception during analysis: {str(e)}"
-            decision['error'] = str(e)
         
         return decision
     
