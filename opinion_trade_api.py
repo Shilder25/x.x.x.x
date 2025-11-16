@@ -71,12 +71,12 @@ class OpinionTradeAPI:
             print(f"✗ Failed to initialize Opinion.trade SDK: {e}")
             self.client = None
     
-    def get_available_events(self, limit: int = 20, category: Optional[str] = None) -> Dict:
+    def get_available_events(self, limit: int = 200, category: Optional[str] = None) -> Dict:
         """
-        Fetch list of available markets from Opinion.trade for autonomous betting.
+        Fetch ALL available markets from Opinion.trade using pagination.
         
         Args:
-            limit: Maximum number of markets to retrieve (default 20, max 20 per SDK limit)
+            limit: Maximum total markets to retrieve (default 200, fetched in batches of 20)
             category: Optional category filter (currently not supported by SDK)
         
         Returns:
@@ -90,134 +90,154 @@ class OpinionTradeAPI:
             }
         
         try:
-            # Get active binary markets (SDK max limit: 20)
-            response = self.client.get_markets(
-                topic_type=TopicType.BINARY,
-                status=TopicStatusFilter.ACTIVATED,
-                page=1,
-                limit=min(limit, 20)  # SDK enforces max 20
-            )
+            all_markets = []
+            page = 1
+            batch_size = 20  # SDK enforces max 20 per request
+            last_error = None
             
-            print(f"[DEBUG] Opinion.trade API response - errno: {response.errno}, has result: {hasattr(response, 'result')}")
-            
-            if response.errno == 0:
+            # Fetch markets in batches until we reach the limit or no more markets
+            while len(all_markets) < limit:
+                response = self.client.get_markets(
+                    topic_type=TopicType.BINARY,
+                    status=TopicStatusFilter.ACTIVATED,
+                    page=page,
+                    limit=batch_size
+                )
+                
+                print(f"[PAGINATION] Page {page}: errno={response.errno}, has_result={hasattr(response, 'result')}")
+                
+                if response.errno != 0:
+                    print(f"[PAGINATION] Error on page {page}: {response.errmsg}")
+                    last_error = response.errmsg
+                    break
+                
                 markets = response.result.list
-                print(f"[DEBUG] Opinion.trade returned {len(markets)} raw markets from API")
+                print(f"[PAGINATION] Page {page} returned {len(markets)} markets")
                 
-                # Convert SDK market objects to our event format
-                events = []
-                skipped_count = 0
+                if not markets:
+                    # No more markets available
+                    print(f"[PAGINATION] No more markets found on page {page}, stopping")
+                    break
                 
-                for market in markets:
-                    try:
-                        # Fetch full market details to get options/tokens
-                        # NOTE: get_markets() returns markets WITHOUT options field
-                        # We need to call get_market(id) for each market to get tokens
-                        market_details_response = self.client.get_market(market.market_id)
-                        
-                        if market_details_response.errno != 0:
-                            print(f"[WARNING] Failed to get details for market {market.market_id}: {market_details_response.errmsg}")
-                            skipped_count += 1
-                            continue
-                        
-                        market_full = market_details_response.result.data
-                        
-                        # Derive category from market title (comprehensive keyword matching)
-                        title_lower = market.market_title.lower()
-                        
-                        # Crypto currencies
-                        if any(keyword in title_lower for keyword in ['bitcoin', 'btc', 'ethereum', 'eth', 'crypto', 'cryptocurrency']):
-                            category = 'Crypto'
-                        
-                        # Interest Rates & Monetary Policy
-                        elif any(keyword in title_lower for keyword in ['fomc', 'ecb', 'boj', 'fed', 'federal reserve', 'interest rate', 'rate decision', 'rates decision', 'monetary policy', 'central bank']):
-                            category = 'Rates'
-                        
-                        # Commodities
-                        elif any(keyword in title_lower for keyword in ['gold', 'comex', 'silver', 'oil', 'commodity', 'commodities', 'wti', 'brent']):
-                            category = 'Commodities'
-                        
-                        # Inflation & CPI
-                        elif any(keyword in title_lower for keyword in ['inflation', 'cpi', 'consumer price', 'pce', 'deflation']):
-                            category = 'Inflation'
-                        
-                        # Employment & Jobs
-                        elif any(keyword in title_lower for keyword in ['unemployment', 'jobs', 'payroll', 'employment', 'jobless', 'labor market']):
-                            category = 'Employment'
-                        
-                        # Stock Markets & Finance
-                        elif any(keyword in title_lower for keyword in ['stock', 'nasdaq', 's&p', 'dow', 'equity', 'market', 'shares']):
-                            category = 'Finance'
-                        
-                        # Politics & Elections
-                        elif any(keyword in title_lower for keyword in ['election', 'vote', 'president', 'congress', 'senate', 'political']):
-                            category = 'Politics'
-                        
-                        # Sports (filtered out later)
-                        elif any(keyword in title_lower for keyword in ['sports', 'nfl', 'nba', 'mlb', 'nhl', 'soccer', 'football', 'basketball']):
-                            category = 'Sports'
-                        
-                        # Fallback
-                        else:
-                            category = 'Other'
-                        
-                        # Extract token IDs directly from market attributes
-                        # Opinion.trade SDK stores tokens as direct attributes, not in an options array
-                        yes_token_id = getattr(market_full, 'yes_token_id', None)
-                        no_token_id = getattr(market_full, 'no_token_id', None)
-                        yes_label = getattr(market_full, 'yes_label', 'YES')
-                        no_label = getattr(market_full, 'no_label', 'NO')
-                        
-                        # Skip markets without binary YES/NO tokens
-                        if not yes_token_id or not no_token_id:
-                            skipped_count += 1
-                            print(f"[WARNING] Skipping market {market.market_id} '{market.market_title[:50]}...' - missing binary tokens (yes={yes_token_id}, no={no_token_id})")
-                            continue
-                        
-                        events.append({
-                            'event_id': str(market.market_id),
-                            'market_id': market.market_id,
-                            'title': market.market_title,
-                            'description': market.rules if hasattr(market, 'rules') and market.rules else market.market_title,
-                            'category': category,
-                            'condition_id': market.condition_id,
-                            'status': str(market.status),
-                            'quote_token': market.quote_token,
-                            'chain_id': market.chain_id,
-                            'yes_label': getattr(market, 'yes_label', 'YES'),
-                            'no_label': getattr(market, 'no_label', 'NO'),
-                            'yes_token_id': yes_token_id,
-                            'no_token_id': no_token_id,
-                            'volume': getattr(market, 'volume', '0'),
-                            'created_at': getattr(market, 'created_at', 0),
-                            'cutoff_at': getattr(market, 'cutoff_at', 0)
-                        })
-                    except Exception as e:
-                        print(f"[ERROR] Failed to convert market {getattr(market, 'market_id', 'unknown')}: {e}")
-                        continue
+                all_markets.extend(markets)
                 
-                print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets (skipped {skipped_count} without YES/NO tokens)")
-                return {
-                    'success': True,
-                    'count': len(events),
-                    'events': events,
-                    'message': f'Retrieved {len(events)} available markets from Opinion.trade (skipped {skipped_count})'
-                }
-            else:
-                # Handle specific error codes
-                error_msg = response.errmsg
-                if response.errno == 10403 and "Invalid area" in error_msg:
-                    error_msg = (
-                        "Geographic restriction detected. Opinion.trade API blocked this request. "
-                        "This code must run from Railway deployment in US West region (not from Replit). "
-                        "Please ensure you're running this from the Railway production environment."
-                    )
+                # If we got fewer than batch_size, we've reached the end
+                if len(markets) < batch_size:
+                    print(f"[PAGINATION] Got {len(markets)} < {batch_size}, reached end of markets")
+                    break
                 
+                page += 1
+            
+            # Check if we got any markets at all
+            if not all_markets:
                 return {
                     'success': False,
-                    'error': f'API error {response.errno}',
-                    'message': error_msg
+                    'error': last_error or 'No markets available',
+                    'events': []
                 }
+            
+            markets = all_markets[:limit]  # Respect the limit
+            print(f"[PAGINATION] Total markets fetched: {len(markets)} across {page} page(s)")
+            
+            # Convert SDK market objects to our event format
+            events = []
+            skipped_count = 0
+            
+            for market in markets:
+                try:
+                    # Fetch full market details to get options/tokens
+                    # NOTE: get_markets() returns markets WITHOUT options field
+                    # We need to call get_market(id) for each market to get tokens
+                    market_details_response = self.client.get_market(market.market_id)
+                    
+                    if market_details_response.errno != 0:
+                        print(f"[WARNING] Failed to get details for market {market.market_id}: {market_details_response.errmsg}")
+                        skipped_count += 1
+                        continue
+                    
+                    market_full = market_details_response.result.data
+                    
+                    # Derive category from market title (comprehensive keyword matching)
+                    title_lower = market.market_title.lower()
+                    
+                    # Crypto currencies
+                    if any(keyword in title_lower for keyword in ['bitcoin', 'btc', 'ethereum', 'eth', 'crypto', 'cryptocurrency']):
+                        category = 'Crypto'
+                    
+                    # Interest Rates & Monetary Policy
+                    elif any(keyword in title_lower for keyword in ['fomc', 'ecb', 'boj', 'fed', 'federal reserve', 'interest rate', 'rate decision', 'rates decision', 'monetary policy', 'central bank']):
+                        category = 'Rates'
+                    
+                    # Commodities
+                    elif any(keyword in title_lower for keyword in ['gold', 'comex', 'silver', 'oil', 'commodity', 'commodities', 'wti', 'brent']):
+                        category = 'Commodities'
+                    
+                    # Inflation & CPI
+                    elif any(keyword in title_lower for keyword in ['inflation', 'cpi', 'consumer price', 'pce', 'deflation']):
+                        category = 'Inflation'
+                    
+                    # Employment & Jobs
+                    elif any(keyword in title_lower for keyword in ['unemployment', 'jobs', 'payroll', 'employment', 'jobless', 'labor market']):
+                        category = 'Employment'
+                    
+                    # Stock Markets & Finance
+                    elif any(keyword in title_lower for keyword in ['stock', 'nasdaq', 's&p', 'dow', 'equity', 'market', 'shares']):
+                        category = 'Finance'
+                    
+                    # Politics & Elections
+                    elif any(keyword in title_lower for keyword in ['election', 'vote', 'president', 'congress', 'senate', 'political']):
+                        category = 'Politics'
+                    
+                    # Sports (filtered out later)
+                    elif any(keyword in title_lower for keyword in ['sports', 'nfl', 'nba', 'mlb', 'nhl', 'soccer', 'football', 'basketball']):
+                        category = 'Sports'
+                    
+                    # Fallback
+                    else:
+                        category = 'Other'
+                    
+                    # Extract token IDs directly from market attributes
+                    # Opinion.trade SDK stores tokens as direct attributes, not in an options array
+                    yes_token_id = getattr(market_full, 'yes_token_id', None)
+                    no_token_id = getattr(market_full, 'no_token_id', None)
+                    yes_label = getattr(market_full, 'yes_label', 'YES')
+                    no_label = getattr(market_full, 'no_label', 'NO')
+                    
+                    # Skip markets without binary YES/NO tokens
+                    if not yes_token_id or not no_token_id:
+                        skipped_count += 1
+                        print(f"[WARNING] Skipping market {market.market_id} '{market.market_title[:50]}...' - missing binary tokens (yes={yes_token_id}, no={no_token_id})")
+                        continue
+                    
+                    events.append({
+                        'event_id': str(market.market_id),
+                        'market_id': market.market_id,
+                        'title': market.market_title,
+                        'description': market.rules if hasattr(market, 'rules') and market.rules else market.market_title,
+                        'category': category,
+                        'condition_id': market.condition_id,
+                        'status': str(market.status),
+                        'quote_token': market.quote_token,
+                        'chain_id': market.chain_id,
+                        'yes_label': getattr(market, 'yes_label', 'YES'),
+                        'no_label': getattr(market, 'no_label', 'NO'),
+                        'yes_token_id': yes_token_id,
+                        'no_token_id': no_token_id,
+                        'volume': getattr(market, 'volume', '0'),
+                        'created_at': getattr(market, 'created_at', 0),
+                        'cutoff_at': getattr(market, 'cutoff_at', 0)
+                    })
+                except Exception as e:
+                    print(f"[ERROR] Failed to convert market {getattr(market, 'market_id', 'unknown')}: {e}")
+                    continue
+            
+            print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets (skipped {skipped_count} without YES/NO tokens)")
+            return {
+                'success': True,
+                'count': len(events),
+                'events': events,
+                'message': f'Retrieved {len(events)} available markets from Opinion.trade (skipped {skipped_count})'
+            }
         
         except Exception as e:
             return {

@@ -163,8 +163,8 @@ class AutonomousEngine:
         """
         events_by_category = {}
         
-        # Get available events (Opinion.trade SDK max limit: 20 per request)
-        all_events_response = self.opinion_api.get_available_events(limit=20)
+        # Get ALL available events using pagination (fetches up to 200 events across all categories)
+        all_events_response = self.opinion_api.get_available_events(limit=200)
         
         if not all_events_response.get('success'):
             error_msg = all_events_response.get('message', 'Unknown error')
@@ -434,6 +434,13 @@ class AutonomousEngine:
             
             # CRÍTICO: Usar side_probability para decisiones de bankroll (no probability original)
             should_bet, bet_reason = bankroll_manager.should_bet(side_probability, confidence, ev_calc['net_ev'])
+            
+            # LOGGING DETALLADO para debugging
+            print(f"[EV DEBUG] {firm_name} - Event: {event_description[:60]}")
+            print(f"[EV DEBUG]   AI Probability: {probability:.2%} | Side Probability: {side_probability:.2%} | Confidence: {confidence}%")
+            print(f"[EV DEBUG]   Market Price: {market_price:.2%} | Buying: {'YES' if buying_yes else 'NO'}")
+            print(f"[EV DEBUG]   Gross EV: ${ev_calc['gross_ev']:.2f} | Net EV: ${ev_calc['net_ev']:.2f} | Fee: ${ev_calc['fee_cost']:.2f}")
+            print(f"[EV DEBUG]   Should Bet: {should_bet} | Reason: {bet_reason}")
             
             if not should_bet:
                 evaluation['reason'] = bet_reason
@@ -870,6 +877,9 @@ class AutonomousEngine:
         """
         Calcula el valor esperado de una apuesta con fees reales de Opinion.trade.
         
+        IMPORTANTE: Opinion.trade cobra el fee SOLO cuando GANAS (sobre el payout), 
+        NO al comprar los tokens.
+        
         Args:
             probability: Probabilidad estimada de que ocurra el evento (0-1)
             market_price: Precio actual del mercado (0-1). Si None, usa probability como proxy
@@ -882,24 +892,27 @@ class AutonomousEngine:
         if market_price is None:
             market_price = probability
         
-        # En mercados binarios: payout = 1 si gana, 0 si pierde
-        # Costo de entrada = market_price (lo que pagas por el token)
-        # Expected payout = probability * 1 = probability
-        # Gross EV = (expected_payout - cost) * bet_size
-        gross_ev = (probability - market_price) * bet_size
-        
         # Obtener fees cacheados de Opinion.trade
         fees_response = self.opinion_api.get_fee_rates(use_cache=True)
         if fees_response.get('success'):
-            taker_fee = fees_response.get('taker_fee', 0.02)
+            taker_fee = fees_response.get('taker_fee', 0.03)
         else:
-            taker_fee = 0.02  # Fallback conservador (2%)
+            taker_fee = 0.03  # Fallback conservador (3%)
         
-        # Fees se aplican al notional ejecutado (market_price * bet_size)
-        executed_notional = market_price * bet_size
-        fee_cost = executed_notional * taker_fee
+        # CÁLCULO CORRECTO DE EV CON FEES:
+        # Opinion.trade cobra el fee SOLO del payout cuando GANAS (no al comprar)
         
-        # Net EV = Gross EV - fees
+        # 1. Costo de entrada (SIN fee): market_price * bet_size
+        cost = market_price * bet_size
+        
+        # 2. Gross EV (sin considerar fees): diferencia entre probabilidad real y precio de mercado
+        gross_ev = (probability - market_price) * bet_size
+        
+        # 3. Fee esperado: SOLO se paga si ganas, por eso multiplicamos por probability
+        #    Este es el fee que Opinion.trade descuenta del payout
+        fee_cost = probability * bet_size * taker_fee
+        
+        # 4. Net EV (con fees): Gross EV menos el fee esperado
         net_ev = gross_ev - fee_cost
         
         return {
