@@ -50,6 +50,9 @@ class AutonomousEngine:
         self.db = database
         self.learning_system = LearningSystem(database)
         
+        # ALWAYS use real betting mode (no simulation)
+        self.simulation_mode = 0
+        
         self.opinion_api = OpinionTradeAPI()
         self.orchestrator = FirmOrchestrator()
         

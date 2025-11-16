@@ -27,9 +27,16 @@ The system is designed for deployment on Railway with automatic daily prediction
    - Uses tagged prefixes: `[PAGINATION]`, `[EV DEBUG]`, `[CATEGORY]`, `[APPROVED BET]`
    - Enables diagnosis of why system isn't making expected bets
 
+4. **Simulation Mode Bug Fix** - Fixed AttributeError crash
+   - Added `self.simulation_mode = 0` to `AutonomousEngine.__init__()` 
+   - System now always operates in real betting mode (no simulation)
+   - Fixed crash: "AttributeError: 'AutonomousEngine' object has no attribute 'simulation_mode'"
+   - All AI decisions are now saved to database with correct mode flag
+
 **Testing Status:**
 - ✅ Unit tests for EV calculation pass (4/4 scenarios)
 - ✅ API workflow running without errors
+- ✅ Simulation mode bug fixed - system no longer crashes on startup
 - ⚠️ End-to-end test from Replit blocked by Opinion.trade geo-restriction (expected; requires Railway deployment)
 
 # User Preferences

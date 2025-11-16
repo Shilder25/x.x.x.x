@@ -1,0 +1,84 @@
+[2025-11-16 18:07:39] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+100.64.0.2 - - [16/Nov/2025 18:07:39] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+[PAGINATION] Page 1: errno=0, has_result=True
+[PAGINATION] Page 1 returned 14 markets
+[PAGINATION] Got 14 < 20, reached end of markets
+[PAGINATION] Total markets fetched: 14 across 1 page(s)
+INFO:autonomous_engine:[INFO] Fetched 14 events from Opinion.trade
+[2025-11-16 18:07:44] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 8}
+INFO:autonomous_engine:[CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 8}
+[2025-11-16 18:07:44] [INFO] [INFO] 
+Processing cycle for ChatGPT
+INFO:autonomous_engine:[INFO] 
+Processing cycle for ChatGPT
+[2025-11-16 18:07:44] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 2 categories
+[INFO] Opinion.trade API: Retrieved 14 active markets (skipped 0 without YES/NO tokens)
+[2025-11-16 18:07:44] [INFO] [INFO] Fetched 14 events from Opinion.trade
+[CACHE MISS] Fetched & cached technical data for BTC
+[CACHE MISS] Fetched & cached news data for BTC
+[CACHE MISS] Fetched & cached volatility data for BTC-USD
+[2025-11-16 18:07:47] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-16 18:07:47] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Exception during evaluation: 'AutonomousEngine' object has no attribute 'simulat...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Exception during evaluation: 'AutonomousEngine' object has no attribute 'simulat...
+AttributeError: 'AutonomousEngine' object has no attribute 'simulation_mode'
+Traceback (most recent call last):
+  File "/app/autonomous_engine.py", line 376, in _evaluate_event_opportunity
+[2025-11-16 18:07:47] [ERROR] [ERROR] Admin-triggered cycle failed: 'AutonomousEngine' object has no attribute 'simulation_mode'
+    self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
+  File "/app/autonomous_engine.py", line 542, in _save_ai_decision
+    'simulation_mode': self.simulation_mode,
+                       ^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/app/api.py", line 1036, in trigger_cycle
+    results = engine.run_daily_cycle()
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 132, in run_daily_cycle
+    firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 238, in _process_firm_multi_category_cycle
+    evaluation = self._evaluate_event_opportunity(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 487, in _evaluate_event_opportunity
+    self._save_ai_decision(firm_name, event, {}, evaluation, 'ANALYZED', evaluation['reason'])
+  File "/app/autonomous_engine.py", line 542, in _save_ai_decision
+ERROR:autonomous_engine:[ERROR] Admin-triggered cycle failed: 'AutonomousEngine' object has no attribute 'simulation_mode'
+    'simulation_mode': self.simulation_mode,
+                       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AutonomousEngine' object has no attribute 'simulation_mode'
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/app/autonomous_engine.py", line 376, in _evaluate_event_opportunity
+    self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
+  File "/app/autonomous_engine.py", line 542, in _save_ai_decision
+    'simulation_mode': self.simulation_mode,
+                       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AutonomousEngine' object has no attribute 'simulation_mode'
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/app/api.py", line 1036, in trigger_cycle
+    results = engine.run_daily_cycle()
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 132, in run_daily_cycle
+    firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 238, in _process_firm_multi_category_cycle
+    evaluation = self._evaluate_event_opportunity(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 487, in _evaluate_event_opportunity
+    self._save_ai_decision(firm_name, event, {}, evaluation, 'ANALYZED', evaluation['reason'])
+  File "/app/autonomous_engine.py", line 542, in _save_ai_decision
+    'simulation_mode': self.simulation_mode,
+                       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AutonomousEngine' object has no attribute 'simulation_mode'
+100.64.0.2 - - [16/Nov/2025 18:07:47] "POST /admin/trigger-cycle HTTP/1.1" 500 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 18:07:47] "POST /admin/trigger-cycle HTTP/1.1" 500 -
+100.64.0.2 - - [16/Nov/2025 18:07:49] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 18:07:49] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+100.64.0.3 - - [16/Nov/2025 18:07:53] "GET /api/active-positions HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.3 - - [16/Nov/2025 18:07:53] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.3 - - [16/Nov/2025 18:07:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.3 - - [16/Nov/2025 18:07:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.3 - - [16/Nov/2025 18:07:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
