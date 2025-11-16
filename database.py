@@ -64,7 +64,7 @@ class TradingDatabase:
             event_id TEXT NOT NULL,
             event_description TEXT NOT NULL,
             category TEXT,
-            bet_size REAL NOT NULL,
+            bet_size REAL,
             probability REAL NOT NULL,
             confidence INTEGER NOT NULL,
             expected_value REAL,
@@ -87,9 +87,19 @@ class TradingDatabase:
             execution_timestamp TEXT NOT NULL,
             resolution_timestamp TEXT,
             simulation_mode INTEGER DEFAULT 1,
+            status TEXT DEFAULT 'EXECUTED',
+            failure_reason TEXT,
+            market_price REAL,
             created_at TEXT NOT NULL
         )
         ''')
+        
+        try:
+            cursor.execute("SELECT status FROM autonomous_bets LIMIT 1")
+        except sqlite3.OperationalError:
+            cursor.execute("ALTER TABLE autonomous_bets ADD COLUMN status TEXT DEFAULT 'EXECUTED'")
+            cursor.execute("ALTER TABLE autonomous_bets ADD COLUMN failure_reason TEXT")
+            cursor.execute("ALTER TABLE autonomous_bets ADD COLUMN market_price REAL")
         
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS autonomous_cycles (
@@ -436,7 +446,14 @@ class TradingDatabase:
     
     def save_autonomous_bet(self, bet_data: Dict) -> int:
         """
-        Guarda una apuesta autónoma en la base de datos con análisis de 5 áreas.
+        Guarda una decisión AI en la base de datos con análisis de 5 áreas.
+        Soporta todos los estados: ANALYZED, APPROVED, EXECUTED, FAILED
+        
+        Status values:
+        - ANALYZED: AI analizó pero decidió no apostar (valor esperado negativo)
+        - APPROVED: AI decidió apostar (encontró valor esperado positivo)
+        - EXECUTED: Apuesta ejecutada exitosamente en Opinion.trade
+        - FAILED: Apuesta falló validación o ejecución
         """
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
@@ -452,14 +469,14 @@ class TradingDatabase:
             fundamental_score, fundamental_analysis,
             volatility_score, volatility_analysis,
             probability_reasoning, market_volume, market_yes_pool, market_no_pool,
-            execution_timestamp, simulation_mode, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            execution_timestamp, simulation_mode, status, failure_reason, market_price, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
             bet_data['firm_name'],
             bet_data['event_id'],
             bet_data['event_description'],
             bet_data.get('category'),
-            bet_data['bet_size'],
+            bet_data.get('bet_size', 0),  # Can be 0 for ANALYZED decisions
             bet_data['probability'],
             bet_data['confidence'],
             bet_data.get('expected_value'),
@@ -481,8 +498,11 @@ class TradingDatabase:
             bet_data.get('market_volume'),
             bet_data.get('market_yes_pool'),
             bet_data.get('market_no_pool'),
-            bet_data['execution_timestamp'],
+            bet_data.get('execution_timestamp', datetime.now().isoformat()),
             bet_data.get('simulation_mode', 1),
+            bet_data.get('status', 'EXECUTED'),
+            bet_data.get('failure_reason'),
+            bet_data.get('market_price'),
             datetime.now().isoformat()
         ))
         

@@ -1,0 +1,118 @@
+100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/market-header HTTP/1.1" 200 -
+[2025-11-16 06:04:32] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=9, asks_count=8
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=9, asks_count=8
+[2025-11-16 06:04:32] [INFO] [INFO] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bid=0.45, ask=0.696, mid=0.573
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bid=0.45, ask=0.696, mid=0.573
+[2025-11-16 06:04:32] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=65% | Scores: S=5, N=5, T=6, F=5, V=4 | Reason: Valor esperado negativo o cero
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=65% | Scores: S=5, N=5, T=6, F=5, V=4 | Reason: Valor esperado negativo o cero
+[CACHE MISS] Fetched & cached technical data for ETH
+[CACHE MISS] Fetched & cached volatility data for ETH-USD
+[CACHE MISS] Fetched & cached news data for ETH
+100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/active-positions HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/live-metrics HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/leaderboard HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/market-header HTTP/1.1" 200 -
+[2025-11-16 06:04:44] [INFO] [INFO] get_orderbook: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bids_count=26, asks_count=13
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/active-positions HTTP/1.1" 200 -
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bids_count=26, asks_count=13
+100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/live-chart-history HTTP/1.1" 200 -
+[2025-11-16 06:04:44] [INFO] [INFO] get_latest_price: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bid=0.726, ask=0.775, mid=0.7505
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bid=0.726, ask=0.775, mid=0.7505
+[2025-11-16 06:04:44] [INFO] [SKIP] ChatGPT - 'This market will resolve to the project (Monad or ...' | Prob=50.00%, Conf=45% | Scores: S=5, N=4, T=5, F=3, V=3 | Reason: Valor esperado negativo o cero
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to the project (Monad or ...' | Prob=50.00%, Conf=45% | Scores: S=5, N=4, T=5, F=3, V=3 | Reason: Valor esperado negativo o cero
+[CACHE HIT] Technical data for ETH
+[CACHE HIT] News data for ETH
+[CACHE HIT] Volatility data for ETH
+100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.5 - - [16/Nov/2025 06:04:50] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:51] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/live-metrics HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:51] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/leaderboard HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:50] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.5 - - [16/Nov/2025 06:04:50] "GET /api/ai-thinking HTTP/1.1" 200 -
+[2025-11-16 06:04:56] [INFO] [INFO] get_orderbook: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bids_count=16, asks_count=15
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bids_count=16, asks_count=15
+[2025-11-16 06:04:56] [INFO] [INFO] get_latest_price: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bid=0.84, ask=0.95, mid=0.895
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094, bid=0.84, ask=0.95, mid=0.895
+[2025-11-16 06:04:56] [INFO] [SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=42.00%, Conf=60% | Scores: S=5, N=4, T=5, F=0, V=8 | Reason: Valor esperado negativo o cero
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=42.00%, Conf=60% | Scores: S=5, N=4, T=5, F=0, V=8 | Reason: Valor esperado negativo o cero
+[CACHE HIT] Technical data for ETH
+[CACHE HIT] News data for ETH
+[CACHE HIT] Volatility data for ETH
+[2025-11-16 06:05:11] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=16, asks_count=12
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=16, asks_count=12
+[2025-11-16 06:05:11] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.643, ask=0.79, mid=0.7165
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.643, ask=0.79, mid=0.7165
+[2025-11-16 06:05:11] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Valor esperado negativo o cero
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Valor esperado negativo o cero
+[CACHE HIT] Technical data for ETH
+[CACHE HIT] News data for ETH
+[CACHE HIT] Volatility data for ETH
+100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/active-positions HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/live-metrics HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/leaderboard HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/leaderboard HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.5 - - [16/Nov/2025 06:05:20] "GET /api/ai-thinking HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.5 - - [16/Nov/2025 06:05:20] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.2 - - [16/Nov/2025 06:05:20] "GET /api/market-header HTTP/1.1" 200 -
+[2025-11-16 06:05:25] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=2, asks_count=10
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=2, asks_count=10
+[2025-11-16 06:05:25] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.97901, ask=0.981, mid=0.980005
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.97901, ask=0.981, mid=0.980005
+[2025-11-16 06:05:25] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=5, F=5, V=6 | Reason: Valor esperado negativo o cero
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=5, F=5, V=6 | Reason: Valor esperado negativo o cero
+[2025-11-16 06:05:33] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Yes" if any Binance 1...' | Prob=60.00%, Conf=55% | Scores: S=7, N=6, T=5, F=4, V=8
+INFO:autonomous_engine:[BET] ChatGPT - $5.00 on 'This market will resolve to "Yes" if any Binance 1...' | Prob=60.00%, Conf=55% | Scores: S=7, N=6, T=5, F=4, V=8
+[2025-11-16 06:05:33] [INFO] [INFO] ChatGPT - Found 1 total opportunities across all categories
+INFO:autonomous_engine:[INFO] ChatGPT - Found 1 total opportunities across all categories
+[2025-11-16 06:05:33] [INFO] [INFO] ChatGPT - Will execute top 1 opportunities (max_concurrent_positions: 2)
+INFO:autonomous_engine:[INFO] ChatGPT - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-16 06:05:33] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=16, asks_count=34
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=16, asks_count=34
+[2025-11-16 06:05:33] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.181, ask=0.258, mid=0.2195
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.181, ask=0.258, mid=0.2195
+[2025-11-16 06:05:33] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=16, asks_count=34
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=16, asks_count=34
+[2025-11-16 06:05:33] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.05, ask=0.251, mid=0.1505
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.05, ask=0.251, mid=0.1505
+[EXECUTION FAILED] ChatGPT - Execution failed: Price validation failed: expected 0.6000, got 0.1505 (diff: 74.92%)
+[2025-11-16 06:05:33] [ERROR] [ERROR] ChatGPT - Price validation failed: expected 0.6000, got 0.1505 (diff: 74.92%)
+ERROR:autonomous_engine:[ERROR] ChatGPT - Price validation failed: expected 0.6000, got 0.1505 (diff: 74.92%)
+[2025-11-16 06:05:33] [INFO] [INFO] ChatGPT - Executed bet 1/1
+INFO:autonomous_engine:[INFO] ChatGPT - Executed bet 1/1
+[2025-11-16 06:05:33] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+INFO:autonomous_engine:[INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+[2025-11-16 06:05:33] [INFO] [INFO] 
+Processing cycle for Gemini
+INFO:autonomous_engine:[INFO] 
+Processing cycle for Gemini
+[2025-11-16 06:05:33] [INFO] [INFO] Gemini - Analyzing 2 categories
+INFO:autonomous_engine:[INFO] Gemini - Analyzing 2 categories
+[CACHE HIT] Technical data for BTC

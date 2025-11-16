@@ -1,0 +1,81 @@
+2025-11-16T06:03:48.000000000Z [inf]  Starting Container
+2025-11-16T06:03:58.374023394Z [inf]   * Serving Flask app 'api'
+2025-11-16T06:03:58.374028156Z [inf]   * Debug mode: on
+2025-11-16T06:03:58.374032479Z [err]  [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-11-16T06:03:58.374036933Z [err]   * Running on all addresses (0.0.0.0)
+2025-11-16T06:03:58.374041245Z [err]   * Running on http://127.0.0.1:8000
+2025-11-16T06:03:58.374047967Z [err]   * Running on http://10.159.162.117:8000
+2025-11-16T06:03:58.374052974Z [err]  [33mPress CTRL+C to quit[0m
+2025-11-16T06:03:58.374057811Z [err]   * Restarting with watchdog (inotify)
+2025-11-16T06:04:06.560517533Z [err]   * Debugger is active!
+2025-11-16T06:04:06.560526474Z [err]   * Debugger PIN: 117-467-893
+2025-11-16T06:04:06.771032060Z [err]  100.64.0.4 - - [16/Nov/2025 06:04:06] "GET /admin HTTP/1.1" 200 -
+2025-11-16T06:04:06.771041260Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:06.771048086Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T06:04:06.771054812Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:06] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T06:04:06.771062438Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:06.771068483Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:06] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T06:04:06.771074513Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:06] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T06:04:07.500268595Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:07] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T06:04:09.604078981Z [err]  100.64.0.4 - - [16/Nov/2025 06:04:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T06:04:09.604209615Z [err]  100.64.0.4 - - [16/Nov/2025 06:04:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T06:04:14.931865444Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-16T06:04:14.932185108Z [err]  [2025-11-16 06:04:14] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.4 at 2025-11-16T06:04:14.511511
+2025-11-16T06:04:14.932195591Z [err]  [2025-11-16 06:04:14] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-16T06:04:15.988244741Z [inf]  [DEBUG] Opinion.trade API response - errno: 0, has result: True
+2025-11-16T06:04:15.988251403Z [inf]  [DEBUG] Opinion.trade returned 15 raw markets from API
+2025-11-16T06:04:16.009369215Z [err]  100.64.0.4 - - [16/Nov/2025 06:04:16] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+2025-11-16T06:04:16.009385504Z [err]  INFO:werkzeug:100.64.0.4 - - [16/Nov/2025 06:04:16] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+2025-11-16T06:04:18.832184646Z [inf]  [INFO] Opinion.trade API: Retrieved 15 active markets (skipped 0 without YES/NO tokens)
+2025-11-16T06:04:18.832201516Z [err]  [2025-11-16 06:04:18] [INFO] [INFO] Fetched 15 events from Opinion.trade
+2025-11-16T06:04:18.832209671Z [err]  INFO:autonomous_engine:[INFO] Fetched 15 events from Opinion.trade
+2025-11-16T06:04:18.832216987Z [err]  [2025-11-16 06:04:18] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 9}
+2025-11-16T06:04:18.832222536Z [err]  INFO:autonomous_engine:[CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 9}
+2025-11-16T06:04:18.832228994Z [err]  [2025-11-16 06:04:18] [INFO] [INFO] 
+2025-11-16T06:04:18.832234788Z [err]  Processing cycle for ChatGPT
+2025-11-16T06:04:18.832239957Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-16T06:04:18.832248586Z [err]  Processing cycle for ChatGPT
+2025-11-16T06:04:18.832256767Z [err]  [2025-11-16 06:04:18] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+2025-11-16T06:04:18.832261744Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 2 categories
+2025-11-16T06:04:19.905993049Z [inf]  [CACHE MISS] Fetched & cached technical data for BTC
+2025-11-16T06:04:20.062284638Z [inf]  [CACHE MISS] Fetched & cached news data for BTC
+2025-11-16T06:04:20.905860360Z [inf]  [CACHE MISS] Fetched & cached volatility data for BTC-USD
+2025-11-16T06:04:27.081844244Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T06:04:27.081859113Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T06:04:27.081868389Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:27.081876657Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:27.085835242Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:27.085844693Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:27.085850916Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T06:04:27.085857769Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T06:04:27.095435456Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T06:04:27.095446120Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T06:04:27.095453271Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T06:04:27.095460603Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T06:04:27.190717347Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T06:04:27.190727261Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T06:04:28.001645984Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T06:04:28.001652872Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:27] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T06:04:32.891183265Z [err]  [2025-11-16 06:04:32] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=9, asks_count=8
+2025-11-16T06:04:32.891189871Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=9, asks_count=8
+2025-11-16T06:04:32.891195074Z [err]  [2025-11-16 06:04:32] [INFO] [INFO] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bid=0.45, ask=0.696, mid=0.573
+2025-11-16T06:04:32.891201928Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bid=0.45, ask=0.696, mid=0.573
+2025-11-16T06:04:32.891209150Z [err]  [2025-11-16 06:04:32] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=65% | Scores: S=5, N=5, T=6, F=5, V=4 | Reason: Valor esperado negativo o cero
+2025-11-16T06:04:32.891215161Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=65% | Scores: S=5, N=5, T=6, F=5, V=4 | Reason: Valor esperado negativo o cero
+2025-11-16T06:04:33.199478781Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-16T06:04:33.911610923Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-16T06:04:33.911635083Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-16T06:04:34.110073203Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T06:04:34.110079838Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T06:04:34.119119764Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:34.119128113Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:34.119135664Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:34.119142181Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T06:04:34.121817903Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T06:04:34.121837127Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T06:04:34.123981686Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T06:04:34.123989282Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T06:04:34.126711179Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T06:04:34.126720208Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T06:04:35.058082474Z [err]  100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T06:04:35.058088589Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 06:04:34] "GET /api/market-header HTTP/1.1" 200 -
