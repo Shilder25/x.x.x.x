@@ -512,6 +512,22 @@ class TradingDatabase:
         
         return bet_id
     
+    def update_bet_status(self, bet_id: int, status: str, failure_reason: str = None):
+        """
+        Actualiza el estado de una decisión AI (APPROVED → EXECUTED o FAILED).
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        UPDATE autonomous_bets
+        SET status = ?, failure_reason = ?
+        WHERE id = ?
+        ''', (status, failure_reason, bet_id))
+        
+        conn.commit()
+        conn.close()
+    
     def update_autonomous_bet_result(self, bet_id: int, actual_result: int, profit_loss: float):
         """
         Actualiza el resultado de una apuesta autónoma.

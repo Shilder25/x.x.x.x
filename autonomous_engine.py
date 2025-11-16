@@ -404,6 +404,8 @@ class AutonomousEngine:
                     evaluation['reason'] = f"Duplicate prevention: {len(active_orders)} active order(s) already exist for market {market_id}"
                     logger.info(f"{firm_name} - Skip duplicate: {evaluation['reason']}")
                     logger.log_event_analysis(firm_name, event_description, {}, evaluation, 'SKIP')
+                    # Save to DB for transparency
+                    self._save_ai_decision(firm_name, event, {}, evaluation, 'ANALYZED', evaluation['reason'])
                     return evaluation
         
         symbol = self._extract_symbol_from_event(event)
@@ -415,6 +417,8 @@ class AutonomousEngine:
                 evaluation['reason'] = f"Prediction error: {prediction.get('error')}"
                 evaluation['prediction'] = prediction
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                # Save to DB for transparency
+                self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
                 return evaluation
             
             probability = prediction.get('probabilidad_final_prediccion', 0.5)
@@ -428,6 +432,8 @@ class AutonomousEngine:
             if not token_id:
                 evaluation['reason'] = "Missing token_id - cannot fetch market price"
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                # Save to DB for transparency
+                self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
                 return evaluation
             
             price_response = self.opinion_api.get_latest_price(token_id)
@@ -436,13 +442,20 @@ class AutonomousEngine:
                 evaluation['reason'] = f"Failed to fetch market price: {price_response.get('error')} - {error_msg}"
                 logger.warning(f"{firm_name} - Price fetch failed for token_id={token_id}: {price_response.get('error')} | Message: {error_msg}")
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                # Save to DB for transparency
+                self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
                 return evaluation
             
             market_price = price_response.get('price')
             if market_price is None:
                 evaluation['reason'] = "Market price unavailable"
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                # Save to DB for transparency
+                self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
                 return evaluation
+            
+            # Store market price in evaluation for later use
+            evaluation['market_price'] = market_price
             
             # CRÍTICO: Ajustar probabilidad según el lado que compramos
             # Si compramos YES → usar probability tal cual
@@ -470,6 +483,8 @@ class AutonomousEngine:
             if not should_bet:
                 evaluation['reason'] = bet_reason
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                # Save to DB for transparency
+                self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
                 return evaluation
             
             bet_calculation = bankroll_manager.calculate_bet_size(side_probability, confidence, ev_calc['net_ev'])
@@ -477,6 +492,8 @@ class AutonomousEngine:
             if bet_calculation.get('bet_size', 0) == 0:
                 evaluation['reason'] = bet_calculation.get('reason', 'Bet size calculation returned 0')
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                # Save to DB for transparency
+                self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
                 return evaluation
             
             bet_size = bet_calculation['bet_size']
@@ -491,6 +508,8 @@ class AutonomousEngine:
                 evaluation['reason'] = risk_reason or 'Risk check failed'
                 logger.log_risk_block(firm_name, risk_reason)
                 logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+                # Save to DB for transparency
+                self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
                 return evaluation
             
             evaluation['is_opportunity'] = True
@@ -502,12 +521,69 @@ class AutonomousEngine:
             evaluation['reason'] = f"Exception during evaluation: {str(e)}"
             evaluation['error'] = str(e)
             logger.log_event_analysis(firm_name, event_description, {}, evaluation, 'SKIP')
+            # Save to DB for transparency
+            self._save_ai_decision(firm_name, event, {}, evaluation, 'ANALYZED', evaluation['reason'])
             return evaluation
         
         # Log análisis detallado del evento (caso de oportunidad aprobada)
         logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'BET')
         
+        # Save APPROVED decision to DB for transparency and get bet_id
+        bet_id = self._save_ai_decision(firm_name, event, prediction, evaluation, 'APPROVED', None)
+        evaluation['approved_bet_id'] = bet_id  # Pass bet_id to execution
+        
         return evaluation
+    
+    def _save_ai_decision(self, firm_name: str, event: Dict, prediction: Dict, evaluation: Dict, status: str, failure_reason: str = None) -> int:
+        """
+        Guarda TODAS las decisiones AI en la base de datos para transparencia completa.
+        
+        Args:
+            firm_name: Nombre de la firma AI
+            event: Datos del evento
+            prediction: Predicción completa del AI
+            evaluation: Evaluación de la oportunidad
+            status: ANALYZED, APPROVED, EXECUTED, FAILED
+            failure_reason: Razón del fallo (solo para FAILED)
+            
+        Returns:
+            bet_id de la decisión guardada
+        """
+        event_id = event.get('id', 'unknown')
+        event_description = event.get('description', event.get('title', 'Unknown event'))
+        category = event.get('category', 'general')
+        
+        bet_data = {
+            'firm_name': firm_name,
+            'event_id': event_id,
+            'event_description': event_description,
+            'category': category,
+            'bet_size': evaluation.get('bet_size', 0),
+            'probability': prediction.get('probabilidad_final_prediccion', 0.5),
+            'confidence': prediction.get('nivel_confianza', 50),
+            'expected_value': evaluation.get('expected_value', 0),
+            'risk_level': evaluation.get('risk_level'),
+            'betting_strategy': evaluation.get('betting_strategy'),
+            'reasoning': evaluation.get('reason', ''),
+            'sentiment_score': prediction.get('sintesis_analisis', {}).get('sentiment_score'),
+            'sentiment_analysis': prediction.get('sintesis_analisis', {}).get('sentiment_analysis'),
+            'news_score': prediction.get('sintesis_analisis', {}).get('news_score'),
+            'news_analysis': prediction.get('sintesis_analisis', {}).get('news_analysis'),
+            'technical_score': prediction.get('sintesis_analisis', {}).get('technical_score'),
+            'technical_analysis': prediction.get('sintesis_analisis', {}).get('technical_analysis'),
+            'fundamental_score': prediction.get('sintesis_analisis', {}).get('fundamental_score'),
+            'fundamental_analysis': prediction.get('sintesis_analisis', {}).get('fundamental_analysis'),
+            'volatility_score': prediction.get('sintesis_analisis', {}).get('volatility_score'),
+            'volatility_analysis': prediction.get('sintesis_analisis', {}).get('volatility_analysis'),
+            'probability_reasoning': prediction.get('probabilidad_detallada', {}).get('razonamiento', ''),
+            'execution_timestamp': datetime.now().isoformat(),
+            'simulation_mode': self.simulation_mode,
+            'status': status,
+            'failure_reason': failure_reason,
+            'market_price': evaluation.get('market_price')
+        }
+        
+        return self.db.save_autonomous_bet(bet_data)
     
     def _execute_opportunity(self, firm_name: str, opportunity: Dict,
                             bankroll_manager: BankrollManager) -> Dict:
@@ -593,11 +669,17 @@ class AutonomousEngine:
         )
         decision['execution'] = execution_result
         
-        # Si la ejecución falló, retornar sin persistir
+        # Si la ejecución falló, actualizar status a FAILED
         if execution_result.get('status') != 'success':
             decision['action'] = 'SKIP'
             decision['reason'] = f"Execution failed: {execution_result.get('error', 'Unknown error')}"
             print(f"[EXECUTION FAILED] {firm_name} - {decision['reason']}")
+            
+            # Update APPROVED decision to FAILED for transparency
+            approved_bet_id = opportunity.get('approved_bet_id')
+            if approved_bet_id:
+                self.db.update_bet_status(approved_bet_id, 'FAILED', decision['reason'])
+            
             return decision
         
         # Solo si la ejecución fue exitosa → persistir en bankroll y DB (con rollback si falla)
@@ -638,7 +720,17 @@ class AutonomousEngine:
             if not bet_data.get('probability_reasoning'):
                 print(f"[WARNING] {firm_name} - Missing probability_reasoning in prediction for event: {event_description[:50]}")
             
-            bet_id = self.db.save_autonomous_bet(bet_data)
+            # Check if we have an approved_bet_id to update, otherwise create new
+            approved_bet_id = opportunity.get('approved_bet_id')
+            if approved_bet_id:
+                # Update APPROVED decision to EXECUTED
+                self.db.update_bet_status(approved_bet_id, 'EXECUTED', None)
+                bet_id = approved_bet_id
+            else:
+                # Legacy flow - create new bet with EXECUTED status
+                bet_data['status'] = 'EXECUTED'
+                bet_id = self.db.save_autonomous_bet(bet_data)
+            
             decision['bet_id'] = bet_id
             
         except Exception as persist_error:
