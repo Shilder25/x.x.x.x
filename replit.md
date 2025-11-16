@@ -50,6 +50,12 @@ The system is designed for deployment on Railway with automatic daily prediction
    - Prevents showing FAILED/APPROVED positions that never executed on Opinion.trade
    - Fixes issue where frontend showed positions that don't exist in actual wallet
 
+8. **Sports Category Filter** - Exclude sports events from AI analysis
+   - Added category filter in `opinion_trade_api.py::get_available_events()` to skip Sports markets
+   - System now focuses on financial markets (Crypto, Rates, Commodities, Politics, etc.)
+   - Sports events are identified by keywords: nfl, nba, mlb, nhl, soccer, football, basketball
+   - Reduces wasted API calls and AI analysis time on non-financial events
+
 **Testing Status:**
 - ✅ Unit tests for EV calculation pass (4/4 scenarios)
 - ✅ API workflow running without errors

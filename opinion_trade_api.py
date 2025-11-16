@@ -214,6 +214,12 @@ class OpinionTradeAPI:
                         print(f"[WARNING] Skipping market {market.market_id} '{market.market_title[:50]}...' - missing binary tokens (yes={yes_token_id}, no={no_token_id})")
                         continue
                     
+                    # Skip Sports category - we don't want AI agents betting on sports
+                    if category == 'Sports':
+                        skipped_count += 1
+                        print(f"[FILTER] Skipping Sports market: '{market.market_title[:50]}...'")
+                        continue
+                    
                     events.append({
                         'event_id': str(market.market_id),
                         'market_id': market.market_id,
@@ -236,7 +242,7 @@ class OpinionTradeAPI:
                     print(f"[ERROR] Failed to convert market {getattr(market, 'market_id', 'unknown')}: {e}")
                     continue
             
-            print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets (skipped {skipped_count} without YES/NO tokens)")
+            print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets (skipped {skipped_count} markets - missing tokens or Sports category)")
             return {
                 'success': True,
                 'count': len(events),
