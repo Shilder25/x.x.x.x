@@ -520,17 +520,72 @@ class OpinionTradeAPI:
             response = self.client.get_orderbook(token_id)
             
             if response.errno == 0:
-                book = response.result.data
+                # SDK returns response.result directly (not response.result.data)
+                book = response.result if hasattr(response, 'result') else None
+                
+                if not book:
+                    logger.warning(f"get_orderbook: No result data for token_id={token_id}")
+                    return {
+                        'success': False,
+                        'error': 'No orderbook data',
+                        'message': 'SDK returned success but no orderbook result'
+                    }
+                
+                # Extract bids and asks - handle both dict and object responses
+                if isinstance(book, dict):
+                    raw_bids = book.get('bids', []) or []
+                    raw_asks = book.get('asks', []) or []
+                else:
+                    raw_bids = getattr(book, 'bids', []) or []
+                    raw_asks = getattr(book, 'asks', []) or []
+                
+                # Normalize each bid/ask entry to consistent dict format
+                def normalize_order_entry(entry):
+                    """Convert SDK order entry (dict or object) to normalized dict."""
+                    if not entry:
+                        return None
+                    
+                    normalized = {}
+                    
+                    # Extract price
+                    if isinstance(entry, dict):
+                        normalized['price'] = entry.get('price', 0)
+                        normalized['amount'] = entry.get('amount', 0)
+                    else:
+                        normalized['price'] = getattr(entry, 'price', 0)
+                        normalized['amount'] = getattr(entry, 'amount', 0)
+                    
+                    # Ensure price is numeric
+                    try:
+                        normalized['price'] = float(normalized['price']) if normalized['price'] else 0.0
+                        normalized['amount'] = float(normalized['amount']) if normalized['amount'] else 0.0
+                    except (ValueError, TypeError):
+                        normalized['price'] = 0.0
+                        normalized['amount'] = 0.0
+                    
+                    return normalized
+                
+                # Normalize all bids and asks
+                bids = [normalize_order_entry(bid) for bid in raw_bids]
+                asks = [normalize_order_entry(ask) for ask in raw_asks]
+                
+                # Filter out invalid entries (price = 0)
+                bids = [b for b in bids if b and b.get('price', 0) > 0]
+                asks = [a for a in asks if a and a.get('price', 0) > 0]
+                
+                logger.info(f"get_orderbook: token_id={token_id}, bids_count={len(bids)}, asks_count={len(asks)}")
+                
                 return {
                     'success': True,
                     'data': {
-                        'bids': getattr(book, 'bids', []),
-                        'asks': getattr(book, 'asks', []),
-                        'best_bid': book.bids[0] if book.bids else None,
-                        'best_ask': book.asks[0] if book.asks else None
+                        'bids': bids,
+                        'asks': asks,
+                        'best_bid': bids[0] if bids else None,
+                        'best_ask': asks[0] if asks else None
                     }
                 }
             else:
+                logger.warning(f"get_orderbook: API error for token_id={token_id}: errno={response.errno}, errmsg={response.errmsg}")
                 return {
                     'success': False,
                     'error': f'API error {response.errno}',
@@ -538,6 +593,7 @@ class OpinionTradeAPI:
                 }
         
         except Exception as e:
+            logger.error(f"get_orderbook: Exception for token_id={token_id}: {str(e)}")
             return {
                 'success': False,
                 'error': 'Unexpected error',
@@ -597,6 +653,41 @@ class OpinionTradeAPI:
                 'message': str(e)
             }
     
+    def _extract_price(self, order_entry) -> float:
+        """
+        Helper to extract price from orderbook entry with defensive error handling.
+        
+        Note: get_orderbook() now normalizes entries to dicts, so this handles
+        the normalized format while being defensive against any edge cases.
+        
+        Args:
+            order_entry: Normalized bid/ask entry from orderbook (should be dict with 'price' key)
+        
+        Returns:
+            Price as float, or 0.0 if invalid/missing
+        """
+        if not order_entry:
+            return 0.0
+        
+        try:
+            # Handle normalized dict format (primary path)
+            if isinstance(order_entry, dict):
+                price = order_entry.get('price', 0)
+            else:
+                # Fallback for object attributes (shouldn't happen after normalization)
+                price = getattr(order_entry, 'price', 0)
+            
+            # Defensive conversion to float
+            if price is None or price == '':
+                return 0.0
+            
+            return float(price)
+        
+        except (ValueError, TypeError, AttributeError) as e:
+            # Log anomaly for observability but don't crash
+            logger.warning(f"_extract_price: Could not extract price from {type(order_entry)}: {e}")
+            return 0.0
+    
     def get_latest_price(self, token_id: str) -> Dict:
         """
         Get the latest price for a specific outcome token.
@@ -634,11 +725,10 @@ class OpinionTradeAPI:
             best_bid = orderbook.get('best_bid')
             best_ask = orderbook.get('best_ask')
             
-            # Calculate mid-price from best bid/ask
+            # Calculate mid-price from best bid/ask (handle both dict and object)
             if best_bid and best_ask:
-                # Extract prices from bid/ask objects
-                bid_price = float(getattr(best_bid, 'price', 0))
-                ask_price = float(getattr(best_ask, 'price', 0))
+                bid_price = self._extract_price(best_bid)
+                ask_price = self._extract_price(best_ask)
                 
                 if bid_price > 0 and ask_price > 0:
                     mid_price = (bid_price + ask_price) / 2.0
@@ -655,7 +745,7 @@ class OpinionTradeAPI:
             
             # Fallback: if only bid or only ask available
             if best_bid:
-                bid_price = float(getattr(best_bid, 'price', 0))
+                bid_price = self._extract_price(best_bid)
                 if bid_price > 0:
                     logger.info(f"get_latest_price: token_id={token_id}, using bid_price={bid_price} (no ask available)")
                     return {
@@ -667,7 +757,7 @@ class OpinionTradeAPI:
                     }
             
             if best_ask:
-                ask_price = float(getattr(best_ask, 'price', 0))
+                ask_price = self._extract_price(best_ask)
                 if ask_price > 0:
                     logger.info(f"get_latest_price: token_id={token_id}, using ask_price={ask_price} (no bid available)")
                     return {

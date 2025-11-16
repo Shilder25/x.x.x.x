@@ -1,0 +1,192 @@
+2025-11-16T05:37:51.000000000Z [inf]  Starting Container
+2025-11-16T05:38:01.389892024Z [inf]   * Serving Flask app 'api'
+2025-11-16T05:38:01.389899485Z [inf]   * Debug mode: on
+2025-11-16T05:38:01.389904677Z [err]  [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-11-16T05:38:01.389910675Z [err]   * Running on all addresses (0.0.0.0)
+2025-11-16T05:38:01.389916690Z [err]   * Running on http://127.0.0.1:8000
+2025-11-16T05:38:01.389923734Z [err]   * Running on http://10.249.26.217:8000
+2025-11-16T05:38:01.389930996Z [err]  [33mPress CTRL+C to quit[0m
+2025-11-16T05:38:01.389937457Z [err]   * Restarting with watchdog (inotify)
+2025-11-16T05:38:07.884928801Z [err]   * Debugger is active!
+2025-11-16T05:38:07.884935017Z [err]   * Debugger PIN: 851-678-836
+2025-11-16T05:38:08.367899441Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:08.367909669Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:38:08.367966649Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:08.371429118Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:38:08.371438689Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:38:08.371447026Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:38:08.415036305Z [err]  100.64.0.3 - - [16/Nov/2025 05:38:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:38:09.398609840Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:09] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:38:15.328334140Z [err]  100.64.0.4 - - [16/Nov/2025 05:38:15] "GET /admin HTTP/1.1" 200 -
+2025-11-16T05:38:17.397028812Z [err]  100.64.0.4 - - [16/Nov/2025 05:38:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T05:38:17.536591176Z [err]  100.64.0.4 - - [16/Nov/2025 05:38:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-16T05:38:22.712564299Z [err]  [2025-11-16 05:38:22] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.4 at 2025-11-16T05:38:22.706917
+2025-11-16T05:38:22.712573281Z [err]  [2025-11-16 05:38:22] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-16T05:38:22.740694008Z [inf]  ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-16T05:38:24.014927841Z [inf]  [DEBUG] Opinion.trade API response - errno: 0, has result: True
+2025-11-16T05:38:24.014936502Z [inf]  [DEBUG] Opinion.trade returned 15 raw markets from API
+2025-11-16T05:38:27.477778586Z [inf]  [INFO] Opinion.trade API: Retrieved 15 active markets (skipped 0 without YES/NO tokens)
+2025-11-16T05:38:27.477789965Z [err]  [2025-11-16 05:38:27] [INFO] [INFO] Fetched 15 events from Opinion.trade
+2025-11-16T05:38:27.477796319Z [err]  INFO:autonomous_engine:[INFO] Fetched 15 events from Opinion.trade
+2025-11-16T05:38:27.478845354Z [err]  [2025-11-16 05:38:27] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 9}
+2025-11-16T05:38:27.478861398Z [err]  INFO:autonomous_engine:[CATEGORY] Events grouped into 2 categories: {'Crypto': 6, 'Other': 9}
+2025-11-16T05:38:27.478881527Z [err]  [2025-11-16 05:38:27] [INFO] [INFO] 
+2025-11-16T05:38:27.478889686Z [err]  Processing cycle for ChatGPT
+2025-11-16T05:38:27.478900929Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-16T05:38:27.478913307Z [err]  Processing cycle for ChatGPT
+2025-11-16T05:38:27.478921108Z [err]  [2025-11-16 05:38:27] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+2025-11-16T05:38:27.478927603Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 2 categories
+2025-11-16T05:38:28.061124136Z [inf]  [CACHE MISS] Fetched & cached technical data for BTC
+2025-11-16T05:38:28.568669447Z [inf]  [CACHE MISS] Fetched & cached news data for BTC
+2025-11-16T05:38:28.568676130Z [inf]  [CACHE MISS] Fetched & cached volatility data for BTC-USD
+2025-11-16T05:38:48.111936350Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:48.111953123Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:38:48.111954476Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:38:48.111955043Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:48.111963948Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:38:48.111964301Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:38:48.111965656Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:48.111972598Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:38:48.111973984Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:48.111975367Z [err]  100.64.0.5 - - [16/Nov/2025 05:38:39] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:38:48.111982328Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:48.111982556Z [err]  INFO:werkzeug:100.64.0.5 - - [16/Nov/2025 05:38:39] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:38:48.111983008Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:38:48.111990394Z [err]  100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:48.111992013Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:38:48.111993082Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:38:48.113594484Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:38:48.113603355Z [err]  100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:38:48.113609636Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:38:48.113617672Z [err]  100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:38:48.113617743Z [err]  [2025-11-16 05:38:39] [WARNING] [WARNING] get_latest_price: orderbook fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:38:48.113625266Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:38:48.113630333Z [err]  100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:48.113634862Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:38:48.113640263Z [err]  100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:38:48.113644953Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:38:48.113650150Z [err]  100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:38:48.113654471Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:38:48.113659003Z [err]  100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:38:48.113664031Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:38:39] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:38:48.113668436Z [err]  100.64.0.2 - - [16/Nov/2025 05:38:39] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:38:48.115605505Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: orderbook fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:38:48.115609105Z [err]  [2025-11-16 05:38:39] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:38:48.115613061Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:38:48.115617142Z [err]  [2025-11-16 05:38:39] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=6, F=3, V=7 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:38:48.115621440Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=6, F=3, V=7 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:38:48.115627185Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-16T05:38:48.115630985Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-16T05:38:48.115634666Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-16T05:38:52.606938214Z [err]  [2025-11-16 05:38:52] [WARNING] [WARNING] get_latest_price: orderbook fetch failed for token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:38:52.606947259Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: orderbook fetch failed for token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:38:52.606956142Z [err]  [2025-11-16 05:38:52] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:38:52.606964548Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:38:52.606971708Z [err]  [2025-11-16 05:38:52] [INFO] [SKIP] ChatGPT - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=4, F=0, V=2 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:38:52.606980096Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to the project (Monad or ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=4, F=0, V=2 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:38:52.763330222Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:38:52.763338132Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:38:52.763344209Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:39:12.293238916Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:12.293255429Z [err]  [2025-11-16 05:39:02] [INFO] [SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=5, F=3, V=8 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:39:12.293277409Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This is a market on whether any crypto project or ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=5, F=3, V=8 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:39:12.293291437Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:39:12.293302604Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:39:12.293314144Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:39:12.293358596Z [err]  [2025-11-16 05:39:02] [WARNING] [WARNING] get_latest_price: orderbook fetch failed for token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:12.293371717Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: orderbook fetch failed for token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:12.293392380Z [err]  [2025-11-16 05:39:02] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:12.293405121Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=64495701704037344649511960360365713156045073952204748632089798318790343817094: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:12.296113816Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:12.296121563Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:39:12.296131440Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:39:12.296139874Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:39:12.296147013Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:39:12.296154216Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:12.296161456Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:12.296170659Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:39:12.296177236Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:39:12.296184597Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:39:12.296190913Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:39:12.296198126Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:39:12.296205642Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:04] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:39:12.296212165Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:12.296219048Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:12.296225215Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:39:12.298907256Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:39:12.298914862Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:12.298923405Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:12.298930431Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:39:12.298942981Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:39:12.298953206Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:39:12.298961659Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:39:12.298969675Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:39:12.298978185Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:39:12.298986220Z [err]  100.64.0.7 - - [16/Nov/2025 05:39:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:39:12.298993031Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:39:08] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:39:12.299001861Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:39:12.299010734Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:08] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:39:15.955013654Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:15.955027896Z [err]  [2025-11-16 05:39:15] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=6, F=3, V=2 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:39:15.955036574Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=6, F=3, V=2 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:39:15.955213436Z [err]  [2025-11-16 05:39:15] [WARNING] [WARNING] get_latest_price: orderbook fetch failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:15.955223332Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: orderbook fetch failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:15.955232889Z [err]  [2025-11-16 05:39:15] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:16.140968780Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-16T05:39:16.140976001Z [inf]  [CACHE HIT] News data for ETH
+2025-11-16T05:39:16.140982345Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-16T05:39:36.143056072Z [err]  [2025-11-16 05:39:27] [WARNING] [WARNING] get_latest_price: orderbook fetch failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:36.143070721Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: orderbook fetch failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:36.143088394Z [err]  [2025-11-16 05:39:27] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:36.143121665Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:36.143139001Z [err]  [2025-11-16 05:39:27] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=4, V=7 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:39:36.143154034Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=4, V=7 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:39:36.143172503Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:36.143187482Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:36.143203947Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:39:36.155219337Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:39:36.155224583Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:36.155229023Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:36.155235017Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:39:36.155239485Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:39:36.155244160Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:39:36.155248383Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:39:36.155252732Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:39:36.155258112Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:39:36.155265881Z [err]  [2025-11-16 05:39:34] [WARNING] [WARNING] get_latest_price: orderbook fetch failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:36.155270924Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: orderbook fetch failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:36.155276190Z [err]  [2025-11-16 05:39:34] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:36.155468730Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514: Unexpected error | Message: 'OpenapiOrderbookRespOpenAPI' object has no attribute 'data'
+2025-11-16T05:39:36.155474630Z [err]  [2025-11-16 05:39:34] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=6, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:39:36.155481845Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=6, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: Unexpected error - 'OpenapiOrderbookRespOpenAPI' o...
+2025-11-16T05:39:36.155489387Z [err]  [2025-11-16 05:39:34] [INFO] [INFO] ChatGPT - No opportunities found
+2025-11-16T05:39:36.155497673Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - No opportunities found
+2025-11-16T05:39:36.155504957Z [err]  [2025-11-16 05:39:34] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-16T05:39:36.155512789Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-16T05:39:36.155519499Z [err]  [2025-11-16 05:39:34] [INFO] [INFO] 
+2025-11-16T05:39:36.155526490Z [err]  Processing cycle for Gemini
+2025-11-16T05:39:36.155533168Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-16T05:39:36.155541211Z [err]  Processing cycle for Gemini
+2025-11-16T05:39:36.155548878Z [err]  [2025-11-16 05:39:34] [INFO] [INFO] Gemini - Analyzing 2 categories
+2025-11-16T05:39:36.155556583Z [err]  INFO:autonomous_engine:[INFO] Gemini - Analyzing 2 categories
+2025-11-16T05:39:36.155563500Z [err]  100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:39:36.155570103Z [err]  INFO:werkzeug:100.64.0.6 - - [16/Nov/2025 05:39:34] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:39:36.155577256Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-16T05:39:36.155584794Z [inf]  [CACHE HIT] News data for BTC
+2025-11-16T05:39:36.155594947Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-16T05:39:38.390658783Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:38.390666555Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:38.390671763Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:39:38.390678556Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-16T05:39:38.390682842Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:38.390687256Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-16T05:39:38.390693082Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:39:38.390699035Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-16T05:39:38.390704645Z [err]  100.64.0.7 - - [16/Nov/2025 05:39:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:39:38.390709047Z [err]  INFO:werkzeug:100.64.0.7 - - [16/Nov/2025 05:39:38] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-16T05:39:38.398205930Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:39:38.398214417Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-16T05:39:38.398229027Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:39:38.398236251Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-16T05:39:39.014443603Z [err]  100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-16T05:39:39.014449015Z [err]  INFO:werkzeug:100.64.0.2 - - [16/Nov/2025 05:39:38] "GET /api/market-header HTTP/1.1" 200 -
