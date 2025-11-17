@@ -95,6 +95,8 @@ class OpinionTradeAPI:
             batch_size = 20  # SDK enforces max 20 per request
             last_error = None
             
+            print(f"[PAGINATION] Starting pagination: target={limit} markets, batch_size={batch_size}")
+            
             # Fetch markets in batches until we reach the limit or no more markets
             while len(all_markets) < limit:
                 response = self.client.get_markets(
@@ -142,7 +144,7 @@ class OpinionTradeAPI:
                 }
             
             markets = all_markets[:limit]  # Respect the limit
-            print(f"[PAGINATION] Total markets fetched: {len(markets)} across {page} page(s)")
+            print(f"[PAGINATION] Pagination complete: fetched {len(all_markets)} markets, returning {len(markets)} (after limit), pages processed: {page}")
             
             # Convert SDK market objects to our event format
             events = []
@@ -331,11 +333,13 @@ class OpinionTradeAPI:
             )
             
             # Place order
+            print(f"[ORDER DEBUG] Placing order: market_id={market_id}, token_id={token_id}, price={price}, amount={amount} USDT ({amount_in_wei} wei), side={side_str}")
             result = self.client.place_order(order_data)
             
             # Check if order was successful
             if hasattr(result, 'errno') and result.errno == 0:
                 order_info = result.result if hasattr(result, 'result') else {}
+                print(f"[ORDER SUCCESS] Order placed: orderId={getattr(order_info, 'orderId', 'unknown')}")
                 return {
                     'success': True,
                     'prediction_id': getattr(order_info, 'orderId', 'unknown'),
@@ -352,13 +356,20 @@ class OpinionTradeAPI:
                 }
             else:
                 error_msg = getattr(result, 'errmsg', str(result))
+                error_code = getattr(result, 'errno', 'unknown')
+                print(f"[ORDER FAILED] Opinion.trade SDK Error: errno={error_code}, errmsg={error_msg}")
+                print(f"[ORDER FAILED] Full result object: {result}")
                 return {
                     'success': False,
                     'error': 'Order placement failed',
-                    'message': error_msg
+                    'message': f"SDK Error {error_code}: {error_msg}"
                 }
         
         except Exception as e:
+            import traceback
+            error_trace = traceback.format_exc()
+            print(f"[ORDER EXCEPTION] Failed to place order: {str(e)}")
+            print(f"[ORDER EXCEPTION] Full traceback:\n{error_trace}")
             return {
                 'success': False,
                 'error': 'Unexpected error',
