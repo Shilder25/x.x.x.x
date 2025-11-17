@@ -1,0 +1,95 @@
+   ▲ Next.js 15.5.6
+156 packages are looking for funding
+   Creating an optimized production build ...
+  run `npm fund` for details
+4 vulnerabilities (1 moderate, 3 high)
+To address issues that do not require attention, run:
+  npm audit fix
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+  → Building Next.js for production...
+npm warn config production Use `--omit=dev` instead.
+> tradingagents-frontend@0.1.0 build
+> next build
+added 423 packages, and audited 424 packages in 17s
+ ✓ Compiled successfully in 12.4s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/4) ...
+   Generating static pages (1/4) 
+   Generating static pages (2/4) 
+   Generating static pages (3/4) 
+ ✓ Generating static pages (4/4)
+   Finalizing page optimization ...
+   Collecting build traces ...
+  ├ chunks/255-a78b69fc76e8afca.js       45.6 kB
+  ├ chunks/4bd1b696-409494caf8c83275.js  54.2 kB
+Route (app)                                 Size  First Load JS
+○  (Static)  prerendered as static content
+  └ other shared chunks (total)          1.97 kB
+┌ ○ /                                     113 kB         215 kB
+  ✓ Next.js built successfully
+[2/3] Starting Flask API backend on port 8000...
+[2025-11-17 22:04:34 +0000] [813] [INFO] Listening at: http://0.0.0.0:8000 (813)
+  → Using Gunicorn (production WSGI server)
+  ✓ Flask API started (PID: 813)
+[2025-11-17 22:04:34 +0000] [813] [INFO] Starting gunicorn 23.0.0
+└ ○ /_not-found                            999 B         103 kB
++ First Load JS shared by all             102 kB
+[2025-11-17 22:04:34 +0000] [813] [INFO] Using worker: sync
+[2025-11-17 22:04:35 +0000] [814] [INFO] Booting worker with pid: 814
+[2025-11-17 22:04:35 +0000] [815] [INFO] Booting worker with pid: 815
+[3/3] Starting Next.js frontend on port 5000...
+  ✓ Next.js frontend started (PID: 816)
+============================================================
+✓ TradingAgents is running!
+  - Frontend (Next.js): http://localhost:5000
+  - API (Flask): http://localhost:8000
+  - Mode: PRODUCTION
+============================================================
+Press Ctrl+C to stop all services
+npm warn config production Use `--omit=dev` instead.
+> tradingagents-frontend@0.1.0 start
+> next start -p 5000
+   ▲ Next.js 15.5.6
+   - Local:        http://localhost:5000
+   - Network:      http://10.202.235.56:5000
+ ✓ Starting...
+ ✓ Ready in 477ms
+100.64.0.4 - - [17/Nov/2025:22:04:44 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.4 - - [17/Nov/2025:22:04:45 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.3 - - [17/Nov/2025:22:04:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:04:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:04:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:04:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 381 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:04:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:04:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:04:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[2025-11-17 22:05:03] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 22:05:03] [ERROR] [ERROR] Failed to fetch events from Opinion.trade: Please configure OPINION_TRADE_API_KEY and OPINION_WALLET_PRIVATE_KEY
+[2025-11-17 22:05:03] [INFO] [ADMIN] Daily cycle completed successfully
+100.64.0.5 - - [17/Nov/2025:22:04:56 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.4 - - [17/Nov/2025:22:05:03 +0000] "POST /admin/trigger-cycle HTTP/1.1" 200 275 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.4 - - [17/Nov/2025:22:04:57 +0000] "GET /admin HTTP/1.1" 200 12533 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.4 - - [17/Nov/2025:22:04:58 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.4 - - [17/Nov/2025:22:04:58 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[2025-11-17 22:05:03] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.4 at 2025-11-17T22:05:03.562146
+[2025-11-17 22:05:03] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+100.64.0.4 - - [17/Nov/2025:22:05:10 +0000] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 694 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:05:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:05:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:05:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:05:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 381 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:05:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:05:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.6 - - [17/Nov/2025:22:05:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:05:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:06:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.3 - - [17/Nov/2025:22:06:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:06:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:06:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 381 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:06:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:06:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:06:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.5 - - [17/Nov/2025:22:06:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
