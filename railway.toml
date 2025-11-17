@@ -8,7 +8,7 @@ builder = "NIXPACKS"
 [[services]]
 name = "api"
 buildCommand = "pip install --upgrade pip && pip install -e ."
-startCommand = "python api.py"
+startCommand = "python main.py"
 port = 8000
 
 [services.healthcheck]
