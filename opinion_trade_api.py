@@ -367,10 +367,6 @@ class OpinionTradeAPI:
             # Convert side string to OrderSide enum
             side = OrderSide.BUY if side_str == 'BUY' else OrderSide.SELL
             
-            # Convert USDT amount to base units (wei) - USDT on BNB Chain uses 18 decimals
-            # Example: 10 USDT → 10000000000000000000 wei
-            amount_in_wei = int(amount * 1e18)
-            
             # Validate amount is reasonable (min 1 USDT, max based on available balance)
             if amount < 1:
                 return {
@@ -379,12 +375,10 @@ class OpinionTradeAPI:
                     'message': 'Minimum bet amount is 1 USDT'
                 }
             
-            # Enable trading if not already enabled (required before first order)
-            try:
-                self.client.enable_trading()
-            except Exception as e:
-                # Already enabled or error - continue anyway
-                logger.info(f"Note: enable_trading() response: {e}")
+            # SDK expects makerAmountInQuoteToken as STRING with USDT value (not wei)
+            # Example: "5" for 5 USDT, "10.5" for 10.5 USDT
+            # The SDK handles conversion to wei internally
+            amount_str = str(amount)
             
             # Create order
             order_data = PlaceOrderDataInput(
@@ -393,12 +387,12 @@ class OpinionTradeAPI:
                 side=side,
                 orderType=LIMIT_ORDER,
                 price=price,
-                makerAmountInQuoteToken=amount_in_wei  # Amount in wei (base units)
+                makerAmountInQuoteToken=amount_str  # Amount in USDT as string
             )
             
-            # Place order
-            logger.info(f"[ORDER DEBUG] Placing order: market_id={market_id}, token_id={token_id}, price={price}, amount={amount} USDT ({amount_in_wei} wei), side={side_str}")
-            result = self.client.place_order(order_data)
+            # Place order with check_approval=True to ensure trading permissions are enabled
+            logger.info(f"[ORDER DEBUG] Placing order: market_id={market_id}, token_id={token_id}, price={price}, amount={amount_str} USDT, side={side_str}")
+            result = self.client.place_order(order_data, check_approval=True)
             
             # Check if order was successful
             if hasattr(result, 'errno') and result.errno == 0:

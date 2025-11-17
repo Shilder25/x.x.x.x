@@ -1,0 +1,500 @@
+[2025-11-17 06:24:46] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.959, ask=0.99, mid=0.9744999999999999
+[2025-11-17 06:24:46] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” immediately if a...' | Prob=15.00%, Conf=85% | Scores: S=2, N=2, T=6, F=3, V=9 | Reason: Valor esperado negativo o cero
+[2025-11-17 06:25:26] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=46, asks_count=10
+[2025-11-17 06:25:26] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.71, ask=0.944, mid=0.827
+[2025-11-17 06:25:26] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if any Binance 1...' | Prob=48.00%, Conf=45% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Valor esperado negativo o cero
+[2025-11-17 06:26:22] [INFO] [INFO] get_orderbook: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319, bids_count=0, asks_count=0
+[2025-11-17 06:26:22] [WARNING] [WARNING] get_latest_price: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319 - No valid bid/ask prices in orderbook
+[2025-11-17 06:26:22] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:26:22] [INFO] [SKIP] Deepseek - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:27:10] [INFO] [INFO] get_orderbook: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119, bids_count=0, asks_count=0
+[2025-11-17 06:27:10] [WARNING] [WARNING] get_latest_price: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119 - No valid bid/ask prices in orderbook
+[2025-11-17 06:27:10] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:27:10] [INFO] [SKIP] Deepseek - 'This market will resolve according to the exact am...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=10 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:27:56] [INFO] [INFO] get_orderbook: token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729, bids_count=0, asks_count=0
+[2025-11-17 06:27:56] [WARNING] [WARNING] get_latest_price: token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729 - No valid bid/ask prices in orderbook
+[2025-11-17 06:27:56] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:27:56] [INFO] [SKIP] Deepseek - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:28:36] [INFO] [INFO] get_orderbook: token_id=9597418708758808381790519740441712139901550445547553694132497155869376553750, bids_count=0, asks_count=0
+[2025-11-17 06:28:36] [WARNING] [WARNING] get_latest_price: token_id=9597418708758808381790519740441712139901550445547553694132497155869376553750 - No valid bid/ask prices in orderbook
+[2025-11-17 06:28:36] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=9597418708758808381790519740441712139901550445547553694132497155869376553750: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:28:36] [INFO] [SKIP] Deepseek - 'This market will resolve to the calendar date (ET)...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:29:16] [INFO] [INFO] get_orderbook: token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094, bids_count=0, asks_count=0
+[2025-11-17 06:29:16] [WARNING] [WARNING] get_latest_price: token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094 - No valid bid/ask prices in orderbook
+[2025-11-17 06:29:16] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:29:16] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” if Polymarket of...' | Prob=0.00%, Conf=0% | Scores: S=1, N=1, T=1, F=1, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:29:56] [INFO] [INFO] get_orderbook: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558, bids_count=0, asks_count=0
+[2025-11-17 06:29:56] [WARNING] [WARNING] get_latest_price: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558 - No valid bid/ask prices in orderbook
+[2025-11-17 06:29:56] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:29:56] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 06:30:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 06:30:03] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 06:30:34] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 06:30:34] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 06:30:34] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:30:34] [INFO] [SKIP] Deepseek - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=3, F=1, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:31:11] [INFO] [INFO] get_orderbook: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741, bids_count=0, asks_count=0
+[2025-11-17 06:31:11] [WARNING] [WARNING] get_latest_price: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741 - No valid bid/ask prices in orderbook
+[2025-11-17 06:31:11] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:31:11] [INFO] [SKIP] Deepseek - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=6, F=1, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:31:48] [INFO] [INFO] get_orderbook: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741, bids_count=0, asks_count=0
+[2025-11-17 06:31:48] [WARNING] [WARNING] get_latest_price: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741 - No valid bid/ask prices in orderbook
+[2025-11-17 06:31:48] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:31:48] [INFO] [SKIP] Deepseek - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=2, N=1, T=4, F=1, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:31:48] [INFO] [INFO] Deepseek - Found 1 total opportunities across all categories
+[2025-11-17 06:31:48] [INFO] [INFO] Deepseek - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-17 06:31:48] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=6, asks_count=15
+[2025-11-17 06:31:48] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.001, ask=0.499, mid=0.25
+[2025-11-17 06:31:48] [INFO] [INFO] Deepseek - Market price: 0.2500, AI probability: 0.3500
+[2025-11-17 06:31:48] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1769, token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, price=0.35, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+[2025-11-17 06:31:49] [ERROR] [ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+[2025-11-17 06:31:49] [ERROR] [ERROR] [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+[2025-11-17 06:31:49] [ERROR] [BET ERROR] Deepseek - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+[2025-11-17 06:31:49] [INFO] [INFO] Deepseek - Executed bet 1/1
+[2025-11-17 06:31:49] [INFO] [INFO] Deepseek - Cycle complete: 0 bets placed, 15 skipped, 15 events analyzed
+[2025-11-17 06:31:49] [INFO] [INFO] 
+Processing cycle for Grok
+[2025-11-17 06:31:49] [INFO] [INFO] Grok - Analyzing 5 categories
+[2025-11-17 06:32:01] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=5, asks_count=15
+[2025-11-17 06:32:01] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.2, ask=0.56, mid=0.38
+[2025-11-17 06:32:01] [INFO] [BET] Grok - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=40.00%, Conf=65% | Scores: S=5, N=5, T=7, F=0, V=8
+[2025-11-17 06:32:13] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+[2025-11-17 06:32:13] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+[2025-11-17 06:32:13] [WARNING] [WARNING] Grok - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:32:13] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=7, F=5, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:32:26] [INFO] [INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+[2025-11-17 06:32:26] [WARNING] [WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+[2025-11-17 06:32:26] [WARNING] [WARNING] Grok - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:32:26] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=7, F=0, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:32:38] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=11
+[2025-11-17 06:32:38] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.643, ask=0.799, mid=0.7210000000000001
+[2025-11-17 06:32:38] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=60% | Scores: S=0, N=2, T=6, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-17 06:32:51] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=40, asks_count=12
+[2025-11-17 06:32:51] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.952, ask=0.989, mid=0.9704999999999999
+[2025-11-17 06:32:51] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=40.00%, Conf=60% | Scores: S=0, N=1, T=5, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-17 06:33:01] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=46, asks_count=11
+[2025-11-17 06:33:01] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.88, ask=0.924, mid=0.902
+[2025-11-17 06:33:01] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=40% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Valor esperado negativo o cero
+[2025-11-17 06:33:16] [INFO] [INFO] get_orderbook: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319, bids_count=0, asks_count=0
+[2025-11-17 06:33:16] [WARNING] [WARNING] get_latest_price: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319 - No valid bid/ask prices in orderbook
+[2025-11-17 06:33:16] [WARNING] [WARNING] Grok - Price fetch failed for token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:33:16] [INFO] [SKIP] Grok - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:33:27] [INFO] [INFO] get_orderbook: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119, bids_count=0, asks_count=0
+[2025-11-17 06:33:27] [WARNING] [WARNING] get_latest_price: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119 - No valid bid/ask prices in orderbook
+[2025-11-17 06:33:27] [WARNING] [WARNING] Grok - Price fetch failed for token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:33:27] [INFO] [SKIP] Grok - 'This market will resolve according to the exact am...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=3, F=5, V=4 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:33:44] [INFO] [INFO] get_orderbook: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842, bids_count=0, asks_count=0
+[2025-11-17 06:33:44] [WARNING] [WARNING] get_latest_price: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842 - No valid bid/ask prices in orderbook
+[2025-11-17 06:33:44] [WARNING] [WARNING] Grok - Price fetch failed for token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:33:44] [INFO] [SKIP] Grok - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:33:54] [INFO] [INFO] get_orderbook: token_id=9597418708758808381790519740441712139901550445547553694132497155869376553750, bids_count=0, asks_count=0
+[2025-11-17 06:33:54] [WARNING] [WARNING] get_latest_price: token_id=9597418708758808381790519740441712139901550445547553694132497155869376553750 - No valid bid/ask prices in orderbook
+[2025-11-17 06:33:54] [WARNING] [WARNING] Grok - Price fetch failed for token_id=9597418708758808381790519740441712139901550445547553694132497155869376553750: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:33:54] [INFO] [SKIP] Grok - 'This market will resolve to the calendar date (ET)...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:34:02] [INFO] [INFO] get_orderbook: token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094, bids_count=0, asks_count=0
+[2025-11-17 06:34:02] [WARNING] [WARNING] get_latest_price: token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094 - No valid bid/ask prices in orderbook
+[2025-11-17 06:34:02] [WARNING] [WARNING] Grok - Price fetch failed for token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:34:02] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” if Polymarket of...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:34:15] [INFO] [INFO] get_orderbook: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558, bids_count=0, asks_count=0
+[2025-11-17 06:34:15] [WARNING] [WARNING] get_latest_price: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558 - No valid bid/ask prices in orderbook
+[2025-11-17 06:34:15] [WARNING] [WARNING] Grok - Price fetch failed for token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:34:15] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=2, F=2, V=2 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:34:27] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 06:34:27] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 06:34:27] [WARNING] [WARNING] Grok - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:34:27] [INFO] [SKIP] Grok - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=4 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:34:40] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 06:34:40] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 06:34:40] [WARNING] [WARNING] Grok - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:34:40] [INFO] [SKIP] Grok - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=7, F=3, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:34:50] [INFO] [INFO] get_orderbook: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741, bids_count=0, asks_count=0
+[2025-11-17 06:34:50] [WARNING] [WARNING] get_latest_price: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741 - No valid bid/ask prices in orderbook
+[2025-11-17 06:34:50] [WARNING] [WARNING] Grok - Price fetch failed for token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 06:34:50] [INFO] [SKIP] Grok - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=5, F=0, V=4 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 06:34:50] [INFO] [INFO] Grok - Found 1 total opportunities across all categories
+[2025-11-17 06:34:50] [INFO] [INFO] Grok - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-17 06:34:51] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=6, asks_count=16
+[2025-11-17 06:34:51] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.001, ask=0.295, mid=0.148
+[2025-11-17 06:34:51] [INFO] [INFO] Grok - Market price: 0.1480, AI probability: 0.4000
+[2025-11-17 06:34:51] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1769, token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, price=0.4, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+[2025-11-17 06:34:51] [ERROR] [ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+[2025-11-17 06:34:51] [ERROR] [ERROR] [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+[2025-11-17 06:34:51] [ERROR] [BET ERROR] Grok - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+[2025-11-17 06:34:51] [INFO] [INFO] Grok - Executed bet 1/1
+[2025-11-17 06:34:51] [INFO] [INFO] Grok - Cycle complete: 0 bets placed, 15 skipped, 15 events analyzed
+[2025-11-17 06:34:51] [INFO] [INFO] Starting OrderMonitor to review active positions...
+[2025-11-17 06:34:51] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 06:34:51] [INFO] [INFO] OrderMonitor completed: {'total_checked': 0, 'strikes_added': 0, 'strikes_reset': 0, 'cancelled': 0, 'errors': 0}
+[2025-11-17 06:34:51] [INFO] [ADMIN] Daily cycle completed successfully
+[2025-11-17 07:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 07:00:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 07:00:03] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 07:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 07:30:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 07:30:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 08:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 08:00:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 08:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 08:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 08:30:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 08:30:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 09:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 09:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 09:00:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 09:00:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 09:00:01] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-17 09:00:01] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+[2025-11-17 09:00:01] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+[2025-11-17 09:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 09:00:03] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+[2025-11-17 09:00:03] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+[2025-11-17 09:00:03] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-17 09:00:03] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+[2025-11-17 09:00:03] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 8 markets
+[2025-11-17 09:00:03] [INFO] [INFO] [PAGINATION] BINARY Page 2: 8/8 markets are active (filtered out resolved/closed)
+[2025-11-17 09:00:03] [INFO] [INFO] [PAGINATION] BINARY - Got 8 < 20, reached end of markets
+[2025-11-17 09:00:03] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+[2025-11-17 09:00:03] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+[2025-11-17 09:00:07] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+[2025-11-17 09:00:07] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 46 markets
+[2025-11-17 09:00:07] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 46/46 markets are active (filtered out resolved/closed)
+[2025-11-17 09:00:11] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+[2025-11-17 09:00:11] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 46 markets
+[2025-11-17 09:00:11] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 46/46 markets are active (filtered out resolved/closed)
+[2025-11-17 09:00:13] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: errno=0, has_result=True
+[2025-11-17 09:00:13] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3 returned 46 markets
+[2025-11-17 09:00:13] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: 46/46 markets are active (filtered out resolved/closed)
+[2025-11-17 09:00:16] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: errno=0, has_result=True
+[2025-11-17 09:00:16] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4 returned 46 markets
+[2025-11-17 09:00:16] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: 46/46 markets are active (filtered out resolved/closed)
+[2025-11-17 09:00:16] [INFO] [INFO] [PAGINATION] CATEGORICAL - Reached target limit of 200 markets
+[2025-11-17 09:00:16] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+[2025-11-17 09:00:16] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 212 markets, returning 200 (after limit)
+[2025-11-17 09:00:31] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+[2025-11-17 09:00:31] [INFO] [INFO] Fetched 200 events from Opinion.trade
+[2025-11-17 09:00:31] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 41, 'Other': 106, 'Rates': 31, 'Commodities': 4, 'Finance': 18}
+[2025-11-17 09:00:31] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-17 09:00:31] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+[2025-11-17 09:00:47] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=3, asks_count=16
+[2025-11-17 09:00:47] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.07, ask=0.275, mid=0.17250000000000001
+[2025-11-17 09:00:47] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=48.00%, Conf=55% | Scores: S=5, N=5, T=6, F=5, V=8
+[2025-11-17 09:01:10] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+[2025-11-17 09:01:10] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+[2025-11-17 09:01:10] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:01:10] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:01:30] [INFO] [INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+[2025-11-17 09:01:30] [WARNING] [WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+[2025-11-17 09:01:30] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:01:30] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=5, V=3 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:01:50] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=12
+[2025-11-17 09:01:50] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.765, ask=0.767, mid=0.766
+[2025-11-17 09:01:50] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=48.00%, Conf=40% | Scores: S=5, N=4, T=5, F=3, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:02:12] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=38, asks_count=12
+[2025-11-17 09:02:12] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.972, ask=0.993, mid=0.9824999999999999
+[2025-11-17 09:02:12] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=40.00%, Conf=30% | Scores: S=5, N=4, T=5, F=3, V=3 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:02:34] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=44
+[2025-11-17 09:02:34] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.056, ask=0.135, mid=0.0955
+[2025-11-17 09:02:34] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Yes" if any Binance 1...' | Prob=55.00%, Conf=60% | Scores: S=5, N=5, T=5, F=5, V=6
+[2025-11-17 09:03:00] [INFO] [INFO] get_orderbook: token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729, bids_count=0, asks_count=0
+[2025-11-17 09:03:00] [WARNING] [WARNING] get_latest_price: token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729 - No valid bid/ask prices in orderbook
+[2025-11-17 09:03:00] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:03:00] [INFO] [SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:03:19] [INFO] [INFO] get_orderbook: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319, bids_count=0, asks_count=0
+[2025-11-17 09:03:19] [WARNING] [WARNING] get_latest_price: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319 - No valid bid/ask prices in orderbook
+[2025-11-17 09:03:19] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:03:19] [INFO] [SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:03:36] [INFO] [INFO] get_orderbook: token_id=35099978048143644978822260090286853565974045512452109897605125488191189004587, bids_count=0, asks_count=0
+[2025-11-17 09:03:36] [WARNING] [WARNING] get_latest_price: token_id=35099978048143644978822260090286853565974045512452109897605125488191189004587 - No valid bid/ask prices in orderbook
+[2025-11-17 09:03:36] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=35099978048143644978822260090286853565974045512452109897605125488191189004587: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:03:36] [INFO] [SKIP] ChatGPT - 'This market will resolve according to the exact am...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:03:51] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 09:03:51] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 09:03:51] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:03:51] [INFO] [SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=6, F=1, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:04:00] [INFO] [INFO] get_orderbook: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741, bids_count=0, asks_count=0
+[2025-11-17 09:04:00] [WARNING] [WARNING] get_latest_price: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741 - No valid bid/ask prices in orderbook
+[2025-11-17 09:04:00] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:04:00] [INFO] [SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=6, F=4, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:04:18] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 09:04:18] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 09:04:18] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:04:18] [INFO] [SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=0, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:04:36] [INFO] [INFO] get_orderbook: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558, bids_count=0, asks_count=0
+[2025-11-17 09:04:36] [WARNING] [WARNING] get_latest_price: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558 - No valid bid/ask prices in orderbook
+[2025-11-17 09:04:36] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:04:36] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:04:47] [INFO] [INFO] get_orderbook: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827, bids_count=0, asks_count=0
+[2025-11-17 09:04:47] [WARNING] [WARNING] get_latest_price: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827 - No valid bid/ask prices in orderbook
+[2025-11-17 09:04:47] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:04:47] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=4, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:05:02] [INFO] [INFO] get_orderbook: token_id=69321533767899091783015051805117967122680541810126926850040880386943664469203, bids_count=0, asks_count=0
+[2025-11-17 09:05:02] [WARNING] [WARNING] get_latest_price: token_id=69321533767899091783015051805117967122680541810126926850040880386943664469203 - No valid bid/ask prices in orderbook
+[2025-11-17 09:05:02] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=69321533767899091783015051805117967122680541810126926850040880386943664469203: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:05:02] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” if Polymarket of...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:05:02] [INFO] [INFO] ChatGPT - Found 2 total opportunities across all categories
+[2025-11-17 09:05:02] [INFO] [INFO] ChatGPT - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-17 09:05:02] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=12, asks_count=44
+[2025-11-17 09:05:02] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.07, ask=0.3, mid=0.185
+[2025-11-17 09:05:02] [INFO] [INFO] ChatGPT - Market price: 0.1850, AI probability: 0.5500
+[2025-11-17 09:05:03] [INFO] [INFO] Note: enable_trading() response: Could not transact with/call contract function, is contract deployed correctly and chain synced?
+[2025-11-17 09:05:03] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1377, token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, price=0.55, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+[2025-11-17 09:05:04] [ERROR] [ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+[2025-11-17 09:05:04] [ERROR] [ERROR] [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+[2025-11-17 09:05:04] [ERROR] [BET ERROR] ChatGPT - Failed bet on This market will resolve to "Yes" if any Binance 1... (event_id=1377): Order placement failed
+[2025-11-17 09:05:04] [INFO] [INFO] ChatGPT - Executed bet 1/2
+[2025-11-17 09:05:04] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=3, asks_count=14
+[2025-11-17 09:05:04] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.07, ask=0.96, mid=0.515
+[2025-11-17 09:05:04] [INFO] [INFO] ChatGPT - Market price: 0.5150, AI probability: 0.4800
+[2025-11-17 09:05:04] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1769, token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, price=0.48, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+[2025-11-17 09:05:04] [ERROR] [ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+[2025-11-17 09:05:04] [ERROR] [ERROR] [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+[2025-11-17 09:05:04] [ERROR] [BET ERROR] ChatGPT - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+[2025-11-17 09:05:04] [INFO] [INFO] ChatGPT - Executed bet 2/2
+[2025-11-17 09:05:04] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 15 skipped, 15 events analyzed
+[2025-11-17 09:05:04] [INFO] [INFO] 
+Processing cycle for Gemini
+[2025-11-17 09:05:04] [INFO] [INFO] Gemini - Analyzing 5 categories
+[2025-11-17 09:05:47] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=14, asks_count=3
+[2025-11-17 09:05:47] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.4, ask=0.93, mid=0.665
+[2025-11-17 09:05:47] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=53.00%, Conf=55% | Scores: S=1, N=1, T=5, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:06:30] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+[2025-11-17 09:06:30] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+[2025-11-17 09:06:30] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:06:30] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=6, F=1, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:07:20] [INFO] [INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+[2025-11-17 09:07:20] [WARNING] [WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+[2025-11-17 09:07:20] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:07:20] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=7, F=0, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:08:01] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=12
+[2025-11-17 09:08:01] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.68, ask=0.78, mid=0.73
+[2025-11-17 09:08:01] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if the Supreme C...' | Prob=35.00%, Conf=65% | Scores: S=0, N=0, T=0, F=0, V=5 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:08:46] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=36, asks_count=13
+[2025-11-17 09:08:46] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.954, ask=0.992, mid=0.973
+[2025-11-17 09:08:46] [INFO] [SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=2.00%, Conf=98% | Scores: S=0, N=0, T=0, F=9, V=1 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:09:30] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=44, asks_count=12
+[2025-11-17 09:09:30] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.7, ask=0.93, mid=0.815
+[2025-11-17 09:09:30] [INFO] [BET] Gemini - $5.00 on 'This market will resolve to "Yes" if any Binance 1...' | Prob=12.00%, Conf=85% | Scores: S=2, N=1, T=3, F=0, V=8
+[2025-11-17 09:10:13] [INFO] [INFO] get_orderbook: token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729, bids_count=0, asks_count=0
+[2025-11-17 09:10:13] [WARNING] [WARNING] get_latest_price: token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729 - No valid bid/ask prices in orderbook
+[2025-11-17 09:10:13] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:10:13] [INFO] [SKIP] Gemini - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:11:02] [INFO] [INFO] get_orderbook: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319, bids_count=0, asks_count=0
+[2025-11-17 09:11:02] [WARNING] [WARNING] get_latest_price: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319 - No valid bid/ask prices in orderbook
+[2025-11-17 09:11:02] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:11:02] [INFO] [SKIP] Gemini - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:11:56] [INFO] [INFO] get_orderbook: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119, bids_count=0, asks_count=0
+[2025-11-17 09:11:56] [WARNING] [WARNING] get_latest_price: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119 - No valid bid/ask prices in orderbook
+[2025-11-17 09:11:56] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:11:56] [INFO] [SKIP] Gemini - 'This market will resolve according to the exact am...' | Prob=0.00%, Conf=0% | Scores: S=3, N=3, T=0, F=4, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:12:24] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 09:12:24] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 09:12:24] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:12:24] [INFO] [SKIP] Gemini - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:13:02] [INFO] [INFO] get_orderbook: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741, bids_count=0, asks_count=0
+[2025-11-17 09:13:02] [WARNING] [WARNING] get_latest_price: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741 - No valid bid/ask prices in orderbook
+[2025-11-17 09:13:02] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:13:02] [INFO] [SKIP] Gemini - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:13:36] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 09:13:36] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 09:13:36] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:13:36] [INFO] [SKIP] Gemini - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:14:22] [INFO] [INFO] get_orderbook: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558, bids_count=0, asks_count=0
+[2025-11-17 09:14:22] [WARNING] [WARNING] get_latest_price: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558 - No valid bid/ask prices in orderbook
+[2025-11-17 09:14:22] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:14:22] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:15:05] [INFO] [INFO] get_orderbook: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827, bids_count=0, asks_count=0
+[2025-11-17 09:15:05] [WARNING] [WARNING] get_latest_price: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827 - No valid bid/ask prices in orderbook
+[2025-11-17 09:15:05] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:15:05] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=8, N=8, T=0, F=7, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:15:48] [INFO] [INFO] get_orderbook: token_id=69321533767899091783015051805117967122680541810126926850040880386943664469203, bids_count=0, asks_count=0
+[2025-11-17 09:15:48] [WARNING] [WARNING] get_latest_price: token_id=69321533767899091783015051805117967122680541810126926850040880386943664469203 - No valid bid/ask prices in orderbook
+[2025-11-17 09:15:48] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=69321533767899091783015051805117967122680541810126926850040880386943664469203: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:15:48] [INFO] [SKIP] Gemini - 'This market will resolve to “Yes” if Polymarket of...' | Prob=0.00%, Conf=0% | Scores: S=8, N=3, T=8, F=8, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:15:48] [INFO] [INFO] Gemini - Found 1 total opportunities across all categories
+[2025-11-17 09:15:48] [INFO] [INFO] Gemini - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-17 09:15:49] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=44, asks_count=12
+[2025-11-17 09:15:49] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.744, ask=0.974, mid=0.859
+[2025-11-17 09:15:49] [INFO] [INFO] Gemini - Market price: 0.8590, AI probability: 0.1200
+[2025-11-17 09:15:49] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1377, token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, price=0.12, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+[2025-11-17 09:15:49] [ERROR] [ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+[2025-11-17 09:15:49] [ERROR] [ERROR] [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+[2025-11-17 09:15:49] [ERROR] [BET ERROR] Gemini - Failed bet on This market will resolve to "Yes" if any Binance 1... (event_id=1377): Order placement failed
+[2025-11-17 09:15:49] [INFO] [INFO] Gemini - Executed bet 1/1
+[2025-11-17 09:15:49] [INFO] [INFO] Gemini - Cycle complete: 0 bets placed, 15 skipped, 15 events analyzed
+[2025-11-17 09:15:49] [INFO] [INFO] 
+Processing cycle for Qwen
+[2025-11-17 09:15:49] [INFO] [INFO] Qwen - Analyzing 5 categories
+[2025-11-17 09:15:51] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:51] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:52] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:52] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:53] [INFO] [SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:54] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:54] [INFO] [SKIP] Qwen - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:55] [INFO] [SKIP] Qwen - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:55] [INFO] [SKIP] Qwen - 'This market will resolve according to the exact am...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:55] [INFO] [SKIP] Qwen - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:56] [INFO] [SKIP] Qwen - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:56] [INFO] [SKIP] Qwen - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:56] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:57] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:57] [INFO] [SKIP] Qwen - 'This market will resolve to “Yes” if Polymarket of...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+[2025-11-17 09:15:57] [INFO] [INFO] Qwen - No opportunities found
+[2025-11-17 09:15:57] [INFO] [INFO] Qwen - Cycle complete: 0 bets placed, 15 skipped, 15 events analyzed
+[2025-11-17 09:15:57] [INFO] [INFO] 
+Processing cycle for Deepseek
+[2025-11-17 09:15:57] [INFO] [INFO] Deepseek - Analyzing 5 categories
+[2025-11-17 09:16:45] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=3, asks_count=14
+[2025-11-17 09:16:45] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.001, ask=0.58, mid=0.2905
+[2025-11-17 09:16:45] [INFO] [BET] Deepseek - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=35.00%, Conf=65% | Scores: S=3, N=3, T=7, F=2, V=9
+[2025-11-17 09:17:28] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+[2025-11-17 09:17:28] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+[2025-11-17 09:17:28] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:17:28] [INFO] [SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=3, N=3, T=6, F=2, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:18:11] [INFO] [INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+[2025-11-17 09:18:11] [WARNING] [WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+[2025-11-17 09:18:11] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:18:11] [INFO] [SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=2, N=3, T=6, F=1, V=9 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:18:58] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=12
+[2025-11-17 09:18:58] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.676, ask=0.88, mid=0.778
+[2025-11-17 09:18:58] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the Supreme C...' | Prob=35.00%, Conf=45% | Scores: S=2, N=1, T=4, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:19:40] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=36, asks_count=14
+[2025-11-17 09:19:40] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.961, ask=0.986, mid=0.9735
+[2025-11-17 09:19:40] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” immediately if a...' | Prob=5.00%, Conf=85% | Scores: S=2, N=1, T=3, F=6, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:20:20] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=44, asks_count=12
+[2025-11-17 09:20:20] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.56, ask=0.972, mid=0.766
+[2025-11-17 09:20:20] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=55% | Scores: S=0, N=0, T=0, F=0, V=5 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:21:10] [INFO] [INFO] get_orderbook: token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729, bids_count=0, asks_count=0
+[2025-11-17 09:21:10] [WARNING] [WARNING] get_latest_price: token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729 - No valid bid/ask prices in orderbook
+[2025-11-17 09:21:10] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=31909665097292658777984171730797668412653880109555620478098183793997564399729: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:21:10] [INFO] [SKIP] Deepseek - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=2, F=2, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:21:49] [INFO] [INFO] get_orderbook: token_id=35783933697530196819506937739391087069007462617460657663461813162917036439364, bids_count=0, asks_count=0
+[2025-11-17 09:21:49] [WARNING] [WARNING] get_latest_price: token_id=35783933697530196819506937739391087069007462617460657663461813162917036439364 - No valid bid/ask prices in orderbook
+[2025-11-17 09:21:49] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=35783933697530196819506937739391087069007462617460657663461813162917036439364: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:21:49] [INFO] [SKIP] Deepseek - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=1, N=1, T=1, F=1, V=1 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:22:30] [INFO] [INFO] get_orderbook: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119, bids_count=0, asks_count=0
+[2025-11-17 09:22:30] [WARNING] [WARNING] get_latest_price: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119 - No valid bid/ask prices in orderbook
+[2025-11-17 09:22:30] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:22:30] [INFO] [SKIP] Deepseek - 'This market will resolve according to the exact am...' | Prob=0.00%, Conf=0% | Scores: S=3, N=3, T=2, F=4, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:23:06] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 09:23:06] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 09:23:06] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:23:06] [INFO] [SKIP] Deepseek - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=3, F=1, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:23:42] [INFO] [INFO] get_orderbook: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741, bids_count=0, asks_count=0
+[2025-11-17 09:23:42] [WARNING] [WARNING] get_latest_price: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741 - No valid bid/ask prices in orderbook
+[2025-11-17 09:23:42] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:23:42] [INFO] [SKIP] Deepseek - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=5, F=1, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:24:20] [INFO] [INFO] get_orderbook: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741, bids_count=0, asks_count=0
+[2025-11-17 09:24:20] [WARNING] [WARNING] get_latest_price: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741 - No valid bid/ask prices in orderbook
+[2025-11-17 09:24:20] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:24:20] [INFO] [SKIP] Deepseek - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=4, F=1, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:24:58] [INFO] [INFO] get_orderbook: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558, bids_count=0, asks_count=0
+[2025-11-17 09:24:58] [WARNING] [WARNING] get_latest_price: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558 - No valid bid/ask prices in orderbook
+[2025-11-17 09:24:58] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:24:58] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:25:39] [INFO] [INFO] get_orderbook: token_id=73950094220488738375943732740157114087362292591972479229668050176537621507663, bids_count=0, asks_count=0
+[2025-11-17 09:25:39] [WARNING] [WARNING] get_latest_price: token_id=73950094220488738375943732740157114087362292591972479229668050176537621507663 - No valid bid/ask prices in orderbook
+[2025-11-17 09:25:39] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=73950094220488738375943732740157114087362292591972479229668050176537621507663: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:25:39] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:26:17] [INFO] [INFO] get_orderbook: token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094, bids_count=0, asks_count=0
+[2025-11-17 09:26:17] [WARNING] [WARNING] get_latest_price: token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094 - No valid bid/ask prices in orderbook
+[2025-11-17 09:26:17] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:26:17] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” if Polymarket of...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:26:17] [INFO] [INFO] Deepseek - Found 1 total opportunities across all categories
+[2025-11-17 09:26:17] [INFO] [INFO] Deepseek - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-17 09:26:17] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=3, asks_count=14
+[2025-11-17 09:26:17] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.07, ask=0.292, mid=0.181
+[2025-11-17 09:26:17] [INFO] [INFO] Deepseek - Market price: 0.1810, AI probability: 0.3500
+[2025-11-17 09:26:17] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1769, token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, price=0.35, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+[2025-11-17 09:26:18] [ERROR] [ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+[2025-11-17 09:26:18] [ERROR] [ERROR] [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+[2025-11-17 09:26:18] [ERROR] [BET ERROR] Deepseek - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+[2025-11-17 09:26:18] [INFO] [INFO] Deepseek - Executed bet 1/1
+[2025-11-17 09:26:18] [INFO] [INFO] Deepseek - Cycle complete: 0 bets placed, 15 skipped, 15 events analyzed
+[2025-11-17 09:26:18] [INFO] [INFO] 
+Processing cycle for Grok
+[2025-11-17 09:26:18] [INFO] [INFO] Grok - Analyzing 5 categories
+[2025-11-17 09:26:30] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=14, asks_count=3
+[2025-11-17 09:26:30] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.44, ask=0.93, mid=0.685
+[2025-11-17 09:26:30] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=55.00%, Conf=60% | Scores: S=0, N=0, T=7, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:26:42] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+[2025-11-17 09:26:42] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+[2025-11-17 09:26:42] [WARNING] [WARNING] Grok - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:26:42] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=0, V=4 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:26:53] [INFO] [INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+[2025-11-17 09:26:53] [WARNING] [WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+[2025-11-17 09:26:53] [WARNING] [WARNING] Grok - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:26:53] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=6, F=0, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:27:07] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=12
+[2025-11-17 09:27:07] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.11, ask=0.85, mid=0.48
+[2025-11-17 09:27:07] [INFO] [BET] Grok - $5.00 on 'This market will resolve to "Yes" if the Supreme C...' | Prob=40.00%, Conf=60% | Scores: S=5, N=4, T=6, F=5, V=3
+[2025-11-17 09:27:18] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=36, asks_count=14
+[2025-11-17 09:27:18] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.982, ask=0.986, mid=0.984
+[2025-11-17 09:27:18] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=40.00%, Conf=60% | Scores: S=0, N=1, T=5, F=0, V=8 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:27:29] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=44, asks_count=12
+[2025-11-17 09:27:29] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.601, ask=0.975, mid=0.788
+[2025-11-17 09:27:29] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=30% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Valor esperado negativo o cero
+[2025-11-17 09:27:42] [INFO] [INFO] get_orderbook: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842, bids_count=0, asks_count=0
+[2025-11-17 09:27:42] [WARNING] [WARNING] get_latest_price: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842 - No valid bid/ask prices in orderbook
+[2025-11-17 09:27:42] [WARNING] [WARNING] Grok - Price fetch failed for token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:27:42] [INFO] [SKIP] Grok - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:27:54] [INFO] [INFO] get_orderbook: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319, bids_count=0, asks_count=0
+[2025-11-17 09:27:54] [WARNING] [WARNING] get_latest_price: token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319 - No valid bid/ask prices in orderbook
+[2025-11-17 09:27:54] [WARNING] [WARNING] Grok - Price fetch failed for token_id=51589987980867225454497348087105106773410009593948416529565271564258808466319: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:27:54] [INFO] [SKIP] Grok - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=3, F=6, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:28:06] [INFO] [INFO] get_orderbook: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119, bids_count=0, asks_count=0
+[2025-11-17 09:28:06] [WARNING] [WARNING] get_latest_price: token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119 - No valid bid/ask prices in orderbook
+[2025-11-17 09:28:06] [WARNING] [WARNING] Grok - Price fetch failed for token_id=79551135774854213641683937583875188203757723178291787161361614865006331618119: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:28:06] [INFO] [SKIP] Grok - 'This market will resolve according to the exact am...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:28:16] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 09:28:16] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 09:28:16] [WARNING] [WARNING] Grok - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:28:16] [INFO] [SKIP] Grok - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=5, F=0, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:28:31] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 09:28:31] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 09:28:31] [WARNING] [WARNING] Grok - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:28:31] [INFO] [SKIP] Grok - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=6, F=0, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:28:43] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-17 09:28:43] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-17 09:28:43] [WARNING] [WARNING] Grok - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:28:43] [INFO] [SKIP] Grok - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:28:54] [INFO] [INFO] get_orderbook: token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552, bids_count=0, asks_count=0
+[2025-11-17 09:28:54] [WARNING] [WARNING] get_latest_price: token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552 - No valid bid/ask prices in orderbook
+[2025-11-17 09:28:54] [WARNING] [WARNING] Grok - Price fetch failed for token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:28:54] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:29:02] [INFO] [INFO] get_orderbook: token_id=73950094220488738375943732740157114087362292591972479229668050176537621507663, bids_count=0, asks_count=0
+[2025-11-17 09:29:02] [WARNING] [WARNING] get_latest_price: token_id=73950094220488738375943732740157114087362292591972479229668050176537621507663 - No valid bid/ask prices in orderbook
+[2025-11-17 09:29:02] [WARNING] [WARNING] Grok - Price fetch failed for token_id=73950094220488738375943732740157114087362292591972479229668050176537621507663: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:29:02] [INFO] [SKIP] Grok - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=3, N=3, T=3, F=3, V=3 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:29:14] [INFO] [INFO] get_orderbook: token_id=69321533767899091783015051805117967122680541810126926850040880386943664469203, bids_count=0, asks_count=0
+[2025-11-17 09:29:14] [WARNING] [WARNING] get_latest_price: token_id=69321533767899091783015051805117967122680541810126926850040880386943664469203 - No valid bid/ask prices in orderbook
+[2025-11-17 09:29:14] [WARNING] [WARNING] Grok - Price fetch failed for token_id=69321533767899091783015051805117967122680541810126926850040880386943664469203: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 09:29:14] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” if Polymarket of...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 09:29:14] [INFO] [INFO] Grok - Found 1 total opportunities across all categories
+[2025-11-17 09:29:14] [INFO] [INFO] Grok - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-17 09:29:14] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=12
+[2025-11-17 09:29:14] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.17, ask=0.775, mid=0.47250000000000003
+[2025-11-17 09:29:14] [INFO] [INFO] Grok - Market price: 0.4725, AI probability: 0.4000
+[2025-11-17 09:29:14] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1546, token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, price=0.4, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+[2025-11-17 09:29:14] [ERROR] [ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+[2025-11-17 09:29:14] [ERROR] [ERROR] [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+[2025-11-17 09:29:14] [ERROR] [BET ERROR] Grok - Failed bet on This market will resolve to "Yes" if the Supreme C... (event_id=1546): Order placement failed
+[2025-11-17 09:29:14] [INFO] [INFO] Grok - Executed bet 1/1
+[2025-11-17 09:29:14] [INFO] [INFO] Grok - Cycle complete: 0 bets placed, 15 skipped, 15 events analyzed
+[2025-11-17 09:29:14] [INFO] [INFO] Starting OrderMonitor to review active positions...
+[2025-11-17 09:29:15] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 09:29:15] [INFO] [INFO] OrderMonitor completed: {'total_checked': 0, 'strikes_added': 0, 'strikes_reset': 0, 'cancelled': 0, 'errors': 0}
+[2025-11-17 09:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 09:30:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 09:30:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 10:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 10:00:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 10:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 10:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 10:30:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 10:30:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-17 11:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 11:00:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 11:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
