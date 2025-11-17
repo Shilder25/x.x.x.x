@@ -26,7 +26,13 @@ class OpinionTradeAPI:
             private_key: Wallet private key for signing (defaults to OPINION_WALLET_PRIVATE_KEY env var)
         """
         self.api_key = api_key or os.environ.get("OPINION_TRADE_API_KEY", "")
-        self.private_key = private_key or os.environ.get("OPINION_WALLET_PRIVATE_KEY", "")
+        raw_private_key = private_key or os.environ.get("OPINION_WALLET_PRIVATE_KEY", "")
+        
+        # Normalize private key: add 0x prefix if missing (required by eth_account)
+        if raw_private_key and not raw_private_key.startswith('0x'):
+            self.private_key = '0x' + raw_private_key
+        else:
+            self.private_key = raw_private_key
         
         # Derive wallet address from private key
         self.wallet_address = None
