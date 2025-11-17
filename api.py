@@ -6,7 +6,7 @@ from logger import autonomous_logger as logger
 import os
 from datetime import datetime, timedelta
 
-# DEBUG: Railway environment variable detection
+# DEBUG: Railway environment variable detection (secure - no credential values exposed)
 print("=" * 80)
 print("[DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP")
 print("=" * 80)
@@ -16,10 +16,6 @@ print(f"OPINION_TRADE_API_KEY: {'SET' if api_key_val else 'MISSING'} (len={len(a
 print(f"OPINION_WALLET_PRIVATE_KEY: {'SET' if private_key_val else 'MISSING'} (len={len(private_key_val)})")
 print(f"RAILWAY_ENVIRONMENT: {os.getenv('RAILWAY_ENVIRONMENT', 'NOT SET')}")
 print(f"RAILWAY_SERVICE_NAME: {os.getenv('RAILWAY_SERVICE_NAME', 'NOT SET')}")
-if api_key_val:
-    print(f"API_KEY preview: {api_key_val[:8]}...{api_key_val[-4:]}")
-if private_key_val:
-    print(f"PRIVATE_KEY preview: {private_key_val[:6]}...{private_key_val[-4:]}")
 print("=" * 80)
 
 app = Flask(__name__)
