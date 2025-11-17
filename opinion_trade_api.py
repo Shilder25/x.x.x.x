@@ -59,7 +59,7 @@ class OpinionTradeAPI:
                 chain_id=CHAIN_ID_BNB_MAINNET,  # 56
                 rpc_url='https://bsc-dataseed.binance.org/',
                 private_key=self.private_key,
-                multi_sig_addr=self.wallet_address,
+                multi_sig_addr='',
                 conditional_tokens_addr='0xAD1a38cEc043e70E83a3eC30443dB285ED10D774',
                 multisend_addr='0x998739BFdAAdde7C933B942a68053933098f9EDa',
                 enable_trading_check_interval=3600,
