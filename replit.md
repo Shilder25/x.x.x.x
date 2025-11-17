@@ -4,7 +4,37 @@ TradingAgents is an autonomous AI-powered prediction market trading system that 
 
 The system is designed for deployment on Railway with automatic daily prediction cycles, comprehensive risk management through a 4-tier adaptive system, and bankroll protection mechanisms. It operates in two modes: TEST mode (small amounts for safe experimentation) and PRODUCTION mode (real trading with larger capital).
 
-# Recent Changes (November 16, 2025)
+# Recent Changes (November 17, 2025)
+
+**Latest Updates - Enhanced Logging & CATEGORICAL Market Support:**
+
+1. **Logger Integration** - Replaced all print() with logger.info/warning/error()
+   - Changed all `print()` statements to use `autonomous_logger` for proper Railway log visibility
+   - Now using `logger.info()` for [ORDER DEBUG], [PAGINATION], etc. - these will appear in Railway logs
+   - Added `logger.error()` for [ORDER FAILED] with full SDK errno/errmsg details
+   - Critical for diagnosing why orders fail even with sufficient BNB gas
+
+2. **CATEGORICAL Market Support** - Access to 100-200+ markets instead of just 28
+   - System now fetches **BOTH** `TopicType.BINARY` and `TopicType.CATEGORICAL` markets
+   - BINARY: Simple YES/NO markets (e.g., "Will BTC hit $100k?")
+   - CATEGORICAL: Multi-option markets (e.g., "Fed Rate Dec" with 4 rate options: "50+ bps decrease", "25 bps decrease", "No change", "25+ bps increase")
+   - Each option in CATEGORICAL markets is treated as a separate YES/NO betting opportunity
+   - Each option gets its own `yes_token_id` and `no_token_id` for independent betting
+   - Expected to increase available markets from 28 to 100-200+ for more betting opportunities
+   - Example: "Fed Rate Dec" becomes 4 separate events the AI can analyze and bet on
+
+3. **Enhanced Debug Logging** - Full error visibility for troubleshooting
+   - Added `[ORDER DEBUG]` logs showing exact order parameters before SDK call
+   - Added `[ORDER FAILED]` logs with errno/errmsg from Opinion.trade SDK
+   - Added `[CATEGORICAL]` logs showing option extraction from multi-option markets
+   - All pagination logs now use logger instead of print for Railway visibility
+
+**Testing Status:**
+- ⏳ Pending test on Railway with BNB-funded wallet
+- ⏳ Verification that CATEGORICAL markets are fetched successfully
+- ⏳ Verification that SDK error details now appear in logs
+
+# Previous Changes (November 16, 2025)
 
 **Critical Fixes Implemented:**
 

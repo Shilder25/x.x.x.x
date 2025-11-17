@@ -1,0 +1,135 @@
+Starting Container
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://10.153.108.15:8000
+Press CTRL+C to quit
+ * Serving Flask app 'api'
+ * Debug mode: on
+ * Restarting with watchdog (inotify)
+ * Debugger is active!
+ * Debugger PIN: 359-782-828
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:53] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.3 - - [17/Nov/2025 04:12:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.4 - - [17/Nov/2025 04:12:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:54] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:54] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:54] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:54] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:54] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:12:55] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.5 - - [17/Nov/2025 04:13:34] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:34] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:34] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:34] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:34] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:34] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:34] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:35] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:36] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:36] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:36] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.6 - - [17/Nov/2025 04:13:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:37] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.6 - - [17/Nov/2025 04:13:41] "GET /admin HTTP/1.1" 200 -
+100.64.0.6 - - [17/Nov/2025 04:13:43] "GET /favicon.ico HTTP/1.1" 404 -
+100.64.0.6 - - [17/Nov/2025 04:13:43] "GET /favicon.ico HTTP/1.1" 404 -
+100.64.0.6 - - [17/Nov/2025 04:13:43] "GET /favicon.ico HTTP/1.1" 404 -
+100.64.0.2 - - [17/Nov/2025 04:13:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:53] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:53] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:53] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.7 - - [17/Nov/2025 04:13:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:54] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:54] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:54] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:54] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:13:54] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:06] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:06] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:06] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.6 - - [17/Nov/2025 04:14:06] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:07] "GET /api/market-header HTTP/1.1" 200 -
+[2025-11-17 04:14:09] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.6 at 2025-11-17T04:14:09.670832
+[2025-11-17 04:14:09] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[PAGINATION] Page 1: errno=0, has_result=True
+[PAGINATION] Page 1 returned 20 markets
+[PAGINATION] Page 1: 20/20 markets are active (filtered out resolved/closed)
+[PAGINATION] Page 2: errno=0, has_result=True
+[PAGINATION] Page 2 returned 8 markets
+[PAGINATION] Page 2: 8/8 markets are active (filtered out resolved/closed)
+[PAGINATION] Got 8 < 20, reached end of markets
+[PAGINATION] Pagination complete: fetched 28 markets, returning 28 (after limit), pages processed: 2
+100.64.0.6 - - [17/Nov/2025 04:14:11] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.6 - - [17/Nov/2025 04:14:11] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+[2025-11-17 04:14:17] [INFO] [INFO] ChatGPT - Analyzing 2 categories
+INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 2 categories
+[INFO] Opinion.trade API: Retrieved 28 active markets (skipped 0 markets - missing tokens or Sports category)
+[2025-11-17 04:14:17] [INFO] [INFO] Fetched 28 events from Opinion.trade
+INFO:autonomous_engine:[INFO] Fetched 28 events from Opinion.trade
+[2025-11-17 04:14:17] [INFO] [CATEGORY] Events grouped into 2 categories: {'Crypto': 14, 'Other': 14}
+INFO:autonomous_engine:[CATEGORY] Events grouped into 2 categories: {'Crypto': 14, 'Other': 14}
+[2025-11-17 04:14:17] [INFO] [INFO] 
+Processing cycle for ChatGPT
+INFO:autonomous_engine:[INFO] 
+Processing cycle for ChatGPT
+[CACHE MISS] Fetched & cached technical data for BTC
+[CACHE MISS] Fetched & cached news data for BTC
+[CACHE MISS] Fetched & cached volatility data for BTC-USD
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.7 - - [17/Nov/2025 04:14:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.7 - - [17/Nov/2025 04:14:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/active-positions HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/active-positions HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/active-positions HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/live-metrics HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:53] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/leaderboard HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/live-metrics HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.8 - - [17/Nov/2025 04:14:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 04:14:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 04:14:54] "GET /api/leaderboard HTTP/1.1" 200 -

@@ -35,7 +35,7 @@ class OpinionTradeAPI:
                 account = Account.from_key(self.private_key)
                 self.wallet_address = account.address
             except Exception as e:
-                print(f"Warning: Could not derive wallet address: {e}")
+                logger.warning(f"Warning: Could not derive wallet address: {e}")
         
         # Initialize SDK client
         self.client = None
@@ -49,7 +49,7 @@ class OpinionTradeAPI:
     def _initialize_client(self):
         """Initialize Opinion.trade SDK client with production configuration."""
         if not self.api_key or not self.private_key or not self.wallet_address:
-            print("Warning: OpinionTradeAPI initialized without full credentials (read-only mode)")
+            logger.warning("Warning: OpinionTradeAPI initialized without full credentials (read-only mode)")
             return
         
         try:
@@ -66,9 +66,9 @@ class OpinionTradeAPI:
                 quote_tokens_cache_ttl=3600,
                 market_cache_ttl=300
             )
-            print(f"✓ Opinion.trade SDK initialized (wallet: {self.wallet_address})")
+            logger.info(f"✓ Opinion.trade SDK initialized (wallet: {self.wallet_address})")
         except Exception as e:
-            print(f"✗ Failed to initialize Opinion.trade SDK: {e}")
+            logger.error(f"✗ Failed to initialize Opinion.trade SDK: {e}")
             self.client = None
     
     def get_available_events(self, limit: int = 200, category: Optional[str] = None) -> Dict:
@@ -91,49 +91,64 @@ class OpinionTradeAPI:
         
         try:
             all_markets = []
-            page = 1
             batch_size = 20  # SDK enforces max 20 per request
             last_error = None
             
-            print(f"[PAGINATION] Starting pagination: target={limit} markets, batch_size={batch_size}")
+            logger.info(f"[PAGINATION] Starting pagination: target={limit} markets, batch_size={batch_size}")
+            logger.info(f"[PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage")
             
-            # Fetch markets in batches until we reach the limit or no more markets
-            while len(all_markets) < limit:
-                response = self.client.get_markets(
-                    topic_type=TopicType.BINARY,
-                    status=TopicStatusFilter.ALL,
-                    page=page,
-                    limit=batch_size
-                )
+            # Fetch BOTH BINARY and CATEGORICAL markets to get 100-200+ markets
+            # Binary: Simple YES/NO markets (e.g., "Will BTC hit $100k?")
+            # Categorical: Markets with multiple options (e.g., "Fed Rate Dec" with 4 rate options)
+            for topic_type in [TopicType.BINARY, TopicType.CATEGORICAL]:
+                page = 1
+                topic_type_name = "BINARY" if topic_type == TopicType.BINARY else "CATEGORICAL"
+                logger.info(f"[PAGINATION] Fetching {topic_type_name} markets...")
                 
-                print(f"[PAGINATION] Page {page}: errno={response.errno}, has_result={hasattr(response, 'result')}")
+                # Fetch markets in batches until we reach the limit or no more markets
+                while len(all_markets) < limit:
+                    response = self.client.get_markets(
+                        topic_type=topic_type,
+                        status=TopicStatusFilter.ALL,
+                        page=page,
+                        limit=batch_size
+                    )
+                    
+                    logger.info(f"[PAGINATION] {topic_type_name} Page {page}: errno={response.errno}, has_result={hasattr(response, 'result')}")
+                    
+                    if response.errno != 0:
+                        logger.warning(f"[PAGINATION] {topic_type_name} error on page {page}: {response.errmsg}")
+                        last_error = response.errmsg
+                        break
+                    
+                    markets = response.result.list
+                    logger.info(f"[PAGINATION] {topic_type_name} Page {page} returned {len(markets)} markets")
+                    
+                    if not markets:
+                        # No more markets available
+                        logger.info(f"[PAGINATION] {topic_type_name} - No more markets found on page {page}, stopping")
+                        break
+                    
+                    # Filter out RESOLVED markets (we can only bet on active markets)
+                    # Note: status is an enum, use getattr to get the name (e.g., "RESOLVED" instead of "TopicStatus.RESOLVED")
+                    active_markets = [m for m in markets if getattr(m.status, "name", str(m.status)).upper() not in ['RESOLVED', 'CLOSED', 'CANCELLED']]
+                    logger.info(f"[PAGINATION] {topic_type_name} Page {page}: {len(active_markets)}/{len(markets)} markets are active (filtered out resolved/closed)")
+                    
+                    all_markets.extend(active_markets)
+                    
+                    # If we got fewer than batch_size, we've reached the end
+                    if len(markets) < batch_size:
+                        logger.info(f"[PAGINATION] {topic_type_name} - Got {len(markets)} < {batch_size}, reached end of markets")
+                        break
+                    
+                    # Stop if we've reached the limit
+                    if len(all_markets) >= limit:
+                        logger.info(f"[PAGINATION] {topic_type_name} - Reached target limit of {limit} markets")
+                        break
+                    
+                    page += 1
                 
-                if response.errno != 0:
-                    print(f"[PAGINATION] Error on page {page}: {response.errmsg}")
-                    last_error = response.errmsg
-                    break
-                
-                markets = response.result.list
-                print(f"[PAGINATION] Page {page} returned {len(markets)} markets")
-                
-                if not markets:
-                    # No more markets available
-                    print(f"[PAGINATION] No more markets found on page {page}, stopping")
-                    break
-                
-                # Filter out RESOLVED markets (we can only bet on active markets)
-                # Note: status is an enum, use getattr to get the name (e.g., "RESOLVED" instead of "TopicStatus.RESOLVED")
-                active_markets = [m for m in markets if getattr(m.status, "name", str(m.status)).upper() not in ['RESOLVED', 'CLOSED', 'CANCELLED']]
-                print(f"[PAGINATION] Page {page}: {len(active_markets)}/{len(markets)} markets are active (filtered out resolved/closed)")
-                
-                all_markets.extend(active_markets)
-                
-                # If we got fewer than batch_size, we've reached the end
-                if len(markets) < batch_size:
-                    print(f"[PAGINATION] Got {len(markets)} < {batch_size}, reached end of markets")
-                    break
-                
-                page += 1
+                logger.info(f"[PAGINATION] {topic_type_name} complete: collected {len([m for m in all_markets if getattr(m, 'topic_type', None) == topic_type])} markets")
             
             # Check if we got any markets at all
             if not all_markets:
@@ -144,7 +159,7 @@ class OpinionTradeAPI:
                 }
             
             markets = all_markets[:limit]  # Respect the limit
-            print(f"[PAGINATION] Pagination complete: fetched {len(all_markets)} markets, returning {len(markets)} (after limit), pages processed: {page}")
+            logger.info(f"[PAGINATION] Pagination complete: fetched {len(all_markets)} markets, returning {len(markets)} (after limit)")
             
             # Convert SDK market objects to our event format
             events = []
@@ -158,11 +173,15 @@ class OpinionTradeAPI:
                     market_details_response = self.client.get_market(market.market_id)
                     
                     if market_details_response.errno != 0:
-                        print(f"[WARNING] Failed to get details for market {market.market_id}: {market_details_response.errmsg}")
+                        logger.warning(f"[WARNING] Failed to get details for market {market.market_id}: {market_details_response.errmsg}")
                         skipped_count += 1
                         continue
                     
                     market_full = market_details_response.result.data
+                    
+                    # Determine market type (BINARY vs MULTIPLE_CHOICE)
+                    market_type = getattr(market, 'topic_type', TopicType.BINARY)
+                    topic_type_name = getattr(market_type, 'name', str(market_type)) if hasattr(market_type, 'name') else str(market_type)
                     
                     # Derive category from market title (comprehensive keyword matching)
                     title_lower = market.market_title.lower()
@@ -203,48 +222,92 @@ class OpinionTradeAPI:
                     else:
                         category = 'Other'
                     
-                    # Extract token IDs directly from market attributes
-                    # Opinion.trade SDK stores tokens as direct attributes, not in an options array
-                    yes_token_id = getattr(market_full, 'yes_token_id', None)
-                    no_token_id = getattr(market_full, 'no_token_id', None)
-                    yes_label = getattr(market_full, 'yes_label', 'YES')
-                    no_label = getattr(market_full, 'no_label', 'NO')
-                    
-                    # Skip markets without binary YES/NO tokens
-                    if not yes_token_id or not no_token_id:
-                        skipped_count += 1
-                        print(f"[WARNING] Skipping market {market.market_id} '{market.market_title[:50]}...' - missing binary tokens (yes={yes_token_id}, no={no_token_id})")
-                        continue
-                    
-                    # Skip Sports category - we don't want AI agents betting on sports
+                    # Skip Sports category early - we don't want AI agents betting on sports
                     if category == 'Sports':
                         skipped_count += 1
-                        print(f"[FILTER] Skipping Sports market: '{market.market_title[:50]}...'")
+                        logger.info(f"[FILTER] Skipping Sports market: '{market.market_title[:50]}...'")
                         continue
                     
-                    events.append({
-                        'event_id': str(market.market_id),
-                        'market_id': market.market_id,
-                        'title': market.market_title,
-                        'description': market.rules if hasattr(market, 'rules') and market.rules else market.market_title,
-                        'category': category,
-                        'condition_id': market.condition_id,
-                        'status': str(market.status),
-                        'quote_token': market.quote_token,
-                        'chain_id': market.chain_id,
-                        'yes_label': getattr(market, 'yes_label', 'YES'),
-                        'no_label': getattr(market, 'no_label', 'NO'),
-                        'yes_token_id': yes_token_id,
-                        'no_token_id': no_token_id,
-                        'volume': getattr(market, 'volume', '0'),
-                        'created_at': getattr(market, 'created_at', 0),
-                        'cutoff_at': getattr(market, 'cutoff_at', 0)
-                    })
+                    # Handle BINARY vs CATEGORICAL markets differently
+                    if 'CATEGORICAL' in topic_type_name.upper():
+                        # CATEGORICAL market: e.g., "Fed Rate Dec" with 4 options
+                        # Each option is a separate YES/NO bet (e.g., "50+ bps decrease" → YES or NO)
+                        options = getattr(market_full, 'options', [])
+                        
+                        if not options:
+                            skipped_count += 1
+                            logger.warning(f"[WARNING] Skipping CATEGORICAL market {market.market_id} - no options found")
+                            continue
+                        
+                        logger.info(f"[CATEGORICAL] Market '{market.market_title[:40]}...' has {len(options)} options")
+                        
+                        # Create a separate event for each option
+                        for option in options:
+                            option_title = getattr(option, 'option_name', getattr(option, 'name', 'Unknown'))
+                            yes_token_id = getattr(option, 'yes_token_id', None)
+                            no_token_id = getattr(option, 'no_token_id', None)
+                            
+                            if not yes_token_id or not no_token_id:
+                                logger.warning(f"[WARNING] Option '{option_title}' missing tokens, skipping")
+                                skipped_count += 1
+                                continue
+                            
+                            # Create event for this specific option
+                            events.append({
+                                'event_id': f"{market.market_id}_{option_title.replace(' ', '_')}",
+                                'market_id': market.market_id,
+                                'title': f"{market.market_title} → {option_title}",
+                                'description': f"Option: {option_title} | {market.rules if hasattr(market, 'rules') and market.rules else market.market_title}",
+                                'category': category,
+                                'condition_id': market.condition_id,
+                                'status': str(market.status),
+                                'quote_token': market.quote_token,
+                                'chain_id': market.chain_id,
+                                'yes_label': f"YES ({option_title})",
+                                'no_label': f"NO ({option_title})",
+                                'yes_token_id': yes_token_id,
+                                'no_token_id': no_token_id,
+                                'volume': getattr(market, 'volume', '0'),
+                                'created_at': getattr(market, 'created_at', 0),
+                                'cutoff_at': getattr(market, 'cutoff_at', 0)
+                            })
+                    else:
+                        # BINARY market: Simple YES/NO (e.g., "Will BTC hit $100k?")
+                        # Opinion.trade SDK stores tokens as direct attributes
+                        yes_token_id = getattr(market_full, 'yes_token_id', None)
+                        no_token_id = getattr(market_full, 'no_token_id', None)
+                        yes_label = getattr(market_full, 'yes_label', 'YES')
+                        no_label = getattr(market_full, 'no_label', 'NO')
+                        
+                        # Skip markets without binary YES/NO tokens
+                        if not yes_token_id or not no_token_id:
+                            skipped_count += 1
+                            logger.warning(f"[WARNING] Skipping BINARY market {market.market_id} '{market.market_title[:50]}...' - missing binary tokens")
+                            continue
+                        
+                        events.append({
+                            'event_id': str(market.market_id),
+                            'market_id': market.market_id,
+                            'title': market.market_title,
+                            'description': market.rules if hasattr(market, 'rules') and market.rules else market.market_title,
+                            'category': category,
+                            'condition_id': market.condition_id,
+                            'status': str(market.status),
+                            'quote_token': market.quote_token,
+                            'chain_id': market.chain_id,
+                            'yes_label': yes_label,
+                            'no_label': no_label,
+                            'yes_token_id': yes_token_id,
+                            'no_token_id': no_token_id,
+                            'volume': getattr(market, 'volume', '0'),
+                            'created_at': getattr(market, 'created_at', 0),
+                            'cutoff_at': getattr(market, 'cutoff_at', 0)
+                        })
                 except Exception as e:
-                    print(f"[ERROR] Failed to convert market {getattr(market, 'market_id', 'unknown')}: {e}")
+                    logger.error(f"[ERROR] Failed to convert market {getattr(market, 'market_id', 'unknown')}: {e}")
                     continue
             
-            print(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets (skipped {skipped_count} markets - missing tokens or Sports category)")
+            logger.info(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets (skipped {skipped_count} markets - missing tokens or Sports category)")
             return {
                 'success': True,
                 'count': len(events),
@@ -253,6 +316,7 @@ class OpinionTradeAPI:
             }
         
         except Exception as e:
+            logger.exception(f"[EXCEPTION] Unexpected error in get_available_events: {str(e)}")
             return {
                 'success': False,
                 'error': 'Unexpected error',
@@ -320,7 +384,7 @@ class OpinionTradeAPI:
                 self.client.enable_trading()
             except Exception as e:
                 # Already enabled or error - continue anyway
-                print(f"Note: enable_trading() response: {e}")
+                logger.info(f"Note: enable_trading() response: {e}")
             
             # Create order
             order_data = PlaceOrderDataInput(
@@ -333,13 +397,13 @@ class OpinionTradeAPI:
             )
             
             # Place order
-            print(f"[ORDER DEBUG] Placing order: market_id={market_id}, token_id={token_id}, price={price}, amount={amount} USDT ({amount_in_wei} wei), side={side_str}")
+            logger.info(f"[ORDER DEBUG] Placing order: market_id={market_id}, token_id={token_id}, price={price}, amount={amount} USDT ({amount_in_wei} wei), side={side_str}")
             result = self.client.place_order(order_data)
             
             # Check if order was successful
             if hasattr(result, 'errno') and result.errno == 0:
                 order_info = result.result if hasattr(result, 'result') else {}
-                print(f"[ORDER SUCCESS] Order placed: orderId={getattr(order_info, 'orderId', 'unknown')}")
+                logger.info(f"[ORDER SUCCESS] Order placed: orderId={getattr(order_info, 'orderId', 'unknown')}")
                 return {
                     'success': True,
                     'prediction_id': getattr(order_info, 'orderId', 'unknown'),
@@ -357,8 +421,8 @@ class OpinionTradeAPI:
             else:
                 error_msg = getattr(result, 'errmsg', str(result))
                 error_code = getattr(result, 'errno', 'unknown')
-                print(f"[ORDER FAILED] Opinion.trade SDK Error: errno={error_code}, errmsg={error_msg}")
-                print(f"[ORDER FAILED] Full result object: {result}")
+                logger.error(f"[ORDER FAILED] Opinion.trade SDK Error: errno={error_code}, errmsg={error_msg}")
+                logger.error(f"[ORDER FAILED] Full result object: {result}")
                 return {
                     'success': False,
                     'error': 'Order placement failed',
@@ -368,8 +432,8 @@ class OpinionTradeAPI:
         except Exception as e:
             import traceback
             error_trace = traceback.format_exc()
-            print(f"[ORDER EXCEPTION] Failed to place order: {str(e)}")
-            print(f"[ORDER EXCEPTION] Full traceback:\n{error_trace}")
+            logger.error(f"[ORDER EXCEPTION] Failed to place order: {str(e)}")
+            logger.error(f"[ORDER EXCEPTION] Full traceback:\n{error_trace}")
             return {
                 'success': False,
                 'error': 'Unexpected error',
