@@ -81,6 +81,15 @@ def main():
     # Setup frontend (install + build if production)
     setup_frontend()
     
+    # DEBUG: Verify Railway env vars are loaded
+    print("\n[DEBUG] Checking Railway environment variables:")
+    print(f"  OPINION_WALLET_PRIVATE_KEY: {'SET' if os.environ.get('OPINION_WALLET_PRIVATE_KEY') else 'MISSING'}")
+    print(f"  OPINION_TRADE_API_KEY: {'SET' if os.environ.get('OPINION_TRADE_API_KEY') else 'MISSING'}")
+    if os.environ.get('OPINION_WALLET_PRIVATE_KEY'):
+        key_len = len(os.environ.get('OPINION_WALLET_PRIVATE_KEY'))
+        print(f"  Private key length: {key_len} chars")
+    print()
+    
     # Start Flask API on port 8000
     print("\n[2/3] Starting Flask API backend on port 8000...")
     api_process = subprocess.Popen(
