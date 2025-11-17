@@ -20,11 +20,14 @@ class AutonomousEngine:
     y ejecuta apuestas automáticas para cada IA respetando límites de riesgo.
     """
     
-    def __init__(self, database: TradingDatabase, initial_bankroll_per_firm: float = 1000.0):
+    def __init__(self, database: TradingDatabase, initial_bankroll_per_firm: float = 1000.0,
+                 opinion_api_key: Optional[str] = None, opinion_private_key: Optional[str] = None):
         """
         Args:
             database: Instancia de TradingDatabase para persistencia
             initial_bankroll_per_firm: Presupuesto inicial por cada IA (ignorado si BANKROLL_MODE está configurado)
+            opinion_api_key: Optional Opinion.trade API key (avoids Gunicorn multi-worker env var issues)
+            opinion_private_key: Optional wallet private key (avoids Gunicorn multi-worker env var issues)
         
         Note: Sistema siempre opera en modo real (no simulation). 
         BANKROLL_MODE env var controla cantidades:
@@ -53,7 +56,8 @@ class AutonomousEngine:
         # ALWAYS use real betting mode (no simulation)
         self.simulation_mode = 0
         
-        self.opinion_api = OpinionTradeAPI()
+        # Pass credentials explicitly to avoid Gunicorn multi-worker env var issues
+        self.opinion_api = OpinionTradeAPI(api_key=opinion_api_key, private_key=opinion_private_key)
         self.orchestrator = FirmOrchestrator()
         
         self.alpha_vantage_key = os.environ.get("ALPHA_VANTAGE_API_KEY", "")

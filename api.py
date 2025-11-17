@@ -623,7 +623,12 @@ def monitor_orders():
         print(f"\n[ORDER MONITOR] Triggered via API endpoint at {datetime.now().isoformat()}")
         
         from autonomous_engine import AutonomousEngine, OrderMonitor
-        engine = AutonomousEngine(db)
+        
+        # Pass credentials explicitly to avoid Gunicorn multi-worker env var issues
+        api_key = os.getenv('OPINION_TRADE_API_KEY')
+        private_key = os.getenv('OPINION_WALLET_PRIVATE_KEY')
+        
+        engine = AutonomousEngine(db, opinion_api_key=api_key, opinion_private_key=private_key)
         
         order_monitor = OrderMonitor(engine.opinion_api, engine.db, engine.orchestrator)
         monitoring_stats = order_monitor.monitor_all_orders()
@@ -686,7 +691,11 @@ def run_daily_cycle():
     try:
         print(f"\n[MANUAL TRIGGER] Daily cycle triggered via API endpoint at {datetime.now().isoformat()}")
         
-        engine = AutonomousEngine(db)
+        # Pass credentials explicitly to avoid Gunicorn multi-worker env var issues
+        api_key = os.getenv('OPINION_TRADE_API_KEY')
+        private_key = os.getenv('OPINION_WALLET_PRIVATE_KEY')
+        
+        engine = AutonomousEngine(db, opinion_api_key=api_key, opinion_private_key=private_key)
         results = engine.run_daily_cycle()
         
         return jsonify({
@@ -1048,7 +1057,12 @@ def trigger_cycle():
         # Execute daily cycle
         logger.admin(f"Daily cycle manually triggered from {request.remote_addr} at {datetime.now().isoformat()}")
         
-        engine = AutonomousEngine(db)
+        # Pass credentials explicitly from startup context where they ARE available
+        # to avoid Gunicorn multi-worker environment variable issues
+        api_key = os.getenv('OPINION_TRADE_API_KEY')
+        private_key = os.getenv('OPINION_WALLET_PRIVATE_KEY')
+        
+        engine = AutonomousEngine(db, opinion_api_key=api_key, opinion_private_key=private_key)
         results = engine.run_daily_cycle()
         
         logger.admin("Daily cycle completed successfully")
