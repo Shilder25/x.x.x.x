@@ -1,0 +1,132 @@
+100.64.0.10 - - [17/Nov/2025 13:46:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.10 - - [17/Nov/2025 13:46:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:46:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:46:55] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:46:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:46:55] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.8 - - [17/Nov/2025 13:46:54] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 13:46:54] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:46:54] "GET /api/live-metrics HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:46:54] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:46:54] "GET /api/leaderboard HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:46:54] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:46:54] "GET /api/market-header HTTP/1.1" 200 -
+[2025-11-17 13:47:16] [INFO] [INFO] get_orderbook: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741, bids_count=0, asks_count=0
+[2025-11-17 13:47:16] [WARNING] [WARNING] get_latest_price: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741 - No valid bid/ask prices in orderbook
+[2025-11-17 13:47:16] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] Deepseek - Price fetch failed for token_id=114101897931840347232553816447709970070982299086922738753479718079468310694741: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 13:47:16] [INFO] [SKIP] Deepseek - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=2, N=1, T=3, F=1, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] Deepseek - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=2, N=1, T=3, F=1, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 13:47:16] [INFO] [INFO] Deepseek - Found 1 total opportunities across all categories
+[CACHE HIT] News data for BTC
+[CACHE HIT] Volatility data for BTC
+INFO:autonomous_engine:[INFO] Deepseek - Found 1 total opportunities across all categories
+[2025-11-17 13:47:16] [INFO] [INFO] Deepseek - Will execute top 1 opportunities (max_concurrent_positions: 2)
+INFO:autonomous_engine:[INFO] Deepseek - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-17 13:47:17] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=6, asks_count=4
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=6, asks_count=4
+[2025-11-17 13:47:17] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.299, ask=0.898, mid=0.5985
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.299, ask=0.898, mid=0.5985
+[2025-11-17 13:47:17] [INFO] [INFO] Deepseek - Market price: 0.5985, AI probability: 0.4800
+INFO:autonomous_engine:[INFO] Deepseek - Market price: 0.5985, AI probability: 0.4800
+[2025-11-17 13:47:17] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1769, token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, price=0.48, amount=5.0 USDT, side=BUY
+INFO:autonomous_engine:[INFO] [ORDER DEBUG] Placing order: market_id=1769, token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, price=0.48, amount=5.0 USDT, side=BUY
+[2025-11-17 13:47:17] [ERROR] [ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+ERROR:autonomous_engine:[ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+[2025-11-17 13:47:17] [ERROR] [ERROR] [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+ERROR:autonomous_engine:[ERROR] [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+[EXECUTION FAILED] Deepseek - Execution failed: Order placement failed
+[2025-11-17 13:47:17] [ERROR] [BET ERROR] Deepseek - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+ERROR:autonomous_engine:[BET ERROR] Deepseek - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+[2025-11-17 13:47:17] [INFO] [INFO] Deepseek - Executed bet 1/1
+INFO:autonomous_engine:[INFO] Deepseek - Executed bet 1/1
+[2025-11-17 13:47:17] [INFO] [INFO] Deepseek - Cycle complete: 0 bets placed, 15 skipped, 15 events analyzed
+INFO:autonomous_engine:[INFO] Deepseek - Cycle complete: 0 bets placed, 15 skipped, 15 events analyzed
+[2025-11-17 13:47:17] [INFO] [INFO] 
+Processing cycle for Grok
+INFO:autonomous_engine:[INFO] 
+Processing cycle for Grok
+[2025-11-17 13:47:17] [INFO] [INFO] Grok - Analyzing 5 categories
+INFO:autonomous_engine:[INFO] Grok - Analyzing 5 categories
+[CACHE HIT] Technical data for BTC
+[EV DEBUG]   Market Price: 49.90% | Buying: NO
+[2025-11-17 13:47:29] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=6, asks_count=4
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.1, ask=0.898, mid=0.499
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=6, asks_count=4
+[EV DEBUG] Grok - Event: This market will resolve to "Up" if the "Close" price for th
+[2025-11-17 13:47:29] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.1, ask=0.898, mid=0.499
+[EV DEBUG]   AI Probability: 45.00% | Side Probability: 55.00% | Confidence: 60%
+[EV DEBUG]   Gross EV: $0.51 | Net EV: $0.35 | Fee: $0.16
+[EV DEBUG]   Should Bet: True | Reason: Criterios mínimos cumplidos
+[2025-11-17 13:47:29] [INFO] [BET] Grok - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=6, F=0, V=7
+INFO:autonomous_engine:[BET] Grok - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=6, F=0, V=7
+[CACHE HIT] Technical data for BTC
+[CACHE HIT] News data for BTC
+[CACHE HIT] Volatility data for BTC
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+[2025-11-17 13:47:43] [WARNING] [WARNING] Grok - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] Grok - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 13:47:43] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=7, F=5, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=7, F=5, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[CACHE HIT] Technical data for BTC
+[2025-11-17 13:47:43] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+[2025-11-17 13:47:43] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+[CACHE HIT] Volatility data for BTC
+[CACHE HIT] News data for BTC
+100.64.0.7 - - [17/Nov/2025 13:47:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.7 - - [17/Nov/2025 13:47:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/active-positions HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/live-metrics HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/leaderboard HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/leaderboard HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/live-metrics HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.10 - - [17/Nov/2025 13:47:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.10 - - [17/Nov/2025 13:47:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/active-positions HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/active-positions HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 13:47:54] "GET /api/market-header HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/leaderboard HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/leaderboard HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/live-metrics HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:54] "GET /api/live-metrics HTTP/1.1" 200 -
+100.64.0.3 - - [17/Nov/2025 13:47:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.3 - - [17/Nov/2025 13:47:54] "GET /api/ai-thinking HTTP/1.1" 200 -
+100.64.0.11 - - [17/Nov/2025 13:47:55] "GET /api/market-header HTTP/1.1" 200 -
+INFO:werkzeug:100.64.0.11 - - [17/Nov/2025 13:47:55] "GET /api/market-header HTTP/1.1" 200 -
+[2025-11-17 13:48:00] [INFO] [INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+[2025-11-17 13:48:00] [WARNING] [WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+[2025-11-17 13:48:00] [WARNING] [WARNING] Grok - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] Grok - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
