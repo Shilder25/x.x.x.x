@@ -1,0 +1,41 @@
+[2025-11-17 16:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 16:30:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 16:30:01] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 17:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 17:00:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 17:00:01] [ERROR] [ERROR] Failed to fetch events from Opinion.trade: Please configure OPINION_TRADE_API_KEY and OPINION_WALLET_PRIVATE_KEY
+[2025-11-17 17:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 17:00:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 17:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 17:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 17:30:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 17:30:01] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 18:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 18:00:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 18:00:01] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 18:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 18:30:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 18:30:01] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 19:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 19:00:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 19:00:01] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 19:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 19:30:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 19:30:01] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 20:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 20:00:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 20:00:01] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 20:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 20:30:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 20:30:01] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 21:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 21:00:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 21:00:01] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Opinion.trade client not initialized
+[2025-11-17 21:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 21:00:01] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 21:00:01] [ERROR] [ERROR] Failed to fetch events from Opinion.trade: Please configure OPINION_TRADE_API_KEY and OPINION_WALLET_PRIVATE_KEY
+[2025-11-17 21:17:33] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.13 at 2025-11-17T21:17:33.585073
+[2025-11-17 21:17:33] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 21:17:33] [ERROR] [ERROR] ✗ Failed to initialize Opinion.trade SDK: Unknown format '', attempted to normalize to '0x'
+[2025-11-17 21:17:33] [ERROR] [ERROR] Failed to fetch events from Opinion.trade: Please configure OPINION_TRADE_API_KEY and OPINION_WALLET_PRIVATE_KEY
+[2025-11-17 21:17:33] [INFO] [ADMIN] Daily cycle completed successfully
