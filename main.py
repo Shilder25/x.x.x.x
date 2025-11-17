@@ -85,6 +85,7 @@ def main():
     print("\n[2/3] Starting Flask API backend on port 8000...")
     api_process = subprocess.Popen(
         ["python", "api.py"],
+        env=os.environ.copy(),  # Pass Railway env vars (API keys, secrets)
         stdout=sys.stdout,  # Inherit stdout to avoid pipe blocking
         stderr=sys.stderr   # Inherit stderr to avoid pipe blocking
     )
@@ -112,6 +113,7 @@ def main():
     frontend_process = subprocess.Popen(
         ["npm", "run", npm_command],
         cwd=frontend_dir,
+        env=os.environ.copy(),  # Pass Railway env vars
         stdout=sys.stdout,  # Inherit stdout to avoid pipe blocking
         stderr=sys.stderr   # Inherit stderr to avoid pipe blocking
     )
