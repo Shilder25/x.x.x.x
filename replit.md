@@ -56,6 +56,13 @@ The system is designed for deployment on Railway with automatic daily prediction
    - Sports events are identified by keywords: nfl, nba, mlb, nhl, soccer, football, basketball
    - Reduces wasted API calls and AI analysis time on non-financial events
 
+9. **Enhanced Debug Logging** - Added comprehensive logging for troubleshooting (November 17, 2025)
+   - Added detailed pagination logs to track market fetching progress
+   - Added order execution logs showing exact SDK errors when bets fail
+   - Added full exception tracebacks for debugging Opinion.trade API issues
+   - Helps diagnose why only 28 markets fetched instead of 100-200
+   - Helps diagnose why all order placements are failing
+
 **Testing Status:**
 - ✅ Unit tests for EV calculation pass (4/4 scenarios)
 - ✅ API workflow running without errors
