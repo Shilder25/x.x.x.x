@@ -1,0 +1,1047 @@
+2025-11-17T03:13:40.078802262Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:13:36] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:13:40.078805572Z [err]  100.64.0.5 - - [17/Nov/2025 03:13:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:13:40.078810334Z [err]  100.64.0.7 - - [17/Nov/2025 03:13:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:13:40.078813364Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:13:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:13:40.078817559Z [err]  INFO:werkzeug:100.64.0.7 - - [17/Nov/2025 03:13:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:13:40.078819481Z [err]  100.64.0.5 - - [17/Nov/2025 03:13:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:13:40.078825198Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:13:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:13:40.078825606Z [err]  100.64.0.5 - - [17/Nov/2025 03:13:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:13:40.078831557Z [err]  100.64.0.5 - - [17/Nov/2025 03:13:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:13:40.078833264Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:13:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:13:40.080797096Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:13:40.080802629Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:13:40.080806796Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:13:40.080811293Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:13:40.080815886Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:13:40.080820327Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:13:40.080826458Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:13:40.080831028Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:13:40.080835179Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:13:40.080839635Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:13:40.080844550Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:13:40.080848918Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:39] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:13:40.080853024Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:40] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:13:40.080857557Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:40] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:00.071785092Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:00.071789993Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:00.071795389Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:00.071800730Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:00.071808078Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:00.071813627Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:00.071818848Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:00.071823693Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:00.071828740Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:00.071836558Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:00.071841898Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:00.071846968Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:00.071852444Z [err]  100.64.0.2 - - [17/Nov/2025 03:13:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:00.071868896Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:13:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:00.071876759Z [err]  [2025-11-17 03:13:54] [INFO] [INFO] get_orderbook: token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296, bids_count=0, asks_count=0
+2025-11-17T03:14:00.073659984Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:14:00.073821197Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296, bids_count=0, asks_count=0
+2025-11-17T03:14:00.073825826Z [err]  [2025-11-17 03:13:54] [WARNING] [WARNING] get_latest_price: token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296 - No valid bid/ask prices in orderbook
+2025-11-17T03:14:00.073832237Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296 - No valid bid/ask prices in orderbook
+2025-11-17T03:14:00.073836309Z [err]  [2025-11-17 03:13:54] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:14:00.073840913Z [err]  WARNING:autonomous_engine:[WARNING] Gemini - Price fetch failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:14:00.073845460Z [err]  [2025-11-17 03:13:54] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=3, N=3, T=7, F=0, V=9 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:14:00.073850058Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=3, N=3, T=7, F=0, V=9 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:14:00.073854371Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:14:00.073858943Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:14:06.684552209Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:06.684560320Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:06.684567424Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:06.684573705Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:06.686702626Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:06.686712802Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:06.689278714Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:06.689287240Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:06.691980905Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:06.691990090Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:06.691996351Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:06.692004068Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:07.206857595Z [err]  100.64.0.4 - - [17/Nov/2025 03:14:06] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:14:07.206862060Z [err]  INFO:werkzeug:100.64.0.4 - - [17/Nov/2025 03:14:06] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:14:07.206867480Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:07.206873099Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:06] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:47.355203403Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+2025-11-17T03:14:47.355214400Z [err]  [2025-11-17 03:14:42] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:14:47.355219542Z [err]  WARNING:autonomous_engine:[WARNING] Gemini - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:14:47.355228881Z [err]  [2025-11-17 03:14:42] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:14:47.355234412Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:14:47.355242614Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-17T03:14:47.355281187Z [err]  [2025-11-17 03:14:42] [INFO] [INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+2025-11-17T03:14:47.355299093Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+2025-11-17T03:14:47.355307768Z [err]  [2025-11-17 03:14:42] [WARNING] [WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+2025-11-17T03:14:47.356448309Z [inf]  [CACHE HIT] News data for ETH
+2025-11-17T03:14:47.356454947Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-17T03:14:53.810853183Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:53.810862246Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:53.810869838Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:53.810884984Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:53.819990713Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:53.819996684Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:53.820001685Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:53.820006869Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:53.821678228Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:53.821690057Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:53.823765755Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:53.823772974Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:53.826056615Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:53.826066929Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:53.829662881Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:53.829666961Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:53.829671006Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:53.829675153Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:53.832212202Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:53.832225622Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:53.832235181Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:53.832242860Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:53.841943170Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:53.841953242Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:53.906649492Z [err]  100.64.0.8 - - [17/Nov/2025 03:14:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:14:53.906659223Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:14:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:14:54.603934356Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:54.603938459Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:14:54.603947759Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:54.603952525Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:54.603957269Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:54.603962347Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:14:54.603966647Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:54.603970521Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:14:54.603974945Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:54.603979296Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:14:54.603990777Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:54.603999315Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:14:54.604003936Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:54.604008363Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:54.604013096Z [err]  100.64.0.5 - - [17/Nov/2025 03:14:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:54.604017911Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:14:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:54.801025179Z [err]  100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:14:54.801033778Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:14:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:15:24.822938252Z [err]  [2025-11-17 03:15:18] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:15:24.822944731Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:15:24.822949694Z [err]  [2025-11-17 03:15:18] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.674, ask=0.8, mid=0.7370000000000001
+2025-11-17T03:15:24.822954948Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.674, ask=0.8, mid=0.7370000000000001
+2025-11-17T03:15:24.822959319Z [inf]  [EV DEBUG] Gemini - Event: This market will resolve to "Yes" if the Supreme Court of th
+2025-11-17T03:15:24.822964562Z [inf]  [EV DEBUG]   AI Probability: 18.00% | Side Probability: 82.00% | Confidence: 80%
+2025-11-17T03:15:24.822969308Z [inf]  [EV DEBUG]   Market Price: 73.70% | Buying: NO
+2025-11-17T03:15:24.822974266Z [inf]  [EV DEBUG]   Gross EV: $0.83 | Net EV: $0.58 | Fee: $0.25
+2025-11-17T03:15:24.822978603Z [inf]  [EV DEBUG]   Should Bet: True | Reason: Criterios mínimos cumplidos
+2025-11-17T03:15:24.822984979Z [err]  [2025-11-17 03:15:18] [INFO] [BET] Gemini - $5.00 on 'This market will resolve to "Yes" if the Supreme C...' | Prob=18.00%, Conf=80% | Scores: S=0, N=0, T=0, F=0, V=0
+2025-11-17T03:15:24.822989544Z [err]  INFO:autonomous_engine:[BET] Gemini - $5.00 on 'This market will resolve to "Yes" if the Supreme C...' | Prob=18.00%, Conf=80% | Scores: S=0, N=0, T=0, F=0, V=0
+2025-11-17T03:15:24.822995213Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-17T03:15:24.823001698Z [inf]  [CACHE HIT] News data for ETH
+2025-11-17T03:15:24.823007564Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-17T03:15:28.676979160Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:28.676990190Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:28.677008557Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:15:28.677014467Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:15:28.677020703Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:28.680151475Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:28.680159790Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:15:28.680169795Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:15:28.680174105Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:15:28.680181076Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:15:28.680185375Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:15:28.680189375Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:15:28.680193040Z [err]  100.64.0.8 - - [17/Nov/2025 03:15:28] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:15:28.680196864Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:15:28] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:15:28.680205619Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:15:28.680209698Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:28] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:15:36.620748518Z [err]  100.64.0.6 - - [17/Nov/2025 03:15:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:15:36.620755383Z [err]  INFO:werkzeug:100.64.0.6 - - [17/Nov/2025 03:15:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:15:36.646896053Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:15:36.646905830Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:15:36.656533103Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:36.656555077Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:36.656561400Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:15:36.656566186Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:15:36.656570528Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:36.656575095Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:36.661793297Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:15:36.661799986Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:15:36.661804160Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:15:36.661807984Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:15:36.941015963Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:15:36.941059975Z [err]  100.64.0.5 - - [17/Nov/2025 03:15:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:15:56.943259539Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:15:56.943270941Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:15:56.943279619Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:15:56.943286188Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:15:56.943293312Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:56.943294784Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:56.943302520Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:56.943305378Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:56.943311532Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:15:56.943318423Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:15:56.943323898Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:15:56.943332211Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:15:56.943337410Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:56.943342703Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:56.943348360Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:15:56.943353872Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:15:56.945619503Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:56.945628584Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:15:56.945635053Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:15:56.945641410Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:15:56.945647669Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:15:56.945653888Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:15:56.945659918Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:15:56.945665984Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:15:56.945671635Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:15:56.945678109Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:15:56.945684038Z [err]  100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:15:56.945690921Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:15:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:00.946760487Z [err]  [2025-11-17 03:16:00] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=6
+2025-11-17T03:16:00.946769580Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=7, asks_count=6
+2025-11-17T03:16:00.946775099Z [err]  [2025-11-17 03:16:00] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98801, ask=0.992, mid=0.990005
+2025-11-17T03:16:00.946780067Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98801, ask=0.992, mid=0.990005
+2025-11-17T03:16:00.946784820Z [inf]  [EV DEBUG] Gemini - Event: This market will resolve to “Yes” immediately if all Coinbas
+2025-11-17T03:16:00.946789990Z [inf]  [EV DEBUG]   AI Probability: 6.00% | Side Probability: 94.00% | Confidence: 95%
+2025-11-17T03:16:00.946806478Z [inf]  [EV DEBUG]   Market Price: 99.00% | Buying: NO
+2025-11-17T03:16:00.946812844Z [inf]  [EV DEBUG]   Gross EV: $-0.50 | Net EV: $-0.78 | Fee: $0.28
+2025-11-17T03:16:00.946818715Z [inf]  [EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+2025-11-17T03:16:00.946830693Z [err]  [2025-11-17 03:16:00] [INFO] [SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=6.00%, Conf=95% | Scores: S=1, N=1, T=1, F=3, V=2 | Reason: Valor esperado negativo o cero
+2025-11-17T03:16:00.946844004Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This market will resolve to “Yes” immediately if a...' | Prob=6.00%, Conf=95% | Scores: S=1, N=1, T=1, F=3, V=2 | Reason: Valor esperado negativo o cero
+2025-11-17T03:16:06.802753503Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:06.802800395Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:06.802806746Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:06.802812835Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:06.802821021Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:06.802825778Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:06.805902073Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:06.805906828Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:06.808021911Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:06.808026390Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:06.808030990Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:06.808037441Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:06] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:06.812030776Z [err]  100.64.0.7 - - [17/Nov/2025 03:16:06] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:16:06.812036004Z [err]  INFO:werkzeug:100.64.0.7 - - [17/Nov/2025 03:16:06] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:16:07.099085154Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:07] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:07.099090822Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:07] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:27.087691418Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:27.087701214Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:27.087707920Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:27.087708717Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:27.087719623Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:27.087727317Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:27.087733734Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:27.087740036Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:27.087747061Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:27.087758139Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:27.087764469Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:27.087770140Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:27.087776516Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:27.087782138Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:23] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:36.855442975Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:36.855451557Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:36.855457837Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:36.855462904Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:36.855469428Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:16:36.855473936Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:16:36.855484758Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:36.855489604Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:36.855494104Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:36.855496608Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:36.855501276Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:36.855505347Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:36.855509365Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:36.855512783Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:36.991207872Z [err]  100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:36.991212494Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:16:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:39.867562977Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:39.867583312Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:39.867596168Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:39.867605480Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:39.867609467Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:39.867617946Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:39.867623492Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:39.867626224Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:39.867633492Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:39.867641107Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:39.867645772Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:39.867653246Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:39] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:40.135328223Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:40] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:40.135338659Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:40] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:46.980226587Z [inf]  [EV DEBUG]   AI Probability: 45.00% | Side Probability: 55.00% | Confidence: 60%
+2025-11-17T03:16:46.980235711Z [inf]  [EV DEBUG]   Market Price: 70.95% | Buying: NO
+2025-11-17T03:16:46.980241824Z [inf]  [EV DEBUG]   Gross EV: $-1.59 | Net EV: $-1.76 | Fee: $0.16
+2025-11-17T03:16:46.980247049Z [inf]  [EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+2025-11-17T03:16:46.980252293Z [err]  [2025-11-17 03:16:46] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=60% | Scores: S=0, N=0, T=0, F=0, V=5 | Reason: Valor esperado negativo o cero
+2025-11-17T03:16:46.980257904Z [err]  INFO:autonomous_engine:[SKIP] Gemini - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=60% | Scores: S=0, N=0, T=0, F=0, V=5 | Reason: Valor esperado negativo o cero
+2025-11-17T03:16:46.980262920Z [err]  [2025-11-17 03:16:46] [INFO] [INFO] Gemini - Found 2 total opportunities across all categories
+2025-11-17T03:16:46.980268073Z [err]  INFO:autonomous_engine:[INFO] Gemini - Found 2 total opportunities across all categories
+2025-11-17T03:16:46.980332505Z [err]  [2025-11-17 03:16:46] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=41, asks_count=13
+2025-11-17T03:16:46.980336622Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=41, asks_count=13
+2025-11-17T03:16:46.980340778Z [err]  [2025-11-17 03:16:46] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.53, ask=0.889, mid=0.7095
+2025-11-17T03:16:46.980344641Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.53, ask=0.889, mid=0.7095
+2025-11-17T03:16:46.980349043Z [inf]  [EV DEBUG] Gemini - Event: This market will resolve to "Yes" if any Binance 1 minute ca
+2025-11-17T03:16:46.982837955Z [err]  [2025-11-17 03:16:46] [INFO] [INFO] Gemini - Will execute top 2 opportunities (max_concurrent_positions: 2)
+2025-11-17T03:16:46.982843202Z [err]  INFO:autonomous_engine:[INFO] Gemini - Will execute top 2 opportunities (max_concurrent_positions: 2)
+2025-11-17T03:16:46.982849702Z [err]  [2025-11-17 03:16:46] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:16:46.982858714Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:16:46.982864511Z [err]  [2025-11-17 03:16:46] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.764, ask=0.767, mid=0.7655000000000001
+2025-11-17T03:16:46.982870159Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.764, ask=0.767, mid=0.7655000000000001
+2025-11-17T03:16:46.982876010Z [err]  [2025-11-17 03:16:46] [INFO] [INFO] Gemini - Market price: 0.7655, AI probability: 0.1800
+2025-11-17T03:16:46.982883329Z [err]  INFO:autonomous_engine:[INFO] Gemini - Market price: 0.7655, AI probability: 0.1800
+2025-11-17T03:16:46.982890347Z [inf]  [ORDER DEBUG] Placing order: market_id=1546, token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, price=0.18, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+2025-11-17T03:16:47.379503708Z [inf]  [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+2025-11-17T03:16:47.379513141Z [inf]  [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+2025-11-17T03:16:47.379519600Z [err]  [2025-11-17 03:16:47] [ERROR] [BET ERROR] Gemini - Failed bet on This market will resolve to "Yes" if the Supreme C... (event_id=1546): Order placement failed
+2025-11-17T03:16:47.379524728Z [err]  ERROR:autonomous_engine:[BET ERROR] Gemini - Failed bet on This market will resolve to "Yes" if the Supreme C... (event_id=1546): Order placement failed
+2025-11-17T03:16:47.379529776Z [inf]  [EXECUTION FAILED] Gemini - Execution failed: Order placement failed
+2025-11-17T03:16:47.379534907Z [err]  [2025-11-17 03:16:47] [INFO] [INFO] Gemini - Executed bet 1/2
+2025-11-17T03:16:47.379539871Z [err]  INFO:autonomous_engine:[INFO] Gemini - Executed bet 1/2
+2025-11-17T03:16:47.810718581Z [err]  [2025-11-17 03:16:47] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=10, asks_count=9
+2025-11-17T03:16:47.810723574Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=10, asks_count=9
+2025-11-17T03:16:47.810727309Z [err]  [2025-11-17 03:16:47] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.44, ask=0.799, mid=0.6195
+2025-11-17T03:16:47.810731015Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.44, ask=0.799, mid=0.6195
+2025-11-17T03:16:47.810738604Z [err]  [2025-11-17 03:16:47] [INFO] [INFO] Gemini - Market price: 0.6195, AI probability: 0.5300
+2025-11-17T03:16:47.810742522Z [err]  INFO:autonomous_engine:[INFO] Gemini - Market price: 0.6195, AI probability: 0.5300
+2025-11-17T03:16:47.810746054Z [inf]  [ORDER DEBUG] Placing order: market_id=1769, token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, price=0.53, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+2025-11-17T03:16:48.187724542Z [inf]  [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+2025-11-17T03:16:48.187729358Z [inf]  [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+2025-11-17T03:16:48.187735172Z [inf]  [EXECUTION FAILED] Gemini - Execution failed: Order placement failed
+2025-11-17T03:16:48.187740559Z [err]  [2025-11-17 03:16:48] [ERROR] [BET ERROR] Gemini - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+2025-11-17T03:16:48.187746318Z [err]  ERROR:autonomous_engine:[BET ERROR] Gemini - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+2025-11-17T03:16:48.187750766Z [err]  [2025-11-17 03:16:48] [INFO] [INFO] Gemini - Executed bet 2/2
+2025-11-17T03:16:48.187755290Z [err]  INFO:autonomous_engine:[INFO] Gemini - Executed bet 2/2
+2025-11-17T03:16:48.187762009Z [err]  [2025-11-17 03:16:48] [INFO] [INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-17T03:16:48.187766523Z [err]  INFO:autonomous_engine:[INFO] Gemini - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-17T03:16:48.187771468Z [err]  [2025-11-17 03:16:48] [INFO] [INFO] 
+2025-11-17T03:16:48.187777411Z [err]  Processing cycle for Qwen
+2025-11-17T03:16:48.187781375Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-17T03:16:48.187785449Z [err]  Processing cycle for Qwen
+2025-11-17T03:16:48.187789763Z [err]  [2025-11-17 03:16:48] [INFO] [INFO] Qwen - Analyzing 2 categories
+2025-11-17T03:16:48.187795182Z [err]  INFO:autonomous_engine:[INFO] Qwen - Analyzing 2 categories
+2025-11-17T03:16:48.900768018Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:16:48.900779564Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:16:48.900810299Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:16:49.459123943Z [err]  [2025-11-17 03:16:49] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:49.459135153Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:49.915035223Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:16:49.915095983Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:16:49.915102576Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:16:50.057692632Z [err]  [2025-11-17 03:16:50] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:50.057699462Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:50.259887674Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:16:50.259895361Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:16:50.259901052Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:16:50.905744022Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-17T03:16:50.905753202Z [inf]  [CACHE HIT] News data for ETH
+2025-11-17T03:16:50.905759725Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-17T03:16:50.905796036Z [err]  [2025-11-17 03:16:50] [INFO] [SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:50.905801232Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:51.044371756Z [err]  [2025-11-17 03:16:51] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:51.044377907Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:51.242115686Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-17T03:16:51.242120759Z [inf]  [CACHE HIT] News data for ETH
+2025-11-17T03:16:51.242124876Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-17T03:16:51.925215069Z [err]  [2025-11-17 03:16:51] [INFO] [SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:51.925227942Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:52.028684257Z [err]  [2025-11-17 03:16:52] [INFO] [SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:52.028690281Z [err]  INFO:autonomous_engine:[SKIP] Qwen - 'This market will resolve to "Yes" if any Binance 1...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 401 - {'error': {'message': 'Incorrect API key pro...
+2025-11-17T03:16:52.031558113Z [err]  [2025-11-17 03:16:52] [INFO] [INFO] Qwen - No opportunities found
+2025-11-17T03:16:52.031567574Z [err]  INFO:autonomous_engine:[INFO] Qwen - No opportunities found
+2025-11-17T03:16:52.031574247Z [err]  [2025-11-17 03:16:52] [INFO] [INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-17T03:16:52.031583193Z [err]  INFO:autonomous_engine:[INFO] Qwen - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-17T03:16:52.034472010Z [err]  [2025-11-17 03:16:52] [INFO] [INFO] 
+2025-11-17T03:16:52.034479737Z [err]  Processing cycle for Deepseek
+2025-11-17T03:16:52.034485497Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-17T03:16:52.034491154Z [err]  Processing cycle for Deepseek
+2025-11-17T03:16:52.034496505Z [err]  [2025-11-17 03:16:52] [INFO] [INFO] Deepseek - Analyzing 2 categories
+2025-11-17T03:16:52.034502159Z [err]  INFO:autonomous_engine:[INFO] Deepseek - Analyzing 2 categories
+2025-11-17T03:16:52.432484932Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:16:52.432489255Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:16:52.432493476Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:16:53.911818307Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:53.911824026Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:16:53.911830505Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:53.911837402Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:16:53.911842772Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:53.911848412Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:53.911854187Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:53.911859363Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:16:53.911864629Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:53.911869829Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:16:53.911876105Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:53.911882075Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:16:54.097355765Z [err]  100.64.0.2 - - [17/Nov/2025 03:16:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:16:54.097367108Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:16:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:14.122132805Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:14.122141632Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:14.122148538Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:14.122155942Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:14.122162324Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:14.122168954Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:14.122170152Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:14.122171392Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:14.122178359Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:06] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:17:14.122178646Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:14.122186166Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:06] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:17:14.122187427Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:14.122193402Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:14.122198325Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:14.122201720Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:14.122206666Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:14.126999695Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:14.127005497Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:14.127012427Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:14.127020851Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:14.127020942Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:10] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:14.127030258Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:14.127030505Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:10] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:14.127037735Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:14.127044330Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:14.127051305Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:14.127058251Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:14.127063662Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:14.127070031Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:14.127075272Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:09] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:44.266105406Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:44.266114427Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:44.266119237Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:44.266124623Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:44.266129337Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:44.266134783Z [err]  100.64.0.3 - - [17/Nov/2025 03:17:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:17:44.266139196Z [err]  INFO:werkzeug:100.64.0.3 - - [17/Nov/2025 03:17:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:17:44.266143792Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:44.266148337Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:44.266149403Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:44.266173676Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:44.266180742Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:44.266186139Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:44.266190899Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:44.266197245Z [err]  INFO:werkzeug:100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:44.266201775Z [err]  100.64.0.5 - - [17/Nov/2025 03:17:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:44.267475667Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:17:44.267483549Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:17:44.267494607Z [inf]  [EV DEBUG]   Market Price: 29.45% | Buying: NO
+2025-11-17T03:17:44.267500784Z [inf]  [EV DEBUG]   Gross EV: $2.26 | Net EV: $2.10 | Fee: $0.16
+2025-11-17T03:17:44.267507200Z [inf]  [EV DEBUG]   Should Bet: True | Reason: Criterios mínimos cumplidos
+2025-11-17T03:17:44.267515427Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.201, ask=0.388, mid=0.2945
+2025-11-17T03:17:44.267523533Z [err]  [2025-11-17 03:17:42] [INFO] [BET] Deepseek - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=48.00%, Conf=55% | Scores: S=2, N=2, T=6, F=1, V=8
+2025-11-17T03:17:44.267534290Z [err]  INFO:autonomous_engine:[BET] Deepseek - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=48.00%, Conf=55% | Scores: S=2, N=2, T=6, F=1, V=8
+2025-11-17T03:17:44.267537246Z [inf]  [EV DEBUG] Deepseek - Event: This market will resolve to "Up" if the "Close" price for th
+2025-11-17T03:17:44.267545448Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:17:44.267551099Z [inf]  [EV DEBUG]   AI Probability: 48.00% | Side Probability: 52.00% | Confidence: 55%
+2025-11-17T03:17:44.267568208Z [err]  [2025-11-17 03:17:42] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=9, asks_count=10
+2025-11-17T03:17:44.267577445Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=9, asks_count=10
+2025-11-17T03:17:44.267585182Z [err]  [2025-11-17 03:17:42] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.201, ask=0.388, mid=0.2945
+2025-11-17T03:17:53.740240930Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:53.740246658Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:53.740251507Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:53.740256528Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:53.743421982Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:53.743430417Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:53.745709348Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:53.745718813Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:53.747850263Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:53.747856159Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:53.750664763Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:53.750674155Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:54.283626585Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:54.283637813Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:54.283643608Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:54.283648526Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:54.283653173Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:17:54.283658634Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:54.283663107Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:17:54.283667949Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:54.283674278Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:17:54.283679875Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:54.283680166Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:54.283683249Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:17:54.283692856Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:54.283699393Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:17:54.388907587Z [err]  100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:17:54.388912679Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:17:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:18:44.617084453Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+2025-11-17T03:18:44.617092981Z [err]  [2025-11-17 03:18:38] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+2025-11-17T03:18:44.617093800Z [err]  [2025-11-17 03:18:38] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+2025-11-17T03:18:44.617099425Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+2025-11-17T03:18:44.617107602Z [err]  [2025-11-17 03:18:38] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:18:44.617114537Z [err]  WARNING:autonomous_engine:[WARNING] Deepseek - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:18:44.617159044Z [err]  [2025-11-17 03:18:38] [INFO] [SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=6, F=1, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:18:44.617167283Z [err]  INFO:autonomous_engine:[SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=2, N=2, T=6, F=1, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:18:44.617174583Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:18:44.621061882Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:18:44.621066795Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:18:53.903502906Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:18:53.903511333Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:18:53.903517209Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:53.903522599Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:53.905399703Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:18:53.905408122Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:18:53.908237091Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:53.908245720Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:53.908251362Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:18:53.908256766Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:18:53.910113724Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:18:53.910127347Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:18:53.925454705Z [err]  100.64.0.7 - - [17/Nov/2025 03:18:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:18:53.925461566Z [err]  INFO:werkzeug:100.64.0.7 - - [17/Nov/2025 03:18:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:18:54.157032880Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:18:54.157040655Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:18:54.183439344Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:54.183443151Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:54.187538431Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:54.187544675Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:54.190465630Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:18:54.190472589Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:18:54.569830455Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:18:54.569835377Z [err]  100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:54.569840697Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:54.569846996Z [err]  100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:18:54.569856238Z [err]  100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:18:54.570121698Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:18:54.570130440Z [err]  100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:54.570136404Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:18:54.570142026Z [err]  100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:18:54.570147542Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:18:54.570153351Z [err]  100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:18:54.570158923Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:18:54.570164315Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:18:54.570170062Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:18:54.570175836Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:18:54.570180760Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:18:54.570197783Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:18:54.570204116Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:18:54.570209786Z [err]  100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:18:54.570215545Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:18:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:18:54.745261955Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:18:54.745318999Z [err]  100.64.0.2 - - [17/Nov/2025 03:18:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:19:34.801403861Z [err]  [2025-11-17 03:19:33] [INFO] [INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+2025-11-17T03:19:34.801417586Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+2025-11-17T03:19:34.801424696Z [err]  [2025-11-17 03:19:33] [WARNING] [WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+2025-11-17T03:19:34.801431324Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+2025-11-17T03:19:34.801487535Z [err]  [2025-11-17 03:19:33] [WARNING] [WARNING] Deepseek - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:19:34.801498058Z [err]  WARNING:autonomous_engine:[WARNING] Deepseek - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:19:34.801509720Z [err]  [2025-11-17 03:19:33] [INFO] [SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=3, N=2, T=7, F=1, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:19:34.801516743Z [err]  INFO:autonomous_engine:[SKIP] Deepseek - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=3, N=2, T=7, F=1, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:19:34.801525292Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-17T03:19:34.803760017Z [inf]  [CACHE HIT] News data for ETH
+2025-11-17T03:19:34.803764450Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-17T03:19:54.829368792Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.829370032Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:19:54.829379751Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:19:54.829380845Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:19:54.829387942Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:19:54.829394167Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:19:54.829400382Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:19:54.829406102Z [err]  100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:19:54.829408456Z [err]  100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.829415806Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.829416622Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:19:54.829422973Z [err]  100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:19:54.829430329Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:19:54.829473473Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:19:54.829478039Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:19:54.829484463Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.830846518Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:19:54.830854207Z [err]  100.64.0.8 - - [17/Nov/2025 03:19:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:19:54.830860835Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:19:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:19:54.830868302Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.830868497Z [err]  100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:19:54.830876790Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:19:54.830878852Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.830882787Z [err]  100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:19:54.830887765Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:19:54.830892346Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.830897231Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.830901580Z [err]  100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.830905940Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:19:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.830910517Z [err]  100.64.0.9 - - [17/Nov/2025 03:19:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:19:54.830915481Z [err]  INFO:werkzeug:100.64.0.9 - - [17/Nov/2025 03:19:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:19:54.830920289Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:19:54.832095448Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:19:54.832104084Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:19:54.832104489Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:19:54.832112788Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:19:54.832113886Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:19:54.832117978Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:19:54.832122614Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:19:54.832128322Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.832130480Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:19:54.832134331Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:19:54.832136703Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:19:54.832141277Z [err]  100.64.0.2 - - [17/Nov/2025 03:19:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:20:34.495625966Z [err]  [2025-11-17 03:20:27] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:20:34.495634884Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:20:34.495642443Z [err]  [2025-11-17 03:20:27] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.674, ask=0.799, mid=0.7365
+2025-11-17T03:20:34.495647175Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.674, ask=0.799, mid=0.7365
+2025-11-17T03:20:34.495651561Z [inf]  [EV DEBUG] Deepseek - Event: This market will resolve to "Yes" if the Supreme Court of th
+2025-11-17T03:20:34.495656174Z [inf]  [EV DEBUG]   AI Probability: 45.00% | Side Probability: 55.00% | Confidence: 55%
+2025-11-17T03:20:34.495660607Z [inf]  [EV DEBUG]   Market Price: 73.65% | Buying: NO
+2025-11-17T03:20:34.495664905Z [inf]  [EV DEBUG]   Gross EV: $-1.86 | Net EV: $-2.03 | Fee: $0.16
+2025-11-17T03:20:34.495669414Z [inf]  [EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+2025-11-17T03:20:34.495675444Z [err]  [2025-11-17 03:20:27] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=55% | Scores: S=3, N=2, T=4, F=1, V=9 | Reason: Valor esperado negativo o cero
+2025-11-17T03:20:34.495680100Z [err]  INFO:autonomous_engine:[SKIP] Deepseek - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=55% | Scores: S=3, N=2, T=4, F=1, V=9 | Reason: Valor esperado negativo o cero
+2025-11-17T03:20:34.495685789Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-17T03:20:34.495691843Z [inf]  [CACHE HIT] News data for ETH
+2025-11-17T03:20:34.497882256Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-17T03:20:54.498396934Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:20:54.498404289Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:20:54.498409083Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.498414265Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.498434240Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:20:54.498438845Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:20:54.498443128Z [err]  100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.498447179Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.498451185Z [err]  100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:20:54.498455618Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:20:54.498459801Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:20:54.498465382Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:20:54.498470039Z [err]  100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:20:54.498474086Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:20:54.498477825Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:20:54.498483353Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:20:54.500160582Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.500161611Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:20:54.500170668Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.500171062Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.500177112Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.500178682Z [err]  100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.500186535Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.500191842Z [err]  100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:20:54.500197419Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:20:54.500202490Z [err]  100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:20:54.500207384Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:20:54.500212488Z [err]  100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:20:54.500217289Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:20:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:20:54.500222702Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.500227936Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:20:54.500232817Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:20:54.501994291Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:20:54.502003760Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:20:54.502009986Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:20:54.502015386Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:20:54.502021453Z [err]  100.64.0.8 - - [17/Nov/2025 03:20:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:20:54.502029787Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:20:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:20:54.502035447Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:20:54.502041516Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:20:54.502047197Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:20:54.502051848Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:20:55.165471270Z [err]  100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:20:55.165476262Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:20:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:21:24.874365176Z [err]  [2025-11-17 03:21:22] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=6, asks_count=6
+2025-11-17T03:21:24.874371164Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=6, asks_count=6
+2025-11-17T03:21:24.874376174Z [err]  [2025-11-17 03:21:22] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98801, ask=0.999, mid=0.9935050000000001
+2025-11-17T03:21:24.874382399Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98801, ask=0.999, mid=0.9935050000000001
+2025-11-17T03:21:24.874388154Z [inf]  [EV DEBUG] Deepseek - Event: This market will resolve to “Yes” immediately if all Coinbas
+2025-11-17T03:21:24.874393842Z [inf]  [EV DEBUG]   AI Probability: 15.00% | Side Probability: 85.00% | Confidence: 85%
+2025-11-17T03:21:24.874399081Z [inf]  [EV DEBUG]   Market Price: 99.35% | Buying: NO
+2025-11-17T03:21:24.874406001Z [inf]  [EV DEBUG]   Gross EV: $-1.44 | Net EV: $-1.69 | Fee: $0.26
+2025-11-17T03:21:24.874411362Z [inf]  [EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+2025-11-17T03:21:24.874417022Z [err]  [2025-11-17 03:21:22] [INFO] [SKIP] Deepseek - 'This market will resolve to “Yes” immediately if a...' | Prob=15.00%, Conf=85% | Scores: S=2, N=1, T=3, F=2, V=8 | Reason: Valor esperado negativo o cero
+2025-11-17T03:21:24.874422602Z [err]  INFO:autonomous_engine:[SKIP] Deepseek - 'This market will resolve to “Yes” immediately if a...' | Prob=15.00%, Conf=85% | Scores: S=2, N=1, T=3, F=2, V=8 | Reason: Valor esperado negativo o cero
+2025-11-17T03:21:54.873200672Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.873208331Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.873212691Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:21:54.873217223Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:21:54.873227627Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:21:54.873236835Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:21:54.873242557Z [err]  100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:21:54.873248276Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:21:54.873252654Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:21:54.873258763Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:21:54.873263293Z [err]  100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.873267622Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.873274466Z [err]  100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:21:54.873279021Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:21:54.873284664Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:21:54.873290055Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:21:54.876365710Z [err]  100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.876376373Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.876418975Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.876426700Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.876432782Z [err]  100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:21:54.876439286Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:21:54.876444934Z [err]  100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:21:54.876451197Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:21:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:21:54.876457621Z [err]  100.64.0.9 - - [17/Nov/2025 03:21:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:21:54.876480698Z [err]  INFO:werkzeug:100.64.0.9 - - [17/Nov/2025 03:21:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:21:54.876487258Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:21:54.876493080Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:21:54.876500616Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.876506950Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.876512609Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:21:54.876518668Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:21:54.878535341Z [err]  100.64.0.8 - - [17/Nov/2025 03:21:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:21:54.878565914Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:21:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:21:54.878572414Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:21:54.878578337Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:21:54.878584179Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.878589701Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:21:54.878595221Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:21:54.878601094Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:21:54.878607209Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:21:54.878612756Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:21:54.878618250Z [err]  100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:21:54.878642909Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:21:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:22:14.880291179Z [err]  [2025-11-17 03:22:07] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=42, asks_count=9
+2025-11-17T03:22:14.880302590Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=42, asks_count=9
+2025-11-17T03:22:14.880310370Z [err]  [2025-11-17 03:22:07] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.85, ask=0.889, mid=0.8694999999999999
+2025-11-17T03:22:14.880317367Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.85, ask=0.889, mid=0.8694999999999999
+2025-11-17T03:22:14.880328844Z [inf]  [EV DEBUG] Deepseek - Event: This market will resolve to "Yes" if any Binance 1 minute ca
+2025-11-17T03:22:14.880336783Z [inf]  [EV DEBUG]   AI Probability: 45.00% | Side Probability: 55.00% | Confidence: 30%
+2025-11-17T03:22:14.880344593Z [inf]  [EV DEBUG]   Market Price: 86.95% | Buying: NO
+2025-11-17T03:22:14.880351123Z [inf]  [EV DEBUG]   Gross EV: $-3.19 | Net EV: $-3.36 | Fee: $0.16
+2025-11-17T03:22:14.880357216Z [inf]  [EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+2025-11-17T03:22:14.880364334Z [err]  [2025-11-17 03:22:07] [INFO] [SKIP] Deepseek - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=30% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Valor esperado negativo o cero
+2025-11-17T03:22:14.880370984Z [err]  INFO:autonomous_engine:[SKIP] Deepseek - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=30% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Valor esperado negativo o cero
+2025-11-17T03:22:14.880377470Z [err]  [2025-11-17 03:22:07] [INFO] [INFO] Deepseek - Found 1 total opportunities across all categories
+2025-11-17T03:22:14.882881885Z [err]  INFO:autonomous_engine:[INFO] Deepseek - Found 1 total opportunities across all categories
+2025-11-17T03:22:14.882902328Z [err]  [2025-11-17 03:22:07] [INFO] [INFO] Deepseek - Will execute top 1 opportunities (max_concurrent_positions: 2)
+2025-11-17T03:22:14.882909531Z [err]  INFO:autonomous_engine:[INFO] Deepseek - Will execute top 1 opportunities (max_concurrent_positions: 2)
+2025-11-17T03:22:14.882917525Z [err]  [2025-11-17 03:22:07] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=10, asks_count=10
+2025-11-17T03:22:14.882923220Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=10, asks_count=10
+2025-11-17T03:22:14.882933355Z [err]  [2025-11-17 03:22:07] [INFO] [INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.11, ask=0.6, mid=0.355
+2025-11-17T03:22:14.882939732Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bid=0.11, ask=0.6, mid=0.355
+2025-11-17T03:22:14.882945250Z [err]  [2025-11-17 03:22:07] [INFO] [INFO] Deepseek - Market price: 0.3550, AI probability: 0.4800
+2025-11-17T03:22:14.882950455Z [err]  INFO:autonomous_engine:[INFO] Deepseek - Market price: 0.3550, AI probability: 0.4800
+2025-11-17T03:22:14.882956476Z [inf]  [ORDER DEBUG] Placing order: market_id=1769, token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, price=0.48, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+2025-11-17T03:22:14.882961084Z [inf]  [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+2025-11-17T03:22:14.882966508Z [inf]  [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+2025-11-17T03:22:14.882972181Z [err]  [2025-11-17 03:22:08] [ERROR] [BET ERROR] Deepseek - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+2025-11-17T03:22:14.886242778Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:22:14.886252891Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:22:14.886277729Z [err]  ERROR:autonomous_engine:[BET ERROR] Deepseek - Failed bet on This market will resolve to "Up" if the "Close" pr... (event_id=1769): Order placement failed
+2025-11-17T03:22:14.886304626Z [inf]  [EXECUTION FAILED] Deepseek - Execution failed: Order placement failed
+2025-11-17T03:22:14.886311752Z [err]  [2025-11-17 03:22:08] [INFO] [INFO] Deepseek - Executed bet 1/1
+2025-11-17T03:22:14.886333288Z [err]  INFO:autonomous_engine:[INFO] Deepseek - Executed bet 1/1
+2025-11-17T03:22:14.886340251Z [err]  [2025-11-17 03:22:08] [INFO] [INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-17T03:22:14.886346744Z [err]  INFO:autonomous_engine:[INFO] Deepseek - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-17T03:22:14.886371822Z [err]  [2025-11-17 03:22:08] [INFO] [INFO] 
+2025-11-17T03:22:14.886401148Z [err]  Processing cycle for Grok
+2025-11-17T03:22:14.886410168Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-17T03:22:14.886416503Z [err]  Processing cycle for Grok
+2025-11-17T03:22:14.886422931Z [err]  [2025-11-17 03:22:08] [INFO] [INFO] Grok - Analyzing 2 categories
+2025-11-17T03:22:14.886428707Z [err]  INFO:autonomous_engine:[INFO] Grok - Analyzing 2 categories
+2025-11-17T03:22:14.886460277Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:22:19.744932395Z [err]  [2025-11-17 03:22:19] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=10, asks_count=10
+2025-11-17T03:22:19.744940092Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=10, asks_count=10
+2025-11-17T03:22:19.744946993Z [err]  [2025-11-17 03:22:19] [INFO] [INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.611, ask=0.8, mid=0.7055
+2025-11-17T03:22:19.744954934Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bid=0.611, ask=0.8, mid=0.7055
+2025-11-17T03:22:19.744961638Z [inf]  [EV DEBUG] Grok - Event: This market will resolve to "Up" if the "Close" price for th
+2025-11-17T03:22:19.744968581Z [inf]  [EV DEBUG]   AI Probability: 55.00% | Side Probability: 55.00% | Confidence: 60%
+2025-11-17T03:22:19.744976498Z [inf]  [EV DEBUG]   Market Price: 70.55% | Buying: YES
+2025-11-17T03:22:19.744983805Z [inf]  [EV DEBUG]   Gross EV: $-1.55 | Net EV: $-1.72 | Fee: $0.16
+2025-11-17T03:22:19.744990864Z [inf]  [EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+2025-11-17T03:22:19.744997331Z [err]  [2025-11-17 03:22:19] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=55.00%, Conf=60% | Scores: S=5, N=5, T=6, F=0, V=7 | Reason: Valor esperado negativo o cero
+2025-11-17T03:22:19.745003453Z [err]  INFO:autonomous_engine:[SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=55.00%, Conf=60% | Scores: S=5, N=5, T=6, F=0, V=7 | Reason: Valor esperado negativo o cero
+2025-11-17T03:22:19.810569003Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:22:19.810587361Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:22:19.810594619Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:22:39.311648323Z [err]  WARNING:autonomous_engine:[WARNING] Grok - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:22:39.311652438Z [err]  [2025-11-17 03:22:31] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+2025-11-17T03:22:39.311661619Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+2025-11-17T03:22:39.311663511Z [err]  [2025-11-17 03:22:31] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=5, V=3 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:22:39.311669084Z [err]  [2025-11-17 03:22:31] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+2025-11-17T03:22:39.311671363Z [err]  INFO:autonomous_engine:[SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=5, V=3 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:22:39.311677283Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+2025-11-17T03:22:39.311678320Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T03:22:39.311683954Z [err]  [2025-11-17 03:22:31] [WARNING] [WARNING] Grok - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:22:39.313820369Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T03:22:39.313828630Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T03:22:44.830474474Z [err]  WARNING:autonomous_engine:[WARNING] Grok - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:22:44.830530438Z [err]  [2025-11-17 03:22:44] [INFO] [INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+2025-11-17T03:22:44.830542144Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769, bids_count=0, asks_count=0
+2025-11-17T03:22:44.830545771Z [err]  [2025-11-17 03:22:44] [WARNING] [WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+2025-11-17T03:22:44.830557788Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769 - No valid bid/ask prices in orderbook
+2025-11-17T03:22:44.830567598Z [err]  [2025-11-17 03:22:44] [WARNING] [WARNING] Grok - Price fetch failed for token_id=52244785936910087478102262413474645991458274417422335934887951634212416114769: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T03:22:44.833466194Z [err]  [2025-11-17 03:22:44] [INFO] [SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:22:44.833471492Z [err]  INFO:autonomous_engine:[SKIP] Grok - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T03:22:45.035491710Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-17T03:22:45.035498047Z [inf]  [CACHE HIT] News data for ETH
+2025-11-17T03:22:45.035504085Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-17T03:22:53.857096490Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:22:53.857097674Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:22:53.857109630Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:22:53.857115315Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:22:53.857119611Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:22:53.857124225Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:22:53.857140301Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:22:53.857147747Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:22:53.857155381Z [err]  100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:53.857162274Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:53.857178566Z [err]  100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:22:53.857185244Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:22:53.857193381Z [err]  100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:22:53.857193810Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:53.857198654Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:53.857203172Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:22:53.858308009Z [err]  100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:53.858317005Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:53.858384368Z [err]  100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:22:53.858390080Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:22:53.858395723Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:53.858408587Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:53.858419180Z [err]  100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:22:53.858426204Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:22:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:22:53.858935556Z [err]  100.64.0.9 - - [17/Nov/2025 03:22:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:22:53.858941955Z [err]  INFO:werkzeug:100.64.0.9 - - [17/Nov/2025 03:22:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:22:54.107183835Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:22:54.107190216Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:22:54.115284104Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:54.115292412Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:54.115297942Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:22:54.115303736Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:22:54.122770247Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:22:54.122776266Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:22:54.122781438Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:22:54.122785385Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:22:54.130369674Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:22:54.130373866Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:22:54.143779231Z [err]  100.64.0.8 - - [17/Nov/2025 03:22:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:22:54.143783848Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:22:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:22:54.214697368Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:54.214706031Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:22:54.898644441Z [err]  100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:22:54.898654764Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:22:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:22:57.011157724Z [err]  [2025-11-17 03:22:57] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:22:57.011163664Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:22:57.015144753Z [err]  [2025-11-17 03:22:57] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.02, ask=0.999, mid=0.5095
+2025-11-17T03:22:57.015145886Z [err]  [2025-11-17 03:22:57] [INFO] [BET] Grok - $5.00 on 'This market will resolve to "Yes" if the Supreme C...' | Prob=40.00%, Conf=60% | Scores: S=5, N=5, T=6, F=0, V=3
+2025-11-17T03:22:57.015156753Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.02, ask=0.999, mid=0.5095
+2025-11-17T03:22:57.015159170Z [err]  INFO:autonomous_engine:[BET] Grok - $5.00 on 'This market will resolve to "Yes" if the Supreme C...' | Prob=40.00%, Conf=60% | Scores: S=5, N=5, T=6, F=0, V=3
+2025-11-17T03:22:57.015165595Z [inf]  [EV DEBUG] Grok - Event: This market will resolve to "Yes" if the Supreme Court of th
+2025-11-17T03:22:57.015172580Z [inf]  [EV DEBUG]   AI Probability: 40.00% | Side Probability: 60.00% | Confidence: 60%
+2025-11-17T03:22:57.015179184Z [inf]  [EV DEBUG]   Market Price: 50.95% | Buying: NO
+2025-11-17T03:22:57.015187059Z [inf]  [EV DEBUG]   Gross EV: $0.91 | Net EV: $0.73 | Fee: $0.18
+2025-11-17T03:22:57.015194652Z [inf]  [EV DEBUG]   Should Bet: True | Reason: Criterios mínimos cumplidos
+2025-11-17T03:22:57.224384651Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-17T03:22:57.224393691Z [inf]  [CACHE HIT] News data for ETH
+2025-11-17T03:22:57.224401487Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-17T03:23:17.227212572Z [err]  [2025-11-17 03:23:09] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=6, asks_count=6
+2025-11-17T03:23:17.227216738Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=6, asks_count=6
+2025-11-17T03:23:17.227221935Z [inf]  [EV DEBUG] Grok - Event: This market will resolve to “Yes” immediately if all Coinbas
+2025-11-17T03:23:17.227226371Z [inf]  [EV DEBUG]   AI Probability: 40.00% | Side Probability: 60.00% | Confidence: 60%
+2025-11-17T03:23:17.227230721Z [inf]  [EV DEBUG]   Market Price: 98.95% | Buying: NO
+2025-11-17T03:23:17.227235230Z [err]  [2025-11-17 03:23:09] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98109, ask=0.998, mid=0.989545
+2025-11-17T03:23:17.227238962Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.98109, ask=0.998, mid=0.989545
+2025-11-17T03:23:17.227242810Z [inf]  [EV DEBUG]   Gross EV: $-3.90 | Net EV: $-4.08 | Fee: $0.18
+2025-11-17T03:23:17.227247262Z [inf]  [EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+2025-11-17T03:23:17.227251426Z [err]  [2025-11-17 03:23:09] [INFO] [SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=40.00%, Conf=60% | Scores: S=0, N=0, T=5, F=0, V=2 | Reason: Valor esperado negativo o cero
+2025-11-17T03:23:17.227256241Z [err]  INFO:autonomous_engine:[SKIP] Grok - 'This market will resolve to “Yes” immediately if a...' | Prob=40.00%, Conf=60% | Scores: S=0, N=0, T=5, F=0, V=2 | Reason: Valor esperado negativo o cero
+2025-11-17T03:23:19.946020110Z [err]  [2025-11-17 03:23:19] [INFO] [INFO] Grok - Will execute top 2 opportunities (max_concurrent_positions: 2)
+2025-11-17T03:23:19.946025908Z [err]  INFO:autonomous_engine:[INFO] Grok - Will execute top 2 opportunities (max_concurrent_positions: 2)
+2025-11-17T03:23:19.946440101Z [err]  [2025-11-17 03:23:19] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=9, asks_count=41
+2025-11-17T03:23:19.946448078Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=9, asks_count=41
+2025-11-17T03:23:19.946452776Z [err]  [2025-11-17 03:23:19] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.111, ask=0.35, mid=0.23049999999999998
+2025-11-17T03:23:19.946457255Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.111, ask=0.35, mid=0.23049999999999998
+2025-11-17T03:23:19.946461958Z [inf]  [EV DEBUG] Grok - Event: This market will resolve to "Yes" if any Binance 1 minute ca
+2025-11-17T03:23:19.946468846Z [inf]  [EV DEBUG]   AI Probability: 55.00% | Side Probability: 55.00% | Confidence: 60%
+2025-11-17T03:23:19.946474108Z [inf]  [EV DEBUG]   Market Price: 23.05% | Buying: YES
+2025-11-17T03:23:19.946478395Z [inf]  [EV DEBUG]   Gross EV: $3.20 | Net EV: $3.03 | Fee: $0.16
+2025-11-17T03:23:19.946484031Z [inf]  [EV DEBUG]   Should Bet: True | Reason: Criterios mínimos cumplidos
+2025-11-17T03:23:19.946488900Z [err]  [2025-11-17 03:23:19] [INFO] [BET] Grok - $5.00 on 'This market will resolve to "Yes" if any Binance 1...' | Prob=55.00%, Conf=60% | Scores: S=5, N=5, T=5, F=5, V=6
+2025-11-17T03:23:19.946494207Z [err]  INFO:autonomous_engine:[BET] Grok - $5.00 on 'This market will resolve to "Yes" if any Binance 1...' | Prob=55.00%, Conf=60% | Scores: S=5, N=5, T=5, F=5, V=6
+2025-11-17T03:23:19.946499131Z [err]  [2025-11-17 03:23:19] [INFO] [INFO] Grok - Found 2 total opportunities across all categories
+2025-11-17T03:23:19.946504668Z [err]  INFO:autonomous_engine:[INFO] Grok - Found 2 total opportunities across all categories
+2025-11-17T03:23:20.110968235Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=9, asks_count=41
+2025-11-17T03:23:20.110974861Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=9, asks_count=41
+2025-11-17T03:23:20.110979424Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.01, ask=0.256, mid=0.133
+2025-11-17T03:23:20.110984601Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.01, ask=0.256, mid=0.133
+2025-11-17T03:23:20.110988985Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] Grok - Market price: 0.1330, AI probability: 0.5500
+2025-11-17T03:23:20.110993028Z [err]  INFO:autonomous_engine:[INFO] Grok - Market price: 0.1330, AI probability: 0.5500
+2025-11-17T03:23:20.110997048Z [inf]  [ORDER DEBUG] Placing order: market_id=1377, token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, price=0.55, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+2025-11-17T03:23:20.304272492Z [inf]  [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+2025-11-17T03:23:20.304281412Z [inf]  [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+2025-11-17T03:23:20.304287551Z [err]  [2025-11-17 03:23:20] [ERROR] [BET ERROR] Grok - Failed bet on This market will resolve to "Yes" if any Binance 1... (event_id=1377): Order placement failed
+2025-11-17T03:23:20.304293516Z [err]  ERROR:autonomous_engine:[BET ERROR] Grok - Failed bet on This market will resolve to "Yes" if any Binance 1... (event_id=1377): Order placement failed
+2025-11-17T03:23:20.304299082Z [inf]  [EXECUTION FAILED] Grok - Execution failed: Order placement failed
+2025-11-17T03:23:20.304304683Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] Grok - Executed bet 1/2
+2025-11-17T03:23:20.304310175Z [err]  INFO:autonomous_engine:[INFO] Grok - Executed bet 1/2
+2025-11-17T03:23:20.984417104Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:23:20.984424049Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=11
+2025-11-17T03:23:20.984429364Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.643, ask=0.768, mid=0.7055
+2025-11-17T03:23:20.986973722Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.643, ask=0.768, mid=0.7055
+2025-11-17T03:23:20.986981448Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] Grok - Market price: 0.7055, AI probability: 0.4000
+2025-11-17T03:23:20.986986054Z [err]  INFO:autonomous_engine:[INFO] Grok - Market price: 0.7055, AI probability: 0.4000
+2025-11-17T03:23:20.986990319Z [inf]  [ORDER DEBUG] Placing order: market_id=1546, token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, price=0.4, amount=5.0 USDT (5000000000000000000 wei), side=BUY
+2025-11-17T03:23:20.986997094Z [inf]  [ORDER FAILED] Opinion.trade SDK Error: errno=10603, errmsg=walletAddress is wrong
+2025-11-17T03:23:20.987001304Z [inf]  [ORDER FAILED] Full result object: errmsg='walletAddress is wrong' errno=10603 result=None
+2025-11-17T03:23:20.987005344Z [err]  [2025-11-17 03:23:20] [ERROR] [BET ERROR] Grok - Failed bet on This market will resolve to "Yes" if the Supreme C... (event_id=1546): Order placement failed
+2025-11-17T03:23:20.987009544Z [err]  ERROR:autonomous_engine:[BET ERROR] Grok - Failed bet on This market will resolve to "Yes" if the Supreme C... (event_id=1546): Order placement failed
+2025-11-17T03:23:20.987014314Z [inf]  [EXECUTION FAILED] Grok - Execution failed: Order placement failed
+2025-11-17T03:23:20.987130650Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] Grok - Executed bet 2/2
+2025-11-17T03:23:20.987134479Z [err]  INFO:autonomous_engine:[INFO] Grok - Executed bet 2/2
+2025-11-17T03:23:20.987138450Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-17T03:23:20.987142271Z [err]  INFO:autonomous_engine:[INFO] Grok - Cycle complete: 0 bets placed, 6 skipped, 6 events analyzed
+2025-11-17T03:23:20.987146082Z [err]  [2025-11-17 03:23:20] [INFO] [INFO] Starting OrderMonitor to review active positions...
+2025-11-17T03:23:20.987150214Z [err]  INFO:autonomous_engine:[INFO] Starting OrderMonitor to review active positions...
+2025-11-17T03:23:21.091092467Z [err]  [2025-11-17 03:23:21] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+2025-11-17T03:23:21.091098865Z [err]  ERROR:autonomous_engine:[ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+2025-11-17T03:23:21.091104984Z [err]  [2025-11-17 03:23:21] [INFO] [INFO] OrderMonitor completed: {'total_checked': 0, 'strikes_added': 0, 'strikes_reset': 0, 'cancelled': 0, 'errors': 0}
+2025-11-17T03:23:21.091111674Z [err]  INFO:autonomous_engine:[INFO] OrderMonitor completed: {'total_checked': 0, 'strikes_added': 0, 'strikes_reset': 0, 'cancelled': 0, 'errors': 0}
+2025-11-17T03:23:21.091117343Z [err]  [2025-11-17 03:23:21] [INFO] [ADMIN] Daily cycle completed successfully
+2025-11-17T03:23:21.091122745Z [err]  INFO:autonomous_engine:[ADMIN] Daily cycle completed successfully
+2025-11-17T03:23:21.098608816Z [err]  100.64.0.3 - - [17/Nov/2025 03:23:21] "POST /admin/trigger-cycle HTTP/1.1" 200 -
+2025-11-17T03:23:21.098621445Z [err]  INFO:werkzeug:100.64.0.3 - - [17/Nov/2025 03:23:21] "POST /admin/trigger-cycle HTTP/1.1" 200 -
+2025-11-17T03:24:01.148214133Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:23:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:24:01.148230806Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:24:01.148244174Z [err]  100.64.0.8 - - [17/Nov/2025 03:23:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:24:01.148275927Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:24:01.148294288Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:24:01.148304079Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:24:01.148318871Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:24:01.148692133Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:24:01.148698865Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:24:01.148706959Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:24:01.148714324Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:24:01.148722737Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.148729734Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.148737574Z [err]  100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:24:01.148744454Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:24:01.148751810Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:24:01.148759742Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:24:01.148766731Z [err]  100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.148773353Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.148780251Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:24:01.148788878Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:24:01.148794877Z [err]  100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:24:01.148800702Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:24:01.148912447Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.148921159Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.148927721Z [err]  100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:24:01.148934420Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:24:01.148946714Z [err]  100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.148953801Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.148960246Z [err]  100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:24:01.148965537Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:24:01.148970539Z [err]  100.64.0.8 - - [17/Nov/2025 03:23:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:24:01.149981214Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.149988665Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.149996400Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:24:01.150003082Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:24:01.150010376Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.150018222Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:24:01.150026679Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:24:01.150036516Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:24:01.150045429Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:24:01.150053211Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:24:01.150061303Z [err]  100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:24:01.150068096Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:23:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:01.321521914Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.321535038Z [err]  100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.321542955Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.321548970Z [err]  100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:01.321554872Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:01.322219877Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.322227325Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.322233719Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:01.322240569Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:01.322247189Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:01.322254065Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:01.322263884Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:01.322271043Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:01.322338444Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:01.322345208Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:01.322352471Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.324776495Z [err]  100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.324782614Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.324789569Z [err]  100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:01.324796597Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:01.324802695Z [err]  100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:01.324809547Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:01.324815762Z [err]  100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:01.324822711Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:01.324840727Z [err]  100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:25:01.324850275Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:24:53] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:25:01.324857385Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:01.324864973Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:01.324871434Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.324877568Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.324883641Z [err]  100.64.0.8 - - [17/Nov/2025 03:24:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:01.324889938Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:24:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:01.328322724Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:01.328327282Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:01.328331405Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.328335338Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:01.328340459Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:01.328345100Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:01.328349688Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:01.328353790Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:01.328358370Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:01.328362824Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:01.328367282Z [err]  100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:01.328371136Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:24:54] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:31.346464077Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:31.346471474Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:31.346478159Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:31.346484954Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:31.346491700Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:31.346498321Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:31.346514725Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:31.346864920Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:31.346870577Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:31.346882867Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:31.346888970Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:31.346895181Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:31.346901581Z [err]  100.64.0.4 - - [17/Nov/2025 03:25:23] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:25:31.346908207Z [err]  INFO:werkzeug:100.64.0.4 - - [17/Nov/2025 03:25:23] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:25:31.346915962Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:31.346924207Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:23] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:36.568321555Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:36.568331570Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:36.568338620Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:36.568345083Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:36.573872176Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:36.573934337Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:36.573939684Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:36.573945705Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:36.573951396Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:36.573956858Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:36.579571253Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:36.579577366Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:36.648852251Z [err]  100.64.0.3 - - [17/Nov/2025 03:25:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:25:36.648861338Z [err]  INFO:werkzeug:100.64.0.3 - - [17/Nov/2025 03:25:36] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:25:36.852975300Z [err]  100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:36.852984101Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:25:36] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:56.851985398Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:56.851995159Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:56.852000619Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:56.852006705Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:56.852010650Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:56.852015126Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:56.852016492Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:56.852021290Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:56.852028265Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:56.852028400Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:56.852033934Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:56.852036837Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:53] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:56.852039464Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:56.852043547Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:56.852047476Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:56.852051464Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:25:56.854196233Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:56.854207507Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:25:56.854215613Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:56.854222893Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:25:56.854229741Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:56.854238981Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:25:56.854244720Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:56.854250464Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:54] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:25:56.854256276Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:56] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:56.854262649Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:56] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:57.408026167Z [err]  100.64.0.2 - - [17/Nov/2025 03:25:57] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:25:57.408035823Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:25:57] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:26:02.948341689Z [err]  100.64.0.8 - - [17/Nov/2025 03:26:02] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+2025-11-17T03:26:02.948348420Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:26:02] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 -
+2025-11-17T03:26:06.890292404Z [err]  100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:26:06.890298273Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/active-positions HTTP/1.1" 200 -
+2025-11-17T03:26:06.890304575Z [err]  100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:26:06.890310477Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/live-chart-history HTTP/1.1" 200 -
+2025-11-17T03:26:06.899398850Z [err]  100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:26:06.899410665Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:26:06.899418547Z [err]  100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:26:06.899425101Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 -
+2025-11-17T03:26:06.899461873Z [err]  100.64.0.2 - - [17/Nov/2025 03:26:06] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:26:06.899467153Z [err]  INFO:werkzeug:100.64.0.2 - - [17/Nov/2025 03:26:06] "GET /api/ai-thinking HTTP/1.1" 200 -
+2025-11-17T03:26:06.901607089Z [err]  100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:26:06.901610655Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/live-metrics HTTP/1.1" 200 -
+2025-11-17T03:26:06.904803677Z [err]  100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:26:06.904808055Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:26:06] "GET /api/leaderboard HTTP/1.1" 200 -
+2025-11-17T03:26:07.432924094Z [err]  100.64.0.8 - - [17/Nov/2025 03:26:07] "GET /api/market-header HTTP/1.1" 200 -
+2025-11-17T03:26:07.432931964Z [err]  INFO:werkzeug:100.64.0.8 - - [17/Nov/2025 03:26:07] "GET /api/market-header HTTP/1.1" 200 -
