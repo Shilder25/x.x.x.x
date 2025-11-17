@@ -24,8 +24,10 @@ def signal_handler(sig, frame):
     sys.exit(0)
 
 def is_production():
-    """Check if running in production (Replit deployment)"""
-    return os.getenv('REPL_DEPLOYMENT') == '1' or os.getenv('REPLIT_DEPLOYMENT') == '1'
+    """Check if running in production (Railway or Replit deployment)"""
+    return (os.getenv('REPL_DEPLOYMENT') == '1' or 
+            os.getenv('REPLIT_DEPLOYMENT') == '1' or
+            os.getenv('RAILWAY_ENVIRONMENT') is not None)
 
 def setup_frontend():
     """Install dependencies and build Next.js for production if needed"""
@@ -81,19 +83,28 @@ def main():
     # Setup frontend (install + build if production)
     setup_frontend()
     
-    # DEBUG: Verify Railway env vars are loaded
-    print("\n[DEBUG] Checking Railway environment variables:")
-    print(f"  OPINION_WALLET_PRIVATE_KEY: {'SET' if os.environ.get('OPINION_WALLET_PRIVATE_KEY') else 'MISSING'}")
-    print(f"  OPINION_TRADE_API_KEY: {'SET' if os.environ.get('OPINION_TRADE_API_KEY') else 'MISSING'}")
-    if os.environ.get('OPINION_WALLET_PRIVATE_KEY'):
-        key_len = len(os.environ.get('OPINION_WALLET_PRIVATE_KEY'))
-        print(f"  Private key length: {key_len} chars")
-    print()
-    
     # Start Flask API on port 8000
     print("\n[2/3] Starting Flask API backend on port 8000...")
+    
+    # Use Gunicorn in production (Railway/Replit) to avoid Flask debug reloader issues
+    # Flask debug reloader loses environment variables on restart
+    if is_production():
+        print("  → Using Gunicorn (production WSGI server)")
+        api_command = [
+            "gunicorn",
+            "--bind", "0.0.0.0:8000",
+            "--workers", "2",
+            "--timeout", "120",
+            "--access-logfile", "-",
+            "--error-logfile", "-",
+            "api:app"
+        ]
+    else:
+        print("  → Using Flask development server")
+        api_command = ["python", "api.py"]
+    
     api_process = subprocess.Popen(
-        ["python", "api.py"],
+        api_command,
         env=os.environ.copy(),  # Pass Railway env vars (API keys, secrets)
         stdout=sys.stdout,  # Inherit stdout to avoid pipe blocking
         stderr=sys.stderr   # Inherit stderr to avoid pipe blocking
