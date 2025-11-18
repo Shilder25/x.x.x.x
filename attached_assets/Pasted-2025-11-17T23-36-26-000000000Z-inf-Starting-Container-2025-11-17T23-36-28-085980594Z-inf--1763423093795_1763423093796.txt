@@ -1,0 +1,496 @@
+2025-11-17T23:36:26.000000000Z [inf]  Starting Container
+2025-11-17T23:36:28.085980594Z [inf]  ============================================================
+2025-11-17T23:36:28.085989240Z [inf]  TradingAgents Full Stack Application - PRODUCTION MODE
+2025-11-17T23:36:28.085994904Z [inf]  ============================================================
+2025-11-17T23:36:28.086001896Z [inf]  
+2025-11-17T23:36:28.086013498Z [inf]  [1/3] Setting up Next.js frontend...
+2025-11-17T23:36:28.086019490Z [inf]    → Installing npm dependencies...
+2025-11-17T23:36:28.086026378Z [err]  npm warn config production Use `--omit=dev` instead.
+2025-11-17T23:36:48.081923594Z [inf]  
+2025-11-17T23:36:48.081926387Z [inf]  To address all issues (including breaking changes), run:
+2025-11-17T23:36:48.081932040Z [inf]  
+2025-11-17T23:36:48.081934407Z [inf]     Creating an optimized production build ...
+2025-11-17T23:36:48.081941228Z [inf]    npm audit fix --force
+2025-11-17T23:36:48.081942454Z [inf]  added 423 packages, and audited 424 packages in 14s
+2025-11-17T23:36:48.081948461Z [inf]  > next build
+2025-11-17T23:36:48.081949278Z [inf]  
+2025-11-17T23:36:48.081958121Z [inf]    → Building Next.js for production...
+2025-11-17T23:36:48.081958143Z [inf]  Run `npm audit` for details.
+2025-11-17T23:36:48.081962891Z [inf]  
+2025-11-17T23:36:48.081966480Z [err]  npm warn config production Use `--omit=dev` instead.
+2025-11-17T23:36:48.081973388Z [inf]     ▲ Next.js 15.5.6
+2025-11-17T23:36:48.081975740Z [inf]  
+2025-11-17T23:36:48.081985361Z [inf]  > tradingagents-frontend@0.1.0 build
+2025-11-17T23:36:48.081986843Z [inf]  
+2025-11-17T23:36:48.081996407Z [inf]  156 packages are looking for funding
+2025-11-17T23:36:48.082007965Z [inf]    run `npm fund` for details
+2025-11-17T23:36:48.082013586Z [inf]  
+2025-11-17T23:36:48.082018467Z [inf]  4 vulnerabilities (1 moderate, 3 high)
+2025-11-17T23:36:48.082023994Z [inf]  
+2025-11-17T23:36:48.082029119Z [inf]  To address issues that do not require attention, run:
+2025-11-17T23:36:48.082033785Z [inf]    npm audit fix
+2025-11-17T23:36:48.082038616Z [inf]  
+2025-11-17T23:36:57.091188365Z [inf]     Linting and checking validity of types ...
+2025-11-17T23:36:57.091193424Z [inf]   ✓ Compiled successfully in 11.3s
+2025-11-17T23:37:01.199995548Z [inf]     Collecting page data ...
+2025-11-17T23:37:03.295176818Z [inf]     Generating static pages (0/4) ...
+2025-11-17T23:37:04.142336881Z [inf]     Generating static pages (3/4) 
+2025-11-17T23:37:04.142346020Z [inf]   ✓ Generating static pages (4/4)
+2025-11-17T23:37:04.142362663Z [inf]     Generating static pages (1/4) 
+2025-11-17T23:37:04.142369431Z [inf]     Generating static pages (2/4) 
+2025-11-17T23:37:04.336662947Z [inf]     Finalizing page optimization ...
+2025-11-17T23:37:04.336670621Z [inf]     Collecting build traces ...
+2025-11-17T23:37:10.228199739Z [inf]  
+2025-11-17T23:37:10.228214181Z [inf]  [2/3] Starting Flask API backend on port 8000...
+2025-11-17T23:37:10.228224007Z [inf]    → Using Gunicorn (production WSGI server)
+2025-11-17T23:37:10.228496253Z [inf]  
+2025-11-17T23:37:10.228501382Z [inf]  Route (app)                                 Size  First Load JS
+2025-11-17T23:37:10.228505723Z [inf]  ┌ ○ /                                     113 kB         215 kB
+2025-11-17T23:37:10.228510425Z [inf]  └ ○ /_not-found                            999 B         103 kB
+2025-11-17T23:37:10.228514967Z [inf]  + First Load JS shared by all             102 kB
+2025-11-17T23:37:10.228519939Z [inf]    ├ chunks/255-a78b69fc76e8afca.js       45.6 kB
+2025-11-17T23:37:10.228527305Z [inf]    ├ chunks/4bd1b696-409494caf8c83275.js  54.2 kB
+2025-11-17T23:37:10.228534490Z [inf]    └ other shared chunks (total)          1.97 kB
+2025-11-17T23:37:10.228575482Z [inf]  
+2025-11-17T23:37:10.228583571Z [inf]  
+2025-11-17T23:37:10.228589369Z [inf]  ○  (Static)  prerendered as static content
+2025-11-17T23:37:10.228595048Z [inf]  
+2025-11-17T23:37:10.228602184Z [inf]    ✓ Next.js built successfully
+2025-11-17T23:37:10.231797338Z [inf]    ✓ Flask API started (PID: 813)
+2025-11-17T23:37:10.471460331Z [err]  [2025-11-17 23:37:10 +0000] [813] [INFO] Starting gunicorn 23.0.0
+2025-11-17T23:37:10.471469581Z [err]  [2025-11-17 23:37:10 +0000] [813] [INFO] Listening at: http://0.0.0.0:8000 (813)
+2025-11-17T23:37:10.471479745Z [err]  [2025-11-17 23:37:10 +0000] [813] [INFO] Using worker: sync
+2025-11-17T23:37:10.474486787Z [err]  [2025-11-17 23:37:10 +0000] [814] [INFO] Booting worker with pid: 814
+2025-11-17T23:37:10.574540738Z [err]  [2025-11-17 23:37:10 +0000] [815] [INFO] Booting worker with pid: 815
+2025-11-17T23:37:13.277234945Z [inf]    - Mode: PRODUCTION
+2025-11-17T23:37:13.277255862Z [inf]  ============================================================
+2025-11-17T23:37:13.277265704Z [inf]  
+2025-11-17T23:37:13.277278727Z [inf]  Press Ctrl+C to stop all services
+2025-11-17T23:37:13.277286666Z [inf]  
+2025-11-17T23:37:13.277320850Z [inf]    ✓ Next.js frontend started (PID: 816)
+2025-11-17T23:37:13.277332717Z [inf]  ✓ TradingAgents is running!
+2025-11-17T23:37:13.277332874Z [inf]  
+2025-11-17T23:37:13.277343175Z [inf]    - Frontend (Next.js): http://localhost:5000
+2025-11-17T23:37:13.277348764Z [inf]  ============================================================
+2025-11-17T23:37:13.277351449Z [inf]    - API (Flask): http://localhost:8000
+2025-11-17T23:37:13.277360982Z [inf]  
+2025-11-17T23:37:13.277374596Z [inf]  [3/3] Starting Next.js frontend on port 5000...
+2025-11-17T23:37:13.410286243Z [err]  npm warn config production Use `--omit=dev` instead.
+2025-11-17T23:37:13.468984883Z [inf]  
+2025-11-17T23:37:13.468998611Z [inf]  > tradingagents-frontend@0.1.0 start
+2025-11-17T23:37:13.469008586Z [inf]  > next start -p 5000
+2025-11-17T23:37:13.469015520Z [inf]  
+2025-11-17T23:37:14.279888453Z [inf]     ▲ Next.js 15.5.6
+2025-11-17T23:37:14.279893047Z [inf]     - Local:        http://localhost:5000
+2025-11-17T23:37:14.281182527Z [inf]     - Network:      http://10.199.183.92:5000
+2025-11-17T23:37:14.281194210Z [inf]  
+2025-11-17T23:37:14.281201574Z [inf]   ✓ Starting...
+2025-11-17T23:37:14.281208041Z [inf]   ✓ Ready in 484ms
+2025-11-17T23:37:20.214338651Z [inf]  ================================================================================
+2025-11-17T23:37:20.214345012Z [inf]  [DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+2025-11-17T23:37:20.217172747Z [inf]  ================================================================================
+2025-11-17T23:37:20.217183250Z [inf]  OPINION_TRADE_API_KEY: SET (len=32)
+2025-11-17T23:37:20.217188238Z [inf]  OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+2025-11-17T23:37:20.217192844Z [inf]  RAILWAY_ENVIRONMENT: production
+2025-11-17T23:37:20.217197165Z [inf]  RAILWAY_SERVICE_NAME: keen-essence
+2025-11-17T23:37:20.217201765Z [inf]  ================================================================================
+2025-11-17T23:37:20.217206078Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:19 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:20.217210217Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:19 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:20.217214321Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:19 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:20.217218536Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:19 +0000] "GET /admin HTTP/1.1" 200 12533 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:20.217223605Z [inf]  ================================================================================
+2025-11-17T23:37:20.217227820Z [inf]  [DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+2025-11-17T23:37:20.217415123Z [inf]  ================================================================================
+2025-11-17T23:37:20.217419587Z [inf]  OPINION_TRADE_API_KEY: SET (len=32)
+2025-11-17T23:37:20.217423994Z [inf]  OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+2025-11-17T23:37:20.217428748Z [inf]  RAILWAY_ENVIRONMENT: production
+2025-11-17T23:37:20.217437779Z [inf]  RAILWAY_SERVICE_NAME: keen-essence
+2025-11-17T23:37:20.217442623Z [inf]  ================================================================================
+2025-11-17T23:37:21.104634434Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:20 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:21.238799279Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:21 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:28.351554891Z [err]  [2025-11-17 23:37:28] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-17T23:37:28.349138
+2025-11-17T23:37:28.351560168Z [err]  [2025-11-17 23:37:28] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-17T23:37:28.351566959Z [inf]  ================================================================================
+2025-11-17T23:37:28.351572824Z [inf]  [DEBUG] OpinionTradeAPI.__init__() called
+2025-11-17T23:37:28.351577931Z [inf]    api_key parameter: PROVIDED (len=32)
+2025-11-17T23:37:28.351583015Z [inf]    private_key parameter: PROVIDED (len=64)
+2025-11-17T23:37:28.351588337Z [inf]    os.environ OPINION_TRADE_API_KEY: SET (len=32)
+2025-11-17T23:37:28.351593998Z [inf]    os.environ OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+2025-11-17T23:37:28.351599197Z [inf]    Final source: explicit parameter
+2025-11-17T23:37:28.351604836Z [inf]  ================================================================================
+2025-11-17T23:37:28.382510176Z [err]  [2025-11-17 23:37:28] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-17T23:37:28.544428245Z [err]  [2025-11-17 23:37:28] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+2025-11-17T23:37:28.544432450Z [err]  [2025-11-17 23:37:28] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+2025-11-17T23:37:28.544436841Z [err]  [2025-11-17 23:37:28] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+2025-11-17T23:37:29.566908902Z [err]  [2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+2025-11-17T23:37:29.566918872Z [err]  [2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+2025-11-17T23:37:29.566927573Z [err]  [2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+2025-11-17T23:37:30.242691104Z [err]  [2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+2025-11-17T23:37:30.242746226Z [err]  [2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+2025-11-17T23:37:30.242750871Z [err]  [2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 9 markets
+2025-11-17T23:37:30.242761886Z [err]  [2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 2: 9/9 markets are active (filtered out resolved/closed)
+2025-11-17T23:37:30.242768958Z [err]  [2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY - Got 9 < 20, reached end of markets
+2025-11-17T23:37:30.242774621Z [err]  [2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+2025-11-17T23:37:31.119363024Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:31 +0000] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 1610 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:32.130161869Z [err]  [2025-11-17 23:37:31] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 47/47 markets are active (filtered out resolved/closed)
+2025-11-17T23:37:32.130212737Z [err]  [2025-11-17 23:37:31] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+2025-11-17T23:37:32.130219608Z [err]  [2025-11-17 23:37:31] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 47 markets
+2025-11-17T23:37:32.253274977Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:32 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:32.254907522Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:32 +0000] "GET /api/live-chart-history HTTP/1.1" 200 381 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:33.205626459Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:32 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:33.205637506Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:32 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:33.205644858Z [inf]  100.64.0.6 - - [17/Nov/2025:23:37:32 +0000] "GET /api/ai-thinking HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:33.205723121Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:32 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:33.205728228Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:32 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:33.205732732Z [inf]  100.64.0.2 - - [17/Nov/2025:23:37:32 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:33.687900035Z [err]  [2025-11-17 23:37:33] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+2025-11-17T23:37:33.687909125Z [err]  [2025-11-17 23:37:33] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 47 markets
+2025-11-17T23:37:33.687914097Z [err]  [2025-11-17 23:37:33] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 47/47 markets are active (filtered out resolved/closed)
+2025-11-17T23:37:35.480971256Z [err]  [2025-11-17 23:37:35] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: errno=0, has_result=True
+2025-11-17T23:37:35.480979722Z [err]  [2025-11-17 23:37:35] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3 returned 47 markets
+2025-11-17T23:37:35.480985760Z [err]  [2025-11-17 23:37:35] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: 47/47 markets are active (filtered out resolved/closed)
+2025-11-17T23:37:37.591342937Z [err]  [2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL - Reached target limit of 200 markets
+2025-11-17T23:37:37.591353016Z [err]  [2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: errno=0, has_result=True
+2025-11-17T23:37:37.591357065Z [err]  [2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+2025-11-17T23:37:37.591360178Z [err]  [2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4 returned 47 markets
+2025-11-17T23:37:37.591366385Z [err]  [2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 217 markets, returning 200 (after limit)
+2025-11-17T23:37:37.591367218Z [err]  [2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: 47/47 markets are active (filtered out resolved/closed)
+2025-11-17T23:37:57.591327018Z [err]  [2025-11-17 23:37:52] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+2025-11-17T23:37:57.591339105Z [err]  INFO:autonomous_engine:[INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+2025-11-17T23:37:57.591346415Z [err]  [2025-11-17 23:37:52] [INFO] [INFO] Fetched 200 events from Opinion.trade
+2025-11-17T23:37:57.591352770Z [err]  INFO:autonomous_engine:[INFO] Fetched 200 events from Opinion.trade
+2025-11-17T23:37:57.591360416Z [err]  [2025-11-17 23:37:52] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 40, 'Other': 105, 'Commodities': 3, 'Rates': 30, 'Finance': 22}
+2025-11-17T23:37:57.591367017Z [err]  INFO:autonomous_engine:[CATEGORY] Events grouped into 5 categories: {'Crypto': 40, 'Other': 105, 'Commodities': 3, 'Rates': 30, 'Finance': 22}
+2025-11-17T23:37:57.591375267Z [err]  [2025-11-17 23:37:52] [INFO] [INFO] 
+2025-11-17T23:37:57.591381072Z [err]  Processing cycle for ChatGPT
+2025-11-17T23:37:57.591385506Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-17T23:37:57.591390443Z [err]  Processing cycle for ChatGPT
+2025-11-17T23:37:57.591394770Z [err]  [2025-11-17 23:37:52] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+2025-11-17T23:37:57.591399358Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 5 categories
+2025-11-17T23:37:57.591405034Z [inf]  [CACHE MISS] Fetched & cached technical data for BTC
+2025-11-17T23:37:57.591409173Z [inf]  [CACHE MISS] Fetched & cached news data for BTC
+2025-11-17T23:37:57.591413339Z [inf]  [CACHE MISS] Fetched & cached volatility data for BTC-USD
+2025-11-17T23:37:57.591417638Z [inf]  100.64.0.3 - - [17/Nov/2025:23:37:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:57.595726788Z [inf]  100.64.0.3 - - [17/Nov/2025:23:37:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:57.595736160Z [inf]  100.64.0.3 - - [17/Nov/2025:23:37:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 381 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:57.595743674Z [inf]  100.64.0.3 - - [17/Nov/2025:23:37:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:57.595751981Z [inf]  100.64.0.3 - - [17/Nov/2025:23:37:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:57.595759469Z [inf]  100.64.0.3 - - [17/Nov/2025:23:37:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:57.595766487Z [inf]  100.64.0.3 - - [17/Nov/2025:23:37:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:37:57.595774004Z [inf]  100.64.0.7 - - [17/Nov/2025:23:37:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:17.594279295Z [inf]  [EV DEBUG] ChatGPT - Event: This market will resolve to "Up" if the "Close" price for th
+2025-11-17T23:38:17.594289895Z [inf]  [EV DEBUG]   AI Probability: 45.00% | Side Probability: 55.00% | Confidence: 60%
+2025-11-17T23:38:17.594297007Z [inf]  [EV DEBUG]   Market Price: 50.00% | Buying: NO
+2025-11-17T23:38:17.594303637Z [inf]  [EV DEBUG]   Gross EV: $0.50 | Net EV: $0.34 | Fee: $0.16
+2025-11-17T23:38:17.594310022Z [inf]  [EV DEBUG]   Should Bet: True | Reason: Criterios mínimos cumplidos
+2025-11-17T23:38:17.594315836Z [err]  [2025-11-17 23:38:12] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=5
+2025-11-17T23:38:17.594321487Z [err]  INFO:autonomous_engine:[BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=5
+2025-11-17T23:38:17.594327443Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T23:38:17.594333679Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T23:38:17.594340098Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T23:38:17.594346927Z [err]  [2025-11-17 23:38:12] [INFO] [INFO] get_orderbook: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bids_count=25, asks_count=9
+2025-11-17T23:38:17.594354340Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bids_count=25, asks_count=9
+2025-11-17T23:38:17.594361184Z [err]  [2025-11-17 23:38:12] [INFO] [INFO] get_latest_price: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bid=0.07, ask=0.93, mid=0.5
+2025-11-17T23:38:17.594368076Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bid=0.07, ask=0.93, mid=0.5
+2025-11-17T23:38:37.594291116Z [err]  [2025-11-17 23:38:34] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=3 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T23:38:37.594302133Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=3 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T23:38:37.594310165Z [inf]  [CACHE HIT] Technical data for BTC
+2025-11-17T23:38:37.594378939Z [err]  [2025-11-17 23:38:34] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=0, asks_count=0
+2025-11-17T23:38:37.594384150Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=0, asks_count=0
+2025-11-17T23:38:37.594389910Z [err]  [2025-11-17 23:38:34] [WARNING] [WARNING] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782 - No valid bid/ask prices in orderbook
+2025-11-17T23:38:37.594393980Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782 - No valid bid/ask prices in orderbook
+2025-11-17T23:38:37.594399282Z [err]  [2025-11-17 23:38:34] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T23:38:37.594403416Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T23:38:37.598108078Z [inf]  [CACHE HIT] News data for BTC
+2025-11-17T23:38:37.598113963Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-17T23:38:57.598850775Z [inf]  100.64.0.2 - - [17/Nov/2025:23:38:48 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1401 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.598857539Z [inf]  100.64.0.2 - - [17/Nov/2025:23:38:48 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 3430 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.598864488Z [inf]  100.64.0.2 - - [17/Nov/2025:23:38:48 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.598877447Z [inf]  100.64.0.2 - - [17/Nov/2025:23:38:48 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.598889392Z [inf]  100.64.0.2 - - [17/Nov/2025:23:38:48 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.598896345Z [inf]  100.64.0.2 - - [17/Nov/2025:23:38:48 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.598903667Z [inf]  100.64.0.2 - - [17/Nov/2025:23:38:48 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.602193737Z [inf]  100.64.0.2 - - [17/Nov/2025:23:38:48 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.602200634Z [err]  [2025-11-17 23:38:52] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+2025-11-17T23:38:57.602208093Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+2025-11-17T23:38:57.602215029Z [err]  [2025-11-17 23:38:52] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+2025-11-17T23:38:57.602221262Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+2025-11-17T23:38:57.602227979Z [err]  [2025-11-17 23:38:52] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T23:38:57.602233599Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-17T23:38:57.602239303Z [err]  [2025-11-17 23:38:52] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=2, T=4, F=3, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T23:38:57.606825276Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=2, T=4, F=3, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-17T23:38:57.606839673Z [inf]  [CACHE MISS] Fetched & cached technical data for ETH
+2025-11-17T23:38:57.606845986Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-17T23:38:57.606851564Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-17T23:38:57.606857812Z [inf]  100.64.0.3 - - [17/Nov/2025:23:38:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.606863317Z [inf]  100.64.0.3 - - [17/Nov/2025:23:38:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.606868990Z [inf]  100.64.0.3 - - [17/Nov/2025:23:38:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.606874647Z [inf]  100.64.0.3 - - [17/Nov/2025:23:38:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.606880074Z [inf]  100.64.0.3 - - [17/Nov/2025:23:38:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.609173058Z [inf]  100.64.0.3 - - [17/Nov/2025:23:38:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 5163 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.609188221Z [inf]  100.64.0.3 - - [17/Nov/2025:23:38:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:38:57.609199110Z [inf]  100.64.0.8 - - [17/Nov/2025:23:38:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1401 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:02.474563942Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:02 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:02.477724462Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:02 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:02.480668070Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:02 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:02.482909011Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:02 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:02.482919784Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:02 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:02.485934955Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:02 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:02.488207657Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:02 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 5163 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:02.488221232Z [inf]  100.64.0.9 - - [17/Nov/2025:23:39:02 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1401 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:09.264322335Z [err]  [2025-11-17 23:39:09] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=20, asks_count=9
+2025-11-17T23:39:09.264325906Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=20, asks_count=9
+2025-11-17T23:39:09.264329610Z [err]  [2025-11-17 23:39:09] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.765, ask=0.775, mid=0.77
+2025-11-17T23:39:09.264333272Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.765, ask=0.775, mid=0.77
+2025-11-17T23:39:09.264337203Z [inf]  [EV DEBUG] ChatGPT - Event: This market will resolve to "Yes" if the Supreme Court of th
+2025-11-17T23:39:09.264342099Z [inf]  [EV DEBUG]   AI Probability: 45.00% | Side Probability: 55.00% | Confidence: 45%
+2025-11-17T23:39:09.264346233Z [inf]  [EV DEBUG]   Market Price: 77.00% | Buying: NO
+2025-11-17T23:39:09.264349835Z [inf]  [EV DEBUG]   Gross EV: $-2.20 | Net EV: $-2.36 | Fee: $0.16
+2025-11-17T23:39:09.264353335Z [inf]  [EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+2025-11-17T23:39:09.264357268Z [err]  [2025-11-17 23:39:09] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=45% | Scores: S=4, N=3, T=5, F=2, V=2 | Reason: Valor esperado negativo o cero
+2025-11-17T23:39:09.264361128Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=45% | Scores: S=4, N=3, T=5, F=2, V=2 | Reason: Valor esperado negativo o cero
+2025-11-17T23:39:09.264364697Z [inf]  [CACHE HIT] Technical data for ETH
+2025-11-17T23:39:09.264369888Z [inf]  [CACHE HIT] News data for ETH
+2025-11-17T23:39:09.265720920Z [inf]  [CACHE HIT] Volatility data for ETH
+2025-11-17T23:39:28.901680273Z [err]  [2025-11-17 23:39:28 +0000] [813] [CRITICAL] WORKER TIMEOUT (pid:815)
+2025-11-17T23:39:28.901689819Z [err]  [2025-11-17 23:39:28 +0000] [815] [ERROR] Error handling request /admin/trigger-cycle
+2025-11-17T23:39:28.901693553Z [err]  [2025-11-17 23:39:27] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=16, asks_count=14
+2025-11-17T23:39:28.901704452Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=16, asks_count=14
+2025-11-17T23:39:28.901711469Z [err]  [2025-11-17 23:39:27] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.984, ask=0.991, mid=0.9875
+2025-11-17T23:39:28.901718676Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.984, ask=0.991, mid=0.9875
+2025-11-17T23:39:28.901727451Z [inf]  [EV DEBUG] ChatGPT - Event: This market will resolve to “Yes” immediately if all Coinbas
+2025-11-17T23:39:28.901734264Z [inf]  [EV DEBUG]   AI Probability: 35.00% | Side Probability: 65.00% | Confidence: 65%
+2025-11-17T23:39:28.901741202Z [inf]  [EV DEBUG]   Market Price: 98.75% | Buying: NO
+2025-11-17T23:39:28.901747606Z [inf]  [EV DEBUG]   Gross EV: $-3.38 | Net EV: $-3.57 | Fee: $0.20
+2025-11-17T23:39:28.901754287Z [inf]  [EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+2025-11-17T23:39:28.901760619Z [err]  [2025-11-17 23:39:27] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=35.00%, Conf=65% | Scores: S=5, N=4, T=5, F=3, V=8 | Reason: Valor esperado negativo o cero
+2025-11-17T23:39:28.901767058Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=35.00%, Conf=65% | Scores: S=5, N=4, T=5, F=3, V=8 | Reason: Valor esperado negativo o cero
+2025-11-17T23:39:28.904301306Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.904311486Z [err]    File "/app/api.py", line 1062, in trigger_cycle
+2025-11-17T23:39:28.904315508Z [err]  Traceback (most recent call last):
+2025-11-17T23:39:28.904319984Z [err]    File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2025-11-17T23:39:28.904324104Z [err]      self.handle_request(listener, req, client, addr)
+2025-11-17T23:39:28.904328474Z [err]    File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2025-11-17T23:39:28.904332615Z [err]      respiter = self.wsgi(environ, resp.start_response)
+2025-11-17T23:39:28.904336517Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.904340453Z [err]    File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 1536, in __call__
+2025-11-17T23:39:28.904345213Z [err]      return self.wsgi_app(environ, start_response)
+2025-11-17T23:39:28.904350041Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.904354747Z [err]    File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+2025-11-17T23:39:28.904360770Z [err]      response = self.full_dispatch_request()
+2025-11-17T23:39:28.904366570Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.904372161Z [err]    File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+2025-11-17T23:39:28.904377862Z [err]      rv = self.dispatch_request()
+2025-11-17T23:39:28.904383528Z [err]           ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.904387887Z [err]    File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+2025-11-17T23:39:28.904391928Z [err]      return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2025-11-17T23:39:28.906739577Z [err]      results = engine.run_daily_cycle()
+2025-11-17T23:39:28.906747365Z [err]                ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.906752417Z [err]    File "/app/autonomous_engine.py", line 139, in run_daily_cycle
+2025-11-17T23:39:28.906757394Z [err]      firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
+2025-11-17T23:39:28.906762358Z [err]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.906767319Z [err]    File "/app/autonomous_engine.py", line 245, in _process_firm_multi_category_cycle
+2025-11-17T23:39:28.906771907Z [err]      evaluation = self._evaluate_event_opportunity(
+2025-11-17T23:39:28.906776348Z [err]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.906780649Z [err]    File "/app/autonomous_engine.py", line 376, in _evaluate_event_opportunity
+2025-11-17T23:39:28.906785214Z [err]      prediction = self._get_firm_prediction(firm_name, event_description, symbol or '', market_id)
+2025-11-17T23:39:28.906791503Z [err]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.906795542Z [err]    File "/app/autonomous_engine.py", line 862, in _get_firm_prediction
+2025-11-17T23:39:28.906800458Z [err]      prediction = firm.generate_prediction(prompt)
+2025-11-17T23:39:28.906804700Z [err]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.906808857Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 338, in wrapped_f
+2025-11-17T23:39:28.906814040Z [err]      return copy(f, *args, **kw)
+2025-11-17T23:39:28.906818759Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.906825016Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 477, in __call__
+2025-11-17T23:39:28.906829467Z [err]      do = self.iter(retry_state=retry_state)
+2025-11-17T23:39:28.909271960Z [err]               ^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.909281849Z [err]    File "/app/llm_clients.py", line 120, in generate_prediction
+2025-11-17T23:39:28.909288765Z [err]      response = self.client.chat.completions.create(
+2025-11-17T23:39:28.909290550Z [err]           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.909295778Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.909303470Z [err]    File "/opt/venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+2025-11-17T23:39:28.909305564Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 378, in iter
+2025-11-17T23:39:28.909311665Z [err]      return func(*args, **kwargs)
+2025-11-17T23:39:28.909315067Z [err]      result = action(retry_state)
+2025-11-17T23:39:28.909320089Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.909323999Z [err]               ^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.909340382Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 400, in <lambda>
+2025-11-17T23:39:28.909346954Z [err]      self._add_action_func(lambda rs: rs.outcome.result())
+2025-11-17T23:39:28.909353100Z [err]                                       ^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.909358869Z [err]    File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+2025-11-17T23:39:28.909367866Z [err]      return self.__get_result()
+2025-11-17T23:39:28.909374480Z [err]             ^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.909380547Z [err]    File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+2025-11-17T23:39:28.909388781Z [err]      raise self._exception
+2025-11-17T23:39:28.909394754Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 480, in __call__
+2025-11-17T23:39:28.909403050Z [err]      result = fn(*args, **kwargs)
+2025-11-17T23:39:28.911558399Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.911562775Z [err]    File "/opt/venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1156, in create
+2025-11-17T23:39:28.911569671Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+2025-11-17T23:39:28.911574084Z [err]      return self._post(
+2025-11-17T23:39:28.911578612Z [err]      response = self._send_single_request(request)
+2025-11-17T23:39:28.911582635Z [err]             ^^^^^^^^^^^
+2025-11-17T23:39:28.911586641Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.911593372Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+2025-11-17T23:39:28.911593860Z [err]    File "/opt/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1259, in post
+2025-11-17T23:39:28.911601542Z [err]      return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+2025-11-17T23:39:28.911603300Z [err]    File "/opt/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+2025-11-17T23:39:28.911609998Z [err]                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.911613578Z [err]      response = self._client.send(
+2025-11-17T23:39:28.911619259Z [err]                 ^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.911624435Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+2025-11-17T23:39:28.911629182Z [err]      response = self._send_handling_auth(
+2025-11-17T23:39:28.911634777Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.911640684Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+2025-11-17T23:39:28.911645739Z [err]      response = self._send_handling_redirects(
+2025-11-17T23:39:28.914670198Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.914680446Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+2025-11-17T23:39:28.914687087Z [err]      raise exc
+2025-11-17T23:39:28.914693323Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+2025-11-17T23:39:28.914699603Z [err]      ) = self._receive_response_headers(**kwargs)
+2025-11-17T23:39:28.914705913Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.914712426Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+2025-11-17T23:39:28.914715065Z [err]      response = transport.handle_request(request)
+2025-11-17T23:39:28.914728065Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.914737304Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+2025-11-17T23:39:28.914743942Z [err]      resp = self._pool.handle_request(req)
+2025-11-17T23:39:28.914751101Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.914758066Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+2025-11-17T23:39:28.914764464Z [err]      raise exc from None
+2025-11-17T23:39:28.914770467Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+2025-11-17T23:39:28.914776886Z [err]      response = connection.handle_request(
+2025-11-17T23:39:28.914784143Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.914789023Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+2025-11-17T23:39:28.914793608Z [err]      return self._connection.handle_request(request)
+2025-11-17T23:39:28.917257402Z [err]    File "/root/.nix-profile/lib/python3.12/ssl.py", line 1105, in read
+2025-11-17T23:39:28.917266629Z [err]      return self._sslobj.read(len)
+2025-11-17T23:39:28.917271373Z [err]      event = self._receive_event(timeout=timeout)
+2025-11-17T23:39:28.917274365Z [err]             ^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.917281609Z [err]    File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2025-11-17T23:39:28.917284263Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.917290010Z [err]      sys.exit(1)
+2025-11-17T23:39:28.917295175Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+2025-11-17T23:39:28.917297916Z [err]  SystemExit: 1
+2025-11-17T23:39:28.917302966Z [err]      data = self._network_stream.read(
+2025-11-17T23:39:28.917305291Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:28 +0000] "POST /admin/trigger-cycle HTTP/1.1" 500 0 "-" "-"
+2025-11-17T23:39:28.917310816Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.917312823Z [err]  [2025-11-17 23:39:28 +0000] [815] [INFO] Worker exiting (pid: 815)
+2025-11-17T23:39:28.917318948Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 128, in read
+2025-11-17T23:39:28.917325162Z [err]      return self._sock.recv(max_bytes)
+2025-11-17T23:39:28.917330699Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:28.917336842Z [err]    File "/root/.nix-profile/lib/python3.12/ssl.py", line 1232, in recv
+2025-11-17T23:39:28.917343575Z [err]      return self.read(buflen)
+2025-11-17T23:39:28.917349399Z [err]             ^^^^^^^^^^^^^^^^^
+2025-11-17T23:39:29.560018982Z [err]  [2025-11-17 23:39:29 +0000] [941] [INFO] Booting worker with pid: 941
+2025-11-17T23:39:32.480179779Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:32 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:32.485121248Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:32 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:32.485125625Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:32 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:32.490957700Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:32 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:32.490969619Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:32 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:32.490976979Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:32 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:32.494495710Z [inf]  100.64.0.2 - - [17/Nov/2025:23:39:32 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:32.494505652Z [inf]  100.64.0.10 - - [17/Nov/2025:23:39:32 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:38.329965372Z [inf]  ================================================================================
+2025-11-17T23:39:38.329977067Z [inf]  [DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+2025-11-17T23:39:38.329983276Z [inf]  ================================================================================
+2025-11-17T23:39:38.329989134Z [inf]  OPINION_TRADE_API_KEY: SET (len=32)
+2025-11-17T23:39:38.329993557Z [inf]  OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+2025-11-17T23:39:38.330039535Z [inf]  RAILWAY_ENVIRONMENT: production
+2025-11-17T23:39:38.330046168Z [inf]  RAILWAY_SERVICE_NAME: keen-essence
+2025-11-17T23:39:38.330051809Z [inf]  ================================================================================
+2025-11-17T23:39:58.449915494Z [inf]  100.64.0.11 - - [17/Nov/2025:23:39:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:58.449923005Z [inf]  100.64.0.3 - - [17/Nov/2025:23:39:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:58.449929597Z [inf]  100.64.0.3 - - [17/Nov/2025:23:39:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:58.449941876Z [inf]  100.64.0.3 - - [17/Nov/2025:23:39:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:58.450189443Z [inf]  100.64.0.3 - - [17/Nov/2025:23:39:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:58.450202674Z [inf]  100.64.0.3 - - [17/Nov/2025:23:39:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:58.450209564Z [inf]  100.64.0.3 - - [17/Nov/2025:23:39:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:39:58.451436941Z [inf]  100.64.0.3 - - [17/Nov/2025:23:39:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:48.033243494Z [inf]  100.64.0.10 - - [17/Nov/2025:23:40:39 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:48.033262915Z [inf]  100.64.0.5 - - [17/Nov/2025:23:40:40 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:48.033274787Z [inf]  100.64.0.5 - - [17/Nov/2025:23:40:40 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:48.033282703Z [inf]  100.64.0.5 - - [17/Nov/2025:23:40:40 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:48.033289270Z [inf]  100.64.0.5 - - [17/Nov/2025:23:40:40 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:48.033297680Z [inf]  100.64.0.5 - - [17/Nov/2025:23:40:40 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:48.033306306Z [inf]  100.64.0.5 - - [17/Nov/2025:23:40:40 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:48.034575251Z [inf]  100.64.0.5 - - [17/Nov/2025:23:40:40 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:55.535374813Z [inf]  100.64.0.3 - - [17/Nov/2025:23:40:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:55.535382917Z [inf]  100.64.0.3 - - [17/Nov/2025:23:40:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:55.535389068Z [inf]  100.64.0.3 - - [17/Nov/2025:23:40:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:55.535394089Z [inf]  100.64.0.8 - - [17/Nov/2025:23:40:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:55.535409690Z [inf]  100.64.0.3 - - [17/Nov/2025:23:40:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:55.535415435Z [inf]  100.64.0.3 - - [17/Nov/2025:23:40:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:55.535421654Z [inf]  100.64.0.3 - - [17/Nov/2025:23:40:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:40:55.538708641Z [inf]  100.64.0.3 - - [17/Nov/2025:23:40:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:02.603954190Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:02 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:02.603962412Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:02 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:02.603969552Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:02 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:02.603978464Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:02 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:02.603987508Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:02 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:02.603994953Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:02 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:02.604002155Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:02 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:02.604150830Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:02 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:32.209907385Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:32 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:32.209917019Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:32 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:32.209923520Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:32 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:32.209929191Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:32 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:32.209934408Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:32 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:32.209939438Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:32 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:32.274315021Z [inf]  100.64.0.6 - - [17/Nov/2025:23:41:32 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:41:32.774771554Z [inf]  100.64.0.5 - - [17/Nov/2025:23:41:32 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:42:02.399385113Z [inf]  100.64.0.3 - - [17/Nov/2025:23:41:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:42:02.399395170Z [inf]  100.64.0.3 - - [17/Nov/2025:23:41:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:42:02.399401064Z [inf]  100.64.0.3 - - [17/Nov/2025:23:41:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:42:02.399407832Z [inf]  100.64.0.3 - - [17/Nov/2025:23:41:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:42:02.399413775Z [inf]  100.64.0.3 - - [17/Nov/2025:23:41:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:42:02.399419291Z [inf]  100.64.0.3 - - [17/Nov/2025:23:41:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:42:02.399423914Z [inf]  100.64.0.12 - - [17/Nov/2025:23:41:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:42:02.402134626Z [inf]  100.64.0.3 - - [17/Nov/2025:23:41:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.415547985Z [inf]  100.64.0.3 - - [17/Nov/2025:23:42:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.415553092Z [inf]  100.64.0.3 - - [17/Nov/2025:23:42:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.415559944Z [inf]  100.64.0.3 - - [17/Nov/2025:23:42:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.415564999Z [inf]  100.64.0.3 - - [17/Nov/2025:23:42:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.415570474Z [inf]  100.64.0.3 - - [17/Nov/2025:23:42:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.415575037Z [inf]  100.64.0.3 - - [17/Nov/2025:23:42:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.415579982Z [inf]  100.64.0.6 - - [17/Nov/2025:23:42:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.418123524Z [inf]  100.64.0.13 - - [17/Nov/2025:23:42:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.418135165Z [inf]  100.64.0.3 - - [17/Nov/2025:23:42:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.418142679Z [inf]  100.64.0.5 - - [17/Nov/2025:23:42:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.418149041Z [inf]  100.64.0.5 - - [17/Nov/2025:23:42:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.418155013Z [inf]  100.64.0.5 - - [17/Nov/2025:23:42:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.418163138Z [inf]  100.64.0.5 - - [17/Nov/2025:23:42:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.418169411Z [inf]  100.64.0.5 - - [17/Nov/2025:23:42:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.420831468Z [inf]  100.64.0.5 - - [17/Nov/2025:23:42:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:43:02.420837999Z [inf]  100.64.0.5 - - [17/Nov/2025:23:42:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476265599Z [inf]  100.64.0.14 - - [17/Nov/2025:23:43:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476373150Z [inf]  100.64.0.8 - - [17/Nov/2025:23:43:55 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476442347Z [inf]  100.64.0.5 - - [17/Nov/2025:23:43:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476447235Z [inf]  100.64.0.5 - - [17/Nov/2025:23:43:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476452662Z [inf]  100.64.0.5 - - [17/Nov/2025:23:43:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476456894Z [inf]  100.64.0.5 - - [17/Nov/2025:23:43:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476463823Z [inf]  100.64.0.5 - - [17/Nov/2025:23:43:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476469987Z [inf]  100.64.0.5 - - [17/Nov/2025:23:43:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476475070Z [inf]  100.64.0.5 - - [17/Nov/2025:23:43:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476810771Z [inf]  100.64.0.3 - - [17/Nov/2025:23:43:55 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476815092Z [inf]  100.64.0.3 - - [17/Nov/2025:23:43:55 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476819024Z [inf]  100.64.0.3 - - [17/Nov/2025:23:43:55 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476833636Z [inf]  100.64.0.3 - - [17/Nov/2025:23:43:55 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476838253Z [inf]  100.64.0.3 - - [17/Nov/2025:23:43:55 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476846379Z [inf]  100.64.0.3 - - [17/Nov/2025:23:43:55 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:02.476856826Z [inf]  100.64.0.3 - - [17/Nov/2025:23:43:55 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://gentle-ambition-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.010774642Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:26 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.010781193Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:26 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.010794282Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:26 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.010799567Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:26 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.010804153Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:26 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.010810371Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:26 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.010814780Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:26 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.012927211Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:26 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.012934221Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:31 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.012939831Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:31 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 9379 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.012945125Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:31 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.012950036Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:31 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.012955449Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:31 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.012960151Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:31 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.016259360Z [inf]  100.64.0.14 - - [17/Nov/2025:23:44:31 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1650 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-17T23:44:32.016271429Z [inf]  100.64.0.5 - - [17/Nov/2025:23:44:31 +0000] "GET /api/market-header HTTP/1.1" 200 277 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"

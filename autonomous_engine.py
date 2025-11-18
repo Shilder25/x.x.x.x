@@ -101,63 +101,131 @@ class AutonomousEngine:
         Note: System can be disabled via SYSTEM_ENABLED=false in Replit Secrets
         
         Returns:
-            Resumen de la ejecución diaria
+            Resumen de la ejecución diaria con campo 'success' indicando si funcionó
         """
         if not self.system_enabled:
             return {
+                'success': False,
                 'status': 'disabled',
                 'message': 'System disabled via SYSTEM_ENABLED environment variable',
                 'timestamp': datetime.now().isoformat()
             }
+        
         cycle_start = datetime.now()
         
-        self._data_cache.clear()
-        logger.cache(f"Cleared data cache at start of cycle {cycle_start.isoformat()}")
-        
+        # Initialize results with success tracking
         results = {
+            'success': False,  # Start as False, set to True only if everything works
             'timestamp': cycle_start.isoformat(),
             'simulation_mode': 0,
             'firms_results': {},
             'total_bets_placed': 0,
             'total_bets_skipped': 0,
             'categories_analyzed': [],
-            'errors': []
+            'total_events_analyzed': 0,
+            'errors': [],
+            'critical_error': None
         }
         
-        # Obtener eventos agrupados por categoría
-        events_by_category = self._fetch_events_by_category()
-        
-        if not events_by_category:
-            results['errors'].append("No events available in any category")
-            return results
-        
-        results['categories_analyzed'] = list(events_by_category.keys())
-        results['total_events_analyzed'] = sum(len(events) for events in events_by_category.values())
-        
-        # Cada IA analiza eventos en TODAS las categorías antes de decidir
-        for firm_name in self.orchestrator.get_all_firms().keys():
-            firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
-            results['firms_results'][firm_name] = firm_result
-            results['total_bets_placed'] += firm_result.get('bets_placed', 0)
-            results['total_bets_skipped'] += firm_result.get('bets_skipped', 0)
-        
-        self.db.save_autonomous_cycle(results)
-        
-        self.execution_log.append(results)
-        self.daily_analysis_count += 1
-        
-        self._check_weekly_learning()
-        
-        # Reconciliar apuestas activas que ya fueron resueltas
-        reconciliation_stats = self.reconcile_bets()
-        results['reconciliation'] = reconciliation_stats
-        
-        # Monitorear órdenes activas con sistema 3-strikes
-        logger.info("Starting OrderMonitor to review active positions...")
-        order_monitor = OrderMonitor(self.opinion_api, self.db, self.orchestrator)
-        monitoring_stats = order_monitor.monitor_all_orders()
-        results['order_monitoring'] = monitoring_stats
-        logger.info(f"OrderMonitor completed: {monitoring_stats}")
+        try:
+            self._data_cache.clear()
+            logger.cache(f"Cleared data cache at start of cycle {cycle_start.isoformat()}")
+            
+            # Step 1: Fetch events from Opinion.trade
+            try:
+                events_by_category = self._fetch_events_by_category()
+                
+                if not events_by_category:
+                    results['errors'].append("Failed to fetch events from Opinion.trade - No events available")
+                    results['critical_error'] = "No events available from Opinion.trade"
+                    return results
+                
+                results['categories_analyzed'] = list(events_by_category.keys())
+                results['total_events_analyzed'] = sum(len(events) for events in events_by_category.values())
+                
+            except Exception as e:
+                error_msg = f"Exception fetching events: {str(e)}"
+                logger.error(error_msg)
+                results['errors'].append(error_msg)
+                results['critical_error'] = error_msg
+                return results
+            
+            # Step 2: Process each AI firm
+            try:
+                for firm_name in self.orchestrator.get_all_firms().keys():
+                    try:
+                        firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
+                        results['firms_results'][firm_name] = firm_result
+                        results['total_bets_placed'] += firm_result.get('bets_placed', 0)
+                        results['total_bets_skipped'] += firm_result.get('bets_skipped', 0)
+                        
+                        # Check if firm had critical errors
+                        if firm_result.get('critical_error'):
+                            results['errors'].append(f"{firm_name}: {firm_result['critical_error']}")
+                            
+                    except Exception as e:
+                        error_msg = f"Exception processing {firm_name}: {str(e)}"
+                        logger.error(error_msg)
+                        results['errors'].append(error_msg)
+                        results['firms_results'][firm_name] = {'error': str(e), 'bets_placed': 0, 'bets_skipped': 0}
+                        
+            except Exception as e:
+                error_msg = f"Exception in firm processing loop: {str(e)}"
+                logger.error(error_msg)
+                results['errors'].append(error_msg)
+                results['critical_error'] = error_msg
+                return results
+            
+            # Step 3: Save to database
+            try:
+                self.db.save_autonomous_cycle(results)
+                self.execution_log.append(results)
+                self.daily_analysis_count += 1
+            except Exception as e:
+                error_msg = f"Database save error: {str(e)}"
+                logger.error(error_msg)
+                results['errors'].append(error_msg)
+                # Continue even if DB save fails
+            
+            # Step 4: Weekly learning check (non-critical)
+            try:
+                self._check_weekly_learning()
+            except Exception as e:
+                logger.warning(f"Weekly learning check failed: {e}")
+                results['errors'].append(f"Weekly learning check failed: {str(e)}")
+            
+            # Step 5: Reconciliation (non-critical)
+            try:
+                reconciliation_stats = self.reconcile_bets()
+                results['reconciliation'] = reconciliation_stats
+            except Exception as e:
+                logger.error(f"Reconciliation failed: {e}")
+                results['errors'].append(f"Reconciliation failed: {str(e)}")
+                results['reconciliation'] = {'error': str(e)}
+            
+            # Step 6: Order monitoring (non-critical)
+            try:
+                logger.info("Starting OrderMonitor to review active positions...")
+                order_monitor = OrderMonitor(self.opinion_api, self.db, self.orchestrator)
+                monitoring_stats = order_monitor.monitor_all_orders()
+                results['order_monitoring'] = monitoring_stats
+                logger.info(f"OrderMonitor completed: {monitoring_stats}")
+            except Exception as e:
+                logger.error(f"Order monitoring failed: {e}")
+                results['errors'].append(f"Order monitoring failed: {str(e)}")
+                results['order_monitoring'] = {'error': str(e)}
+            
+            # Mark success only if we got here without critical errors
+            if not results['critical_error'] and results['total_events_analyzed'] > 0:
+                results['success'] = True
+                
+        except Exception as e:
+            # Catch-all for any unexpected errors
+            import traceback
+            error_msg = f"Unexpected error in daily cycle: {str(e)}"
+            logger.error(f"{error_msg}\n{traceback.format_exc()}")
+            results['critical_error'] = error_msg
+            results['errors'].append(error_msg)
         
         return results
     

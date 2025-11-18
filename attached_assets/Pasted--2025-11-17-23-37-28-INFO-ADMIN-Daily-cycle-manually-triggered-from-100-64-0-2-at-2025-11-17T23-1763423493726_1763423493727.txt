@@ -1,0 +1,53 @@
+[2025-11-17 23:37:28] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-17T23:37:28.349138
+[2025-11-17 23:37:28] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-17 23:37:28] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 23:37:28] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-17 23:37:28] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+[2025-11-17 23:37:28] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 9 markets
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 2: 9/9 markets are active (filtered out resolved/closed)
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY - Got 9 < 20, reached end of markets
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+[2025-11-17 23:37:31] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+[2025-11-17 23:37:31] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 47 markets
+[2025-11-17 23:37:31] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 47/47 markets are active (filtered out resolved/closed)
+[2025-11-17 23:37:33] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+[2025-11-17 23:37:33] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 47 markets
+[2025-11-17 23:37:33] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 47/47 markets are active (filtered out resolved/closed)
+[2025-11-17 23:37:35] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: errno=0, has_result=True
+[2025-11-17 23:37:35] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3 returned 47 markets
+[2025-11-17 23:37:35] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: 47/47 markets are active (filtered out resolved/closed)
+[2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: errno=0, has_result=True
+[2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4 returned 47 markets
+[2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: 47/47 markets are active (filtered out resolved/closed)
+[2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL - Reached target limit of 200 markets
+[2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+[2025-11-17 23:37:37] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 217 markets, returning 200 (after limit)
+[2025-11-17 23:37:52] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+[2025-11-17 23:37:52] [INFO] [INFO] Fetched 200 events from Opinion.trade
+[2025-11-17 23:37:52] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 40, 'Other': 105, 'Commodities': 3, 'Rates': 30, 'Finance': 22}
+[2025-11-17 23:37:52] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-17 23:37:52] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+[2025-11-17 23:38:12] [INFO] [INFO] get_orderbook: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bids_count=25, asks_count=9
+[2025-11-17 23:38:12] [INFO] [INFO] get_latest_price: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bid=0.07, ask=0.93, mid=0.5
+[2025-11-17 23:38:12] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=5
+[2025-11-17 23:38:34] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=0, asks_count=0
+[2025-11-17 23:38:34] [WARNING] [WARNING] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782 - No valid bid/ask prices in orderbook
+[2025-11-17 23:38:34] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 23:38:34] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=3 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 23:38:52] [INFO] [INFO] get_orderbook: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908, bids_count=0, asks_count=0
+[2025-11-17 23:38:52] [WARNING] [WARNING] get_latest_price: token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908 - No valid bid/ask prices in orderbook
+[2025-11-17 23:38:52] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=36340290044020936634682594313709035547681839369116817716810216190382414524908: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-17 23:38:52] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=2, T=4, F=3, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-17 23:39:09] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=20, asks_count=9
+[2025-11-17 23:39:09] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.765, ask=0.775, mid=0.77
+[2025-11-17 23:39:09] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=45% | Scores: S=4, N=3, T=5, F=2, V=2 | Reason: Valor esperado negativo o cero
+[2025-11-17 23:39:27] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=16, asks_count=14
+[2025-11-17 23:39:27] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.984, ask=0.991, mid=0.9875
+[2025-11-17 23:39:27] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=35.00%, Conf=65% | Scores: S=5, N=4, T=5, F=3, V=8 | Reason: Valor esperado negativo o cero

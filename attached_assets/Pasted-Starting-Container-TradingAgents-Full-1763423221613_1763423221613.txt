@@ -1,0 +1,103 @@
+Starting Container
+============================================================
+TradingAgents Full Stack Application - PRODUCTION MODE
+============================================================
+[1/3] Setting up Next.js frontend...
+  → Installing npm dependencies...
+npm warn config production Use `--omit=dev` instead.
+To address all issues (including breaking changes), run:
+   Creating an optimized production build ...
+  npm audit fix --force
+added 423 packages, and audited 424 packages in 14s
+> next build
+  → Building Next.js for production...
+Run `npm audit` for details.
+npm warn config production Use `--omit=dev` instead.
+   ▲ Next.js 15.5.6
+> tradingagents-frontend@0.1.0 build
+156 packages are looking for funding
+  run `npm fund` for details
+4 vulnerabilities (1 moderate, 3 high)
+To address issues that do not require attention, run:
+  npm audit fix
+   Linting and checking validity of types ...
+ ✓ Compiled successfully in 11.3s
+   Collecting page data ...
+   Generating static pages (0/4) ...
+   Generating static pages (3/4) 
+ ✓ Generating static pages (4/4)
+   Generating static pages (1/4) 
+   Generating static pages (2/4) 
+   Finalizing page optimization ...
+   Collecting build traces ...
+[2/3] Starting Flask API backend on port 8000...
+  → Using Gunicorn (production WSGI server)
+Route (app)                                 Size  First Load JS
+┌ ○ /                                     113 kB         215 kB
+└ ○ /_not-found                            999 B         103 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/255-a78b69fc76e8afca.js       45.6 kB
+  ├ chunks/4bd1b696-409494caf8c83275.js  54.2 kB
+  └ other shared chunks (total)          1.97 kB
+○  (Static)  prerendered as static content
+  ✓ Next.js built successfully
+  ✓ Flask API started (PID: 813)
+[2025-11-17 23:37:10 +0000] [813] [INFO] Starting gunicorn 23.0.0
+[2025-11-17 23:37:10 +0000] [813] [INFO] Listening at: http://0.0.0.0:8000 (813)
+[2025-11-17 23:37:10 +0000] [813] [INFO] Using worker: sync
+[2025-11-17 23:37:10 +0000] [814] [INFO] Booting worker with pid: 814
+[2025-11-17 23:37:10 +0000] [815] [INFO] Booting worker with pid: 815
+  - Mode: PRODUCTION
+============================================================
+Press Ctrl+C to stop all services
+  ✓ Next.js frontend started (PID: 816)
+✓ TradingAgents is running!
+  - Frontend (Next.js): http://localhost:5000
+============================================================
+  - API (Flask): http://localhost:8000
+[3/3] Starting Next.js frontend on port 5000...
+npm warn config production Use `--omit=dev` instead.
+> tradingagents-frontend@0.1.0 start
+> next start -p 5000
+   ▲ Next.js 15.5.6
+   - Local:        http://localhost:5000
+   - Network:      http://10.199.183.92:5000
+ ✓ Starting...
+ ✓ Ready in 484ms
+================================================================================
+[DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+================================================================================
+OPINION_TRADE_API_KEY: SET (len=32)
+OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+RAILWAY_ENVIRONMENT: production
+RAILWAY_SERVICE_NAME: keen-essence
+================================================================================
+100.64.0.2 - - [17/Nov/2025:23:37:19 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [17/Nov/2025:23:37:19 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [17/Nov/2025:23:37:19 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [17/Nov/2025:23:37:19 +0000] "GET /admin HTTP/1.1" 200 12533 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+================================================================================
+[DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+================================================================================
+OPINION_TRADE_API_KEY: SET (len=32)
+OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+RAILWAY_ENVIRONMENT: production
+RAILWAY_SERVICE_NAME: keen-essence
+================================================================================
+100.64.0.2 - - [17/Nov/2025:23:37:20 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [17/Nov/2025:23:37:21 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[2025-11-17 23:37:28] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-17T23:37:28.349138
+[2025-11-17 23:37:28] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+================================================================================
+[DEBUG] OpinionTradeAPI.__init__() called
+  api_key parameter: PROVIDED (len=32)
+  private_key parameter: PROVIDED (len=64)
+  os.environ OPINION_TRADE_API_KEY: SET (len=32)
+  os.environ OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+  Final source: explicit parameter
+================================================================================
+[2025-11-17 23:37:28] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-17 23:37:28] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-17 23:37:28] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+[2025-11-17 23:37:28] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+[2025-11-17 23:37:29] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
