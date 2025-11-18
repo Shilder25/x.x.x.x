@@ -185,6 +185,19 @@ class OpinionTradeAPI:
                     if response.errno != 0:
                         logger.warning(f"[PAGINATION] {topic_type_name} error on page {page}: {response.errmsg}")
                         last_error = response.errmsg
+                        
+                        # Special handling for geo-blocking error
+                        if response.errno == 10403:
+                            logger.error(f"[GEO-BLOCK] Opinion.trade API blocked this region (error 10403: Invalid area)")
+                            logger.warning(f"[GEO-BLOCK] Switching to SIMULATION MODE automatically")
+                            return {
+                                'success': False,
+                                'error': 'Geographic restriction detected',
+                                'errno': 10403,
+                                'message': 'Opinion.trade blocked this region. System will run in simulation mode.',
+                                'geo_blocked': True,
+                                'events': []
+                            }
                         break
                     
                     markets = response.result.list
