@@ -1,0 +1,58 @@
+[2025-11-18 08:10:25] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-18T08:10:25.061871
+[2025-11-18 08:10:25] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-18 08:10:25] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-18 08:10:25] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-18 08:10:25] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+[2025-11-18 08:10:25] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+[2025-11-18 08:10:26] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+[2025-11-18 08:10:26] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+[2025-11-18 08:10:26] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-18 08:10:26] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+[2025-11-18 08:10:26] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 9 markets
+[2025-11-18 08:10:26] [INFO] [INFO] [PAGINATION] BINARY Page 2: 9/9 markets are active (filtered out resolved/closed)
+[2025-11-18 08:10:26] [INFO] [INFO] [PAGINATION] BINARY - Got 9 < 20, reached end of markets
+[2025-11-18 08:10:26] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+[2025-11-18 08:10:26] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+[2025-11-18 08:10:30] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+[2025-11-18 08:10:30] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 48 markets
+[2025-11-18 08:10:30] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 48/48 markets are active (filtered out resolved/closed)
+[2025-11-18 08:10:32] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+[2025-11-18 08:10:32] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 48 markets
+[2025-11-18 08:10:32] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 48/48 markets are active (filtered out resolved/closed)
+[2025-11-18 08:10:34] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: errno=0, has_result=True
+[2025-11-18 08:10:34] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3 returned 48 markets
+[2025-11-18 08:10:34] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: 48/48 markets are active (filtered out resolved/closed)
+[2025-11-18 08:10:37] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: errno=0, has_result=True
+[2025-11-18 08:10:37] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4 returned 48 markets
+[2025-11-18 08:10:37] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: 48/48 markets are active (filtered out resolved/closed)
+[2025-11-18 08:10:37] [INFO] [INFO] [PAGINATION] CATEGORICAL - Reached target limit of 200 markets
+[2025-11-18 08:10:37] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+[2025-11-18 08:10:37] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 221 markets, returning 200 (after limit)
+[2025-11-18 08:10:52] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+[2025-11-18 08:10:52] [INFO] [INFO] Fetched 200 events from Opinion.trade
+[2025-11-18 08:10:52] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 39, 'Other': 105, 'Finance': 24, 'Rates': 28, 'Commodities': 4}
+[2025-11-18 08:10:52] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-18 08:10:52] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+[2025-11-18 08:10:53] [WARNING] [WARNING] Technical data error for BTC: No indicators returned
+[2025-11-18 08:11:10] [INFO] [INFO] get_orderbook: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bids_count=29, asks_count=6
+[2025-11-18 08:11:10] [INFO] [INFO] get_latest_price: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bid=0.548, ask=0.993, mid=0.7705
+[2025-11-18 08:11:10] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=3, T=2, F=0, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-18 08:11:11] [WARNING] [WARNING] Technical data error for BTC: No indicators returned
+[2025-11-18 08:11:29] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=0, asks_count=0
+[2025-11-18 08:11:29] [WARNING] [WARNING] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470 - No valid bid/ask prices in orderbook
+[2025-11-18 08:11:29] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-18 08:11:29] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=0, T=5, F=5, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-18 08:11:30] [WARNING] [WARNING] Technical data error for BTC: No indicators returned
+[2025-11-18 08:11:42] [INFO] [INFO] get_orderbook: token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296, bids_count=0, asks_count=0
+[2025-11-18 08:11:42] [WARNING] [WARNING] get_latest_price: token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296 - No valid bid/ask prices in orderbook
+[2025-11-18 08:11:42] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-18 08:11:42] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-18 08:11:43] [WARNING] [WARNING] Technical data error for ETH: No indicators returned
+[2025-11-18 08:11:58] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=19, asks_count=9
+[2025-11-18 08:11:58] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.61, ask=0.8, mid=0.7050000000000001
+[2025-11-18 08:11:58] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=45.00%, Conf=55% | Scores: S=5, N=5, T=0, F=0, V=3 | Reason: Valor esperado negativo o cero
+[2025-11-18 08:11:58] [WARNING] [WARNING] Technical data error for ETH: No indicators returned
+[2025-11-18 08:12:16] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=41, asks_count=14
+[2025-11-18 08:12:16] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.956, ask=0.998, mid=0.977
+[2025-11-18 08:12:16] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=45.00%, Conf=60% | Scores: S=5, N=5, T=5, F=5, V=7 | Reason: Valor esperado negativo o cero
