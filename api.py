@@ -1061,13 +1061,33 @@ def trigger_cycle():
         engine = AutonomousEngine(db, opinion_api_key=api_key, opinion_private_key=private_key)
         results = engine.run_daily_cycle()
         
-        logger.admin("Daily cycle completed successfully")
+        # Check if the cycle actually succeeded based on results
+        cycle_success = results.get('success', False)
+        has_critical_error = results.get('critical_error')
+        errors = results.get('errors', [])
         
-        return jsonify({
-            'success': True,
-            'message': 'Daily cycle completed successfully',
-            'results': results
-        }), 200
+        if cycle_success:
+            logger.admin("Daily cycle completed successfully")
+            return jsonify({
+                'success': True,
+                'message': 'Daily cycle completed successfully',
+                'results': results
+            }), 200
+        else:
+            # Cycle failed - return detailed error information
+            error_message = has_critical_error or 'Daily cycle failed'
+            if errors:
+                error_message = f"{error_message}. Errors: {'; '.join(errors[:3])}"  # Show first 3 errors
+            
+            logger.error(f"Daily cycle failed: {error_message}")
+            
+            return jsonify({
+                'success': False,
+                'message': error_message,
+                'critical_error': has_critical_error,
+                'errors': errors,
+                'results': results
+            }), 500
         
     except Exception as e:
         import traceback
