@@ -2,15 +2,53 @@ import sqlite3
 from datetime import datetime
 from typing import List, Dict, Optional
 import json
+import threading
+from contextlib import contextmanager
 
 class TradingDatabase:
     def __init__(self, db_path: str = "trading_agents.db"):
         self.db_path = db_path
+        # Thread-local storage for connections (SQLite connection per thread)
+        self._local = threading.local()
+        # Busy timeout in milliseconds (30 seconds)
+        self.busy_timeout = 30000
         self.init_database()
     
+    @contextmanager
+    def get_connection(self):
+        """
+        Context manager for database connections with proper busy timeout.
+        Uses thread-local storage to ensure each thread has its own connection.
+        """
+        if not hasattr(self._local, 'conn') or self._local.conn is None:
+            # Create a new connection for this thread with busy timeout
+            self._local.conn = sqlite3.connect(
+                self.db_path,
+                timeout=30.0,  # Connection timeout in seconds
+                check_same_thread=False,
+                isolation_level='DEFERRED'  # Use deferred transactions
+            )
+            # Set busy timeout (time to wait when database is locked)
+            self._local.conn.execute(f"PRAGMA busy_timeout = {self.busy_timeout}")
+            # Enable WAL mode for better concurrency
+            self._local.conn.execute("PRAGMA journal_mode = WAL")
+            # Optimize SQLite performance
+            self._local.conn.execute("PRAGMA synchronous = NORMAL")
+            self._local.conn.execute("PRAGMA cache_size = -64000")  # 64MB cache
+            
+        try:
+            yield self._local.conn
+        except sqlite3.OperationalError as e:
+            if "locked" in str(e).lower():
+                # Log database lock issues
+                print(f"[DATABASE] Database lock encountered: {e}")
+                raise
+            else:
+                raise
+    
     def init_database(self):
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
         
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS predictions (
@@ -523,12 +561,12 @@ class TradingDatabase:
         Actualiza el estado de una decisión AI (APPROVED → EXECUTED o FAILED).
         También puede actualizar el bet_size si cambió durante re-validación.
         """
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        if bet_size is not None:
-            cursor.execute('''
-            UPDATE autonomous_bets
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            if bet_size is not None:
+                cursor.execute('''
+                UPDATE autonomous_bets
             SET status = ?, failure_reason = ?, bet_size = ?
             WHERE id = ?
             ''', (status, failure_reason, bet_size, bet_id))
@@ -562,13 +600,13 @@ class TradingDatabase:
         """
         Guarda un ciclo de ejecución autónoma.
         """
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        cursor.execute('''
-        INSERT INTO autonomous_cycles (
-            cycle_timestamp, total_events_analyzed, total_bets_placed,
-            total_bets_skipped, simulation_mode, execution_summary, created_at
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+            INSERT INTO autonomous_cycles (
+                cycle_timestamp, total_events_analyzed, total_bets_placed,
+                total_bets_skipped, simulation_mode, execution_summary, created_at
         ) VALUES (?, ?, ?, ?, ?, ?, ?)
         ''', (
             cycle_data['timestamp'],
