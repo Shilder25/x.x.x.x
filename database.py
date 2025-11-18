@@ -567,18 +567,17 @@ class TradingDatabase:
             if bet_size is not None:
                 cursor.execute('''
                 UPDATE autonomous_bets
-            SET status = ?, failure_reason = ?, bet_size = ?
-            WHERE id = ?
-            ''', (status, failure_reason, bet_size, bet_id))
-        else:
-            cursor.execute('''
-            UPDATE autonomous_bets
-            SET status = ?, failure_reason = ?
-            WHERE id = ?
-            ''', (status, failure_reason, bet_id))
-        
-        conn.commit()
-        conn.close()
+                SET status = ?, failure_reason = ?, bet_size = ?
+                WHERE id = ?
+                ''', (status, failure_reason, bet_size, bet_id))
+            else:
+                cursor.execute('''
+                UPDATE autonomous_bets
+                SET status = ?, failure_reason = ?
+                WHERE id = ?
+                ''', (status, failure_reason, bet_id))
+            
+            conn.commit()
     
     def update_autonomous_bet_result(self, bet_id: int, actual_result: int, profit_loss: float):
         """

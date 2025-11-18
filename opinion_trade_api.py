@@ -75,17 +75,9 @@ class OpinionTradeAPI:
             api_key: Opinion.trade API key (defaults to OPINION_TRADE_API_KEY env var)
             private_key: Wallet private key for signing (defaults to OPINION_WALLET_PRIVATE_KEY env var)
         """
-        # DEBUG: Log credential sources (secure - no key values exposed)
-        print("=" * 80)
-        print("[DEBUG] OpinionTradeAPI.__init__() called")
-        print(f"  api_key parameter: {'PROVIDED' if api_key else 'None'} (len={len(api_key) if api_key else 0})")
-        print(f"  private_key parameter: {'PROVIDED' if private_key else 'None'} (len={len(private_key) if private_key else 0})")
+        # Get credentials from parameters or environment
         env_api_key = os.environ.get("OPINION_TRADE_API_KEY", "")
         env_private_key = os.environ.get("OPINION_WALLET_PRIVATE_KEY", "")
-        print(f"  os.environ OPINION_TRADE_API_KEY: {'SET' if env_api_key else 'EMPTY'} (len={len(env_api_key)})")
-        print(f"  os.environ OPINION_WALLET_PRIVATE_KEY: {'SET' if env_private_key else 'EMPTY'} (len={len(env_private_key)})")
-        print(f"  Final source: {'explicit parameter' if (api_key or private_key) else 'environment variables'}")
-        print("=" * 80)
         
         self.api_key = api_key or env_api_key
         raw_private_key = private_key or env_private_key
