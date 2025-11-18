@@ -1,0 +1,49 @@
+🔴 Problemas Críticos Encontrados:
+El Daily Cycle Falla Silenciosamente
+
+Si Opinion.trade devuelve un error al paginar mercados → el ciclo completo aborta
+Los errores se convierten en strings y no se propagan al admin panel
+No ves los errores reales, solo "Daily cycle completed successfully" aunque haya fallado
+Data Collectors Devuelven "N/A"
+
+No validan si las API keys existen antes de ejecutar
+Hacen llamadas repetidas costosas sin cache
+Los modelos AI reciben data incompleta y toman malas decisiones
+No Hay Control de Rate Limits
+
+El sistema intenta obtener 200+ mercados sin backoff
+Cada ciclo hace cientos de llamadas sin control
+Opinion.trade puede estar bloqueando por exceso de requests
+Errores de Base de Datos SQLite
+
+No hay manejo de concurrencia
+Si dos procesos acceden a la vez → "database is locked"
+Las reconciliaciones largas bloquean otros procesos
+Fallas Silenciosas No Reportadas
+
+Las excepciones se imprimen pero no se guardan
+El admin panel muestra "success" aunque internamente haya fallado
+No hay visibilidad real del estado del sistema
+🛠️ Plan de Solución Definitiva
+Necesito implementar estas correcciones para que el sistema sea realmente confiable:
+
+Fase 1: Arreglar Visibilidad de Errores
+Agregar logging estructurado que capture TODOS los errores
+Hacer que el admin panel muestre errores reales, no "success" falsos
+Implementar correlation IDs para rastrear cada ciclo completo
+Fase 2: Robustecer el Daily Cycle
+Agregar retry + backoff para Opinion.trade API
+Implementar cache para reducir llamadas costosas
+Validar todas las respuestas antes de procesar
+Fase 3: Arreglar Data Collectors
+Validar API keys al inicio
+Implementar cache con fallback a datos históricos
+No devolver "N/A", usar datos previos si hay fallas
+Fase 4: Manejo de Concurrencia
+Implementar queue para admin triggers
+Agregar timeouts y locks para SQLite
+Evitar que procesos se pisen entre sí
+Fase 5: Monitoreo y Alertas
+Superficie todos los errores en el admin panel
+Implementar health checks reales
+Agregar métricas de éxito/falla por componente
