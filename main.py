@@ -27,6 +27,7 @@ def is_production():
     """Check if running in production (Railway or Replit deployment)"""
     return (os.getenv('REPL_DEPLOYMENT') == '1' or 
             os.getenv('REPLIT_DEPLOYMENT') == '1' or
+            os.getenv('REPLIT_ENVIRONMENT') == 'production' or
             os.getenv('RAILWAY_ENVIRONMENT') is not None)
 
 def setup_frontend():
