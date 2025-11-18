@@ -810,34 +810,54 @@ class AutonomousEngine:
             symbol: Símbolo del asset (BTC, AAPL, etc.) si aplica
             market_id: ID del mercado en Opinion.trade (para price history)
         """
-        technical_report = "Not available"
-        fundamental_report = "Not available"
-        sentiment_report = "Not available"
-        news_report = "Not available"
-        volatility_report = "Not available"
+        # Initialize with more informative default values
+        technical_report = "Technical analysis unavailable - API key missing or invalid"
+        fundamental_report = "Fundamental analysis unavailable" 
+        sentiment_report = "Sentiment analysis unavailable"
+        news_report = "News analysis unavailable - API key missing or invalid"
+        volatility_report = "Volatility analysis unavailable"
         
-        if symbol and self.alpha_vantage_key:
+        # Validate API key exists and is not empty
+        api_key_valid = self.alpha_vantage_key and len(self.alpha_vantage_key.strip()) > 0
+        
+        if symbol and api_key_valid:
             cache_key_tech = f"tech_{symbol}"
             cache_key_news = f"news_{symbol}"
             cache_key_vol = f"vol_{symbol}"
             
+            # Try cache first for technical data
             if cache_key_tech in self._data_cache:
                 tech_data = self._data_cache[cache_key_tech]
                 technical_report = format_technical_report(tech_data)
-                print(f"[CACHE HIT] Technical data for {symbol}")
+                logger.cache(f"Technical data for {symbol} retrieved from cache")
             else:
                 try:
                     collector = AlphaVantageCollector(self.alpha_vantage_key)
                     tech_data = collector.get_technical_indicators(symbol)
-                    if 'error' not in tech_data:
+                    
+                    # Check for API rate limit or invalid key responses
+                    if 'error' not in tech_data and tech_data.get('indicators'):
                         self._data_cache[cache_key_tech] = tech_data
-                        print(f"[CACHE MISS] Fetched & cached technical data for {symbol}")
+                        technical_report = format_technical_report(tech_data)
+                        logger.cache(f"Technical data for {symbol} fetched and cached")
                     else:
-                        print(f"[CACHE SKIP] Technical data error for {symbol}, not caching")
-                    technical_report = format_technical_report(tech_data)
+                        error_msg = tech_data.get('error', 'No indicators returned')
+                        logger.warning(f"Technical data error for {symbol}: {error_msg}")
+                        # Try to use stale cache if available
+                        stale_key = f"stale_tech_{symbol}"
+                        if stale_key in self._data_cache:
+                            technical_report = f"[USING STALE DATA] {format_technical_report(self._data_cache[stale_key])}"
+                        else:
+                            technical_report = f"Technical analysis failed: {error_msg}"
+                            
                 except Exception as e:
-                    print(f"[CACHE ERROR] Failed to fetch technical data for {symbol}: {e}")
-                    pass
+                    logger.error(f"Exception fetching technical data for {symbol}: {e}")
+                    # Fallback to stale cache if available
+                    stale_key = f"stale_tech_{symbol}"
+                    if stale_key in self._data_cache:
+                        technical_report = f"[FALLBACK DATA] {format_technical_report(self._data_cache[stale_key])}"
+                    else:
+                        technical_report = f"Technical analysis error: {str(e)[:100]}"
             
             if cache_key_news in self._data_cache:
                 news_data = self._data_cache[cache_key_news]
