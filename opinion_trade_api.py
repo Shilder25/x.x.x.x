@@ -1,7 +1,9 @@
 import os
+import time
 from typing import Dict, Optional, List
 from datetime import datetime
 from eth_account import Account
+from functools import wraps
 
 from opinion_clob_sdk import Client, CHAIN_ID_BNB_MAINNET
 from opinion_clob_sdk.model import TopicType, TopicStatusFilter
@@ -9,6 +11,54 @@ from opinion_clob_sdk.chain.py_order_utils.model.order import PlaceOrderDataInpu
 from opinion_clob_sdk.chain.py_order_utils.model.sides import OrderSide
 from opinion_clob_sdk.chain.py_order_utils.model.order_type import LIMIT_ORDER
 from logger import autonomous_logger as logger
+
+
+def retry_with_exponential_backoff(max_retries=3, initial_delay=1.0, max_delay=32.0, backoff_factor=2.0):
+    """
+    Decorator for retrying functions with exponential backoff on failure.
+    
+    Args:
+        max_retries: Maximum number of retry attempts
+        initial_delay: Initial delay in seconds between retries
+        max_delay: Maximum delay in seconds between retries
+        backoff_factor: Multiplier for delay after each retry
+    """
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            delay = initial_delay
+            last_exception = None
+            
+            for attempt in range(max_retries + 1):
+                try:
+                    return func(*args, **kwargs)
+                    
+                except Exception as e:
+                    last_exception = e
+                    
+                    # Don't retry on the last attempt
+                    if attempt == max_retries:
+                        logger.error(f"{func.__name__} failed after {max_retries + 1} attempts: {e}")
+                        raise
+                    
+                    # Check if it's a rate limit error
+                    error_msg = str(e).lower()
+                    if 'rate limit' in error_msg or 'too many requests' in error_msg or '429' in error_msg:
+                        # For rate limits, use longer backoff
+                        delay = min(delay * backoff_factor * 2, max_delay)
+                        logger.warning(f"{func.__name__} hit rate limit. Waiting {delay:.1f}s before retry {attempt + 1}/{max_retries}...")
+                    else:
+                        logger.warning(f"{func.__name__} failed: {e}. Retrying in {delay:.1f}s (attempt {attempt + 1}/{max_retries})...")
+                    
+                    time.sleep(delay)
+                    delay = min(delay * backoff_factor, max_delay)
+                    
+            # This shouldn't be reached but just in case
+            if last_exception:
+                raise last_exception
+                
+        return wrapper
+    return decorator
 
 
 class OpinionTradeAPI:
@@ -94,9 +144,10 @@ class OpinionTradeAPI:
             logger.error(f"✗ Failed to initialize Opinion.trade SDK: {e}")
             self.client = None
     
+    @retry_with_exponential_backoff(max_retries=3, initial_delay=2.0, max_delay=30.0)
     def get_available_events(self, limit: int = 200, category: Optional[str] = None) -> Dict:
         """
-        Fetch ALL available markets from Opinion.trade using pagination.
+        Fetch ALL available markets from Opinion.trade using pagination with automatic retry on failure.
         
         Args:
             limit: Maximum total markets to retrieve (default 200, fetched in batches of 20)
