@@ -1,0 +1,335 @@
+2025-11-18T18:50:58.000000000Z [inf]  Starting Container
+2025-11-18T18:50:59.274422252Z [inf]  ============================================================
+2025-11-18T18:50:59.274435357Z [inf]  
+2025-11-18T18:50:59.274444188Z [inf]  [1/3] Setting up Next.js frontend...
+2025-11-18T18:50:59.274451715Z [inf]    → Installing npm dependencies...
+2025-11-18T18:50:59.274459098Z [err]  npm warn config production Use `--omit=dev` instead.
+2025-11-18T18:50:59.274531375Z [inf]  ============================================================
+2025-11-18T18:50:59.274535275Z [inf]  TradingAgents Full Stack Application - PRODUCTION MODE
+2025-11-18T18:51:19.218617328Z [inf]  > next build
+2025-11-18T18:51:19.218626830Z [inf]  
+2025-11-18T18:51:19.218629293Z [inf]  
+2025-11-18T18:51:19.218633445Z [inf]     ▲ Next.js 15.5.6
+2025-11-18T18:51:19.218638549Z [inf]  
+2025-11-18T18:51:19.218642852Z [inf]  added 423 packages, and audited 424 packages in 16s
+2025-11-18T18:51:19.218644264Z [inf]     Creating an optimized production build ...
+2025-11-18T18:51:19.218651927Z [inf]  
+2025-11-18T18:51:19.218658994Z [inf]  156 packages are looking for funding
+2025-11-18T18:51:19.218666113Z [inf]    run `npm fund` for details
+2025-11-18T18:51:19.218674405Z [inf]  
+2025-11-18T18:51:19.218683481Z [inf]  2 vulnerabilities (1 moderate, 1 high)
+2025-11-18T18:51:19.218692820Z [inf]  
+2025-11-18T18:51:19.218699180Z [inf]  To address all issues, run:
+2025-11-18T18:51:19.218703696Z [inf]    npm audit fix
+2025-11-18T18:51:19.218708055Z [inf]  
+2025-11-18T18:51:19.218712210Z [inf]  Run `npm audit` for details.
+2025-11-18T18:51:19.218716603Z [inf]    → Building Next.js for production...
+2025-11-18T18:51:19.218721013Z [err]  npm warn config production Use `--omit=dev` instead.
+2025-11-18T18:51:19.218728063Z [inf]  
+2025-11-18T18:51:19.218734330Z [inf]  > tradingagents-frontend@0.1.0 build
+2025-11-18T18:51:39.224963899Z [inf]     Linting and checking validity of types ...
+2025-11-18T18:51:39.224974177Z [inf]     Collecting page data ...
+2025-11-18T18:51:39.224979851Z [inf]     Generating static pages (0/4) ...
+2025-11-18T18:51:39.224984801Z [inf]     Generating static pages (1/4) 
+2025-11-18T18:51:39.224989331Z [inf]     Generating static pages (2/4) 
+2025-11-18T18:51:39.224994442Z [inf]     Generating static pages (3/4) 
+2025-11-18T18:51:39.225003377Z [inf]   ✓ Generating static pages (4/4)
+2025-11-18T18:51:39.225008162Z [inf]     Finalizing page optimization ...
+2025-11-18T18:51:39.225012860Z [inf]     Collecting build traces ...
+2025-11-18T18:51:39.225058889Z [inf]   ✓ Compiled successfully in 11.3s
+2025-11-18T18:51:40.929010535Z [inf]  └ ○ /_not-found                            999 B         103 kB
+2025-11-18T18:51:40.929019816Z [inf]  + First Load JS shared by all             102 kB
+2025-11-18T18:51:40.929027167Z [inf]    ├ chunks/255-a78b69fc76e8afca.js       45.6 kB
+2025-11-18T18:51:40.929035159Z [inf]    ├ chunks/4bd1b696-409494caf8c83275.js  54.2 kB
+2025-11-18T18:51:40.929042962Z [inf]    └ other shared chunks (total)          1.97 kB
+2025-11-18T18:51:40.929050949Z [inf]  
+2025-11-18T18:51:40.929058312Z [inf]  
+2025-11-18T18:51:40.929068622Z [inf]  ○  (Static)  prerendered as static content
+2025-11-18T18:51:40.929075013Z [inf]  
+2025-11-18T18:51:40.929079009Z [inf]  
+2025-11-18T18:51:40.929082065Z [inf]    ✓ Next.js built successfully
+2025-11-18T18:51:40.929085991Z [inf]  Route (app)                                 Size  First Load JS
+2025-11-18T18:51:40.929088890Z [inf]  
+2025-11-18T18:51:40.929094228Z [inf]  ┌ ○ /                                     113 kB         215 kB
+2025-11-18T18:51:40.929096743Z [inf]  [2/3] Starting Flask API backend on port 8000...
+2025-11-18T18:51:40.929103658Z [inf]    → Using Gunicorn (production WSGI server)
+2025-11-18T18:51:40.929110145Z [inf]    ✓ Flask API started (PID: 589)
+2025-11-18T18:51:41.052894407Z [err]  [2025-11-18 18:51:41 +0000] [589] [INFO] Starting gunicorn 23.0.0
+2025-11-18T18:51:41.052901085Z [err]  [2025-11-18 18:51:41 +0000] [589] [INFO] Listening at: http://0.0.0.0:8000 (589)
+2025-11-18T18:51:41.052906741Z [err]  [2025-11-18 18:51:41 +0000] [589] [INFO] Using worker: sync
+2025-11-18T18:51:41.052912332Z [err]  [2025-11-18 18:51:41 +0000] [590] [INFO] Booting worker with pid: 590
+2025-11-18T18:51:41.052918885Z [err]  [2025-11-18 18:51:41 +0000] [591] [INFO] Booting worker with pid: 591
+2025-11-18T18:51:43.905906948Z [inf]  
+2025-11-18T18:51:43.905918637Z [inf]  [3/3] Starting Next.js frontend on port 5000...
+2025-11-18T18:51:43.905926864Z [inf]    ✓ Next.js frontend started (PID: 592)
+2025-11-18T18:51:43.905936018Z [inf]  
+2025-11-18T18:51:43.905943024Z [inf]  ============================================================
+2025-11-18T18:51:43.905948104Z [inf]  ✓ TradingAgents is running!
+2025-11-18T18:51:43.905952514Z [inf]    - Frontend (Next.js): http://localhost:5000
+2025-11-18T18:51:43.905956894Z [inf]    - API (Flask): http://localhost:8000
+2025-11-18T18:51:43.905960826Z [inf]    - Mode: PRODUCTION
+2025-11-18T18:51:43.905964895Z [inf]  ============================================================
+2025-11-18T18:51:43.905968990Z [inf]  
+2025-11-18T18:51:43.905973327Z [inf]  Press Ctrl+C to stop all services
+2025-11-18T18:51:43.905977397Z [inf]  
+2025-11-18T18:51:44.008003823Z [err]  npm warn config production Use `--omit=dev` instead.
+2025-11-18T18:51:44.047935102Z [inf]  
+2025-11-18T18:51:44.047940141Z [inf]  > tradingagents-frontend@0.1.0 start
+2025-11-18T18:51:44.047943951Z [inf]  > next start -p 5000
+2025-11-18T18:51:44.047949817Z [inf]  
+2025-11-18T18:51:44.304119899Z [inf]     ▲ Next.js 15.5.6
+2025-11-18T18:51:44.304125361Z [inf]     - Local:        http://localhost:5000
+2025-11-18T18:51:44.304130306Z [inf]     - Network:      http://10.157.245.145:5000
+2025-11-18T18:51:44.304135530Z [inf]  
+2025-11-18T18:51:44.304140600Z [inf]   ✓ Starting...
+2025-11-18T18:51:44.492678240Z [inf]   ✓ Ready in 330ms
+2025-11-18T18:51:47.696112403Z [inf]  ================================================================================
+2025-11-18T18:51:47.696121731Z [inf]  [DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+2025-11-18T18:51:47.696131994Z [inf]  ================================================================================
+2025-11-18T18:51:47.696141004Z [inf]  OPINION_TRADE_API_KEY: SET (len=32)
+2025-11-18T18:51:47.696151315Z [inf]  OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+2025-11-18T18:51:47.696160909Z [inf]  RAILWAY_ENVIRONMENT: production
+2025-11-18T18:51:47.696169937Z [inf]  RAILWAY_SERVICE_NAME: keen-essence
+2025-11-18T18:51:47.696178698Z [inf]  ================================================================================
+2025-11-18T18:51:47.719529095Z [inf]  ================================================================================
+2025-11-18T18:51:47.719543522Z [inf]  [DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+2025-11-18T18:51:47.719552233Z [inf]  ================================================================================
+2025-11-18T18:51:47.719560834Z [inf]  OPINION_TRADE_API_KEY: SET (len=32)
+2025-11-18T18:51:47.719567923Z [inf]  OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+2025-11-18T18:51:47.719575756Z [inf]  RAILWAY_ENVIRONMENT: production
+2025-11-18T18:51:47.719585196Z [inf]  RAILWAY_SERVICE_NAME: keen-essence
+2025-11-18T18:51:47.719592230Z [inf]  ================================================================================
+2025-11-18T18:52:47.749444702Z [inf]  100.64.0.2 - - [18/Nov/2025:18:52:43 +0000] "GET / HTTP/1.1" 404 207 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-18T18:52:47.749454689Z [inf]  100.64.0.2 - - [18/Nov/2025:18:52:46 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-18T18:52:47.749461817Z [inf]  100.64.0.2 - - [18/Nov/2025:18:52:46 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-18T18:52:47.749469414Z [inf]  100.64.0.2 - - [18/Nov/2025:18:52:46 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-18T18:52:48.231163947Z [inf]  100.64.0.2 - - [18/Nov/2025:18:52:48 +0000] "GET /admin HTTP/1.1" 200 12533 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-18T18:52:49.531490155Z [inf]  100.64.0.2 - - [18/Nov/2025:18:52:49 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-18T18:52:49.651069911Z [inf]  100.64.0.2 - - [18/Nov/2025:18:52:49 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-18T18:53:09.707808509Z [err]  [2025-11-18 18:53:07] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-18T18:53:09.707817552Z [err]  [2025-11-18 18:53:07] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-18T18:53:09.707822619Z [err]  [2025-11-18 18:53:07] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+2025-11-18T18:53:09.707827820Z [err]  [2025-11-18 18:53:07] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+2025-11-18T18:53:09.707832311Z [err]  [2025-11-18 18:53:07] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+2025-11-18T18:53:09.707837069Z [inf]  100.64.0.2 - - [18/Nov/2025:18:53:08 +0000] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 759 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-18T18:53:09.707840859Z [err]  [2025-11-18 18:53:08] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+2025-11-18T18:53:09.707845356Z [err]  [2025-11-18 18:53:08] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+2025-11-18T18:53:09.707849391Z [err]  [2025-11-18 18:53:08] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+2025-11-18T18:53:09.707854142Z [err]  [2025-11-18 18:53:09] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+2025-11-18T18:53:09.707858736Z [err]  [2025-11-18 18:53:09] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 10 markets
+2025-11-18T18:53:09.707863129Z [err]  [2025-11-18 18:53:09] [INFO] [INFO] [PAGINATION] BINARY Page 2: 10/10 markets are active (filtered out resolved/closed)
+2025-11-18T18:53:09.707904966Z [err]  [2025-11-18 18:53:07] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-18T18:53:07.357375
+2025-11-18T18:53:09.708410601Z [err]  [2025-11-18 18:53:09] [INFO] [INFO] [PAGINATION] BINARY - Got 10 < 20, reached end of markets
+2025-11-18T18:53:09.708417252Z [err]  [2025-11-18 18:53:09] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+2025-11-18T18:53:09.708422099Z [err]  [2025-11-18 18:53:09] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+2025-11-18T18:53:11.408025569Z [err]  [2025-11-18 18:53:11] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+2025-11-18T18:53:11.408032775Z [err]  [2025-11-18 18:53:11] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 48 markets
+2025-11-18T18:53:11.408040430Z [err]  [2025-11-18 18:53:11] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 48/48 markets are active (filtered out resolved/closed)
+2025-11-18T18:53:13.540516247Z [err]  [2025-11-18 18:53:13] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+2025-11-18T18:53:13.540523104Z [err]  [2025-11-18 18:53:13] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 48 markets
+2025-11-18T18:53:13.540528960Z [err]  [2025-11-18 18:53:13] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 48/48 markets are active (filtered out resolved/closed)
+2025-11-18T18:53:15.639335272Z [err]  [2025-11-18 18:53:15] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: errno=0, has_result=True
+2025-11-18T18:53:15.639344899Z [err]  [2025-11-18 18:53:15] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3 returned 48 markets
+2025-11-18T18:53:15.639350509Z [err]  [2025-11-18 18:53:15] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: 48/48 markets are active (filtered out resolved/closed)
+2025-11-18T18:53:17.856305383Z [err]  [2025-11-18 18:53:17] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: errno=0, has_result=True
+2025-11-18T18:53:17.856311715Z [err]  [2025-11-18 18:53:17] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4 returned 48 markets
+2025-11-18T18:53:17.856316872Z [err]  [2025-11-18 18:53:17] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: 48/48 markets are active (filtered out resolved/closed)
+2025-11-18T18:53:17.856320802Z [err]  [2025-11-18 18:53:17] [INFO] [INFO] [PAGINATION] CATEGORICAL - Reached target limit of 200 markets
+2025-11-18T18:53:17.856324801Z [err]  [2025-11-18 18:53:17] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+2025-11-18T18:53:17.856328746Z [err]  [2025-11-18 18:53:17] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 222 markets, returning 200 (after limit)
+2025-11-18T18:53:47.792154886Z [inf]  [CACHE MISS] Fetched & cached news data for BTC
+2025-11-18T18:53:47.792157240Z [err]  [2025-11-18 18:53:38] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+2025-11-18T18:53:47.792166986Z [inf]  [CACHE MISS] Fetched & cached volatility data for BTC-USD
+2025-11-18T18:53:47.792169066Z [err]  INFO:autonomous_engine:[INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+2025-11-18T18:53:47.792177790Z [err]  [2025-11-18 18:53:38] [INFO] [INFO] Fetched 200 events from Opinion.trade
+2025-11-18T18:53:47.792186335Z [err]  INFO:autonomous_engine:[INFO] Fetched 200 events from Opinion.trade
+2025-11-18T18:53:47.792192598Z [err]  [2025-11-18 18:53:38] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 41, 'Other': 105, 'Finance': 21, 'Rates': 29, 'Commodities': 4}
+2025-11-18T18:53:47.792200010Z [err]  INFO:autonomous_engine:[CATEGORY] Events grouped into 5 categories: {'Crypto': 41, 'Other': 105, 'Finance': 21, 'Rates': 29, 'Commodities': 4}
+2025-11-18T18:53:47.792205315Z [err]  [2025-11-18 18:53:38] [INFO] [INFO] 
+2025-11-18T18:53:47.792210620Z [err]  Processing cycle for ChatGPT
+2025-11-18T18:53:47.792215990Z [err]  INFO:autonomous_engine:[INFO] 
+2025-11-18T18:53:47.792221372Z [err]  Processing cycle for ChatGPT
+2025-11-18T18:53:47.792226468Z [err]  [2025-11-18 18:53:38] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+2025-11-18T18:53:47.792233310Z [err]  INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 5 categories
+2025-11-18T18:53:47.792239055Z [err]  DEBUG:autonomous_engine:[CACHE] Technical data for BTC fetched and cached
+2025-11-18T18:54:17.809731853Z [err]  [2025-11-18 18:54:12] [INFO] [INFO] get_orderbook: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bids_count=18, asks_count=10
+2025-11-18T18:54:17.809739541Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bids_count=18, asks_count=10
+2025-11-18T18:54:17.809746633Z [err]  [2025-11-18 18:54:12] [INFO] [INFO] get_latest_price: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bid=0.351, ask=0.472, mid=0.4115
+2025-11-18T18:54:17.809755470Z [err]  INFO:autonomous_engine:[INFO] get_latest_price: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bid=0.351, ask=0.472, mid=0.4115
+2025-11-18T18:54:17.809762281Z [inf]  [EV DEBUG] ChatGPT - Event: This market will resolve to "Up" if the "Close" price for th
+2025-11-18T18:54:17.809769014Z [inf]  [EV DEBUG]   AI Probability: 45.00% | Side Probability: 55.00% | Confidence: 60%
+2025-11-18T18:54:17.809775487Z [inf]  [EV DEBUG]   Market Price: 41.15% | Buying: NO
+2025-11-18T18:54:17.809782075Z [inf]  [EV DEBUG]   Gross EV: $1.39 | Net EV: $1.22 | Fee: $0.16
+2025-11-18T18:54:17.809789022Z [inf]  [EV DEBUG]   Should Bet: True | Reason: Criterios mínimos cumplidos
+2025-11-18T18:54:17.809795598Z [err]  [2025-11-18 18:54:12] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=4, T=6, F=0, V=8
+2025-11-18T18:54:17.809799468Z [err]  INFO:autonomous_engine:[BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=4, T=6, F=0, V=8
+2025-11-18T18:54:17.809803508Z [err]  DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+2025-11-18T18:54:17.809807378Z [inf]  [CACHE HIT] News data for BTC
+2025-11-18T18:54:17.810305410Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-18T18:54:37.814667610Z [err]  DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+2025-11-18T18:54:37.814675801Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-18T18:54:37.814686524Z [err]  [2025-11-18 18:54:31] [WARNING] [WARNING] get_latest_price: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077 - No valid bid/ask prices in orderbook
+2025-11-18T18:54:37.814697527Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077 - No valid bid/ask prices in orderbook
+2025-11-18T18:54:37.814704606Z [err]  [2025-11-18 18:54:31] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-18T18:54:37.814710872Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-18T18:54:37.814719642Z [err]  [2025-11-18 18:54:31] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=5, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-18T18:54:37.814732202Z [err]  [2025-11-18 18:54:31] [INFO] [INFO] get_orderbook: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077, bids_count=0, asks_count=0
+2025-11-18T18:54:37.814738834Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077, bids_count=0, asks_count=0
+2025-11-18T18:54:37.818723685Z [inf]  [CACHE HIT] News data for BTC
+2025-11-18T18:54:37.818731364Z [inf]  [CACHE HIT] Volatility data for BTC
+2025-11-18T18:55:08.106426978Z [err]  [2025-11-18 18:55:03] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=0, asks_count=0
+2025-11-18T18:55:08.106433361Z [err]  INFO:autonomous_engine:[INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=0, asks_count=0
+2025-11-18T18:55:08.106440583Z [err]  [2025-11-18 18:55:03] [WARNING] [WARNING] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470 - No valid bid/ask prices in orderbook
+2025-11-18T18:55:08.106447432Z [err]  WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470 - No valid bid/ask prices in orderbook
+2025-11-18T18:55:08.106454186Z [err]  [2025-11-18 18:55:03] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-18T18:55:08.106460319Z [err]  WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470: No market price available | Message: Orderbook has no valid bid or ask prices
+2025-11-18T18:55:08.106467379Z [err]  [2025-11-18 18:55:03] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=6, F=0, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-18T18:55:08.106473373Z [err]  INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=4, T=6, F=0, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+2025-11-18T18:55:08.106479808Z [err]  DEBUG:autonomous_engine:[CACHE] Technical data for ETH fetched and cached
+2025-11-18T18:55:08.106771341Z [inf]  [CACHE MISS] Fetched & cached news data for ETH
+2025-11-18T18:55:08.106779154Z [inf]  [CACHE MISS] Fetched & cached volatility data for ETH-USD
+2025-11-18T18:55:08.267902138Z [err]  [2025-11-18 18:55:08 +0000] [589] [CRITICAL] WORKER TIMEOUT (pid:590)
+2025-11-18T18:55:08.274799025Z [err]  [2025-11-18 18:55:08 +0000] [590] [ERROR] Error handling request /admin/trigger-cycle
+2025-11-18T18:55:08.274805120Z [err]      response = self.full_dispatch_request()
+2025-11-18T18:55:08.274806092Z [err]  Traceback (most recent call last):
+2025-11-18T18:55:08.274811388Z [err]    File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2025-11-18T18:55:08.274816630Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.274817600Z [err]      self.handle_request(listener, req, client, addr)
+2025-11-18T18:55:08.274823527Z [err]    File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+2025-11-18T18:55:08.274823886Z [err]    File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2025-11-18T18:55:08.274830509Z [err]      respiter = self.wsgi(environ, resp.start_response)
+2025-11-18T18:55:08.274831001Z [err]      rv = self.dispatch_request()
+2025-11-18T18:55:08.274836322Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.274836762Z [err]           ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.274843288Z [err]    File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+2025-11-18T18:55:08.274843355Z [err]    File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 1536, in __call__
+2025-11-18T18:55:08.274849469Z [err]      return self.wsgi_app(environ, start_response)
+2025-11-18T18:55:08.274849955Z [err]      return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2025-11-18T18:55:08.274855960Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.274856352Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.274861042Z [err]    File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+2025-11-18T18:55:08.275765751Z [err]      return copy(f, *args, **kw)
+2025-11-18T18:55:08.275771853Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.275775255Z [err]    File "/app/api.py", line 1062, in trigger_cycle
+2025-11-18T18:55:08.275777253Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 477, in __call__
+2025-11-18T18:55:08.275781672Z [err]      results = engine.run_daily_cycle()
+2025-11-18T18:55:08.275785749Z [err]                ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.275789418Z [err]    File "/app/autonomous_engine.py", line 157, in run_daily_cycle
+2025-11-18T18:55:08.275793778Z [err]      firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
+2025-11-18T18:55:08.275798318Z [err]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.275802258Z [err]    File "/app/autonomous_engine.py", line 313, in _process_firm_multi_category_cycle
+2025-11-18T18:55:08.275805937Z [err]      evaluation = self._evaluate_event_opportunity(
+2025-11-18T18:55:08.275809986Z [err]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.275815123Z [err]    File "/app/autonomous_engine.py", line 444, in _evaluate_event_opportunity
+2025-11-18T18:55:08.275819502Z [err]      prediction = self._get_firm_prediction(firm_name, event_description, symbol or '', market_id)
+2025-11-18T18:55:08.275823189Z [err]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.275827142Z [err]    File "/app/autonomous_engine.py", line 950, in _get_firm_prediction
+2025-11-18T18:55:08.275830872Z [err]      prediction = firm.generate_prediction(prompt)
+2025-11-18T18:55:08.275835118Z [err]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.275839217Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 338, in wrapped_f
+2025-11-18T18:55:08.277025843Z [err]    File "/app/llm_clients.py", line 131, in generate_prediction
+2025-11-18T18:55:08.277027056Z [err]      do = self.iter(retry_state=retry_state)
+2025-11-18T18:55:08.277032313Z [err]      response = self.client.chat.completions.create(
+2025-11-18T18:55:08.277035016Z [err]           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.277038777Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.277042861Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 378, in iter
+2025-11-18T18:55:08.277044847Z [err]    File "/opt/venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+2025-11-18T18:55:08.277047716Z [err]             ^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.277050115Z [err]      result = action(retry_state)
+2025-11-18T18:55:08.277051110Z [err]      return func(*args, **kwargs)
+2025-11-18T18:55:08.277057349Z [err]               ^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.277059378Z [err]    File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+2025-11-18T18:55:08.277065199Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 400, in <lambda>
+2025-11-18T18:55:08.277067023Z [err]      raise self._exception
+2025-11-18T18:55:08.277072327Z [err]      self._add_action_func(lambda rs: rs.outcome.result())
+2025-11-18T18:55:08.277074008Z [err]    File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 480, in __call__
+2025-11-18T18:55:08.277078945Z [err]                                       ^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.277080744Z [err]      result = fn(*args, **kwargs)
+2025-11-18T18:55:08.277086054Z [err]    File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+2025-11-18T18:55:08.277088087Z [err]               ^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.277092376Z [err]      return self.__get_result()
+2025-11-18T18:55:08.278248476Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+2025-11-18T18:55:08.278262413Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.278265989Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.278270608Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+2025-11-18T18:55:08.278275109Z [err]    File "/opt/venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1156, in create
+2025-11-18T18:55:08.278277524Z [err]      response = self._send_handling_redirects(
+2025-11-18T18:55:08.278281296Z [err]      return self._post(
+2025-11-18T18:55:08.278285626Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.278289325Z [err]             ^^^^^^^^^^^
+2025-11-18T18:55:08.278292052Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+2025-11-18T18:55:08.278296067Z [err]    File "/opt/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1259, in post
+2025-11-18T18:55:08.278299056Z [err]      response = self._send_single_request(request)
+2025-11-18T18:55:08.278301586Z [err]      return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+2025-11-18T18:55:08.278305675Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.278307386Z [err]                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.278312399Z [err]    File "/opt/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+2025-11-18T18:55:08.278316213Z [err]      response = self._client.send(
+2025-11-18T18:55:08.278320206Z [err]                 ^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.278324996Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+2025-11-18T18:55:08.278329262Z [err]      response = self._send_handling_auth(
+2025-11-18T18:55:08.279308748Z [err]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.279315204Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+2025-11-18T18:55:08.279318322Z [err]      response = transport.handle_request(request)
+2025-11-18T18:55:08.279320388Z [err]      return self._connection.handle_request(request)
+2025-11-18T18:55:08.279324237Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.279329358Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+2025-11-18T18:55:08.279330131Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.279334897Z [err]      resp = self._pool.handle_request(req)
+2025-11-18T18:55:08.279338021Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+2025-11-18T18:55:08.279340479Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.279345235Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+2025-11-18T18:55:08.279346894Z [err]      raise exc
+2025-11-18T18:55:08.279349935Z [err]      raise exc from None
+2025-11-18T18:55:08.279354368Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+2025-11-18T18:55:08.279356657Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+2025-11-18T18:55:08.279358946Z [err]      response = connection.handle_request(
+2025-11-18T18:55:08.279363791Z [err]      ) = self._receive_response_headers(**kwargs)
+2025-11-18T18:55:08.279364944Z [err]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.279369363Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+2025-11-18T18:55:08.280156034Z [err]      event = self._receive_event(timeout=timeout)
+2025-11-18T18:55:08.280160895Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.280164780Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+2025-11-18T18:55:08.280169178Z [err]      data = self._network_stream.read(
+2025-11-18T18:55:08.280172953Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.280177337Z [err]    File "/opt/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 128, in read
+2025-11-18T18:55:08.280181253Z [err]      return self._sock.recv(max_bytes)
+2025-11-18T18:55:08.280185656Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.280189894Z [err]    File "/root/.nix-profile/lib/python3.12/ssl.py", line 1232, in recv
+2025-11-18T18:55:08.280194030Z [err]      return self.read(buflen)
+2025-11-18T18:55:08.280198466Z [err]             ^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.280202148Z [err]    File "/root/.nix-profile/lib/python3.12/ssl.py", line 1105, in read
+2025-11-18T18:55:08.280206200Z [err]      return self._sslobj.read(len)
+2025-11-18T18:55:08.280211719Z [err]             ^^^^^^^^^^^^^^^^^^^^^^
+2025-11-18T18:55:08.280215309Z [err]    File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2025-11-18T18:55:08.280218953Z [err]      sys.exit(1)
+2025-11-18T18:55:08.280223470Z [err]  SystemExit: 1
+2025-11-18T18:55:08.280227802Z [inf]  100.64.0.2 - - [18/Nov/2025:18:55:08 +0000] "POST /admin/trigger-cycle HTTP/1.1" 500 0 "-" "-"
+2025-11-18T18:55:08.280232026Z [err]  [2025-11-18 18:55:08 +0000] [590] [INFO] Worker exiting (pid: 590)
+2025-11-18T18:55:08.861924833Z [err]  [2025-11-18 18:55:08 +0000] [683] [INFO] Booting worker with pid: 683
+2025-11-18T18:55:15.487189829Z [inf]  [DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+2025-11-18T18:55:15.487202391Z [inf]  ================================================================================
+2025-11-18T18:55:15.487210387Z [inf]  OPINION_TRADE_API_KEY: SET (len=32)
+2025-11-18T18:55:15.487216887Z [inf]  OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+2025-11-18T18:55:15.487222509Z [inf]  RAILWAY_ENVIRONMENT: production
+2025-11-18T18:55:15.487229487Z [inf]  RAILWAY_SERVICE_NAME: keen-essence
+2025-11-18T18:55:15.487236443Z [inf]  ================================================================================
+2025-11-18T18:55:15.487264493Z [inf]  ================================================================================
+2025-11-18T19:00:07.025885875Z [inf]  
+2025-11-18T19:00:07.025893588Z [inf]  [ORDER MONITOR] Triggered via API endpoint at 2025-11-18T19:00:01.739883
+2025-11-18T19:00:07.025900898Z [err]  [2025-11-18 19:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-18T19:00:07.025908000Z [err]  [2025-11-18 19:00:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-18T19:00:07.025915134Z [err]  [2025-11-18 19:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+2025-11-18T19:00:07.025922919Z [inf]  100.64.0.3 - - [18/Nov/2025:19:00:02 +0000] "POST /api/monitor-orders HTTP/1.1" 200 158 "-" "Mozilla/4.0 (compatible; cron-job.org; http://cron-job.org/abuse/)"
+2025-11-18T19:30:05.036172049Z [inf]  [ORDER MONITOR] Triggered via API endpoint at 2025-11-18T19:30:01.288603
+2025-11-18T19:30:05.036183075Z [err]  [2025-11-18 19:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-18T19:30:05.036186828Z [inf]  100.64.0.4 - - [18/Nov/2025:19:30:02 +0000] "POST /api/monitor-orders HTTP/1.1" 200 158 "-" "Mozilla/4.0 (compatible; cron-job.org; http://cron-job.org/abuse/)"
+2025-11-18T19:30:05.036192665Z [err]  [2025-11-18 19:30:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-18T19:30:05.036201279Z [err]  [2025-11-18 19:30:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+2025-11-18T19:30:05.036238847Z [inf]  
+2025-11-18T20:00:04.083629448Z [inf]  
+2025-11-18T20:00:04.083633872Z [inf]  [ORDER MONITOR] Triggered via API endpoint at 2025-11-18T20:00:01.738189
+2025-11-18T20:00:04.083637467Z [err]  [2025-11-18 20:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+2025-11-18T20:00:04.083640968Z [err]  [2025-11-18 20:00:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+2025-11-18T20:00:04.083644396Z [err]  [2025-11-18 20:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+2025-11-18T20:00:04.083648468Z [inf]  100.64.0.5 - - [18/Nov/2025:20:00:02 +0000] "POST /api/monitor-orders HTTP/1.1" 200 158 "-" "Mozilla/4.0 (compatible; cron-job.org; http://cron-job.org/abuse/)"
