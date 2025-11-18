@@ -68,8 +68,19 @@ def validate_and_normalize_prediction(prediction: Dict, firm_name: str) -> Dict:
             normalized[analysis_field] = default_text
     
     prob = normalized.get('probabilidad_final_prediccion', 0.5)
-    if not isinstance(prob, (int, float)) or prob < 0.0 or prob > 1.0:
-        print(f"[{firm_name}] WARNING: probabilidad_final_prediccion inválida ({prob}), corrigiendo a 0.5")
+    if not isinstance(prob, (int, float)):
+        print(f"[{firm_name}] WARNING: probabilidad_final_prediccion no es número ({prob}), corrigiendo a 0.5")
+        normalized['probabilidad_final_prediccion'] = 0.5
+    elif prob > 1.0:
+        # AI envió probabilidad como porcentaje (0-100), convertir a 0-1
+        if prob <= 100.0:
+            normalized['probabilidad_final_prediccion'] = prob / 100.0
+            print(f"[{firm_name}] INFO: Convirtiendo probabilidad de porcentaje ({prob}%) a decimal ({prob/100.0})")
+        else:
+            print(f"[{firm_name}] WARNING: probabilidad_final_prediccion fuera de rango ({prob}), corrigiendo a 0.5")
+            normalized['probabilidad_final_prediccion'] = 0.5
+    elif prob < 0.0:
+        print(f"[{firm_name}] WARNING: probabilidad_final_prediccion negativa ({prob}), corrigiendo a 0.5")
         normalized['probabilidad_final_prediccion'] = 0.5
     
     confidence = normalized.get('nivel_confianza', 50)
