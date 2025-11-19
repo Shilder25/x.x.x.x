@@ -2,6 +2,13 @@
 
 TradingAgents is an autonomous AI-powered prediction market trading system that orchestrates multiple AI models (ChatGPT, Gemini, Qwen, Deepseek, Grok) to analyze and place bets on Opinion.trade markets. The system acts as a competitive arena where different AI "firms" make independent trading decisions based on multi-source data analysis (technical indicators, sentiment, news, volatility) and compete for the best Sharpe Ratio. It features a Flask REST API backend for autonomous trading logic and a Next.js React frontend ("Alpha Arena UI") for real-time monitoring and visualization. The system is designed for deployment on Railway with automatic daily prediction cycles, comprehensive risk management through a 4-tier adaptive system, and bankroll protection mechanisms, operating in TEST and PRODUCTION modes.
 
+## Recent Changes (November 19, 2025)
+
+**Critical Execution Blocking Bug Fix:**
+- **Database Save Order Fix**: Fixed critical bug where `[BET]` logs appeared but no bets executed. Root cause: `_save_ai_decision()` was called AFTER logging, and DB failures killed the process before returning evaluation, leaving `all_opportunities` empty.
+- **Solution**: Reordered `_evaluate_event_opportunity` to save to DB FIRST in try-catch, then set `is_opportunity=True` ONLY after successful DB save, then log `[BET]`. If DB save fails, opportunity is never marked (not added to execution list), error is logged, and treated as SKIP.
+- **Guarantee**: `[BET]` logs now always correspond to successful DB records, and failed DB writes cannot leak opportunities into execution.
+
 ## Recent Changes (November 18, 2025)
 
 **Critical Fixes:**
