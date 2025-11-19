@@ -1,0 +1,170 @@
+[2025-11-19 03:00:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-19 03:00:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-19 03:00:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-19 03:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-19 03:30:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-19 03:30:02] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+[2025-11-19 03:31:37] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.4 at 2025-11-19T03:31:37.218329
+[2025-11-19 03:31:37] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-19 03:31:37] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-19 03:31:37] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-19 03:31:37] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+[2025-11-19 03:31:37] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+[2025-11-19 03:31:38] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+[2025-11-19 03:31:38] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+[2025-11-19 03:31:38] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-19 03:31:38] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+[2025-11-19 03:31:38] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 10 markets
+[2025-11-19 03:31:38] [INFO] [INFO] [PAGINATION] BINARY Page 2: 10/10 markets are active (filtered out resolved/closed)
+[2025-11-19 03:31:38] [INFO] [INFO] [PAGINATION] BINARY - Got 10 < 20, reached end of markets
+[2025-11-19 03:31:38] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+[2025-11-19 03:31:38] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+[2025-11-19 03:31:40] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+[2025-11-19 03:31:40] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 48 markets
+[2025-11-19 03:31:40] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 48/48 markets are active (filtered out resolved/closed)
+[2025-11-19 03:31:42] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+[2025-11-19 03:31:42] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 48 markets
+[2025-11-19 03:31:42] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 48/48 markets are active (filtered out resolved/closed)
+[2025-11-19 03:31:43] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: errno=0, has_result=True
+[2025-11-19 03:31:43] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3 returned 48 markets
+[2025-11-19 03:31:43] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 3: 48/48 markets are active (filtered out resolved/closed)
+[2025-11-19 03:31:45] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: errno=0, has_result=True
+[2025-11-19 03:31:45] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4 returned 48 markets
+[2025-11-19 03:31:45] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 4: 48/48 markets are active (filtered out resolved/closed)
+[2025-11-19 03:31:45] [INFO] [INFO] [PAGINATION] CATEGORICAL - Reached target limit of 200 markets
+[2025-11-19 03:31:45] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+[2025-11-19 03:31:45] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 222 markets, returning 200 (after limit)
+[2025-11-19 03:32:01] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+[2025-11-19 03:32:01] [INFO] [INFO] Fetched 200 events from Opinion.trade
+[2025-11-19 03:32:01] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 42, 'Other': 104, 'Rates': 27, 'Finance': 23, 'Commodities': 4}
+[2025-11-19 03:32:01] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-19 03:32:01] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+[2025-11-19 03:32:02] [WARNING] [WARNING] Technical data error for BTC: No indicators returned
+[2025-11-19 03:32:21] [INFO] [INFO] get_orderbook: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bids_count=24, asks_count=12
+[2025-11-19 03:32:21] [INFO] [INFO] get_latest_price: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bid=0.002, ask=0.838, mid=0.42
+[2025-11-19 03:32:21] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=45.00%, Conf=60% | Scores: S=5, N=4, T=4, F=2, V=8
+[2025-11-19 03:32:22] [WARNING] [WARNING] Technical data error for BTC: No indicators returned
+[2025-11-19 03:32:35] [INFO] [INFO] get_orderbook: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bids_count=0, asks_count=0
+[2025-11-19 03:32:35] [WARNING] [WARNING] get_latest_price: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312 - No valid bid/ask prices in orderbook
+[2025-11-19 03:32:35] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:32:35] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=5, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:32:36] [WARNING] [WARNING] Technical data error for BTC: No indicators returned
+[2025-11-19 03:32:47] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=0, asks_count=0
+[2025-11-19 03:32:47] [WARNING] [WARNING] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782 - No valid bid/ask prices in orderbook
+[2025-11-19 03:32:47] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:32:47] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=4, V=2 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:32:47] [WARNING] [WARNING] Technical data error for ETH: No indicators returned
+[2025-11-19 03:32:59] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=20, asks_count=9
+[2025-11-19 03:32:59] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.643, ask=0.999, mid=0.821
+[2025-11-19 03:32:59] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=48.00%, Conf=40% | Scores: S=5, N=3, T=2, F=4, V=2 | Reason: Valor esperado negativo o cero
+[2025-11-19 03:33:00] [WARNING] [WARNING] Technical data error for ETH: No indicators returned
+[2025-11-19 03:33:22] [INFO] [INFO] get_orderbook: token_id=91263182015381827009811905354009393225622653324877176380977546025702641459008, bids_count=14, asks_count=38
+[2025-11-19 03:33:22] [INFO] [INFO] get_latest_price: token_id=91263182015381827009811905354009393225622653324877176380977546025702641459008, bid=0.01, ask=0.023, mid=0.0165
+[2025-11-19 03:33:22] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to “Yes” immediately if a...' | Prob=52.00%, Conf=40% | Scores: S=4, N=3, T=2, F=3, V=7
+[2025-11-19 03:33:36] [INFO] [INFO] get_orderbook: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bids_count=20, asks_count=39
+[2025-11-19 03:33:36] [INFO] [INFO] get_latest_price: token_id=1705711983173510030034283990738554319834640377668774222731202833174529489514, bid=0.105, ask=0.111, mid=0.108
+[2025-11-19 03:33:36] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=50.00%, Conf=45% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Probabilidad demasiado baja (<51%)
+[2025-11-19 03:33:51] [INFO] [INFO] get_orderbook: token_id=64280476186561285435031655594678635828521705525216766503261753272011946041518, bids_count=0, asks_count=0
+[2025-11-19 03:33:51] [WARNING] [WARNING] get_latest_price: token_id=64280476186561285435031655594678635828521705525216766503261753272011946041518 - No valid bid/ask prices in orderbook
+[2025-11-19 03:33:51] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=64280476186561285435031655594678635828521705525216766503261753272011946041518: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:33:51] [INFO] [SKIP] ChatGPT - 'This market will resolve to the amount of basis po...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=6, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:34:03] [INFO] [INFO] get_orderbook: token_id=96170070487942595193731017879174326953942777133626546437785369016112850527461, bids_count=0, asks_count=0
+[2025-11-19 03:34:03] [WARNING] [WARNING] get_latest_price: token_id=96170070487942595193731017879174326953942777133626546437785369016112850527461 - No valid bid/ask prices in orderbook
+[2025-11-19 03:34:03] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=96170070487942595193731017879174326953942777133626546437785369016112850527461: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:34:03] [INFO] [SKIP] ChatGPT - 'This market will resolve to the amount of basis po...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:34:18] [INFO] [INFO] get_orderbook: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842, bids_count=0, asks_count=0
+[2025-11-19 03:34:18] [WARNING] [WARNING] get_latest_price: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842 - No valid bid/ask prices in orderbook
+[2025-11-19 03:34:18] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:34:18] [INFO] [SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:34:34] [INFO] [INFO] get_orderbook: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827, bids_count=0, asks_count=0
+[2025-11-19 03:34:34] [WARNING] [WARNING] get_latest_price: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827 - No valid bid/ask prices in orderbook
+[2025-11-19 03:34:34] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:34:34] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:34:52] [INFO] [INFO] get_orderbook: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558, bids_count=0, asks_count=0
+[2025-11-19 03:34:52] [WARNING] [WARNING] get_latest_price: token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558 - No valid bid/ask prices in orderbook
+[2025-11-19 03:34:52] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=46181935149634569310712478719090758678049794282760163907235551658386029153558: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:34:52] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=4, N=4, T=3, F=3, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:35:09] [INFO] [INFO] get_orderbook: token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094, bids_count=0, asks_count=0
+[2025-11-19 03:35:09] [WARNING] [WARNING] get_latest_price: token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094 - No valid bid/ask prices in orderbook
+[2025-11-19 03:35:09] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=58065199480238994084083356159291264227218751101013858796856503462553404465094: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:35:09] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” if Polymarket of...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:35:10] [WARNING] [WARNING] Technical data error for GOOGL: No indicators returned
+[2025-11-19 03:35:25] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-19 03:35:25] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-19 03:35:25] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:35:25] [INFO] [SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=4, F=3, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:35:26] [WARNING] [WARNING] Technical data error for GOOGL: No indicators returned
+[2025-11-19 03:35:35] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-19 03:35:35] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-19 03:35:35] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:35:35] [INFO] [SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=0, F=0, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:35:36] [WARNING] [WARNING] Technical data error for GOOGL: No indicators returned
+[2025-11-19 03:35:48] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-19 03:35:48] [WARNING] [WARNING] get_latest_price: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776 - No valid bid/ask prices in orderbook
+[2025-11-19 03:35:48] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-19 03:35:48] [INFO] [SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=4, F=3, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-19 03:35:48] [INFO] [INFO] ChatGPT - Found 2 total opportunities across all categories
+[2025-11-19 03:35:48] [INFO] [INFO] ChatGPT - Will execute top 2 opportunities (max_concurrent_positions: 2)
+[2025-11-19 03:35:49] [INFO] [INFO] get_orderbook: token_id=91263182015381827009811905354009393225622653324877176380977546025702641459008, bids_count=14, asks_count=38
+[2025-11-19 03:35:49] [INFO] [INFO] get_latest_price: token_id=91263182015381827009811905354009393225622653324877176380977546025702641459008, bid=0.015, ask=0.066, mid=0.0405
+[2025-11-19 03:35:49] [INFO] [INFO] ChatGPT - Market price: 0.0405, AI probability: 0.5200
+[2025-11-19 03:35:49] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1463, token_id=91263182015381827009811905354009393225622653324877176380977546025702641459008, price=0.52, amount=5.0 USDT, side=BUY
+[2025-11-19 03:35:50] [ERROR] [ERROR] [ORDER EXCEPTION] Failed to place order: ('execution reverted: BEP20: approve from the zero address: 0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000', '0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000')
+[2025-11-19 03:35:50] [ERROR] [ERROR] [ORDER EXCEPTION] Full traceback:
+Traceback (most recent call last):
+  File "/app/opinion_trade_api.py", line 461, in submit_prediction
+    result = self.client.place_order(order_data, check_approval=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/sdk.py", line 650, in place_order
+    return self._place_order(input, exchange_addr, chain_id, quote_token_addr, int(quote_token.decimal), check_approval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/sdk.py", line 469, in _place_order
+    self.enable_trading()
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/sdk.py", line 181, in enable_trading
+    return self.contract_caller.enable_trading(supported_quote_tokens)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/contract_caller.py", line 383, in enable_trading
+    tx_hash, safe_tx_hash, return_value = self.safe.execute_multisend(multi_send_txs)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/safe/safe.py", line 74, in execute_multisend
+    safe_tx = self.build_multisend_tx(multi_send_txs, safe_nonce)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/safe/safe.py", line 60, in build_multisend_tx
+    safe_gas = self.multisend.estimate_gas(multi_send_txs, self.address)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/safe/multisend.py", line 341, in estimate_gas
+    gas = self.w3.eth.estimate_gas(tx_params, block_identifier=block_identifier, state_override=state_override)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/web3/eth/eth.py", line 317, in estimate_gas
+    return self._estimate_gas(transaction, block_identifier, state_override)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/web3/module.py", line 112, in caller
+    result = w3.manager.request_blocking(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/web3/manager.py", line 233, in request_blocking
+    return self.formatted_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/web3/manager.py", line 199, in formatted_response
+    validate_rpc_response_and_raise_if_error(
+  File "/opt/venv/lib/python3.12/site-packages/web3/_utils/validation.py", line 397, in validate_rpc_response_and_raise_if_error
+    response = apply_error_formatters(error_formatters, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/web3/_utils/formatters.py", line 146, in apply_error_formatters
+    formatted_resp = pipe(response, error_formatters)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "cytoolz/functoolz.pyx", line 706, in cytoolz.functoolz.pipe
+  File "cytoolz/functoolz.pyx", line 681, in cytoolz.functoolz.c_pipe
+  File "/opt/venv/lib/python3.12/site-packages/web3/_utils/error_formatters_utils.py", line 166, in raise_contract_logic_error_on_revert
+    raise ContractLogicError(message, data=data)
+web3.exceptions.ContractLogicError: ('execution reverted: BEP20: approve from the zero address: 0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000', '0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000')
+[2025-11-19 03:35:50] [ERROR] [BET ERROR] ChatGPT - Failed bet on This market will resolve to “Yes” immediately if a... (event_id=1463): Unexpected error
+[2025-11-19 03:35:50] [ERROR] [ERROR] Exception processing ChatGPT: Cannot operate on a closed database.
+[2025-11-19 03:35:50] [INFO] [INFO] 
+Processing cycle for Gemini
+[2025-11-19 03:35:50] [INFO] [INFO] Gemini - Analyzing 5 categories
+[2025-11-19 03:35:50] [WARNING] [WARNING] Technical data error for BTC: No indicators returned
+[2025-11-19 03:36:24] [INFO] [INFO] get_orderbook: token_id=64889235537901237597388603528261656991060258068088045303996457443147669899892, bids_count=11, asks_count=25
+[2025-11-19 03:36:24] [INFO] [INFO] get_latest_price: token_id=64889235537901237597388603528261656991060258068088045303996457443147669899892, bid=0.162, ask=0.659, mid=0.41050000000000003
+[2025-11-19 03:36:24] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=51.00%, Conf=5% | Scores: S=0, N=0, T=0, F=0, V=4 | Reason: Nivel de confianza insuficiente (<40%)
+[2025-11-19 03:36:24] [WARNING] [WARNING] Technical data error for BTC: No indicators returned

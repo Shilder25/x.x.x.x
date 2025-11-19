@@ -1,0 +1,89 @@
+[2025-11-19 03:35:49] [INFO] [INFO] ChatGPT - Market price: 0.0405, AI probability: 0.5200
+INFO:autonomous_engine:[INFO] ChatGPT - Market price: 0.0405, AI probability: 0.5200
+[2025-11-19 03:35:49] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1463, token_id=91263182015381827009811905354009393225622653324877176380977546025702641459008, price=0.52, amount=5.0 USDT, side=BUY
+INFO:autonomous_engine:[INFO] [ORDER DEBUG] Placing order: market_id=1463, token_id=91263182015381827009811905354009393225622653324877176380977546025702641459008, price=0.52, amount=5.0 USDT, side=BUY
+WARNING:root:Failed to get decimals for 0x55d398326f99059fF775485246999027B3197955, defaulting to 18: ("The function 'decimals' was not found in this ", "contract's abi.")
+[2025-11-19 03:35:50] [ERROR] [ERROR] [ORDER EXCEPTION] Failed to place order: ('execution reverted: BEP20: approve from the zero address: 0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000', '0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000')
+ERROR:autonomous_engine:[ERROR] [ORDER EXCEPTION] Failed to place order: ('execution reverted: BEP20: approve from the zero address: 0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000', '0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000')
+[2025-11-19 03:35:50] [ERROR] [ERROR] [ORDER EXCEPTION] Full traceback:
+Traceback (most recent call last):
+  File "/app/opinion_trade_api.py", line 461, in submit_prediction
+    result = self.client.place_order(order_data, check_approval=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/sdk.py", line 650, in place_order
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    return self._place_order(input, exchange_addr, chain_id, quote_token_addr, int(quote_token.decimal), check_approval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/sdk.py", line 469, in _place_order
+    self.enable_trading()
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/sdk.py", line 181, in enable_trading
+    return self.contract_caller.enable_trading(supported_quote_tokens)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/contract_caller.py", line 383, in enable_trading
+    tx_hash, safe_tx_hash, return_value = self.safe.execute_multisend(multi_send_txs)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/safe/safe.py", line 74, in execute_multisend
+    safe_tx = self.build_multisend_tx(multi_send_txs, safe_nonce)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/safe/safe.py", line 60, in build_multisend_tx
+    safe_gas = self.multisend.estimate_gas(multi_send_txs, self.address)
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/safe/multisend.py", line 341, in estimate_gas
+    gas = self.w3.eth.estimate_gas(tx_params, block_identifier=block_identifier, state_override=state_override)
+  File "/opt/venv/lib/python3.12/site-packages/web3/manager.py", line 199, in formatted_response
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    validate_rpc_response_and_raise_if_error(
+  File "/opt/venv/lib/python3.12/site-packages/web3/eth/eth.py", line 317, in estimate_gas
+    return self._estimate_gas(transaction, block_identifier, state_override)
+  File "/opt/venv/lib/python3.12/site-packages/web3/_utils/validation.py", line 397, in validate_rpc_response_and_raise_if_error
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = apply_error_formatters(error_formatters, response)
+  File "/opt/venv/lib/python3.12/site-packages/web3/module.py", line 112, in caller
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    result = w3.manager.request_blocking(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/web3/manager.py", line 233, in request_blocking
+    return self.formatted_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/web3/_utils/formatters.py", line 146, in apply_error_formatters
+    raise ContractLogicError(message, data=data)
+    formatted_resp = pipe(response, error_formatters)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web3.exceptions.ContractLogicError: ('execution reverted: BEP20: approve from the zero address: 0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000', '0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002442455032303a20617070726f76652066726f6d20746865207a65726f206164647265737300000000000000000000000000000000000000000000000000000000')
+  File "cytoolz/functoolz.pyx", line 706, in cytoolz.functoolz.pipe
+  File "cytoolz/functoolz.pyx", line 681, in cytoolz.functoolz.c_pipe
+ERROR:autonomous_engine:[ERROR] [ORDER EXCEPTION] Full traceback:
+  File "/opt/venv/lib/python3.12/site-packages/web3/_utils/error_formatters_utils.py", line 166, in raise_contract_logic_error_on_revert
+Traceback (most recent call last):
+  File "/app/opinion_trade_api.py", line 461, in submit_prediction
+    result = self.client.place_order(order_data, check_approval=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/sdk.py", line 650, in place_order
+    return self._place_order(input, exchange_addr, chain_id, quote_token_addr, int(quote_token.decimal), check_approval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/sdk.py", line 469, in _place_order
+    self.enable_trading()
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/sdk.py", line 181, in enable_trading
+    return self.contract_caller.enable_trading(supported_quote_tokens)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/contract_caller.py", line 383, in enable_trading
+    tx_hash, safe_tx_hash, return_value = self.safe.execute_multisend(multi_send_txs)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/safe/safe.py", line 74, in execute_multisend
+    safe_tx = self.build_multisend_tx(multi_send_txs, safe_nonce)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/safe/safe.py", line 60, in build_multisend_tx
+    safe_gas = self.multisend.estimate_gas(multi_send_txs, self.address)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opinion_clob_sdk/chain/safe/multisend.py", line 341, in estimate_gas
+  File "/opt/venv/lib/python3.12/site-packages/web3/manager.py", line 199, in formatted_response
+    validate_rpc_response_and_raise_if_error(
+    gas = self.w3.eth.estimate_gas(tx_params, block_identifier=block_identifier, state_override=state_override)
+  File "/opt/venv/lib/python3.12/site-packages/web3/_utils/validation.py", line 397, in validate_rpc_response_and_raise_if_error
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = apply_error_formatters(error_formatters, response)
+  File "/opt/venv/lib/python3.12/site-packages/web3/eth/eth.py", line 317, in estimate_gas
+    return self._estimate_gas(transaction, block_identifier, state_override)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/web3/module.py", line 112, in caller
+    result = w3.manager.request_blocking(

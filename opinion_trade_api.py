@@ -113,18 +113,17 @@ class OpinionTradeAPI:
             return
         
         try:
-            # NOTE: multi_sig_addr is set to zero address as a workaround for SDK bug
-            # The SDK's default value is empty string '' which causes ValueError in fast_to_checksum_address()
-            # TODO: Replace with actual Opinion.trade multi-sig contract address when available from official docs
-            # Current workaround allows SDK initialization and basic operations (fetch markets, place orders)
-            # If multi-sig-specific operations fail, this address will need to be updated
+            # NOTE: multi_sig_addr must be the wallet address (visible in "MyProfile" on Opinion.trade)
+            # According to Opinion.trade docs: private_key is the signer, multi_sig_addr holds assets/positions
+            # For most use cases, they can be the same address (hot wallet signs for itself)
+            # The wallet address is derived from the private key during initialization
             self.client = Client(
                 host='https://proxy.opinion.trade:8443',
                 apikey=self.api_key,
                 chain_id=CHAIN_ID_BNB_MAINNET,  # 56
                 rpc_url='https://bsc-dataseed.binance.org/',
                 private_key=self.private_key,
-                multi_sig_addr='0x0000000000000000000000000000000000000000',
+                multi_sig_addr=self.wallet_address,  # Use actual wallet address, not zero address
                 conditional_tokens_addr='0xAD1a38cEc043e70E83a3eC30443dB285ED10D774',
                 multisend_addr='0x998739BFdAAdde7C933B942a68053933098f9EDa',
                 enable_trading_check_interval=3600,

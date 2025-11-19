@@ -4,10 +4,23 @@ TradingAgents is an autonomous AI-powered prediction market trading system that 
 
 ## Recent Changes (November 19, 2025)
 
+**Critical SDK Configuration Fix:**
+- **Multi-sig Address Fix**: Fixed "BEP20: approve from the zero address" error by using actual wallet address instead of 0x0000... for `multi_sig_addr` parameter.
+- **Root Cause**: Opinion.trade SDK requires `multi_sig_addr` to be the actual wallet address (visible in "MyProfile"), not a zero address placeholder.
+- **Solution**: Changed line 129 in `opinion_trade_api.py` from `multi_sig_addr='0x0000...'` to `multi_sig_addr=self.wallet_address` (0x43C9b...).
+- **Impact**: Orders can now execute successfully on Opinion.trade BNB Chain mainnet.
+
 **Critical Execution Blocking Bug Fix:**
 - **Database Save Order Fix**: Fixed critical bug where `[BET]` logs appeared but no bets executed. Root cause: `_save_ai_decision()` was called AFTER logging, and DB failures killed the process before returning evaluation, leaving `all_opportunities` empty.
 - **Solution**: Reordered `_evaluate_event_opportunity` to save to DB FIRST in try-catch, then set `is_opportunity=True` ONLY after successful DB save, then log `[BET]`. If DB save fails, opportunity is never marked (not added to execution list), error is logged, and treated as SKIP.
 - **Guarantee**: `[BET]` logs now always correspond to successful DB records, and failed DB writes cannot leak opportunities into execution.
+
+**Opinion.trade SDK Architecture (from official docs):**
+- **`private_key`**: The signer wallet that signs orders/transactions (hot wallet) - Uses Login Wallet 0x43C9b...
+- **`multi_sig_addr`**: The assets wallet that holds funds/positions - Same as Login Wallet 0x43C9b... for our setup
+- **Spot Balance** (0x15c1a...): Opinion.trade's internal custodial account (NOT used in SDK configuration)
+- **Gas-free operations**: place_order(), cancel_order(), all GET methods (use EIP712 signatures)
+- **Gas-required operations**: enable_trading(), split(), merge(), redeem() (BNB required for gas)
 
 ## Recent Changes (November 18, 2025)
 
