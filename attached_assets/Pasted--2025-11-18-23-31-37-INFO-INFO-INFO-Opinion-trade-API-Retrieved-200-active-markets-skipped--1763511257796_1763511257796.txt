@@ -1,0 +1,102 @@
+[2025-11-18 23:31:37] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+INFO:autonomous_engine:[INFO] [INFO] Opinion.trade API: Retrieved 200 active markets (skipped 0 markets - missing tokens or Sports category)
+[2025-11-18 23:31:37] [INFO] [INFO] Fetched 200 events from Opinion.trade
+INFO:autonomous_engine:[INFO] Fetched 200 events from Opinion.trade
+[2025-11-18 23:31:37] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 40, 'Other': 105, 'Rates': 28, 'Finance': 23, 'Commodities': 4}
+INFO:autonomous_engine:[CATEGORY] Events grouped into 5 categories: {'Crypto': 40, 'Other': 105, 'Rates': 28, 'Finance': 23, 'Commodities': 4}
+[2025-11-18 23:31:37] [INFO] [INFO] 
+Processing cycle for ChatGPT
+INFO:autonomous_engine:[INFO] 
+Processing cycle for ChatGPT
+[2025-11-18 23:31:37] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 5 categories
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC fetched and cached
+[CACHE MISS] Fetched & cached news data for BTC
+[CACHE MISS] Fetched & cached volatility data for BTC-USD
+[2025-11-18 23:31:53] [INFO] [INFO] get_orderbook: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bids_count=21, asks_count=9
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bids_count=21, asks_count=9
+[2025-11-18 23:31:53] [INFO] [INFO] get_latest_price: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bid=0.15, ask=0.837, mid=0.4935
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=85417902971264841196853549855675812904615307282964903626520772846903342346983, bid=0.15, ask=0.837, mid=0.4935
+[EV DEBUG] ChatGPT - Event: This market will resolve to "Up" if the "Close" price for th
+[EV DEBUG]   AI Probability: 48.00% | Side Probability: 52.00% | Confidence: 60%
+[EV DEBUG]   Market Price: 49.35% | Buying: NO
+[EV DEBUG]   Gross EV: $0.27 | Net EV: $0.11 | Fee: $0.16
+[EV DEBUG]   Should Bet: True | Reason: Criterios mínimos cumplidos
+[2025-11-18 23:31:53] [INFO] [BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=48.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=4
+INFO:autonomous_engine:[BET] ChatGPT - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=48.00%, Conf=60% | Scores: S=5, N=5, T=6, F=5, V=4
+[CACHE HIT] News data for BTC
+[CACHE HIT] Volatility data for BTC
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+100.64.0.3 - - [18/Nov/2025:23:31:56 +0000] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 4193 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.3 - - [18/Nov/2025:23:32:05 +0000] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 4193 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.3 - - [18/Nov/2025:23:32:06 +0000] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 4193 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[2025-11-18 23:32:09] [INFO] [INFO] get_orderbook: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077, bids_count=0, asks_count=0
+[2025-11-18 23:32:09] [WARNING] [WARNING] get_latest_price: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077 - No valid bid/ask prices in orderbook
+[2025-11-18 23:32:09] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-18 23:32:09] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=0, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=0, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+[CACHE HIT] News data for BTC
+[CACHE HIT] Volatility data for BTC
+100.64.0.3 - - [18/Nov/2025:23:32:13 +0000] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 5043 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[2025-11-18 23:32:44] [INFO] [INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782, bids_count=0, asks_count=0
+[2025-11-18 23:32:44] [WARNING] [WARNING] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782 - No valid bid/ask prices in orderbook
+[2025-11-18 23:32:44] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=58051758318749416844134546540689807023120209641626838066967201740293550778782: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-18 23:32:44] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=0, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=6, F=0, V=7 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+DEBUG:autonomous_engine:[CACHE] Technical data for ETH fetched and cached
+[CACHE MISS] Fetched & cached news data for ETH
+[CACHE MISS] Fetched & cached volatility data for ETH-USD
+[2025-11-18 23:33:17] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=48.00%, Conf=45% | Scores: S=5, N=4, T=5, F=3, V=2 | Reason: Valor esperado negativo o cero
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=48.00%, Conf=45% | Scores: S=5, N=4, T=5, F=3, V=2 | Reason: Valor esperado negativo o cero
+[CACHE HIT] News data for ETH
+[CACHE HIT] Volatility data for ETH
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.75, ask=0.84, mid=0.7949999999999999
+[EV DEBUG]   Market Price: 79.50% | Buying: NO
+[EV DEBUG] ChatGPT - Event: This market will resolve to "Yes" if the Supreme Court of th
+[EV DEBUG]   Gross EV: $-2.75 | Net EV: $-2.91 | Fee: $0.16
+[EV DEBUG]   AI Probability: 48.00% | Side Probability: 52.00% | Confidence: 45%
+[EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+[2025-11-18 23:33:17] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=9
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=18, asks_count=9
+[2025-11-18 23:33:17] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.75, ask=0.84, mid=0.7949999999999999
+DEBUG:autonomous_engine:[CACHE] Technical data for ETH retrieved from cache
+[EV DEBUG]   Gross EV: $-3.02 | Net EV: $-3.22 | Fee: $0.20
+[EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+[2025-11-18 23:34:13] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=35.00%, Conf=65% | Scores: S=5, N=5, T=6, F=5, V=4 | Reason: Valor esperado negativo o cero
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=35.00%, Conf=65% | Scores: S=5, N=5, T=6, F=5, V=4 | Reason: Valor esperado negativo o cero
+[2025-11-18 23:34:13] [INFO] [INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=38, asks_count=2
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bids_count=38, asks_count=2
+[2025-11-18 23:34:13] [INFO] [INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.921, ask=0.98399, mid=0.9524950000000001
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=20149227795492566109318550481016190805078857503551684520611528784231324976722, bid=0.921, ask=0.98399, mid=0.9524950000000001
+[EV DEBUG] ChatGPT - Event: This market will resolve to “Yes” immediately if all Coinbas
+[EV DEBUG]   AI Probability: 35.00% | Side Probability: 65.00% | Confidence: 65%
+[EV DEBUG]   Market Price: 95.25% | Buying: NO
+[2025-11-18 23:34:36] [INFO] [INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=39, asks_count=20
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bids_count=39, asks_count=20
+[2025-11-18 23:34:36] [INFO] [INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.82, ask=0.922, mid=0.871
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=72626402424837083596608079327516527330006431242201828946953751861731396677656, bid=0.82, ask=0.922, mid=0.871
+[EV DEBUG] ChatGPT - Event: This market will resolve to "Yes" if any Binance 1 minute ca
+[EV DEBUG]   AI Probability: 45.00% | Side Probability: 55.00% | Confidence: 40%
+[EV DEBUG]   Market Price: 87.10% | Buying: NO
+[EV DEBUG]   Gross EV: $-3.21 | Net EV: $-3.37 | Fee: $0.16
+[EV DEBUG]   Should Bet: False | Reason: Valor esperado negativo o cero
+[2025-11-18 23:34:36] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=40% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Valor esperado negativo o cero
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if any Binance 1...' | Prob=45.00%, Conf=40% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Valor esperado negativo o cero
+[2025-11-18 23:34:51] [WARNING] [WARNING] get_latest_price: token_id=19676329351403267507814810510566264331780829350204397522799572788997901189498 - No valid bid/ask prices in orderbook
+[2025-11-18 23:34:51] [INFO] [INFO] get_orderbook: token_id=19676329351403267507814810510566264331780829350204397522799572788997901189498, bids_count=0, asks_count=0
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=19676329351403267507814810510566264331780829350204397522799572788997901189498 - No valid bid/ask prices in orderbook
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=19676329351403267507814810510566264331780829350204397522799572788997901189498, bids_count=0, asks_count=0
+[2025-11-18 23:34:51] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=19676329351403267507814810510566264331780829350204397522799572788997901189498: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=19676329351403267507814810510566264331780829350204397522799572788997901189498: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-18 23:34:51] [INFO] [SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=6, N=5, T=4, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=6, N=5, T=4, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-18 23:35:00] [INFO] [INFO] get_orderbook: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842, bids_count=0, asks_count=0
+[2025-11-18 23:35:00] [WARNING] [WARNING] get_latest_price: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842 - No valid bid/ask prices in orderbook

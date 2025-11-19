@@ -549,7 +549,7 @@ class AutonomousEngine:
                 self._save_ai_decision(firm_name, event, prediction, evaluation, 'ANALYZED', evaluation['reason'])
                 return evaluation
             
-            evaluation['is_opportunity'] = True
+            # Store preliminary approval data (but DON'T set is_opportunity=True yet)
             evaluation['bet_size'] = bet_size
             evaluation['bet_calculation'] = bet_calculation
             evaluation['reason'] = f"Approved: Net EV={ev_calc['net_ev']:.2f}, Prob={probability:.2%}, Conf={confidence}%"
@@ -562,12 +562,27 @@ class AutonomousEngine:
             self._save_ai_decision(firm_name, event, {}, evaluation, 'ANALYZED', evaluation['reason'])
             return evaluation
         
-        # Log análisis detallado del evento (caso de oportunidad aprobada)
-        logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'BET')
-        
-        # Save APPROVED decision to DB for transparency and get bet_id
-        bet_id = self._save_ai_decision(firm_name, event, prediction, evaluation, 'APPROVED', None)
-        evaluation['approved_bet_id'] = bet_id  # Pass bet_id to execution
+        # CRITICAL: Save to DB FIRST, then mark as opportunity and log [BET] ONLY if DB save succeeds
+        # This ensures opportunities are never added to execution list if DB persistence fails
+        try:
+            # Save APPROVED decision to DB for transparency and get bet_id
+            bet_id = self._save_ai_decision(firm_name, event, prediction, evaluation, 'APPROVED', None)
+            evaluation['approved_bet_id'] = bet_id  # Pass bet_id to execution
+            
+            # ONLY NOW mark as opportunity (so it gets added to all_opportunities list)
+            evaluation['is_opportunity'] = True
+            
+            # Log análisis detallado del evento ONLY after successful DB save
+            logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'BET')
+            
+        except Exception as db_error:
+            # DB save failed - treat as SKIP and log error
+            # CRITICAL: is_opportunity was never set to True, so this won't be added to execution list
+            error_msg = f"Database save failed: {str(db_error)}"
+            logger.error(f"{firm_name} - {error_msg}", prefix="DB ERROR")
+            evaluation['reason'] = error_msg
+            logger.log_event_analysis(firm_name, event_description, prediction, evaluation, 'SKIP')
+            return evaluation
         
         return evaluation
     
