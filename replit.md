@@ -4,6 +4,19 @@ TradingAgents is an autonomous AI-powered prediction market trading system that 
 
 ## Recent Changes (November 19, 2025)
 
+**CRITICAL ORDER PRICING BUG FIX:**
+- **Problem**: Orders were being placed with AI probability as limit price instead of market price, causing orders to never execute.
+  - Example: AI predicts 52% probability, market price is 29%, order placed at price=0.52 never fills
+  - Orders appeared in orderbook but never executed (no trades)
+- **Root Cause**: `submit_prediction()` used `price = str(round(probability, 4))` - using AI's probability as the order's limit price
+- **Solution v2 (Improved after architect review)**:
+  - Fetch REAL market price from orderbook using `get_latest_price()` with 3-retry exponential backoff
+  - Use ASK price for BUY orders, BID price for SELL orders
+  - Fallback logic for partial orderbook data: ASK → MID → BID + spread (or vice versa for SELL)
+  - Use epsilon (1e-4) instead of arbitrary clamps to keep prices in valid [0, 1] range
+  - Apply 1% buffer for immediate execution: `min(price * 1.01, 1.0 - epsilon)` for BUY
+- **Impact**: Orders now execute immediately at market prices with robust fallbacks, resolving the "bets identified but not executed" issue
+
 **Critical SDK Configuration Fix:**
 - **Multi-sig Address Fix**: Fixed "BEP20: approve from the zero address" error by using actual wallet address instead of 0x0000... for `multi_sig_addr` parameter.
 - **Root Cause**: Opinion.trade SDK requires `multi_sig_addr` to be the actual wallet address (visible in "MyProfile"), not a zero address placeholder.

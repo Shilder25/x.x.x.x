@@ -426,8 +426,77 @@ class OpinionTradeAPI:
                     'message': 'market_id and token_id are required'
                 }
             
-            # Convert probability to price (probability is the limit price)
-            price = str(round(probability, 4))
+            # CRITICAL: Get REAL market price from orderbook, NOT AI probability
+            # AI probability is used to DECIDE if we should bet, but ORDER price comes from market
+            # Retry logic with exponential backoff for price fetch
+            price_response = None
+            for attempt in range(3):
+                price_response = self.get_latest_price(token_id)
+                if price_response.get('success'):
+                    break
+                logger.warning(f"[PRICE RETRY] Attempt {attempt + 1}/3 failed for token {token_id}: {price_response.get('error')}")
+                if attempt < 2:
+                    import time
+                    time.sleep(0.5 * (attempt + 1))  # 0.5s, 1s backoff
+            
+            if not price_response or not price_response.get('success'):
+                logger.error(f"[ORDER ABORT] Cannot get market price after 3 retries for token {token_id}")
+                return {
+                    'success': False,
+                    'error': 'Cannot fetch market price',
+                    'message': f"Failed to get orderbook price after 3 retries: {price_response.get('error') if price_response else 'No response'}"
+                }
+            
+            # Extract prices with fallback logic for partial orderbook data
+            ask_price = price_response.get('ask')
+            bid_price = price_response.get('bid')
+            mid_price = price_response.get('price')  # midpoint or last trade
+            
+            # Determine execution price with fallbacks:
+            # 1. For BUY: prefer ASK, fallback to MID, then BID + spread
+            # 2. For SELL: prefer BID, fallback to MID, then ASK - spread
+            EPSILON = 1e-4  # Small value to keep prices in valid range [0, 1]
+            BUFFER = 0.01  # 1% buffer for immediate execution
+            
+            if side_str == 'BUY':
+                if ask_price is not None and ask_price > 0:
+                    market_price = ask_price
+                elif mid_price is not None and mid_price > 0:
+                    logger.warning(f"[PRICE FALLBACK] ASK missing for token {token_id}, using MID: {mid_price}")
+                    market_price = mid_price
+                elif bid_price is not None and bid_price > 0:
+                    logger.warning(f"[PRICE FALLBACK] ASK/MID missing for token {token_id}, using BID + spread: {bid_price}")
+                    market_price = bid_price * 1.02  # Add 2% spread estimate
+                else:
+                    logger.error(f"[ORDER ABORT] No valid prices in orderbook for token {token_id}")
+                    return {
+                        'success': False,
+                        'error': 'No valid orderbook prices',
+                        'message': f"ASK={ask_price}, BID={bid_price}, MID={mid_price} all invalid"
+                    }
+                # Apply buffer and clamp to valid range
+                execution_price = min(market_price * (1 + BUFFER), 1.0 - EPSILON)
+            else:  # SELL
+                if bid_price is not None and bid_price > 0:
+                    market_price = bid_price
+                elif mid_price is not None and mid_price > 0:
+                    logger.warning(f"[PRICE FALLBACK] BID missing for token {token_id}, using MID: {mid_price}")
+                    market_price = mid_price
+                elif ask_price is not None and ask_price > 0:
+                    logger.warning(f"[PRICE FALLBACK] BID/MID missing for token {token_id}, using ASK - spread: {ask_price}")
+                    market_price = ask_price * 0.98  # Subtract 2% spread estimate
+                else:
+                    logger.error(f"[ORDER ABORT] No valid prices in orderbook for token {token_id}")
+                    return {
+                        'success': False,
+                        'error': 'No valid orderbook prices',
+                        'message': f"ASK={ask_price}, BID={bid_price}, MID={mid_price} all invalid"
+                    }
+                # Apply buffer and clamp to valid range
+                execution_price = max(market_price * (1 - BUFFER), EPSILON)
+            
+            price = str(round(execution_price, 4))
+            logger.info(f"[PRICE CALC] AI prob: {probability:.4f} | Market {side_str}: ASK={ask_price}, BID={bid_price}, MID={mid_price} | Execution: {execution_price:.4f}")
             
             # Convert side string to OrderSide enum
             side = OrderSide.BUY if side_str == 'BUY' else OrderSide.SELL
