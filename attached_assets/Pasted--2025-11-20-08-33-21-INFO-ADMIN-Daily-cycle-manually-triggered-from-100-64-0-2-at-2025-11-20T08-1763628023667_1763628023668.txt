@@ -1,0 +1,66 @@
+[2025-11-20 08:33:21] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-20T08:33:21.105859
+[2025-11-20 08:33:21] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-20 08:33:21] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-20 08:33:21] [INFO] [INFO] [INIT] Enabling trading permissions (one-time setup)...
+[2025-11-20 08:33:22] [WARNING] [WARNING] [INIT] Could not enable trading (may already be enabled): Could not transact with/call contract function, is contract deployed correctly and chain synced?
+[2025-11-20 08:33:22] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-20 08:33:22] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+[2025-11-20 08:33:22] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 12 markets
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 2: 12/12 markets are active (filtered out resolved/closed)
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY - Got 12 < 20, reached end of markets
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+[2025-11-20 08:33:25] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+[2025-11-20 08:33:25] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 20 markets
+[2025-11-20 08:33:25] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 19 markets
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 19/19 markets are active (filtered out resolved/closed)
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL - Got 19 < 20, reached end of markets
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 71 markets, returning 71 (after limit)
+[2025-11-20 08:33:42] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 71 active markets (skipped 0 markets - missing tokens or Sports category)
+[2025-11-20 08:33:42] [INFO] [INFO] Fetched 71 events from Opinion.trade
+[2025-11-20 08:33:42] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 22, 'Other': 36, 'Finance': 4, 'Rates': 8, 'Commodities': 1}
+[2025-11-20 08:33:42] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-20 08:33:42] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+[2025-11-20 08:33:48] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:33:51] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:33:54] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:33:56] [INFO] [SKIP] ChatGPT - 'This market will resolve to 'Yes' if credible, pub...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:04] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:08] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:10] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” if the Office of...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:12] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:14] [INFO] [SKIP] ChatGPT - 'This market will resolve to the calendar date (ET)...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:16] [INFO] [SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:18] [INFO] [SKIP] ChatGPT - 'This market will resolve to the amount of basis po...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:19] [INFO] [SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:23] [INFO] [SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:34:23] [INFO] [INFO] ChatGPT - No opportunities found
+[2025-11-20 08:34:23] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 13 skipped, 13 events analyzed
+[2025-11-20 08:34:23] [INFO] [INFO] 
+Processing cycle for Gemini
+[2025-11-20 08:34:23] [INFO] [INFO] Gemini - Analyzing 5 categories
+[2025-11-20 08:34:58] [INFO] [INFO] get_orderbook: token_id=496731220284429166691467676398757801724564517439900898811644340357133198694, bids_count=21, asks_count=8
+[2025-11-20 08:34:58] [INFO] [INFO] get_latest_price: token_id=496731220284429166691467676398757801724564517439900898811644340357133198694, bid=0.752, ask=0.978, mid=0.865
+[2025-11-20 08:34:58] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=58.00%, Conf=60% | Scores: S=2, N=2, T=6, F=0, V=7 | Reason: Valor esperado negativo o cero
+[2025-11-20 08:35:40] [INFO] [INFO] get_orderbook: token_id=64889235537901237597388603528261656991060258068088045303996457443147669899892, bids_count=0, asks_count=1
+[2025-11-20 08:35:40] [INFO] [INFO] get_latest_price: token_id=64889235537901237597388603528261656991060258068088045303996457443147669899892, using ask_price=0.99 (no bid available)
+[2025-11-20 08:35:40] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=52.00%, Conf=55% | Scores: S=5, N=5, T=5, F=5, V=3 | Reason: Valor esperado negativo o cero
+[2025-11-20 08:36:37] [INFO] [INFO] get_orderbook: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312, bids_count=0, asks_count=0
+[2025-11-20 08:36:37] [WARNING] [WARNING] get_latest_price: token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312 - No valid bid/ask prices in orderbook
+[2025-11-20 08:36:37] [WARNING] [WARNING] Gemini - Price fetch failed for token_id=77946807953452923237601597640040832655811881989395852629488978228543949314312: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-20 08:36:37] [INFO] [SKIP] Gemini - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=7, F=0, V=8 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-20 08:37:23] [INFO] [INFO] get_orderbook: token_id=45568993805777222973266492062529671216553914656882699188292614866622028044388, bids_count=35, asks_count=15
+[2025-11-20 08:37:23] [INFO] [INFO] get_latest_price: token_id=45568993805777222973266492062529671216553914656882699188292614866622028044388, bid=0.493, ask=0.95, mid=0.7215
+[2025-11-20 08:37:23] [INFO] [SKIP] Gemini - 'This market will resolve to 'Yes' if credible, pub...' | Prob=52.00%, Conf=10% | Scores: S=0, N=0, T=0, F=2, V=10 | Reason: Valor esperado negativo o cero
+[2025-11-20 08:38:09] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=17, asks_count=14
+[2025-11-20 08:38:09] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.63, ask=0.769, mid=0.6995
+[2025-11-20 08:38:09] [INFO] [SKIP] Gemini - 'This market will resolve to "Yes" if the Supreme C...' | Prob=44.00%, Conf=60% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Valor esperado negativo o cero

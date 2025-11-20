@@ -1,0 +1,86 @@
+[DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+================================================================================
+OPINION_TRADE_API_KEY: SET (len=32)
+OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+RAILWAY_ENVIRONMENT: production
+RAILWAY_SERVICE_NAME: keen-essence
+================================================================================
+100.64.0.2 - - [20/Nov/2025:08:33:12 +0000] "GET /admin HTTP/1.1" 200 12533 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [20/Nov/2025:08:33:13 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [20/Nov/2025:08:33:14 +0000] "GET /favicon.ico HTTP/1.1" 404 207 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[2025-11-20 08:33:21] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.2 at 2025-11-20T08:33:21.105859
+[2025-11-20 08:33:21] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-20 08:33:21] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-20 08:33:21] [INFO] [INFO] [INIT] Enabling trading permissions (one-time setup)...
+100.64.0.2 - - [20/Nov/2025:08:33:22 +0000] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 553 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+WARNING:root:Failed to get decimals for 0x55d398326f99059fF775485246999027B3197955, defaulting to 18: ("The function 'decimals' was not found in this ", "contract's abi.")
+[2025-11-20 08:33:22] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+INFO:autonomous_engine:[INFO] [PAGINATION] Fetching BINARY markets...
+INFO:autonomous_engine:[INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-20 08:33:22] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+INFO:autonomous_engine:[INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+[2025-11-20 08:33:22] [WARNING] [WARNING] [INIT] Could not enable trading (may already be enabled): Could not transact with/call contract function, is contract deployed correctly and chain synced?
+WARNING:autonomous_engine:[WARNING] [INIT] Could not enable trading (may already be enabled): Could not transact with/call contract function, is contract deployed correctly and chain synced?
+DEBUG:autonomous_engine:[CACHE] Cleared data cache at start of cycle 2025-11-20T08:33:22.849384
+[2025-11-20 08:33:22] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 12 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 2 returned 12 markets
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY Page 2: 12/12 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 2: 12/12 markets are active (filtered out resolved/closed)
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY - Got 12 < 20, reached end of markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY - Got 12 < 20, reached end of markets
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY complete: collected 0 markets
+[2025-11-20 08:33:23] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+INFO:autonomous_engine:[INFO] [PAGINATION] Fetching CATEGORICAL markets...
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-20 08:33:25] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+[2025-11-20 08:33:25] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-20 08:33:25] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 20 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 1 returned 20 markets
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 19 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 2 returned 19 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 19/19 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 2: 19/19 markets are active (filtered out resolved/closed)
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL - Got 19 < 20, reached end of markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL - Got 19 < 20, reached end of markets
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+[2025-11-20 08:33:27] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 71 markets, returning 71 (after limit)
+INFO:autonomous_engine:[INFO] [PAGINATION] Pagination complete: fetched 71 markets, returning 71 (after limit)
+INFO:autonomous_engine:[INFO] 
+Processing cycle for ChatGPT
+[2025-11-20 08:33:42] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 5 categories
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC fetched and cached
+[CACHE MISS] Fetched & cached news data for BTC
+[CACHE MISS] Fetched & cached volatility data for BTC-USD
+[2025-11-20 08:33:42] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 71 active markets (skipped 0 markets - missing tokens or Sports category)
+INFO:autonomous_engine:[INFO] [INFO] Opinion.trade API: Retrieved 71 active markets (skipped 0 markets - missing tokens or Sports category)
+[2025-11-20 08:33:42] [INFO] [INFO] Fetched 71 events from Opinion.trade
+INFO:autonomous_engine:[INFO] Fetched 71 events from Opinion.trade
+[2025-11-20 08:33:42] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 22, 'Other': 36, 'Finance': 4, 'Rates': 8, 'Commodities': 1}
+INFO:autonomous_engine:[CATEGORY] Events grouped into 5 categories: {'Crypto': 22, 'Other': 36, 'Finance': 4, 'Rates': 8, 'Commodities': 1}
+[2025-11-20 08:33:42] [INFO] [INFO] 
+Processing cycle for ChatGPT
+[2025-11-20 08:33:48] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+[CACHE HIT] News data for BTC
+[CACHE HIT] Volatility data for BTC
+[2025-11-20 08:33:51] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[CACHE HIT] News data for BTC
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+[CACHE HIT] Volatility data for BTC

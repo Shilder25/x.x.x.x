@@ -1,0 +1,123 @@
+DEBUG:autonomous_engine:[CACHE] Cleared data cache at start of cycle 2025-11-20T08:46:11.067500
+[2025-11-20 08:46:09] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.4 at 2025-11-20T08:46:09.111698
+[2025-11-20 08:46:11] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-20 08:46:09] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+INFO:autonomous_engine:[INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-20 08:46:11] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+INFO:autonomous_engine:[INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+[2025-11-20 08:46:11] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+INFO:autonomous_engine:[INFO] [PAGINATION] Fetching BINARY markets...
+[2025-11-20 08:46:11] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+[2025-11-20 08:46:11] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+[2025-11-20 08:46:11] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-20 08:46:12] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+[2025-11-20 08:46:12] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 12 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 2 returned 12 markets
+[2025-11-20 08:46:12] [INFO] [INFO] [PAGINATION] BINARY Page 2: 12/12 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 2: 12/12 markets are active (filtered out resolved/closed)
+[2025-11-20 08:46:12] [INFO] [INFO] [PAGINATION] BINARY - Got 12 < 20, reached end of markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY - Got 12 < 20, reached end of markets
+[2025-11-20 08:46:12] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY complete: collected 0 markets
+[2025-11-20 08:46:12] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+INFO:autonomous_engine:[INFO] [PAGINATION] Fetching CATEGORICAL markets...
+[2025-11-20 08:46:14] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+[2025-11-20 08:46:14] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 20 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 1 returned 20 markets
+[2025-11-20 08:46:14] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 20/20 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-20 08:46:16] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+[2025-11-20 08:46:16] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 19 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 2 returned 19 markets
+[2025-11-20 08:46:16] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 19/19 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 2: 19/19 markets are active (filtered out resolved/closed)
+[2025-11-20 08:46:16] [INFO] [INFO] [PAGINATION] CATEGORICAL - Got 19 < 20, reached end of markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL - Got 19 < 20, reached end of markets
+[2025-11-20 08:46:16] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+[2025-11-20 08:46:16] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 71 markets, returning 71 (after limit)
+INFO:autonomous_engine:[INFO] [PAGINATION] Pagination complete: fetched 71 markets, returning 71 (after limit)
+[2025-11-20 08:46:35] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 71 active markets (skipped 0 markets - missing tokens or Sports category)
+INFO:autonomous_engine:[INFO] [INFO] Opinion.trade API: Retrieved 71 active markets (skipped 0 markets - missing tokens or Sports category)
+[2025-11-20 08:46:35] [INFO] [INFO] Fetched 71 events from Opinion.trade
+INFO:autonomous_engine:[INFO] Fetched 71 events from Opinion.trade
+[2025-11-20 08:46:35] [INFO] [CATEGORY] Events grouped into 5 categories: {'Crypto': 22, 'Other': 36, 'Commodities': 1, 'Rates': 8, 'Finance': 4}
+INFO:autonomous_engine:[CATEGORY] Events grouped into 5 categories: {'Crypto': 22, 'Other': 36, 'Commodities': 1, 'Rates': 8, 'Finance': 4}
+[2025-11-20 08:46:35] [INFO] [INFO] 
+Processing cycle for ChatGPT
+INFO:autonomous_engine:[INFO] 
+Processing cycle for ChatGPT
+[2025-11-20 08:46:35] [INFO] [INFO] ChatGPT - Analyzing 5 categories
+INFO:autonomous_engine:[INFO] ChatGPT - Analyzing 5 categories
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC fetched and cached
+[CACHE MISS] Fetched & cached news data for BTC
+[CACHE MISS] Fetched & cached volatility data for BTC-USD
+[2025-11-20 08:46:39] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[CACHE HIT] News data for BTC
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+[CACHE HIT] Volatility data for BTC
+[2025-11-20 08:46:41] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+[CACHE HIT] News data for BTC
+[CACHE HIT] Volatility data for BTC
+[2025-11-20 08:46:43] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Up" if the "Close" pr...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:46:45] [INFO] [SKIP] ChatGPT - 'This market will resolve to 'Yes' if credible, pub...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to 'Yes' if credible, pub...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+DEBUG:autonomous_engine:[CACHE] Technical data for ETH fetched and cached
+[CACHE MISS] Fetched & cached news data for ETH
+[CACHE MISS] Fetched & cached volatility data for ETH-USD
+[2025-11-20 08:46:49] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the Supreme C...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+DEBUG:autonomous_engine:[CACHE] Technical data for ETH retrieved from cache
+[CACHE HIT] News data for ETH
+[CACHE HIT] Volatility data for ETH
+[2025-11-20 08:46:51] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to “Yes” immediately if a...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+DEBUG:autonomous_engine:[CACHE] Technical data for GOOGL fetched and cached
+[CACHE MISS] Fetched & cached news data for GOOGL
+[CACHE MISS] Fetched & cached volatility data for GOOGL
+[2025-11-20 08:46:54] [INFO] [SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:46:56] [INFO] [SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:46:58] [INFO] [SKIP] ChatGPT - 'This market will resolve to the amount of basis po...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to the amount of basis po...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:47:00] [INFO] [SKIP] ChatGPT - 'This market will resolve to the amount of basis po...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to the amount of basis po...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:47:02] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” if the Office of...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to “Yes” if the Office of...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:47:04] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+[2025-11-20 08:47:06] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=N/A, N=N/A, T=N/A, F=N/A, V=N/A | Reason: Prediction error: Error code: 429 - {'error': {'message': 'Your account is not a...
+INFO:autonomous_engine:[INFO] ChatGPT - Cycle complete: 0 bets placed, 13 skipped, 13 events analyzed
+[2025-11-20 08:47:06] [INFO] [INFO] 
+Processing cycle for Gemini
+[2025-11-20 08:47:06] [INFO] [INFO] ChatGPT - No opportunities found
+INFO:autonomous_engine:[INFO] 
+INFO:autonomous_engine:[INFO] ChatGPT - No opportunities found
+Processing cycle for Gemini
+[2025-11-20 08:47:06] [INFO] [INFO] ChatGPT - Cycle complete: 0 bets placed, 13 skipped, 13 events analyzed
+[2025-11-20 08:47:06] [INFO] [INFO] Gemini - Analyzing 5 categories
+INFO:autonomous_engine:[INFO] Gemini - Analyzing 5 categories
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+[CACHE HIT] News data for BTC
+[CACHE HIT] Volatility data for BTC
+[EV DEBUG] Gemini - Event: This market will resolve to "Up" if the "Close" price for th
+[EV DEBUG]   AI Probability: 48.00% | Side Probability: 52.00% | Confidence: 55%
+[EV DEBUG]   Market Price: 4.05% | Buying: NO
+[EV DEBUG]   Gross EV: $4.79 | Net EV: $4.64 | Fee: $0.16
+[EV DEBUG]   Should Bet: True | Reason: Criterios mínimos cumplidos
+[2025-11-20 08:47:44] [INFO] [INFO] get_orderbook: token_id=104788520164056387198050824726352937517213399673403399045626642417499020740500, bids_count=8, asks_count=20
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=104788520164056387198050824726352937517213399673403399045626642417499020740500, bids_count=8, asks_count=20
+[2025-11-20 08:47:44] [INFO] [BET] Gemini - $5.00 on 'This market will resolve to "Up" if the "Close" pr...' | Prob=48.00%, Conf=55% | Scores: S=0, N=0, T=4, F=0, V=8
+[2025-11-20 08:47:44] [INFO] [INFO] get_latest_price: token_id=104788520164056387198050824726352937517213399673403399045626642417499020740500, bid=0.001, ask=0.08, mid=0.0405

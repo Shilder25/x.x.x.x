@@ -21,7 +21,9 @@ class BankrollManager:
         self.initial_bankroll = initial_bankroll
         self.current_bankroll = initial_bankroll
         
-        self.min_bet_size = 5.0
+        # Adjust minimum bet size based on TEST vs PRODUCTION mode
+        # Opinion.trade minimum is typically around $0.10-$1
+        self.min_bet_size = 1.0 if initial_bankroll <= 100 else 5.0  # $1 min for TEST, $5 for PRODUCTION
         self.max_bet_size_pct = 0.02
         
         self.consecutive_wins = 0
