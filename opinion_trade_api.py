@@ -131,6 +131,17 @@ class OpinionTradeAPI:
                 market_cache_ttl=300
             )
             logger.info(f"✓ Opinion.trade SDK initialized (wallet: {self.wallet_address})")
+            
+            # CRITICAL: Enable trading permissions (required once before placing any orders)
+            # According to docs, this must be called before any trading operations
+            try:
+                logger.info("[INIT] Enabling trading permissions (one-time setup)...")
+                self.client.enable_trading()
+                logger.info("✓ Trading permissions enabled successfully")
+            except Exception as e:
+                # Log warning but don't fail initialization - may already be enabled
+                logger.warning(f"[INIT] Could not enable trading (may already be enabled): {e}")
+                
         except Exception as e:
             logger.error(f"✗ Failed to initialize Opinion.trade SDK: {e}")
             self.client = None
@@ -448,8 +459,9 @@ class OpinionTradeAPI:
                 }
             
             # Extract prices with fallback logic for partial orderbook data
-            ask_price = price_response.get('ask')
-            bid_price = price_response.get('bid')
+            # CRITICAL FIX: get_latest_price() returns 'ask_price' and 'bid_price', not 'ask' and 'bid'
+            ask_price = price_response.get('ask_price')
+            bid_price = price_response.get('bid_price')
             mid_price = price_response.get('price')  # midpoint or last trade
             
             # Determine execution price with fallbacks:
@@ -509,10 +521,11 @@ class OpinionTradeAPI:
                     'message': 'Minimum bet amount is 1 USDT'
                 }
             
-            # SDK expects makerAmountInQuoteToken as STRING with USDT value (not wei)
-            # Example: "5" for 5 USDT, "10.5" for 10.5 USDT
+            # SDK expects makerAmountInQuoteToken as INT or FLOAT with USDT value (not wei)
+            # Example: 5 for 5 USDT, 10.5 for 10.5 USDT
             # The SDK handles conversion to wei internally
-            amount_str = str(amount)
+            # According to docs: makerAmountInQuoteToken should be int or float, not string
+            amount_num = float(amount)  # Keep as numeric type
             
             # Create order
             order_data = PlaceOrderDataInput(
@@ -521,11 +534,11 @@ class OpinionTradeAPI:
                 side=side,
                 orderType=LIMIT_ORDER,
                 price=price,
-                makerAmountInQuoteToken=amount_str  # Amount in USDT as string
+                makerAmountInQuoteToken=amount_num  # Amount in USDT as float/int
             )
             
             # Place order with check_approval=True to ensure trading permissions are enabled
-            logger.info(f"[ORDER DEBUG] Placing order: market_id={market_id}, token_id={token_id}, price={price}, amount={amount_str} USDT, side={side_str}")
+            logger.info(f"[ORDER DEBUG] Placing order: market_id={market_id}, token_id={token_id}, price={price}, amount={amount_num} USDT, side={side_str}")
             result = self.client.place_order(order_data, check_approval=True)
             
             # Check if order was successful
