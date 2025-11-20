@@ -507,7 +507,8 @@ class OpinionTradeAPI:
                 # Apply buffer and clamp to valid range
                 execution_price = max(market_price * (1 - BUFFER), EPSILON)
             
-            price = str(round(execution_price, 4))
+            # CRITICAL: Format price as string with exactly 4 decimals, required by SDK
+            price = f"{execution_price:.4f}"  # Always format to 4 decimals for consistency
             logger.info(f"[PRICE CALC] AI prob: {probability:.4f} | Market {side_str}: ASK={ask_price}, BID={bid_price}, MID={mid_price} | Execution: {execution_price:.4f}")
             
             # Convert side string to OrderSide enum
