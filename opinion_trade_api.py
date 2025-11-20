@@ -467,7 +467,8 @@ class OpinionTradeAPI:
             # Determine execution price with fallbacks:
             # 1. For BUY: prefer ASK, fallback to MID, then BID + spread
             # 2. For SELL: prefer BID, fallback to MID, then ASK - spread
-            EPSILON = 1e-4  # Small value to keep prices in valid range [0, 1]
+            MIN_PRICE = 0.001  # Minimum valid price (Opinion.trade requirement)
+            MAX_PRICE = 0.999  # Maximum valid price (to avoid rounding to 1.000 with 3 decimals)
             BUFFER = 0.01  # 1% buffer for immediate execution
             
             if side_str == 'BUY':
@@ -486,8 +487,10 @@ class OpinionTradeAPI:
                         'error': 'No valid orderbook prices',
                         'message': f"ASK={ask_price}, BID={bid_price}, MID={mid_price} all invalid"
                     }
-                # Apply buffer and clamp to valid range
-                execution_price = min(market_price * (1 + BUFFER), 1.0 - EPSILON)
+                # Apply buffer and clamp to valid range [0.001, 0.999]
+                # MAX_PRICE is 0.999 to prevent rounding to 1.000 with 3 decimal formatting
+                execution_price = min(market_price * (1 + BUFFER), MAX_PRICE)
+                execution_price = max(execution_price, MIN_PRICE)
             else:  # SELL
                 if bid_price is not None and bid_price > 0:
                     market_price = bid_price
@@ -504,12 +507,14 @@ class OpinionTradeAPI:
                         'error': 'No valid orderbook prices',
                         'message': f"ASK={ask_price}, BID={bid_price}, MID={mid_price} all invalid"
                     }
-                # Apply buffer and clamp to valid range
-                execution_price = max(market_price * (1 - BUFFER), EPSILON)
+                # Apply buffer and clamp to valid range [0.001, 0.999]
+                execution_price = max(market_price * (1 - BUFFER), MIN_PRICE)
+                execution_price = min(execution_price, MAX_PRICE)
             
-            # CRITICAL: Format price as string with exactly 4 decimals, required by SDK
-            price = f"{execution_price:.4f}"  # Always format to 4 decimals for consistency
-            logger.info(f"[PRICE CALC] AI prob: {probability:.4f} | Market {side_str}: ASK={ask_price}, BID={bid_price}, MID={mid_price} | Execution: {execution_price:.4f}")
+            # CRITICAL: Format price as string with exactly 3 decimals (Opinion.trade SDK requirement)
+            # SDK rejects prices with more than 3 decimal places (errno=10602)
+            price = f"{execution_price:.3f}"  # Always format to 3 decimals max
+            logger.info(f"[PRICE CALC] AI prob: {probability:.3f} | Market {side_str}: ASK={ask_price}, BID={bid_price}, MID={mid_price} | Execution: {execution_price:.3f} → Price: {price}")
             
             # Convert side string to OrderSide enum
             side = OrderSide.BUY if side_str == 'BUY' else OrderSide.SELL
