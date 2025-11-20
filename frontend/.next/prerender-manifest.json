@@ -1,30 +1,6 @@
 {
   "version": 4,
   "routes": {
-    "/": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/_not-found": {
       "initialStatus": 404,
       "experimentalBypassFor": [
@@ -49,13 +25,37 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
+    },
+    "/": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
     }
   },
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "735bccc88265cfa7e5fd077f3fcf3669",
-    "previewModeSigningKey": "97fbd02cd00b52cfd3508c03df2db0b42523e05d9a142b698e4c1e5d6750a8f5",
-    "previewModeEncryptionKey": "15c83997a0ef1588c54ff4a70d1c5b023e89057ebff960752a42e35b44f1baf5"
+    "previewModeId": "92c657f22e243bc0ff14e25ee70972f0",
+    "previewModeSigningKey": "e20310ea1090e9687b74f0287cfad8cccbf57587a27a33f9fb6b7904246dee52",
+    "previewModeEncryptionKey": "e2c32c1d82b9847bb25e4ca14527805c3182aeac3ece88529148a7ba90edb3f4"
   }
 }
