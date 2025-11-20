@@ -4,11 +4,17 @@ TradingAgents is an autonomous AI-powered prediction market trading system that 
 
 ## Recent Changes (November 20, 2025)
 
+**CRITICAL PRICE DECIMAL BUG FIX:**
+- **Problem**: SDK rejected orders with error "price is out of range(limit 3 decimal places): 0.1818" (errno=10602)
+- **Root Cause**: Code was formatting prices with 4 decimals (`.4f`) when SDK only accepts maximum 3 decimals
+- **Solution**: Changed price formatting from `f"{execution_price:.4f}"` to `f"{execution_price:.3f}"`
+- **Price Range Protection**: Updated price clamping to use MIN_PRICE=0.001 and MAX_PRICE=0.999 (prevents rounding to 1.000)
+- **Impact**: Orders will now be accepted by SDK with proper 3-decimal price formatting
+
 **CRITICAL SDK BUG FIXES - Order Execution Now Working:**
 - **Fixed Field Name Bug**: Changed `ask`/`bid` to `ask_price`/`bid_price` in get_latest_price() response handling - SDK returns these specific field names
 - **Fixed Amount Type Bug**: Changed makerAmountInQuoteToken from string to float/int as required by SDK specifications 
 - **Added enable_trading() Call**: Added mandatory one-time enable_trading() call during client initialization (required before placing any orders)
-- **Improved Price Formatting**: Ensured prices are always formatted as strings with exactly 4 decimals using f-string formatting
 - **Verified Configuration**: check_approval=True already present in place_order() calls, errno validation already implemented
 - **Geo-blocking Confirmed**: "Invalid area" error (errno=10403) confirms need for Railway EU West deployment as planned
 
