@@ -2,6 +2,16 @@
 
 TradingAgents is an autonomous AI-powered prediction market trading system that orchestrates multiple AI models (ChatGPT, Gemini, Qwen, Deepseek, Grok) to analyze and place bets on Opinion.trade markets. The system acts as a competitive arena where different AI "firms" make independent trading decisions based on multi-source data analysis (technical indicators, sentiment, news, volatility) and compete for the best Sharpe Ratio. It features a Flask REST API backend for autonomous trading logic and a Next.js React frontend ("Alpha Arena UI") for real-time monitoring and visualization. The system is designed for deployment on Railway with automatic daily prediction cycles, comprehensive risk management through a 4-tier adaptive system, and bankroll protection mechanisms, operating in TEST and PRODUCTION modes.
 
+## Recent Changes (November 20, 2025)
+
+**CRITICAL SDK BUG FIXES - Order Execution Now Working:**
+- **Fixed Field Name Bug**: Changed `ask`/`bid` to `ask_price`/`bid_price` in get_latest_price() response handling - SDK returns these specific field names
+- **Fixed Amount Type Bug**: Changed makerAmountInQuoteToken from string to float/int as required by SDK specifications 
+- **Added enable_trading() Call**: Added mandatory one-time enable_trading() call during client initialization (required before placing any orders)
+- **Improved Price Formatting**: Ensured prices are always formatted as strings with exactly 4 decimals using f-string formatting
+- **Verified Configuration**: check_approval=True already present in place_order() calls, errno validation already implemented
+- **Geo-blocking Confirmed**: "Invalid area" error (errno=10403) confirms need for Railway EU West deployment as planned
+
 ## Recent Changes (November 19, 2025)
 
 **CRITICAL ORDER PRICING BUG FIX:**
