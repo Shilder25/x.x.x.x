@@ -1,0 +1,134 @@
+[2025-11-20 22:17:01 +0000] [590] [ERROR] Error handling request /admin/trigger-cycle
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+Traceback (most recent call last):
+    response = self.full_dispatch_request()
+  File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 134, in handle
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    self.handle_request(listener, req, client, addr)
+  File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+    rv = self.dispatch_request()
+    respiter = self.wsgi(environ, resp.start_response)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+  File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 1536, in __call__
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+    return self.wsgi_app(environ, start_response)
+    prediction = firm.generate_prediction(prompt)
+  File "/app/api.py", line 1062, in trigger_cycle
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    results = engine.run_daily_cycle()
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 338, in wrapped_f
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+    return copy(f, *args, **kw)
+  File "/app/autonomous_engine.py", line 157, in run_daily_cycle
+           ^^^^^^^^^^^^^^^^^^^^
+    firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 477, in __call__
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 313, in _process_firm_multi_category_cycle
+    evaluation = self._evaluate_event_opportunity(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 444, in _evaluate_event_opportunity
+    prediction = self._get_firm_prediction(firm_name, event_description, symbol or '', market_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 965, in _get_firm_prediction
+             ^^^^^^^^^^^^^^^^^^^
+    do = self.iter(retry_state=retry_state)
+  File "/app/llm_clients.py", line 131, in generate_prediction
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = self.client.chat.completions.create(
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 378, in iter
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    result = action(retry_state)
+  File "/opt/venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+             ^^^^^^^^^^^^^^^^^^^
+    return func(*args, **kwargs)
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+           ^^^^^^^^^^^^^^^^^^^^^
+    response = self._send_handling_redirects(
+  File "/opt/venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1156, in create
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    return self._post(
+    response = self._send_single_request(request)
+           ^^^^^^^^^^^
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/openai/_base_client.py", line 1259, in post
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+    response = transport.handle_request(request)
+    ) = self._receive_response_headers(**kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+  File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    return self._connection.handle_request(request)
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+  File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc
+    raise exc from None
+  File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+  File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+    event = self._receive_event(timeout=timeout)
+100.64.0.2 - - [20/Nov/2025:22:17:01 +0000] "POST /admin/trigger-cycle HTTP/1.1" 500 0 "-" "-"
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+[2025-11-20 22:17:01 +0000] [590] [INFO] Worker exiting (pid: 590)
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.nix-profile/lib/python3.12/ssl.py", line 1232, in recv
+    return self.read(buflen)
+           ^^^^^^^^^^^^^^^^^
+  File "/root/.nix-profile/lib/python3.12/ssl.py", line 1105, in read
+    return self._sslobj.read(len)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2025-11-20 22:17:01 +0000] [686] [INFO] Booting worker with pid: 686
+================================================================================
+[DEBUG] RAILWAY ENVIRONMENT VARIABLE CHECK - API.PY STARTUP
+================================================================================
+OPINION_TRADE_API_KEY: SET (len=32)
+OPINION_WALLET_PRIVATE_KEY: SET (len=64)
+RAILWAY_ENVIRONMENT: production
+RAILWAY_SERVICE_NAME: keen-essence
+================================================================================
+100.64.0.5 - - [20/Nov/2025:22:17:13 +0000] "GET /admin/logs?password=replityzeus1997&lines=500 HTTP/1.1" 200 11107 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.7 - - [20/Nov/2025:22:18:00 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.7 - - [20/Nov/2025:22:18:00 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.7 - - [20/Nov/2025:22:18:00 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.7 - - [20/Nov/2025:22:18:00 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.7 - - [20/Nov/2025:22:18:00 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.7 - - [20/Nov/2025:22:18:00 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 20034 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.3 - - [20/Nov/2025:22:18:00 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1059 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.7 - - [20/Nov/2025:22:18:01 +0000] "GET /api/market-header HTTP/1.1" 200 282 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"

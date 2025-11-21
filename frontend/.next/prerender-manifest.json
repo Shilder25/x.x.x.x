@@ -1,30 +1,6 @@
 {
   "version": 4,
   "routes": {
-    "/": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/_not-found": {
       "initialStatus": 404,
       "experimentalBypassFor": [
@@ -49,13 +25,37 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
+    },
+    "/": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
     }
   },
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "9498b6939c8aa51442edec9faa35823c",
-    "previewModeSigningKey": "335220704daaa2ff0ae6653ec6e00cdcc64cb12220877efdeb4a7ba61df4177c",
-    "previewModeEncryptionKey": "733c0872d3121468cbdc53ff61ceac54b01d7ee5a2bbe2a5c1d1b24a8cd5f9b9"
+    "previewModeId": "edc0175f5f1621caa2dba89c9e014171",
+    "previewModeSigningKey": "de30f0edb297bdb61bfbff400c916113e1a0c6348539a4dc6583a3d61bf99955",
+    "previewModeEncryptionKey": "907b0a0f63b11e3c7a00336ee70b038c9400a9ee695bbcefd0880b8c73a119bd"
   }
 }

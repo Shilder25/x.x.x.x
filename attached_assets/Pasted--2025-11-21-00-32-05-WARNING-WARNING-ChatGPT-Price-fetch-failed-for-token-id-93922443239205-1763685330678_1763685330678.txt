@@ -1,0 +1,113 @@
+
+[2025-11-21 00:32:05] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-21 00:32:05] [INFO] [SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=6, F=2, V=4 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve based on the price of the...' | Prob=0.00%, Conf=0% | Scores: S=5, N=3, T=6, F=2, V=4 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-21 00:32:20] [INFO] [INFO] get_orderbook: token_id=42825765881023521787477147323899152227056277683577497119285419461894242364240, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=42825765881023521787477147323899152227056277683577497119285419461894242364240, bids_count=0, asks_count=0
+[2025-11-21 00:32:20] [WARNING] [WARNING] get_latest_price: token_id=42825765881023521787477147323899152227056277683577497119285419461894242364240 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=42825765881023521787477147323899152227056277683577497119285419461894242364240 - No valid bid/ask prices in orderbook
+[2025-11-21 00:32:20] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=42825765881023521787477147323899152227056277683577497119285419461894242364240: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=42825765881023521787477147323899152227056277683577497119285419461894242364240: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-21 00:32:20] [INFO] [SKIP] ChatGPT - 'This market will resolve to “Yes” if the Office of...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to “Yes” if the Office of...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+100.64.0.2 - - [21/Nov/2025:00:32:26 +0000] "GET /api/market-header HTTP/1.1" 200 282 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:26 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:26 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:26 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:26 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:26 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:26 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 13768 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.9 - - [21/Nov/2025:00:32:26 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1059 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[2025-11-21 00:32:32] [INFO] [INFO] get_orderbook: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827, bids_count=0, asks_count=0
+[2025-11-21 00:32:32] [WARNING] [WARNING] get_latest_price: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827 - No valid bid/ask prices in orderbook
+[2025-11-21 00:32:32] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=5164886458443122102307063033512668658037806168033049520851968466589847691827: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-21 00:32:32] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the fully dil...' | Prob=0.00%, Conf=0% | Scores: S=0, N=0, T=0, F=0, V=0 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-21 00:32:49] [INFO] [INFO] get_orderbook: token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552, bids_count=0, asks_count=0
+[2025-11-21 00:32:49] [WARNING] [WARNING] get_latest_price: token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552 - No valid bid/ask prices in orderbook
+[2025-11-21 00:32:49] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-21 00:32:49] [INFO] [SKIP] ChatGPT - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to "Yes" if the Fully Dil...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=6 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+100.64.0.2 - - [21/Nov/2025:00:32:56 +0000] "GET /api/market-header HTTP/1.1" 200 282 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:56 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:56 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:56 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:56 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:56 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:56 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 16633 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:32:56 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1104 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[2025-11-21 00:33:07] [INFO] [INFO] get_orderbook: token_id=9754118134041764438912192233936270018754257571618935759262277750397166311280, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=9754118134041764438912192233936270018754257571618935759262277750397166311280, bids_count=0, asks_count=0
+[2025-11-21 00:33:07] [WARNING] [WARNING] get_latest_price: token_id=9754118134041764438912192233936270018754257571618935759262277750397166311280 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=9754118134041764438912192233936270018754257571618935759262277750397166311280 - No valid bid/ask prices in orderbook
+[2025-11-21 00:33:07] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=9754118134041764438912192233936270018754257571618935759262277750397166311280: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=9754118134041764438912192233936270018754257571618935759262277750397166311280: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-21 00:33:07] [INFO] [SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+100.64.0.2 - - [21/Nov/2025:00:33:26 +0000] "GET /api/leaderboard HTTP/1.1" 200 986 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:33:26 +0000] "GET /api/live-metrics HTTP/1.1" 200 531 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:33:26 +0000] "GET /api/cancelled-orders?limit=50 HTTP/1.1" 200 39 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:33:26 +0000] "GET /api/active-positions HTTP/1.1" 200 3 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:33:26 +0000] "GET /api/ai-decisions-history?limit=50 HTTP/1.1" 200 18794 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:33:26 +0000] "GET /api/market-header HTTP/1.1" 200 282 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.2 - - [21/Nov/2025:00:33:26 +0000] "GET /api/live-chart-history HTTP/1.1" 200 570 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+100.64.0.8 - - [21/Nov/2025:00:33:26 +0000] "GET /api/ai-thinking HTTP/1.1" 200 1828 "https://d2a0c092-2684-45cd-89e4-15517a7221bc-00-1rsehlzqc18is.janeway.replit.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[2025-11-21 00:33:27] [INFO] [INFO] get_orderbook: token_id=35783933697530196819506937739391087069007462617460657663461813162917036439364, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=35783933697530196819506937739391087069007462617460657663461813162917036439364, bids_count=0, asks_count=0
+[2025-11-21 00:33:27] [WARNING] [WARNING] get_latest_price: token_id=35783933697530196819506937739391087069007462617460657663461813162917036439364 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=35783933697530196819506937739391087069007462617460657663461813162917036439364 - No valid bid/ask prices in orderbook
+[2025-11-21 00:33:27] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=35783933697530196819506937739391087069007462617460657663461813162917036439364: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=35783933697530196819506937739391087069007462617460657663461813162917036439364: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-21 00:33:27] [INFO] [SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'The FED interest rates are defined in this market ...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-21 00:33:49] [INFO] [INFO] get_orderbook: token_id=69128418647859341396135830438188055577957834471619888304550569671892547278718, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=69128418647859341396135830438188055577957834471619888304550569671892547278718, bids_count=0, asks_count=0
+[2025-11-21 00:33:49] [WARNING] [WARNING] get_latest_price: token_id=69128418647859341396135830438188055577957834471619888304550569671892547278718 - No valid bid/ask prices in orderbook
+WARNING:autonomous_engine:[WARNING] get_latest_price: token_id=69128418647859341396135830438188055577957834471619888304550569671892547278718 - No valid bid/ask prices in orderbook
+[2025-11-21 00:33:49] [WARNING] [WARNING] ChatGPT - Price fetch failed for token_id=69128418647859341396135830438188055577957834471619888304550569671892547278718: No market price available | Message: Orderbook has no valid bid or ask prices
+WARNING:autonomous_engine:[WARNING] ChatGPT - Price fetch failed for token_id=69128418647859341396135830438188055577957834471619888304550569671892547278718: No market price available | Message: Orderbook has no valid bid or ask prices
+[2025-11-21 00:33:49] [INFO] [SKIP] ChatGPT - 'This market will resolve to the amount of basis po...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+INFO:autonomous_engine:[SKIP] ChatGPT - 'This market will resolve to the amount of basis po...' | Prob=0.00%, Conf=0% | Scores: S=5, N=5, T=5, F=5, V=5 | Reason: Failed to fetch market price: No market price available - Orderbook has no valid...
+[2025-11-21 00:33:49] [INFO] [INFO] ChatGPT - Found 1 total opportunities across all categories
+INFO:autonomous_engine:[INFO] ChatGPT - Found 1 total opportunities across all categories
+[2025-11-21 00:33:49] [INFO] [INFO] ChatGPT - Will execute top 1 opportunities (max_concurrent_positions: 2)
+INFO:autonomous_engine:[INFO] ChatGPT - Will execute top 1 opportunities (max_concurrent_positions: 2)
+[2025-11-21 00:33:50] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=19, asks_count=9
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=19, asks_count=9
+[2025-11-21 00:33:50] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.501, ask=0.8, mid=0.6505000000000001
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.501, ask=0.8, mid=0.6505000000000001
+[2025-11-21 00:33:50] [INFO] [INFO] ChatGPT - Market price: 0.6505, AI probability: 0.4000
+INFO:autonomous_engine:[INFO] ChatGPT - Market price: 0.6505, AI probability: 0.4000
+[2025-11-21 00:33:50] [INFO] [INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=19, asks_count=9
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bids_count=19, asks_count=9
+[2025-11-21 00:33:50] [INFO] [INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.02, ask=0.999, mid=0.5095
+INFO:autonomous_engine:[INFO] get_latest_price: token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, bid=0.02, ask=0.999, mid=0.5095
+[2025-11-21 00:33:50] [ERROR] [BET ERROR] ChatGPT - Failed bet on This market will resolve to "Yes" if the Supreme C... (event_id=1546): Order placement failed
+[2025-11-21 00:33:50] [INFO] [INFO] [PRICE CALC] AI prob: 0.400 | Market BUY: ASK=0.999, BID=0.02, MID=0.5095 | Execution: 0.999 → Price: 0.999
+INFO:autonomous_engine:[INFO] [PRICE CALC] AI prob: 0.400 | Market BUY: ASK=0.999, BID=0.02, MID=0.5095 | Execution: 0.999 → Price: 0.999
+[2025-11-21 00:33:50] [INFO] [INFO] [ORDER DEBUG] Placing order: market_id=1546, token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, price=0.999, amount=1.0 USDT, side=BUY
+INFO:autonomous_engine:[INFO] [ORDER DEBUG] Placing order: market_id=1546, token_id=80993736742659296074271471707092779338813385409282660753587012054032463729137, price=0.999, amount=1.0 USDT, side=BUY
+[2025-11-21 00:33:50] [ERROR] [ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10604, errmsg=Order amount 1.00 USDT is less than or equal to minimum 1.30 USDT
+ERROR:autonomous_engine:[ERROR] [ORDER FAILED] Opinion.trade SDK Error: errno=10604, errmsg=Order amount 1.00 USDT is less than or equal to minimum 1.30 USDT
+[2025-11-21 00:33:50] [ERROR] [ERROR] [ORDER FAILED] Full result object: errmsg='Order amount 1.00 USDT is less than or equal to minimum 1.30 USDT' errno=10604 result=None
+ERROR:autonomous_engine:[ERROR] [ORDER FAILED] Full result object: errmsg='Order amount 1.00 USDT is less than or equal to minimum 1.30 USDT' errno=10604 result=None
+ERROR:autonomous_engine:[BET ERROR] ChatGPT - Failed bet on This market will resolve to "Yes" if the Supreme C... (event_id=1546): Order placement failed
+[2025-11-21 00:33:50] [INFO] [INFO] Gemini - Analyzing 5 categories
+[EXECUTION FAILED] ChatGPT - Execution failed: Order placement failed
+INFO:autonomous_engine:[INFO] Gemini - Analyzing 5 categories
+[2025-11-21 00:33:50] [ERROR] [ERROR] Exception processing ChatGPT: Cannot operate on a closed database.
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+ERROR:autonomous_engine:[ERROR] Exception processing ChatGPT: Cannot operate on a closed database.
+[CACHE HIT] News data for BTC
+[2025-11-21 00:33:50] [INFO] [INFO] 
+Processing cycle for Gemini
+[CACHE HIT] Volatility data for BTC
+INFO:autonomous_engine:[INFO] 
+Processing cycle for Gemini

@@ -1,0 +1,109 @@
+DEBUG:autonomous_engine:[CACHE] Technical data for BTC retrieved from cache
+[CACHE HIT] Volatility data for BTC
+[2025-11-21 00:34:45 +0000] [813] [CRITICAL] WORKER TIMEOUT (pid:814)
+[2025-11-21 00:34:45 +0000] [814] [ERROR] Error handling request /admin/trigger-cycle
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/opt/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/api.py", line 1062, in trigger_cycle
+    results = engine.run_daily_cycle()
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 157, in run_daily_cycle
+    firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 313, in _process_firm_multi_category_cycle
+    evaluation = self._evaluate_event_opportunity(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 444, in _evaluate_event_opportunity
+    prediction = self._get_firm_prediction(firm_name, event_description, symbol or '', market_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/autonomous_engine.py", line 965, in _get_firm_prediction
+    prediction = firm.generate_prediction(prompt)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 477, in __call__
+    raise self._exception
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 480, in __call__
+    do = self.iter(retry_state=retry_state)
+    result = fn(*args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 378, in iter
+  File "/app/llm_clients.py", line 191, in generate_prediction
+    result = action(retry_state)
+    response = self.client.models.generate_content(
+             ^^^^^^^^^^^^^^^^^^^
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 400, in <lambda>
+  File "/opt/venv/lib/python3.12/site-packages/google/genai/models.py", line 5056, in generate_content
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+    response = self._generate_content(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/google/genai/models.py", line 3843, in _generate_content
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+    response = self._api_client.request(
+             ^^^^^^^^^^^^^^^^^^^
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 400, in <lambda>
+  File "/opt/venv/lib/python3.12/site-packages/google/genai/_api_client.py", line 1331, in request
+    self._add_action_func(lambda rs: rs.outcome.result())
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/google/genai/_api_client.py", line 1167, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+  File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+    response = self._send_handling_auth(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/.nix-profile/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+    raise self._exception
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+  File "/opt/venv/lib/python3.12/site-packages/tenacity/__init__.py", line 480, in __call__
+    response = self._send_handling_redirects(
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/google/genai/_api_client.py", line 1137, in _request_once
+    response = self._httpx_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    return self._connection.handle_request(request)
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = self._send_single_request(request)
+  File "/opt/venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
