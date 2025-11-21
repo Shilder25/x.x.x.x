@@ -8,6 +8,20 @@ TradingAgents is an autonomous AI-powered prediction market trading system desig
 
 **Portfolio Initialization (Nov 21, 2025):** Created `/admin/initialize-portfolios` endpoint to initialize portfolios for all 5 AI agents. This endpoint must be run after database resets to create initial portfolios ($50 balance in TEST mode) for ChatGPT, Gemini, Qwen, Deepseek, and Grok.
 
+**Database Thread-Safety Fix (Nov 21, 2025):** ✓ COMPLETED - Refactored ALL 25+ database methods in `database.py` to use re-entrant context manager pattern (`with self.get_connection() as conn:`) with automatic transaction management. The context manager now:
+- Uses thread-local connections (one per Gunicorn worker)
+- Tracks transaction depth to support nested method calls (e.g., save_prediction → update_firm_stats)
+- Begins transaction explicitly with `BEGIN` only at outermost level (depth 0)
+- Auto-commits on success at outermost level
+- Auto-rolls back on any exception to prevent database locks (unwinds entire transaction)
+- Uses WAL mode for better concurrency
+- Removed all 17 explicit `conn.commit()` calls from methods
+Fixed all indentation and syntax errors. This resolves "Cannot operate on a closed database", "database is locked", and "cannot start a transaction within a transaction" errors during concurrent bet execution. System now runs stably in production with 2 Gunicorn workers.
+
+**Minimum Bet Amount Fix (Nov 21, 2025):** Increased minimum bet from $1.00 to $1.50 USDT in `opinion_trade_api.py` and `risk_management.py` to meet Opinion.trade's minimum requirement of $1.30 USDT.
+
+**Frontend-Backend Connection Fix (Nov 21, 2025):** ✓ COMPLETED - Fixed Next.js frontend not communicating with Flask backend in Railway deployment. Updated `next.config.mjs` to use internal rewrites (`localhost:8000`) and `frontend/lib/config.ts` to use relative API paths. This allows the frontend (port 5000) to proxy API requests internally to Flask (port 8000) within the same Railway container. Verified working - all API endpoints responding with HTTP 200.
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
