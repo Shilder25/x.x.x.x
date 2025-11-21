@@ -1,106 +1,6 @@
 # Overview
 
-TradingAgents is an autonomous AI-powered prediction market trading system that orchestrates multiple AI models (ChatGPT, Gemini, Qwen, Deepseek, Grok) to analyze and place bets on Opinion.trade markets. The system acts as a competitive arena where different AI "firms" make independent trading decisions based on multi-source data analysis (technical indicators, sentiment, news, volatility) and compete for the best Sharpe Ratio. It features a Flask REST API backend for autonomous trading logic and a Next.js React frontend ("Alpha Arena UI") for real-time monitoring and visualization. The system is designed for deployment on Railway with automatic daily prediction cycles, comprehensive risk management through a 4-tier adaptive system, and bankroll protection mechanisms, operating in TEST and PRODUCTION modes.
-
-## Recent Changes (November 21, 2025)
-
-**CRITICAL ORDERBOOK NORMALIZATION BUG FIX:**
-- **Problem**: `get_orderbook()` returning bids=0, asks=0 even when Opinion.trade website shows real liquidity exists. This completely blocked trading operations.
-- **Root Cause**: SDK returns prices as strings or Decimals, and old normalization code used `float(price) if price else 0.0` which failed for string "0.182" → 0.0, then filtered out as invalid.
-- **Solution**: 
-  - Created `safe_float_convert()` helper with decimal-safe parsing (handles strings, Decimals, floats, ints)
-  - Tries multiple field names: 'price', 'p', 'pricePerShare', 'amount', 'size', 'quantity'
-  - Relaxed filter from `price > 0` to `price >= 0.0001` (MIN_VALID_PRICE)
-  - Added comprehensive DEBUG logging: raw SDK response type, field names, price types/values BEFORE normalization
-  - Added `from decimal import Decimal, InvalidOperation` import
-- **Testing**: Created unit test verifying safe_float_convert handles all data types correctly (strings, Decimals, floats, ints, whitespace, None)
-- **Impact**: Orderbook liquidity detection should now work correctly, enabling autonomous trading operations.
-
-**RAILWAY CLI CONFIGURATION FIX:**
-- **Problem**: Railway CLI authentication failing with "Unauthorized" despite valid Project Token. CLI v4.11.1 uses `-s SERVICE_ID` not `--project PROJECT_ID`.
-- **Solution**: Created `scripts/configure_railway_cli.sh` to guide user through getting SERVICE_ID from Railway dashboard URL.
-- **Updated Scripts**: `tail_backend_logs.sh` and `get_railway_logs.sh` now use SERVICE_ID from config file for authentication.
-- **Impact**: Once SERVICE_ID configured, can stream Railway logs directly from Replit without web UI.
-
-**CRITICAL LIQUIDITY FILTER BUG FIX:**
-- **Problem**: Binary markets without `yes_token_id` were passing the liquidity filter but then failing when trying to create events. This caused the appearance of "all markets filtered out" when actually markets lacked valid trading tokens.
-- **Root Cause**: The code checked `if check_token_id:` for liquidity validation, but if `check_token_id` was `None`, it didn't skip the market - it just continued without validation.
-- **Solution**: Added early validation `if not check_token_id: skip` BEFORE attempting orderbook liquidity checks (lines 298-302 in `opinion_trade_api.py`).
-- **Impact**: Markets without trading tokens are now properly filtered with clear logging (`[FILTER] Skipping binary market - no yes_token_id (untradeable)`), preventing false "no liquidity" reports.
-
-**RAILWAY DEBUGGING INFRASTRUCTURE:**
-- **Problem**: No way to validate code changes before expensive Railway deploys; costly iteration cycles when bugs appeared only in production.
-- **Solution**: Created comprehensive testing and Railway integration toolkit:
-  - `scripts/setup_railway_cli.sh`: Installs Railway CLI in Replit for direct production log access
-  - `scripts/tail_backend_logs.sh`: Stream Railway logs in real-time from Replit
-  - `scripts/run_remote_command.sh`: Execute commands on Railway without leaving Replit
-  - `scripts/health_check_opinion_trade.py`: Validates Opinion.trade SDK connectivity before deploy
-  - `scripts/simple_validate.sh`: Quick pre-deploy validation (SDK + syntax + build)
-  - `Makefile`: Comprehensive validation pipeline with `make validate` and `make validate-simple`
-  - `tests/integration/test_liquidity_filter.py`: Pytest suite validating the bug fix
-  - `docs/railway-debugging.md`: Complete guide for Railway debugging workflow
-- **Impact**: Can now validate changes locally and access Railway logs directly, eliminating blind deploys and reducing deployment costs.
-
-## Recent Changes (November 20, 2025)
-
-**CRITICAL PRICE DECIMAL BUG FIX:**
-- **Problem**: SDK rejected orders with error "price is out of range(limit 3 decimal places): 0.1818" (errno=10602)
-- **Root Cause**: Code was formatting prices with 4 decimals (`.4f`) when SDK only accepts maximum 3 decimals
-- **Solution**: Changed price formatting from `f"{execution_price:.4f}"` to `f"{execution_price:.3f}"`
-- **Price Range Protection**: Updated price clamping to use MIN_PRICE=0.001 and MAX_PRICE=0.999 (prevents rounding to 1.000)
-- **Impact**: Orders will now be accepted by SDK with proper 3-decimal price formatting
-
-**CRITICAL SDK BUG FIXES - Order Execution Now Working:**
-- **Fixed Field Name Bug**: Changed `ask`/`bid` to `ask_price`/`bid_price` in get_latest_price() response handling - SDK returns these specific field names
-- **Fixed Amount Type Bug**: Changed makerAmountInQuoteToken from string to float/int as required by SDK specifications 
-- **Added enable_trading() Call**: Added mandatory one-time enable_trading() call during client initialization (required before placing any orders)
-- **Verified Configuration**: check_approval=True already present in place_order() calls, errno validation already implemented
-- **Geo-blocking Confirmed**: "Invalid area" error (errno=10403) confirms need for Railway EU West deployment as planned
-
-## Recent Changes (November 19, 2025)
-
-**CRITICAL ORDER PRICING BUG FIX:**
-- **Problem**: Orders were being placed with AI probability as limit price instead of market price, causing orders to never execute.
-  - Example: AI predicts 52% probability, market price is 29%, order placed at price=0.52 never fills
-  - Orders appeared in orderbook but never executed (no trades)
-- **Root Cause**: `submit_prediction()` used `price = str(round(probability, 4))` - using AI's probability as the order's limit price
-- **Solution v2 (Improved after architect review)**:
-  - Fetch REAL market price from orderbook using `get_latest_price()` with 3-retry exponential backoff
-  - Use ASK price for BUY orders, BID price for SELL orders
-  - Fallback logic for partial orderbook data: ASK → MID → BID + spread (or vice versa for SELL)
-  - Use epsilon (1e-4) instead of arbitrary clamps to keep prices in valid [0, 1] range
-  - Apply 1% buffer for immediate execution: `min(price * 1.01, 1.0 - epsilon)` for BUY
-- **Impact**: Orders now execute immediately at market prices with robust fallbacks, resolving the "bets identified but not executed" issue
-
-**Critical SDK Configuration Fix:**
-- **Multi-sig Address Fix**: Fixed "BEP20: approve from the zero address" error by using actual wallet address instead of 0x0000... for `multi_sig_addr` parameter.
-- **Root Cause**: Opinion.trade SDK requires `multi_sig_addr` to be the actual wallet address (visible in "MyProfile"), not a zero address placeholder.
-- **Solution**: Changed line 129 in `opinion_trade_api.py` from `multi_sig_addr='0x0000...'` to `multi_sig_addr=self.wallet_address` (0x43C9b...).
-- **Impact**: Orders can now execute successfully on Opinion.trade BNB Chain mainnet.
-
-**Critical Execution Blocking Bug Fix:**
-- **Database Save Order Fix**: Fixed critical bug where `[BET]` logs appeared but no bets executed. Root cause: `_save_ai_decision()` was called AFTER logging, and DB failures killed the process before returning evaluation, leaving `all_opportunities` empty.
-- **Solution**: Reordered `_evaluate_event_opportunity` to save to DB FIRST in try-catch, then set `is_opportunity=True` ONLY after successful DB save, then log `[BET]`. If DB save fails, opportunity is never marked (not added to execution list), error is logged, and treated as SKIP.
-- **Guarantee**: `[BET]` logs now always correspond to successful DB records, and failed DB writes cannot leak opportunities into execution.
-
-**Opinion.trade SDK Architecture (from official docs):**
-- **`private_key`**: The signer wallet that signs orders/transactions (hot wallet) - Uses Login Wallet 0x43C9b...
-- **`multi_sig_addr`**: The assets wallet that holds funds/positions - Same as Login Wallet 0x43C9b... for our setup
-- **Spot Balance** (0x15c1a...): Opinion.trade's internal custodial account (NOT used in SDK configuration)
-- **Gas-free operations**: place_order(), cancel_order(), all GET methods (use EIP712 signatures)
-- **Gas-required operations**: enable_trading(), split(), merge(), redeem() (BNB required for gas)
-
-## Recent Changes (November 18, 2025)
-
-**Critical Fixes:**
-- **Probability Conversion Fix**: Fixed `validate_and_normalize_prediction` to properly convert AI probabilities from percentage format (0-100) to decimal format (0-1), enabling correct Expected Value calculations and bet execution.
-- **Gunicorn Timeout Increase**: Raised worker timeout from 120 to 300 seconds to prevent worker timeouts during long AI prediction cycles.
-
-**System Status:**
-- ✅ Opinion.trade API integration working correctly in Railway EU West
-- ✅ AI predictions executing with proper probability calculations
-- ✅ Bets executing when EV > 0 (confirmed in production logs)
-- ✅ Worker timeouts resolved with 5-minute timeout window
+TradingAgents is an autonomous AI-powered prediction market trading system designed for the Opinion.trade platform. It orchestrates multiple AI models (ChatGPT, Gemini, Qwen, Deepseek, Grok) to analyze markets and place bets. The system features a competitive "Alpha Arena" where different AI "firms" make independent trading decisions based on multi-source data analysis (technical indicators, sentiment, news, volatility) and compete for the best Sharpe Ratio. It includes a Flask REST API backend for trading logic and a Next.js React frontend for real-time monitoring. The system supports deployment on Railway, includes automatic daily prediction cycles, comprehensive 4-tier adaptive risk management, and bankroll protection.
 
 # User Preferences
 
@@ -111,8 +11,8 @@ Preferred communication style: Simple, everyday language.
 ## Backend Architecture (Flask + Python)
 
 **Core Components:**
-- **Autonomous Engine**: Orchestrates the entire trading cycle, including market fetching, multi-source data analysis, AI prediction coordination, and trade execution within risk limits.
-- **LLM Integration**: Manages connections to 5 different AI models with robust retry logic, rate limit handling, and response validation.
+- **Autonomous Engine**: Orchestrates market fetching, multi-source data analysis, AI prediction coordination, and trade execution within risk limits.
+- **LLM Integration**: Manages connections to five different AI models with robust retry logic, rate limit handling, and response validation.
 - **Opinion.trade SDK Integration**: Wraps the official `opinion-clob-sdk` for BNB Chain mainnet interaction, handling market data retrieval and order placement.
 - **Database Layer**: SQLite-based persistence for predictions, firm performance, virtual portfolios, and betting history.
 
@@ -122,13 +22,13 @@ Preferred communication style: Simple, everyday language.
 - **Circuit Breakers**: Features automatic trading suspension at specified drawdown levels, daily loss caps, and maximum concurrent position limits.
 
 **Data Collection Pipeline:**
-- Modular collectors for technical indicators (AlphaVantage), fundamental market data (YFinance), social sentiment (Reddit), news aggregation, and market volatility.
+- Modular collectors for technical indicators, fundamental market data, social sentiment, news aggregation, and market volatility.
 
 **Prompt Engineering System:**
 - Utilizes a three-stage reasoning framework to simulate internal firm decision-making, synthesizing multi-source data into structured JSON predictions, and incorporating debate simulation.
 
 **Learning & Adaptation:**
-- **LearningSystem**: Analyzes historical performance to generate insights for strategy improvement.
+- **LearningSystem**: Analyzes historical performance for strategy improvement.
 - **RecommendationEngine**: Recommends top-performing firms based on ROI, accuracy, and cost-efficiency.
 
 **Deployment & Monitoring:**
@@ -139,16 +39,16 @@ Preferred communication style: Simple, everyday language.
 
 ## Frontend Architecture (Next.js + React)
 
-- A Next.js React application, known as the "Alpha Arena UI," provides real-time monitoring and visualization of trading activities, consuming data from the Flask API.
+- The "Alpha Arena UI" is a Next.js React application providing real-time monitoring and visualization of trading activities, consuming data from the Flask API.
 
 ## Deployment Configuration
 
-- **Railway Integration**: Utilizes Nixpacks for automatic environment setup and is configurable via `railway.json` for deployment and restart policies. Supports `TEST` and `PRODUCTION` modes.
+- **Railway Integration**: Utilizes Nixpacks for automatic environment setup and is configurable via `railway.json` for deployment and restart policies, supporting `TEST` and `PRODUCTION` modes.
 - **Multi-Process Launcher**: `main.py` orchestrates the startup of both Flask backend and Next.js frontend.
 
 ## Architectural Decisions
 
-- **SQLite**: Chosen for simpler deployment and local development, with an option for PostgreSQL scaling.
+- **SQLite**: Chosen for simpler deployment and local development.
 - **Flask**: Selected for ease of debugging, development, and its middleware ecosystem.
 - **Opinion.trade SDK**: Used for handling BNB Chain wallet signing, built-in retry logic, and error handling.
 - **Multi-AI Orchestration**: Diversifies predictions and identifies optimal models for various event types.
@@ -165,7 +65,7 @@ Preferred communication style: Simple, everyday language.
 - **xAI Grok**: grok-beta.
 
 ## Prediction Market Platform
-- **Opinion.trade**: Official `opinion-clob-sdk` (v0.2.5) for BNB Chain Mainnet interaction, requiring specific API keys and private wallet details.
+- **Opinion.trade**: Official `opinion-clob-sdk` (v0.2.5) for BNB Chain Mainnet interaction.
 
 ## Financial Data APIs
 - **Alpha Vantage**: Technical indicators.
