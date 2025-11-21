@@ -2,6 +2,27 @@
 
 TradingAgents is an autonomous AI-powered prediction market trading system that orchestrates multiple AI models (ChatGPT, Gemini, Qwen, Deepseek, Grok) to analyze and place bets on Opinion.trade markets. The system acts as a competitive arena where different AI "firms" make independent trading decisions based on multi-source data analysis (technical indicators, sentiment, news, volatility) and compete for the best Sharpe Ratio. It features a Flask REST API backend for autonomous trading logic and a Next.js React frontend ("Alpha Arena UI") for real-time monitoring and visualization. The system is designed for deployment on Railway with automatic daily prediction cycles, comprehensive risk management through a 4-tier adaptive system, and bankroll protection mechanisms, operating in TEST and PRODUCTION modes.
 
+## Recent Changes (November 21, 2025)
+
+**CRITICAL LIQUIDITY FILTER BUG FIX:**
+- **Problem**: Binary markets without `yes_token_id` were passing the liquidity filter but then failing when trying to create events. This caused the appearance of "all markets filtered out" when actually markets lacked valid trading tokens.
+- **Root Cause**: The code checked `if check_token_id:` for liquidity validation, but if `check_token_id` was `None`, it didn't skip the market - it just continued without validation.
+- **Solution**: Added early validation `if not check_token_id: skip` BEFORE attempting orderbook liquidity checks (lines 298-302 in `opinion_trade_api.py`).
+- **Impact**: Markets without trading tokens are now properly filtered with clear logging (`[FILTER] Skipping binary market - no yes_token_id (untradeable)`), preventing false "no liquidity" reports.
+
+**RAILWAY DEBUGGING INFRASTRUCTURE:**
+- **Problem**: No way to validate code changes before expensive Railway deploys; costly iteration cycles when bugs appeared only in production.
+- **Solution**: Created comprehensive testing and Railway integration toolkit:
+  - `scripts/setup_railway_cli.sh`: Installs Railway CLI in Replit for direct production log access
+  - `scripts/tail_backend_logs.sh`: Stream Railway logs in real-time from Replit
+  - `scripts/run_remote_command.sh`: Execute commands on Railway without leaving Replit
+  - `scripts/health_check_opinion_trade.py`: Validates Opinion.trade SDK connectivity before deploy
+  - `scripts/simple_validate.sh`: Quick pre-deploy validation (SDK + syntax + build)
+  - `Makefile`: Comprehensive validation pipeline with `make validate` and `make validate-simple`
+  - `tests/integration/test_liquidity_filter.py`: Pytest suite validating the bug fix
+  - `docs/railway-debugging.md`: Complete guide for Railway debugging workflow
+- **Impact**: Can now validate changes locally and access Railway logs directly, eliminating blind deploys and reducing deployment costs.
+
 ## Recent Changes (November 20, 2025)
 
 **CRITICAL PRICE DECIMAL BUG FIX:**
