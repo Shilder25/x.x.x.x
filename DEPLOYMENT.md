@@ -39,15 +39,23 @@ Este fix está en `opinion_trade_api.py` líneas 298-302.
    ./scripts/run_remote_command.sh "curl localhost:8000/health"
    ```
 
-**Desde Railway Web:**
-- Ve a https://railway.app
-- Abre tu proyecto TradingAgents
-- Click en "View Logs"
+**Desde Railway Web (RECOMENDADO - Railway CLI auth no funciona):**
+- Ve a https://railway.com/project/71558abf-25b0-4cb5-8233-fe6e685e0e93/service/14c1acd7-e253-4401-97fe-ae85de754b67
+- Click en "Deployments" tab
+- Click en el deployment más reciente
+- Los logs aparecerán en tiempo real
 - Busca por:
+  - `[ORDERBOOK DEBUG]` - Respuestas raw del SDK (nuevo)
   - `[FILTER]` - Mercados filtrados
   - `[BET]` - Apuestas ejecutadas
   - `[SKIP]` - Decisiones rechazadas
-  - `[ERROR]` - Errores
+  - `ERROR` - Errores
+
+**Railway CLI Status:**
+❌ Railway CLI v4.11.1 no autentica con Project Tokens
+- Configurado: SERVICE_ID=14c1acd7-e253-4401-97fe-ae85de754b67
+- Error: "Unauthorized" a pesar de token válido
+- **Solución temporal**: Usar Railway Web UI hasta que se resuelva
 
 ### Opción 2: Validar Localmente (Limitado)
 
@@ -67,7 +75,22 @@ scripts/simple_validate.sh
 
 ## 🚀 Workflow de Despliegue
 
-### Antes de Deployar
+### Deployment Manual (Railway Web UI)
+
+**Después de cambios en el código:**
+
+1. **Ir a Railway Dashboard**: 
+   https://railway.com/project/71558abf-25b0-4cb5-8233-fe6e685e0e93
+   
+2. **Click en "keen-essence"** (servicio backend)
+
+3. **Ir a tab "Deployments"**
+
+4. **Click "Deploy"** o esperar auto-deploy si está configurado
+
+5. **Monitorear logs** en tiempo real desde la página de Deployments
+
+### Antes de Deployar (Opcional - validación local)
 
 1. **Revisar cambios**:
    ```bash
