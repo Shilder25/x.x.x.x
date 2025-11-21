@@ -1,0 +1,107 @@
+[2025-11-21 01:23:48] [INFO] [ADMIN] Daily cycle manually triggered from 100.64.0.4 at 2025-11-21T01:23:48.699356
+[2025-11-21 01:23:48] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-21 01:23:48] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-21 01:23:48] [INFO] [INFO] [INIT] Enabling trading permissions (one-time setup)...
+WARNING:root:Failed to get decimals for 0x55d398326f99059fF775485246999027B3197955, defaulting to 18: ("The function 'decimals' was not found in this ", "contract's abi.")
+[2025-11-21 01:23:50] [WARNING] [WARNING] [INIT] Could not enable trading (may already be enabled): Could not transact with/call contract function, is contract deployed correctly and chain synced?
+WARNING:autonomous_engine:[WARNING] [INIT] Could not enable trading (may already be enabled): Could not transact with/call contract function, is contract deployed correctly and chain synced?
+DEBUG:autonomous_engine:[CACHE] Cleared data cache at start of cycle 2025-11-21T01:23:50.696035
+[2025-11-21 01:23:50] [INFO] [INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+INFO:autonomous_engine:[INFO] [PAGINATION] Starting pagination: target=200 markets, batch_size=20
+[2025-11-21 01:23:50] [INFO] [INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+INFO:autonomous_engine:[INFO] [PAGINATION] Fetching BOTH binary and multi-choice markets for maximum coverage
+[2025-11-21 01:23:50] [INFO] [INFO] [PAGINATION] Fetching BINARY markets...
+INFO:autonomous_engine:[INFO] [PAGINATION] Fetching BINARY markets...
+[2025-11-21 01:23:51] [INFO] [INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 1: errno=0, has_result=True
+[2025-11-21 01:23:51] [INFO] [INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 1 returned 20 markets
+[2025-11-21 01:23:51] [INFO] [INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-21 01:23:51] [INFO] [INFO] [PAGINATION] BINARY complete: collected 0 markets
+[2025-11-21 01:23:51] [INFO] [INFO] [PAGINATION] BINARY Page 2 returned 14 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 2 returned 14 markets
+[2025-11-21 01:23:51] [INFO] [INFO] [PAGINATION] BINARY Page 2: 14/14 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY complete: collected 0 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 2: 14/14 markets are active (filtered out resolved/closed)
+[2025-11-21 01:23:51] [INFO] [INFO] [PAGINATION] Fetching CATEGORICAL markets...
+[2025-11-21 01:23:51] [INFO] [INFO] [PAGINATION] BINARY - Got 14 < 20, reached end of markets
+INFO:autonomous_engine:[INFO] [PAGINATION] Fetching CATEGORICAL markets...
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY - Got 14 < 20, reached end of markets
+[2025-11-21 01:23:51] [INFO] [INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] BINARY Page 2: errno=0, has_result=True
+[2025-11-21 01:23:53] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 1: errno=0, has_result=True
+[2025-11-21 01:23:53] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1 returned 20 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 1 returned 20 markets
+[2025-11-21 01:23:53] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 1: 20/20 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 1: 20/20 markets are active (filtered out resolved/closed)
+[2025-11-21 01:23:55] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 2: errno=0, has_result=True
+[2025-11-21 01:23:55] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2 returned 19 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 2 returned 19 markets
+[2025-11-21 01:23:55] [INFO] [INFO] [PAGINATION] CATEGORICAL Page 2: 19/19 markets are active (filtered out resolved/closed)
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL Page 2: 19/19 markets are active (filtered out resolved/closed)
+[2025-11-21 01:23:55] [INFO] [INFO] [PAGINATION] CATEGORICAL - Got 19 < 20, reached end of markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL - Got 19 < 20, reached end of markets
+[2025-11-21 01:23:55] [INFO] [INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+INFO:autonomous_engine:[INFO] [PAGINATION] CATEGORICAL complete: collected 0 markets
+[2025-11-21 01:23:55] [INFO] [INFO] [PAGINATION] Pagination complete: fetched 73 markets, returning 73 (after limit)
+INFO:autonomous_engine:[INFO] [PAGINATION] Pagination complete: fetched 73 markets, returning 73 (after limit)
+[2025-11-21 01:23:56] [INFO] [INFO] get_orderbook: token_id=17079389017936887286149921465875765276002923467633624256295928878683191073753, bids_count=11, asks_count=15
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=17079389017936887286149921465875765276002923467633624256295928878683191073753, bids_count=11, asks_count=15
+[2025-11-21 01:23:56] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 21?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 21?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:23:56] [INFO] [INFO] get_orderbook: token_id=67128580503672658332262144968273226527362363662685097850522778650160998552406, bids_count=19, asks_count=13
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=67128580503672658332262144968273226527362363662685097850522778650160998552406, bids_count=19, asks_count=13
+[2025-11-21 01:23:56] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Will Samsung Electronics reach a new all-time high...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Will Samsung Electronics reach a new all-time high...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:23:57] [INFO] [INFO] get_orderbook: token_id=496731220284429166691467676398757801724564517439900898811644340357133198694, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=496731220284429166691467676398757801724564517439900898811644340357133198694, bids_count=0, asks_count=0
+[2025-11-21 01:23:57] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 20?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 20?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:23:57] [INFO] [INFO] get_orderbook: token_id=45568993805777222973266492062529671216553914656882699188292614866622028044388, bids_count=35, asks_count=10
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=45568993805777222973266492062529671216553914656882699188292614866622028044388, bids_count=35, asks_count=10
+[2025-11-21 01:23:57] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Will Zhao Bei return to China before Jia Yueting ?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Will Zhao Bei return to China before Jia Yueting ?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:23:58] [INFO] [INFO] get_orderbook: token_id=64889235537901237597388603528261656991060258068088045303996457443147669899892, bids_count=0, asks_count=1
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=64889235537901237597388603528261656991060258068088045303996457443147669899892, bids_count=0, asks_count=1
+[2025-11-21 01:23:58] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 19?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 19?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:23:58] [INFO] [INFO] get_orderbook: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=2146383561503895452741802629261435510344874603279580583253204561416487537077, bids_count=0, asks_count=0
+[2025-11-21 01:23:58] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 18?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 18?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:23:59] [INFO] [INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=57418404831071846932645624720281231734585330707690811302683827309519550046470, bids_count=0, asks_count=0
+[2025-11-21 01:23:59] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 17?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 17?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:23:59] [INFO] [INFO] get_orderbook: token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=38292103085478805530372122367214563193220479953442647444953665009422829739296, bids_count=0, asks_count=0
+[2025-11-21 01:23:59] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 16?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 16?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:24:00] [INFO] [INFO] get_orderbook: token_id=60642538163252148466380386449669761319364078180927944754334333280144568461084, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=60642538163252148466380386449669761319364078180927944754334333280144568461084, bids_count=0, asks_count=0
+[2025-11-21 01:24:00] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 15?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 15?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:24:00] [INFO] [INFO] get_orderbook: token_id=48882724128435502781310151024608110816311675396117519564621583904823670689991, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=48882724128435502781310151024608110816311675396117519564621583904823670689991, bids_count=0, asks_count=0
+[2025-11-21 01:24:00] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 14?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 14?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:24:01] [INFO] [INFO] get_orderbook: token_id=54569261624369921538352731919012891880457872952276097080538296415463107053181, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=54569261624369921538352731919012891880457872952276097080538296415463107053181, bids_count=0, asks_count=0
+[2025-11-21 01:24:01] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 13?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 13?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:24:01] [INFO] [INFO] get_orderbook: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bids_count=16, asks_count=37
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=14294724265753680353138241565065223893704340876402893964132811585784651809673, bids_count=16, asks_count=37
+[2025-11-21 01:24:01] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Monad vs MegaETH — who has the higher FDV one day ...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Monad vs MegaETH — who has the higher FDV one day ...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 12?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:24:02] [INFO] [INFO] get_orderbook: token_id=55819220671188229832867001400598082401592452531507930928118152892106837036824, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=55819220671188229832867001400598082401592452531507930928118152892106837036824, bids_count=0, asks_count=0
+[2025-11-21 01:24:02] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 12?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:24:03] [INFO] [INFO] get_orderbook: token_id=65530285350028885520049713578619152342043737268572436096262615098046111731095, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=65530285350028885520049713578619152342043737268572436096262615098046111731095, bids_count=0, asks_count=0
+[2025-11-21 01:24:03] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 11?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bitcoin Up or Down on November 11?(By 12:00 ET)...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 01:24:03] [INFO] [INFO] get_orderbook: token_id=25759712766022771123719459322915923244234836050506319634791370371911956014912, bids_count=9, asks_count=18
