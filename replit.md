@@ -2,6 +2,8 @@
 
 TradingAgents is an autonomous AI-powered prediction market trading system designed for the Opinion.trade platform. It orchestrates multiple AI models (ChatGPT, Gemini, Qwen, Deepseek, Grok) to analyze markets and place bets. The system features a competitive "Alpha Arena" where different AI "firms" make independent trading decisions based on multi-source data analysis (technical indicators, sentiment, news, volatility) and compete for the best Sharpe Ratio. It includes a Flask REST API backend for trading logic and a Next.js React frontend for real-time monitoring. The system supports deployment on Railway, includes automatic daily prediction cycles, comprehensive 4-tier adaptive risk management, and bankroll protection.
 
+**Recent Memory Optimizations (Nov 21, 2025):** Sequential agent execution with garbage collection after each AI firm to prevent Railway out-of-memory crashes during daily cycles. Progress logging ([1/5], [2/5], etc.) added to identify which AI firm causes OOM if it occurs. Cache intentionally preserved across firms to reuse expensive collector data (technical, news, sentiment).
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.

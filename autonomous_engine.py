@@ -1,6 +1,7 @@
 from typing import Dict, List, Optional
 from datetime import datetime, timedelta
 import json
+import gc
 
 from opinion_trade_api import OpinionTradeAPI
 from tier_risk_guard import TierRiskGuard
@@ -150,10 +151,15 @@ class AutonomousEngine:
                 results['critical_error'] = error_msg
                 return results
             
-            # Step 2: Process each AI firm
+            # Step 2: Process each AI firm SEQUENTIALLY with aggressive memory cleanup
             try:
-                for firm_name in self.orchestrator.get_all_firms().keys():
+                firm_names = list(self.orchestrator.get_all_firms().keys())
+                logger.info(f"Processing {len(firm_names)} AI firms sequentially: {firm_names}")
+                
+                for idx, firm_name in enumerate(firm_names, 1):
                     try:
+                        logger.info(f"[{idx}/{len(firm_names)}] Starting {firm_name}...")
+                        
                         firm_result = self._process_firm_multi_category_cycle(firm_name, events_by_category)
                         results['firms_results'][firm_name] = firm_result
                         results['total_bets_placed'] += firm_result.get('bets_placed', 0)
@@ -162,12 +168,21 @@ class AutonomousEngine:
                         # Check if firm had critical errors
                         if firm_result.get('critical_error'):
                             results['errors'].append(f"{firm_name}: {firm_result['critical_error']}")
+                        
+                        # MEMORY OPTIMIZATION: Force garbage collection after each firm
+                        # NOTE: Cache is intentionally preserved across firms to reuse expensive collector data
+                        logger.info(f"[{idx}/{len(firm_names)}] {firm_name} complete - Running garbage collection...")
+                        gc.collect()
+                        logger.info(f"[{idx}/{len(firm_names)}] {firm_name} finished")
                             
                     except Exception as e:
                         error_msg = f"Exception processing {firm_name}: {str(e)}"
                         logger.error(error_msg)
                         results['errors'].append(error_msg)
                         results['firms_results'][firm_name] = {'error': str(e), 'bets_placed': 0, 'bets_skipped': 0}
+                        
+                        # Run GC even on error
+                        gc.collect()
                         
             except Exception as e:
                 error_msg = f"Exception in firm processing loop: {str(e)}"
