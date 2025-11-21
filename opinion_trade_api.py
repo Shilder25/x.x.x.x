@@ -256,38 +256,61 @@ class OpinionTradeAPI:
                     market_full = market_details_response.result.data
                     
                     # LIQUIDITY FILTER: Check if market has any orderbook activity
-                    # Skip markets with ZERO liquidity (bids=0 AND asks=0) to avoid wasting AI API calls
-                    has_liquidity = False
+                    # Skip markets with ZERO liquidity across ALL options to avoid wasting AI API calls
+                    has_any_liquidity = False
                     
-                    # For CATEGORICAL markets, check first option's liquidity
-                    # For BINARY markets, check yes_token_id liquidity
-                    check_token_id = None
+                    # For CATEGORICAL markets, check ALL options (must have at least 1 liquid option)
+                    # For BINARY markets, check the single yes_token_id
                     if hasattr(market_full, 'options') and market_full.options:
-                        first_option = market_full.options[0]
-                        check_token_id = getattr(first_option, 'yes_token_id', None)
+                        # Categorical market: check each option's liquidity
+                        for option in market_full.options:
+                            option_token_id = getattr(option, 'yes_token_id', None)
+                            if option_token_id:
+                                try:
+                                    orderbook_response = self.get_orderbook(option_token_id)
+                                    if orderbook_response.get('success'):
+                                        orderbook = orderbook_response.get('orderbook', {})
+                                        bids_count = len(orderbook.get('bids', []))
+                                        asks_count = len(orderbook.get('asks', []))
+                                        if bids_count > 0 or asks_count > 0:
+                                            has_any_liquidity = True
+                                            break  # Found liquid option, market is tradeable
+                                    else:
+                                        # If orderbook fetch fails, assume this option has liquidity
+                                        has_any_liquidity = True
+                                        break
+                                except Exception:
+                                    # On error, assume liquidity exists to avoid false negatives
+                                    has_any_liquidity = True
+                                    break
+                        
+                        if not has_any_liquidity:
+                            logger.info(f"[LIQUIDITY FILTER] Skipping categorical market '{market.market_title[:50]}...' - no liquid options found")
+                            skipped_count += 1
+                            continue
                     else:
+                        # Binary market: check single yes_token_id
                         check_token_id = getattr(market_full, 'yes_token_id', None)
-                    
-                    if check_token_id:
-                        try:
-                            orderbook_response = self.get_orderbook(check_token_id)
-                            if orderbook_response.get('success'):
-                                orderbook = orderbook_response.get('orderbook', {})
-                                bids_count = len(orderbook.get('bids', []))
-                                asks_count = len(orderbook.get('asks', []))
-                                has_liquidity = (bids_count > 0 or asks_count > 0)
-                                
-                                if not has_liquidity:
-                                    logger.info(f"[LIQUIDITY FILTER] Skipping market '{market.market_title[:50]}...' - no orderbook liquidity (bids={bids_count}, asks={asks_count})")
-                                    skipped_count += 1
-                                    continue
-                            else:
-                                # If we can't fetch orderbook, assume it has liquidity to avoid false negatives
-                                has_liquidity = True
-                        except Exception as liquidity_error:
-                            # On error, assume liquidity exists to avoid false negatives
-                            logger.warning(f"[LIQUIDITY FILTER] Could not check liquidity for market {market.market_id}: {liquidity_error}")
-                            has_liquidity = True
+                        if check_token_id:
+                            try:
+                                orderbook_response = self.get_orderbook(check_token_id)
+                                if orderbook_response.get('success'):
+                                    orderbook = orderbook_response.get('orderbook', {})
+                                    bids_count = len(orderbook.get('bids', []))
+                                    asks_count = len(orderbook.get('asks', []))
+                                    has_any_liquidity = (bids_count > 0 or asks_count > 0)
+                                    
+                                    if not has_any_liquidity:
+                                        logger.info(f"[LIQUIDITY FILTER] Skipping binary market '{market.market_title[:50]}...' - no orderbook liquidity (bids={bids_count}, asks={asks_count})")
+                                        skipped_count += 1
+                                        continue
+                                else:
+                                    # If we can't fetch orderbook, assume it has liquidity to avoid false negatives
+                                    has_any_liquidity = True
+                            except Exception as liquidity_error:
+                                # On error, assume liquidity exists to avoid false negatives
+                                logger.warning(f"[LIQUIDITY FILTER] Could not check liquidity for market {market.market_id}: {liquidity_error}")
+                                has_any_liquidity = True
                     
                     # Determine market type (BINARY vs MULTIPLE_CHOICE)
                     market_type = getattr(market, 'topic_type', TopicType.BINARY)

@@ -1050,7 +1050,7 @@ def trigger_cycle():
                 'error': 'Invalid password'
             }), 401
         
-        # Execute daily cycle
+        # Execute daily cycle (now faster with liquidity filter + 600s timeout)
         logger.admin(f"Daily cycle manually triggered from {request.remote_addr} at {datetime.now().isoformat()}")
         
         # Pass credentials explicitly from startup context where they ARE available
