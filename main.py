@@ -95,7 +95,9 @@ def main():
             "gunicorn",
             "--bind", "0.0.0.0:8000",
             "--workers", "2",
-            "--timeout", "600",
+            "--timeout", "900",  # 15 minutes - increased for daily cycle with 5 AI agents
+            "--graceful-timeout", "900",  # Grace period for workers to finish
+            "--keep-alive", "5",
             "--access-logfile", "-",
             "--error-logfile", "-",
             "api:app"

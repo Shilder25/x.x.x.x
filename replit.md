@@ -4,6 +4,8 @@ TradingAgents is an autonomous AI-powered prediction market trading system desig
 
 **Recent Memory Optimizations (Nov 21, 2025):** Sequential agent execution with garbage collection after each AI firm to prevent Railway out-of-memory crashes during daily cycles. Progress logging ([1/5], [2/5], etc.) added to identify which AI firm causes OOM if it occurs. Cache intentionally preserved across firms to reuse expensive collector data (technical, news, sentiment).
 
+**Gunicorn Timeout Fix (Nov 21, 2025):** Increased Gunicorn timeouts to 900s (15 minutes) with graceful-timeout to allow daily cycle with 5 AI agents to complete without worker timeouts.
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
