@@ -29,13 +29,30 @@ fi
 
 export RAILWAY_TOKEN
 
+# Load configuration
+CONFIG_FILE="scripts/.railway_config"
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "❌ Error: Railway configuration not found"
+    echo ""
+    echo "Run this first to configure:"
+    echo "  ./scripts/configure_railway_cli.sh"
+    exit 1
+fi
+
+source "$CONFIG_FILE"
+
 echo "Fetching last 500 log lines from Railway..."
+echo "Service: $SERVICE_NAME ($SERVICE_ID)"
+echo "Environment: $ENVIRONMENT"
 echo "Filtering for: '$SEARCH_PATTERN'"
 echo ""
 
-# Get logs and filter
+# Get logs with explicit SERVICE_ID
 # Note: --lines fetches historical logs (doesn't stream)
-railway logs --lines 500 | grep -i "$SEARCH_PATTERN" | tee "$OUTPUT_FILE"
+railway logs \
+  -s "$SERVICE_ID" \
+  -e "$ENVIRONMENT" \
+  --lines 500 | grep -i "$SEARCH_PATTERN" | tee "$OUTPUT_FILE"
 
 echo ""
 echo "=========================================="

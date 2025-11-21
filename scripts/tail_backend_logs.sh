@@ -28,12 +28,26 @@ fi
 
 export RAILWAY_TOKEN
 
+# Load configuration
+CONFIG_FILE="scripts/.railway_config"
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "✗ Railway configuration not found"
+    echo ""
+    echo "Run this first to configure:"
+    echo "  ./scripts/configure_railway_cli.sh"
+    exit 1
+fi
+
+source "$CONFIG_FILE"
+
+echo "Service: $SERVICE_NAME ($SERVICE_ID)"
+echo "Environment: $ENVIRONMENT"
 echo "Using RAILWAY_TOKEN from environment..."
 echo ""
 
-# Stream logs with Railway token
-# Note: Project Token allows viewing logs without railway link
-railway logs
+# Stream logs with Railway token using SERVICE_ID
+# Note: Project Token requires explicit service ID (not service name)
+railway logs -s "$SERVICE_ID" -e "$ENVIRONMENT"
 
 # Alternative: filter for specific debug patterns
-# railway logs | grep -E "\[ORDERBOOK DEBUG\]|\[BET\]|\[SKIP\]|\[ERROR\]"
+# railway logs -s "$SERVICE_ID" -e "$ENVIRONMENT" | grep -E "\[ORDERBOOK DEBUG\]|\[BET\]|\[SKIP\]|\[ERROR\]"

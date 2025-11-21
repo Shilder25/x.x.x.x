@@ -1,6 +1,30 @@
 {
   "version": 4,
   "routes": {
+    "/": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/_not-found": {
       "initialStatus": 404,
       "experimentalBypassFor": [
@@ -25,37 +49,13 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
-    },
-    "/": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
     }
   },
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "ef023938ecb06112c185c8c79da6e99b",
-    "previewModeSigningKey": "0ac28cf696f7d3574f934756a6577744f3e1390b866bd30326ffb442ceac9b75",
-    "previewModeEncryptionKey": "bad2a4d137d162f2f786124fb146de861ca859328e9cd12503f9479a3f4a19fa"
+    "previewModeId": "bda4d87a4b8fa73bbbd40e4fba5f87a9",
+    "previewModeSigningKey": "8c67d736012c7dbdfceea7b9462c2a600d157ff1fffb2149359b362455f66152",
+    "previewModeEncryptionKey": "b1e6cd2a66137df3e3263738c239641493599f5489cc06b3c5f95cd1966554c5"
   }
 }
