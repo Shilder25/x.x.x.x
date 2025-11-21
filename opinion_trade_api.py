@@ -584,12 +584,14 @@ class OpinionTradeAPI:
             # Convert side string to OrderSide enum
             side = OrderSide.BUY if side_str == 'BUY' else OrderSide.SELL
             
-            # Validate amount is reasonable (min 1 USDT, max based on available balance)
-            if amount < 1:
+            # Validate amount is reasonable (min 1.5 USDT per Opinion.trade requirement, max based on available balance)
+            # Opinion.trade enforces minimum 1.30 USDT, we use 1.50 for safety margin
+            MINIMUM_BET_USDT = 1.5
+            if amount < MINIMUM_BET_USDT:
                 return {
                     'success': False,
                     'error': 'Invalid amount',
-                    'message': 'Minimum bet amount is 1 USDT'
+                    'message': f'Minimum bet amount is {MINIMUM_BET_USDT} USDT (Opinion.trade requirement: 1.30 USDT)'
                 }
             
             # SDK expects makerAmountInQuoteToken as INT or FLOAT with USDT value (not wei)

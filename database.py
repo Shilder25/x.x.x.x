@@ -256,119 +256,114 @@ class TradingDatabase:
             print("Database migrated: Added risk tier tracking columns to virtual_portfolio table")
     
     def initialize_firm_portfolio(self, firm_name: str, initial_balance: float = 10000.0):
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        try:
-            cursor.execute('''
-            INSERT INTO virtual_portfolio (firm_name, initial_balance, current_balance, total_returns, created_at)
-            VALUES (?, ?, ?, 0.0, ?)
-            ''', (firm_name, initial_balance, initial_balance, datetime.now().isoformat()))
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
             
-            cursor.execute('''
-            INSERT INTO firm_performance (firm_name, updated_at)
-            VALUES (?, ?)
-            ''', (firm_name, datetime.now().isoformat()))
-            
-            conn.commit()
-        except sqlite3.IntegrityError:
-            pass
-        finally:
-            conn.close()
+            try:
+                cursor.execute('''
+                INSERT INTO virtual_portfolio (firm_name, initial_balance, current_balance, total_returns, created_at)
+                VALUES (?, ?, ?, 0.0, ?)
+                ''', (firm_name, initial_balance, initial_balance, datetime.now().isoformat()))
+                
+                cursor.execute('''
+                INSERT INTO firm_performance (firm_name, updated_at)
+                VALUES (?, ?)
+                ''', (firm_name, datetime.now().isoformat()))
+                
+                conn.commit()
+            except sqlite3.IntegrityError:
+                pass
     
     def save_prediction(self, prediction_data: Dict) -> int:
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        cursor.execute('''
-        INSERT INTO predictions (
-            firm_name, event_description, prediction_date, probability, postura_riesgo,
-            analisis_sintesis, debate_bullish_bearish, ajuste_riesgo_justificacion,
-            tokens_used, estimated_cost, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (
-            prediction_data['firm_name'],
-            prediction_data['event_description'],
-            prediction_data['prediction_date'],
-            prediction_data['probability'],
-            prediction_data['postura_riesgo'],
-            prediction_data.get('analisis_sintesis', ''),
-            prediction_data.get('debate_bullish_bearish', ''),
-            prediction_data.get('ajuste_riesgo_justificacion', ''),
-            prediction_data.get('tokens_used', 0),
-            prediction_data.get('estimated_cost', 0.0),
-            datetime.now().isoformat()
-        ))
-        
-        prediction_id = cursor.lastrowid if cursor.lastrowid is not None else 0
-        conn.commit()
-        conn.close()
-        
-        self.update_firm_stats(prediction_data['firm_name'])
-        return prediction_id
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+            INSERT INTO predictions (
+                firm_name, event_description, prediction_date, probability, postura_riesgo,
+                analisis_sintesis, debate_bullish_bearish, ajuste_riesgo_justificacion,
+                tokens_used, estimated_cost, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (
+                prediction_data['firm_name'],
+                prediction_data['event_description'],
+                prediction_data['prediction_date'],
+                prediction_data['probability'],
+                prediction_data['postura_riesgo'],
+                prediction_data.get('analisis_sintesis', ''),
+                prediction_data.get('debate_bullish_bearish', ''),
+                prediction_data.get('ajuste_riesgo_justificacion', ''),
+                prediction_data.get('tokens_used', 0),
+                prediction_data.get('estimated_cost', 0.0),
+                datetime.now().isoformat()
+            ))
+            
+            prediction_id = cursor.lastrowid if cursor.lastrowid is not None else 0
+            conn.commit()
+            
+            self.update_firm_stats(prediction_data['firm_name'])
+            return prediction_id
     
     def update_prediction_result(self, prediction_id: int, actual_result: int, profit_loss: float):
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        cursor.execute('''
-        UPDATE predictions
-        SET actual_result = ?, profit_loss = ?
-        WHERE id = ?
-        ''', (actual_result, profit_loss, prediction_id))
-        
-        cursor.execute('SELECT firm_name FROM predictions WHERE id = ?', (prediction_id,))
-        firm_name = cursor.fetchone()[0]
-        
-        cursor.execute('''
-        UPDATE virtual_portfolio
-        SET current_balance = current_balance + ?,
-            total_returns = total_returns + ?
-        WHERE firm_name = ?
-        ''', (profit_loss, profit_loss, firm_name))
-        
-        conn.commit()
-        conn.close()
-        
-        self.update_firm_stats(firm_name)
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+            UPDATE predictions
+            SET actual_result = ?, profit_loss = ?
+            WHERE id = ?
+            ''', (actual_result, profit_loss, prediction_id))
+            
+            cursor.execute('SELECT firm_name FROM predictions WHERE id = ?', (prediction_id,))
+            firm_name = cursor.fetchone()[0]
+            
+            cursor.execute('''
+            UPDATE virtual_portfolio
+            SET current_balance = current_balance + ?,
+                total_returns = total_returns + ?
+            WHERE firm_name = ?
+            ''', (profit_loss, profit_loss, firm_name))
+            
+            conn.commit()
+            
+            self.update_firm_stats(firm_name)
     
     def update_firm_stats(self, firm_name: str):
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        cursor.execute('''
-        SELECT COUNT(*), 
-               SUM(CASE WHEN actual_result IS NOT NULL AND 
-                   ((probability >= 0.5 AND actual_result = 1) OR (probability < 0.5 AND actual_result = 0))
-                   THEN 1 ELSE 0 END),
-               SUM(COALESCE(profit_loss, 0)),
-               SUM(tokens_used),
-               SUM(estimated_cost)
-        FROM predictions
-        WHERE firm_name = ?
-        ''', (firm_name,))
-        
-        total_preds, correct_preds, total_profit, total_tokens, total_cost = cursor.fetchone()
-        accuracy = (correct_preds / total_preds * 100) if total_preds > 0 else 0
-        
-        sharpe_ratio = self._calculate_sharpe_ratio(firm_name, cursor)
-        
-        cursor.execute('''
-        UPDATE firm_performance
-        SET total_predictions = ?,
-            correct_predictions = ?,
-            total_profit = ?,
-            total_tokens = ?,
-            total_cost = ?,
-            accuracy = ?,
-            sharpe_ratio = ?,
-            updated_at = ?
-        WHERE firm_name = ?
-        ''', (total_preds, correct_preds or 0, total_profit or 0, total_tokens or 0, 
-              total_cost or 0, accuracy, sharpe_ratio, datetime.now().isoformat(), firm_name))
-        
-        conn.commit()
-        conn.close()
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+            SELECT COUNT(*), 
+                   SUM(CASE WHEN actual_result IS NOT NULL AND 
+                       ((probability >= 0.5 AND actual_result = 1) OR (probability < 0.5 AND actual_result = 0))
+                       THEN 1 ELSE 0 END),
+                   SUM(COALESCE(profit_loss, 0)),
+                   SUM(tokens_used),
+                   SUM(estimated_cost)
+            FROM predictions
+            WHERE firm_name = ?
+            ''', (firm_name,))
+            
+            total_preds, correct_preds, total_profit, total_tokens, total_cost = cursor.fetchone()
+            accuracy = (correct_preds / total_preds * 100) if total_preds > 0 else 0
+            
+            sharpe_ratio = self._calculate_sharpe_ratio(firm_name, cursor)
+            
+            cursor.execute('''
+            UPDATE firm_performance
+            SET total_predictions = ?,
+                correct_predictions = ?,
+                total_profit = ?,
+                total_tokens = ?,
+                total_cost = ?,
+                accuracy = ?,
+                sharpe_ratio = ?,
+                updated_at = ?
+            WHERE firm_name = ?
+            ''', (total_preds, correct_preds or 0, total_profit or 0, total_tokens or 0, 
+                  total_cost or 0, accuracy, sharpe_ratio, datetime.now().isoformat(), firm_name))
+            
+            conn.commit()
     
     def _calculate_sharpe_ratio(self, firm_name: str, cursor) -> float:
         """
@@ -400,36 +395,35 @@ class TradingDatabase:
         return float(sharpe_ratio)
     
     def get_firm_performance(self, firm_name: str) -> Optional[Dict]:
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        cursor.execute('''
-        SELECT fp.firm_name, fp.total_predictions, fp.correct_predictions, fp.total_profit,
-               fp.total_tokens, fp.total_cost, fp.sharpe_ratio, fp.accuracy,
-               vp.current_balance, vp.initial_balance, vp.total_returns
-        FROM firm_performance fp
-        LEFT JOIN virtual_portfolio vp ON fp.firm_name = vp.firm_name
-        WHERE fp.firm_name = ?
-        ''', (firm_name,))
-        
-        row = cursor.fetchone()
-        conn.close()
-        
-        if row:
-            return {
-                'firm_name': row[0],
-                'total_predictions': row[1],
-                'correct_predictions': row[2],
-                'total_profit': row[3],
-                'total_tokens': row[4],
-                'total_cost': row[5],
-                'sharpe_ratio': row[6],
-                'accuracy': row[7],
-                'current_balance': row[8] if row[8] else 10000.0,
-                'initial_balance': row[9] if row[9] else 10000.0,
-                'total_returns': row[10] if row[10] else 0.0
-            }
-        return None
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+            SELECT fp.firm_name, fp.total_predictions, fp.correct_predictions, fp.total_profit,
+                   fp.total_tokens, fp.total_cost, fp.sharpe_ratio, fp.accuracy,
+                   vp.current_balance, vp.initial_balance, vp.total_returns
+            FROM firm_performance fp
+            LEFT JOIN virtual_portfolio vp ON fp.firm_name = vp.firm_name
+            WHERE fp.firm_name = ?
+            ''', (firm_name,))
+            
+            row = cursor.fetchone()
+            
+            if row:
+                return {
+                    'firm_name': row[0],
+                    'total_predictions': row[1],
+                    'correct_predictions': row[2],
+                    'total_profit': row[3],
+                    'total_tokens': row[4],
+                    'total_cost': row[5],
+                    'sharpe_ratio': row[6],
+                    'accuracy': row[7],
+                    'current_balance': row[8] if row[8] else 10000.0,
+                    'initial_balance': row[9] if row[9] else 10000.0,
+                    'total_returns': row[10] if row[10] else 0.0
+                }
+            return None
     
     def get_all_firm_performances(self) -> List[Dict]:
         firms = ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']
@@ -499,62 +493,61 @@ class TradingDatabase:
         - EXECUTED: Apuesta ejecutada exitosamente en Opinion.trade
         - FAILED: Apuesta falló validación o ejecución
         """
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        cursor.execute('''
-        INSERT INTO autonomous_bets (
-            firm_name, event_id, event_description, category, bet_size,
-            probability, confidence, expected_value, risk_level, adaptation_level,
-            betting_strategy, reasoning,
-            sentiment_score, sentiment_analysis,
-            news_score, news_analysis,
-            technical_score, technical_analysis,
-            fundamental_score, fundamental_analysis,
-            volatility_score, volatility_analysis,
-            probability_reasoning, market_volume, market_yes_pool, market_no_pool,
-            execution_timestamp, simulation_mode, status, failure_reason, market_price, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (
-            bet_data['firm_name'],
-            bet_data['event_id'],
-            bet_data['event_description'],
-            bet_data.get('category'),
-            bet_data.get('bet_size', 0),  # Can be 0 for ANALYZED decisions
-            bet_data['probability'],
-            bet_data['confidence'],
-            bet_data.get('expected_value'),
-            bet_data.get('risk_level'),
-            bet_data.get('adaptation_level'),
-            bet_data.get('betting_strategy'),
-            bet_data.get('reasoning'),
-            bet_data.get('sentiment_score'),
-            bet_data.get('sentiment_analysis'),
-            bet_data.get('news_score'),
-            bet_data.get('news_analysis'),
-            bet_data.get('technical_score'),
-            bet_data.get('technical_analysis'),
-            bet_data.get('fundamental_score'),
-            bet_data.get('fundamental_analysis'),
-            bet_data.get('volatility_score'),
-            bet_data.get('volatility_analysis'),
-            bet_data.get('probability_reasoning'),
-            bet_data.get('market_volume'),
-            bet_data.get('market_yes_pool'),
-            bet_data.get('market_no_pool'),
-            bet_data.get('execution_timestamp', datetime.now().isoformat()),
-            bet_data.get('simulation_mode', 1),
-            bet_data.get('status', 'EXECUTED'),
-            bet_data.get('failure_reason'),
-            bet_data.get('market_price'),
-            datetime.now().isoformat()
-        ))
-        
-        bet_id = cursor.lastrowid
-        conn.commit()
-        conn.close()
-        
-        return bet_id
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+            INSERT INTO autonomous_bets (
+                firm_name, event_id, event_description, category, bet_size,
+                probability, confidence, expected_value, risk_level, adaptation_level,
+                betting_strategy, reasoning,
+                sentiment_score, sentiment_analysis,
+                news_score, news_analysis,
+                technical_score, technical_analysis,
+                fundamental_score, fundamental_analysis,
+                volatility_score, volatility_analysis,
+                probability_reasoning, market_volume, market_yes_pool, market_no_pool,
+                execution_timestamp, simulation_mode, status, failure_reason, market_price, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (
+                bet_data['firm_name'],
+                bet_data['event_id'],
+                bet_data['event_description'],
+                bet_data.get('category'),
+                bet_data.get('bet_size', 0),  # Can be 0 for ANALYZED decisions
+                bet_data['probability'],
+                bet_data['confidence'],
+                bet_data.get('expected_value'),
+                bet_data.get('risk_level'),
+                bet_data.get('adaptation_level'),
+                bet_data.get('betting_strategy'),
+                bet_data.get('reasoning'),
+                bet_data.get('sentiment_score'),
+                bet_data.get('sentiment_analysis'),
+                bet_data.get('news_score'),
+                bet_data.get('news_analysis'),
+                bet_data.get('technical_score'),
+                bet_data.get('technical_analysis'),
+                bet_data.get('fundamental_score'),
+                bet_data.get('fundamental_analysis'),
+                bet_data.get('volatility_score'),
+                bet_data.get('volatility_analysis'),
+                bet_data.get('probability_reasoning'),
+                bet_data.get('market_volume'),
+                bet_data.get('market_yes_pool'),
+                bet_data.get('market_no_pool'),
+                bet_data.get('execution_timestamp', datetime.now().isoformat()),
+                bet_data.get('simulation_mode', 1),
+                bet_data.get('status', 'EXECUTED'),
+                bet_data.get('failure_reason'),
+                bet_data.get('market_price'),
+                datetime.now().isoformat()
+            ))
+            
+            bet_id = cursor.lastrowid
+            conn.commit()
+            
+            return bet_id
     
     def update_bet_status(self, bet_id: int, status: str, failure_reason: str = None, bet_size: float = None):
         """
@@ -1063,55 +1056,53 @@ class TradingDatabase:
         """
         Obtiene información del portfolio incluyendo tier state.
         """
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        cursor.execute('''
-        SELECT * FROM virtual_portfolio
-        WHERE firm_name = ?
-        ''', (firm_name,))
-        
-        row = cursor.fetchone()
-        conn.close()
-        
-        if row:
-            return {
-                'firm_name': row[1],
-                'initial_balance': row[2],
-                'current_balance': row[3],
-                'total_returns': row[4],
-                'current_tier': row[6] if len(row) > 6 else 'conservative',
-                'previous_tier': row[7] if len(row) > 7 else None,
-                'cooldown_end': row[8] if len(row) > 8 else None,
-                'daily_loss_today': row[9] if len(row) > 9 else 0.0,
-                'last_reset_date': row[10] if len(row) > 10 else None,
-                'total_bets': row[11] if len(row) > 11 else 0,
-                'winning_bets': row[12] if len(row) > 12 else 0
-            }
-        return None
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+            SELECT * FROM virtual_portfolio
+            WHERE firm_name = ?
+            ''', (firm_name,))
+            
+            row = cursor.fetchone()
+            
+            if row:
+                return {
+                    'firm_name': row[1],
+                    'initial_balance': row[2],
+                    'current_balance': row[3],
+                    'total_returns': row[4],
+                    'current_tier': row[6] if len(row) > 6 else 'conservative',
+                    'previous_tier': row[7] if len(row) > 7 else None,
+                    'cooldown_end': row[8] if len(row) > 8 else None,
+                    'daily_loss_today': row[9] if len(row) > 9 else 0.0,
+                    'last_reset_date': row[10] if len(row) > 10 else None,
+                    'total_bets': row[11] if len(row) > 11 else 0,
+                    'winning_bets': row[12] if len(row) > 12 else 0
+                }
+            return None
     
     def update_portfolio_bet_stats(self, firm_name: str, won: bool):
         """
         Actualiza estadísticas de apuestas en el portfolio.
         """
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        if won:
-            cursor.execute('''
-            UPDATE virtual_portfolio
-            SET total_bets = total_bets + 1, winning_bets = winning_bets + 1
-            WHERE firm_name = ?
-            ''', (firm_name,))
-        else:
-            cursor.execute('''
-            UPDATE virtual_portfolio
-            SET total_bets = total_bets + 1
-            WHERE firm_name = ?
-            ''', (firm_name,))
-        
-        conn.commit()
-        conn.close()
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            if won:
+                cursor.execute('''
+                UPDATE virtual_portfolio
+                SET total_bets = total_bets + 1, winning_bets = winning_bets + 1
+                WHERE firm_name = ?
+                ''', (firm_name,))
+            else:
+                cursor.execute('''
+                UPDATE virtual_portfolio
+                SET total_bets = total_bets + 1
+                WHERE firm_name = ?
+                ''', (firm_name,))
+            
+            conn.commit()
     
     def get_daily_bet_total(self, date: Optional[str] = None) -> float:
         """
@@ -1126,20 +1117,19 @@ class TradingDatabase:
         if date is None:
             date = datetime.now().strftime("%Y-%m-%d")
         
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        cursor.execute('''
-        SELECT total_bet_amount FROM daily_bet_tracking
-        WHERE tracking_date = ?
-        ''', (date,))
-        
-        row = cursor.fetchone()
-        conn.close()
-        
-        if row:
-            return row[0]
-        return 0.0
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+            SELECT total_bet_amount FROM daily_bet_tracking
+            WHERE tracking_date = ?
+            ''', (date,))
+            
+            row = cursor.fetchone()
+            
+            if row:
+                return row[0]
+            return 0.0
     
     def add_to_daily_bet_total(self, amount: float, date: Optional[str] = None) -> float:
         """
@@ -1155,34 +1145,33 @@ class TradingDatabase:
         if date is None:
             date = datetime.now().strftime("%Y-%m-%d")
         
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        # Intentar actualizar registro existente
-        cursor.execute('''
-        UPDATE daily_bet_tracking
-        SET total_bet_amount = total_bet_amount + ?,
-            bet_count = bet_count + 1,
-            last_updated = ?
-        WHERE tracking_date = ?
-        ''', (amount, datetime.now().isoformat(), date))
-        
-        # Si no existe, insertar nuevo registro
-        if cursor.rowcount == 0:
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            # Intentar actualizar registro existente
             cursor.execute('''
-            INSERT INTO daily_bet_tracking (tracking_date, total_bet_amount, bet_count, last_updated)
-            VALUES (?, ?, 1, ?)
-            ''', (date, amount, datetime.now().isoformat()))
-        
-        # Obtener nuevo total
-        cursor.execute('''
-        SELECT total_bet_amount FROM daily_bet_tracking
-        WHERE tracking_date = ?
-        ''', (date,))
-        
-        new_total = cursor.fetchone()[0]
-        
-        conn.commit()
-        conn.close()
-        
-        return new_total
+            UPDATE daily_bet_tracking
+            SET total_bet_amount = total_bet_amount + ?,
+                bet_count = bet_count + 1,
+                last_updated = ?
+            WHERE tracking_date = ?
+            ''', (amount, datetime.now().isoformat(), date))
+            
+            # Si no existe, insertar nuevo registro
+            if cursor.rowcount == 0:
+                cursor.execute('''
+                INSERT INTO daily_bet_tracking (tracking_date, total_bet_amount, bet_count, last_updated)
+                VALUES (?, ?, 1, ?)
+                ''', (date, amount, datetime.now().isoformat()))
+            
+            # Obtener nuevo total
+            cursor.execute('''
+            SELECT total_bet_amount FROM daily_bet_tracking
+            WHERE tracking_date = ?
+            ''', (date,))
+            
+            new_total = cursor.fetchone()[0]
+            
+            conn.commit()
+            
+            return new_total

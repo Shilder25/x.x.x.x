@@ -293,6 +293,9 @@ class RiskManager:
         Returns:
             Tamaño de apuesta recomendado en valor absoluto
         """
+        # Opinion.trade minimum bet requirement (1.30 USDT minimum, we use 1.50 for safety)
+        MINIMUM_BET_USDT = 1.5
+        
         if probability <= 0.5:
             return 0
         
@@ -302,6 +305,11 @@ class RiskManager:
         kelly_pct = max(0, min(kelly_pct, self.max_bet_size_pct))
         
         recommended_amount = self.current_bankroll * kelly_pct
+        
+        # Ensure minimum bet size if recommendation is above 0
+        # If below minimum, return 0 (don't bet) to avoid wasting fees on tiny bets
+        if 0 < recommended_amount < MINIMUM_BET_USDT:
+            return 0
         
         return recommended_amount
     
