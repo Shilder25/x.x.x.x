@@ -1155,5 +1155,90 @@ def get_admin_logs():
             'message': 'Failed to retrieve logs'
         }), 500
 
+@app.route('/admin/initialize-portfolios', methods=['POST'])
+def initialize_portfolios():
+    """Admin endpoint to initialize portfolios for all 5 AI agents"""
+    import hmac
+    
+    try:
+        data = request.get_json()
+        provided_password = data.get('password', '')
+        
+        # Get admin password from environment
+        admin_password = os.getenv('ADMIN_PASSWORD')
+        if not admin_password:
+            return jsonify({
+                'success': False,
+                'error': 'Admin password not configured on server'
+            }), 500
+        
+        # Verify password using constant-time comparison
+        if not provided_password or not hmac.compare_digest(admin_password, provided_password):
+            logger.warning(f"Failed admin portfolio initialization attempt from {request.remote_addr}", prefix="SECURITY")
+            return jsonify({
+                'success': False,
+                'error': 'Invalid password'
+            }), 401
+        
+        # Get initial balance from request (default: $50 for TEST mode)
+        initial_balance = data.get('initial_balance', 50.0)
+        
+        # Initialize portfolios for all 5 AI agents
+        firms = ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']
+        results = {}
+        
+        logger.admin(f"Portfolio initialization triggered from {request.remote_addr} at {datetime.now().isoformat()}")
+        
+        for firm_name in firms:
+            try:
+                # Initialize firm portfolio (will skip if already exists)
+                db.initialize_firm_portfolio(firm_name, initial_balance)
+                
+                # Get portfolio status after initialization
+                portfolio = db.get_portfolio_with_tier_info(firm_name)
+                
+                if portfolio:
+                    results[firm_name] = {
+                        'status': 'initialized',
+                        'balance': portfolio.get('current_balance', initial_balance),
+                        'initial_balance': portfolio.get('initial_balance', initial_balance),
+                        'tier': portfolio.get('current_tier', 'conservative')
+                    }
+                else:
+                    results[firm_name] = {
+                        'status': 'error',
+                        'error': 'Portfolio not found after initialization'
+                    }
+                    
+            except Exception as e:
+                results[firm_name] = {
+                    'status': 'error',
+                    'error': str(e)
+                }
+        
+        # Count successes and failures
+        successful = sum(1 for r in results.values() if r['status'] == 'initialized')
+        failed = len(firms) - successful
+        
+        logger.admin(f"Portfolio initialization complete: {successful} successful, {failed} failed")
+        
+        return jsonify({
+            'success': True,
+            'message': f'Initialized {successful}/{len(firms)} portfolios',
+            'initial_balance': initial_balance,
+            'results': results
+        }), 200
+        
+    except Exception as e:
+        import traceback
+        error_traceback = traceback.format_exc()
+        logger.error(f"Portfolio initialization failed: {str(e)}\n{error_traceback}")
+        
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'message': 'Portfolio initialization failed'
+        }), 500
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
