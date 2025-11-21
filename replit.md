@@ -6,6 +6,8 @@ TradingAgents is an autonomous AI-powered prediction market trading system desig
 
 **Gunicorn Timeout Fix (Nov 21, 2025):** Increased Gunicorn timeouts to 900s (15 minutes) with graceful-timeout to allow daily cycle with 5 AI agents to complete without worker timeouts.
 
+**Portfolio Initialization (Nov 21, 2025):** Created `/admin/initialize-portfolios` endpoint to initialize portfolios for all 5 AI agents. This endpoint must be run after database resets to create initial portfolios ($50 balance in TEST mode) for ChatGPT, Gemini, Qwen, Deepseek, and Grok.
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
