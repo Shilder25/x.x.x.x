@@ -1,11 +1,9 @@
 #!/bin/bash
 # Stream Railway backend logs in real-time
-# Usage: ./scripts/tail_backend_logs.sh [service_name]
-
-SERVICE_NAME="${1:-tradingagents-backend}"
+# Usage: ./scripts/tail_backend_logs.sh
 
 echo "=========================================="
-echo "Streaming Railway Logs: $SERVICE_NAME"
+echo "Streaming Railway Production Logs"
 echo "=========================================="
 echo "Press Ctrl+C to stop"
 echo ""
@@ -19,16 +17,23 @@ fi
 
 # Check authentication
 if [ -z "$RAILWAY_TOKEN" ]; then
-    echo "✗ RAILWAY_TOKEN not set"
-    echo "Add your Railway token to Replit Secrets as RAILWAY_TOKEN"
+    echo "✗ RAILWAY_TOKEN not set in Replit Secrets"
+    echo ""
+    echo "To fix:"
+    echo "1. Go to https://railway.app → Your Project → Settings → Tokens"
+    echo "2. Create a new Project Token"
+    echo "3. Add it to Replit Secrets as RAILWAY_TOKEN"
     exit 1
 fi
 
 export RAILWAY_TOKEN
 
-# Stream logs (follows new entries in real-time)
-# Note: Modern Railway CLI uses -f instead of --follow
-railway logs -f
+echo "Using RAILWAY_TOKEN from environment..."
+echo ""
 
-# Alternative: filter for specific patterns
-# railway logs -f | grep -E "\[BET\]|\[SKIP\]|\[CATEGORY\]|\[ERROR\]"
+# Stream logs with Railway token
+# Note: Project Token allows viewing logs without railway link
+railway logs
+
+# Alternative: filter for specific debug patterns
+# railway logs | grep -E "\[ORDERBOOK DEBUG\]|\[BET\]|\[SKIP\]|\[ERROR\]"
