@@ -836,9 +836,35 @@ class OpinionTradeAPI:
         try:
             response = self.client.get_orderbook(token_id)
             
+            # DEBUG: Log raw response to understand SDK structure
+            logger.info(f"[ORDERBOOK DEBUG] token_id={token_id[:20]}... | errno={response.errno} | has_result={hasattr(response, 'result')}")
+            
             if response.errno == 0:
+                # DEBUG: First, let's see what response.result actually contains
+                if hasattr(response, 'result'):
+                    result = response.result
+                    result_type = type(result).__name__
+                    
+                    # Log result structure in detail
+                    if isinstance(result, dict):
+                        logger.info(f"[ORDERBOOK DEBUG] response.result is dict with keys: {list(result.keys())}")
+                        logger.info(f"[ORDERBOOK DEBUG] response.result full dict: {result}")
+                    else:
+                        logger.info(f"[ORDERBOOK DEBUG] response.result is {result_type}")
+                        logger.info(f"[ORDERBOOK DEBUG] response.result attributes: {[attr for attr in dir(result) if not attr.startswith('_')]}")
+                        # Try to log the object representation
+                        logger.info(f"[ORDERBOOK DEBUG] response.result repr: {repr(result)}")
+                
                 # SDK returns response.result directly (not response.result.data)
                 book = response.result if hasattr(response, 'result') else None
+                
+                # DEBUG: Log book structure
+                if book:
+                    book_type = type(book).__name__
+                    if isinstance(book, dict):
+                        logger.info(f"[ORDERBOOK DEBUG] book is dict with keys: {list(book.keys())}")
+                    else:
+                        logger.info(f"[ORDERBOOK DEBUG] book is {book_type} with attrs: {[attr for attr in dir(book) if not attr.startswith('_')][:15]}")
                 
                 if not book:
                     logger.warning(f"get_orderbook: No result data for token_id={token_id}")
@@ -855,6 +881,13 @@ class OpinionTradeAPI:
                 else:
                     raw_bids = getattr(book, 'bids', []) or []
                     raw_asks = getattr(book, 'asks', []) or []
+                
+                # DEBUG: Log raw data BEFORE normalization
+                logger.info(f"[ORDERBOOK DEBUG] RAW data: raw_bids={len(raw_bids)}, raw_asks={len(raw_asks)}")
+                if raw_bids and len(raw_bids) > 0:
+                    logger.info(f"[ORDERBOOK DEBUG] First raw bid sample: {raw_bids[0]}")
+                if raw_asks and len(raw_asks) > 0:
+                    logger.info(f"[ORDERBOOK DEBUG] First raw ask sample: {raw_asks[0]}")
                 
                 # Normalize each bid/ask entry to consistent dict format
                 def normalize_order_entry(entry):
@@ -886,9 +919,24 @@ class OpinionTradeAPI:
                 bids = [normalize_order_entry(bid) for bid in raw_bids]
                 asks = [normalize_order_entry(ask) for ask in raw_asks]
                 
+                # DEBUG: Log normalized data BEFORE filtering
+                logger.info(f"[ORDERBOOK DEBUG] NORMALIZED data: bids={len(bids)}, asks={len(asks)}")
+                if bids and len(bids) > 0:
+                    logger.info(f"[ORDERBOOK DEBUG] First normalized bid sample: {bids[0]}")
+                if asks and len(asks) > 0:
+                    logger.info(f"[ORDERBOOK DEBUG] First normalized ask sample: {asks[0]}")
+                
                 # Filter out invalid entries (price = 0)
+                filtered_bids_before = len(bids)
+                filtered_asks_before = len(asks)
                 bids = [b for b in bids if b and b.get('price', 0) > 0]
                 asks = [a for a in asks if a and a.get('price', 0) > 0]
+                
+                # DEBUG: Log what got filtered
+                if filtered_bids_before > len(bids):
+                    logger.warning(f"[ORDERBOOK DEBUG] FILTERED OUT {filtered_bids_before - len(bids)} bids with price=0")
+                if filtered_asks_before > len(asks):
+                    logger.warning(f"[ORDERBOOK DEBUG] FILTERED OUT {filtered_asks_before - len(asks)} asks with price=0")
                 
                 logger.info(f"get_orderbook: token_id={token_id}, bids_count={len(bids)}, asks_count={len(asks)}")
                 

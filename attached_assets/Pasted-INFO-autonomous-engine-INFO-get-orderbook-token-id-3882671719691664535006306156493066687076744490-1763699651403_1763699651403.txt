@@ -1,0 +1,121 @@
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=38826717196916645350063061564930666870767444909959865322283102999162881420705, bids_count=0, asks_count=0
+[2025-11-21 04:29:27] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'LoL Worlds 2025 Quarterfinals...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'LoL Worlds 2025 Quarterfinals...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:28] [INFO] [INFO] get_orderbook: token_id=40690291279522924126094637933785278810265132872492209195713060431248798513743, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=40690291279522924126094637933785278810265132872492209195713060431248798513743, bids_count=0, asks_count=0
+[2025-11-21 04:29:28] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'LoL Worlds 2025 Winner...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'LoL Worlds 2025 Winner...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:28] [INFO] [INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=93922443239205095298606247467051347891622177525125317542450371719198265507776, bids_count=0, asks_count=0
+[2025-11-21 04:29:28] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will gold close at in 2025?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will gold close at in 2025?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:29] [INFO] [INFO] get_orderbook: token_id=33477307805863439386682426359853118006639621679633599876378636320973284006074, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=33477307805863439386682426359853118006639621679633599876378636320973284006074, bids_count=0, asks_count=0
+[2025-11-21 04:29:29] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'MegaETH market cap (FDV) one day after launch?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'MegaETH market cap (FDV) one day after launch?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:30] [INFO] [INFO] get_orderbook: token_id=3237981615173217934768211417757039576418598872062183278407142434001972045716, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=3237981615173217934768211417757039576418598872062183278407142434001972045716, bids_count=0, asks_count=0
+[2025-11-21 04:29:30] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'World Series Champion 2025...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'World Series Champion 2025...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:30] [INFO] [INFO] get_orderbook: token_id=69079844505914204037033251891539084783434920655312845154851656657404819307328, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=69079844505914204037033251891539084783434920655312845154851656657404819307328, bids_count=0, asks_count=0
+[2025-11-21 04:29:30] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Gemini 3.0 released by...?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Gemini 3.0 released by...?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:31] [INFO] [INFO] get_orderbook: token_id=36223172659737749914638374041451434001925709485120953012147165520067479897497, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=36223172659737749914638374041451434001925709485120953012147165520067479897497, bids_count=0, asks_count=0
+[2025-11-21 04:29:31] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market '2026 FIFA World Cup Winner...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market '2026 FIFA World Cup Winner...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:31] [INFO] [INFO] get_orderbook: token_id=9268389735981619854553674850562478015160831357762626362738279213970722076911, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=9268389735981619854553674850562478015160831357762626362738279213970722076911, bids_count=0, asks_count=0
+[2025-11-21 04:29:31] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Highest grossing movie in 2025?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Highest grossing movie in 2025?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:32] [INFO] [INFO] get_orderbook: token_id=80466119366215072082121373763207680725824275514026171322087302077352124039221, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=80466119366215072082121373763207680725824275514026171322087302077352124039221, bids_count=0, asks_count=0
+[2025-11-21 04:29:32] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'GPT-6 released by…?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'GPT-6 released by…?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:32] [INFO] [INFO] get_orderbook: token_id=30169453025015868592904839532697257496312809123453999102231559644722177872945, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=30169453025015868592904839532697257496312809123453999102231559644722177872945, bids_count=0, asks_count=0
+[2025-11-21 04:29:32] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will BTC hit in November?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will BTC hit in November?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:33] [INFO] [INFO] get_orderbook: token_id=91654929727389333663341193002708070942440673396344278468607676266476574185023, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=91654929727389333663341193002708070942440673396344278468607676266476574185023, bids_count=0, asks_count=0
+[2025-11-21 04:29:33] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'F1 Drivers Champion 2025...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'F1 Drivers Champion 2025...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:33] [INFO] [INFO] get_orderbook: token_id=93533552803332830420774488227467234603910539746429374768601701973230415611502, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=93533552803332830420774488227467234603910539746429374768601701973230415611502, bids_count=0, asks_count=0
+[2025-11-21 04:29:33] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market '#1 Searched Person on Google 2025?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market '#1 Searched Person on Google 2025?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:34] [INFO] [INFO] get_orderbook: token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=28884313810501917714436549913040296405802543334421049863538382575673586121552, bids_count=0, asks_count=0
+[2025-11-21 04:29:34] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Lighter market cap (FDV) one day after launch?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Lighter market cap (FDV) one day after launch?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:34] [INFO] [INFO] get_orderbook: token_id=115337404060011642729912975656375595911891035721611673078002524606578038745473, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=115337404060011642729912975656375595911891035721611673078002524606578038745473, bids_count=0, asks_count=0
+[2025-11-21 04:29:34] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Bank of Japan decision in December?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Bank of Japan decision in December?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:35] [INFO] [INFO] get_orderbook: token_id=75853617923018329022274415799261805230066071583530402894662910741281468975687, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=75853617923018329022274415799261805230066071583530402894662910741281468975687, bids_count=0, asks_count=0
+[2025-11-21 04:29:35] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'English Premier League Winner 2026...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'English Premier League Winner 2026...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:35] [INFO] [INFO] get_orderbook: token_id=9973359034496086861565775852237292390187184168319658941341642003211476025337, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=9973359034496086861565775852237292390187184168319658941341642003211476025337, bids_count=0, asks_count=0
+[2025-11-21 04:29:35] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Super Bowl Champion 2026...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Super Bowl Champion 2026...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:36] [INFO] [INFO] get_orderbook: token_id=65198736348937692007561984422262270147378998146807445083485089294365262839683, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=65198736348937692007561984422262270147378998146807445083485089294365262839683, bids_count=0, asks_count=0
+[2025-11-21 04:29:36] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will Solana hit in 2025?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will Solana hit in 2025?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:36] [INFO] [INFO] get_orderbook: token_id=83237568940808971189154211974391230477645534800567961145046249207569566589509, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=83237568940808971189154211974391230477645534800567961145046249207569566589509, bids_count=0, asks_count=0
+[2025-11-21 04:29:36] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will Solana hit in November?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will Solana hit in November?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:37] [INFO] [INFO] get_orderbook: token_id=35099978048143644978822260090286853565974045512452109897605125488191189004587, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=35099978048143644978822260090286853565974045512452109897605125488191189004587, bids_count=0, asks_count=0
+[2025-11-21 04:29:37] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'How many Fed rate cuts in 2026?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'How many Fed rate cuts in 2026?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:38] [INFO] [INFO] get_orderbook: token_id=4484031175242884052566852711705221776146390342921941586968414613444021629786, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=4484031175242884052566852711705221776146390342921941586968414613444021629786, bids_count=0, asks_count=0
+[2025-11-21 04:29:38] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'La Liga Winner 2026...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'La Liga Winner 2026...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:38] [INFO] [INFO] get_orderbook: token_id=14011310381086744007768912256420309951423738357056828810337699879155049636093, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=14011310381086744007768912256420309951423738357056828810337699879155049636093, bids_count=0, asks_count=0
+[2025-11-21 04:29:38] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'UEFA Champions League Winner 2026...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'UEFA Champions League Winner 2026...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:39] [INFO] [INFO] get_orderbook: token_id=60400346438281476446681254538890041535793933796665559179048416789348441974982, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=60400346438281476446681254538890041535793933796665559179048416789348441974982, bids_count=0, asks_count=0
+[2025-11-21 04:29:39] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will ETH hit in November?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'What price will ETH hit in November?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:39] [INFO] [INFO] get_orderbook: token_id=9597418708758808381790519740441712139901550445547553694132497155869376553750, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=9597418708758808381790519740441712139901550445547553694132497155869376553750, bids_count=0, asks_count=0
+[2025-11-21 04:29:39] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'What day will U.S. Government Shutdown end?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'What day will U.S. Government Shutdown end?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:40] [INFO] [INFO] get_orderbook: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=57713468648664025190614617831768591526051286638333161001900536735000075973842, bids_count=0, asks_count=0
+[2025-11-21 04:29:40] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'US Fed Rate Decision in March?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'US Fed Rate Decision in March?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:40] [INFO] [INFO] get_orderbook: token_id=52832410453991542560198253554515882199778882902643544616426766170431277154560, bids_count=0, asks_count=0
+INFO:autonomous_engine:[INFO] get_orderbook: token_id=52832410453991542560198253554515882199778882902643544616426766170431277154560, bids_count=0, asks_count=0
+[2025-11-21 04:29:40] [INFO] [INFO] [LIQUIDITY FILTER] Skipping binary market 'Alpha Arena AI trading competition winner?...' - no orderbook liquidity (bids=0, asks=0)
+INFO:autonomous_engine:[INFO] [LIQUIDITY FILTER] Skipping binary market 'Alpha Arena AI trading competition winner?...' - no orderbook liquidity (bids=0, asks=0)
+[2025-11-21 04:29:40] [INFO] [INFO] [INFO] Opinion.trade API: Retrieved 0 active markets (skipped 73 markets - missing tokens or Sports category)
+INFO:autonomous_engine:[INFO] [INFO] Opinion.trade API: Retrieved 0 active markets (skipped 73 markets - missing tokens or Sports category)
+[2025-11-21 04:29:40] [INFO] [INFO] Fetched 0 events from Opinion.trade
+INFO:autonomous_engine:[INFO] Fetched 0 events from Opinion.trade
+[2025-11-21 04:29:40] [INFO] [CATEGORY] Events grouped into 0 categories: {}
+INFO:autonomous_engine:[CATEGORY] Events grouped into 0 categories: {}
+[2025-11-21 04:29:40] [ERROR] [ERROR] Daily cycle failed: No events available from Opinion.trade. Errors: Failed to fetch events from Opinion.trade - No events available
+ERROR:autonomous_engine:[ERROR] Daily cycle failed: No events available from Opinion.trade. Errors: Failed to fetch events from Opinion.trade - No events available
+100.64.0.5 - - [21/Nov/2025:04:29:40 +0000] "POST /admin/trigger-cycle HTTP/1.1" 500 616 "https://keen-essence-production.up.railway.app/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+[ORDER MONITOR] Triggered via API endpoint at 2025-11-21T04:30:01.809734
+[2025-11-21 04:30:01] [INFO] [BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+INFO:autonomous_engine:[BANKROLL MODE] TEST - Initial: $50.0, Daily limit: $5.0
+[2025-11-21 04:30:01] [INFO] [INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+INFO:autonomous_engine:[INFO] ✓ Opinion.trade SDK initialized (wallet: 0x43C9bAd451ed65b5268cec681FCe42AdA00Fc675)
+[2025-11-21 04:30:01] [INFO] [INFO] [INIT] Enabling trading permissions (one-time setup)...
+INFO:autonomous_engine:[INFO] [INIT] Enabling trading permissions (one-time setup)...
+WARNING:root:Failed to get decimals for 0x55d398326f99059fF775485246999027B3197955, defaulting to 18: ("The function 'decimals' was not found in this ", "contract's abi.")
+[2025-11-21 04:30:03] [WARNING] [WARNING] [INIT] Could not enable trading (may already be enabled): Could not transact with/call contract function, is contract deployed correctly and chain synced?
+WARNING:autonomous_engine:[WARNING] [INIT] Could not enable trading (may already be enabled): Could not transact with/call contract function, is contract deployed correctly and chain synced?
+[2025-11-21 04:30:04] [ERROR] [ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+ERROR:autonomous_engine:[ERROR] OrderMonitor - Failed to fetch orders: Unexpected error
+100.64.0.6 - - [21/Nov/2025:04:30:04 +0000] "POST /api/monitor-orders HTTP/1.1" 200 158 "-" "Mozilla/4.0 (compatible; cron-job.org; http://cron-job.org/abuse/)"

@@ -27,7 +27,8 @@ fi
 export RAILWAY_TOKEN
 
 # Stream logs (follows new entries in real-time)
-railway logs --follow
+# Note: Modern Railway CLI uses -f instead of --follow
+railway logs -f
 
 # Alternative: filter for specific patterns
-# railway logs --follow | grep -E "\[BET\]|\[SKIP\]|\[CATEGORY\]|\[ERROR\]"
+# railway logs -f | grep -E "\[BET\]|\[SKIP\]|\[CATEGORY\]|\[ERROR\]"
