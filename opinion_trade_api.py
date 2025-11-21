@@ -2,6 +2,7 @@ import os
 import time
 from typing import Dict, Optional, List
 from datetime import datetime
+from decimal import Decimal, InvalidOperation
 from eth_account import Account
 from functools import wraps
 
@@ -882,36 +883,81 @@ class OpinionTradeAPI:
                     raw_bids = getattr(book, 'bids', []) or []
                     raw_asks = getattr(book, 'asks', []) or []
                 
-                # DEBUG: Log raw data BEFORE normalization
+                # DEBUG: Log raw data BEFORE normalization with TYPE information
                 logger.info(f"[ORDERBOOK DEBUG] RAW data: raw_bids={len(raw_bids)}, raw_asks={len(raw_asks)}")
                 if raw_bids and len(raw_bids) > 0:
-                    logger.info(f"[ORDERBOOK DEBUG] First raw bid sample: {raw_bids[0]}")
+                    sample_bid = raw_bids[0]
+                    logger.info(f"[ORDERBOOK DEBUG] First raw bid: {sample_bid}")
+                    logger.info(f"[ORDERBOOK DEBUG] First raw bid type: {type(sample_bid).__name__}")
+                    if isinstance(sample_bid, dict):
+                        logger.info(f"[ORDERBOOK DEBUG] First raw bid keys: {list(sample_bid.keys())}")
+                        logger.info(f"[ORDERBOOK DEBUG] First raw bid 'price' type: {type(sample_bid.get('price')).__name__ if 'price' in sample_bid else 'N/A'}")
+                        logger.info(f"[ORDERBOOK DEBUG] First raw bid 'price' value: {repr(sample_bid.get('price'))}")
                 if raw_asks and len(raw_asks) > 0:
-                    logger.info(f"[ORDERBOOK DEBUG] First raw ask sample: {raw_asks[0]}")
+                    sample_ask = raw_asks[0]
+                    logger.info(f"[ORDERBOOK DEBUG] First raw ask: {sample_ask}")
+                    logger.info(f"[ORDERBOOK DEBUG] First raw ask type: {type(sample_ask).__name__}")
+                    if isinstance(sample_ask, dict):
+                        logger.info(f"[ORDERBOOK DEBUG] First raw ask keys: {list(sample_ask.keys())}")
+                        logger.info(f"[ORDERBOOK DEBUG] First raw ask 'price' type: {type(sample_ask.get('price')).__name__ if 'price' in sample_ask else 'N/A'}")
+                        logger.info(f"[ORDERBOOK DEBUG] First raw ask 'price' value: {repr(sample_ask.get('price'))}")
                 
                 # Normalize each bid/ask entry to consistent dict format
                 def normalize_order_entry(entry):
-                    """Convert SDK order entry (dict or object) to normalized dict."""
+                    """Convert SDK order entry (dict or object) to normalized dict.
+                    
+                    Handles: strings, Decimals, floats, ints, and nested objects.
+                    Returns None if entry is invalid.
+                    """
                     if not entry:
                         return None
                     
                     normalized = {}
                     
-                    # Extract price
+                    # Extract price and amount - SDK may return different field names or formats
                     if isinstance(entry, dict):
-                        normalized['price'] = entry.get('price', 0)
-                        normalized['amount'] = entry.get('amount', 0)
+                        # Try different possible field names
+                        raw_price = entry.get('price') or entry.get('p') or entry.get('pricePerShare') or 0
+                        raw_amount = entry.get('amount') or entry.get('size') or entry.get('quantity') or 0
                     else:
-                        normalized['price'] = getattr(entry, 'price', 0)
-                        normalized['amount'] = getattr(entry, 'amount', 0)
+                        # Object/class with attributes
+                        raw_price = getattr(entry, 'price', None) or getattr(entry, 'p', None) or 0
+                        raw_amount = getattr(entry, 'amount', None) or getattr(entry, 'size', None) or 0
                     
-                    # Ensure price is numeric
-                    try:
-                        normalized['price'] = float(normalized['price']) if normalized['price'] else 0.0
-                        normalized['amount'] = float(normalized['amount']) if normalized['amount'] else 0.0
-                    except (ValueError, TypeError):
-                        normalized['price'] = 0.0
-                        normalized['amount'] = 0.0
+                    # DECIMAL-SAFE conversion: handle strings, Decimals, floats
+                    def safe_float_convert(value, field_name='unknown'):
+                        """Safely convert any numeric type to float with detailed error logging."""
+                        if value is None:
+                            return 0.0
+                        
+                        # Already a number
+                        if isinstance(value, (int, float)):
+                            return float(value)
+                        
+                        # Decimal type (already imported at module level)
+                        if isinstance(value, Decimal):
+                            return float(value)
+                        
+                        # String conversion
+                        if isinstance(value, str):
+                            value = value.strip()
+                            if not value or value == '':
+                                return 0.0
+                            try:
+                                return float(value)
+                            except (ValueError, TypeError) as e:
+                                logger.warning(f"[ORDERBOOK DEBUG] Failed to convert {field_name}='{value}' (type={type(value).__name__}) to float: {e}")
+                                return 0.0
+                        
+                        # Unknown type - last resort
+                        try:
+                            return float(value)
+                        except:
+                            logger.warning(f"[ORDERBOOK DEBUG] Unknown type for {field_name}: {type(value).__name__} = {value}")
+                            return 0.0
+                    
+                    normalized['price'] = safe_float_convert(raw_price, 'price')
+                    normalized['amount'] = safe_float_convert(raw_amount, 'amount')
                     
                     return normalized
                 
@@ -926,23 +972,27 @@ class OpinionTradeAPI:
                 if asks and len(asks) > 0:
                     logger.info(f"[ORDERBOOK DEBUG] First normalized ask sample: {asks[0]}")
                 
-                # Filter out invalid entries (price = 0)
+                # Filter out ONLY truly invalid entries (price <= 0 or exactly 0.0)
+                # Keep very small prices like 0.001 as they're valid
+                MIN_VALID_PRICE = 0.0001  # Prices below this are considered invalid
                 filtered_bids_before = len(bids)
                 filtered_asks_before = len(asks)
-                bids = [b for b in bids if b and b.get('price', 0) > 0]
-                asks = [a for a in asks if a and a.get('price', 0) > 0]
+                bids = [b for b in bids if b and b.get('price', 0) >= MIN_VALID_PRICE]
+                asks = [a for a in asks if a and a.get('price', 0) >= MIN_VALID_PRICE]
                 
                 # DEBUG: Log what got filtered
                 if filtered_bids_before > len(bids):
-                    logger.warning(f"[ORDERBOOK DEBUG] FILTERED OUT {filtered_bids_before - len(bids)} bids with price=0")
+                    logger.warning(f"[ORDERBOOK DEBUG] FILTERED OUT {filtered_bids_before - len(bids)} bids with price < {MIN_VALID_PRICE}")
                 if filtered_asks_before > len(asks):
-                    logger.warning(f"[ORDERBOOK DEBUG] FILTERED OUT {filtered_asks_before - len(asks)} asks with price=0")
+                    logger.warning(f"[ORDERBOOK DEBUG] FILTERED OUT {filtered_asks_before - len(asks)} asks with price < {MIN_VALID_PRICE}")
                 
                 logger.info(f"get_orderbook: token_id={token_id}, bids_count={len(bids)}, asks_count={len(asks)}")
                 
+                # IMPORTANT: Keep 'orderbook' key for backward compatibility with existing callers
+                # (get_available_events, get_latest_price expect response.get('orderbook'))
                 return {
                     'success': True,
-                    'data': {
+                    'orderbook': {
                         'bids': bids,
                         'asks': asks,
                         'best_bid': bids[0] if bids else None,
@@ -1086,7 +1136,7 @@ class OpinionTradeAPI:
                     'token_id': token_id
                 }
             
-            orderbook = orderbook_response.get('data', {})
+            orderbook = orderbook_response.get('orderbook', {})
             best_bid = orderbook.get('best_bid')
             best_ask = orderbook.get('best_ask')
             

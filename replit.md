@@ -4,6 +4,24 @@ TradingAgents is an autonomous AI-powered prediction market trading system that 
 
 ## Recent Changes (November 21, 2025)
 
+**CRITICAL ORDERBOOK NORMALIZATION BUG FIX:**
+- **Problem**: `get_orderbook()` returning bids=0, asks=0 even when Opinion.trade website shows real liquidity exists. This completely blocked trading operations.
+- **Root Cause**: SDK returns prices as strings or Decimals, and old normalization code used `float(price) if price else 0.0` which failed for string "0.182" → 0.0, then filtered out as invalid.
+- **Solution**: 
+  - Created `safe_float_convert()` helper with decimal-safe parsing (handles strings, Decimals, floats, ints)
+  - Tries multiple field names: 'price', 'p', 'pricePerShare', 'amount', 'size', 'quantity'
+  - Relaxed filter from `price > 0` to `price >= 0.0001` (MIN_VALID_PRICE)
+  - Added comprehensive DEBUG logging: raw SDK response type, field names, price types/values BEFORE normalization
+  - Added `from decimal import Decimal, InvalidOperation` import
+- **Testing**: Created unit test verifying safe_float_convert handles all data types correctly (strings, Decimals, floats, ints, whitespace, None)
+- **Impact**: Orderbook liquidity detection should now work correctly, enabling autonomous trading operations.
+
+**RAILWAY CLI CONFIGURATION FIX:**
+- **Problem**: Railway CLI authentication failing with "Unauthorized" despite valid Project Token. CLI v4.11.1 uses `-s SERVICE_ID` not `--project PROJECT_ID`.
+- **Solution**: Created `scripts/configure_railway_cli.sh` to guide user through getting SERVICE_ID from Railway dashboard URL.
+- **Updated Scripts**: `tail_backend_logs.sh` and `get_railway_logs.sh` now use SERVICE_ID from config file for authentication.
+- **Impact**: Once SERVICE_ID configured, can stream Railway logs directly from Replit without web UI.
+
 **CRITICAL LIQUIDITY FILTER BUG FIX:**
 - **Problem**: Binary markets without `yes_token_id` were passing the liquidity filter but then failing when trying to create events. This caused the appearance of "all markets filtered out" when actually markets lacked valid trading tokens.
 - **Root Cause**: The code checked `if check_token_id:` for liquidity validation, but if `check_token_id` was `None`, it didn't skip the market - it just continued without validation.
