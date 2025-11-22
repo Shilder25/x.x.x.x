@@ -1180,8 +1180,8 @@ def initialize_portfolios():
                 'error': 'Invalid password'
             }), 401
         
-        # Get initial balance from request (default: $50 for TEST mode)
-        initial_balance = data.get('initial_balance', 50.0)
+        # Get initial balance from request (default: $100 for TEST mode)
+        initial_balance = data.get('initial_balance', 100.0)
         
         # Initialize portfolios for all 5 AI agents
         firms = ['ChatGPT', 'Gemini', 'Qwen', 'Deepseek', 'Grok']

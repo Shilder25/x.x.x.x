@@ -32,7 +32,7 @@ class AutonomousEngine:
         
         Note: Sistema siempre opera en modo real (no simulation). 
         BANKROLL_MODE env var controla cantidades:
-        - TEST: $50 inicial, máximo $5 por día (protección para pruebas)
+        - TEST: $100 inicial, máximo $10 por día (protección para pruebas)
         - PRODUCTION: $5000 inicial, sin límite diario
         """
         system_enabled = os.environ.get('SYSTEM_ENABLED', 'false').lower() == 'true'
@@ -45,8 +45,8 @@ class AutonomousEngine:
             self.daily_bet_limit = None  # Sin límite
             self.bankroll_mode = 'PRODUCTION'
         else:  # TEST mode (default)
-            self.initial_bankroll = 50.0
-            self.daily_bet_limit = 5.0  # Máximo $5 por día
+            self.initial_bankroll = 100.0
+            self.daily_bet_limit = 10.0  # Máximo $10 por día
             self.bankroll_mode = 'TEST'
         
         logger.bankroll(f"{self.bankroll_mode} - Initial: ${self.initial_bankroll}, Daily limit: ${self.daily_bet_limit if self.daily_bet_limit else 'None'}")

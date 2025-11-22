@@ -6,7 +6,7 @@ TradingAgents is an autonomous AI-powered prediction market trading system desig
 
 **Gunicorn Timeout Fix (Nov 21, 2025):** Increased Gunicorn timeouts to 900s (15 minutes) with graceful-timeout to allow daily cycle with 5 AI agents to complete without worker timeouts.
 
-**Portfolio Initialization (Nov 21, 2025):** Created `/admin/initialize-portfolios` endpoint to initialize portfolios for all 5 AI agents. This endpoint must be run after database resets to create initial portfolios ($50 balance in TEST mode) for ChatGPT, Gemini, Qwen, Deepseek, and Grok.
+**Portfolio Initialization (Nov 21, 2025):** Created `/admin/initialize-portfolios` endpoint to initialize portfolios for all 5 AI agents. This endpoint must be run after database resets to create initial portfolios ($100 balance in TEST mode) for ChatGPT, Gemini, Qwen, Deepseek, and Grok.
 
 **Database Thread-Safety Fix (Nov 21, 2025):** ✓ COMPLETED - Refactored ALL 25+ database methods in `database.py` to use re-entrant context manager pattern (`with self.get_connection() as conn:`) with automatic transaction management. The context manager now:
 - Uses thread-local connections (one per Gunicorn worker)
@@ -20,9 +20,19 @@ Fixed all indentation and syntax errors. This resolves "Cannot operate on a clos
 
 **Minimum Bet Amount Fix (Nov 22, 2025):** ✓ COMPLETED - Implemented comprehensive minimum bet enforcement with bankroll protection in `risk_management.py`:
 - **get_recommended_bet_size()**: FORCES $1.50 minimum when Kelly < $1.50, clamped to available bankroll. Returns 0 if bankroll < $1.50 (insufficient for minimum).
-- **can_place_bet()**: Added exception to allow $1.50 minimum bet even when it exceeds 2% bankroll cap (TEST mode: $50 → 2% = $1.00, but needs $1.50). Includes overdraft protection: rejects any bet > current_bankroll or when bankroll < $1.50.
-- **Result**: TEST mode ($50) can place $1.50 bets. After drawdowns to < $1.50, betting pauses until bankroll recovers. PRODUCTION mode ($5,000) works normally.
+- **can_place_bet()**: Added exception to allow $1.50 minimum bet even when it exceeds 2% bankroll cap. Includes overdraft protection: rejects any bet > current_bankroll or when bankroll < $1.50.
+- **Result**: All modes can place $1.50 minimum bets. After drawdowns to < $1.50, betting pauses until bankroll recovers.
 This ensures all approved bets meet Opinion.trade's $1.30 USDT minimum while preventing overdrafts.
+
+**TEST Mode Bankroll Update (Nov 22, 2025):** ✓ COMPLETED - Increased TEST mode bankroll from $50 to $100 to ensure 2% Kelly Conservative bets ($2.00) comfortably exceed Opinion.trade's $1.50 minimum:
+- **autonomous_engine.py**: Initial bankroll $50 → $100, daily limit $5 → $10
+- **api.py**: Default initial_balance $50 → $100
+- **risk_tiers.py**: Adjusted all tier limits proportionally for $100 bankroll
+  - CONSERVATIVE: max_bet $2.50 → $5.00, daily_loss_cap $5 → $10
+  - DEFENSIVE: max_bet $1.50 → $3.00, daily_loss_cap $3.50 → $7.00
+  - RECOVERY: max_bet $0.75 → $1.50 (exactly minimum), daily_loss_cap $2.50 → $5.00
+  - Global: daily_loss_cap $5 → $10, max_exposure $15 → $30, min_balance $10 → $20
+- **Result**: TEST mode ($100) now allows normal Kelly-sized bets without triggering minimum bet override. PRODUCTION mode ($5,000) unchanged.
 
 **Frontend-Backend Connection Fix (Nov 22, 2025):** ✓ COMPLETED - Fixed Next.js frontend not communicating with Flask backend in Railway deployment. Updated `next.config.mjs` to disable rewrites only when Railway environment is detected (checks `NEXT_PUBLIC_API_URL` + Railway env vars), and `frontend/lib/config.ts` to use `NEXT_PUBLIC_API_URL` when available. This supports both:
 - **Replit (production mode)**: Uses internal rewrites to `localhost:8000` for single-container deployment even with `next build` + `next start`

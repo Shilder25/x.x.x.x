@@ -29,7 +29,7 @@ class RiskTierConfig:
     
     def __init__(self):
         self.mode = os.environ.get("BANKROLL_MODE", "test")
-        self.initial_balance = 50.0 if self.mode == "test" else 1000.0  # Changed from 10.0 to 50.0 to match actual TEST mode balance
+        self.initial_balance = 100.0 if self.mode == "test" else 1000.0  # Updated to $100 for TEST mode
         
         # Tier thresholds (as percentage of initial balance)
         self.CONSERVATIVE_THRESHOLD = 0.90  # >= 90%
@@ -41,9 +41,9 @@ class RiskTierConfig:
         self.configs = {
             RiskTier.CONSERVATIVE: {
                 'max_bet_percent': 0.05,  # 5% of current balance
-                'max_bet_fixed': 2.50 if self.mode == "test" else 50.0,  # Updated for $50 bankroll
+                'max_bet_fixed': 5.00 if self.mode == "test" else 50.0,  # Updated for $100 bankroll (5% = $5)
                 'daily_loss_cap_percent': 0.10,  # 10% of balance
-                'daily_loss_cap_fixed': 5.00 if self.mode == "test" else 100.0,  # Updated for $50 bankroll
+                'daily_loss_cap_fixed': 10.00 if self.mode == "test" else 100.0,  # Updated for $100 bankroll (10% = $10)
                 'max_concurrent_positions': 2,
                 'max_exposure_percent': 0.15,  # Total locked in bets
                 'review_frequency': 'weekly',
@@ -51,9 +51,9 @@ class RiskTierConfig:
             },
             RiskTier.DEFENSIVE: {
                 'max_bet_percent': 0.03,  # 3% of current balance
-                'max_bet_fixed': 1.50 if self.mode == "test" else 30.0,  # Updated for $50 bankroll
+                'max_bet_fixed': 3.00 if self.mode == "test" else 30.0,  # Updated for $100 bankroll (3% = $3)
                 'daily_loss_cap_percent': 0.07,
-                'daily_loss_cap_fixed': 3.50 if self.mode == "test" else 70.0,  # Updated for $50 bankroll
+                'daily_loss_cap_fixed': 7.00 if self.mode == "test" else 70.0,  # Updated for $100 bankroll (7% = $7)
                 'max_concurrent_positions': 1,
                 'max_exposure_percent': 0.10,
                 'review_frequency': 'daily',
@@ -61,9 +61,9 @@ class RiskTierConfig:
             },
             RiskTier.RECOVERY: {
                 'max_bet_percent': 0.015,  # 1.5% of current balance
-                'max_bet_fixed': 0.75 if self.mode == "test" else 25.0,  # Updated for $50 bankroll
+                'max_bet_fixed': 1.50 if self.mode == "test" else 25.0,  # Updated for $100 bankroll (1.5% = $1.50, exactly minimum)
                 'daily_loss_cap_percent': 0.05,
-                'daily_loss_cap_fixed': 2.50 if self.mode == "test" else 50.0,  # Updated for $50 bankroll
+                'daily_loss_cap_fixed': 5.00 if self.mode == "test" else 50.0,  # Updated for $100 bankroll (5% = $5)
                 'max_concurrent_positions': 1,
                 'max_exposure_percent': 0.05,
                 'review_frequency': 'per_bet',
@@ -95,9 +95,9 @@ class RiskTierConfig:
         }
         
         # Global system limits (across all AIs)
-        self.global_daily_loss_cap = 5.0 if self.mode == "test" else 50.0  # Already correct for TEST mode
-        self.global_max_exposure = 15.0 if self.mode == "test" else 1200.0  # Increased from 12.0 to allow some trades
-        self.global_min_balance = 10.0 if self.mode == "test" else 1000.0  # Keep minimum at $10 for safety
+        self.global_daily_loss_cap = 10.0 if self.mode == "test" else 50.0  # Updated for $100 TEST mode (10% of bankroll)
+        self.global_max_exposure = 30.0 if self.mode == "test" else 1200.0  # Updated for $100 TEST mode (30% of bankroll)
+        self.global_min_balance = 20.0 if self.mode == "test" else 1000.0  # Updated for $100 TEST mode (20% floor)
 
     def get_tier(self, current_balance: float, initial_balance: float) -> RiskTier:
         """Determine risk tier based on current balance"""
