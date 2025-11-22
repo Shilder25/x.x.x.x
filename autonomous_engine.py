@@ -278,6 +278,21 @@ class AutonomousEngine:
             events_by_category[category].append(event)
         
         categories_summary = {cat: len(events) for cat, events in events_by_category.items()}
+        
+        # DETAILED LOGGING: Show exactly what categories were detected
+        print(f"\n{'='*80}")
+        print(f"[CATEGORY DETECTION] Total events fetched: {len(all_events)}")
+        print(f"[CATEGORY DETECTION] Sports events filtered: {sports_filtered}")
+        print(f"[CATEGORY DETECTION] Events after filtering: {len(filtered_events)}")
+        print(f"[CATEGORY DETECTION] Categories detected: {len(events_by_category)}")
+        print(f"[CATEGORY DETECTION] Category breakdown:")
+        for cat, events in sorted(events_by_category.items(), key=lambda x: len(x[1]), reverse=True):
+            print(f"  - {cat}: {len(events)} events")
+            # Show first 3 event titles as examples
+            for i, event in enumerate(events[:3]):
+                print(f"    {i+1}. {event.get('description', 'No description')[:70]}...")
+        print(f"{'='*80}\n")
+        
         logger.category(f"Events grouped into {len(events_by_category)} categories: {categories_summary}")
         return events_by_category
     

@@ -18,12 +18,22 @@ TradingAgents is an autonomous AI-powered prediction market trading system desig
 - Removed all 17 explicit `conn.commit()` calls from methods
 Fixed all indentation and syntax errors. This resolves "Cannot operate on a closed database", "database is locked", and "cannot start a transaction within a transaction" errors during concurrent bet execution. System now runs stably in production with 2 Gunicorn workers.
 
-**Minimum Bet Amount Fix (Nov 21, 2025):** Increased minimum bet from $1.00 to $1.50 USDT in `opinion_trade_api.py` and `risk_management.py` to meet Opinion.trade's minimum requirement of $1.30 USDT.
+**Minimum Bet Amount Fix (Nov 22, 2025):** ✓ COMPLETED - Implemented comprehensive minimum bet enforcement with bankroll protection in `risk_management.py`:
+- **get_recommended_bet_size()**: FORCES $1.50 minimum when Kelly < $1.50, clamped to available bankroll. Returns 0 if bankroll < $1.50 (insufficient for minimum).
+- **can_place_bet()**: Added exception to allow $1.50 minimum bet even when it exceeds 2% bankroll cap (TEST mode: $50 → 2% = $1.00, but needs $1.50). Includes overdraft protection: rejects any bet > current_bankroll or when bankroll < $1.50.
+- **Result**: TEST mode ($50) can place $1.50 bets. After drawdowns to < $1.50, betting pauses until bankroll recovers. PRODUCTION mode ($5,000) works normally.
+This ensures all approved bets meet Opinion.trade's $1.30 USDT minimum while preventing overdrafts.
 
 **Frontend-Backend Connection Fix (Nov 22, 2025):** ✓ COMPLETED - Fixed Next.js frontend not communicating with Flask backend in Railway deployment. Updated `next.config.mjs` to disable rewrites only when Railway environment is detected (checks `NEXT_PUBLIC_API_URL` + Railway env vars), and `frontend/lib/config.ts` to use `NEXT_PUBLIC_API_URL` when available. This supports both:
 - **Replit (production mode)**: Uses internal rewrites to `localhost:8000` for single-container deployment even with `next build` + `next start`
 - **Railway (production)**: Uses `NEXT_PUBLIC_API_URL` to connect frontend service to separate backend service
 The system now works in both single-service (Replit) and multi-service (Railway) architectures without breaking either environment.
+
+**Category Detection & Bet Size Debugging (Nov 22, 2025):** Added comprehensive logging to diagnose why only 2 categories were detected and 0 bets placed:
+- `autonomous_engine.py`: Added detailed category breakdown logging showing total events, Sports filtering, and per-category event counts with examples
+- `opinion_trade_api.py`: Added category distribution logging from Opinion.trade API fetch
+- `risk_management.py`: Added logging when forcing bet size to minimum $1.50
+These logs will help identify if the issue is with Opinion.trade API returning few categories or with category classification logic.
 
 # User Preferences
 

@@ -198,6 +198,26 @@ class RiskManager:
         Returns:
             Dictionary con resultado de la verificación
         """
+        # Opinion.trade minimum bet requirement (must match get_recommended_bet_size)
+        MINIMUM_BET_USDT = 1.5
+        
+        # CRITICAL: Never allow bet that exceeds current bankroll
+        if bet_amount > self.current_bankroll:
+            return {
+                'allowed': False,
+                'reason': f"Apuesta excede bankroll disponible (${self.current_bankroll:.2f})",
+                'current_bankroll': self.current_bankroll
+            }
+        
+        # Cannot place minimum bet if bankroll is insufficient
+        if self.current_bankroll < MINIMUM_BET_USDT:
+            return {
+                'allowed': False,
+                'reason': f"Bankroll insuficiente para apuesta mínima (${self.current_bankroll:.2f} < ${MINIMUM_BET_USDT})",
+                'current_bankroll': self.current_bankroll,
+                'minimum_required': MINIMUM_BET_USDT
+            }
+        
         if self.cooldown_until and datetime.now() < self.cooldown_until:
             return {
                 'allowed': False,
@@ -205,12 +225,22 @@ class RiskManager:
                 'cooldown_remaining_hours': (self.cooldown_until - datetime.now()).total_seconds() / 3600
             }
         
-        if bet_amount > self.current_bankroll * self.max_bet_size_pct:
+        # CRITICAL: Allow minimum bet even if it exceeds percentage cap
+        # In TEST mode ($50 bankroll), 2% = $1.00, but Opinion.trade requires $1.50 minimum
+        # Exception: Allow MINIMUM_BET_USDT to bypass percentage cap for small bankrolls
+        max_allowed = self.current_bankroll * self.max_bet_size_pct
+        is_minimum_bet = abs(bet_amount - MINIMUM_BET_USDT) < 0.01  # Within 1 cent
+        
+        if bet_amount > max_allowed and not is_minimum_bet:
             return {
                 'allowed': False,
                 'reason': f"Apuesta excede límite de {self.max_bet_size_pct*100}% del bankroll",
-                'max_allowed': self.current_bankroll * self.max_bet_size_pct
+                'max_allowed': max_allowed
             }
+        
+        # Log when we're allowing minimum bet exception
+        if is_minimum_bet and bet_amount > max_allowed:
+            print(f"[RISK GUARD] Allowing minimum bet ${bet_amount:.2f} despite exceeding {self.max_bet_size_pct*100}% cap (${max_allowed:.2f}) - small bankroll exception")
         
         if current_positions and len(current_positions) >= self.max_concurrent_bets:
             return {
@@ -296,6 +326,10 @@ class RiskManager:
         # Opinion.trade minimum bet requirement (1.30 USDT minimum, we use 1.50 for safety)
         MINIMUM_BET_USDT = 1.5
         
+        # CRITICAL: If bankroll is below minimum, cannot place any bet
+        if self.current_bankroll < MINIMUM_BET_USDT:
+            return 0
+        
         if probability <= 0.5:
             return 0
         
@@ -306,12 +340,15 @@ class RiskManager:
         
         recommended_amount = self.current_bankroll * kelly_pct
         
-        # Ensure minimum bet size if recommendation is above 0
-        # If below minimum, return 0 (don't bet) to avoid wasting fees on tiny bets
+        # FORCE minimum bet size to $1.50 if Kelly calculation is positive but below minimum
+        # CLAMP to current bankroll to never exceed available funds
         if 0 < recommended_amount < MINIMUM_BET_USDT:
-            return 0
+            forced_bet = min(MINIMUM_BET_USDT, self.current_bankroll)
+            print(f"[BET SIZE] Kelly calculated ${recommended_amount:.2f} < ${MINIMUM_BET_USDT}, forcing to ${forced_bet:.2f} (clamped to bankroll)")
+            return forced_bet
         
-        return recommended_amount
+        # Always clamp to bankroll
+        return min(recommended_amount, self.current_bankroll)
     
     def get_status_report(self) -> Dict:
         """

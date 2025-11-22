@@ -448,6 +448,17 @@ class OpinionTradeAPI:
                     logger.error(f"[ERROR] Failed to convert market {getattr(market, 'market_id', 'unknown')}: {e}")
                     continue
             
+            # DETAILED LOGGING: Category distribution from Opinion.trade
+            category_counts = {}
+            for event in events:
+                cat = event.get('category', 'Unknown')
+                category_counts[cat] = category_counts.get(cat, 0) + 1
+            
+            print(f"\n[OPINION.TRADE API] Category distribution from fetched markets:")
+            for cat, count in sorted(category_counts.items(), key=lambda x: x[1], reverse=True):
+                print(f"  - {cat}: {count} markets")
+            print(f"[OPINION.TRADE API] Total active markets: {len(events)}, Skipped: {skipped_count}\n")
+            
             logger.info(f"[INFO] Opinion.trade API: Retrieved {len(events)} active markets (skipped {skipped_count} markets - missing tokens or Sports category)")
             return {
                 'success': True,
