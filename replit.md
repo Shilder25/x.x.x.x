@@ -20,7 +20,10 @@ Fixed all indentation and syntax errors. This resolves "Cannot operate on a clos
 
 **Minimum Bet Amount Fix (Nov 21, 2025):** Increased minimum bet from $1.00 to $1.50 USDT in `opinion_trade_api.py` and `risk_management.py` to meet Opinion.trade's minimum requirement of $1.30 USDT.
 
-**Frontend-Backend Connection Fix (Nov 21, 2025):** ✓ COMPLETED - Fixed Next.js frontend not communicating with Flask backend in Railway deployment. Updated `next.config.mjs` to use internal rewrites (`localhost:8000`) and `frontend/lib/config.ts` to use relative API paths. This allows the frontend (port 5000) to proxy API requests internally to Flask (port 8000) within the same Railway container. Verified working - all API endpoints responding with HTTP 200.
+**Frontend-Backend Connection Fix (Nov 22, 2025):** ✓ COMPLETED - Fixed Next.js frontend not communicating with Flask backend in Railway deployment. Updated `next.config.mjs` to disable rewrites only when Railway environment is detected (checks `NEXT_PUBLIC_API_URL` + Railway env vars), and `frontend/lib/config.ts` to use `NEXT_PUBLIC_API_URL` when available. This supports both:
+- **Replit (production mode)**: Uses internal rewrites to `localhost:8000` for single-container deployment even with `next build` + `next start`
+- **Railway (production)**: Uses `NEXT_PUBLIC_API_URL` to connect frontend service to separate backend service
+The system now works in both single-service (Replit) and multi-service (Railway) architectures without breaking either environment.
 
 # User Preferences
 
