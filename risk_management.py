@@ -226,8 +226,8 @@ class RiskManager:
             }
         
         # CRITICAL: Allow minimum bet even if it exceeds percentage cap
-        # In TEST mode ($50 bankroll), 2% = $1.00, but Opinion.trade requires $1.50 minimum
-        # Exception: Allow MINIMUM_BET_USDT to bypass percentage cap for small bankrolls
+        # In TEST mode ($100 bankroll), 2% = $2.00, which already exceeds $1.50 minimum
+        # Exception: Allow MINIMUM_BET_USDT to bypass percentage cap for very small bankrolls (after losses)
         max_allowed = self.current_bankroll * self.max_bet_size_pct
         is_minimum_bet = abs(bet_amount - MINIMUM_BET_USDT) < 0.01  # Within 1 cent
         

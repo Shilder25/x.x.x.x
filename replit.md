@@ -32,7 +32,10 @@ This ensures all approved bets meet Opinion.trade's $1.30 USDT minimum while pre
   - DEFENSIVE: max_bet $1.50 → $3.00, daily_loss_cap $3.50 → $7.00
   - RECOVERY: max_bet $0.75 → $1.50 (exactly minimum), daily_loss_cap $2.50 → $5.00
   - Global: daily_loss_cap $5 → $10, max_exposure $15 → $30, min_balance $10 → $20
+- **bankroll_manager.py**: Updated min_bet_size from $1.00 to $1.50 to enforce Opinion.trade's minimum across all betting strategies
+- **risk_management.py**: Updated comments to reflect $100 bankroll instead of $50
 - **Result**: TEST mode ($100) now allows normal Kelly-sized bets without triggering minimum bet override. PRODUCTION mode ($5,000) unchanged.
+- **IMPORTANT**: After deploying these changes, you MUST run `/admin/initialize-portfolios` endpoint with password to reset all AI firm portfolios to $100 initial balance. Existing portfolios seeded at $50 will show incorrect ROI/Sharpe metrics until reinitialized.
 
 **Frontend-Backend Connection Fix (Nov 22, 2025):** ✓ COMPLETED - Fixed Next.js frontend not communicating with Flask backend in Railway deployment. Updated `next.config.mjs` to disable rewrites only when Railway environment is detected (checks `NEXT_PUBLIC_API_URL` + Railway env vars), and `frontend/lib/config.ts` to use `NEXT_PUBLIC_API_URL` when available. This supports both:
 - **Replit (production mode)**: Uses internal rewrites to `localhost:8000` for single-container deployment even with `next build` + `next start`
