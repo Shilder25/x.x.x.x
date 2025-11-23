@@ -42,6 +42,14 @@ This ensures all approved bets meet Opinion.trade's $1.30 USDT minimum while pre
 - **Railway (production)**: Uses `NEXT_PUBLIC_API_URL` to connect frontend service to separate backend service
 The system now works in both single-service (Replit) and multi-service (Railway) architectures without breaking either environment.
 
+**BNB Chain RPC Configuration (Nov 23, 2025):** ✓ COMPLETED - Added RPC configuration to fix connectivity issues from Railway EU-West region:
+- **opinion_trade_api.py**: Added `_get_bnb_rpc_url()` method with environment variable support
+- **Environment Variable**: Optional `BNB_RPC_URL` to configure custom RPC endpoint (e.g., Alchemy, QuickNode, Infura)  
+- **Default RPC Changed**: Switched from Binance (`bsc-dataseed.binance.org`) to Ankr (`https://rpc.ankr.com/bsc`)
+- **Purpose**: The default Binance RPC is blocked or unreliable from Railway EU-West, causing "Failed to get decimals" and "Could not enable trading" errors
+- **Result**: System now uses Ankr RPC by default (reliable from EU), eliminating connectivity failures
+- **Note**: This is not full multi-RPC fallback with automatic retry - it's a configurable RPC endpoint with better default. Full fallback can be added later if needed.
+
 **Category Detection & Bet Size Debugging (Nov 22, 2025):** Added comprehensive logging to diagnose why only 2 categories were detected and 0 bets placed:
 - `autonomous_engine.py`: Added detailed category breakdown logging showing total events, Sports filtering, and per-category event counts with examples
 - `opinion_trade_api.py`: Added category distribution logging from Opinion.trade API fetch

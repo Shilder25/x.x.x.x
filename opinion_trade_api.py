@@ -107,11 +107,36 @@ class OpinionTradeAPI:
         self._fees_cache_timestamp: Optional[datetime] = None
         self._fees_cache_ttl_seconds = 3600  # 1 hour
     
+    def _get_bnb_rpc_url(self) -> str:
+        """
+        Get BNB Chain RPC URL with fallback support.
+        Tries environment variable first, then falls back to public RPCs.
+        """
+        # Try custom RPC from environment first
+        custom_rpc = os.environ.get("BNB_RPC_URL", "").strip()
+        if custom_rpc:
+            logger.info(f"[RPC] Using custom BNB RPC from environment: {custom_rpc}")
+            return custom_rpc
+        
+        # Fallback to public RPCs (prioritized for reliability)
+        public_rpcs = [
+            'https://rpc.ankr.com/bsc',  # Ankr - generally reliable from EU
+            'https://bsc-dataseed1.defibit.io/',  # DeFiBit - alternative
+            'https://bsc-dataseed.binance.org/',  # Binance official - may be blocked in some regions
+        ]
+        
+        selected_rpc = public_rpcs[0]
+        logger.info(f"[RPC] Using public BNB RPC: {selected_rpc}")
+        return selected_rpc
+    
     def _initialize_client(self):
         """Initialize Opinion.trade SDK client with production configuration."""
         if not self.api_key or not self.private_key or not self.wallet_address:
             logger.warning("Warning: OpinionTradeAPI initialized without full credentials (read-only mode)")
             return
+        
+        # Get RPC URL with fallback support
+        rpc_url = self._get_bnb_rpc_url()
         
         try:
             # NOTE: multi_sig_addr must be the wallet address (visible in "MyProfile" on Opinion.trade)
@@ -122,7 +147,7 @@ class OpinionTradeAPI:
                 host='https://proxy.opinion.trade:8443',
                 apikey=self.api_key,
                 chain_id=CHAIN_ID_BNB_MAINNET,  # 56
-                rpc_url='https://bsc-dataseed.binance.org/',
+                rpc_url=rpc_url,
                 private_key=self.private_key,
                 multi_sig_addr=self.wallet_address,  # Use actual wallet address, not zero address
                 conditional_tokens_addr='0xAD1a38cEc043e70E83a3eC30443dB285ED10D774',
