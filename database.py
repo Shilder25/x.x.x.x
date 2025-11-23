@@ -295,7 +295,19 @@ class TradingDatabase:
         with self.get_connection() as conn:
             cursor = conn.cursor()
             
-            try:
+            # Check if portfolio already exists
+            cursor.execute('SELECT firm_name FROM virtual_portfolio WHERE firm_name = ?', (firm_name,))
+            exists = cursor.fetchone() is not None
+            
+            if exists:
+                # UPDATE existing portfolio with new initial_balance
+                cursor.execute('''
+                UPDATE virtual_portfolio 
+                SET initial_balance = ?, current_balance = ?, total_returns = 0.0, created_at = ?
+                WHERE firm_name = ?
+                ''', (initial_balance, initial_balance, datetime.now().isoformat(), firm_name))
+            else:
+                # INSERT new portfolio
                 cursor.execute('''
                 INSERT INTO virtual_portfolio (firm_name, initial_balance, current_balance, total_returns, created_at)
                 VALUES (?, ?, ?, 0.0, ?)
@@ -305,9 +317,6 @@ class TradingDatabase:
                 INSERT INTO firm_performance (firm_name, updated_at)
                 VALUES (?, ?)
                 ''', (firm_name, datetime.now().isoformat()))
-                
-            except sqlite3.IntegrityError:
-                pass
     
     def save_prediction(self, prediction_data: Dict) -> int:
         with self.get_connection() as conn:
